@@ -1,0 +1,7 @@
+name: template_workspace
+
+environment:
+  sdk: ^3.2.3
+
+dev_dependencies:
+  melos: ^3.4.0
