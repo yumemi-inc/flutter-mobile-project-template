@@ -1,4 +1,5 @@
 name: template
+sdkPath: .fvm/flutter_sdk
 
 packages:
   - packages/*
