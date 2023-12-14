@@ -12,4 +12,10 @@
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
     "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml",
   },
+  "github.copilot.enable": {
+    "*": false,
+    "dart": false,
+  },
+  "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.editor.enableAutoCompletions": false,
 }
