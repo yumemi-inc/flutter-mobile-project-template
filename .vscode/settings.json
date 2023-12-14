@@ -1,15 +1,15 @@
 {
-    "dart.flutterSdkPath": ".fvm/flutter_sdk",
-	"dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
-    "search.exclude": {
-      "**/.fvm": true
-    },
-    "files.watcherExclude": {
-      "**/.fvm": true
-    },
-    "explorer.fileNesting.enabled": true,
-    "explorer.fileNesting.patterns": {
-      "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
-      "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml",
-    }
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
+  "search.exclude": {
+    "**/.fvm": true
+  },
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
+    "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml",
+  },
 }
