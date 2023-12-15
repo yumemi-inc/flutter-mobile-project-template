@@ -2,9 +2,9 @@ name: template
 sdkPath: .fvm/flutter_sdk
 
 packages:
-  - app
-  - cores/*
-  - features/*
+  - packages/app
+  - packages/cores/*
+  - packages/features/*
 
 command:
   bootstrap:
