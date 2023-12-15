@@ -1,9 +1,9 @@
 # https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`
-.dart_tool/*
+/.dart_tool/*
 
 # IntelliJ related
-.idea/*
+/.idea/*
 
 # Melos related
-pubspec_overrides.yaml
+/pubspec_overrides.yaml
