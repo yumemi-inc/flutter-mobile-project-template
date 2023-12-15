@@ -1,1 +1,1 @@
-include: package:flutter_lints/flutter.yaml
+include: package:yumemi_lints/flutter/3.16.4/recommended.yaml
