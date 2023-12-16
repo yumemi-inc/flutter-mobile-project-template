@@ -13,6 +13,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
+  search:
+    path: ../features/search
 
 dev_dependencies:
   flutter_test:

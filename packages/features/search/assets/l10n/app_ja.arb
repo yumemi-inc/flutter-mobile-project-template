@@ -1,0 +1,7 @@
+{
+    "@@locale": "ja",
+    "search": "検索",
+    "@search": {
+      "description": "検索"
+    }
+}

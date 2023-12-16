@@ -1,0 +1,8 @@
+{
+    "@@locale": "ja",
+    "hello": "こんにちは",
+    "@hello": {
+      "description": "こんにちは",
+      "type": "text"
+    }
+}
