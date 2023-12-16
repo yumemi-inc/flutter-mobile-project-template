@@ -1,4 +1,3 @@
-library search;
 
 /// A Calculator.
 class Calculator {
