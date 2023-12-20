@@ -8,12 +8,23 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  dio: ^5.4.0
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.4.9
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  riverpod_annotation: ^2.3.3
 
 dev_dependencies:
+  build_runner: ^2.4.7
+  custom_lint: ^0.5.7
   flutter_test:
     sdk: flutter
+  freezed: ^2.4.6
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.3.9
+  riverpod_lint: ^2.3.7
   yumemi_lints: ^1.3.0
 
 flutter:
