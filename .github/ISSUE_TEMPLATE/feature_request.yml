@@ -1,0 +1,26 @@
+name: Feature Request
+description: 機能リクエストを提出する
+title: "[Feature]: "
+labels: [ "feature", "triage" ]
+body:
+  - type: checkboxes
+    attributes:
+      label: これに関する既存の Issue はありますか？
+      description: 検索して、既存の Issue の有無を確認してください。
+      options:
+        - label: 既存の Issue はありませんでした
+          required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 動機
+      description: この機能リクエストのきっかけは何ですか？どのような問題に直面していますか？
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案
+      description: 実装要件について詳細に説明してください。
+    validations:
+      required: true

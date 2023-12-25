@@ -1,0 +1,38 @@
+name: Bug Report
+description: バグレポートを提出する
+title: "[Bug]: "
+labels: [ "bug", "triage" ]
+body:
+  - type: checkboxes
+    attributes:
+      label: これに関する既存の Issue はありますか？
+      description: 検索して、既存の Issue の有無を確認してください。
+      options:
+        - label: 既存の Issue はありませんでした
+          required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: 現在の動作
+      description: どのように動作したかを簡潔に説明してください。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待される動作
+      description: どのように動作してほしいかを簡潔に説明してください。
+    validations:
+      required: false
+  - type: textarea
+    id: env
+    attributes:
+      label: 環境
+      description: 不具合が発生した際のアプリやプラットフォームのバージョンなどを記載してください。
+      value: |
+        - Commit Hash: 0153501e8487f388e99243d36f56509ea98f9def
+        - App Version: 1.0.0
+        - Platform: iOS 17.2.1, Android 14 API level 34
+      render: Markdown
+    validations:
+      required: true
