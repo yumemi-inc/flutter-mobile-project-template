@@ -1,0 +1,52 @@
+name: check-pr
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # https://github.com/kuhnroyal/flutter-fvm-config-action
+      - name: Fetch flutter config
+        uses: kuhnroyal/flutter-fvm-config-action@v2
+        id: fvm-config-action
+
+      # https://github.com/subosito/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Setup melos
+        run: |
+          dart pub global activate melos
+          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+          $HOME/.pub-cache/bin/melos bootstrap
+
+      # https://github.com/invertase/github-action-dart-analyzer
+      - name: Report analyze
+        uses: invertase/github-action-dart-analyzer@v1
+        with:
+          fatal-infos: true
+
+      - name: Run test
+        run: melos run test --no-select
+        continue-on-error: true
+
+      # https://github.com/dorny/test-reporter
+      - name: Report test
+        uses: dorny/test-reporter@v1
+        with:
+          name: 'flutter test'
+          path: '(apps|packages/cores|packages/features)/*/test_report.log'
+          reporter: 'flutter-json'
+          fail-on-error: 'true'
