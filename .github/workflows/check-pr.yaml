@@ -29,8 +29,7 @@ jobs:
       - name: Setup melos
         run: |
           dart pub global activate melos
-          echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
-          $HOME/.pub-cache/bin/melos bootstrap
+          melos bootstrap
 
       # https://github.com/invertase/github-action-dart-analyzer
       - name: Report analyze
