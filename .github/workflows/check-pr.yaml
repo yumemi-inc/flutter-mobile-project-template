@@ -28,6 +28,7 @@ jobs:
 
       - name: Setup melos
         run: |
+          ln -s $FLUTTER_ROOT .fvm/flutter_sdk
           dart pub global activate melos
           melos bootstrap
 
