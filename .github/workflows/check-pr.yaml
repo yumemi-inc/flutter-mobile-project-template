@@ -39,7 +39,7 @@ jobs:
           fatal-infos: true
 
       - name: Run test
-        run: melos run test --no-select
+        run: melos run report_test --no-select
         continue-on-error: true
 
       # https://github.com/dorny/test-reporter
