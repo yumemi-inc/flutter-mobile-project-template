@@ -13,3 +13,7 @@ command:
       flutter: ^3.16.4
     dev_dependencies:
       yumemi_lints: ^1.3.0
+
+ide:
+  intellij:
+    enabled: false
