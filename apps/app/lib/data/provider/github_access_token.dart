@@ -1,8 +1,8 @@
+// ignore_for_file: do_not_use_environment
+
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_access_token.g.dart';
-
-// ignore_for_file: do_not_use_environment
 
 const _githubAccessTokenKey = 'GITHUB_ACCESS_TOKEN';
 
