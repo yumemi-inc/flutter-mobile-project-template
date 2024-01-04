@@ -16,4 +16,6 @@ command:
 
 ide:
   intellij:
+    # Disabling IntelliJ's automatic configuration.
+    # This is to support different build configurations for environments.
     enabled: false
