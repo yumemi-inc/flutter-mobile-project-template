@@ -1,0 +1,6 @@
+{
+    "flavor": "dev",
+    "appName": "dev-Template",
+    "appId": "jp.co.yumemi.template",
+    "appIdSuffix": ".dev"
+}
