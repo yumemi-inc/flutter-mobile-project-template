@@ -36,4 +36,3 @@ scripts:
       dart format $files
     packageFilters:
       flutter: true
-      dirExists: [lib, test]
