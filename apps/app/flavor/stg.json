@@ -1,0 +1,6 @@
+{
+    "flavor": "stg",
+    "appName": "stg-Template",
+    "appId": "jp.co.yumemi.template",
+    "appIdSuffix": ".stg"
+}
