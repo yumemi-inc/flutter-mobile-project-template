@@ -34,7 +34,7 @@ jobs:
       - name: Run Melos Format
         run: melos run format
   
-      # 変更が発生した場合は プルリクエストを作成
+      # Create Pull Request on Changes
       - name: Create pull request
         uses: peter-evans/create-pull-request@v5
         with:
