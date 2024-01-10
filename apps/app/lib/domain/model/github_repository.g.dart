@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, duplicate_ignore
+
 part of 'github_repository.dart';
 
 // **************************************************************************
@@ -8,8 +10,15 @@ part of 'github_repository.dart';
 
 _$GitHubRepositoryImpl _$$GitHubRepositoryImplFromJson(
         Map<String, dynamic> json) =>
-    _$GitHubRepositoryImpl(
-      name: json['name'] as String,
+    $checkedCreate(
+      r'_$GitHubRepositoryImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$GitHubRepositoryImpl(
+          name: $checkedConvert('name', (v) => v as String),
+        );
+        return val;
+      },
     );
 
 Map<String, dynamic> _$$GitHubRepositoryImplToJson(

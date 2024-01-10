@@ -1,12 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, duplicate_ignore
+
 part of 'github_access_token.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gitHubAccessTokenHash() => r'4783be18481231bee55060efa497a519d02bcd0c';
+String _$gitHubAccessTokenHash() => r'7cef1ee46fc95986ceb88a5e046ab0ac3e0aa160';
 
 /// See also [gitHubAccessToken].
 @ProviderFor(gitHubAccessToken)
