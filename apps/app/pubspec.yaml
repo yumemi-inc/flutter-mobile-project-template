@@ -8,6 +8,8 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_designsystem:
+    path: ../../packages/cores/designsystem
   dio: ^5.4.0
   flutter:
     sdk: flutter
