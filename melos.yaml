@@ -19,15 +19,13 @@ scripts:
     exec: flutter test --no-pub --machine > test_report.log
     packageFilters:
       flutter: true
+  format:
+    exec: bash "$MELOS_ROOT_PATH/scripts/auto-format.sh"
+    packageFilters: 
+      diff: origin/main...HEAD
 
 ide:
   intellij:
     # Disabling IntelliJ's automatic configuration.
     # This is to support different build configurations for environments.
     enabled: false
-      
-scripts:
-  format:
-    exec: bash "$MELOS_ROOT_PATH/scripts/auto-format.sh"
-    packageFilters: 
-      diff: origin/main...HEAD
