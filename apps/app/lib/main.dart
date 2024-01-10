@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/provider/api/repository_api.dart';
 import 'package:flutter_app/feature/home/home_screen.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/util/logger.dart';
