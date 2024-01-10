@@ -12,6 +12,8 @@ jobs:
       # https://github.com/actions/checkout
       - name: Checkout
         uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
 
       # https://github.com/kuhnroyal/flutter-fvm-config-action
       - name: Fetch flutter config
