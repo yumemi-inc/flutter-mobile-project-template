@@ -14,6 +14,12 @@ command:
     dev_dependencies:
       yumemi_lints: ^1.3.0
 
+scripts:
+  report_test:
+    exec: flutter test --no-pub --machine > test_report.log
+    packageFilters:
+      flutter: true
+
 ide:
   intellij:
     # Disabling IntelliJ's automatic configuration.
