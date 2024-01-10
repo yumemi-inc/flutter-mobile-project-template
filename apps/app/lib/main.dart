@@ -35,14 +35,14 @@ class MainApp extends ConsumerWidget {
       home: Scaffold(
         body: Center(
           child: repositories.when(
-              data: (value) => ListView.builder(
-                itemCount: value.length,
-                itemBuilder: (context, index) => ListTile(
-                  title: Text(value[index].name),
-                ),
+            data: (value) => ListView.builder(
+              itemCount: value.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(value[index].name),
               ),
-              error: (error, _) => Text(error.toString()),
-              loading: CircularProgressIndicator.new,
+            ),
+            error: (error, _) => Text(error.toString()),
+            loading: CircularProgressIndicator.new,
           ),
         ),
       ),
