@@ -1,26 +1,11 @@
 # https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`
-/.dart_tool/
-/**/doc/api
-/build/
+/.dart_tool/*
 
 # IntelliJ related
-/**/*.iml
-/**/*.ipr
-/**/*.iws
 /.idea/*
 !/.idea/runConfigurations/
+/*.iml
 
 # Melos related
-/**/pubspec_overrides.yaml
-
-# Miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
-.DS_Store
-.atom/
-.buildlog/
-.history
-.svn/
+/pubspec_overrides.yaml
