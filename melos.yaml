@@ -21,6 +21,7 @@ scripts:
       flutter: true
   format:
     exec: bash "$MELOS_ROOT_PATH/scripts/auto-format.sh"
+    # It's permissible for the CI to run even if not branched off directly from the main branch.
     packageFilters: 
       diff: origin/main...HEAD
 
