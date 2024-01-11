@@ -10,4 +10,4 @@ dart fix --apply "$file" &
 done
 wait
 
-dart format "$file"
+dart format "$files"
