@@ -1,6 +1,6 @@
-import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/provider/api/repository_api.dart';
+import 'package:flutter_app/feature/home/home_screen.dart';
+import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -12,34 +12,21 @@ void main() async {
   logger.info(packageInfo);
 
   runApp(
-      const ProviderScope(
-          child: MainApp(),
-      ),
+    const ProviderScope(
+      child: MainApp(),
+    ),
   );
 }
 
-class MainApp extends ConsumerWidget {
+class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final repositories = ref.watch(listPublicRepositoriesProvider);
-
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: repositories.when(
-              data: (value) => ListView.builder(
-                itemCount: value.length,
-                itemBuilder: (context, index) => TextListTile(
-                  text: value[index].name,
-                ),
-              ),
-              error: (error, _) => Text(error.toString()),
-              loading: CircularProgressIndicator.new,
-          ),
-        ),
-      ),
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      localizationsDelegates: L10n.localizationsDelegates,
+      supportedLocales: L10n.supportedLocales,
+      home: HomeScreen(),
     );
   }
 }
