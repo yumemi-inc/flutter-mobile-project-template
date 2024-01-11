@@ -21,10 +21,14 @@ class SettingPage extends ConsumerWidget {
           return RadioListTile(
             value: themeMode,
             groupValue: currentThemeMode,
-            onChanged: (newThemeMode) {
-              ref
+            onChanged: (newThemeMode) async {
+              if (newThemeMode == null) {
+                return;
+              }
+
+              await ref
                   .read(themeModeNotifierProvider.notifier)
-                  .changeTheme(newThemeMode!);
+                  .changeTheme(newThemeMode);
             },
             title: Text(themeMode.name),
           );
