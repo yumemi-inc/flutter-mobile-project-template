@@ -6,14 +6,14 @@ part 'theme_mode_notifier.g.dart';
 
 const _themePrefsKey = 'selectedTheme';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class ThemeModeNotifier extends _$ThemeModeNotifier {
   @override
   ThemeMode build() {
-    return _getThemeMode();
+    return _getTheme();
   }
 
-  ThemeMode _getThemeMode() {
+  ThemeMode _getTheme() {
     final prefs = ref.read(sharedPreferencesProvider);
     final themeIndex = prefs.getInt(_themePrefsKey);
     return ThemeMode.values.singleWhere(
@@ -23,8 +23,12 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
   }
 
   Future<void> changeTheme(ThemeMode theme) async {
-    final prefs = ref.read(sharedPreferencesProvider);
-    await prefs.setInt(_themePrefsKey, theme.index);
+    await _saveTheme(theme.index);
     state = theme;
+  }
+
+  Future<void> _saveTheme(int themeIndex) async {
+    final prefs = ref.read(sharedPreferencesProvider);
+    await prefs.setInt(_themePrefsKey, themeIndex);
   }
 }
