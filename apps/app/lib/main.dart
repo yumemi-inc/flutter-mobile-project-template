@@ -1,4 +1,4 @@
-import 'package:cores_designsystem/cores_designsystem.dart';
+import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
 import 'package:flutter_app/util/logger.dart';
