@@ -36,22 +36,3 @@ jobs:
       - name: Run Melos Format
         run: melos run format
   
-      # Create Pull Request on Changes
-      - name: Generate a token
-        id: generate_token
-        uses: actions/create-github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID_OF_YUMEMI_PR_TOKEN_GENERATOR }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY_OF_YUMEMI_PR_TOKEN_GENERATOR }}
-
-      - name: Create a pull request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ steps.generate_token.outputs.token }}
-          delete-branch: true
-          commit-message: "Auto format"
-          committer: "GitHub Actions <noreply@github.com>"
-          base: ${{ github.head_ref }}
-          branch: "auto-format/${{ github.sha }}"
-          title: "Auto format - ref: ${{ github.ref_name }}"
-          body: "Auto format by GitHub Actions on ${{ github.sha }}\nby: ${{github.actor}}"
