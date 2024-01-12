@@ -14,7 +14,7 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
   }
 
   ThemeMode _getTheme() {
-    final prefs = ref.read(sharedPreferencesProvider);
+    final prefs = ref.watch(sharedPreferencesProvider);
     final themeIndex = prefs.getInt(_themePrefsKey);
     return ThemeMode.values.singleWhere(
       (themeMode) => themeMode.index == themeIndex,
