@@ -10,10 +10,10 @@ const _themePrefsKey = 'selectedTheme';
 class ThemeModeNotifier extends _$ThemeModeNotifier {
   @override
   ThemeMode build() {
-    return _getTheme();
+    return _getThemeMode();
   }
 
-  ThemeMode _getTheme() {
+  ThemeMode _getThemeMode() {
     final prefs = ref.watch(sharedPreferencesProvider);
     final themeIndex = prefs.getInt(SharedPreferencesKeys.theme.name);
     return ThemeMode.values.singleWhere(
