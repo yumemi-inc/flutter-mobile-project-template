@@ -34,5 +34,5 @@ jobs:
           melos bootstrap
           
       - name: Run Melos Format
-        run: melos run format
+        run: melos run format --no-select
   
