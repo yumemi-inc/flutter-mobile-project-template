@@ -16,6 +16,8 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
     required String currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
+    
+    /// Example: '1.0.9' -> [1, 0, 9]
     List<int> getVersionList(String version) {
       final versionParts = version.split('.');
 
@@ -38,18 +40,18 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
       targetVersionList = getVersionList(forceUpdateTargetVersion.ios);
     } else {
-      // Android / iOS 以外のプラットフォームの場合、強制バージョンアップは常に無効とする
+      /// If the platform is not Android / iOS, force update is always disabled.
       return false;
     }
 
     for (var i = 0; i < 3; ++i) {
       if (currentVersionList[i] > targetVersionList[i]) {
-        /// Example: 
+        /// Example:
         /// currentVersionList = [1, 1, 0]
         /// targetVersionList = [1, 0, 9]
         return false;
       } else if (currentVersionList[i] < targetVersionList[i]) {
-        /// Example: 
+        /// Example:
         /// currentVersionList = [1, 0, 9]
         /// targetVersionList = [1, 1, 0]
         return true;
