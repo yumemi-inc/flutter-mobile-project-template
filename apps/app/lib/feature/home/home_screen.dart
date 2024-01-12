@@ -1,3 +1,4 @@
+import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
@@ -15,8 +16,8 @@ class HomeScreen extends ConsumerWidget {
         child: repositories.when(
           data: (value) => ListView.builder(
             itemCount: value.length,
-            itemBuilder: (context, index) => ListTile(
-              title: Text(value[index].name),
+            itemBuilder: (context, index) => TextListTile(
+              text: value[index].name,
             ),
           ),
           error: (error, _) => Text(error.toString()),
