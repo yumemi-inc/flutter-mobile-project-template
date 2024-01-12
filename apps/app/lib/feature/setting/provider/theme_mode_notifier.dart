@@ -22,7 +22,7 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
     );
   }
 
-  Future<void> changeTheme(ThemeMode theme) async {
+  Future<void> changeThemeMode(ThemeMode theme) async {
     await _saveTheme(theme.index);
     state = theme;
   }

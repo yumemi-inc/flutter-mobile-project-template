@@ -28,7 +28,7 @@ class SettingPage extends ConsumerWidget {
 
               await ref
                   .read(themeModeNotifierProvider.notifier)
-                  .changeTheme(newThemeMode);
+                  .changeThemeMode(newThemeMode);
             },
             title: Text(themeMode.name),
           );
