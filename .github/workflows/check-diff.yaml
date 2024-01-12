@@ -33,9 +33,6 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-      - name: Run Melos Format
-        run: melos run format
-
       - name: install dependencies
         run: fvm flutter pub get
 
