@@ -34,7 +34,10 @@ jobs:
           melos bootstrap
 
       - name: install dependencies
-        run: fvm flutter pub get
+
+        run: |
+          cd apps/app  
+          fvm flutter pub get
 
       - name: re-generated code
         run: fvm flutter pub run build_runner build --delete-conflicting-outputs
