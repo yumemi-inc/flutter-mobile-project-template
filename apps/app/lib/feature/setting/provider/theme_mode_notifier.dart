@@ -4,8 +4,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_mode_notifier.g.dart';
 
-const _themePrefsKey = 'selectedTheme';
-
 @Riverpod(keepAlive: true)
 class ThemeModeNotifier extends _$ThemeModeNotifier {
   @override
