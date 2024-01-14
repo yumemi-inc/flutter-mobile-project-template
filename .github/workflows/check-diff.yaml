@@ -33,15 +33,15 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-      - name: install dependencies
+      - name: Install dependencies
         run: flutter pub get
 
-      - name: re-generate code
+      - name: Re-generate code
         run: |
           cd apps/app
           flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: check difference
+      - name: Check difference
         run: |
           git add -N .
           git diff --name-only --exit-code
