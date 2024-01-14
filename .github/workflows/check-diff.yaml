@@ -36,7 +36,7 @@ jobs:
       - name: install dependencies
         run: flutter pub get
 
-      - name: re-generated code
+      - name: re-generate code
         run: |
           cd apps/app
           flutter pub run build_runner build --delete-conflicting-outputs
