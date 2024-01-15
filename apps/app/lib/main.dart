@@ -1,6 +1,6 @@
+import 'package:cores_data/shared_preferences.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/provider/shared_preferences.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_app/util/logger.dart';
