@@ -13,7 +13,7 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
   }
 
   ThemeMode _getThemeMode() {
-    final prefs = ref.watch(sharedPreferencesProvider).requireValue;
+    final prefs = ref.watch(sharedPreferencesProvider);
     final themeIndex = prefs.getInt(SharedPreferencesKeys.themeMode.name);
     return ThemeMode.values.singleWhere(
       (themeMode) => themeMode.index == themeIndex,
@@ -27,7 +27,7 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
   }
 
   Future<void> _saveThemeMode(int themeIndex) async {
-    final prefs = ref.read(sharedPreferencesProvider).requireValue;
+    final prefs = ref.read(sharedPreferencesProvider);
     await prefs.setInt(SharedPreferencesKeys.themeMode.name, themeIndex);
   }
 }
