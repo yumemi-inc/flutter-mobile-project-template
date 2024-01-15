@@ -1,5 +1,5 @@
 import 'package:cores_designsystem/components.dart';
-import 'package:cores_designsystem/gen/l10n/l10n.dart';
+import 'package:cores_designsystem/gen/l10n/l10n.dart' as l10n;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,7 +11,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final repositories = ref.watch(listPublicRepositoriesProvider);
     return Scaffold(
-      appBar: AppBar(title: Text(L10n.of(context).appBar)),
+      appBar: AppBar(title: Text(l10n.L10n.of(context).appBar)),
       body: Center(
         child: repositories.when(
           data: (value) => ListView.builder(

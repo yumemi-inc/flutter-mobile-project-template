@@ -1,4 +1,4 @@
-import 'package:cores_designsystem/gen/l10n/l10n.dart';
+import 'package:cores_designsystem/gen/l10n/l10n.dart' as l10n;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/home_screen.dart';
 import 'package:flutter_app/util/logger.dart';
@@ -24,8 +24,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      localizationsDelegates: L10n.localizationsDelegates,
-      supportedLocales: L10n.supportedLocales,
+      localizationsDelegates: l10n.L10n.localizationsDelegates,
+      supportedLocales: l10n.L10n.supportedLocales,
       home: HomeScreen(),
     );
   }
