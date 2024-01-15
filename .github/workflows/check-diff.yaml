@@ -1,4 +1,4 @@
-name: Check a generated code is latest
+name: Check an amount of generated code is the latest
 
 on:
   pull_request:
