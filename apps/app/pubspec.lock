@@ -177,6 +177,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cores_designsystem:
+    dependency: "direct main"
+    description:
+      path: "../../packages/cores/designsystem"
+      relative: true
+    source: path
+    version: "0.1.0"
   crypto:
     dependency: transitive
     description:
