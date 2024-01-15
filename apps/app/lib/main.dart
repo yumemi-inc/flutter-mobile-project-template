@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/home_screen.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/util/logger.dart';
+import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -23,10 +24,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       localizationsDelegates: L10n.localizationsDelegates,
       supportedLocales: L10n.supportedLocales,
-      home: HomeScreen(),
+      home: CustomAppLifecycleListener(
+        onResume: () {
+          // Example: Obtain the latest AppStatus and update if needed.
+        },
+        child: const HomeScreen(),
+      ),
     );
   }
 }
