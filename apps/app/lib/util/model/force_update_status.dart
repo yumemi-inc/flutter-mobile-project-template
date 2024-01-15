@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_app/util/model/force_update_target_version.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,12 +22,18 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
       final versionParts = version.split('.');
 
       if (versionParts.length != 3) {
+        logger.warning(
+          'Invalid version format for Semantic Versioning: $version',
+        );
         return [0, 0, 0];
       }
 
       try {
         return versionParts.map(int.parse).toList();
       } on FormatException catch (_) {
+        logger.warning(
+          '''Invalid format when attempting to parse a List into integers: $versionParts''',
+        );
         return [0, 0, 0];
       }
     }
