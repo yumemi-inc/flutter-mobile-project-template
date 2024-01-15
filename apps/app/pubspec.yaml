@@ -13,11 +13,8 @@ dependencies:
   dio: ^5.4.0
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   flutter_riverpod: ^2.4.9
   freezed_annotation: ^2.4.1
-  intl: ^0.18.1
   json_annotation: ^4.8.1
   package_info_plus: ^5.0.1
   riverpod_annotation: ^2.3.3
