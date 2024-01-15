@@ -20,11 +20,6 @@ scripts:
     packageFilters:
       flutter: true
 
-  re_generate_code:
-    exec: flutter pub run build_runner build --delete-conflicting-outputs
-    packageFilters:
-      flutter: true
-
 ide:
   intellij:
     # Disabling IntelliJ's automatic configuration.
