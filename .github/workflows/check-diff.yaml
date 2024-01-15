@@ -33,9 +33,6 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-      - name: Install dependencies
-        run: flutter pub get
-
       - name: Re-generate code
         run: |
           cd apps/app
