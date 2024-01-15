@@ -2,7 +2,7 @@ name: Check a generated code is latest
 
 on:
   pull_request:
-    types: [ opened, ready_for_review, synchronize ]
+    types: [ ready_for_review ]
 
 jobs:
   check:
