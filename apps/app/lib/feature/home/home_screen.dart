@@ -1,7 +1,7 @@
 import 'package:cores_designsystem/components.dart';
+import 'package:cores_designsystem/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
-import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
