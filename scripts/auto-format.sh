@@ -3,7 +3,7 @@
 files=()
 while IFS= read -r -d $'\0' file; do
     files+=("$file")
-done < <(find . -name "*.dart" -not \( -name "*.freezed.dart" -o -name "*.g.dart" -o -name "*.gen.dart" \) -print0)
+done < <(find . -name "*.dart" -not \( -path "*/gen/*/*.dart" -o -name "*.freezed.dart" -o -name "*.g.dart" -o -name "*.gen.dart" \) -print0)
 
 for file in "${files[@]}"; do
   # limit jobs to 5
