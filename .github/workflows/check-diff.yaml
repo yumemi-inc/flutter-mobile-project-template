@@ -33,11 +33,6 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-#      - name: Re-generate code
-#        run: |
-#          cd apps/app
-#          flutter pub run build_runner build --delete-conflicting-outputs
-
        - name: Re-generate code
          run: melos run re_generate_code --no-select
          continue-on-error: true

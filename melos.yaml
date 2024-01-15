@@ -21,8 +21,6 @@ scripts:
       flutter: true
 
   re_generate_code:
-#    exec: |
-#      cd apps/app
     exec: flutter pub run build_runner build --delete-conflicting-outputs
     packageFilters:
       flutter: true
