@@ -21,7 +21,7 @@ scripts:
     packageFilters:
       flutter: true
 
-  generated_code:
+  regenerate_code:
     exec: flutter pub run build_runner build --delete-conflicting-outputs
     packageFilters:
       flutter: true
