@@ -17,6 +17,6 @@ class ForceUpdateVersion extends _$ForceUpdateVersion {
     state = state.copyWith(
       ios: iosTargetVersion,
       android: androidTargetVersion,
-    );     
+    );
   }
 }

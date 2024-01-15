@@ -15,7 +15,7 @@ AppStatus appStatus(AppStatusRef ref) {
   return AppStatus(
     maintenanceModeStatus: MaintenanceModeStatus(
       enabled: maintenanceModeState.enabled,
-      ), 
+    ),
     forceUpdateStatus: ForceUpdateStatus(
       enabled: forceUpdateState.enabled,
     ),

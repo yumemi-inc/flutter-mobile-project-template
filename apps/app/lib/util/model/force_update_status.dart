@@ -16,7 +16,6 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
     required String currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
-    
     /// Example: '1.0.9' -> [1, 0, 9]
     List<int> getVersionList(String version) {
       final versionParts = version.split('.');

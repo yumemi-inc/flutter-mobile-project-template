@@ -15,6 +15,6 @@ class MaintenanceMode extends _$MaintenanceMode {
   }) {
     state = state.copyWith(
       enabled: enabled,
-      );
+    );
   }
 }
