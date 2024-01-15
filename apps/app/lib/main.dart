@@ -5,7 +5,6 @@ import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,13 +12,13 @@ void main() async {
   final packageInfo = await PackageInfo.fromPlatform();
   logger.info(packageInfo);
 
-  final prefs = await SharedPreferences.getInstance();
+  final container = ProviderContainer();
+
+  await container.read(sharedPreferencesProvider.future);
 
   runApp(
-    ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-      ],
+    UncontrolledProviderScope(
+      container: container,
       child: const MainApp(),
     ),
   );
