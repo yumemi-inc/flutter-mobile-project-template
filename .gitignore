@@ -9,3 +9,4 @@
 
 # Melos related
 /pubspec_overrides.yaml
+.mason
