@@ -10,7 +10,7 @@ for file in "${files[@]}"; do
   if [ "$(jobs -r | wc -l)" -ge 5 ]; then
       wait "$(jobs -r -p | head -1)"
   fi
-  dart fix --apply "$file" &
+  dart fix --dry-run "$file" &
 done
 wait
 
