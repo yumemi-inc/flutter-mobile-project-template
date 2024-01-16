@@ -15,6 +15,5 @@ ThemeData _createTheme({
   required ColorScheme colorScheme,
 }) =>
     ThemeData(
-      useMaterial3: true,
       colorScheme: colorScheme,
     );
