@@ -35,7 +35,6 @@ jobs:
 
       - name: Run test
         run: melos run regenerate_code --no-select
-        continue-on-error: true
 
       - name: Check difference
         run: |
