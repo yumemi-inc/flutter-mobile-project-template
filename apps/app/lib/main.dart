@@ -1,4 +1,4 @@
-import 'package:cores_data/shared_preferences.dart';
+import 'package:cores_data/init.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
@@ -7,7 +7,6 @@ import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,13 +14,13 @@ void main() async {
   final packageInfo = await PackageInfo.fromPlatform();
   logger.info(packageInfo);
 
-  final prefs = await SharedPreferences.getInstance();
+  final overrides = [
+    ...await initializeProviders(),
+  ];
 
   runApp(
     ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-      ],
+      overrides: overrides,
       child: const MainApp(),
     ),
   );
