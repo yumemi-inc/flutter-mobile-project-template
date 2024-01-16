@@ -19,6 +19,8 @@ scripts:
     exec: flutter test --no-pub --machine > test_report.log
     packageFilters:
       flutter: true
+  format:
+    exec: bash "$MELOS_ROOT_PATH/scripts/auto-format.sh"
 
 ide:
   intellij:
