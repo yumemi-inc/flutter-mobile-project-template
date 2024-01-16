@@ -1,3 +1,4 @@
+import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/shared_preferences.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
@@ -33,8 +34,8 @@ class MainApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeNotifierProvider);
 
     return MaterialApp(
-      theme: ThemeData.light(),
-      darkTheme: ThemeData.dark(),
+      theme: lightTheme(),
+      darkTheme: darkTheme(),
       themeMode: themeMode,
       home: const HomePage(),
     );
