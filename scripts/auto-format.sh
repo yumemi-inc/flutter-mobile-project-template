@@ -14,4 +14,5 @@ for file in "${files[@]}"; do
 done
 wait
 
+# imple dart format
 dart format "${files[@]}" --set-exit-if-changed
