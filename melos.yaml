@@ -22,9 +22,9 @@ scripts:
       flutter: true
 
   regenerate_code:
-    exec: flutter pub run build_runner build --delete-conflicting-outputs
+    exec: dart run build_runner build -d
     packageFilters:
-      flutter: true
+      dependsOn: build_runner
 
 ide:
   intellij:
