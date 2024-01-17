@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:setting/setting.dart';
+import 'package:features_setting/setting.dart';
 
 void main() {
   test('adds one to input values', () {
