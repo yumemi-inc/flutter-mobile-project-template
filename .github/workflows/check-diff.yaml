@@ -2,7 +2,7 @@ name: Check generated code is latest
 
 on:
   pull_request:
-    types: [ opened, synchronize ]
+    types: [opened, synchronize]
 
 jobs:
   check:
