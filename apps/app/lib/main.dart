@@ -1,5 +1,5 @@
-import 'package:cores_data/init.dart';
 import 'package:cores_designsystem/themes.dart';
+import 'package:cores_init/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';

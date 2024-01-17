@@ -191,6 +191,13 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  cores_init:
+    dependency: "direct main"
+    description:
+      path: "../../packages/cores/init"
+      relative: true
+    source: path
+    version: "0.1.0"
   crypto:
     dependency: transitive
     description:

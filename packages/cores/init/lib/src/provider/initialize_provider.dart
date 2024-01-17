@@ -1,4 +1,4 @@
-import 'package:cores_data/src/shared_preferences/provider/shared_preferences.dart';
+import 'package:cores_data/shared_preferences.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
