@@ -10,3 +10,4 @@
 # Melos related
 /pubspec_overrides.yaml
 .mason
+mason-lock.json
