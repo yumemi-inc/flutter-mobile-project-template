@@ -10,4 +10,7 @@
 # Melos related
 /pubspec_overrides.yaml
 .mason
+
+# https://github.com/felangel/mason/issues/947
+# `mason get`すると内容が絶対パスに書き換わるためバージョン管理しない
 mason-lock.json
