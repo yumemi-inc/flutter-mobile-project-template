@@ -38,7 +38,7 @@ jobs:
         with:
           fatal-infos: true
 
-      - name: Run Melos Format
+      - name: Run format
         run: melos run format
 
       - name: Run test
