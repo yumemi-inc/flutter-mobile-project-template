@@ -33,7 +33,7 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-      - name: Run test
+      - name: Regenerate code
         run: melos run regenerate_code --no-select
 
       - name: Check difference
