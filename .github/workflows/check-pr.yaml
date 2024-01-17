@@ -38,8 +38,8 @@ jobs:
         with:
           fatal-infos: true
 
-      - name: Run format
-        run: melos run format
+      - name: Check format
+        run: melos run check_format
 
       - name: Run test
         run: melos run report_test --no-select
