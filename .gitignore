@@ -9,6 +9,8 @@
 
 # Melos related
 /pubspec_overrides.yaml
+
+# mason related
 .mason
 
 # https://github.com/felangel/mason/issues/947
