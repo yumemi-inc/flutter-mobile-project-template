@@ -14,13 +14,9 @@ void main() async {
   final packageInfo = await PackageInfo.fromPlatform();
   logger.info(packageInfo);
 
-  final overrides = [
-    ...await initializeProviders(),
-  ];
-
   runApp(
     ProviderScope(
-      overrides: overrides,
+      overrides: await initializeProviders(),
       child: const MainApp(),
     ),
   );
