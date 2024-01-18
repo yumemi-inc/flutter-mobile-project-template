@@ -20,8 +20,8 @@ scripts:
     packageFilters:
       flutter: true
 
-  check_format:
-    exec: bash "$MELOS_ROOT_PATH/scripts/check-format.sh"
+  check_format:ci:
+    exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
 
 ide:
   intellij:
