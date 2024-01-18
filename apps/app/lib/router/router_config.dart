@@ -11,13 +11,15 @@ part 'router_config.g.dart';
   path: HomePageRoute.path,
 )
 class HomePageRoute extends GoRouteData {
+  const HomePageRoute();
+
   static const path = '/home';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return HomePage(
       onSettingIconPressed: () => unawaited(
-        SettingPageRoute().push(context),
+        const SettingPageRoute().push(context),
       ),
     );
   }
@@ -27,6 +29,8 @@ class HomePageRoute extends GoRouteData {
   path: SettingPageRoute.path,
 )
 class SettingPageRoute extends GoRouteData {
+  const SettingPageRoute();
+
   static const path = '/setting';
 
   @override
