@@ -8,8 +8,12 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_data:
+    path: ../../packages/cores/data
   cores_designsystem:
     path: ../../packages/cores/designsystem
+  cores_init:
+    path: ../../packages/cores/init
   dio: ^5.4.0
   flutter:
     sdk: flutter
@@ -21,7 +25,6 @@ dependencies:
   json_annotation: ^4.8.1
   package_info_plus: ^5.0.1
   riverpod_annotation: ^2.3.3
-  shared_preferences: ^2.2.2
   simple_logger: ^1.9.0+3
 
 dev_dependencies:
