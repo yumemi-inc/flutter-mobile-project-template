@@ -20,6 +20,9 @@ scripts:
     packageFilters:
       flutter: true
 
+  format:
+    exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
+
   check_format:ci:
     exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
 
