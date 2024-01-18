@@ -1,0 +1,7 @@
+name: core_package_flutter_hooks
+
+environment:
+  sdk: ^3.2.3
+
+dependencies:
+  mason: ">=0.1.0-dev.52 <0.1.0"
