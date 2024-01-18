@@ -21,4 +21,6 @@ AppBarTheme _createAppBarTheme({
 }) =>
     AppBarTheme(
       backgroundColor: backgroundColor,
+      // example:
+      // centerTitle: true,
     );
