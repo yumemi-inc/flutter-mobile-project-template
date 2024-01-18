@@ -15,7 +15,7 @@ dependencies:
   shared_preferences: ^2.2.2
 
 dev_dependencies:
-  build_runner: ^2.4.8
+  build_runner: ^2.4.7
   custom_lint: ^0.5.8
   riverpod_generator: ^2.3.9
   riverpod_lint: ^2.3.7
