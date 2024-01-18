@@ -1,1 +1,1 @@
-export 'initialize_provider.dart';
+export 'initialize_providers.dart';
