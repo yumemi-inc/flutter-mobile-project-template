@@ -177,10 +177,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  cores_data:
+    dependency: "direct main"
+    description:
+      path: "../../packages/cores/data"
+      relative: true
+    source: path
+    version: "0.1.0"
   cores_designsystem:
     dependency: "direct main"
     description:
       path: "../../packages/cores/designsystem"
+      relative: true
+    source: path
+    version: "0.1.0"
+  cores_init:
+    dependency: "direct main"
+    description:
+      path: "../../packages/cores/init"
       relative: true
     source: path
     version: "0.1.0"
@@ -589,7 +603,7 @@ packages:
     source: hosted
     version: "0.27.7"
   shared_preferences:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: shared_preferences
       sha256: "81429e4481e1ccfb51ede496e916348668fd0921627779233bd24cc3ff6abd02"
