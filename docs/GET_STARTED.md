@@ -7,6 +7,7 @@
     - [Xcode]
 - Enable the [fvm] command.
 - Enable the [melos] command.
+- Enable the [mason_cli] command.
 
 ### Set up Flutter SDK
 
@@ -51,3 +52,5 @@ Please check:
 [fvm]: https://fvm.app/
 
 [melos]: https://melos.invertase.dev/
+
+[mason_cli]: https://pub.dev/packages/mason_cli
