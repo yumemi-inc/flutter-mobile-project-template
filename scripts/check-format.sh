@@ -14,4 +14,4 @@ for file in "${files[@]}"; do
 done
 wait
 
-dart format "${files[@]}" --set-exit-if-changed
+dart format -o none  --set-exit-if-changed "${files[@]}"
