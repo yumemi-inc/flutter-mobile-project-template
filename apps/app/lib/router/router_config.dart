@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/feature/setting/ui/setting_page.dart';
+import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:go_router/go_router.dart';
 
 part 'router_config.g.dart';
@@ -17,9 +18,14 @@ class HomePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return HomePage(
-      onSettingIconPressed: () => unawaited(
-        const SettingPageRoute().push(context),
+    return CustomAppLifecycleListener(
+      onResume: () {
+        // Example: Obtain the latest AppStatus and update if needed.
+      },
+      child: HomePage(
+        onSettingIconPressed: () => unawaited(
+          const SettingPageRoute().push(context),
+        ),
       ),
     );
   }
