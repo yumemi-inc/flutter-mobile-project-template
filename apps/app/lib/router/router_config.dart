@@ -15,7 +15,11 @@ class HomePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const HomePage();
+    return HomePage(
+      onSettingIconPressed: () => unawaited(
+        SettingPageRoute().push(context),
+      ),
+    );
   }
 }
 
