@@ -1,12 +1,11 @@
 import 'package:cores_designsystem/themes.dart';
+import 'package:cores_init/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/data/provider/shared_preferences.dart';
 import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,13 +13,9 @@ void main() async {
   final packageInfo = await PackageInfo.fromPlatform();
   logger.info(packageInfo);
 
-  final prefs = await SharedPreferences.getInstance();
-
   runApp(
     ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-      ],
+      overrides: await initializeProviders(),
       child: const MainApp(),
     ),
   );

@@ -1,10 +1,13 @@
+import 'package:cores_data/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/constants/shared_preferences_keys.dart';
-import 'package:flutter_app/data/provider/shared_preferences.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_mode_notifier.g.dart';
 
+/* TODO: Remove cores_data dependency from app package when this class is
+     extracted into feature package
+ */
 @Riverpod(keepAlive: true)
 class ThemeModeNotifier extends _$ThemeModeNotifier {
   @override

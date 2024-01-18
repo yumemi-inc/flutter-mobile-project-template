@@ -19,7 +19,7 @@ RouteBase get $homePageRoute => GoRouteData.$route(
     );
 
 extension $HomePageRouteExtension on HomePageRoute {
-  static HomePageRoute _fromState(GoRouterState state) => HomePageRoute();
+  static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
   String get location => GoRouteData.$location(
         '/home',
@@ -41,7 +41,8 @@ RouteBase get $settingPageRoute => GoRouteData.$route(
     );
 
 extension $SettingPageRouteExtension on SettingPageRoute {
-  static SettingPageRoute _fromState(GoRouterState state) => SettingPageRoute();
+  static SettingPageRoute _fromState(GoRouterState state) =>
+      const SettingPageRoute();
 
   String get location => GoRouteData.$location(
         '/setting',
