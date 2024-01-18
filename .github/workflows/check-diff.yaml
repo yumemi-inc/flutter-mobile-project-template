@@ -1,0 +1,42 @@
+name: Check generated code is latest
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # https://github.com/kuhnroyal/flutter-fvm-config-action
+      - name: Fetch flutter config
+        uses: kuhnroyal/flutter-fvm-config-action@v2
+        id: fvm-config-action
+
+      # https://github.com/subosito/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Setup melos
+        run: |
+          ln -s $FLUTTER_ROOT .fvm/flutter_sdk
+          dart pub global activate melos
+          melos bootstrap
+
+      - name: Regenerate code
+        run: melos run regenerate_code --no-select
+
+      - name: Check difference
+        run: |
+          git add -N .
+          git diff --name-only --exit-code
