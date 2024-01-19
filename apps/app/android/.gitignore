@@ -11,5 +11,3 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
-
-**/android/app/src/main/res/mipmap*/

@@ -44,3 +44,6 @@ app.*.map.json
 
 # Melos related
 /pubspec_overrides.yaml
+
+# Android related
+**/android/app/src/main/res/mipmap*/
