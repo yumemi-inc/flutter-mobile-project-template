@@ -47,3 +47,4 @@ app.*.map.json
 
 # Android related
 **/android/app/src/main/res/mipmap*/
+**/android/app/src/main/res/drawble*/
