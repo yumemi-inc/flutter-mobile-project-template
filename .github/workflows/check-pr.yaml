@@ -38,6 +38,9 @@ jobs:
         with:
           fatal-infos: true
 
+      - name: Check format
+        run: melos run check_format:ci
+
       - name: Run test
         run: melos run report_test --no-select
         continue-on-error: true
