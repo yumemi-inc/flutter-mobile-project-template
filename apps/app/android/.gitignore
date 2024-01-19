@@ -12,4 +12,4 @@ key.properties
 **/*.keystore
 **/*.jks
 
-**/android/app/src/main/res
+**/android/app/src/main/res/mipmap*/
