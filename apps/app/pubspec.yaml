@@ -15,6 +15,8 @@ dependencies:
   cores_init:
     path: ../../packages/cores/init
   dio: ^5.4.0
+  features_github_repository:
+    path: ../../packages/features/github_repository
   flutter:
     sdk: flutter
   flutter_localizations:
