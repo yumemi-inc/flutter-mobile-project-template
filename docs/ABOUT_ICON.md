@@ -30,4 +30,4 @@
 
 [flutter_launcher_icons]: https://pub.dev/packages/flutter_launcher_icons
 
-[adaptive icon guid]: https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive?hl=ja
+[adaptive icon guide]: https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive?hl=ja
