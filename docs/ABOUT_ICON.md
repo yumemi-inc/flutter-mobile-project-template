@@ -23,8 +23,7 @@
 
 |`adaptive_icon_foreground` | `adaptive_icon_background`| 
 |:--------------------------:|:--------------------------:|
-| <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/8b62877a-ee02-4aac-8cc2-96beaa7b219a" width="300" /> | <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/fd34fb78-61c7-49b2-95d7-0a3dce131741" width="300" /> |
-
+| <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/2bb60924-ae00-4b72-9bf2-6c94cedf7a27" width="300" /> | <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/fd34fb78-61c7-49b2-95d7-0a3dce131741" width="300" /> |
 
 <!-- Links -->
 
