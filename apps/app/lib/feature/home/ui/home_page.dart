@@ -1,10 +1,13 @@
-import 'dart:async';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/feature/setting/ui/setting_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({
+    required VoidCallback goSettingPage,
+    super.key,
+  }) : _goSettingPage = goSettingPage;
+
+  final VoidCallback _goSettingPage;
 
   @override
   Widget build(BuildContext context) {
@@ -13,17 +16,7 @@ class HomePage extends StatelessWidget {
         title: const Text('ホーム'),
         actions: [
           IconButton(
-            onPressed: () {
-              unawaited(
-                Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (context) {
-                      return const SettingPage();
-                    },
-                  ),
-                ),
-              );
-            },
+            onPressed: _goSettingPage,
             icon: const Icon(
               Icons.settings,
             ),
