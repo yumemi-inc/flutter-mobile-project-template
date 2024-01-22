@@ -21,6 +21,12 @@ scripts:
     packageFilters:
       flutter: true
 
+  format:
+    exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
+
+  check_format:ci:
+    exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
+    
   regenerate_code:
     exec: dart run build_runner build -d
     packageFilters:
