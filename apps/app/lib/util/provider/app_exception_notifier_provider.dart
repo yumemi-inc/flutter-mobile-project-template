@@ -10,6 +10,7 @@ class AppExceptionNotifier extends _$AppExceptionNotifier {
     return null;
   }
 
+  // ignore: use_setters_to_change_properties
   void notify(AppException exception) {
     state = exception;
   }
