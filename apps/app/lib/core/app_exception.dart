@@ -1,9 +1,11 @@
 sealed class AppException implements Exception {
-  AppException();
+  AppException(this.message);
+
+  final String message;
 }
 
 sealed class NetworkException extends AppException {
-  NetworkException();
+  NetworkException(super.message);
 
   factory NetworkException.fromStatusCode(int? statusCode) {
     if (statusCode == null) {
@@ -11,8 +13,12 @@ sealed class NetworkException extends AppException {
     }
 
     return switch (statusCode) {
-      >= 400 && < 500 => ClientNetworkException(),
-      >= 500 && < 600 => ServerNetworkException(),
+      >= 400 && < 500 => ClientNetworkException(
+          'Client error occurred($statusCode)',
+        ),
+      >= 500 && < 600 => ServerNetworkException(
+          'Server error occurred($statusCode)',
+        ),
       _ => throw ArgumentError(
           'Invalid status code: $statusCode.',
           'statusCode',
@@ -21,10 +27,18 @@ sealed class NetworkException extends AppException {
   }
 }
 
-class ClientNetworkException extends NetworkException {}
+class ClientNetworkException extends NetworkException {
+  ClientNetworkException(super.message);
+}
 
-class ServerNetworkException extends NetworkException {}
+class ServerNetworkException extends NetworkException {
+  ServerNetworkException(super.message);
+}
 
-class UnknownNetworkException extends NetworkException {}
+class UnknownNetworkException extends NetworkException {
+  UnknownNetworkException() : super('Unknown network error occurred');
+}
 
-class UnknownException extends AppException {}
+class UnknownException extends AppException {
+  UnknownException() : super('Unknown error occurred');
+}
