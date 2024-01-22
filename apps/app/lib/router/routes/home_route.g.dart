@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint, duplicate_ignore
 
-part of 'router_config.dart';
+part of 'home_route.dart';
 
 // **************************************************************************
 // GoRouterGenerator

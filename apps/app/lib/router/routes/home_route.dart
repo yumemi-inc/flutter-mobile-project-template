@@ -6,7 +6,7 @@ import 'package:flutter_app/feature/setting/ui/setting_page.dart';
 import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:go_router/go_router.dart';
 
-part 'router_config.g.dart';
+part 'home_route.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
