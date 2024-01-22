@@ -28,9 +28,7 @@ class HomePageRoute extends GoRouteData {
         // Example: Obtain the latest AppStatus and update if needed.
       },
       child: HomePage(
-        onSettingIconPressed: () => unawaited(
-          const SettingPageRoute().push(context),
-        ),
+        onSettingIconPressed: () => const SettingPageRoute().go(context),
       ),
     );
   }
