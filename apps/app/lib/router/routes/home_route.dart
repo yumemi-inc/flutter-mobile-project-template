@@ -10,6 +10,11 @@ part 'home_route.g.dart';
 
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
+  routes: [
+    TypedGoRoute<SettingPageRoute>(
+      path: SettingPageRoute.path,
+    ),
+  ],
 )
 class HomePageRoute extends GoRouteData {
   const HomePageRoute();
@@ -31,13 +36,10 @@ class HomePageRoute extends GoRouteData {
   }
 }
 
-@TypedGoRoute<SettingPageRoute>(
-  path: SettingPageRoute.path,
-)
 class SettingPageRoute extends GoRouteData {
   const SettingPageRoute();
 
-  static const path = '/setting';
+  static const path = 'setting';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

@@ -10,12 +10,17 @@ part of 'home_route.dart';
 
 List<RouteBase> get $appRoutes => [
       $homePageRoute,
-      $settingPageRoute,
     ];
 
 RouteBase get $homePageRoute => GoRouteData.$route(
       path: '/home',
       factory: $HomePageRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'setting',
+          factory: $SettingPageRouteExtension._fromState,
+        ),
+      ],
     );
 
 extension $HomePageRouteExtension on HomePageRoute {
@@ -35,17 +40,12 @@ extension $HomePageRouteExtension on HomePageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $settingPageRoute => GoRouteData.$route(
-      path: '/setting',
-      factory: $SettingPageRouteExtension._fromState,
-    );
-
 extension $SettingPageRouteExtension on SettingPageRoute {
   static SettingPageRoute _fromState(GoRouterState state) =>
       const SettingPageRoute();
 
   String get location => GoRouteData.$location(
-        '/setting',
+        '/home/setting',
       );
 
   void go(BuildContext context) => context.go(location);
