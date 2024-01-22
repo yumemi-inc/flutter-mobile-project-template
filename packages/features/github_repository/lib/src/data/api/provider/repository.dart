@@ -1,9 +1,8 @@
-import 'package:flutter_app/data/json_type.dart';
-import 'package:flutter_app/data/provider/dio.dart';
-import 'package:flutter_app/domain/model/github_repository.dart';
+import 'package:cores_data/network.dart';
+import 'package:features_github_repository/src/domain/model/github_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'repository_api.g.dart';
+part 'repository.g.dart';
 
 @riverpod
 Future<List<GitHubRepository>> listPublicRepositories(

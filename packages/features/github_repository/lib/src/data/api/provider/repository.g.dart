@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint, duplicate_ignore
 
-part of 'repository_api.dart';
+part of 'repository.dart';
 
 // **************************************************************************
 // RiverpodGenerator
