@@ -1,12 +1,15 @@
-import 'dart:async';
 import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
-import 'package:flutter_app/feature/setting/ui/setting_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
-  const HomePage({super.key});
+  const HomePage({
+    required VoidCallback goSettingPage,
+    super.key,
+  }) : _goSettingPage = goSettingPage;
+
+  final VoidCallback _goSettingPage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -17,17 +20,7 @@ class HomePage extends ConsumerWidget {
         title: const Text('ホーム'),
         actions: [
           IconButton(
-            onPressed: () {
-              unawaited(
-                Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (context) {
-                      return const SettingPage();
-                    },
-                  ),
-                ),
-              );
-            },
+            onPressed: _goSettingPage,
             icon: const Icon(
               Icons.settings,
             ),
