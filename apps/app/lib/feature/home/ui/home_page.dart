@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:cores_designsystem/components.dart';
+import 'package:features_debug_mode/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/provider/api/repository_api.dart';
 import 'package:flutter_app/feature/setting/ui/setting_page.dart';
@@ -16,6 +17,22 @@ class HomePage extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('ホーム'),
         actions: [
+          IconButton(
+            onPressed: () {
+              unawaited(
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (context) {
+                      return const DebugModePage();
+                    },
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.construction,
+            ),
+          ),
           IconButton(
             onPressed: () {
               unawaited(
