@@ -5,11 +5,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({
-    required VoidCallback onSettingIconPressed,
+    required VoidCallback goSettingPage,
     super.key,
-  }) : _onSettingIconPressed = onSettingIconPressed;
+  }) : _goSettingPage = goSettingPage;
 
-  final VoidCallback _onSettingIconPressed;
+  final VoidCallback _goSettingPage;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -20,7 +20,7 @@ class HomePage extends ConsumerWidget {
         title: const Text('ホーム'),
         actions: [
           IconButton(
-            onPressed: _onSettingIconPressed,
+            onPressed: _goSettingPage,
             icon: const Icon(
               Icons.settings,
             ),
