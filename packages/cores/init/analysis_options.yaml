@@ -1,0 +1,6 @@
+include: package:yumemi_lints/flutter/3.16.4/recommended.yaml
+
+analyzer:
+  plugins:
+    # https://riverpod.dev/docs/introduction/getting_started#enabling-riverpod_lintcustom_lint
+    - custom_lint

@@ -1,7 +1,8 @@
-name: check-pr
+name: Check generated code is latest
 
 on:
   pull_request:
+    types: [opened, synchronize]
 
 jobs:
   check:
@@ -32,24 +33,10 @@ jobs:
           dart pub global activate melos
           melos bootstrap
 
-      # https://github.com/invertase/github-action-dart-analyzer
-      - name: Report analyze
-        uses: invertase/github-action-dart-analyzer@v2.0.0
-        with:
-          fatal-infos: true
+      - name: Regenerate code
+        run: melos run regenerate_code --no-select
 
-      - name: Check format
-        run: melos run check_format:ci
-
-      - name: Run test
-        run: melos run report_test --no-select
-        continue-on-error: true
-
-      # https://github.com/dorny/test-reporter
-      - name: Report test
-        uses: dorny/test-reporter@v1
-        with:
-          name: 'flutter test'
-          path: '(apps|packages/cores|packages/features)/*/test_report.log'
-          reporter: 'flutter-json'
-          fail-on-error: 'true'
+      - name: Check difference
+        run: |
+          git add -N .
+          git diff --name-only --exit-code
