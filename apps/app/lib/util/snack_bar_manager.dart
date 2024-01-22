@@ -10,6 +10,9 @@ class SnackBarManager {
     if (rootScaffoldMessengerKey.currentState == null) {
       return;
     }
+
+    /// Hide the current snackBar if it is visible
+    rootScaffoldMessengerKey.currentState!.hideCurrentSnackBar();
     rootScaffoldMessengerKey.currentState!.showSnackBar(
       SnackBar(
         content: Text(message),
