@@ -8,6 +8,9 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_core:
+    path: ../core
+  dio: ^5.4.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.9

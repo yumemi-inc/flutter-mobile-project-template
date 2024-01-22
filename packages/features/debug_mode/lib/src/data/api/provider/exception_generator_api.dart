@@ -1,7 +1,6 @@
+import 'package:cores_core/exception.dart';
+import 'package:cores_data/network.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_app/core/app_exception.dart';
-import 'package:flutter_app/data/provider/dio.dart';
-import 'package:flutter_app/util/provider/app_exception_notifier_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'exception_generator_api.g.dart';

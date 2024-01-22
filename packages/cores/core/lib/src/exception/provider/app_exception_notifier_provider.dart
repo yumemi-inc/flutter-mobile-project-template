@@ -1,4 +1,4 @@
-import 'package:flutter_app/core/app_exception.dart';
+import 'package:cores_core/exception.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_exception_notifier_provider.g.dart';
