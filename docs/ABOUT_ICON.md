@@ -15,7 +15,7 @@
 
     - `adaptive_icon_background`
         - Icon background image
-        -  A color code or background image is required.
+        - A color code or background image is required.
         - As for the size of the image, 1024x1024 is fine.
 
 - The following table includes specific icons. There is a border on the image, but it was added to make it visible; however, the border is not necessary when adding icons.
