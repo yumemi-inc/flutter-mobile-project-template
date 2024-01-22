@@ -72,7 +72,7 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ホーム'),
+        title: const Text('home'),
         actions: [
           IconButton(
             onPressed: _goSettingPage, // exec callback
@@ -82,7 +82,7 @@ class HomePage extends ConsumerWidget {
           ),
         ],
       ),
-      body: // 省略
+      body: // omit
     );
   }
 }
