@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:features_debug_mode/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/feature/setting/ui/setting_page.dart';
@@ -13,6 +14,9 @@ part 'home_route.g.dart';
   routes: [
     TypedGoRoute<SettingPageRoute>(
       path: SettingPageRoute.path,
+    ),
+    TypedGoRoute<DebugModePageRoute>(
+      path: DebugModePageRoute.path,
     ),
   ],
 )
@@ -44,3 +48,15 @@ class SettingPageRoute extends GoRouteData {
     return const SettingPage();
   }
 }
+
+class DebugModePageRoute extends GoRouteData {
+  const DebugModePageRoute();
+
+  static const path = 'debug_mode';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const DebugModePage();
+  }
+}
+
