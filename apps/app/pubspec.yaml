@@ -16,7 +16,6 @@ dependencies:
     path: ../../packages/cores/designsystem
   cores_init:
     path: ../../packages/cores/init
-  dio: ^5.4.0
   features_debug_mode:
     path: ../../packages/features/debug_mode
   features_github_repository:
