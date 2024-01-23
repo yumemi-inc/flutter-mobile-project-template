@@ -52,8 +52,8 @@ extension DioExtension on Dio {
       final result = await request();
       return result;
     } on DioException catch (e) {
-      final customException = _convertDioExceptionToNetworkException(e);
-      throw customException;
+      final networkException = _convertDioExceptionToNetworkException(e);
+      throw networkException;
     }
   }
 
