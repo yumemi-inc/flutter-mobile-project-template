@@ -31,7 +31,9 @@ extension DioExtension on Dio {
   /// Future<void> fetchUser() async {
   ///   state = const AsyncValue.loading();
   ///   try {
-  ///     final result = await dio.get('/users/$username');
+  ///     final result = await dio.safeRequest<User>(
+  ///       request: () => dio.get('/users/1'),
+  ///     );
   ///     state = AsyncValue.data(data);
   ///   } on AppException catch (e, stackTrace) {
   ///     ref.read(appExceptionNotifierProvider.notifier).notify(e);
