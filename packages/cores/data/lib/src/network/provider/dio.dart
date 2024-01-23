@@ -25,6 +25,20 @@ Dio dio(DioRef ref) {
 }
 
 extension DioExtension on Dio {
+  /// Usage case: When you want to handle [DioException] and convert it to [AppException]
+  ///
+  /// ```dart
+  /// Future<void> fetchUser() async {
+  ///   state = const AsyncValue.loading();
+  ///   try {
+  ///     final result = await dio.get('/users/$username');
+  ///     state = AsyncValue.data(data);
+  ///   } on AppException catch (e, stackTrace) {
+  ///     ref.read(appExceptionNotifierProvider.notifier).notify(e);
+  ///     state = AsyncValue.error(e, stackTrace);
+  ///   );
+  /// }
+  /// ```
   Future<T> safeRequest<T>({
     required Future<T> Function() request,
   }) =>
