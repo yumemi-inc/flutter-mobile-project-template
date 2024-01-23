@@ -1,14 +1,15 @@
-import 'dart:async';
-import 'package:features_debug_mode/ui.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
+    required VoidCallback goDebugModePage,
     required VoidCallback goSettingPage,
     super.key,
-  }) : _goSettingPage = goSettingPage;
+  }) :  _goDebugModePage = goDebugModePage,
+        _goSettingPage = goSettingPage;
 
+  final VoidCallback _goDebugModePage;
   final VoidCallback _goSettingPage;
 
   @override
@@ -18,17 +19,7 @@ class HomePage extends StatelessWidget {
         title: const Text('ホーム'),
         actions: [
           IconButton(
-            onPressed: () {
-              unawaited(
-                Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (context) {
-                      return const DebugModePage();
-                    },
-                  ),
-                ),
-              );
-            },
+            onPressed: _goDebugModePage,
             icon: const Icon(
               Icons.construction,
             ),

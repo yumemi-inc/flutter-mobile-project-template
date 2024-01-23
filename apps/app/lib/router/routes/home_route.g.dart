@@ -20,6 +20,10 @@ RouteBase get $homePageRoute => GoRouteData.$route(
           path: 'setting',
           factory: $SettingPageRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'debug_mode',
+          factory: $DebugModePageRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -46,6 +50,24 @@ extension $SettingPageRouteExtension on SettingPageRoute {
 
   String get location => GoRouteData.$location(
         '/home/setting',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $DebugModePageRouteExtension on DebugModePageRoute {
+  static DebugModePageRoute _fromState(GoRouterState state) =>
+      const DebugModePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/home/debug_mode',
       );
 
   void go(BuildContext context) => context.go(location);
