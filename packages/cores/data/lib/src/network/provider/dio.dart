@@ -25,7 +25,8 @@ Dio dio(DioRef ref) {
 }
 
 extension DioExtension on Dio {
-  /// Usage case: When you want to handle [DioException] and convert it to [AppException]
+  /// Usage case:
+  ///   When you want to handle [DioException] and　convert it　to [AppException]
   ///
   /// ```dart
   /// Future<void> fetchUser() async {
