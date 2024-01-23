@@ -1,5 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
+// ignore_for_file: type=lint, duplicate_ignore
+
 part of 'app_exception_notifier_provider.dart';
 
 // **************************************************************************
@@ -7,12 +9,12 @@ part of 'app_exception_notifier_provider.dart';
 // **************************************************************************
 
 String _$appExceptionNotifierHash() =>
-    r'04f52f3321a5f357ca21bcc701826ac42dfef0a4';
+    r'7ce57f8dfa05c30751b97a6362c296985c2703a9';
 
 /// See also [AppExceptionNotifier].
 @ProviderFor(AppExceptionNotifier)
 final appExceptionNotifierProvider =
-    AutoDisposeNotifierProvider<AppExceptionNotifier, AppException?>.internal(
+    NotifierProvider<AppExceptionNotifier, AppException?>.internal(
   AppExceptionNotifier.new,
   name: r'appExceptionNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +24,6 @@ final appExceptionNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$AppExceptionNotifier = AutoDisposeNotifier<AppException?>;
+typedef _$AppExceptionNotifier = Notifier<AppException?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

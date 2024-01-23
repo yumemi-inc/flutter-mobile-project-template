@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'app_exception_notifier_provider.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class AppExceptionNotifier extends _$AppExceptionNotifier {
   @override
   AppException? build() {
