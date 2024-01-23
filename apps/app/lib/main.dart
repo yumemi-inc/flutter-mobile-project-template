@@ -32,7 +32,7 @@ class MainApp extends ConsumerWidget {
 
     ref.listen<AppException?>(
       appExceptionNotifierProvider,
-          (_, appException) {
+      (_, appException) {
         if (appException != null) {
           SnackBarManager.showSnackBar(
             'An error occurred: ${appException.message}',

@@ -40,8 +40,8 @@ extension DioExtension on Dio {
 
   /// Handle [DioException] and convert it to [AppException]
   Future<T> _wrapDioException<T>(
-      Future<T> Function() request,
-      ) async {
+    Future<T> Function() request,
+  ) async {
     try {
       final result = await request();
       return result;

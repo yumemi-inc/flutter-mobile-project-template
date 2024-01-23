@@ -14,15 +14,15 @@ sealed class NetworkException extends AppException {
 
     return switch (statusCode) {
       >= 400 && < 500 => ClientNetworkException(
-        'Client error occurred($statusCode)',
-      ),
+          'Client error occurred($statusCode)',
+        ),
       >= 500 && < 600 => ServerNetworkException(
-        'Server error occurred($statusCode)',
-      ),
+          'Server error occurred($statusCode)',
+        ),
       _ => throw ArgumentError(
-        'Invalid status code: $statusCode.',
-        'statusCode',
-      ),
+          'Invalid status code: $statusCode.',
+          'statusCode',
+        ),
     };
   }
 }
