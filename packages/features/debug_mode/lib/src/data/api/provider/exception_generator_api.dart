@@ -15,7 +15,7 @@ class ExceptionGeneratorApi extends _$ExceptionGeneratorApi {
   Future<void> request() async {
     state = const AsyncValue.loading();
     try {
-      final dio = ref.watch(dioProvider);
+      final dio = ref.read(dioProvider);
       await dio.safeRequest<void>(
         request: () {
           throw DioException(
