@@ -1,4 +1,4 @@
-import 'package:flutter_app/util/model/maintenance_mode_status.dart';
+import 'package:cores_core/src/app_status/model/maintenance_mode_status.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'maintenance_mode_provider.g.dart';

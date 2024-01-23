@@ -186,7 +186,7 @@ packages:
     source: hosted
     version: "3.1.1"
   cores_core:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../packages/cores/core"
       relative: true
@@ -752,7 +752,7 @@ packages:
     source: hosted
     version: "1.0.4"
   simple_logger:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: simple_logger
       sha256: bd3f09099a890f5f66cd27a39e5422f4e27b5e7cf4c5a7331569e86d89846898

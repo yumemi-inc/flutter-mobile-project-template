@@ -1,4 +1,4 @@
-import 'package:flutter_app/util/model/force_update_target_version.dart';
+import 'package:cores_core/src/app_status/model/force_update_target_version.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'force_update_version_provider.g.dart';
