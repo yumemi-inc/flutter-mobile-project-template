@@ -1,15 +1,15 @@
 sealed class AppException implements Exception {
-  AppException(this.message);
+  const AppException(this.message);
 
   final String message;
 }
 
 sealed class NetworkException extends AppException {
-  NetworkException(super.message);
+  const NetworkException(super.message);
 
   factory NetworkException.fromStatusCode(int? statusCode) {
     if (statusCode == null) {
-      return UnknownNetworkException();
+      return const UnknownNetworkException();
     }
 
     return switch (statusCode) {
@@ -28,17 +28,17 @@ sealed class NetworkException extends AppException {
 }
 
 class ClientNetworkException extends NetworkException {
-  ClientNetworkException(super.message);
+  const ClientNetworkException(super.message);
 }
 
 class ServerNetworkException extends NetworkException {
-  ServerNetworkException(super.message);
+  const ServerNetworkException(super.message);
 }
 
 class UnknownNetworkException extends NetworkException {
-  UnknownNetworkException() : super('Unknown network error occurred');
+  const UnknownNetworkException() : super('Unknown network error occurred');
 }
 
 class UnknownException extends AppException {
-  UnknownException() : super('Unknown error occurred');
+  const UnknownException() : super('Unknown error occurred');
 }
