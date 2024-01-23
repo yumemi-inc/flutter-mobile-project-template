@@ -6,7 +6,7 @@ class HomePage extends StatelessWidget {
     required VoidCallback goDebugModePage,
     required VoidCallback goSettingPage,
     super.key,
-  }) :  _goDebugModePage = goDebugModePage,
+  })  : _goDebugModePage = goDebugModePage,
         _goSettingPage = goSettingPage;
 
   final VoidCallback _goDebugModePage;
