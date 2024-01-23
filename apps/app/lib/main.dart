@@ -1,7 +1,7 @@
+import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
