@@ -44,9 +44,3 @@ app.*.map.json
 
 # Melos related
 /pubspec_overrides.yaml
-
-# Android related
-**/app/src/main/res/drawable*/ic_launcher*.png
-**/app/src/main/res/mipmap*/ic_launcher*.png
-**/app/src/main/res/mipmap*/ic_launcher*.xml
-**/app/src/main/res/values/colors.xml
