@@ -60,4 +60,3 @@ class DebugModePageRoute extends GoRouteData {
     return const DebugModePage();
   }
 }
-
