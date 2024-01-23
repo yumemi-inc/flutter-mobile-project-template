@@ -9,7 +9,7 @@ part of 'app_exception_notifier_provider.dart';
 // **************************************************************************
 
 String _$appExceptionNotifierHash() =>
-    r'b1a4db583cdb8e79ed53289a30fdcae26652d243';
+    r'7ce57f8dfa05c30751b97a6362c296985c2703a9';
 
 /// See also [AppExceptionNotifier].
 @ProviderFor(AppExceptionNotifier)
