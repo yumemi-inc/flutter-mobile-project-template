@@ -21,14 +21,6 @@ Dio dio(DioRef ref) {
   final dio = Dio(options);
 
   dio.interceptors.add(LogInterceptor());
-  dio.interceptors.add(
-    InterceptorsWrapper(
-      onError: (e, handler) {
-        throw NetworkException.fromStatusCode(e.response?.statusCode);
-      },
-    ),
-  );
-
   return dio;
 }
 
