@@ -1,10 +1,9 @@
+import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/feature/home/ui/home_page.dart';
-import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
+import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_app/util/logger.dart';
-import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -29,16 +28,11 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeNotifierProvider);
 
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: ref.watch(routerProvider),
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: themeMode,
-      home: CustomAppLifecycleListener(
-        onResume: () {
-          // Example: Obtain the latest AppStatus and update if needed.
-        },
-        child: const HomePage(),
-      ),
     );
   }
 }
