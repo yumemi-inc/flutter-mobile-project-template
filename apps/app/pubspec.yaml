@@ -16,6 +16,8 @@ dependencies:
     path: ../../packages/cores/init
   features_github_repository:
     path: ../../packages/features/github_repository
+  features_setting:
+    path: ../../packages/features/setting
   flutter:
     sdk: flutter
   flutter_localizations:
