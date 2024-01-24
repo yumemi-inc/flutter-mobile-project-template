@@ -30,7 +30,6 @@ scripts:
   regenerate_code:
     run: dart run build_runner build -d
     exec:
-      concurrency: 1
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
