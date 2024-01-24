@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,7 +18,9 @@ class DebugModePage extends ConsumerWidget {
           children: [
             ElevatedButton(
               onPressed: () async {
-                // TODO: Request API that generates an exception
+                unawaited(
+                  ref.read(exceptionGeneratorApiProvider.notifier).request(),
+                );
               },
               child: const Text('Show error SnackBar'),
             ),

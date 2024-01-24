@@ -21,13 +21,46 @@ Dio dio(DioRef ref) {
   final dio = Dio(options);
 
   dio.interceptors.add(LogInterceptor());
-  dio.interceptors.add(
-    InterceptorsWrapper(
-      onError: (e, handler) {
-        throw NetworkException.fromStatusCode(e.response?.statusCode);
-      },
-    ),
-  );
-
   return dio;
+}
+
+extension DioExtension on Dio {
+  /// Usage case:
+  ///   When you want to handle [DioException] and　convert it　to [AppException]
+  ///
+  /// ```dart
+  /// Future<void> fetchUser() async {
+  ///   state = const AsyncValue.loading();
+  ///   try {
+  ///     final result = await dio.safeRequest<User>(
+  ///       request: () => dio.get('/users/1'),
+  ///     );
+  ///     state = AsyncValue.data(data);
+  ///   } on AppException catch (e, stackTrace) {
+  ///     ref.read(appExceptionNotifierProvider.notifier).notify(e);
+  ///     state = AsyncValue.error(e, stackTrace);
+  ///   );
+  /// }
+  /// ```
+  Future<T> safeRequest<T>({
+    required Future<T> Function() request,
+  }) =>
+      _wrapDioException<T>(request);
+
+  /// Handle [DioException] and convert it to [AppException]
+  Future<T> _wrapDioException<T>(
+    Future<T> Function() request,
+  ) async {
+    try {
+      final result = await request();
+      return result;
+    } on DioException catch (e) {
+      final networkException = _convertDioExceptionToNetworkException(e);
+      throw networkException;
+    }
+  }
+
+  AppException _convertDioExceptionToNetworkException(DioException e) {
+    return NetworkException.fromStatusCode(e.response?.statusCode);
+  }
 }
