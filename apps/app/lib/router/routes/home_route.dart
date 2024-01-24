@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:features_setting/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
-import 'package:flutter_app/feature/setting/ui/setting_page.dart';
 import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
 import 'package:go_router/go_router.dart';
 
