@@ -1,23 +1,22 @@
-import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart';
+
+import 'package:catalog/main.directories.g.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const WidgetbookApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+@App()
+class WidgetbookApp extends StatelessWidget {
+  const WidgetbookApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: lightTheme(),
-      darkTheme: darkTheme(),
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return Widgetbook.material(
+      // Use the generateïd directories variable
+      directories: directories,
     );
   }
 }
