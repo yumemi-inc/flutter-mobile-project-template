@@ -8,11 +8,14 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_core:
+    path: ../core
   cores_data:
     path: ../data
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.9
+  package_info_plus: ^5.0.1
   shared_preferences: ^2.2.2
 
 dev_dependencies:
