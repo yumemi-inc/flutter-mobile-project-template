@@ -1,8 +1,9 @@
+import 'package:catalog/main.directories.g.dart';
+import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
-
-import 'package:catalog/main.directories.g.dart';
 
 void main() {
   runApp(const WidgetbookApp());
@@ -15,8 +16,53 @@ class WidgetbookApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Widgetbook.material(
-      // Use the generateïd directories variable
       directories: directories,
+      // 下のAddonから順番にUseCaseを囲んでいく仕様になっている
+      // 例えば、InspectorはDeviceFrameの中に表示される
+      addons: [
+        DeviceFrameAddon(
+          devices: [
+            Devices.ios.iPhoneSE,
+            Devices.ios.iPhone13,
+          ],
+        ),
+        InspectorAddon(enabled: true),
+        MaterialThemeAddon(
+          themes: [
+            WidgetbookTheme(name: 'Light', data: lightTheme()),
+            WidgetbookTheme(name: 'Dark', data: darkTheme()),
+          ],
+        ),
+        LocalizationAddon(
+          locales: [
+            const Locale('en', 'US'),
+            const Locale('ja'),
+          ],
+          localizationsDelegates: [
+            DefaultWidgetsLocalizations.delegate,
+            DefaultMaterialLocalizations.delegate,
+          ],
+        ),
+        BuilderAddon(
+          name: 'Scaffold',
+          builder: (context, child) {
+            final scaffoldFinder = find.byType(Scaffold);
+            return scaffoldFinder.hasFound
+                ? child
+                : Scaffold(
+                    body: child,
+                  );
+          },
+        ),
+        BuilderAddon(
+          name: 'SafeArea',
+          builder: (context, child) => SafeArea(child: child),
+        ),
+        AlignmentAddon(),
+        TextScaleAddon(
+          scales: [1.0, 2.0],
+        ),
+      ],
     );
   }
 }
