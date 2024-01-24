@@ -13,14 +13,48 @@ class DebugModePage extends ConsumerWidget {
       body: Center(
         child: Column(
           children: [
-            ElevatedButton(
+            _FixSizedElevatedButton(
+              title: 'Show error SnackBar',
               onPressed: () async {
                 // TODO: Request API that generates an exception
               },
-              child: const Text('Show error SnackBar'),
+            ),
+            _FixSizedElevatedButton(
+              title: 'Enable maintenance mode',
+              onPressed: () async {
+                // TODO: Enable maintenance mode
+              },
+            ),
+            _FixSizedElevatedButton(
+              title: 'Enable force update',
+              onPressed: () async {
+                // TODO: Enable force update
+              },
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _FixSizedElevatedButton extends StatelessWidget {
+  const _FixSizedElevatedButton({
+    required String title,
+    required VoidCallback onPressed,
+  })  : _title = title,
+        _onPressed = onPressed;
+
+  final String _title;
+  final VoidCallback _onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return FractionallySizedBox(
+      widthFactor: 0.8,
+      child: ElevatedButton(
+        onPressed: _onPressed,
+        child: Text(_title),
       ),
     );
   }
