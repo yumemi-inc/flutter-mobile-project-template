@@ -222,7 +222,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_test:
-    dependency: "direct dev"
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
