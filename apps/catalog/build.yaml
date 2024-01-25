@@ -1,0 +1,6 @@
+targets:
+  $default:
+    builders:
+      widgetbook_generator:telemetry:
+        # 情報収集を無効化する ref:https://docs.widgetbook.io/telemetry
+        enabled: false
