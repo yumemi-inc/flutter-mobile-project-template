@@ -22,6 +22,15 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+task copySources(type: Copy) {
+    from "src/$flavor/res"
+    into 'src/main/res'
+}
+
+tasks.whenTaskAdded { task ->
+    task.dependsOn copySources
+}
+
 android {
     namespace "jp.co.yumemi.flutter_app"
     compileSdkVersion flutter.compileSdkVersion
