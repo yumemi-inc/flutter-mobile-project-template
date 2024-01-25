@@ -19,7 +19,7 @@
         - As for the size of the image, 1024x1024 is fine.
 
 - The following table includes specific icons. There is a border on the image, but it was added to make it visible; however, the border is not necessary when adding icons.
-- For a detailed explanation, please check [adaptive icon guid].
+- For a detailed explanation, please check [adaptive icon guide].
 
 |`adaptive_icon_foreground` | `adaptive_icon_background`| 
 |:--------------------------:|:--------------------------:|
