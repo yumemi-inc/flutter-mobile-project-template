@@ -1,5 +1,5 @@
-name: cores_core
-description: "This package provides core features of app."
+name: features_debug_mode
+description: "This package provides features for Debug Mode"
 publish_to: 'none'
 version: 0.1.0
 
@@ -8,6 +8,13 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_core:
+    path: ../../cores/core
+  cores_data:
+    path: ../../cores/data
+  cores_designsystem:
+    path: ../../cores/designsystem
+  dio: ^5.4.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.9
