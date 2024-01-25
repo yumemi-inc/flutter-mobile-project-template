@@ -2,13 +2,20 @@
 
 ```text
 .
-├── app
-├── cores
-│   ├── ...
-│   └── ...
-└── features
-    ├── ...
-    └── ...
+├── apps
+│   ├── app
+│   └── catalog
+│
+└── packages
+    ├── cores
+    │   ├── core
+    │   ├── data
+    │   ├── designsystem
+    │   └── init
+    │
+    └── features
+        ├── debug_mode
+        └── github_repository
 ```
 
 ## Architecture
