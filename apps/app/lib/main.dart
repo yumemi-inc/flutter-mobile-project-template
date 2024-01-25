@@ -1,3 +1,5 @@
+import 'package:cores_core/exception.dart';
+import 'package:cores_core/ui.dart';
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
@@ -28,7 +30,20 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeNotifierProvider);
 
+    ref.listen<AppException?>(
+      appExceptionNotifierProvider,
+      (_, appException) {
+        if (appException != null) {
+          SnackBarManager.showSnackBar(
+            'An error occurred: ${appException.message}',
+          );
+          ref.read(appExceptionNotifierProvider.notifier).consume();
+        }
+      },
+    );
+
     return MaterialApp.router(
+      scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       routerConfig: ref.watch(routerProvider),
       theme: lightTheme(),
       darkTheme: darkTheme(),
