@@ -8,12 +8,16 @@ environment:
   flutter: ^3.16.4
 
 dependencies:
+  cores_core:
+    path: ../../packages/cores/core
   cores_data:
     path: ../../packages/cores/data
   cores_designsystem:
     path: ../../packages/cores/designsystem
   cores_init:
     path: ../../packages/cores/init
+  features_debug_mode:
+    path: ../../packages/features/debug_mode
   features_github_repository:
     path: ../../packages/features/github_repository
   features_setting:
