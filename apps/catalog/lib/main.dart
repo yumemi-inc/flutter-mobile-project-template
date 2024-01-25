@@ -21,6 +21,7 @@ class WidgetbookApp extends StatelessWidget {
       // 例えば、InspectorはDeviceFrameの中に表示される
       addons: [
         DeviceFrameAddon(
+          initialDevice: Devices.ios.iPhone13,
           devices: [
             Devices.ios.iPhoneSE,
             Devices.ios.iPhone13,
