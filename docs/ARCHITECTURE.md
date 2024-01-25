@@ -23,6 +23,7 @@
 ```mermaid
 flowchart TB
     apps/app
+    apps/catalog
     cores/core
     cores/data
     cores/designsystem
@@ -31,6 +32,7 @@ flowchart TB
     features/github_repository
 
     apps/app --> cores/data & cores/designsystem & cores/init & features/debug_mode & features/github_repository
+    apps/catalog --> cores/designsystem
     features/debug_mode --> cores/core & cores/data & cores/designsystem
     features/github_repository --> cores/data & cores/designsystem
     cores/core --> cores/data
