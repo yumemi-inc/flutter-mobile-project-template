@@ -23,7 +23,7 @@
 
 |`adaptive_icon_foreground` | `adaptive_icon_background`| 
 |:--------------------------:|:--------------------------:|
-| <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/2bb60924-ae00-4b72-9bf2-6c94cedf7a27" width="300" /> | <img src="https://github.com/iseruuuuu/appbar_ui_app/assets/67954894/fd34fb78-61c7-49b2-95d7-0a3dce131741" width="300" /> |
+| <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/0d1e1559-1600-4c12-aea6-2b4b234c7f41" width="300" /> | <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/521be3f1-945c-4c08-9c81-6f612679801c" width="300" /> |
 
 <!-- Links -->
 
