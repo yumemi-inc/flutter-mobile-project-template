@@ -33,6 +33,13 @@
             "args": [
                 "--dart-define-from-file=flavor/prd.json"
             ]
+        },
+        {
+            "name": "ui-catalog",
+            "cwd": "apps/catalog",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "type": "dart",
         }
     ]
 }
