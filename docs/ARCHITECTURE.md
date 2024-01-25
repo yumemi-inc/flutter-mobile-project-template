@@ -35,8 +35,8 @@ flowchart TB
     apps/catalog --> cores/designsystem
     features/debug_mode --> cores/core & cores/data & cores/designsystem
     features/github_repository --> cores/data & cores/designsystem
-    cores/core --> cores/data
-    cores/data --> cores/init
+    cores/data --> cores/core
+    cores/init --> cores/data
 ```
 
 ## Packages
