@@ -1,6 +1,6 @@
-import 'package:flutter_app/util/model/force_update_status.dart';
-import 'package:flutter_app/util/provider/force_update_version_provider.dart';
-import 'package:flutter_app/util/provider/package_info_provider.dart';
+import 'package:cores_core/src/app_status/model/force_update_status.dart';
+import 'package:cores_core/src/app_status/provider/force_update_version_provider.dart';
+import 'package:cores_core/src/util/provider/package_info_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'force_update_provider.g.dart';
