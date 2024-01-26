@@ -1,5 +1,5 @@
 name: features_webview
-description: "A new Flutter package project."
+description: "This package provides webview feature."
 publish_to: 'none'
 version: 0.0.1
 
