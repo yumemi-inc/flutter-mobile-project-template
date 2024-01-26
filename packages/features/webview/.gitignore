@@ -26,4 +26,9 @@ migrate_working_dir/
 /pubspec.lock
 **/doc/api/
 .dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
 build/
+
+# Melos related
+/pubspec_overrides.yaml

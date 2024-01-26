@@ -1,6 +1,6 @@
 name: features_webview
 description: "This package provides webview feature."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  webview_flutter: ^4.4.4
 
 dev_dependencies:
   flutter_test:
