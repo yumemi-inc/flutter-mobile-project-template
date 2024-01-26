@@ -1,5 +1,6 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
+import 'package:cores_core/util.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
@@ -7,7 +8,6 @@ import 'package:features_setting/gen/l10n/l10n.dart' as setting_l10n;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';
-import 'package:flutter_app/util/logger.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 

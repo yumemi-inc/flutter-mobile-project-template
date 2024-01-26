@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:cores_core/util.dart';
 import 'package:features_debug_mode/ui.dart';
 import 'package:features_setting/setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/util/widget/custom_app_lifecyle_listerner.dart';
+import 'package:flutter_app/feature/setting/ui/setting_page.dart';
 import 'package:go_router/go_router.dart';
 
 part 'home_route.g.dart';
