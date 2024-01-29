@@ -1,31 +1,30 @@
+import 'package:cores_navigation/cores_navigation.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/router/routes/home_route.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends ConsumerWidget {
   const HomePage({
-    required VoidCallback goDebugModePage,
-    required VoidCallback goSettingPage,
     super.key,
-  })  : _goDebugModePage = goDebugModePage,
-        _goSettingPage = goSettingPage;
+  });
 
-  final VoidCallback _goDebugModePage;
-  final VoidCallback _goSettingPage;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final navigator = ref.watch(homeNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ホーム'),
         actions: [
           IconButton(
-            onPressed: _goDebugModePage,
+            onPressed: () => navigator.goDebugModePage(context),
             icon: const Icon(
               Icons.construction,
             ),
           ),
           IconButton(
-            onPressed: _goSettingPage,
+            onPressed: () => navigator.goSettingPage(context),
             icon: const Icon(
               Icons.settings,
             ),
@@ -34,5 +33,23 @@ class HomePage extends StatelessWidget {
       ),
       body: const GitHubRepositoryList(),
     );
+  }
+}
+
+final homeNavigatorProvider = Provider(
+  (_) => const HomeNavigatorImpl(),
+);
+
+final class HomeNavigatorImpl implements HomeNavigator {
+  const HomeNavigatorImpl();
+
+  @override
+  void goDebugModePage(BuildContext context) {
+    const DebugModePageRoute().go(context);
+  }
+
+  @override
+  void goSettingPage(BuildContext context) {
+    const SettingPageRoute().go(context);
   }
 }

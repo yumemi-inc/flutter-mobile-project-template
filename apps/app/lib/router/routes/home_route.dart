@@ -31,10 +31,7 @@ class HomePageRoute extends GoRouteData {
       onResume: () {
         // Example: Obtain the latest AppStatus and update if needed.
       },
-      child: HomePage(
-        goDebugModePage: () => const DebugModePageRoute().go(context),
-        goSettingPage: () => const SettingPageRoute().go(context),
-      ),
+      child: const HomePage(),
     );
   }
 }
