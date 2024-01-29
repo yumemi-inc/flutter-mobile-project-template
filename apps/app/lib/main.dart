@@ -4,7 +4,7 @@ import 'package:cores_core/util.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
-import 'package:features_setting/l10n.dart' as setting_l10n;
+import 'package:features_setting/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';
@@ -47,11 +47,11 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       localizationsDelegates: const [
         ...L10n.localizationsDelegates,
-        ...setting_l10n.L10n.localizationsDelegates,
+        ...L10nSetting.localizationsDelegates,
       ],
       supportedLocales: const [
         ...L10n.supportedLocales,
-        ...setting_l10n.L10n.supportedLocales,
+        ...L10nSetting.supportedLocales,
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       routerConfig: ref.watch(routerProvider),

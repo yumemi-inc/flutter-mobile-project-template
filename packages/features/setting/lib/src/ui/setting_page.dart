@@ -12,7 +12,7 @@ class SettingPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(L10n.of(context).settingAppBar),
+        title: Text(L10nSetting.of(context).settingAppBar),
       ),
       body: ListView.builder(
         itemCount: ThemeMode.values.length,
