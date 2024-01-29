@@ -26,8 +26,7 @@ scripts:
 
   check_format:ci:
     exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
-    
-  regenerate_code:
+  regenerate_by_using_build_runner:
     run: dart run build_runner build -d
     exec:
       orderDependents: true
