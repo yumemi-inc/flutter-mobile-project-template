@@ -1,10 +1,10 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_core/util.dart';
+import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
