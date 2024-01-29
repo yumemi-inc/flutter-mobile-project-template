@@ -20,6 +20,8 @@ dependencies:
     path: ../../packages/features/debug_mode
   features_github_repository:
     path: ../../packages/features/github_repository
+  features_webview:
+    path: ../../packages/features/webview
   flutter:
     sdk: flutter
   flutter_localizations:
