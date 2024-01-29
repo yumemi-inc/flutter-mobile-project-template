@@ -34,7 +34,7 @@ scripts:
     packageFilters:
       dependsOn: build_runner
 
-  regenerate_l10n:
+  regenerate_by_using_gen_l10n:
     run: flutter gen-l10n
     exec:
       orderDependents: true
