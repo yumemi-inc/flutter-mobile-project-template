@@ -26,13 +26,22 @@ scripts:
 
   check_format:ci:
     exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
-    
-  regenerate_code:
+
+  regenerate_code: melos run regenerate_by_using_gen_l10n && melos run regenerate_by_using_build_runner
+
+  regenerate_by_using_build_runner:
     run: dart run build_runner build -d
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
+
+  regenerate_by_using_gen_l10n:
+    run: flutter gen-l10n
+    exec:
+      orderDependents: true
+    packageFilters:
+      dependsOn: flutter_localizations
 
 ide:
   intellij:
