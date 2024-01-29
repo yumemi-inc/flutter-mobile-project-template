@@ -1,4 +1,4 @@
-library cores_navigation;
+export 'src/home.dart';
 
 /// A Calculator.
 class Calculator {
