@@ -4,7 +4,7 @@ import 'package:cores_core/util.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
-import 'package:features_setting/gen/l10n/l10n.dart' as setting_l10n;
+import 'package:features_setting/src/gen/l10n/l10n.dart' as setting_l10n;
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';

@@ -1,5 +1,5 @@
 import 'package:cores_data/theme_mode.dart';
-import 'package:features_setting/gen/l10n/l10n.dart';
+import 'package:features_setting/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
