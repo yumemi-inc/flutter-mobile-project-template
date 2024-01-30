@@ -1,7 +1,8 @@
-library cores_{{package_name.snakeCase()}};
+/// Support for doing something awesome.
+///
+/// More dartdocs go here.
+library;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'src/{{package_name.snakeCase()}}_base.dart';
+
+// TODO: Export any libraries intended for clients of this package.
