@@ -4,7 +4,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 class WebView extends StatelessWidget {
   const WebView({
     required String initialUrl,
-    required void Function() pop,
+    required VoidCallback pop,
     super.key,
   })  : _pop = pop,
         _initialUrl = initialUrl;
