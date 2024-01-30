@@ -1,5 +1,5 @@
 bricks:
-  core_package_flutter:
-    path: tools/bricks/core_package_flutter
-  core_package_dart:
-    path: tools/bricks/core_package_dart
+  cores_package_flutter:
+    path: tools/bricks/cores_package_flutter
+  cores_package_dart:
+    path: tools/bricks/cores_package_dart
