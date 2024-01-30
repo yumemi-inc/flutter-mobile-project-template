@@ -43,9 +43,16 @@ class _AppWebViewState extends State<AppWebView> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (_) async {
-        if (await _webViewController?.canGoBack() ?? false) {
-          await _webViewController?.goBack();
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return;
+        }
+        final controller = _webViewController;
+        if (controller == null) {
+          return;
+        }
+        if (await controller.canGoBack()) {
+          await controller.goBack();
         } else {
           widget._pop();
         }
