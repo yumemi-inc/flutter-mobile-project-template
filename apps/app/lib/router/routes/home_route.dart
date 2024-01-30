@@ -34,6 +34,9 @@ class HomePageRoute extends GoRouteData {
       onResume: () {
         // Example: Obtain the latest AppStatus and update if needed.
       },
+      // By overriding the Provider in the Route build method, it is possible to
+      // switch the implementation of Navigator based on the source of
+      // navigation or the state.
       child: ProviderScope(
         overrides: [
           homeNavigatorProvider.overrideWithValue(const HomeNavigatorImpl()),
