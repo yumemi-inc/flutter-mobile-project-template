@@ -4,13 +4,14 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class WebView extends StatelessWidget {
   const WebView({
-    required this.initialUrl,
-    required this.pop,
+    required String initialUrl,
+    required void Function() pop,
     super.key,
-  });
+  })  : _pop = pop,
+        _initialUrl = initialUrl;
 
-  final String initialUrl;
-  final VoidCallback pop;
+  final String _initialUrl;
+  final VoidCallback _pop;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class WebView extends StatelessWidget {
         if (await webViewController?.canGoBack() ?? false) {
           await webViewController?.goBack();
         } else {
-          pop();
+          _pop();
         }
       },
       child: Scaffold(
@@ -32,16 +33,9 @@ class WebView extends StatelessWidget {
           onWebViewCreated: (controller) {
             webViewController = controller;
           },
-          initialUrlRequest: URLRequest(url: WebUri(initialUrl)),
+          initialUrlRequest: URLRequest(url: WebUri(_initialUrl)),
         ),
       ),
     );
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('initialUrl', initialUrl));
-    properties.add(ObjectFlagProperty<VoidCallback>.has('pop', pop));
   }
 }
