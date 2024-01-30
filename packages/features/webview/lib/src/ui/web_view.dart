@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -15,14 +14,40 @@ class WebView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    InAppWebViewController? webViewController;
+    return AppWebView(
+      initialUrl: _initialUrl,
+      pop: _pop,
+    );
+  }
+}
+
+class AppWebView extends StatefulWidget {
+  const AppWebView({
+    required String initialUrl,
+    required void Function() pop,
+    super.key,
+  })  : _pop = pop,
+        _initialUrl = initialUrl;
+
+  final String _initialUrl;
+  final VoidCallback _pop;
+
+  @override
+  State<AppWebView> createState() => _AppWebViewState();
+}
+
+class _AppWebViewState extends State<AppWebView> {
+  InAppWebViewController? _webViewController;
+
+  @override
+  Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       onPopInvoked: (_) async {
-        if (await webViewController?.canGoBack() ?? false) {
-          await webViewController?.goBack();
+        if (await _webViewController?.canGoBack() ?? false) {
+          await _webViewController?.goBack();
         } else {
-          _pop();
+          widget._pop();
         }
       },
       child: Scaffold(
@@ -31,9 +56,9 @@ class WebView extends StatelessWidget {
         ),
         body: InAppWebView(
           onWebViewCreated: (controller) {
-            webViewController = controller;
+            _webViewController = controller;
           },
-          initialUrlRequest: URLRequest(url: WebUri(_initialUrl)),
+          initialUrlRequest: URLRequest(url: WebUri(widget._initialUrl)),
         ),
       ),
     );
