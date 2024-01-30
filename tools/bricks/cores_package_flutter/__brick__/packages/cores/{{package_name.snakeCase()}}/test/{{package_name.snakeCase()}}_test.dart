@@ -1,4 +1,4 @@
-import 'package:core_{{package_name.snakeCase()}}/core_{{package_name.snakeCase()}}.dart';
+import 'package:cores_{{package_name.snakeCase()}}/cores_{{package_name.snakeCase()}}.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

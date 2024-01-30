@@ -1,4 +1,4 @@
-library core_{{package_name.snakeCase()}};
+library cores_{{package_name.snakeCase()}};
 
 /// A Calculator.
 class Calculator {

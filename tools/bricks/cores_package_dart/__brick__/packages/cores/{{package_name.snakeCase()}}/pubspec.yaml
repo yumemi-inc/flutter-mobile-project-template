@@ -1,4 +1,4 @@
-name: core_{{package_name.snakeCase()}}
+name: cores_{{package_name.snakeCase()}}
 description: A starting point for Dart libraries or applications.
 version: 1.0.0
 
