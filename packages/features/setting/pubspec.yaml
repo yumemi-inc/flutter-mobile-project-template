@@ -1,0 +1,24 @@
+name: features_setting
+description: "This package provides setting feature."
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ^3.2.3
+  flutter: ^3.16.4
+
+dependencies:
+  cores_data:
+    path: ../../../packages/cores/data
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^2.4.9
+  intl: ^0.18.1
+
+dev_dependencies:
+  yumemi_lints: ^1.3.0
+
+flutter:
+  uses-material-design: true

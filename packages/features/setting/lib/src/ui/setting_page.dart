@@ -1,5 +1,6 @@
+import 'package:cores_data/theme_mode.dart';
+import 'package:features_setting/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/feature/setting/provider/theme_mode_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SettingPage extends ConsumerWidget {
@@ -11,7 +12,7 @@ class SettingPage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('テーマ設定'),
+        title: Text(L10nSetting.of(context).settingAppBar),
       ),
       body: ListView.builder(
         itemCount: ThemeMode.values.length,
