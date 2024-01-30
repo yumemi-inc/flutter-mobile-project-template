@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class WebView extends StatelessWidget {
+class WebView extends StatefulWidget {
   const WebView({
     required String initialUrl,
     required VoidCallback pop,
@@ -13,30 +13,10 @@ class WebView extends StatelessWidget {
   final VoidCallback _pop;
 
   @override
-  Widget build(BuildContext context) {
-    return AppWebView(
-      initialUrl: _initialUrl,
-      pop: _pop,
-    );
-  }
+  State<WebView> createState() => _WebViewState();
 }
 
-class AppWebView extends StatefulWidget {
-  const AppWebView({
-    required String initialUrl,
-    required void Function() pop,
-    super.key,
-  })  : _pop = pop,
-        _initialUrl = initialUrl;
-
-  final String _initialUrl;
-  final VoidCallback _pop;
-
-  @override
-  State<AppWebView> createState() => _AppWebViewState();
-}
-
-class _AppWebViewState extends State<AppWebView> {
+class _WebViewState extends State<WebView> {
   InAppWebViewController? _webViewController;
 
   @override
