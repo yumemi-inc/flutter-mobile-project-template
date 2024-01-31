@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -30,6 +32,18 @@ class _WebViewState extends State<WebView> {
     );
   }
 
+  Future<void> onRefresh() async {
+    if (Platform.isAndroid) {
+      await _webViewController?.reload();
+    } else if (Platform.isIOS) {
+      print(await _webViewController?.getUrl());
+      await _webViewController?.loadUrl(
+        urlRequest: URLRequest(
+          url: await _webViewController?.getUrl(),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return PopScope(
