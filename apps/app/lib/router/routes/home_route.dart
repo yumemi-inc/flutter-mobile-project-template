@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cores_core/util.dart';
 import 'package:features_debug_mode/ui.dart';
 import 'package:features_setting/setting.dart';
+import 'package:features_webview/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:go_router/go_router.dart';
@@ -17,6 +18,9 @@ part 'home_route.g.dart';
     ),
     TypedGoRoute<DebugModePageRoute>(
       path: DebugModePageRoute.path,
+    ),
+    TypedGoRoute<WebViewRoute>(
+      path: WebViewRoute.path,
     ),
   ],
 )
@@ -34,6 +38,7 @@ class HomePageRoute extends GoRouteData {
       child: HomePage(
         goDebugModePage: () => const DebugModePageRoute().go(context),
         goSettingPage: () => const SettingPageRoute().go(context),
+        goWebView: () => const WebViewRoute().go(context),
       ),
     );
   }
@@ -58,5 +63,19 @@ class DebugModePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const DebugModePage();
+  }
+}
+
+class WebViewRoute extends GoRouteData {
+  const WebViewRoute();
+
+  static const path = 'web_view';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return WebView(
+      initialUrl: 'https://flutter.dev',
+      pop: context.pop,
+    );
   }
 }
