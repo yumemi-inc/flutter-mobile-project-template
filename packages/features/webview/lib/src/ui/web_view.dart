@@ -46,6 +46,7 @@ class _WebViewState extends State<WebView> {
   }
   @override
   Widget build(BuildContext context) {
+    final isLoading = useState(false);
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) async {
@@ -66,15 +67,34 @@ class _WebViewState extends State<WebView> {
         appBar: AppBar(
           title: const Text('WebView'),
         ),
-        body: InAppWebView(
-          onWebViewCreated: (controller) {
-            _webViewController = controller;
-          },
-          initialUrlRequest: URLRequest(url: WebUri(widget._initialUrl)),
+        body: Stack(
+          children: [
+            if (!hasError.value)
+              InAppWebView(
+                onWebViewCreated: (controller) {
+                  _webViewController = controller;
+                },
+                initialUrlRequest: URLRequest(url: WebUri(widget._initialUrl)),
+                key: _webViewKey,
                 pullToRefreshController: _pullToRefreshController,
+                onLoadStart: (_, __) async {
+                  isLoading.value = true;
+                },
                 onLoadStop: (_, __) async {
                   await _pullToRefreshController?.endRefreshing();
+                  isLoading.value = false;
                 },
+                onReceivedError: (controller, request, error) async {
+                  await _pullToRefreshController?.endRefreshing();
+                  isLoading.value = false;
+                },
+            if (isLoading.value)
+              const Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+            else
+              const SizedBox(),
+          ],
         ),
       ),
     );
