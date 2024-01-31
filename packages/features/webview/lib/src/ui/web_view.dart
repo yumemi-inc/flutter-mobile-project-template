@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class WebView extends StatefulWidget {
 class WebView extends StatefulHookWidget {
   const WebView({
     required String initialUrl,
