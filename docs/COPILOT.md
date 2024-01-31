@@ -29,7 +29,7 @@ VSCodeとXcodeではプロジェクト単位で有効にすることが可能で
 2. Copilot拡張機能を無効にして、VSCode全体ではCopilotが動かないようにする
 3. 任意のワークスペースを開き、そのワークスペースのみでCopilot拡張機能を有効にする
 4. ワークスペースの設定（`.vscode/settings.json`）に以下のGitHub Copilot設定を追加する
-```json
+```jsonc
 {
   "github.copilot.enable": {
     // Copilotを有効にする言語を指定する
