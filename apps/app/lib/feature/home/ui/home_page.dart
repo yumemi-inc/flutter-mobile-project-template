@@ -5,8 +5,22 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({
+<<<<<<< HEAD
     super.key,
   });
+=======
+    required VoidCallback goDebugModePage,
+    required VoidCallback goSettingPage,
+    required VoidCallback goWebView,
+    super.key,
+  })  : _goDebugModePage = goDebugModePage,
+        _goSettingPage = goSettingPage,
+        _goWebView = goWebView;
+
+  final VoidCallback _goDebugModePage;
+  final VoidCallback _goSettingPage;
+  final VoidCallback _goWebView;
+>>>>>>> main
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -25,6 +39,12 @@ class HomePage extends ConsumerWidget {
             onPressed: () => navigator.goSettingPage(context),
             icon: const Icon(
               Icons.settings,
+            ),
+          ),
+          IconButton(
+            onPressed: _goWebView,
+            icon: const Icon(
+              Icons.web,
             ),
           ),
         ],
