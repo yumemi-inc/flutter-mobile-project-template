@@ -22,6 +22,8 @@ dependencies:
     path: ../../packages/features/github_repository
   features_setting:
     path: ../../packages/features/setting
+  features_webview:
+    path: ../../packages/features/webview
   flutter:
     sdk: flutter
   flutter_localizations:

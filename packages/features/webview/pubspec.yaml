@@ -1,0 +1,21 @@
+name: features_webview
+description: "This package provides webview feature."
+publish_to: "none"
+version: 0.0.1
+
+environment:
+  sdk: ^3.2.3
+  flutter: ^3.16.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_inappwebview: ^6.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  yumemi_lints: ^1.3.0
+
+flutter:
+  uses-material-design: true
