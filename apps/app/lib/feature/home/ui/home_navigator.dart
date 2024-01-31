@@ -14,4 +14,9 @@ final class HomeNavigatorImpl implements HomeNavigator {
   void goSettingPage(BuildContext context) {
     const SettingPageRoute().go(context);
   }
+
+  @override
+  void goWebView(BuildContext context) {
+    const WebViewRoute().go(context);
+  }
 }
