@@ -84,14 +84,6 @@ class _WebViewState extends State<WebView> {
                 await _pullToRefreshController?.endRefreshing();
                 isLoading.value = false;
               },
-              onReceivedError: (controller, request, error) async {
-                if (error.type == WebResourceErrorType.UNKNOWN ||
-                    error.type == WebResourceErrorType.CANCELLED) {
-                  return;
-                }
-                await _pullToRefreshController?.endRefreshing();
-                isLoading.value = false;
-              },
             ),
             if (isLoading.value)
               const Center(
