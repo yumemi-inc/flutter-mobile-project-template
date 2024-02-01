@@ -1,5 +1,5 @@
 name: "Cleanup Copilot Settings"
-description: "Cleanup "
+description: "Cleanup Copilot settings in settings.json file"
 
 inputs:
   settings-json-path:
