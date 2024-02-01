@@ -35,7 +35,6 @@ class _WebViewState extends State<WebView> {
     if (Platform.isAndroid) {
       await _webViewController?.reload();
     } else if (Platform.isIOS) {
-      print(await _webViewController?.getUrl());
       await _webViewController?.loadUrl(
         urlRequest: URLRequest(
           url: await _webViewController?.getUrl(),
