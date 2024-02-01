@@ -1,6 +1,7 @@
 # GitHub Copilot 
 
-> Note: このドキュメントはゆめみ社内専用ドキュメント「[ChatGPTをはじめとするAIサービスの利用方針・ルール・ガイドライン](https://www.notion.so/yumemi/ChatGPT-AI-f951c2e2542e4db5af72386329e23155)」をもとに作成されました。
+> [!NOTE]
+> このドキュメントはゆめみ社内専用ドキュメント「[ChatGPTをはじめとするAIサービスの利用方針・ルール・ガイドライン](https://www.notion.so/yumemi/ChatGPT-AI-f951c2e2542e4db5af72386329e23155)」をもとに作成されました。
 > ゆめみ社内の方ははじめにそちらのガイドラインをご確認ください。
 
 ## 生成AI全般のリスク
