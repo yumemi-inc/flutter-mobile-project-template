@@ -167,7 +167,7 @@ packages:
       path: "../../packages/cores/designsystem"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:

@@ -1,7 +1,7 @@
 name: flutter_app
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.0
+version: 0.0.1
 
 environment:
   sdk: ^3.2.3
@@ -16,6 +16,8 @@ dependencies:
     path: ../../packages/cores/designsystem
   cores_init:
     path: ../../packages/cores/init
+  cores_navigation:
+    path: ../../packages/cores/navigation
   features_debug_mode:
     path: ../../packages/features/debug_mode
   features_github_repository:

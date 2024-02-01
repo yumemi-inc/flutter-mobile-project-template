@@ -1,11 +1,14 @@
 import 'dart:async';
 
 import 'package:cores_core/util.dart';
+import 'package:cores_navigation/providers.dart';
 import 'package:features_debug_mode/ui.dart';
 import 'package:features_setting/setting.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/feature/home/ui/home_navigator.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 part 'home_route.g.dart';
@@ -35,10 +38,14 @@ class HomePageRoute extends GoRouteData {
       onResume: () {
         // Example: Obtain the latest AppStatus and update if needed.
       },
-      child: HomePage(
-        goDebugModePage: () => const DebugModePageRoute().go(context),
-        goSettingPage: () => const SettingPageRoute().go(context),
-        goWebView: () => const WebViewRoute().go(context),
+      // By overriding the Provider in the Route build method, it is possible to
+      // switch the implementation of Navigator based on the source of
+      // navigation or the state.
+      child: ProviderScope(
+        overrides: [
+          homeNavigatorProvider.overrideWithValue(const HomeNavigatorImpl()),
+        ],
+        child: const HomePage(),
       ),
     );
   }
