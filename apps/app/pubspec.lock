@@ -199,28 +199,28 @@ packages:
       path: "../../packages/cores/core"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   cores_data:
     dependency: "direct main"
     description:
       path: "../../packages/cores/data"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   cores_designsystem:
     dependency: "direct main"
     description:
       path: "../../packages/cores/designsystem"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   cores_init:
     dependency: "direct main"
     description:
       path: "../../packages/cores/init"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   coverage:
     dependency: transitive
     description:
@@ -291,14 +291,14 @@ packages:
       path: "../../packages/features/debug_mode"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   features_github_repository:
     dependency: "direct main"
     description:
       path: "../../packages/features/github_repository"
       relative: true
     source: path
-    version: "0.1.0"
+    version: "0.0.1"
   features_setting:
     dependency: "direct main"
     description:

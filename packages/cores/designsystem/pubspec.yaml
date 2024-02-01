@@ -1,7 +1,7 @@
 name: cores_designsystem
 description: "This package provides style definitions, themes, etc."
-publish_to: 'none'
-version: 0.1.0
+publish_to: "none"
+version: 0.0.1
 
 environment:
   sdk: ^3.2.3

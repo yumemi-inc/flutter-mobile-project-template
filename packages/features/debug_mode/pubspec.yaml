@@ -1,7 +1,7 @@
 name: features_debug_mode
 description: "This package provides features for Debug Mode"
-publish_to: 'none'
-version: 0.1.0
+publish_to: "none"
+version: 0.0.1
 
 environment:
   sdk: ^3.2.3
