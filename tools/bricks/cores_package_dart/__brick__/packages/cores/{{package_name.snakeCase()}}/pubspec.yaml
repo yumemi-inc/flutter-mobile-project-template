@@ -1,0 +1,14 @@
+name: cores_{{package_name.snakeCase()}}
+description: A starting point for Dart libraries or applications.
+version: 0.0.1
+
+environment:
+  sdk: ^3.2.3
+
+# Add regular dependencies here.
+dependencies:
+  # path: ^1.8.0
+
+dev_dependencies:
+  yumemi_lints: ^1.3.0
+  test: ^1.24.0

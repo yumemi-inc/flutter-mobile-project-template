@@ -24,6 +24,10 @@ RouteBase get $homePageRoute => GoRouteData.$route(
           path: 'debug_mode',
           factory: $DebugModePageRouteExtension._fromState,
         ),
+        GoRouteData.$route(
+          path: 'web_view',
+          factory: $WebViewRouteExtension._fromState,
+        ),
       ],
     );
 
@@ -68,6 +72,23 @@ extension $DebugModePageRouteExtension on DebugModePageRoute {
 
   String get location => GoRouteData.$location(
         '/home/debug_mode',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $WebViewRouteExtension on WebViewRoute {
+  static WebViewRoute _fromState(GoRouterState state) => const WebViewRoute();
+
+  String get location => GoRouteData.$location(
+        '/home/web_view',
       );
 
   void go(BuildContext context) => context.go(location);

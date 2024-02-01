@@ -14,8 +14,11 @@
   },
   "github.copilot.enable": {
     "*": false,
-    "dart": false,
+    "markdown": true,
+    "dart": true,
+    "json": true,
+    "yaml": true
   },
-  "github.copilot.editor.enableCodeActions": false,
-  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.editor.enableCodeActions": true,
+  "github.copilot.editor.enableAutoCompletions": true,
 }
