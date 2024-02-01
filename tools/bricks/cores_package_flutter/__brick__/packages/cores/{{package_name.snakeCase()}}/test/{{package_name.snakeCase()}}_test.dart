@@ -1,5 +1,5 @@
-import 'package:core_{{package_name.snakeCase()}}/{{package_name.snakeCase()}}.dart';
-import 'package:test/test.dart';
+import 'package:cores_{{package_name.snakeCase()}}/{{package_name.snakeCase()}}.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('A group of tests', () {
