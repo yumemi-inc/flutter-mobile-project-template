@@ -1,0 +1,18 @@
+name: cores_{{package_name.snakeCase()}}
+description: "A new Flutter package project."
+version: 0.0.1
+
+environment:
+  sdk: ">=3.2.3 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  yumemi_lints: ^1.4.0
+
+flutter:
