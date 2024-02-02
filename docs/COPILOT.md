@@ -63,6 +63,10 @@ VSCodeがサポートしている言語一覧
 https://code.visualstudio.com/docs/languages/identifiers
 
 
+> [!NOTE]
+> すでにこの設定はプロジェクトに適応されてますが、
+> GitHubのテンプレート機能使用してリポジトリを作った際に、
+> 設定は無効化されるように上書きするワークフローが実行されます
 ### Xcode
 1. [Copilot for Xcode](https://github.com/intitni/CopilotForXcode)をインストールする
 2. READMEに従い、Copilot for Xcodeを有効化する

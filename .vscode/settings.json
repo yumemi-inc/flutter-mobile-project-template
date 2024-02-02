@@ -1,3 +1,4 @@
+// GitHubのテンプレート機能使用してリポジトリを作った際に、このファイルのコメントは削除されます
 {
   "dart.flutterSdkPath": ".fvm/flutter_sdk",
   "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
@@ -10,8 +11,10 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
-    "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml",
+    "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml"
   },
+  // GitHubのテンプレート機能使用してリポジトリを作った際に、
+  // copilotの設定は無効化されるように上書きするワークフローが実行されます
   "github.copilot.enable": {
     "*": false,
     "markdown": true,
@@ -21,4 +24,12 @@
   },
   "github.copilot.editor.enableCodeActions": true,
   "github.copilot.editor.enableAutoCompletions": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.associations": {
+    "*.json": "json"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
