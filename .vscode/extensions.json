@@ -4,5 +4,6 @@
         "dart-code.flutter",
         "blaugold.melos-code",
         "djbkwon.flutter-dependency-docs",
+        "esbenp.prettier-vscode",
     ]
 }
