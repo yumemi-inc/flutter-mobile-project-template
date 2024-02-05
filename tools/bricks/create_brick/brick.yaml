@@ -12,3 +12,8 @@ vars:
     description: Brick name
     default: Brick
     prompt: What is brick name?
+  hooks:
+    type: boolean
+    description: Whether to generate hooks
+    default: false
+    prompt: Are you need hooks?
