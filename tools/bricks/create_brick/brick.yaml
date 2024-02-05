@@ -7,8 +7,8 @@ environment:
   mason: ">=0.1.0-dev.52 <0.1.0"
 
 vars:
-  name:
+  brick_name:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: Brick name
+    default: Brick
+    prompt: What is brick name?
