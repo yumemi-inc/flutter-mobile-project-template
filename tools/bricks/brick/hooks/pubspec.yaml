@@ -1,4 +1,4 @@
-name: create_brick_hooks
+name: brick_hooks
 
 environment:
   sdk: ^3.2.3

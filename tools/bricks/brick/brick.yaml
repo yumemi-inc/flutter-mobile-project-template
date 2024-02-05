@@ -1,4 +1,4 @@
-name: create_brick
+name: brick
 description: A new brick created with the Mason CLI.
 
 version: 0.1.0+1
