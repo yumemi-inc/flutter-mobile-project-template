@@ -11,4 +11,8 @@ void run(HookContext context) {
 
   // create bricks
   Process.runSync('mason', args);
+
+  // add bricks
+  Process.runSync('mason', ['add', context.vars['brick_name'], '--path',
+      './tools/bricks/${context.vars['brick_name']}']);
 }
