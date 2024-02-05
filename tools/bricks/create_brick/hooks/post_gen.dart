@@ -3,11 +3,14 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
+  final brickName = context.vars['brick_name'];
+  const bricksDir = './tools/bricks/';
+
   final List<String> args = [
     'new',
-    context.vars['brick_name'],
+    brickName,
     '-o',
-    './tools/bricks'
+    bricksDir,
   ];
 
   if (context.vars['hooks']) {
@@ -20,8 +23,8 @@ void run(HookContext context) {
   // add bricks
   Process.runSync('mason', [
     'add',
-    context.vars['brick_name'],
+    brickName,
     '--path',
-    './tools/bricks/${context.vars['brick_name']}'
+    bricksDir + brickName,
   ]);
 }
