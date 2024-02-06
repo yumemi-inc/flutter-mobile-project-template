@@ -6,24 +6,16 @@ void run(HookContext context) {
   final brickName = context.vars['brick_name'];
   const bricksDir = './tools/bricks/';
 
-  final List<String> args = [
+  // create bricks
+  Process.runSync('mason', [
     'new',
     brickName,
     '-o',
     bricksDir,
-  ];
-
-  if (context.vars['hooks']) {
-    args.add('--hooks');
-  }
-
-  if (context.vars['description'].isNotEmpty) {
-    final List<String> descriptionArgs = ['--desc', context.vars['description']];
-    args.addAll(descriptionArgs);
-  }
-
-  // create bricks
-  Process.runSync('mason', args);
+    context.vars['hooks'] ? '--hooks' : '',
+    '--desc',
+    context.vars['description'],
+  ]);
 
   // add bricks
   Process.runSync('mason', [
