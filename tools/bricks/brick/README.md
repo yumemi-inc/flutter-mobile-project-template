@@ -30,4 +30,4 @@ As a point of caution, it is not necessary to answer all questions, as default v
 
 Also, by specifying the following options when executing mason make, you can create a brick without being asked at the prompt.
 
-- `mason make brick --brick_name [brick name] --hooks [true or false] --description [brick description]`
+- `mason make brick --name [brick name] --hooks [true or false] --description [brick description]`

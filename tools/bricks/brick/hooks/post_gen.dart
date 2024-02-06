@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
-  final brickName = context.vars['brick_name'];
+  final brickName = context.vars['name'];
   const bricksDir = './tools/bricks/';
 
   // create bricks

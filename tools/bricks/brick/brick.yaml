@@ -7,7 +7,7 @@ environment:
   mason: ">=0.1.0-dev.52 <0.1.0"
 
 vars:
-  brick_name:
+  name:
     type: string
     description: Brick name
     default: Brick
