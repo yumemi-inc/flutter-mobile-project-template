@@ -7,16 +7,41 @@ on:
   pull_request:
 
 jobs:
-  build_and_preview:
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
-    uses: ./.github/workflows/wc-firebase-hosting.yml
+  build-and-preview:
+    runs-on: ubuntu-22.04
     permissions:
       checks: write
       contents: read
       pull-requests: write
-    with:
-      project-id: 'yumemi-flutter-mobile-template'
-    secrets:
-      gh-token: '${{ secrets.GITHUB_TOKEN }}'
-      firebase-service-account: >-
-        ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YUMEMI_FLUTTER_MOBILE_TEMPLATE }}
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      # https://github.com/marketplace/actions/flutter-fvm-config-action
+      - name: Fetch flutter config
+        uses: kuhnroyal/flutter-fvm-config-action@34c3905bc939a4ff9d9cb07d5a977493fa73b2aa # v2.0
+        id: fvm-config-action
+
+      # https://github.com/marketplace/actions/flutter-action
+      - name: Setup flutter
+        uses: subosito/flutter-action@2783a3f08e1baf891508463f8c6653c258246225 # v2.12.0
+        with:
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
+
+      - name: Setup melos
+        run: |
+          ln -s $FLUTTER_ROOT .fvm/flutter_sdk
+          dart pub global activate melos
+          melos bootstrap
+
+      # https://github.com/marketplace/actions/deploy-to-firebase-hosting
+      - uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2 # v0.7.1
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: >-
+            ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YUMEMI_FLUTTER_MOBILE_TEMPLATE }}
+          projectId: 'yumemi-flutter-mobile-template'
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
