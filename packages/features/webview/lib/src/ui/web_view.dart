@@ -50,11 +50,13 @@ class _WebViewState extends State<WebView> {
     super.dispose();
     _webViewController?.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     final isLoading = useState(false);
+    final canPop = useState(false);
     return PopScope(
-      canPop: false,
+      canPop: canPop.value,
       onPopInvoked: (didPop) async {
         if (didPop) {
           return;
@@ -84,6 +86,13 @@ class _WebViewState extends State<WebView> {
               pullToRefreshController: _pullToRefreshController,
               onLoadStart: (_, __) async {
                 isLoading.value = true;
+              },
+              onProgressChanged: (_, __) async {
+                if (await _webViewController!.canGoBack()) {
+                  canPop.value = false;
+                } else {
+                  canPop.value = true;
+                }
               },
               onLoadStop: (_, __) async {
                 await _pullToRefreshController?.endRefreshing();
