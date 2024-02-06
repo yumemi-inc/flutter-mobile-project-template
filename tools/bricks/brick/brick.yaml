@@ -17,3 +17,8 @@ vars:
     description: Whether to generate hooks
     default: false
     prompt: Are you need hooks?
+  description:
+    type: string
+    description: Brick description
+    default: A new brick created with the Mason CLI.
+    prompt: What is brick description?

@@ -17,6 +17,11 @@ void run(HookContext context) {
     args.add('--hooks');
   }
 
+  if (context.vars['description'].isNotEmpty) {
+    final List<String> descriptionArgs = ['--desc', context.vars['description']];
+    args.addAll(descriptionArgs);
+  }
+
   // create bricks
   Process.runSync('mason', args);
 
