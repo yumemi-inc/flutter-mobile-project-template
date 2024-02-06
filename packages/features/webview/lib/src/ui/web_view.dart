@@ -99,12 +99,11 @@ class _WebViewState extends State<WebView> {
                 isLoading.value = false;
               },
             ),
-            if (isLoading.value)
+            if (isLoading.value) ...[
               const Center(
                 child: CircularProgressIndicator.adaptive(),
-              )
-            else
-              const SizedBox(),
+              ),
+            ],
           ],
         ),
       ),
