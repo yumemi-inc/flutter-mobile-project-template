@@ -22,7 +22,7 @@ dev_dependencies:
   custom_lint: ^0.5.8
   flutter_test:
     sdk: flutter
-  freezed: ^2.4.6
+  freezed: ^2.4.7
   json_serializable: ^6.7.1
   riverpod_generator: ^2.3.9
   riverpod_lint: ^2.3.7
