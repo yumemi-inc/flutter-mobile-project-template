@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # for terminate any remaining background jobs when the script exits.
-trap '[ 0 -lt $(jobs | wc -l) ] && kill -HUP $(jobs -p)' EXIT
+trap '[ 0 -lt $(jobs | wc -l) ] && kill -SIGKILL $(jobs -p)' EXIT
 
 # wait for all child processes to finish and returns a non-zero status if any of them fail.
 wait_for_all(){
