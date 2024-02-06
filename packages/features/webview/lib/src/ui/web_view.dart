@@ -46,6 +46,11 @@ class _WebViewState extends State<WebView> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+    _webViewController?.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     final isLoading = useState(false);
     return PopScope(
