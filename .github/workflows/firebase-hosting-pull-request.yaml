@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-preview:
     runs-on: ubuntu-22.04
+    if: github.event.repository.name == 'flutter-mobile-project-template'
     permissions:
       checks: write
       contents: read
