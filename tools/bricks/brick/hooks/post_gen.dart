@@ -24,4 +24,9 @@ void run(HookContext context) {
     '--path',
     bricksDir + brickName,
   ]);
+
+  // remove LICENSE
+  Process.runSync('rm', [
+    '$bricksDir$brickName/LICENSE',
+  ]);
 }
