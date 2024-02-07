@@ -6,13 +6,13 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class WebView extends StatefulHookWidget {
   const WebView({
-    required String initialUrl,
+    required Uri initialUrl,
     required VoidCallback pop,
     super.key,
   })  : _pop = pop,
         _initialUrl = initialUrl;
 
-  final String _initialUrl;
+  final Uri _initialUrl;
   final VoidCallback _pop;
 
   @override
@@ -81,7 +81,9 @@ class _WebViewState extends State<WebView> {
               onWebViewCreated: (controller) {
                 _webViewController = controller;
               },
-              initialUrlRequest: URLRequest(url: WebUri(widget._initialUrl)),
+              initialUrlRequest: URLRequest(
+                url: WebUri.uri(widget._initialUrl),
+              ),
               key: _webViewKey,
               pullToRefreshController: _pullToRefreshController,
               onLoadStart: (_, __) async {
