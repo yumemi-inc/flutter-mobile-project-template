@@ -3,7 +3,7 @@
 source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
 
 # terminate any remaining background jobs when the script exits.
-trap '[ 0 -lt $(jobs | wc -l) ] && kill -SIGKILL $(jobs -p)' EXIT
+trap '[ $(jobs | wc -l) -gt 0 ] && kill -SIGKILL $(jobs -p)' EXIT
 
 # wait for all child processes to finish and return a non-zero status if any of them fail.
 wait_for_all(){
