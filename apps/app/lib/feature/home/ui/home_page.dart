@@ -1,3 +1,4 @@
+import 'package:cores_designsystem/theme_extensions.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,9 @@ class HomePage extends ConsumerWidget {
             ),
           ),
         ],
+        iconTheme: IconTheme.of(context).copyWith(
+          color: context.appColors.icon,
+        ),
       ),
       body: const GitHubRepositoryList(),
     );
