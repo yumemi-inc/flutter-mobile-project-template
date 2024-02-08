@@ -18,7 +18,7 @@ while IFS= read -r -d $'\0' file; do
   files+=("$file")
 done < <(find_custom_dart_files)
 
-PIDS=()
+pids=()
 for file in "${files[@]}"; do
   # limit jobs to 5
   if [ "$(jobs -r | wc -l)" -ge 5 ]; then
@@ -33,9 +33,9 @@ for file in "${files[@]}"; do
       exit 1
     fi
   ) &
-  PIDS+=($!)
+  pids+=($!)
 done
 
 dart format -o none --set-exit-if-changed "${files[@]}"
 
-wait_for_all ${PIDS[@]}
+wait_for_all ${pids[@]}
