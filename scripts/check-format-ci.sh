@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+
 # terminate any remaining background jobs when the script exits.
 trap '[ 0 -lt $(jobs | wc -l) ] && kill -SIGKILL $(jobs -p)' EXIT
 
@@ -10,14 +12,11 @@ wait_for_all(){
   done
 }
 
-find_files() {
-  find . -name "*.dart" -not \( -name "*.freezed.dart" -o -name "*.g.dart" -o -name "*.gen.dart" -o -path "*/gen/*.dart" -o -path "./.dart_tool/*" \) -print0
-}
 
 files=()
 while IFS= read -r -d $'\0' file; do
   files+=("$file")
-done < <(find_files)
+done < <(find_custom_dart_files)
 
 PIDS=()
 for file in "${files[@]}"; do
