@@ -7,9 +7,11 @@ trap '[ $(jobs | wc -l) -gt 0 ] && kill -SIGKILL $(jobs -p)' EXIT
 
 # wait for all child processes to finish and return a non-zero status if any of them fail.
 wait_for_all(){
+  local st=0
   for pid in $@; do
-    wait ${pid} || return 1
+    wait ${pid} || st=$?
   done
+  return $st
 }
 
 
@@ -36,6 +38,8 @@ for file in "${files[@]}"; do
   pids+=($!)
 done
 
-dart format -o none --set-exit-if-changed "${files[@]}"
+if ! wait_for_all ${pids[@]}; then
+  exit 1
+fi
 
-wait_for_all ${pids[@]}
+dart format -o none --set-exit-if-changed "${files[@]}"
