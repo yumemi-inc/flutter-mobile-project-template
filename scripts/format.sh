@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
+
 files=()
 while IFS= read -r -d $'\0' file; do
     files+=("$file")
-done < <(find . -name "*.dart" -not \( -name "*.freezed.dart" -o -name "*.g.dart" -o -name "*.gen.dart" -o -path "*/gen/*.dart" -o -path "./.dart_tool/*" \) -print0)
+done < <(find_custom_dart_files)
 
 
 for file in "${files[@]}"; do
