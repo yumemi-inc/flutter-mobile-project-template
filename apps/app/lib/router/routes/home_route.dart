@@ -81,7 +81,7 @@ class WebViewRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return WebView(
-      initialUrl: 'https://flutter.dev',
+      initialUrl: Uri.parse('https://flutter.dev'),
       pop: context.pop,
     );
   }
