@@ -34,7 +34,6 @@ runs:
         jq -n -f ${{ inputs.temp-json-path }} |
         jq '
         ."github.copilot.enable" |= {"*": false} |
-        ."github.copilot.editor.enableCodeActions" |= false |
         ."github.copilot.editor.enableAutoCompletions" |= false
         '
         > ${{ inputs.settings-json-path }}
