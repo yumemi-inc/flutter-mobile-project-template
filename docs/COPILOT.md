@@ -25,7 +25,7 @@ GitHub Copilotは、サブスクリプションを設定することで使用で
 
 ### IDEの拡張機能としてのリスク
 GitHub Copilot拡張機能を有効化する範囲は、IDEによって異なるので注意が必要です。
-VSCodeとXcodeではプロジェクト単位で有効にすることが可能ですが、これ以外のIDEではプロジェクト単位で制御できずないため、誤ってCopilotが動作しないように注意する必要があります。
+VSCodeとXcodeではプロジェクト単位で有効にすることが可能ですが、これ以外のIDEではプロジェクト単位で制御できないため、誤ってCopilotが動作しないように注意する必要があります。
 
 ## Copilotの使い方
 ### VSCode
@@ -40,7 +40,6 @@ VSCodeとXcodeではプロジェクト単位で有効にすることが可能で
     "*": false,
     "dart": true
   },
-  "github.copilot.editor.enableCodeActions": true,
   "github.copilot.editor.enableAutoCompletions": true,
 }
 ``` 
@@ -51,7 +50,6 @@ VSCodeとXcodeではプロジェクト単位で有効にすることが可能で
   "github.copilot.enable": {
     "*" : false,
   },
-  "github.copilot.editor.enableCodeActions": false,
   "github.copilot.editor.enableAutoCompletions": false,
 }
 ```
