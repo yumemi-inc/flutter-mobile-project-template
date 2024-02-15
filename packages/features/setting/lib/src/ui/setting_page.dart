@@ -14,26 +14,30 @@ class SettingPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(L10nSetting.of(context).settingAppBar),
       ),
-      body: ListView.builder(
-        itemCount: ThemeMode.values.length,
-        itemBuilder: (context, index) {
-          final themeMode = ThemeMode.values[index];
+      body: CustomScrollView(
+        slivers: [
+          SliverList.builder(
+            itemCount: ThemeMode.values.length,
+            itemBuilder: (context, index) {
+              final themeMode = ThemeMode.values[index];
 
-          return RadioListTile(
-            value: themeMode,
-            groupValue: currentThemeMode,
-            onChanged: (newThemeMode) async {
-              if (newThemeMode == null) {
-                return;
-              }
+              return RadioListTile(
+                value: themeMode,
+                groupValue: currentThemeMode,
+                onChanged: (newThemeMode) async {
+                  if (newThemeMode == null) {
+                    return;
+                  }
 
-              await ref
-                  .read(themeModeNotifierProvider.notifier)
-                  .changeThemeMode(newThemeMode);
+                  await ref
+                      .read(themeModeNotifierProvider.notifier)
+                      .changeThemeMode(newThemeMode);
+                },
+                title: Text(themeMode.name),
+              );
             },
-            title: Text(themeMode.name),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
