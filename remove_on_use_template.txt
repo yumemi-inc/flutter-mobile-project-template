@@ -1,2 +1,9 @@
+# This file itself is not needed
 remove_on_use_template.txt
 
+LICENSE.md
+
+.github/actions
+.github/template-cleanup.yaml
+
+.firebaserc
