@@ -17,6 +17,15 @@ class SettingPage extends ConsumerWidget {
       ),
       body: CustomScrollView(
         slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 24,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Text(l10n.settingThemeSetting),
+            ),
+          ),
           SliverList.builder(
             itemCount: ThemeMode.values.length,
             itemBuilder: (context, index) {
