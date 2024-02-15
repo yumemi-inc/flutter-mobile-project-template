@@ -23,6 +23,13 @@ jobs:
       - name: Cleanup Copilot Settings
         uses: ./.github/actions/cleanup-copilot-settings
 
+      # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      # Steps should be written above this line.
+      # Because the file may have disappeared!
+      # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      - name: Remove Unnecessary files
+        uses: ./.github/actions/remove-unnecessary-files
+
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
