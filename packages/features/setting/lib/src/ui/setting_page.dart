@@ -9,10 +9,11 @@ class SettingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
+    final l10n = L10nSetting.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(L10nSetting.of(context).settingAppBar),
+        title: Text(l10n.settingAppBar),
       ),
       body: CustomScrollView(
         slivers: [
