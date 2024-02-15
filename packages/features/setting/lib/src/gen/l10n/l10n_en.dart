@@ -8,4 +8,7 @@ class L10nSettingEn extends L10nSetting {
 
   @override
   String get settingAppBar => 'Setting';
+
+  @override
+  String get settingThemeSetting => 'Theme Setting';
 }

@@ -99,6 +99,12 @@ abstract class L10nSetting {
   /// In ja, this message translates to:
   /// **'設定'**
   String get settingAppBar;
+
+  /// No description provided for @settingThemeSetting.
+  ///
+  /// In ja, this message translates to:
+  /// **'テーマ設定'**
+  String get settingThemeSetting;
 }
 
 class _L10nSettingDelegate extends LocalizationsDelegate<L10nSetting> {
