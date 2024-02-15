@@ -12,12 +12,12 @@
 ### Set up Flutter SDK
 
 ```shell
-fvm use
+fvm use --force
 ```
 
 ### Set up the IDEs to use fvm
 
-If you use [Visual Studio Code], already set up.
+If you use [Visual Studio Code], reload the SDK by reloading the window.
 
 If you use [IntelliJ IDEA] or [Android Studio], please see the following document:
 
