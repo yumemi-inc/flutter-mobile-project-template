@@ -7,5 +7,5 @@ class L10nSettingJa extends L10nSetting {
   L10nSettingJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get settingAppBar => 'テーマ設定';
+  String get settingAppBar => '設定';
 }

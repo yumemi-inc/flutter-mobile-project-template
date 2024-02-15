@@ -97,7 +97,7 @@ abstract class L10nSetting {
   /// No description provided for @settingAppBar.
   ///
   /// In ja, this message translates to:
-  /// **'テーマ設定'**
+  /// **'設定'**
   String get settingAppBar;
 }
 
