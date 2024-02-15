@@ -55,6 +55,7 @@ class _WebViewState extends State<WebView> {
   Widget build(BuildContext context) {
     final isLoading = useState(false);
     final canPop = useState(false);
+    final hasError = useState(false);
     return PopScope(
       canPop: canPop.value,
       onPopInvoked: (didPop) async {
@@ -77,30 +78,58 @@ class _WebViewState extends State<WebView> {
         ),
         body: Stack(
           children: [
-            InAppWebView(
-              onWebViewCreated: (controller) {
-                _webViewController = controller;
-              },
-              initialUrlRequest: URLRequest(
-                url: WebUri.uri(widget._initialUrl),
+            if (hasError.value)
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('エラーが発生しました'),
+                    TextButton(
+                      onPressed: () async {
+                        hasError.value = false;
+                        await onRefresh();
+                      },
+                      child: const Text('再読み込み'),
+                    ),
+                  ],
+                ),
+              )
+            else
+              InAppWebView(
+                onWebViewCreated: (controller) {
+                  _webViewController = controller;
+                },
+                initialUrlRequest: URLRequest(
+                  url: WebUri.uri(widget._initialUrl),
+                ),
+                key: _webViewKey,
+                pullToRefreshController: _pullToRefreshController,
+                onLoadStart: (_, __) async {
+                  isLoading.value = true;
+                },
+                onProgressChanged: (_, progress) async {
+                  if (progress == 100) {
+                    isLoading.value = false;
+                    await _pullToRefreshController?.endRefreshing();
+                  }
+                  if (await _webViewController!.canGoBack()) {
+                    canPop.value = false;
+                  } else {
+                    canPop.value = true;
+                  }
+                },
+                onLoadStop: (_, __) async {
+                  await _pullToRefreshController?.endRefreshing();
+                  isLoading.value = false;
+                },
+                onReceivedError: (controller, request, error) async {
+                  await _pullToRefreshController?.endRefreshing();
+                  isLoading.value = false;
+                  if (error.type != WebResourceErrorType.UNKNOWN) {
+                    hasError.value = true;
+                  }
+                },
               ),
-              key: _webViewKey,
-              pullToRefreshController: _pullToRefreshController,
-              onLoadStart: (_, __) async {
-                isLoading.value = true;
-              },
-              onProgressChanged: (_, __) async {
-                if (await _webViewController!.canGoBack()) {
-                  canPop.value = false;
-                } else {
-                  canPop.value = true;
-                }
-              },
-              onLoadStop: (_, __) async {
-                await _pullToRefreshController?.endRefreshing();
-                isLoading.value = false;
-              },
-            ),
             if (isLoading.value) ...[
               const Center(
                 child: CircularProgressIndicator.adaptive(),
