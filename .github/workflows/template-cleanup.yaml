@@ -24,8 +24,8 @@ jobs:
         uses: ./.github/actions/cleanup-copilot-settings
 
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      # Steps should be written above this line.
-      # Because the file may have disappeared!
+      # Important: Please list the necessary steps above this line.  
+      # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.  
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       - name: Remove Unnecessary files
         uses: ./.github/actions/remove-unnecessary-files
