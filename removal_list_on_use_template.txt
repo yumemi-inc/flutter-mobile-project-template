@@ -4,6 +4,6 @@ removal_list_on_use_template.txt
 LICENSE.md
 
 .github/actions
-.github/template-cleanup.yaml
+.github/workflows/template-cleanup.yaml
 
 .firebaserc
