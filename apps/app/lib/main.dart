@@ -1,3 +1,4 @@
+import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
@@ -38,6 +39,16 @@ class MainApp extends ConsumerWidget {
         }
       },
     );
+
+    ref.listen<AppStatus>(appStatusProvider, (_, appStatus) {
+      final forceUpdateEnabled = appStatus.forceUpdateStatus.enabled;
+      if (forceUpdateEnabled) {
+        SnackBarManager.showSnackBar(
+          'Force Update is required.',
+        );
+        ref.read(forceUpdateProvider.notifier).disable();
+      }
+    });
 
     return MaterialApp.router(
       localizationsDelegates: const [
