@@ -1,6 +1,6 @@
+import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
-import 'package:cores_core/util.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
@@ -9,13 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final packageInfo = await PackageInfo.fromPlatform();
-  logger.info(packageInfo);
 
   runApp(
     ProviderScope(
@@ -43,6 +39,16 @@ class MainApp extends ConsumerWidget {
         }
       },
     );
+
+    ref.listen<AppStatus>(appStatusProvider, (_, appStatus) {
+      final forceUpdateEnabled = appStatus.forceUpdateStatus.enabled;
+      if (forceUpdateEnabled) {
+        SnackBarManager.showSnackBar(
+          'Force Update is required.',
+        );
+        ref.read(forceUpdateProvider.notifier).disable();
+      }
+    });
 
     return MaterialApp.router(
       localizationsDelegates: const [

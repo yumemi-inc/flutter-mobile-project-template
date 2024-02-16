@@ -10,6 +10,7 @@ part of 'home_route.dart';
 
 List<RouteBase> get $appRoutes => [
       $homePageRoute,
+      $maintenancePageRoute,
     ];
 
 RouteBase get $homePageRoute => GoRouteData.$route(
@@ -89,6 +90,29 @@ extension $WebViewRouteExtension on WebViewRoute {
 
   String get location => GoRouteData.$location(
         '/home/web_view',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $maintenancePageRoute => GoRouteData.$route(
+      path: '/maintenance',
+      factory: $MaintenancePageRouteExtension._fromState,
+    );
+
+extension $MaintenancePageRouteExtension on MaintenancePageRoute {
+  static MaintenancePageRoute _fromState(GoRouterState state) =>
+      const MaintenancePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/maintenance',
       );
 
   void go(BuildContext context) => context.go(location);

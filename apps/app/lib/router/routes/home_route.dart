@@ -86,3 +86,17 @@ class WebViewRoute extends GoRouteData {
     );
   }
 }
+
+@TypedGoRoute<MaintenancePageRoute>(
+  path: MaintenancePageRoute.path,
+)
+class MaintenancePageRoute extends GoRouteData {
+  const MaintenancePageRoute();
+
+  static const path = '/maintenance';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const MaintenanceModePage();
+  }
+}
