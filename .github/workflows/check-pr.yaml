@@ -34,9 +34,10 @@ jobs:
 
       # https://github.com/invertase/github-action-dart-analyzer
       - name: Report analyze
-        uses: invertase/github-action-dart-analyzer@v2.0.0
+        uses: invertase/github-action-dart-analyzer@93de49b4573f71dc20c6464d59ad6cb5a1997001
         with:
           fatal-infos: true
+          custom-lint: true
 
       - name: Check format
         run: melos run check_format:ci
