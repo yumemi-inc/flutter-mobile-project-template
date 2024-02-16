@@ -1,0 +1,11 @@
+# This file itself is not needed
+removal_list_on_use_template.txt
+
+LICENSE.md
+
+.github/actions/cleanup-copilot-settings
+.github/actions/remove-unnecessary-files
+
+.github/workflows/template-cleanup.yaml
+
+.firebaserc
