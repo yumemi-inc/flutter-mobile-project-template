@@ -1,0 +1,15 @@
+{
+  "hosting": [
+    {
+      "target": "catalog",
+      "source": "apps/catalog",
+      "ignore": [
+        "firebase.json",
+        "**/.*"
+      ],
+      "frameworksBackend": {
+        "region": "asia-east1"
+      }
+    }
+  ]
+}

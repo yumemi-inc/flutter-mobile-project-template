@@ -1,0 +1,38 @@
+name: Template Cleanup
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  template-cleanup:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      issues: write
+
+    timeout-minutes: 10
+    if: github.event.repository.name != 'flutter-mobile-project-template'
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@v4
+
+      - name: Cleanup Copilot Settings
+        uses: ./.github/actions/cleanup-copilot-settings
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Template cleanup"
+
+      # https://github.com/ad-m/github-push-action
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}

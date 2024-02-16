@@ -25,7 +25,7 @@ GitHub Copilotは、サブスクリプションを設定することで使用で
 
 ### IDEの拡張機能としてのリスク
 GitHub Copilot拡張機能を有効化する範囲は、IDEによって異なるので注意が必要です。
-VSCodeとXcodeではプロジェクト単位で有効にすることが可能ですが、これ以外のIDEではプロジェクト単位で制御できずないため、誤ってCopilotが動作しないように注意する必要があります。
+VSCodeとXcodeではプロジェクト単位で有効にすることが可能ですが、これ以外のIDEではプロジェクト単位で制御できないため、誤ってCopilotが動作しないように注意する必要があります。
 
 ## Copilotの使い方
 ### VSCode
@@ -63,6 +63,10 @@ VSCodeがサポートしている言語一覧
 https://code.visualstudio.com/docs/languages/identifiers
 
 
+> [!NOTE]
+> すでにこの設定はプロジェクトに適応されてますが、
+> GitHubのテンプレート機能使用してリポジトリを作った際に、
+> 設定は無効化されるように上書きするワークフローが実行されます
 ### Xcode
 1. [Copilot for Xcode](https://github.com/intitni/CopilotForXcode)をインストールする
 2. READMEに従い、Copilot for Xcodeを有効化する

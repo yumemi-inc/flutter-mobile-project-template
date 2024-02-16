@@ -8,13 +8,58 @@ permissions:
   pull-requests: write
 
 jobs:
-  assign:
+  count-reviewers:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    outputs:
+      count: ${{ steps.extract.outputs.count }}
+    steps:
+      - name: Extract the number of reviewers
+        id: extract
+        run: |
+          # https://docs.github.com/en/webhooks/webhook-events-and-payloads?actionType=opened#pull_request
+          # https://docs.github.com/en/webhooks/webhook-events-and-payloads?actionType=ready_for_review#pull_request
+          reviewers_count=$(cat ${{ github.event_path }} | jq '.pull_request.requested_reviewers | length')
+          echo "count=$reviewers_count" >> "$GITHUB_OUTPUT"
+  request-reviewers:
+    needs:
+      - count-reviewers
+    if: needs.count-reviewers.outputs.count == '0'
     runs-on: ubuntu-22.04
     timeout-minutes: 5
     steps:
-      - uses: hkusu/review-assign-action@v1
+      - name: Generate a token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID_OF_YUMEMI_TEAM_REVIEW_REQUESTER }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY_OF_YUMEMI_TEAM_REVIEW_REQUESTER }}
+      - name: Request reviewers
+        env:
+          REVIEWERS: ${{ vars.REVIEWERS }}
+          TEAM_REVIEWERS: ${{ vars.TEAM_REVIEWERS }}
+        run: |
+          reviewers=$(echo "\"${REVIEWERS// /}\"" | jq 'split(",")')
+          team_reviewers=$(echo "\"${TEAM_REVIEWERS// /}\"" | jq 'split(",")')
+          # https://docs.github.com/ja/rest/pulls/review-requests?apiVersion=2022-11-28#request-reviewers-for-a-pull-request
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers \
+            -d "{ \"reviewers\": $reviewers, \"team_reviewers\": $team_reviewers }"
+  request-assignees:
+    needs:
+      - count-reviewers
+      - request-reviewers
+    if: always()
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - name: Request assignees
+        uses: hkusu/review-assign-action@v1
         with:
           assignees: ${{ github.actor }}
-          reviewers: ${{ vars.REVIEWERS }}
-          max-num-of-reviewers: 2
           ready-comment: 'Ready for review :rocket:'

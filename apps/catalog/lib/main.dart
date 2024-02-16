@@ -25,6 +25,16 @@ class WidgetbookApp extends StatelessWidget {
           devices: [
             Devices.ios.iPhoneSE,
             Devices.ios.iPhone13,
+            Devices.ios.iPad,
+            Devices.android.smallPhone.copyWith(
+              name: 'small Android phone',
+            ),
+            Devices.android.mediumPhone.copyWith(
+              name: 'medium Android phone',
+            ),
+            Devices.android.largeTablet.copyWith(
+              name: 'large Android tablet',
+            ),
           ],
         ),
         InspectorAddon(enabled: true),
