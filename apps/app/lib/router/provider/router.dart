@@ -8,15 +8,17 @@ part 'router.g.dart';
 
 @Riverpod(keepAlive: true)
 GoRouter router(RouterRef ref) {
-  final appStatus = ref.watch(appStatusProvider);
+  final maintenanceModeStatus = ref.watch(
+    appStatusProvider.select((appStatus) => appStatus.maintenanceModeStatus),
+  );
   return GoRouter(
     routes: $appRoutes,
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {
-      final maintenanceEnabled = appStatus.maintenanceModeStatus.enabled;
+      final maintenanceModeEnabled = maintenanceModeStatus.enabled;
 
-      if (maintenanceEnabled) {
+      if (maintenanceModeEnabled) {
         return MaintenancePageRoute.path;
       }
       return null;
