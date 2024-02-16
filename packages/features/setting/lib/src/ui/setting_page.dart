@@ -9,31 +9,45 @@ class SettingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
+    final l10n = L10nSetting.of(context);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(L10nSetting.of(context).settingAppBar),
+        title: Text(l10n.settingAppBar),
       ),
-      body: ListView.builder(
-        itemCount: ThemeMode.values.length,
-        itemBuilder: (context, index) {
-          final themeMode = ThemeMode.values[index];
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 16,
+              horizontal: 24,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Text(l10n.settingThemeSetting),
+            ),
+          ),
+          SliverList.builder(
+            itemCount: ThemeMode.values.length,
+            itemBuilder: (context, index) {
+              final themeMode = ThemeMode.values[index];
 
-          return RadioListTile(
-            value: themeMode,
-            groupValue: currentThemeMode,
-            onChanged: (newThemeMode) async {
-              if (newThemeMode == null) {
-                return;
-              }
+              return RadioListTile(
+                value: themeMode,
+                groupValue: currentThemeMode,
+                onChanged: (newThemeMode) async {
+                  if (newThemeMode == null) {
+                    return;
+                  }
 
-              await ref
-                  .read(themeModeNotifierProvider.notifier)
-                  .changeThemeMode(newThemeMode);
+                  await ref
+                      .read(themeModeNotifierProvider.notifier)
+                      .changeThemeMode(newThemeMode);
+                },
+                title: Text(themeMode.name),
+              );
             },
-            title: Text(themeMode.name),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
