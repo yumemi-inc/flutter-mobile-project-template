@@ -27,7 +27,7 @@ jobs:
       # Important: Please list the necessary steps above this line.  
       # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.  
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      - name: Remove Unnecessary files
+      - name: Remove unnecessary files
         uses: ./.github/actions/remove-unnecessary-files
 
       - name: Commit files
