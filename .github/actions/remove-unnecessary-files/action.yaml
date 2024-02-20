@@ -1,0 +1,17 @@
+name: "Remove Unnecessary files"
+description: "Remove unnecessary files from the repository"
+
+inputs:
+  remove-txt-files-path:
+    description: "Path to the file that contains the list of files and directories to be removed"
+    default: "removal_list_on_use_template.txt"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Show files to be removed
+      run: cat ${{ inputs.remove-txt-files-path }}
+      shell: bash
+    - name: Remove unnecessary files
+      run: cat ${{ inputs.remove-txt-files-path }} | xargs rm -rf
+      shell: bash
