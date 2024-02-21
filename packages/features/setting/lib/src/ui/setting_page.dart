@@ -47,6 +47,30 @@ class SettingPage extends ConsumerWidget {
               );
             },
           ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 32,
+                    left: 24,
+                    right: 24,
+                    bottom: 16,
+                  ),
+                  child: Text(l10n.settingAbout),
+                ),
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                  ),
+                  leading: const Icon(Icons.description),
+                  title: Text(l10n.settingOpenSourceLicenses),
+                  subtitle: Text(l10n.settingLibrariesWeUse),
+                  onTap: () => {},
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
