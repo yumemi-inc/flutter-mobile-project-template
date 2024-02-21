@@ -1,6 +1,7 @@
 import 'package:cores_navigation/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/router/routes/home_route.dart';
+import 'package:flutter_app/router/routes/setting_route.dart';
 
 final class HomeNavigatorImpl implements HomeNavigator {
   const HomeNavigatorImpl();

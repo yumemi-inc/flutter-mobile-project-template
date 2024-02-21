@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:cores_core/util.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_debug_mode/ui.dart';
-import 'package:features_setting/setting.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/home/ui/home_navigator.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
+import 'package:flutter_app/router/routes/setting_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,6 +18,11 @@ part 'home_route.g.dart';
   routes: [
     TypedGoRoute<SettingPageRoute>(
       path: SettingPageRoute.path,
+      routes: [
+        TypedGoRoute<LicensePageRoute>(
+          path: LicensePageRoute.path,
+        ),
+      ],
     ),
     TypedGoRoute<DebugModePageRoute>(
       path: DebugModePageRoute.path,
@@ -48,17 +53,6 @@ class HomePageRoute extends GoRouteData {
         child: const HomePage(),
       ),
     );
-  }
-}
-
-class SettingPageRoute extends GoRouteData {
-  const SettingPageRoute();
-
-  static const path = 'setting';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return const SettingPage();
   }
 }
 
