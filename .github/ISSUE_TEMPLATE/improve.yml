@@ -21,7 +21,7 @@ body:
   - type: textarea
     id: proposal
     attributes:
-      label: 解決策の提案
+      label: 提案の詳細
       description: どのように改善するかについて、具体的に説明してください。
     validations:
       required: false
@@ -29,7 +29,7 @@ body:
     id: other-proposal
     attributes:
       label: 代替案
-      description: 他に考えられる解決策があれば、説明してください。
+      description: 背景を解決する別の方法があれば記載してください。
   - type: textarea
     id: env
     attributes:
