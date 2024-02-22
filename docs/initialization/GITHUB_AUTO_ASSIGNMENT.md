@@ -14,17 +14,14 @@
 
 ### 1. GitHubアクセストークンの設定
 [.github/workflows/auto-assign.yaml] 内の
-`jobs.request-reviewers`の`step`に、トークンを生成するGitHubアプリの適切な`app-id`と`private-key`を設定してください。
+`jobs.request-reviewers`の`Generate a token`のstepに、トークンを生成するGitHubアプリの適切な`app-id`と`private-key`を設定してください。
 
 トークンを生成するGitHubアプリがない場合は作成してください。
 
 ```yaml
   request-reviewers:
-    needs:
-      - count-reviewers
-    if: needs.count-reviewers.outputs.count == '0'
-    runs-on: ubuntu-22.04
-    timeout-minutes: 5
+    ...
+
     steps:
       - name: Generate a token
         id: app-token
@@ -32,7 +29,6 @@
         with:
           app-id: #適切な値を設定する
           private-key: #適切な値を設定する
-      - name: Request reviewers
 ```
 
 ### 2. GitHubリポジトリ環境変数の設定
