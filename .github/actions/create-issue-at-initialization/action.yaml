@@ -1,0 +1,19 @@
+name: "Create issues at initialization"
+description: "Create GitHub Issues based on initialization of Yumemi Inc. flutter mobile project template"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: peter-evans/create-issue-from-file@v4
+      with:
+        title: "[Initialization] Set up GitHub Auto Assignment for Pull Requests"
+        content-filepath: docs/initialization/GITHUB_AUTO_ASSIGNMENT.md
+        labels: initialization
+
+    - uses: peter-evans/create-issue-from-file@v4
+      with:
+        title: "[Optional] Set up Workflow for Deployment within Pull Request"
+        content-filepath: docs/initialization/DEPLOYMENT_WITHIN_PR.md
+        labels: |
+          initialization
+          optional
