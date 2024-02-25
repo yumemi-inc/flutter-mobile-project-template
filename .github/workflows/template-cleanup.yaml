@@ -20,6 +20,9 @@ jobs:
       - name: Fetch sources
         uses: actions/checkout@v4
 
+      - name: Create Issues at Initialization
+        uses: ./.github/actions/create-issue-at-initialization
+
       - name: Cleanup Copilot Settings
         uses: ./.github/actions/cleanup-copilot-settings
 

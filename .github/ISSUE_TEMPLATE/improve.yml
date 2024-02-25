@@ -1,0 +1,44 @@
+name: Improve Request
+description: 改善リクエストを提出する
+title: "[Improve]: "
+labels: [ "improve", "triage" ]
+
+body:
+  - type: checkboxes
+    attributes:
+      label: これに関する既存の Issue はありますか？
+      description: 検索して、既存の Issue の有無を確認してください。
+      options:
+        - label: 既存の Issue はありませんでした
+          required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 背景
+      description: なぜこの改善が必要なのか、簡潔に説明してください。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 提案の詳細
+      description: どのように改善するかについて、具体的に説明してください。
+    validations:
+      required: false
+  - type: textarea
+    id: other-proposal
+    attributes:
+      label: 代替案
+      description: 背景を解決する別の方法があれば記載してください。
+  - type: textarea
+    id: env
+    attributes:
+      label: 環境
+      description: 改善対象のアプリやプラットフォームのバージョンなどを記載してください。
+      value: |
+        - Commit Hash: 0153501e8487f388e99243d36f56509ea98f9def
+        - App Version: 1.0.0
+        - Platform: iOS 17.2.1, Android 14 API level 34
+      render: Markdown
+    validations:
+      required: true
