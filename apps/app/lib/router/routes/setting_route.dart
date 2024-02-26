@@ -5,6 +5,15 @@ import 'package:flutter_app/router/navigator/setting_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+const settingPageRoute = TypedGoRoute<SettingPageRoute>(
+  path: SettingPageRoute.path,
+  routes: [
+    TypedGoRoute<LicensePageRoute>(
+      path: LicensePageRoute.path,
+    ),
+  ],
+);
+
 final class SettingPageRoute extends GoRouteData {
   const SettingPageRoute();
 

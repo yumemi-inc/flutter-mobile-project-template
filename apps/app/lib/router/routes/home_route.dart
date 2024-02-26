@@ -16,14 +16,7 @@ part 'home_route.g.dart';
 @TypedGoRoute<HomePageRoute>(
   path: HomePageRoute.path,
   routes: [
-    TypedGoRoute<SettingPageRoute>(
-      path: SettingPageRoute.path,
-      routes: [
-        TypedGoRoute<LicensePageRoute>(
-          path: LicensePageRoute.path,
-        ),
-      ],
-    ),
+    settingPageRoute,
     TypedGoRoute<DebugModePageRoute>(
       path: DebugModePageRoute.path,
     ),
