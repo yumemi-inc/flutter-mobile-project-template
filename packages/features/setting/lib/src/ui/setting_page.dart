@@ -49,15 +49,18 @@ class SettingPage extends ConsumerWidget {
               );
             },
           ),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(
+              vertical: 8,
+            ),
+          ),
           SliverList(
             delegate: SliverChildListDelegate(
               [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    top: 32,
-                    left: 24,
-                    right: 24,
-                    bottom: 16,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 24,
                   ),
                   child: Text(l10n.settingAbout),
                 ),
