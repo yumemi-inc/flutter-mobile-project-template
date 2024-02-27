@@ -50,8 +50,8 @@ class SettingPage extends ConsumerWidget {
             },
           ),
           const SliverPadding(
-            padding: EdgeInsets.symmetric(
-              vertical: 8,
+            padding: EdgeInsets.only(
+              bottom: 16,
             ),
           ),
           SliverList(
