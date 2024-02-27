@@ -25,7 +25,7 @@
     steps:
       - name: Generate a token
         id: app-token
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v1.8.1
         with:
           app-id: #適切な値を設定する
           private-key: #適切な値を設定する
