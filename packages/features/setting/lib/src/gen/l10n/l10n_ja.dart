@@ -11,4 +11,13 @@ class L10nSettingJa extends L10nSetting {
 
   @override
   String get settingThemeSetting => 'テーマ設定';
+
+  @override
+  String get settingAbout => 'FlutterMobileTemplate について';
+
+  @override
+  String get settingOpenSourceLicenses => 'オープンソースライセンス';
+
+  @override
+  String get settingLibrariesWeUse => '使用しているライブラリ';
 }
