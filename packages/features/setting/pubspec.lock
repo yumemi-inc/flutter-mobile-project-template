@@ -47,6 +47,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  cores_navigation:
+    dependency: "direct main"
+    description:
+      path: "../../cores/navigation"
+      relative: true
+    source: path
+    version: "0.0.1"
   dio:
     dependency: transitive
     description:

@@ -1,5 +1,7 @@
 import 'package:cores_data/theme_mode.dart';
+import 'package:cores_navigation/providers.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
+import 'package:features_setting/src/ui/components/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,6 +10,7 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final navigator = ref.watch(settingNavigatorProvider);
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
     final l10n = L10nSetting.of(context);
 
@@ -17,15 +20,7 @@ class SettingPage extends ConsumerWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 16,
-              horizontal: 24,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Text(l10n.settingThemeSetting),
-            ),
-          ),
+          SettingSectionTitle(text: l10n.settingThemeSetting),
           SliverList.builder(
             itemCount: ThemeMode.values.length,
             itemBuilder: (context, index) {
@@ -46,6 +41,23 @@ class SettingPage extends ConsumerWidget {
                 title: Text(themeMode.name),
               );
             },
+          ),
+          const SettingSectionSpacer(),
+          SettingSectionTitle(text: l10n.settingAbout),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                  ),
+                  leading: const Icon(Icons.description),
+                  title: Text(l10n.settingOpenSourceLicenses),
+                  subtitle: Text(l10n.settingLibrariesWeUse),
+                  onTap: () => navigator.goLicensePage(context),
+                ),
+              ],
+            ),
           ),
         ],
       ),

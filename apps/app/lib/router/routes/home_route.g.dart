@@ -20,6 +20,12 @@ RouteBase get $homePageRoute => GoRouteData.$route(
         GoRouteData.$route(
           path: 'setting',
           factory: $SettingPageRouteExtension._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: 'license',
+              factory: $LicensePageRouteExtension._fromState,
+            ),
+          ],
         ),
         GoRouteData.$route(
           path: 'debug_mode',
@@ -55,6 +61,24 @@ extension $SettingPageRouteExtension on SettingPageRoute {
 
   String get location => GoRouteData.$location(
         '/home/setting',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $LicensePageRouteExtension on LicensePageRoute {
+  static LicensePageRoute _fromState(GoRouterState state) =>
+      const LicensePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/home/setting/license',
       );
 
   void go(BuildContext context) => context.go(location);
