@@ -1,6 +1,7 @@
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
+import 'package:features_setting/src/ui/components/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -19,15 +20,7 @@ class SettingPage extends ConsumerWidget {
       ),
       body: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 16,
-              horizontal: 24,
-            ),
-            sliver: SliverToBoxAdapter(
-              child: Text(l10n.settingThemeSetting),
-            ),
-          ),
+          SettingSectionTitle(text: l10n.settingThemeSetting),
           SliverList.builder(
             itemCount: ThemeMode.values.length,
             itemBuilder: (context, index) {
@@ -54,16 +47,10 @@ class SettingPage extends ConsumerWidget {
               bottom: 16,
             ),
           ),
+          SettingSectionTitle(text: l10n.settingAbout),
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 16,
-                    horizontal: 24,
-                  ),
-                  child: Text(l10n.settingAbout),
-                ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 24,
