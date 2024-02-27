@@ -42,11 +42,7 @@ class SettingPage extends ConsumerWidget {
               );
             },
           ),
-          const SliverPadding(
-            padding: EdgeInsets.only(
-              bottom: 16,
-            ),
-          ),
+          const SettingSectionSpacer(),
           SettingSectionTitle(text: l10n.settingAbout),
           SliverList(
             delegate: SliverChildListDelegate(
