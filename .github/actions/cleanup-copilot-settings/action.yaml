@@ -13,7 +13,8 @@ runs:
   using: "composite"
   steps:
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      # https://github.com/actions/setup-node
+      uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4.0.2
 
     - name: Install jq
       # https://github.com/dcarbone/install-jq-action
