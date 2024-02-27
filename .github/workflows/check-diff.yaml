@@ -22,7 +22,7 @@ jobs:
 
       # https://github.com/subosito/flutter-action
       - name: Setup flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@2783a3f08e1baf891508463f8c6653c258246225 # v2.12.0
         with:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
