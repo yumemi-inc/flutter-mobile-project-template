@@ -4,13 +4,15 @@ description: "Create GitHub Issues based on initialization of Yumemi Inc. flutte
 runs:
   using: "composite"
   steps:
-    - uses: peter-evans/create-issue-from-file@v4
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
         title: "[Initialization] Set up GitHub Auto Assignment for Pull Requests"
         content-filepath: docs/initialization/GITHUB_AUTO_ASSIGNMENT.md
         labels: initialization
 
-    - uses: peter-evans/create-issue-from-file@v4
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
         title: "[Optional] Set up Workflow for Deployment within Pull Request"
         content-filepath: docs/initialization/DEPLOYMENT_WITHIN_PR.md
