@@ -56,7 +56,6 @@ class _WebViewState extends State<WebView> {
     final isLoading = useState(false);
     final canPop = useState(false);
     final hasError = useState(false);
-    final shouldHandleErrors = useState(true);
     return PopScope(
       canPop: canPop.value,
       onPopInvoked: (didPop) async {
@@ -106,7 +105,6 @@ class _WebViewState extends State<WebView> {
                 key: _webViewKey,
                 pullToRefreshController: _pullToRefreshController,
                 onLoadStart: (_, __) async {
-                  shouldHandleErrors.value = true;
                   isLoading.value = true;
                 },
                 onProgressChanged: (_, progress) async {
@@ -123,16 +121,15 @@ class _WebViewState extends State<WebView> {
                 onLoadStop: (_, __) async {
                   await _pullToRefreshController?.endRefreshing();
                   isLoading.value = false;
-                  shouldHandleErrors.value = false;
                 },
                 onReceivedError: (controller, request, error) async {
-                  if (shouldHandleErrors.value) {
+                  if (isLoading.value) {
                     await _pullToRefreshController?.endRefreshing();
-                    isLoading.value = false;
                     if (error.type != WebResourceErrorType.UNKNOWN) {
                       hasError.value = true;
                     }
                   }
+                  isLoading.value = false;
                 },
               ),
             if (isLoading.value) ...[
