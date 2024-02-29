@@ -1,11 +1,13 @@
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
+import 'package:cores_core/provider.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
 import 'package:features_setting/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,9 +15,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final (buildConfig: buildConfig) = await AppInitializer.initialize();
+
   runApp(
     ProviderScope(
-      overrides: await initializeProviders(),
+      overrides: [
+        ...await initializeProviders(),
+        buildConfigProvider.overrideWithValue(buildConfig),
+      ],
       child: const MainApp(),
     ),
   );
