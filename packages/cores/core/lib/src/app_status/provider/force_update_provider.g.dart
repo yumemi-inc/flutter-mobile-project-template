@@ -8,7 +8,7 @@ part of 'force_update_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$forceUpdateHash() => r'135cec55c505ee0eb7fd6cbe8a75fce8d9906e07';
+String _$forceUpdateHash() => r'6f30bbe02a399d1e79b6022d1d63aa55b155cef6';
 
 /// See also [ForceUpdate].
 @ProviderFor(ForceUpdate)
