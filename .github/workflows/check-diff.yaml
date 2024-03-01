@@ -11,6 +11,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 

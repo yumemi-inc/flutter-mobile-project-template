@@ -16,15 +16,19 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       # https://github.com/marketplace/actions/deploy-to-firebase-hosting
       - uses: FirebaseExtended/action-hosting-deploy@120e124148ab7016bec2374e5050f15051255ba2 # v0.7.1
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: >-
             ${{ secrets.FIREBASE_SERVICE_ACCOUNT_YUMEMI_FLUTTER_MOBILE_TEMPLATE }}
-          projectId: 'yumemi-flutter-mobile-template'
+          projectId: "yumemi-flutter-mobile-template"
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks

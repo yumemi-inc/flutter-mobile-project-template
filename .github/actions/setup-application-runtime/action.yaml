@@ -4,10 +4,6 @@ description: "Setup application runtime for Flutter"
 runs:
   using: "composite"
   steps:
-    # https://github.com/actions/checkout
-    - name: Checkout
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-
     # https://github.com/kuhnroyal/flutter-fvm-config-action
     - name: Fetch flutter config
       uses: kuhnroyal/flutter-fvm-config-action@34c3905bc939a4ff9d9cb07d5a977493fa73b2aa # v2.0

@@ -10,6 +10,10 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
@@ -40,7 +44,7 @@ jobs:
       - name: Report test
         uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
         with:
-          name: 'flutter test'
-          path: '(apps|packages/cores|packages/features)/*/test_report.log'
-          reporter: 'flutter-json'
-          fail-on-error: 'true'
+          name: "flutter test"
+          path: "(apps|packages/cores|packages/features)/*/test_report.log"
+          reporter: "flutter-json"
+          fail-on-error: "true"
