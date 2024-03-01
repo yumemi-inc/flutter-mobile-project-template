@@ -11,27 +11,8 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      # https://github.com/actions/checkout
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-
-      # https://github.com/kuhnroyal/flutter-fvm-config-action
-      - name: Fetch flutter config
-        uses: kuhnroyal/flutter-fvm-config-action@34c3905bc939a4ff9d9cb07d5a977493fa73b2aa # v2.0
-        id: fvm-config-action
-
-      # https://github.com/subosito/flutter-action
-      - name: Setup flutter
-        uses: subosito/flutter-action@2783a3f08e1baf891508463f8c6653c258246225 # v2.12.0
-        with:
-          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
-
-      - name: Setup melos
-        run: |
-          ln -s $FLUTTER_ROOT .fvm/flutter_sdk
-          dart pub global activate melos
-          melos bootstrap
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
 
       - name: Regenerate code
         run: melos run regenerate_code --no-select
