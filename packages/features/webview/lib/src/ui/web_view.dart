@@ -79,24 +79,9 @@ class _WebViewState extends State<WebView> {
         ),
         body: Stack(
           children: [
-            if (hasError.value)
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('エラーが発生しました'),
-                    TextButton(
-                      onPressed: () async {
-                        hasError.value = false;
-                        await onRefresh();
-                      },
-                      child: const Text('再読み込み'),
-                    ),
-                  ],
-                ),
-              )
-            else
-              InAppWebView(
+            Visibility(
+              visible: !hasError.value,
+              child: InAppWebView(
                 onWebViewCreated: (controller) {
                   _webViewController = controller;
                 },
@@ -129,18 +114,34 @@ class _WebViewState extends State<WebView> {
                 onReceivedError: (controller, request, error) async {
                   if (isLoading.value) {
                     await _pullToRefreshController?.endRefreshing();
-                    if (error.type != WebResourceErrorType.UNKNOWN) {
-                      hasError.value = true;
-                    }
+                    isLoading.value = false;
                   }
-                  isLoading.value = false;
+                  if (request.isForMainFrame ?? true) {
+                    hasError.value = true;
+                  }
                 },
               ),
-            if (isLoading.value) ...[
+            ),
+            if (hasError.value)
+              Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('エラーが発生しました'),
+                    TextButton(
+                      onPressed: () async {
+                        hasError.value = false;
+                        await onRefresh();
+                      },
+                      child: const Text('再読み込み'),
+                    ),
+                  ],
+                ),
+              ),
+            if (isLoading.value)
               const Center(
                 child: CircularProgressIndicator.adaptive(),
               ),
-            ],
           ],
         ),
       ),
