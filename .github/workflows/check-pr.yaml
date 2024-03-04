@@ -12,16 +12,16 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       # https://github.com/kuhnroyal/flutter-fvm-config-action
       - name: Fetch flutter config
-        uses: kuhnroyal/flutter-fvm-config-action@v2
+        uses: kuhnroyal/flutter-fvm-config-action@34c3905bc939a4ff9d9cb07d5a977493fa73b2aa # v2.0
         id: fvm-config-action
 
       # https://github.com/subosito/flutter-action
       - name: Setup flutter
-        uses: subosito/flutter-action@v2
+        uses: subosito/flutter-action@2783a3f08e1baf891508463f8c6653c258246225 # v2.12.0
         with:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
@@ -34,9 +34,19 @@ jobs:
 
       # https://github.com/invertase/github-action-dart-analyzer
       - name: Report analyze
-        uses: invertase/github-action-dart-analyzer@v2.0.0
+        uses: invertase/github-action-dart-analyzer@e981b01a458d0bab71ee5da182e5b26687b7101b # v3.0.0
         with:
           fatal-infos: true
+
+      - name: Report custom_lint result
+        run: |
+          echo "::add-matcher::.github/problem_matchers/custom_lint.json"
+          melos run report_custom_lint:ci --no-select || result=$?
+          echo "::remove-matcher owner=custom_lint::"
+
+          if [ -n "$result" ]; then
+            exit 1
+          fi
 
       - name: Check format
         run: melos run check_format:ci
@@ -47,7 +57,7 @@ jobs:
 
       # https://github.com/dorny/test-reporter
       - name: Report test
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
         with:
           name: 'flutter test'
           path: '(apps|packages/cores|packages/features)/*/test_report.log'

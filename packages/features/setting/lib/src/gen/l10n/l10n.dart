@@ -105,6 +105,24 @@ abstract class L10nSetting {
   /// In ja, this message translates to:
   /// **'テーマ設定'**
   String get settingThemeSetting;
+
+  /// No description provided for @settingAbout.
+  ///
+  /// In ja, this message translates to:
+  /// **'FlutterMobileTemplate について'**
+  String get settingAbout;
+
+  /// No description provided for @settingOpenSourceLicenses.
+  ///
+  /// In ja, this message translates to:
+  /// **'オープンソースライセンス'**
+  String get settingOpenSourceLicenses;
+
+  /// No description provided for @settingLibrariesWeUse.
+  ///
+  /// In ja, this message translates to:
+  /// **'使用しているライブラリ'**
+  String get settingLibrariesWeUse;
 }
 
 class _L10nSettingDelegate extends LocalizationsDelegate<L10nSetting> {

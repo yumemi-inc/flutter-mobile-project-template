@@ -18,7 +18,7 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Fetch sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Create Issues at Initialization
         uses: ./.github/actions/create-issue-at-initialization
@@ -42,7 +42,7 @@ jobs:
 
       # https://github.com/ad-m/github-push-action
       - name: Push changes
-        uses: ad-m/github-push-action@v0.8.0
+        uses: ad-m/github-push-action@d91a481090679876dfc4178fef17f286781251df # v0.8.0
         with:
           branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -11,4 +11,13 @@ class L10nSettingEn extends L10nSetting {
 
   @override
   String get settingThemeSetting => 'Theme Setting';
+
+  @override
+  String get settingAbout => 'About FlutterMobileTemplate';
+
+  @override
+  String get settingOpenSourceLicenses => 'Open source licenses';
+
+  @override
+  String get settingLibrariesWeUse => 'Libraries we use';
 }
