@@ -108,6 +108,9 @@ class _WebViewState extends State<WebView> {
                 onLoadStart: (_, __) async {
                   isLoading.value = true;
                 },
+                initialSettings: InAppWebViewSettings(
+                  cacheMode: CacheMode.LOAD_NO_CACHE,
+                ),
                 onProgressChanged: (_, progress) async {
                   if (progress == 100) {
                     isLoading.value = false;
