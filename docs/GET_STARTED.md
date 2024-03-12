@@ -8,7 +8,7 @@
 - Enable the [fvm] command.
 - Enable the [melos] command.
     - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
-    - Then, run the following command to install melos.
+    - Then, run the following command to globally activate the melos command.
 
         ```shell
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
