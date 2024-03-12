@@ -7,6 +7,14 @@
     - [Xcode]
 - Enable the [fvm] command.
 - Enable the [melos] command.
+    - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
+    - Then, run the following command to globally activate the melos command.
+
+        ```shell
+        MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
+        fvm dart pub global activate melos $MELOS_VERSION
+        ```
+
 - Enable the [mason_cli] command.
 
 ### Set up Flutter SDK
@@ -38,7 +46,6 @@ Please check:
 - `.vscode/launch.json` for [Visual Studio Code].
 - `.idea/runConfigurations/~.xml` for [IntelliJ IDEA] or [Android Studio].
 
-
 <!-- Links -->
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
@@ -54,3 +61,5 @@ Please check:
 [melos]: https://melos.invertase.dev/
 
 [mason_cli]: https://pub.dev/packages/mason_cli
+
+[yq]: https://github.com/mikefarah/yq
