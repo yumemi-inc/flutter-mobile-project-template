@@ -29,7 +29,7 @@ If you use [Visual Studio Code], reload the SDK by reloading the window.
 
 If you use [IntelliJ IDEA] or [Android Studio], please see the following document:
 
-<https://fvm.app/docs/getting_started/configuration#android-studio>
+https://fvm.app/docs/getting_started/configuration#android-studio
 
 ### Install dependencies
 
