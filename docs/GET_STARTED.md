@@ -7,7 +7,7 @@
     - [Xcode]
 - Enable the [fvm] command.
 - Enable the [melos] command.
-    - If you don't have [yq], please install it. [yq] is used to parse the version of melos in the installation command.
+    - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
     - Then, run the following command to install melos.
 
         ```shell
