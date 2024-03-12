@@ -3,12 +3,12 @@
 ### Advance preparation
 
 - Install the IDEs.
-  - [IntelliJ IDEA], [Android Studio] or [Visual Studio Code]
-  - [Xcode]
+    - [IntelliJ IDEA], [Android Studio] or [Visual Studio Code]
+    - [Xcode]
 - Enable the [fvm] command.
 - Enable the [melos] command.
-  - If you don't have [yq], please install it. [yq] is used to parse the version of melos in the installation command.
-  - Then, run the following command to install melos.
+    - If you don't have [yq], please install it. [yq] is used to parse the version of melos in the installation command.
+    - Then, run the following command to install melos.
 
         ```shell
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
