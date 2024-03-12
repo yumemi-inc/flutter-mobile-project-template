@@ -5,19 +5,10 @@ import 'package:flutter_app/router/navigator/setting_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-const settingPageRoute = TypedGoRoute<SettingPageRoute>(
-  path: SettingPageRoute.path,
-  routes: [
-    TypedGoRoute<LicensePageRoute>(
-      path: LicensePageRoute.path,
-    ),
-  ],
-);
-
-final class SettingPageRoute extends GoRouteData {
+class SettingPageRoute extends GoRouteData {
   const SettingPageRoute();
 
-  static const path = 'setting';
+  static const path = '/setting';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
@@ -32,7 +23,7 @@ final class SettingPageRoute extends GoRouteData {
   }
 }
 
-final class LicensePageRoute extends GoRouteData {
+class LicensePageRoute extends GoRouteData {
   const LicensePageRoute();
 
   static const path = 'license';

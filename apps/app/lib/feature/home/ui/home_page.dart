@@ -23,12 +23,6 @@ class HomePage extends ConsumerWidget {
             ),
           ),
           IconButton(
-            onPressed: () => navigator.goSettingPage(context),
-            icon: const Icon(
-              Icons.settings,
-            ),
-          ),
-          IconButton(
             onPressed: () => navigator.goWebView(context),
             icon: const Icon(
               Icons.web,

@@ -9,76 +9,58 @@ part of 'home_route.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $homePageRoute,
+      $mainShellRouteData,
       $maintenancePageRoute,
     ];
 
-RouteBase get $homePageRoute => GoRouteData.$route(
-      path: '/home',
-      factory: $HomePageRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: 'setting',
-          factory: $SettingPageRouteExtension._fromState,
+RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
+      factory: $MainShellRouteDataExtension._fromState,
+      branches: [
+        StatefulShellBranchData.$branch(
           routes: [
             GoRouteData.$route(
-              path: 'license',
-              factory: $LicensePageRouteExtension._fromState,
+              path: '/home',
+              factory: $HomePageRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'debug_mode',
+                  factory: $DebugModePageRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'web_view',
+                  factory: $WebViewRouteExtension._fromState,
+                ),
+              ],
             ),
           ],
         ),
-        GoRouteData.$route(
-          path: 'debug_mode',
-          factory: $DebugModePageRouteExtension._fromState,
-        ),
-        GoRouteData.$route(
-          path: 'web_view',
-          factory: $WebViewRouteExtension._fromState,
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
+              path: '/setting',
+              factory: $SettingPageRouteExtension._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'license',
+                  factory: $LicensePageRouteExtension._fromState,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );
+
+extension $MainShellRouteDataExtension on MainShellRouteData {
+  static MainShellRouteData _fromState(GoRouterState state) =>
+      const MainShellRouteData();
+}
 
 extension $HomePageRouteExtension on HomePageRoute {
   static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
   String get location => GoRouteData.$location(
         '/home',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $SettingPageRouteExtension on SettingPageRoute {
-  static SettingPageRoute _fromState(GoRouterState state) =>
-      const SettingPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/home/setting',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $LicensePageRouteExtension on LicensePageRoute {
-  static LicensePageRoute _fromState(GoRouterState state) =>
-      const LicensePageRoute();
-
-  String get location => GoRouteData.$location(
-        '/home/setting/license',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -114,6 +96,42 @@ extension $WebViewRouteExtension on WebViewRoute {
 
   String get location => GoRouteData.$location(
         '/home/web_view',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $SettingPageRouteExtension on SettingPageRoute {
+  static SettingPageRoute _fromState(GoRouterState state) =>
+      const SettingPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/setting',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $LicensePageRouteExtension on LicensePageRoute {
+  static LicensePageRoute _fromState(GoRouterState state) =>
+      const LicensePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/setting/license',
       );
 
   void go(BuildContext context) => context.go(location);
