@@ -2,7 +2,7 @@ import 'package:cores_core/model.dart';
 
 final class AppBuildConfig implements BuildConfig {
   AppBuildConfig({
-    required String? appFlavor,
+    required String appFlavor,
     required this.appName,
     required this.packageName,
     required this.version,
