@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cores_core/util.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_debug_mode/ui.dart';
+import 'package:features_github_repository/ui.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/feature/bottom_tab/bottom_tab.dart';
@@ -26,6 +27,9 @@ part 'home_route.g.dart';
             ),
             TypedGoRoute<WebViewRoute>(
               path: WebViewRoute.path,
+            ),
+            TypedGoRoute<GithubRepositoryDetailPageRoute>(
+              path: GithubRepositoryDetailPageRoute.path,
             ),
           ],
         ),
@@ -118,5 +122,18 @@ class MaintenancePageRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return const MaintenanceModePage();
+  }
+}
+
+class GithubRepositoryDetailPageRoute extends GoRouteData {
+  const GithubRepositoryDetailPageRoute(this.repositoryName);
+
+  final String repositoryName;
+
+  static const path = 'github_repository_detail';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return GithubRepositoryDetailPage(repositoryName: repositoryName);
   }
 }

@@ -30,6 +30,10 @@ RouteBase get $mainShellRouteData => StatefulShellRouteData.$route(
                   path: 'web_view',
                   factory: $WebViewRouteExtension._fromState,
                 ),
+                GoRouteData.$route(
+                  path: 'github_repository_detail',
+                  factory: $GithubRepositoryDetailPageRouteExtension._fromState,
+                ),
               ],
             ),
           ],
@@ -96,6 +100,30 @@ extension $WebViewRouteExtension on WebViewRoute {
 
   String get location => GoRouteData.$location(
         '/home/web_view',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $GithubRepositoryDetailPageRouteExtension
+    on GithubRepositoryDetailPageRoute {
+  static GithubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
+      GithubRepositoryDetailPageRoute(
+        state.uri.queryParameters['repository-name']!,
+      );
+
+  String get location => GoRouteData.$location(
+        '/home/github_repository_detail',
+        queryParams: {
+          'repository-name': repositoryName,
+        },
       );
 
   void go(BuildContext context) => context.go(location);

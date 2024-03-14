@@ -14,4 +14,9 @@ final class HomeNavigatorImpl implements HomeNavigator {
   void goWebView(BuildContext context) {
     const WebViewRoute().go(context);
   }
+
+  @override
+  void goGithubRepositoryDetail(BuildContext context, String repositoryName) {
+    GithubRepositoryDetailPageRoute(repositoryName).go(context);
+  }
 }
