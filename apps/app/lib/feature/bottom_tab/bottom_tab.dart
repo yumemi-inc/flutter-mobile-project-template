@@ -1,7 +1,9 @@
+import 'package:features_github_repository/data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class BottomTab extends StatelessWidget {
+class BottomTab extends ConsumerWidget {
   const BottomTab({
     required this.navigationShell,
     super.key,
@@ -10,7 +12,8 @@ class BottomTab extends StatelessWidget {
   final StatefulNavigationShell navigationShell;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final scrollController = ref.watch(scrollControllerProvider);
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
@@ -25,10 +28,13 @@ class BottomTab extends StatelessWidget {
             icon: Icon(Icons.settings),
           ),
         ],
-        onDestinationSelected: (index) {
+        onDestinationSelected: (index) async {
           if (navigationShell.currentIndex == index) {
-            // TODO 最初の画面でスクロールが発生していたら一番上にスクロール
-
+            await scrollController.animateTo(
+              0,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOut,
+            );
           }
           navigationShell.goBranch(
             index,
