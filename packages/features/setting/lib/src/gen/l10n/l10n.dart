@@ -123,6 +123,12 @@ abstract class L10nSetting {
   /// In ja, this message translates to:
   /// **'使用しているライブラリ'**
   String get settingLibrariesWeUse;
+
+  /// No description provided for @settingVersion.
+  ///
+  /// In ja, this message translates to:
+  /// **'バージョン'**
+  String get settingVersion;
 }
 
 class _L10nSettingDelegate extends LocalizationsDelegate<L10nSetting> {

@@ -3,5 +3,6 @@
   "settingThemeSetting": "Theme Setting",
   "settingAbout": "About FlutterMobileTemplate",
   "settingOpenSourceLicenses": "Open source licenses",
-  "settingLibrariesWeUse": "Libraries we use"
+  "settingLibrariesWeUse": "Libraries we use",
+  "settingVersion": "Version"
 }
