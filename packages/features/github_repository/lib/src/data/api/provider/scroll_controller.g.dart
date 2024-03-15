@@ -8,7 +8,7 @@ part of 'scroll_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scrollControllerHash() => r'0b12381d8f57bb6713e25d5c048eeb73bc75a02c';
+String _$scrollControllerHash() => r'2e23a49a0717c125072b0ae23c5dbb050eb8b302';
 
 /// See also [scrollController].
 @ProviderFor(scrollController)
