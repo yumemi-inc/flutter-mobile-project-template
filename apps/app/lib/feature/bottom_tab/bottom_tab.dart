@@ -29,7 +29,8 @@ class BottomTab extends ConsumerWidget {
           ),
         ],
         onDestinationSelected: (index) async {
-          if (navigationShell.currentIndex == index) {
+          final isFirst = GoRouter.of(context).canPop();
+          if (navigationShell.currentIndex == index && !isFirst) {
             await scrollController.animateTo(
               0,
               duration: const Duration(milliseconds: 300),
