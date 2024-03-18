@@ -1,3 +1,4 @@
+import 'package:cores_core/provider.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
@@ -12,6 +13,7 @@ class SettingPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final navigator = ref.watch(settingNavigatorProvider);
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
+    final buildConfig = ref.watch(buildConfigProvider);
     final l10n = L10nSetting.of(context);
 
     return Scaffold(
@@ -55,6 +57,14 @@ class SettingPage extends ConsumerWidget {
                   title: Text(l10n.settingOpenSourceLicenses),
                   subtitle: Text(l10n.settingLibrariesWeUse),
                   onTap: () => navigator.goLicensePage(context),
+                ),
+                ListTile(
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                  ),
+                  leading: const Icon(Icons.info_outline),
+                  title: Text(l10n.settingVersion),
+                  subtitle: Text(buildConfig.version),
                 ),
               ],
             ),

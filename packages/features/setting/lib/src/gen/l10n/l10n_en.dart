@@ -20,4 +20,7 @@ class L10nSettingEn extends L10nSetting {
 
   @override
   String get settingLibrariesWeUse => 'Libraries we use';
+
+  @override
+  String get settingVersion => 'Version';
 }

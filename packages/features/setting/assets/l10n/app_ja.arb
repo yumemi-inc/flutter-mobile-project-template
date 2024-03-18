@@ -3,5 +3,6 @@
   "settingThemeSetting": "テーマ設定",
   "settingAbout": "FlutterMobileTemplate について",
   "settingOpenSourceLicenses": "オープンソースライセンス",
-  "settingLibrariesWeUse": "使用しているライブラリ"
+  "settingLibrariesWeUse": "使用しているライブラリ",
+  "settingVersion": "バージョン"
 }
