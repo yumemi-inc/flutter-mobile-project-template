@@ -10,7 +10,7 @@ command:
   bootstrap:
     environment:
       sdk: ^3.3.1
-      flutter: ^3.16.4
+      flutter: ^3.19.3
     dependencies:
       flutter_riverpod: ^2.4.9
       freezed_annotation: ^2.4.1
