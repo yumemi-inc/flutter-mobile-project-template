@@ -8,7 +8,7 @@ part of 'scroll_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scrollNotifierHash() => r'6b2ca893b3975482496756934259037fe0f32f58';
+String _$scrollNotifierHash() => r'4e43fc3145511dce39d9721397f56efad2885530';
 
 /// See also [ScrollNotifier].
 @ProviderFor(ScrollNotifier)
