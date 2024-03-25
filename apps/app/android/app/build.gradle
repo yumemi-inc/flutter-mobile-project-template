@@ -22,8 +22,18 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def dartDefines = [];
+if (project.hasProperty('dart-defines')) {
+    dartDefines = project.property('dart-defines')
+        .split(',')
+        .collectEntries { entry ->
+            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+            [(pair.first()): pair.last()]
+        }
+}
+
 task copySources(type: Copy) {
-    from "src/$flavor/res"
+    from "src/${dartDefines.flavor}/res"
     into 'src/main/res'
 }
 
@@ -33,7 +43,7 @@ tasks.whenTaskAdded { task ->
 
 android {
     namespace "jp.co.yumemi.flutter_app"
-    compileSdkVersion 34
+    compileSdk 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -50,15 +60,15 @@ android {
     }
 
     defaultConfig {
-        applicationId appId
-        applicationIdSuffix appIdSuffix
+        applicationId "${dartDefines.appId}"
+        applicationIdSuffix "${dartDefines.appIdSuffix}"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        resValue "string", "app_name", appName
+        resValue "string", "app_name","${dartDefines.appName}"
     }
 
     buildTypes {
