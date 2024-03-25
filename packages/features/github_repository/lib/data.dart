@@ -1,1 +1,1 @@
-export 'src/data/api/provider/index.dart';
+export 'src/data/provider/index.dart';

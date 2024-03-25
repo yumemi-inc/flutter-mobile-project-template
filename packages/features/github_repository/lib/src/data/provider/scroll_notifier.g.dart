@@ -2,26 +2,27 @@
 
 // ignore_for_file: type=lint, duplicate_ignore
 
-part of 'scroll_controller.dart';
+part of 'scroll_notifier.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scrollControllerHash() => r'2e23a49a0717c125072b0ae23c5dbb050eb8b302';
+String _$scrollNotifierHash() => r'6b2ca893b3975482496756934259037fe0f32f58';
 
-/// See also [scrollController].
-@ProviderFor(scrollController)
-final scrollControllerProvider = AutoDisposeProvider<ScrollController>.internal(
-  scrollController,
-  name: r'scrollControllerProvider',
+/// See also [ScrollNotifier].
+@ProviderFor(ScrollNotifier)
+final scrollNotifierProvider =
+    AutoDisposeNotifierProvider<ScrollNotifier, void>.internal(
+  ScrollNotifier.new,
+  name: r'scrollNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$scrollControllerHash,
+      : _$scrollNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef ScrollControllerRef = AutoDisposeProviderRef<ScrollController>;
+typedef _$ScrollNotifier = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

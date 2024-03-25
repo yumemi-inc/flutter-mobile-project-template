@@ -13,7 +13,6 @@ class BottomTab extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final scrollController = ref.watch(scrollControllerProvider);
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
@@ -29,18 +28,15 @@ class BottomTab extends ConsumerWidget {
           ),
         ],
         onDestinationSelected: (index) async {
-          final isFirst = GoRouter.of(context).canPop();
-          if (navigationShell.currentIndex == index && !isFirst) {
-            await scrollController.animateTo(
-              0,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut,
+          final canPop = GoRouter.of(context).canPop();
+          if (navigationShell.currentIndex == index && !canPop) {
+            ref.read(scrollNotifierProvider.notifier).notifyScrollToTop();
+          } else {
+            navigationShell.goBranch(
+              index,
+              initialLocation: index == navigationShell.currentIndex,
             );
           }
-          navigationShell.goBranch(
-            index,
-            initialLocation: index == navigationShell.currentIndex,
-          );
         },
       ),
     );
