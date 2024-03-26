@@ -1,6 +1,7 @@
 import 'package:cores_core/app_status.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/router/routes/home_route.dart';
+import 'package:flutter_app/router/routes/main_shell_route.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
