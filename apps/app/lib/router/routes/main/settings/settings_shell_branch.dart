@@ -13,7 +13,6 @@ const settingsShellBranch = TypedStatefulShellBranch<SettingsShellBranch>(
   ],
 );
 
-
 class SettingsShellBranch extends StatefulShellBranchData {
   const SettingsShellBranch();
 }
