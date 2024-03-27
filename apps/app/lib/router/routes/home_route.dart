@@ -56,7 +56,7 @@ class BottomTabRoute extends StatefulShellRouteData {
     GoRouterState state,
     StatefulNavigationShell navigationShell,
   ) {
-    return BottomTab(navigationShell: navigationShell);
+    return MainPage(navigationShell: navigationShell);
   }
 }
 
