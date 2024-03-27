@@ -32,7 +32,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
           itemCount: value.length,
           itemBuilder: (context, index) => TextListTile(
             onTap: () =>
-                navigator.goGithubRepositoryDetail(context, value[index].name),
+                navigator.goGithubRepositoryDetailPage(context, value[index].name),
             text: value[index].name,
           ),
         ),

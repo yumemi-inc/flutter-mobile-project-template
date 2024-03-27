@@ -5,8 +5,8 @@ import 'package:features_debug_mode/src/data/api/provider/exception_generator_ap
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class DebugModePage extends ConsumerWidget {
-  const DebugModePage({super.key});
+class DebugPage extends ConsumerWidget {
+  const DebugPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

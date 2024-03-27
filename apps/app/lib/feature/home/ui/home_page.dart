@@ -19,13 +19,13 @@ class HomePage extends ConsumerWidget {
         title: Text(l.appBar),
         actions: [
           IconButton(
-            onPressed: () => navigator.goDebugModePage(context),
+            onPressed: () => navigator.goDebugPage(context),
             icon: const Icon(
               Icons.construction,
             ),
           ),
           IconButton(
-            onPressed: () => navigator.goWebView(context),
+            onPressed: () => navigator.goWebPage(context),
             icon: const Icon(
               Icons.web,
             ),
