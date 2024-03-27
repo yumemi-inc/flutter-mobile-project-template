@@ -55,9 +55,9 @@ RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
       ],
     );
 
-extension $BottomTabRouteExtension on BottomTabRoute {
-  static BottomTabRoute _fromState(GoRouterState state) =>
-      const BottomTabRoute();
+extension $BottomTabRouteExtension on MainPageRoute {
+  static MainPageRoute _fromState(GoRouterState state) =>
+      const MainPageRoute();
 }
 
 extension $HomePageRouteExtension on HomePageRoute {

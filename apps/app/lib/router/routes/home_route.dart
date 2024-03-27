@@ -13,7 +13,7 @@ import 'package:go_router/go_router.dart';
 
 part 'home_route.g.dart';
 
-@TypedStatefulShellRoute<BottomTabRoute>(
+@TypedStatefulShellRoute<MainPageRoute>(
   branches: [
     TypedStatefulShellBranch(
       routes: <TypedRoute<RouteData>>[
@@ -47,8 +47,8 @@ part 'home_route.g.dart';
     ),
   ],
 )
-class BottomTabRoute extends StatefulShellRouteData {
-  const BottomTabRoute();
+class MainPageRoute extends StatefulShellRouteData {
+  const MainPageRoute();
 
   @override
   Widget builder(
