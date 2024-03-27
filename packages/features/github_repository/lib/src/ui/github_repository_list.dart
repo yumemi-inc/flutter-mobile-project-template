@@ -31,8 +31,10 @@ class GitHubRepositoryList extends HookConsumerWidget {
           controller: scrollController,
           itemCount: value.length,
           itemBuilder: (context, index) => TextListTile(
-            onTap: () =>
-                navigator.goGithubRepositoryDetailPage(context, value[index].name),
+            onTap: () => navigator.goGithubRepositoryDetailPage(
+              context,
+              value[index].name,
+            ),
             text: value[index].name,
           ),
         ),
