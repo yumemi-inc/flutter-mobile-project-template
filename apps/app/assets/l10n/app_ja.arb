@@ -1,4 +1,6 @@
 
 {
-  "appBar": "Flutter テンプレート"
+  "appBar": "Flutter テンプレート",
+  "bottomTabHome": "ホーム",
+  "bottomTabSettings": "設定"
 }

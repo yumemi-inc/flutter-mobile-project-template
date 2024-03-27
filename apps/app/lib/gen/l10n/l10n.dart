@@ -99,6 +99,18 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'Flutter テンプレート'**
   String get appBar;
+
+  /// No description provided for @bottomTabHome.
+  ///
+  /// In ja, this message translates to:
+  /// **'ホーム'**
+  String get bottomTabHome;
+
+  /// No description provided for @bottomTabSettings.
+  ///
+  /// In ja, this message translates to:
+  /// **'設定'**
+  String get bottomTabSettings;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
