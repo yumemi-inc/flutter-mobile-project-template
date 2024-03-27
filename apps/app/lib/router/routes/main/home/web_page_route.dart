@@ -1,12 +1,11 @@
 part of 'package:flutter_app/router/provider/router.dart';
 
-@TypedGoRoute<WebPageRoute>(
-  path: WebPageRoute.path,
-)
 class WebPageRoute extends GoRouteData {
   const WebPageRoute();
 
-  static const path = '/web';
+  static const path = 'web';
+
+  static final $parentNavigatorKey = _rootNavigatorKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {

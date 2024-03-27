@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:cores_navigation/navigators.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/router/provider/router.dart';
@@ -9,16 +7,12 @@ final class HomeNavigatorImpl implements HomeNavigator {
 
   @override
   void goDebugPage(BuildContext context) {
-    unawaited(
-      const DebugPageRoute().push(context),
-    );
+    const DebugPageRoute().go(context);
   }
 
   @override
   void goWebPage(BuildContext context) {
-    unawaited(
-      const WebPageRoute().push(context),
-    );
+    const WebPageRoute().go(context);
   }
 
   @override

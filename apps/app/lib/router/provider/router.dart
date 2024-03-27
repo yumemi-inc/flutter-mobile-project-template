@@ -19,8 +19,8 @@ part 'package:flutter_app/router/routes/main/home/home_shell_branch.dart';
 part 'package:flutter_app/router/routes/main/settings/settings_shell_branch.dart';
 part 'package:flutter_app/router/routes/main/main_page_shell_route.dart';
 part 'package:flutter_app/router/routes/maintenance_page_route.dart';
-part 'package:flutter_app/router/routes/web_page_route.dart';
-part 'package:flutter_app/router/routes/debug_page_route.dart';
+part 'package:flutter_app/router/routes/main/home/web_page_route.dart';
+part 'package:flutter_app/router/routes/main/home/debug_page_route.dart';
 part 'router.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');

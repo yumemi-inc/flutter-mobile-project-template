@@ -8,6 +8,12 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
         TypedGoRoute<GithubRepositoryDetailPageRoute>(
           path: GithubRepositoryDetailPageRoute.path,
         ),
+        TypedGoRoute<DebugPageRoute>(
+          path: DebugPageRoute.path,
+        ),
+        TypedGoRoute<WebPageRoute>(
+          path: WebPageRoute.path,
+        ),
       ],
     ),
   ],
@@ -47,7 +53,7 @@ class GithubRepositoryDetailPageRoute extends GoRouteData {
   final String repositoryName;
 
   static const path = 'github_repository_detail';
-  
+
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return GithubRepositoryDetailPage(repositoryName: repositoryName);

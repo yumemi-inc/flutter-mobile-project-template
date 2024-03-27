@@ -11,8 +11,6 @@ part of 'router.dart';
 List<RouteBase> get $appRoutes => [
       $mainPageShellRoute,
       $maintenancePageRoute,
-      $webPageRoute,
-      $debugPageRoute,
     ];
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
@@ -27,6 +25,16 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
                 GoRouteData.$route(
                   path: 'github_repository_detail',
                   factory: $GithubRepositoryDetailPageRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'debug',
+                  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
+                  factory: $DebugPageRouteExtension._fromState,
+                ),
+                GoRouteData.$route(
+                  path: 'web',
+                  parentNavigatorKey: WebPageRoute.$parentNavigatorKey,
+                  factory: $WebPageRouteExtension._fromState,
                 ),
               ],
             ),
@@ -95,6 +103,41 @@ extension $GithubRepositoryDetailPageRouteExtension
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $DebugPageRouteExtension on DebugPageRoute {
+  static DebugPageRoute _fromState(GoRouterState state) =>
+      const DebugPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/debug',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $WebPageRouteExtension on WebPageRoute {
+  static WebPageRoute _fromState(GoRouterState state) => const WebPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/web',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 extension $SettingPageRouteExtension on SettingPageRoute {
   static SettingPageRoute _fromState(GoRouterState state) =>
       const SettingPageRoute();
@@ -133,7 +176,6 @@ extension $LicensePageRouteExtension on LicensePageRoute {
 
 RouteBase get $maintenancePageRoute => GoRouteData.$route(
       path: '/maintenance',
-      parentNavigatorKey: MaintenancePageRoute.$parentNavigatorKey,
       factory: $MaintenancePageRouteExtension._fromState,
     );
 
@@ -143,51 +185,6 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
 
   String get location => GoRouteData.$location(
         '/maintenance',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-RouteBase get $webPageRoute => GoRouteData.$route(
-      path: '/web',
-      factory: $WebPageRouteExtension._fromState,
-    );
-
-extension $WebPageRouteExtension on WebPageRoute {
-  static WebPageRoute _fromState(GoRouterState state) => const WebPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/web',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-RouteBase get $debugPageRoute => GoRouteData.$route(
-      path: '/debug',
-      factory: $DebugPageRouteExtension._fromState,
-    );
-
-extension $DebugPageRouteExtension on DebugPageRoute {
-  static DebugPageRoute _fromState(GoRouterState state) =>
-      const DebugPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/debug',
       );
 
   void go(BuildContext context) => context.go(location);
