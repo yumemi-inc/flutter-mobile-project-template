@@ -49,7 +49,8 @@ class _WebViewState extends State<WebView> {
   void dispose() {
     super.dispose();
     _webViewController?.dispose();
-    _pullToRefreshController?.dispose();
+    // The `_pullToRefreshController` is internally executing a dispose
+    // operation once, therefore, `dispose()` is not called here.
   }
 
   @override
