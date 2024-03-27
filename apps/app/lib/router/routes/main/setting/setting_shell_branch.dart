@@ -1,6 +1,6 @@
 part of 'package:flutter_app/router/provider/router.dart';
 
-const settingsShellBranch = TypedStatefulShellBranch<SettingsShellBranch>(
+const settingShellBranch = TypedStatefulShellBranch<SettingShellBranch>(
   routes: <TypedRoute<RouteData>>[
     TypedGoRoute<SettingPageRoute>(
       path: SettingPageRoute.path,
@@ -13,8 +13,8 @@ const settingsShellBranch = TypedStatefulShellBranch<SettingsShellBranch>(
   ],
 );
 
-class SettingsShellBranch extends StatefulShellBranchData {
-  const SettingsShellBranch();
+class SettingShellBranch extends StatefulShellBranchData {
+  const SettingShellBranch();
 }
 
 class SettingPageRoute extends GoRouteData {

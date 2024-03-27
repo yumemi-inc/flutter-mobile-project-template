@@ -3,7 +3,7 @@ part of 'package:flutter_app/router/provider/router.dart';
 @TypedStatefulShellRoute<MainPageShellRoute>(
   branches: [
     homeShellBranch,
-    settingsShellBranch,
+    settingShellBranch,
   ],
 )
 class MainPageShellRoute extends StatefulShellRouteData {
