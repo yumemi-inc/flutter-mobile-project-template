@@ -1,3 +1,5 @@
 {
-  "appBar": "Flutter Template"
+  "appBar": "Flutter Template",
+  "bottomTabHome": "Home",
+  "bottomTabSettings": "Settings"
 }

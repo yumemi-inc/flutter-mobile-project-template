@@ -1,2 +1,2 @@
-export 'debug_mode_page.dart';
-export 'maintenance_mode_page.dart';
+export 'debug_page.dart';
+export 'maintenance_page.dart';

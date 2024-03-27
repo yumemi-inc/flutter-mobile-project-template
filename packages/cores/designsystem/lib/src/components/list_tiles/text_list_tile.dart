@@ -5,14 +5,17 @@ import 'package:flutter/material.dart';
 class TextListTile extends StatelessWidget {
   const TextListTile({
     required this.text,
+    required this.onTap,
     super.key,
   });
 
   final String text;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       title: Text(text),
     );
   }
@@ -21,5 +24,6 @@ class TextListTile extends StatelessWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties.add(StringProperty('text', text, defaultValue: ''));
+    properties.add(ObjectFlagProperty<VoidCallback>.has('onTap', onTap));
   }
 }

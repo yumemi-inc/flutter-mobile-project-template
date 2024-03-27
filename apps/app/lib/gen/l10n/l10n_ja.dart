@@ -8,4 +8,10 @@ class L10nJa extends L10n {
 
   @override
   String get appBar => 'Flutter テンプレート';
+
+  @override
+  String get bottomTabHome => 'ホーム';
+
+  @override
+  String get bottomTabSettings => '設定';
 }

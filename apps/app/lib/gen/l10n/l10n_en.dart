@@ -8,4 +8,10 @@ class L10nEn extends L10n {
 
   @override
   String get appBar => 'Flutter Template';
+
+  @override
+  String get bottomTabHome => 'Home';
+
+  @override
+  String get bottomTabSettings => 'Settings';
 }

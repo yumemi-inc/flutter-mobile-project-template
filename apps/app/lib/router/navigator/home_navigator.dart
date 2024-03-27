@@ -1,23 +1,25 @@
 import 'package:cores_navigation/navigators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/router/routes/home_route.dart';
-import 'package:flutter_app/router/routes/setting_route.dart';
+import 'package:flutter_app/router/provider/router.dart';
 
 final class HomeNavigatorImpl implements HomeNavigator {
   const HomeNavigatorImpl();
 
   @override
-  void goDebugModePage(BuildContext context) {
-    const DebugModePageRoute().go(context);
+  void goDebugPage(BuildContext context) {
+    const DebugPageRoute().go(context);
   }
 
   @override
-  void goSettingPage(BuildContext context) {
-    const SettingPageRoute().go(context);
+  void goWebPage(BuildContext context) {
+    const WebPageRoute().go(context);
   }
 
   @override
-  void goWebView(BuildContext context) {
-    const WebViewRoute().go(context);
+  void goGithubRepositoryDetailPage(
+    BuildContext context,
+    String repositoryName,
+  ) {
+    GithubRepositoryDetailPageRoute(repositoryName).go(context);
   }
 }

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
-class WebView extends StatefulHookWidget {
-  const WebView({
+class WebPage extends StatefulHookWidget {
+  const WebPage({
     required Uri initialUrl,
     required VoidCallback pop,
     super.key,
@@ -16,10 +16,10 @@ class WebView extends StatefulHookWidget {
   final VoidCallback _pop;
 
   @override
-  State<WebView> createState() => _WebViewState();
+  State<WebPage> createState() => _WebViewState();
 }
 
-class _WebViewState extends State<WebView> {
+class _WebViewState extends State<WebPage> {
   final GlobalKey _webViewKey = GlobalKey();
   PullToRefreshController? _pullToRefreshController;
   InAppWebViewController? _webViewController;
@@ -49,7 +49,8 @@ class _WebViewState extends State<WebView> {
   void dispose() {
     super.dispose();
     _webViewController?.dispose();
-    _pullToRefreshController?.dispose();
+    // The `_pullToRefreshController` is internally executing a dispose
+    // operation once, therefore, `dispose()` is not called here.
   }
 
   @override
