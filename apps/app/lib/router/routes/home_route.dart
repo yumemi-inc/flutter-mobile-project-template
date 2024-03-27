@@ -4,10 +4,61 @@ import 'package:features_debug_mode/ui.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/feature/bottom_tab/bottom_tab.dart';
 import 'package:flutter_app/feature/home/ui/home_page.dart';
 import 'package:flutter_app/router/navigator/home_navigator.dart';
+import 'package:flutter_app/router/routes/setting_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+part 'home_route.g.dart';
+
+@TypedStatefulShellRoute<BottomTabRoute>(
+  branches: [
+    TypedStatefulShellBranch(
+      routes: <TypedRoute<RouteData>>[
+        TypedGoRoute<HomePageRoute>(
+          path: HomePageRoute.path,
+          routes: [
+            TypedGoRoute<DebugModePageRoute>(
+              path: DebugModePageRoute.path,
+            ),
+            TypedGoRoute<WebViewRoute>(
+              path: WebViewRoute.path,
+            ),
+            TypedGoRoute<GithubRepositoryDetailPageRoute>(
+              path: GithubRepositoryDetailPageRoute.path,
+            ),
+          ],
+        ),
+      ],
+    ),
+    TypedStatefulShellBranch(
+      routes: <TypedRoute<RouteData>>[
+        TypedGoRoute<SettingPageRoute>(
+          path: SettingPageRoute.path,
+          routes: [
+            TypedGoRoute<LicensePageRoute>(
+              path: LicensePageRoute.path,
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+)
+class BottomTabRoute extends StatefulShellRouteData {
+  const BottomTabRoute();
+
+  @override
+  Widget builder(
+    BuildContext context,
+    GoRouterState state,
+    StatefulNavigationShell navigationShell,
+  ) {
+    return BottomTab(navigationShell: navigationShell);
+  }
+}
 
 class HomePageRoute extends GoRouteData {
   const HomePageRoute();

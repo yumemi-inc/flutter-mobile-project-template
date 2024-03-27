@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint, duplicate_ignore
 
-part of 'main_shell_route.dart';
+part of 'home_route.dart';
 
 // **************************************************************************
 // GoRouterGenerator
@@ -10,6 +10,7 @@ part of 'main_shell_route.dart';
 
 List<RouteBase> get $appRoutes => [
       $bottomTabRoute,
+      $maintenancePageRoute,
     ];
 
 RouteBase get $bottomTabRoute => StatefulShellRouteData.$route(
@@ -159,6 +160,29 @@ extension $LicensePageRouteExtension on LicensePageRoute {
 
   String get location => GoRouteData.$location(
         '/setting/license',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $maintenancePageRoute => GoRouteData.$route(
+      path: '/maintenance',
+      factory: $MaintenancePageRouteExtension._fromState,
+    );
+
+extension $MaintenancePageRouteExtension on MaintenancePageRoute {
+  static MaintenancePageRoute _fromState(GoRouterState state) =>
+      const MaintenancePageRoute();
+
+  String get location => GoRouteData.$location(
+        '/maintenance',
       );
 
   void go(BuildContext context) => context.go(location);
