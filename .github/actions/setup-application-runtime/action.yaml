@@ -18,6 +18,7 @@ runs:
 
     - name: Setup melos
       run: |
+        mkdir -p .fvm
         ln -s $FLUTTER_ROOT .fvm/flutter_sdk
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
         dart pub global activate melos $MELOS_VERSION
