@@ -1,6 +1,6 @@
 // GitHubのテンプレート機能使用してリポジトリを作った際に、このファイルのコメントは削除されます
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.19.3",
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
   "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
   "search.exclude": {
     "**/.fvm": true
