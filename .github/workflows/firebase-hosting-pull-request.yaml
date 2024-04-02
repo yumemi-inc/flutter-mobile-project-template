@@ -5,6 +5,9 @@ name: Deploy to Firebase Hosting on PR
 
 on:
   pull_request:
+    paths-ignore:
+      - "**/*.md"
+      - "docs/"
 
 jobs:
   build-and-preview:
