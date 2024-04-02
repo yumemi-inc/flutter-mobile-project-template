@@ -3,7 +3,8 @@ name: Check generated code is latest
 on:
   pull_request:
     types: [opened, synchronize]
-    paths: ["**/*.dart"] # Only run on Dart file changes
+    paths:
+      - "**.dart" # Only run on Dart file changes
 
 jobs:
   check:
