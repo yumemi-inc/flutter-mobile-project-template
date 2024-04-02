@@ -4,7 +4,8 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "**.dart" # Only run on Dart file changes
+      - "**.dart"
+      - "**.yaml"
 
 jobs:
   check:
