@@ -4,9 +4,26 @@ on:
   pull_request:
 
 jobs:
-  check:
+  pre-check:
+    permissions:
+      pull-requests: read
+    outputs:
+      src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
+    steps:
+      - uses: dorny/paths-filter@v3.0.2
+        id: filter
+        with:
+          filters: |
+            src:
+              - "**.dart"
+              - "**.yaml"
+              - "scripts/**"
 
+  check:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
 
     steps:
