@@ -4,7 +4,19 @@
 name: Deploy to Firebase Hosting on PR
 
 on:
+  workflow_dispatch:
   pull_request:
+    paths-ignore:
+      - ".idea/**"
+      - ".vscode/**"
+      - "apps/app/**"
+      - "docs/**"
+      - "scrpts/**"
+      - "tools/**"
+      - "mason.yaml"
+      - "**/docs/**"
+      - "**/test/**"
+      - "**.md"
 
 jobs:
   build-and-preview:

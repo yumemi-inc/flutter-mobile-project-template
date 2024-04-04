@@ -4,9 +4,33 @@ on:
   pull_request:
 
 jobs:
-  check:
+  pre-check:
+    permissions:
+      pull-requests: write
+    outputs:
+      src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
+    steps:
+      - uses: dorny/paths-filter@v3.0.2
+        id: filter
+        with:
+          filters: |
+            src:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/**"
+      - name: Comment
+        if: ${{ needs.pre-check.outputs.src == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment -b "チェック対象ファイルの変更がなかったため、checkジョブをスキップしました"
 
+  check:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
 
     steps:
