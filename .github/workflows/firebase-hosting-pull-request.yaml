@@ -7,8 +7,16 @@ on:
   workflow_dispatch:
   pull_request:
     paths-ignore:
-      - "**.md"
+      - ".idea/**"
+      - ".vscode/**"
+      - "apps/app/**"
       - "docs/**"
+      - "scrpts/**"
+      - "tools/**"
+      - "mason.yaml"
+      - "**/docs/**"
+      - "**/test/**"
+      - "**.md"
 
 jobs:
   build-and-preview:
