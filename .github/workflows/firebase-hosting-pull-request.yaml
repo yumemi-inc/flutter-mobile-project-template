@@ -4,6 +4,7 @@
 name: Deploy to Firebase Hosting on PR
 
 on:
+  workflow_dispatch:
   pull_request:
     paths-ignore:
       - "**.md"
