@@ -18,6 +18,7 @@ jobs:
             src:
               - "**.dart"
               - "**.yaml"
+              - "**/pubspec.lock"
               - "scripts/**"
       - name: Comment
         if: ${{ needs.pre-check.outputs.src == 'false' }}

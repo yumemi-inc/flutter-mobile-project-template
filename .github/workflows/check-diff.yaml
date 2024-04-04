@@ -7,6 +7,7 @@ on:
     paths:
       - "**.dart"
       - "**.yaml"
+      - "**/pubspec.lock"
 
 jobs:
   check:
