@@ -1,6 +1,5 @@
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
-import 'package:cores_core/src/util/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -53,7 +52,6 @@ class CommonPagingView<
 
     return ref.watch(_provider).whenPlus(
           data: (data, {required hasError}) {
-            logger.info('data: $data');
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),
               child: _contentBuilder(
