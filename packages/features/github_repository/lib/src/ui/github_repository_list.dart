@@ -12,7 +12,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
-    final repositories = ref.watch(listPublicRepositoriesProvider);
+    final repositories = ref.watch(listOrganizationRepositoriesProvider());
     final navigator = ref.watch(homeNavigatorProvider);
     ref.listen(scrollNotifierProvider, (_, __) async {
       if (!context.mounted) {
