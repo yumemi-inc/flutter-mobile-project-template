@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'repository.g.dart';
 
 @riverpod
-Future<List<GitHubRepository>> listOrganizationRepositories(
+Future<GitHubRepositoryResult> listOrganizationRepositories(
   ListOrganizationRepositoriesRef ref, {
   int page = 1,
   int perPage = 30,
@@ -13,5 +13,18 @@ Future<List<GitHubRepository>> listOrganizationRepositories(
   final dio = ref.watch(dioProvider);
   final response = await dio
       .get<ListJson>('/orgs/yumemi-inc/repos?page=$page&per_page=$perPage');
-  return response.data?.parseList(GitHubRepository.fromJson) ?? [];
+  final items = response.data?.parseList(GitHubRepository.fromJson) ?? [];
+  return GitHubRepositoryResult(
+    items: items,
+    hasMore: items.length >= perPage,
+  );
+}
+
+class GitHubRepositoryResult {
+  const GitHubRepositoryResult({
+    required this.items,
+    required this.hasMore,
+  });
+  final List<GitHubRepository> items;
+  final bool hasMore;
 }
