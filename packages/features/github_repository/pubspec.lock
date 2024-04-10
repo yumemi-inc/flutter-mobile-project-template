@@ -170,7 +170,7 @@ packages:
     source: hosted
     version: "3.1.1"
   cores_core:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../cores/core"
       relative: true
