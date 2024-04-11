@@ -34,4 +34,10 @@ class PageBasedGithubRepositoryNotifier
       hasMore: res.hasMore,
     );
   }
+
+  @override
+  void forceRefresh() {
+    ref.invalidate(listOrganizationRepositoriesProvider);
+    super.forceRefresh();
+  }
 }
