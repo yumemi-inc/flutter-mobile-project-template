@@ -11,7 +11,7 @@ jobs:
       src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
     steps:
-      - uses: dorny/paths-filter@v3.0.2
+      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: filter
         with:
           filters: |
