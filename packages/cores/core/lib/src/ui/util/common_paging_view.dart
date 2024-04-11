@@ -96,7 +96,6 @@ class CommonPagingView<
 class _EndItem extends StatelessWidget {
   const _EndItem({
     required void Function() onScrollEnd,
-    super.key,
   }) : _onScrollEnd = onScrollEnd;
   final VoidCallback _onScrollEnd;
 
@@ -123,7 +122,6 @@ class _ErrorItem extends StatelessWidget {
   const _ErrorItem({
     required String errorMessage,
     required VoidCallback onError,
-    super.key,
   })  : _errorMessage = errorMessage,
         _onError = onError;
 
@@ -148,7 +146,7 @@ class _ErrorItem extends StatelessWidget {
 }
 
 class _LoadingItem extends StatelessWidget {
-  const _LoadingItem({super.key});
+  const _LoadingItem();
 
   @override
   Widget build(BuildContext context) =>
