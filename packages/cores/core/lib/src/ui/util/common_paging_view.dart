@@ -1,5 +1,7 @@
+import 'package:cores_core/exception.dart';
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
+import 'package:cores_core/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -23,7 +25,7 @@ class CommonPagingView<
   const CommonPagingView({
     required AutoDisposeAsyncNotifierProvider<N, D> provider,
     required Widget Function(D, Widget?) contentBuilder,
-    required VoidCallback? onError,
+    required void Function(AppException e) onError,
     super.key,
   })  : _contentBuilder = contentBuilder,
         _provider = provider,
@@ -37,7 +39,7 @@ class CommonPagingView<
   /// displayed at the end of the list if it's non-null.
   final Widget Function(D data, Widget? endItem) _contentBuilder;
 
-  final VoidCallback? _onError;
+  final void Function(AppException e) _onError;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -45,7 +47,13 @@ class CommonPagingView<
       _provider,
       (_, next) {
         if (!next.isLoading && next.hasError) {
-          _onError?.call();
+          final error = next.error;
+          if (error is AppException) {
+            _onError(error);
+            return;
+          }
+          // AppException is expected, so this should never be reached.
+          logger.shout('Error: $error');
         }
       },
     );

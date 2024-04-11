@@ -1,3 +1,4 @@
+import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_designsystem/components.dart';
 import 'package:cores_navigation/providers.dart';
@@ -52,9 +53,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
           );
         },
       ),
-      onError: () {
-        // TODO: Implement error handling.
-      },
+      onError: ref.read(appExceptionNotifierProvider.notifier).notify,
     );
   }
 }
