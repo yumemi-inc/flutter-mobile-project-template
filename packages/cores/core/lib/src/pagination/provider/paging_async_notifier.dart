@@ -1,3 +1,4 @@
+import 'package:cores_core/exception.dart';
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -62,7 +63,7 @@ extension AsyncValueErrorHandling<T> on AsyncValue<T> {
   Future<AsyncValue<T>> guardPlus(Future<T> Function() future) async {
     try {
       return AsyncValue.data(await future());
-    } on Exception catch (err, stack) {
+    } on AppException catch (err, stack) {
       return AsyncValue<T>.error(err, stack).copyWithPrevious(this);
     }
   }
