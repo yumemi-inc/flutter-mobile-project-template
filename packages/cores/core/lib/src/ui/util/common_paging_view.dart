@@ -67,7 +67,7 @@ class CommonPagingView<
                 // Displays EndItem to detect scroll end
                 // if more data is available and no errors.
                 data.hasMore && !hasError
-                    ? EndItem(
+                    ? _EndItem(
                         onScrollEnd: () async =>
                             ref.read(_provider.notifier).loadNext(),
                       )
@@ -104,8 +104,8 @@ class CommonPagingView<
   }
 }
 
-class EndItem extends StatelessWidget {
-  const EndItem({
+class _EndItem extends StatelessWidget {
+  const _EndItem({
     required void Function() onScrollEnd,
     super.key,
   }) : _onScrollEnd = onScrollEnd;
