@@ -77,24 +77,13 @@ class CommonPagingView<
           },
           loading: () {
             // Shows loading indicator during initial page load.
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const _LoadingItem();
           },
           error: (e, st) {
             // Displays error message for initial load failures.
-            return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  IconButton(
-                    onPressed: () =>
-                        ref.read(_provider.notifier).forceRefresh(),
-                    icon: const Icon(Icons.refresh),
-                  ),
-                  Text(e.toString()),
-                ],
-              ),
+            return _ErrorItem(
+              errorMessage: e.toString(),
+              onError: () => ref.read(_provider.notifier).forceRefresh(),
             );
           },
           // Continues showing data on subsequent load errors,
@@ -128,4 +117,40 @@ class _EndItem extends StatelessWidget {
       ),
     );
   }
+}
+
+class _ErrorItem extends StatelessWidget {
+  const _ErrorItem({
+    required String errorMessage,
+    required VoidCallback onError,
+    super.key,
+  })  : _errorMessage = errorMessage,
+        _onError = onError;
+
+  final String _errorMessage;
+  final VoidCallback _onError;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            onPressed: _onError,
+            icon: const Icon(Icons.refresh),
+          ),
+          Text(_errorMessage),
+        ],
+      ),
+    );
+  }
+}
+
+class _LoadingItem extends StatelessWidget {
+  const _LoadingItem({super.key});
+
+  @override
+  Widget build(BuildContext context) =>
+      const Center(child: CircularProgressIndicator());
 }
