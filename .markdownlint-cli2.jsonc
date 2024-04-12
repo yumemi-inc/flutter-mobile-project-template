@@ -1,0 +1,18 @@
+{
+  "config": {
+   "default": true,
+   "MD013": false,
+   "MD033": false,
+   "MD041": false,
+   "MD045": false
+  },
+  "ignores": [
+    ".fvm/**/*.md",
+    ".idea/**/*.md",
+    "**/*.markdown",
+    "**/.dart_tool/**/*.md",
+    "**/ios/.symlinks/**/*.md",
+    "**/ios/Pods/**/*.md",
+    "**/ios/Runner/**/*.md"
+  ]
+}
