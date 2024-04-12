@@ -18,7 +18,7 @@ Initialize Firebase Hosting according to the [documentation][2].
 Execute the following command
 
 ```shell
-$ firebase init hosting:github
+firebase init hosting:github
 ```
 
 Complete the setup using the following output as a reference

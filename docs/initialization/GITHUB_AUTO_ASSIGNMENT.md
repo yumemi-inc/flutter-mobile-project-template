@@ -4,7 +4,7 @@
 
 現状のワークフローでは、適切なGitHubアクセストークンを設定する必要があります。
 
-> [!NOTE] 
+> [!NOTE]
 > 人数が少なく、GitHubチームでレビュアーに指定しない場合は [hkusu/review-assign-action] を利用してもよいです
 
 ## 設定方法
@@ -13,6 +13,7 @@
 > 権限がなかったり、顧客に設定を依頼するなどで**自分で設定できない場合**、FlutterギルドのOwnersに相談してください。
 
 ### 1. GitHubアクセストークンの設定
+
 [.github/workflows/auto-assign.yaml] 内の
 `jobs.request-reviewers`の`Generate a token`のstepに、トークンを生成するGitHubアプリの適切な`app-id`と`private-key`を設定してください。
 
@@ -32,9 +33,11 @@
 ```
 
 ### 2. GitHubリポジトリ環境変数の設定
+
 GitHubリポジトリ環境変数に`REVIEWERS`と`TEAM_REVIEWERS`を設定してください。（[GitHub Variables]を参照）
 
 以下のようにカンマ区切りで複数指定することができます。
+
 - `REVIEWERS`: `username1,username2,username3`
 - `TEAM_REVIEWERS`: `team1,team2,team3`
 

@@ -1,9 +1,11 @@
 ## What is "brick"
+
 A brick to create a brick.
 
 The created brick will be added to mason.yaml.
 
 ## Background of creation
+
 It was created to make it easier to create bricks.
 
 In this project, brick-related files and folders are placed under tools/bricks/.
@@ -16,10 +18,13 @@ If we were to create bricks with this in mind, the commands would be redundant, 
 To eliminate this redundancy, we created a brick to create bricks.
 
 ## How to use
+
 Exec below command.
+
 - `mason make brick`
 
 You will then be asked the following three questions at the prompt.
+
 1. What is brick name?
 2. Are you need hooks?
 3. What is brick description?

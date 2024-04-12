@@ -26,6 +26,7 @@ The directory structure is shown below.
 ## Packages
 
 > [!IMPORTANT]
+>
 > - Packages in `cores` are called by app packages in `apps`, by packages in `features`, and by packages in `cores`.
 > - Packages in `features` are only called from app packages in `apps`.
 
