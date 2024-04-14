@@ -6,6 +6,9 @@
    "MD041": false,
    "MD045": false
   },
+  "globs": [
+    "**/*.md"
+  ],
   "ignores": [
     ".fvm/**/*.md",
     ".idea/**/*.md",
