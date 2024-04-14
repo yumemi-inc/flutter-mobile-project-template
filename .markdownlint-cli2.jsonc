@@ -12,7 +12,6 @@
   "ignores": [
     ".fvm/**/*.md",
     ".idea/**/*.md",
-    "**/*.markdown",
     "**/.dart_tool/**/*.md",
     "**/ios/.symlinks/**/*.md",
     "**/ios/Pods/**/*.md",
