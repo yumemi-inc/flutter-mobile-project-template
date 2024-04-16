@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-typedef GitHubRepoPagingView = CommonPagingView<
+typedef GitHubRepositoryPagingView = CommonPagingView<
     PageBasedGithubRepositoryNotifier,
     GithubRepositoryPageState,
     GitHubRepository>;
@@ -32,7 +32,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
         curve: Curves.easeOut,
       );
     });
-    return GitHubRepoPagingView(
+    return GitHubRepositoryPagingView(
       provider: pageBasedGithubRepositoryNotifierProvider,
       contentBuilder: (data, endItem) => ListView.builder(
         key: const PageStorageKey('pageBasedView'),

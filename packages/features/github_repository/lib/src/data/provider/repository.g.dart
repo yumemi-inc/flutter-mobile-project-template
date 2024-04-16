@@ -9,7 +9,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$listOrganizationRepositoriesHash() =>
-    r'14f4928050804557c5ed2b55da76034fd6a7e620';
+    r'eaf306d592162528b2af6e7a68052da6280d57f6';
 
 /// Copied from Dart SDK
 class _SystemHash {
