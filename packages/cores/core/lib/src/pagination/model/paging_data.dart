@@ -5,7 +5,7 @@ part 'paging_data.freezed.dart';
 /// Interface for a dataset capable of pagination.
 /// Contains a list of items in [items] and a flag [hasMore]
 /// indicating if more pages are available.
-abstract class PagingData<T> {
+abstract interface class PagingData<T> {
   List<T> get items;
   bool get hasMore;
 }
