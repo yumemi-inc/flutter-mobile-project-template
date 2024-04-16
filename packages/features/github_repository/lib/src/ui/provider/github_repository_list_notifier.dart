@@ -14,13 +14,8 @@ class PageBasedGithubRepositoryNotifier
     extends PageBasedPagingAsyncNotifier<GitHubRepository> {
   @override
   Future<GithubRepositoryPageState> build() async {
-    final res = await ref.watch(listOrganizationRepositoriesProvider().future);
-    ref.keepAlive();
-    return GithubRepositoryPageState(
-      items: res.items,
-      currentPage: 1,
-      hasMore: res.hasMore,
-    );
+    const initialPage = 1;
+    return fetch(initialPage);
   }
 
   @override
@@ -30,7 +25,7 @@ class PageBasedGithubRepositoryNotifier
     ref.keepAlive();
     return GithubRepositoryPageState(
       items: res.items,
-      currentPage: 1,
+      currentPage: page,
       hasMore: res.hasMore,
     );
   }
