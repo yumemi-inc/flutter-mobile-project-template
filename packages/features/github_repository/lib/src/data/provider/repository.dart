@@ -16,9 +16,11 @@ Future<GitHubRepositoryResult> listOrganizationRepositories(
         .get<ListJson>('/orgs/yumemi-inc/repos?page=$page&per_page=$perPage'),
   );
   final items = response.data?.parseList(GitHubRepository.fromJson) ?? [];
+  final hasMore =
+      response.headers.map['link']?.first.contains('rel="next"') ?? false;
   return GitHubRepositoryResult(
     items: items,
-    hasMore: items.length >= perPage,
+    hasMore: hasMore,
   );
 }
 
