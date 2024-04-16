@@ -1,4 +1,3 @@
-import 'package:cores_core/exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 extension AsyncValueExtension<T> on AsyncValue<T> {
@@ -9,7 +8,7 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
   ) async {
     try {
       return AsyncValue.data(await future());
-    } on AppException catch (err, stack) {
+    } on Exception catch (err, stack) {
       return AsyncValue<T>.error(err, stack).copyWithPrevious(this);
     }
   }
