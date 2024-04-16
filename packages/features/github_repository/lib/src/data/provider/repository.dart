@@ -9,11 +9,12 @@ Future<GitHubRepositoryResult> listOrganizationRepositories(
   ListOrganizationRepositoriesRef ref, {
   int page = 1,
   int perPage = 30,
+  String org = 'yumemi-inc',
 }) async {
   final dio = ref.watch(dioProvider);
   final response = await dio.safeRequest(
-    request: () => dio
-        .get<ListJson>('/orgs/yumemi-inc/repos?page=$page&per_page=$perPage'),
+    request: () =>
+        dio.get<ListJson>('/orgs/$org/repos?page=$page&per_page=$perPage'),
   );
   final items = response.data?.parseList(GitHubRepository.fromJson) ?? [];
   final hasMore =

@@ -9,7 +9,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$listOrganizationRepositoriesHash() =>
-    r'eaf306d592162528b2af6e7a68052da6280d57f6';
+    r'e66cef80657aac21284d89a4e6dd27d825aafa33';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -47,10 +47,12 @@ class ListOrganizationRepositoriesFamily
   ListOrganizationRepositoriesProvider call({
     int page = 1,
     int perPage = 30,
+    String org = 'yumemi-inc',
   }) {
     return ListOrganizationRepositoriesProvider(
       page: page,
       perPage: perPage,
+      org: org,
     );
   }
 
@@ -61,6 +63,7 @@ class ListOrganizationRepositoriesFamily
     return call(
       page: provider.page,
       perPage: provider.perPage,
+      org: provider.org,
     );
   }
 
@@ -86,11 +89,13 @@ class ListOrganizationRepositoriesProvider
   ListOrganizationRepositoriesProvider({
     int page = 1,
     int perPage = 30,
+    String org = 'yumemi-inc',
   }) : this._internal(
           (ref) => listOrganizationRepositories(
             ref as ListOrganizationRepositoriesRef,
             page: page,
             perPage: perPage,
+            org: org,
           ),
           from: listOrganizationRepositoriesProvider,
           name: r'listOrganizationRepositoriesProvider',
@@ -103,6 +108,7 @@ class ListOrganizationRepositoriesProvider
               ListOrganizationRepositoriesFamily._allTransitiveDependencies,
           page: page,
           perPage: perPage,
+          org: org,
         );
 
   ListOrganizationRepositoriesProvider._internal(
@@ -114,10 +120,12 @@ class ListOrganizationRepositoriesProvider
     required super.from,
     required this.page,
     required this.perPage,
+    required this.org,
   }) : super.internal();
 
   final int page;
   final int perPage;
+  final String org;
 
   @override
   Override overrideWith(
@@ -136,6 +144,7 @@ class ListOrganizationRepositoriesProvider
         debugGetCreateSourceHash: null,
         page: page,
         perPage: perPage,
+        org: org,
       ),
     );
   }
@@ -149,7 +158,8 @@ class ListOrganizationRepositoriesProvider
   bool operator ==(Object other) {
     return other is ListOrganizationRepositoriesProvider &&
         other.page == page &&
-        other.perPage == perPage;
+        other.perPage == perPage &&
+        other.org == org;
   }
 
   @override
@@ -157,6 +167,7 @@ class ListOrganizationRepositoriesProvider
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, page.hashCode);
     hash = _SystemHash.combine(hash, perPage.hashCode);
+    hash = _SystemHash.combine(hash, org.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -169,6 +180,9 @@ mixin ListOrganizationRepositoriesRef
 
   /// The parameter `perPage` of this provider.
   int get perPage;
+
+  /// The parameter `org` of this provider.
+  String get org;
 }
 
 class _ListOrganizationRepositoriesProviderElement
@@ -180,6 +194,8 @@ class _ListOrganizationRepositoriesProviderElement
   int get page => (origin as ListOrganizationRepositoriesProvider).page;
   @override
   int get perPage => (origin as ListOrganizationRepositoriesProvider).perPage;
+  @override
+  String get org => (origin as ListOrganizationRepositoriesProvider).org;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
