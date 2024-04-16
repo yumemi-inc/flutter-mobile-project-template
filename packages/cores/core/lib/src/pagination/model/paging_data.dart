@@ -10,8 +10,11 @@ abstract interface class PagingData<T> {
   bool get hasMore;
 }
 
-/// Represents paginated data for a specific page.
-/// Manages paginated items and checks for more data availability.
+/// Represents accumulated paginated data up to the current page.
+///
+/// This class encapsulates a list of items from page one to the current page,
+/// along with metadata about the paging status such as the current page number
+/// and whether more pages are available.
 @freezed
 class PageBasedPagingData<T>
     with _$PageBasedPagingData<T>
