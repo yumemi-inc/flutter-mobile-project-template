@@ -100,7 +100,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
             // Shows loading indicator during initial page load.
             return const _LoadingItem();
           },
-          error: (e, st) {
+          error: (e, _) {
             // Displays error message for initial load failures.
             return _ErrorItem(
               errorMessage: e.toString(),
