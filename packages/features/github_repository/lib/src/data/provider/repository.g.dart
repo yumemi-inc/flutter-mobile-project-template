@@ -9,7 +9,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$listOrganizationRepositoriesHash() =>
-    r'e66cef80657aac21284d89a4e6dd27d825aafa33';
+    r'6111d02e64e9864e70af001753d9ba7c359996d3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,7 +39,7 @@ const listOrganizationRepositoriesProvider =
 
 /// See also [listOrganizationRepositories].
 class ListOrganizationRepositoriesFamily
-    extends Family<AsyncValue<GitHubRepositoryResult>> {
+    extends Family<AsyncValue<GithubRepositoryResult>> {
   /// See also [listOrganizationRepositories].
   const ListOrganizationRepositoriesFamily();
 
@@ -84,7 +84,7 @@ class ListOrganizationRepositoriesFamily
 
 /// See also [listOrganizationRepositories].
 class ListOrganizationRepositoriesProvider
-    extends AutoDisposeFutureProvider<GitHubRepositoryResult> {
+    extends AutoDisposeFutureProvider<GithubRepositoryResult> {
   /// See also [listOrganizationRepositories].
   ListOrganizationRepositoriesProvider({
     int page = 1,
@@ -129,7 +129,7 @@ class ListOrganizationRepositoriesProvider
 
   @override
   Override overrideWith(
-    FutureOr<GitHubRepositoryResult> Function(
+    FutureOr<GithubRepositoryResult> Function(
             ListOrganizationRepositoriesRef provider)
         create,
   ) {
@@ -150,7 +150,7 @@ class ListOrganizationRepositoriesProvider
   }
 
   @override
-  AutoDisposeFutureProviderElement<GitHubRepositoryResult> createElement() {
+  AutoDisposeFutureProviderElement<GithubRepositoryResult> createElement() {
     return _ListOrganizationRepositoriesProviderElement(this);
   }
 
@@ -174,7 +174,7 @@ class ListOrganizationRepositoriesProvider
 }
 
 mixin ListOrganizationRepositoriesRef
-    on AutoDisposeFutureProviderRef<GitHubRepositoryResult> {
+    on AutoDisposeFutureProviderRef<GithubRepositoryResult> {
   /// The parameter `page` of this provider.
   int get page;
 
@@ -186,7 +186,7 @@ mixin ListOrganizationRepositoriesRef
 }
 
 class _ListOrganizationRepositoriesProviderElement
-    extends AutoDisposeFutureProviderElement<GitHubRepositoryResult>
+    extends AutoDisposeFutureProviderElement<GithubRepositoryResult>
     with ListOrganizationRepositoriesRef {
   _ListOrganizationRepositoriesProviderElement(super.provider);
 

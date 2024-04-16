@@ -4,12 +4,12 @@ part 'github_repository.freezed.dart';
 part 'github_repository.g.dart';
 
 @freezed
-class GitHubRepository with _$GitHubRepository {
-  const factory GitHubRepository({
+class GithubRepository with _$GithubRepository {
+  const factory GithubRepository({
     required int id,
     required String name,
-  }) = _GitHubRepository;
+  }) = _GithubRepository;
 
-  factory GitHubRepository.fromJson(Map<String, dynamic> json) =>
-      _$GitHubRepositoryFromJson(json);
+  factory GithubRepository.fromJson(Map<String, dynamic> json) =>
+      _$GithubRepositoryFromJson(json);
 }

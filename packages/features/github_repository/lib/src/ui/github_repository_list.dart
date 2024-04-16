@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-typedef GitHubRepositoryPagingView = CommonPagingView<
+typedef GithubRepositoryPagingView = CommonPagingView<
     PageBasedGithubRepositoryNotifier,
     GithubRepositoryPageState,
-    GitHubRepository>;
+    GithubRepository>;
 
-class GitHubRepositoryList extends HookConsumerWidget {
-  const GitHubRepositoryList({super.key});
+class GithubRepositoryList extends HookConsumerWidget {
+  const GithubRepositoryList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,7 +32,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
         curve: Curves.easeOut,
       );
     });
-    return GitHubRepositoryPagingView(
+    return GithubRepositoryPagingView(
       provider: pageBasedGithubRepositoryNotifierProvider,
       contentBuilder: (data, endItem) => ListView.builder(
         key: const PageStorageKey('pageBasedView'),
