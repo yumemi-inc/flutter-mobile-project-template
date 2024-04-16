@@ -35,9 +35,27 @@ class CommonPagingView<
   /// Specifies the provider for a [PagingAsyncNotifier] implemented class.
   final AutoDisposeAsyncNotifierProvider<N, D> _provider;
 
-  /// Specifies a function to return a widget for displaying data.
-  /// `endItem` is a widget used to detect when the last item is visible; it's
-  /// displayed at the end of the list if it's non-null.
+  /// Specifies a function to return a widget for displaying data. The function
+  /// also receives an optional `endItem` widget.
+  /// `endItem` serves as a marker to indicate the end of the list. When `endItem`
+  /// is provided and non-null, it must be explicitly included in the list's layout
+  /// by adding it as an additional item. This is typically used to detect when the
+  /// last item becomes visible or to add a special widget at the end of the list.
+  ///
+  /// Example:
+  /// ```dart
+  /// contentBuilder: (data, endItem) => ListView.builder(
+  ///     itemCount: data.items.length + (endItem != null ? 1 : 0),
+  ///     itemBuilder: (context, index) {
+  ///       if (index == data.items.length && endItem != null) {
+  ///         // This is the end item
+  ///         return endItem;
+  ///       }
+  ///       // This is a regular item
+  ///       return ListTile(title: Text(data.items[index].name));
+  ///     },
+  /// ),
+  /// ```
   final Widget Function(D data, Widget? endItem) _contentBuilder;
 
   final void Function(AppException e) _onError;
