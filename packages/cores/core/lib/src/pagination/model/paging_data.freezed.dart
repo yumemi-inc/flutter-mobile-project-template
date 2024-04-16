@@ -15,30 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$PageBasedPagingData<T extends PagingDataItem<U>, U> {
+mixin _$PageBasedPagingData<T> {
   List<T> get items => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PageBasedPagingDataCopyWith<T, U, PageBasedPagingData<T, U>> get copyWith =>
+  $PageBasedPagingDataCopyWith<T, PageBasedPagingData<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PageBasedPagingDataCopyWith<T extends PagingDataItem<U>, U,
-    $Res> {
-  factory $PageBasedPagingDataCopyWith(PageBasedPagingData<T, U> value,
-          $Res Function(PageBasedPagingData<T, U>) then) =
-      _$PageBasedPagingDataCopyWithImpl<T, U, $Res, PageBasedPagingData<T, U>>;
+abstract class $PageBasedPagingDataCopyWith<T, $Res> {
+  factory $PageBasedPagingDataCopyWith(PageBasedPagingData<T> value,
+          $Res Function(PageBasedPagingData<T>) then) =
+      _$PageBasedPagingDataCopyWithImpl<T, $Res, PageBasedPagingData<T>>;
   @useResult
   $Res call({List<T> items, int page, bool hasMore});
 }
 
 /// @nodoc
-class _$PageBasedPagingDataCopyWithImpl<T extends PagingDataItem<U>, U, $Res,
-        $Val extends PageBasedPagingData<T, U>>
-    implements $PageBasedPagingDataCopyWith<T, U, $Res> {
+class _$PageBasedPagingDataCopyWithImpl<T, $Res,
+        $Val extends PageBasedPagingData<T>>
+    implements $PageBasedPagingDataCopyWith<T, $Res> {
   _$PageBasedPagingDataCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -71,26 +70,23 @@ class _$PageBasedPagingDataCopyWithImpl<T extends PagingDataItem<U>, U, $Res,
 }
 
 /// @nodoc
-abstract class _$$PageBasedPagingDataImplCopyWith<T extends PagingDataItem<U>,
-    U, $Res> implements $PageBasedPagingDataCopyWith<T, U, $Res> {
-  factory _$$PageBasedPagingDataImplCopyWith(
-          _$PageBasedPagingDataImpl<T, U> value,
-          $Res Function(_$PageBasedPagingDataImpl<T, U>) then) =
-      __$$PageBasedPagingDataImplCopyWithImpl<T, U, $Res>;
+abstract class _$$PageBasedPagingDataImplCopyWith<T, $Res>
+    implements $PageBasedPagingDataCopyWith<T, $Res> {
+  factory _$$PageBasedPagingDataImplCopyWith(_$PageBasedPagingDataImpl<T> value,
+          $Res Function(_$PageBasedPagingDataImpl<T>) then) =
+      __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({List<T> items, int page, bool hasMore});
 }
 
 /// @nodoc
-class __$$PageBasedPagingDataImplCopyWithImpl<T extends PagingDataItem<U>, U,
-        $Res>
-    extends _$PageBasedPagingDataCopyWithImpl<T, U, $Res,
-        _$PageBasedPagingDataImpl<T, U>>
-    implements _$$PageBasedPagingDataImplCopyWith<T, U, $Res> {
-  __$$PageBasedPagingDataImplCopyWithImpl(
-      _$PageBasedPagingDataImpl<T, U> _value,
-      $Res Function(_$PageBasedPagingDataImpl<T, U>) _then)
+class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
+    extends _$PageBasedPagingDataCopyWithImpl<T, $Res,
+        _$PageBasedPagingDataImpl<T>>
+    implements _$$PageBasedPagingDataImplCopyWith<T, $Res> {
+  __$$PageBasedPagingDataImplCopyWithImpl(_$PageBasedPagingDataImpl<T> _value,
+      $Res Function(_$PageBasedPagingDataImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +96,7 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T extends PagingDataItem<U>, U,
     Object? page = null,
     Object? hasMore = null,
   }) {
-    return _then(_$PageBasedPagingDataImpl<T, U>(
+    return _then(_$PageBasedPagingDataImpl<T>(
       items: null == items
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
@@ -119,8 +115,7 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T extends PagingDataItem<U>, U,
 
 /// @nodoc
 
-class _$PageBasedPagingDataImpl<T extends PagingDataItem<U>, U>
-    extends _PageBasedPagingData<T, U> {
+class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
   const _$PageBasedPagingDataImpl(
       {required final List<T> items, required this.page, required this.hasMore})
       : _items = items,
@@ -141,14 +136,14 @@ class _$PageBasedPagingDataImpl<T extends PagingDataItem<U>, U>
 
   @override
   String toString() {
-    return 'PageBasedPagingData<$T, $U>(items: $items, page: $page, hasMore: $hasMore)';
+    return 'PageBasedPagingData<$T>(items: $items, page: $page, hasMore: $hasMore)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PageBasedPagingDataImpl<T, U> &&
+            other is _$PageBasedPagingDataImpl<T> &&
             const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.page, page) || other.page == page) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
@@ -161,17 +156,16 @@ class _$PageBasedPagingDataImpl<T extends PagingDataItem<U>, U>
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PageBasedPagingDataImplCopyWith<T, U, _$PageBasedPagingDataImpl<T, U>>
-      get copyWith => __$$PageBasedPagingDataImplCopyWithImpl<T, U,
-          _$PageBasedPagingDataImpl<T, U>>(this, _$identity);
+  _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
+      get copyWith => __$$PageBasedPagingDataImplCopyWithImpl<T,
+          _$PageBasedPagingDataImpl<T>>(this, _$identity);
 }
 
-abstract class _PageBasedPagingData<T extends PagingDataItem<U>, U>
-    extends PageBasedPagingData<T, U> {
+abstract class _PageBasedPagingData<T> extends PageBasedPagingData<T> {
   const factory _PageBasedPagingData(
       {required final List<T> items,
       required final int page,
-      required final bool hasMore}) = _$PageBasedPagingDataImpl<T, U>;
+      required final bool hasMore}) = _$PageBasedPagingDataImpl<T>;
   const _PageBasedPagingData._() : super._();
 
   @override
@@ -182,6 +176,6 @@ abstract class _PageBasedPagingData<T extends PagingDataItem<U>, U>
   bool get hasMore;
   @override
   @JsonKey(ignore: true)
-  _$$PageBasedPagingDataImplCopyWith<T, U, _$PageBasedPagingDataImpl<T, U>>
+  _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -8,10 +8,10 @@ final pageBasedGithubRepositoryNotifierProvider = AsyncNotifierProvider
   PageBasedGithubRepositoryNotifier.new,
 );
 
-typedef GithubRepositoryPageState = PageBasedPagingData<GitHubRepository, int>;
+typedef GithubRepositoryPageState = PageBasedPagingData<GitHubRepository>;
 
 class PageBasedGithubRepositoryNotifier
-    extends PageBasedPagingAsyncNotifier<GitHubRepository, int> {
+    extends PageBasedPagingAsyncNotifier<GitHubRepository> {
   @override
   Future<GithubRepositoryPageState> build() async {
     final res = await ref.watch(listOrganizationRepositoriesProvider().future);

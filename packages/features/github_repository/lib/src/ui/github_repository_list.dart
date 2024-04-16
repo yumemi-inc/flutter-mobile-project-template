@@ -12,8 +12,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 typedef GitHubRepoPagingView = CommonPagingView<
     PageBasedGithubRepositoryNotifier,
     GithubRepositoryPageState,
-    GitHubRepository,
-    int>;
+    GitHubRepository>;
 
 class GitHubRepositoryList extends HookConsumerWidget {
   const GitHubRepositoryList({super.key});

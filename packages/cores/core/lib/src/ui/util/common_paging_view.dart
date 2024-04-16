@@ -18,11 +18,8 @@ import 'package:visibility_detector/visibility_detector.dart';
 /// 5. Handles errors with an optional callback [_onError] for non-initial
 ///    loads.
 /// 6. Enables pull-to-refresh, allowing manual data refresh.
-class CommonPagingView<
-    N extends PagingAsyncNotifier<D, I, U>,
-    D extends PagingData<I, U>,
-    I extends PagingDataItem<U>,
-    U> extends ConsumerWidget {
+class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
+    D extends PagingData<T>, T> extends ConsumerWidget {
   const CommonPagingView({
     required AutoDisposeAsyncNotifierProvider<N, D> provider,
     required Widget Function(D, Widget?) contentBuilder,
