@@ -18,7 +18,7 @@ class PageBasedPagingData<T>
     implements PagingData<T> {
   const factory PageBasedPagingData({
     required List<T> items,
-    required int page,
+    required int currentPage,
     required bool hasMore,
   }) = _PageBasedPagingData<T>;
   const PageBasedPagingData._();

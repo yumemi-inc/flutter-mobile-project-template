@@ -40,11 +40,11 @@ abstract class PageBasedPagingAsyncNotifier<T>
 
       state = await state.executePreservingPreviousOnError(
         () async {
-          final next = await fetchNext(value.page + 1);
+          final next = await fetchNext(value.currentPage + 1);
 
           return value.copyWith(
             items: [...value.items, ...next.items],
-            page: value.page + 1,
+            currentPage: value.currentPage + 1,
             hasMore: next.hasMore,
           );
         },

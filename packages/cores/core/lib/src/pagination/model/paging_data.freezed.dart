@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$PageBasedPagingData<T> {
   List<T> get items => throw _privateConstructorUsedError;
-  int get page => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -31,7 +31,7 @@ abstract class $PageBasedPagingDataCopyWith<T, $Res> {
           $Res Function(PageBasedPagingData<T>) then) =
       _$PageBasedPagingDataCopyWithImpl<T, $Res, PageBasedPagingData<T>>;
   @useResult
-  $Res call({List<T> items, int page, bool hasMore});
+  $Res call({List<T> items, int currentPage, bool hasMore});
 }
 
 /// @nodoc
@@ -49,7 +49,7 @@ class _$PageBasedPagingDataCopyWithImpl<T, $Res,
   @override
   $Res call({
     Object? items = null,
-    Object? page = null,
+    Object? currentPage = null,
     Object? hasMore = null,
   }) {
     return _then(_value.copyWith(
@@ -57,9 +57,9 @@ class _$PageBasedPagingDataCopyWithImpl<T, $Res,
           ? _value.items
           : items // ignore: cast_nullable_to_non_nullable
               as List<T>,
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -77,7 +77,7 @@ abstract class _$$PageBasedPagingDataImplCopyWith<T, $Res>
       __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({List<T> items, int page, bool hasMore});
+  $Res call({List<T> items, int currentPage, bool hasMore});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? items = null,
-    Object? page = null,
+    Object? currentPage = null,
     Object? hasMore = null,
   }) {
     return _then(_$PageBasedPagingDataImpl<T>(
@@ -101,9 +101,9 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
           ? _value._items
           : items // ignore: cast_nullable_to_non_nullable
               as List<T>,
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      currentPage: null == currentPage
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
       hasMore: null == hasMore
           ? _value.hasMore
@@ -117,7 +117,9 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
 
 class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
   const _$PageBasedPagingDataImpl(
-      {required final List<T> items, required this.page, required this.hasMore})
+      {required final List<T> items,
+      required this.currentPage,
+      required this.hasMore})
       : _items = items,
         super._();
 
@@ -130,13 +132,13 @@ class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
   }
 
   @override
-  final int page;
+  final int currentPage;
   @override
   final bool hasMore;
 
   @override
   String toString() {
-    return 'PageBasedPagingData<$T>(items: $items, page: $page, hasMore: $hasMore)';
+    return 'PageBasedPagingData<$T>(items: $items, currentPage: $currentPage, hasMore: $hasMore)';
   }
 
   @override
@@ -145,13 +147,14 @@ class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
         (other.runtimeType == runtimeType &&
             other is _$PageBasedPagingDataImpl<T> &&
             const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.page, page) || other.page == page) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage) &&
             (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_items), page, hasMore);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_items), currentPage, hasMore);
 
   @JsonKey(ignore: true)
   @override
@@ -164,14 +167,14 @@ class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
 abstract class _PageBasedPagingData<T> extends PageBasedPagingData<T> {
   const factory _PageBasedPagingData(
       {required final List<T> items,
-      required final int page,
+      required final int currentPage,
       required final bool hasMore}) = _$PageBasedPagingDataImpl<T>;
   const _PageBasedPagingData._() : super._();
 
   @override
   List<T> get items;
   @override
-  int get page;
+  int get currentPage;
   @override
   bool get hasMore;
   @override

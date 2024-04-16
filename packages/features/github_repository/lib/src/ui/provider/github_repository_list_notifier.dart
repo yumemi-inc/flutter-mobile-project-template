@@ -18,7 +18,7 @@ class PageBasedGithubRepositoryNotifier
     ref.keepAlive();
     return GithubRepositoryPageState(
       items: res.items,
-      page: 1,
+      currentPage: 1,
       hasMore: res.hasMore,
     );
   }
@@ -30,7 +30,7 @@ class PageBasedGithubRepositoryNotifier
     ref.keepAlive();
     return GithubRepositoryPageState(
       items: res.items,
-      page: 1,
+      currentPage: 1,
       hasMore: res.hasMore,
     );
   }
