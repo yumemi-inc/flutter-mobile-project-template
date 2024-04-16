@@ -8,16 +8,39 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
-/// A widget for pagination, supporting asynchronous data fetching.
+/// A widget for displaying paginated data with asynchronous fetching
+/// capabilities, including pull-to-refresh support.
 ///
 /// Features:
 /// 1. Displays widgets created by [_contentBuilder] with available data.
-/// 2. Shows a [CircularProgressIndicator] while loading the first page.
+/// 2. Shows a CircularProgressIndicator while loading the first page.
 /// 3. Presents an error widget for first page load failures.
 /// 4. Loads the next page when the last item is displayed.
 /// 5. Handles errors with an optional callback [_onError] for non-initial
 ///    loads.
-/// 6. Enables pull-to-refresh, allowing manual data refresh.
+/// 6. Enables pull-to-refresh for manual data refresh.
+///
+/// Generics:
+///   N: Notifier type extending [PagingAsyncNotifier] for data fetching.
+///   D: Type of paginated data which the notifier handles.
+///   T: Type of individual items within the paginated data.
+///
+/// Example:
+/// ```dart
+/// CommonPagingView<MyNotifier, MyPagingData, MyItem>(
+///   provider: myNotifierProvider,
+///   contentBuilder: (data, endItem) => ListView.builder(
+///     itemCount: data.items.length + (endItem != null ? 1 : 0),
+///     itemBuilder: (context, index) {
+///       if (index == data.items.length && endItem != null) {
+///         return endItem;
+///       }
+///       return ListTile(title: Text(data.items[index].name));
+///     },
+///   ),
+///   onError: (e) => showErrorDialog(context, e),
+/// )
+/// ```
 class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     D extends PagingData<T>, T> extends ConsumerWidget {
   const CommonPagingView({
@@ -32,27 +55,11 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
   /// Specifies the provider for a [PagingAsyncNotifier] implemented class.
   final AutoDisposeAsyncNotifierProvider<N, D> _provider;
 
-  /// Specifies a function to return a widget for displaying data. The function
-  /// also receives an optional `endItem` widget.
-  /// `endItem` serves as a marker to indicate the end of the list. When `endItem`
-  /// is provided and non-null, it must be explicitly included in the list's layout
-  /// by adding it as an additional item. This is typically used to detect when the
-  /// last item becomes visible or to add a special widget at the end of the list.
-  ///
-  /// Example:
-  /// ```dart
-  /// contentBuilder: (data, endItem) => ListView.builder(
-  ///     itemCount: data.items.length + (endItem != null ? 1 : 0),
-  ///     itemBuilder: (context, index) {
-  ///       if (index == data.items.length && endItem != null) {
-  ///         // This is the end item
-  ///         return endItem;
-  ///       }
-  ///       // This is a regular item
-  ///       return ListTile(title: Text(data.items[index].name));
-  ///     },
-  /// ),
-  /// ```
+  /// Specifies a function to build widgets for displaying paginated data.
+  /// The function may receive an optional `endItem` widget, which serves as a
+  /// marker for the end of the list. If provided and non-null, `endItem` should
+  /// be included as the final item. This helps in detecting the list's end or
+  /// adding a special widget at that position.
   final Widget Function(D data, Widget? endItem) _contentBuilder;
 
   final void Function(AppException e) _onError;
