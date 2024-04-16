@@ -24,7 +24,7 @@ class PageBasedGithubRepositoryNotifier
   }
 
   @override
-  Future<GithubRepositoryPageState> fetchNext(int page) async {
+  Future<GithubRepositoryPageState> fetch(int page) async {
     final res =
         await ref.read(listOrganizationRepositoriesProvider(page: page).future);
     ref.keepAlive();

@@ -20,13 +20,13 @@ abstract class PagingAsyncNotifier<T extends PagingData<U>, U>
 /// Extends [PagingAsyncNotifier] to implement page-based data fetching logic.
 ///
 /// Automatically handles fetching and appending data for subsequent pages.
-/// Typically, only [fetchNext] needs to be overridden to define fetching logic
+/// Typically, only [fetch] needs to be overridden to define fetching logic
 /// for the next page.
 ///
 /// T: The type of items in the paging data.
 abstract class PageBasedPagingAsyncNotifier<T>
     extends PagingAsyncNotifier<PageBasedPagingData<T>, T> {
-  Future<PageBasedPagingData<T>> fetchNext(int page);
+  Future<PageBasedPagingData<T>> fetch(int page);
 
   @override
   Future<void> loadNext() async {
@@ -40,7 +40,7 @@ abstract class PageBasedPagingAsyncNotifier<T>
 
       state = await state.executePreservingPreviousOnError(
         () async {
-          final next = await fetchNext(value.currentPage + 1);
+          final next = await fetch(value.currentPage + 1);
 
           return value.copyWith(
             items: [...value.items, ...next.items],
