@@ -59,7 +59,7 @@ class CommonPagingView<
       },
     );
 
-    return ref.watch(_provider).whenPlus(
+    return ref.watch(_provider).whenPreservingDataOnError(
           data: (data, {required hasError}) {
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),

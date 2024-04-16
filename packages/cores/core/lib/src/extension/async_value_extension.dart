@@ -1,12 +1,12 @@
 import 'package:cores_core/exception.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-/// Provides error handling for futures within [AsyncValue].
-///
-/// Executes a future and returns its result as an [AsyncValue.data]. Captures
-/// exceptions as [AsyncValue.error], preserving the previous state.
-extension AsyncValueErrorHandling<T> on AsyncValue<T> {
-  Future<AsyncValue<T>> guardPlus(Future<T> Function() future) async {
+extension AsyncValueExtension<T> on AsyncValue<T> {
+  /// Executes a future and returns its result as an [AsyncValue.data]. Captures
+  /// exceptions, preserving the previous state as [AsyncValue.error].
+  Future<AsyncValue<T>> executePreservingPreviousOnError(
+    Future<T> Function() future,
+  ) async {
     try {
       return AsyncValue.data(await future());
     } on AppException catch (err, stack) {
@@ -14,11 +14,13 @@ extension AsyncValueErrorHandling<T> on AsyncValue<T> {
     }
   }
 
-  /// Extends [when] for advanced async data states handling.
+  /// Extends the [when] method to handle async data states more effectively,
+  /// especially when maintaining data integrity despite errors.
   ///
-  /// Use `skipErrorOnHasValue` to ignore errors when data already exists,
-  /// useful for displaying existing data despite subsequent fetch errors.
-  R whenPlus<R>({
+  /// Use `skipErrorOnHasValue` to retain and display existing data
+  /// even if subsequent fetch attempts result in errors,
+  /// ideal for maintaining a seamless user experience.
+  R whenPreservingDataOnError<R>({
     required R Function(T data, {required bool hasError}) data,
     required R Function(Object error, StackTrace stackTrace) error,
     required R Function() loading,

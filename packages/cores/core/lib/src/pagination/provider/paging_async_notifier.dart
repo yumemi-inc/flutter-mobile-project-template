@@ -40,7 +40,7 @@ abstract class PageBasedPagingAsyncNotifier<T extends PagingDataItem<U>, U>
     if (value.hasMore) {
       state = AsyncLoading<PageBasedPagingData<T, U>>().copyWithPrevious(state);
 
-      state = await state.guardPlus(
+      state = await state.executePreservingPreviousOnError(
         () async {
           final next = await fetchNext(value.page + 1);
 
