@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cores_core/extension.dart';
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,7 +28,12 @@ abstract class PagingAsyncNotifier<T extends PagingData<U>, U>
 /// T: The type of items in the paging data.
 abstract class PageBasedPagingAsyncNotifier<T>
     extends PagingAsyncNotifier<PageBasedPagingData<T>, T> {
-  Future<PageBasedPagingData<T>> fetch(int page);
+  Future<PageBasedPagingData<T>> fetch({int page = 1});
+
+  @override
+  FutureOr<PageBasedPagingData<T>> build() {
+    return fetch();
+  }
 
   @override
   Future<void> loadNext() async {
@@ -40,7 +47,7 @@ abstract class PageBasedPagingAsyncNotifier<T>
 
       state = await state.executePreservingPreviousOnError(
         () async {
-          final next = await fetch(value.currentPage + 1);
+          final next = await fetch(page: value.currentPage + 1);
 
           return value.copyWith(
             items: [...value.items, ...next.items],
