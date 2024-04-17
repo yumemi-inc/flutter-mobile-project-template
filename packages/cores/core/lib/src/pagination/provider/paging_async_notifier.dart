@@ -45,7 +45,7 @@ abstract class PageBasedPagingAsyncNotifier<T>
     if (value.hasMore) {
       state = AsyncLoading<PageBasedPagingData<T>>().copyWithPrevious(state);
 
-      state = await state.executePreservingPreviousOnError(
+      state = await state.guardPreservingPreviousOnError(
         () async {
           final next = await fetch(page: value.currentPage + 1);
 

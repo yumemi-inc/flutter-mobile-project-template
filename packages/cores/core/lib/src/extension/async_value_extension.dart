@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 extension AsyncValueExtension<T> on AsyncValue<T> {
   /// Executes a future and returns its result as an [AsyncValue.data]. Captures
   /// exceptions, preserving the previous state as [AsyncValue.error].
-  Future<AsyncValue<T>> executePreservingPreviousOnError(
+  Future<AsyncValue<T>> guardPreservingPreviousOnError(
     Future<T> Function() future,
   ) async {
     try {
@@ -19,7 +19,7 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
   /// Use `skipErrorOnHasValue` to retain and display existing data
   /// even if subsequent fetch attempts result in errors,
   /// ideal for maintaining a seamless user experience.
-  R whenPreservingDataOnError<R>({
+  R whenIgnorableError<R>({
     required R Function(T data, {required bool hasError}) data,
     required R Function(Object error, StackTrace stackTrace) error,
     required R Function() loading,

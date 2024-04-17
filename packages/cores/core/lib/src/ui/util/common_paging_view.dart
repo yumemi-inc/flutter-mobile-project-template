@@ -86,7 +86,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
       },
     );
 
-    return ref.watch(_provider).whenPreservingDataOnError(
+    return ref.watch(_provider).whenIgnorableError(
           data: (data, {required hasError}) {
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),
