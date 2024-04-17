@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GithubRepositoryDetailPage extends StatelessWidget {
-  const GithubRepositoryDetailPage({
+class GitHubRepositoryDetailPage extends StatelessWidget {
+  const GitHubRepositoryDetailPage({
     required String repositoryName,
     super.key,
   }) : _repositoryName = repositoryName;

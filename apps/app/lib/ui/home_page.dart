@@ -35,7 +35,7 @@ class HomePage extends ConsumerWidget {
           color: context.appColors.icon,
         ),
       ),
-      body: const GithubRepositoryList(),
+      body: const GitHubRepositoryList(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'repository.g.dart';
 
 @riverpod
-Future<GithubRepositoryResult> listOrganizationRepositories(
+Future<GitHubRepositoryResult> listOrganizationRepositories(
   ListOrganizationRepositoriesRef ref, {
   int page = 1,
   int perPage = 30,
@@ -16,20 +16,20 @@ Future<GithubRepositoryResult> listOrganizationRepositories(
     request: () =>
         dio.get<ListJson>('/orgs/$org/repos?page=$page&per_page=$perPage'),
   );
-  final items = response.data?.parseList(GithubRepository.fromJson) ?? [];
+  final items = response.data?.parseList(GitHubRepository.fromJson) ?? [];
   final hasMore =
       response.headers.map['link']?.first.contains('rel="next"') ?? false;
-  return GithubRepositoryResult(
+  return GitHubRepositoryResult(
     items: items,
     hasMore: hasMore,
   );
 }
 
-class GithubRepositoryResult {
-  const GithubRepositoryResult({
+class GitHubRepositoryResult {
+  const GitHubRepositoryResult({
     required this.items,
     required this.hasMore,
   });
-  final List<GithubRepository> items;
+  final List<GitHubRepository> items;
   final bool hasMore;
 }

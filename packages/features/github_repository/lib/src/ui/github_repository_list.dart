@@ -9,13 +9,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-typedef GithubRepositoryPagingView = CommonPagingView<
-    PageBasedGithubRepositoryNotifier,
-    GithubRepositoryPageState,
-    GithubRepository>;
+typedef GitHubRepositoryPagingView = CommonPagingView<
+    PageBasedGitHubRepositoryNotifier,
+    GitHubRepositoryPageState,
+    GitHubRepository>;
 
-class GithubRepositoryList extends HookConsumerWidget {
-  const GithubRepositoryList({super.key});
+class GitHubRepositoryList extends HookConsumerWidget {
+  const GitHubRepositoryList({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -32,8 +32,8 @@ class GithubRepositoryList extends HookConsumerWidget {
         curve: Curves.easeOut,
       );
     });
-    return GithubRepositoryPagingView(
-      provider: pageBasedGithubRepositoryNotifierProvider,
+    return GitHubRepositoryPagingView(
+      provider: pageBasedGitHubRepositoryNotifierProvider,
       contentBuilder: (data, endItem) => ListView.builder(
         key: const PageStorageKey('pageBasedView'),
         itemCount: data.items.length + (endItem != null ? 1 : 0),
@@ -44,7 +44,7 @@ class GithubRepositoryList extends HookConsumerWidget {
           }
 
           return TextListTile(
-            onTap: () => navigator.goGithubRepositoryDetailPage(
+            onTap: () => navigator.goGitHubRepositoryDetailPage(
               context,
               data.items[index].name,
             ),

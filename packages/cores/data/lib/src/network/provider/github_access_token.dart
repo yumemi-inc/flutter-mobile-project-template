@@ -4,11 +4,11 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_access_token.g.dart';
 
-const _githubAccessTokenKey = 'GITHUB_ACCESS_TOKEN';
+const _gitHubAccessTokenKey = 'GITHUB_ACCESS_TOKEN';
 
 @riverpod
-String? githubAccessToken(GithubAccessTokenRef ref) {
-  return const bool.hasEnvironment(_githubAccessTokenKey)
-      ? const String.fromEnvironment(_githubAccessTokenKey)
+String? gitHubAccessToken(GitHubAccessTokenRef ref) {
+  return const bool.hasEnvironment(_gitHubAccessTokenKey)
+      ? const String.fromEnvironment(_gitHubAccessTokenKey)
       : null;
 }

@@ -7,13 +7,13 @@ part 'dio.g.dart';
 
 @riverpod
 Dio dio(DioRef ref) {
-  final githubAccessToken = ref.watch(githubAccessTokenProvider);
+  final gitHubAccessToken = ref.watch(gitHubAccessTokenProvider);
 
   final options = BaseOptions(
     baseUrl: 'https://api.github.com',
     headers: {
-      if (githubAccessToken != null)
-        'Authorization': 'token $githubAccessToken',
+      if (gitHubAccessToken != null)
+        'Authorization': 'token $gitHubAccessToken',
     },
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),

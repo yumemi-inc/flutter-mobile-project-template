@@ -8,20 +8,20 @@ part of 'github_access_token.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$githubAccessTokenHash() => r'02287a51e32585273725e752b6120e6e204c7e2a';
+String _$gitHubAccessTokenHash() => r'39482bf0d3e933f1020eaffce373c11da68c0cdd';
 
-/// See also [githubAccessToken].
-@ProviderFor(githubAccessToken)
-final githubAccessTokenProvider = AutoDisposeProvider<String?>.internal(
-  githubAccessToken,
-  name: r'githubAccessTokenProvider',
+/// See also [gitHubAccessToken].
+@ProviderFor(gitHubAccessToken)
+final gitHubAccessTokenProvider = AutoDisposeProvider<String?>.internal(
+  gitHubAccessToken,
+  name: r'gitHubAccessTokenProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$githubAccessTokenHash,
+      : _$gitHubAccessTokenHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef GithubAccessTokenRef = AutoDisposeProviderRef<String?>;
+typedef GitHubAccessTokenRef = AutoDisposeProviderRef<String?>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
