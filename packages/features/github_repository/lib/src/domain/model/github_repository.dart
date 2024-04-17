@@ -6,7 +6,6 @@ part 'github_repository.g.dart';
 @freezed
 class GithubRepository with _$GithubRepository {
   const factory GithubRepository({
-    required int id,
     required String name,
   }) = _GithubRepository;
 

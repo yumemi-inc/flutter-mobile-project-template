@@ -20,7 +20,6 @@ GithubRepository _$GithubRepositoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GithubRepository {
-  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +34,7 @@ abstract class $GithubRepositoryCopyWith<$Res> {
           GithubRepository value, $Res Function(GithubRepository) then) =
       _$GithubRepositoryCopyWithImpl<$Res, GithubRepository>;
   @useResult
-  $Res call({int id, String name});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -51,14 +50,9 @@ class _$GithubRepositoryCopyWithImpl<$Res, $Val extends GithubRepository>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -75,7 +69,7 @@ abstract class _$$GithubRepositoryImplCopyWith<$Res>
       __$$GithubRepositoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String name});
+  $Res call({String name});
 }
 
 /// @nodoc
@@ -89,14 +83,9 @@ class __$$GithubRepositoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? name = null,
   }) {
     return _then(_$GithubRepositoryImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -108,19 +97,17 @@ class __$$GithubRepositoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GithubRepositoryImpl implements _GithubRepository {
-  const _$GithubRepositoryImpl({required this.id, required this.name});
+  const _$GithubRepositoryImpl({required this.name});
 
   factory _$GithubRepositoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$GithubRepositoryImplFromJson(json);
 
   @override
-  final int id;
-  @override
   final String name;
 
   @override
   String toString() {
-    return 'GithubRepository(id: $id, name: $name)';
+    return 'GithubRepository(name: $name)';
   }
 
   @override
@@ -128,13 +115,12 @@ class _$GithubRepositoryImpl implements _GithubRepository {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GithubRepositoryImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, name);
 
   @JsonKey(ignore: true)
   @override
@@ -152,15 +138,12 @@ class _$GithubRepositoryImpl implements _GithubRepository {
 }
 
 abstract class _GithubRepository implements GithubRepository {
-  const factory _GithubRepository(
-      {required final int id,
-      required final String name}) = _$GithubRepositoryImpl;
+  const factory _GithubRepository({required final String name}) =
+      _$GithubRepositoryImpl;
 
   factory _GithubRepository.fromJson(Map<String, dynamic> json) =
       _$GithubRepositoryImpl.fromJson;
 
-  @override
-  int get id;
   @override
   String get name;
   @override

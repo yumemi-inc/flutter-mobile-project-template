@@ -15,7 +15,6 @@ _$GithubRepositoryImpl _$$GithubRepositoryImplFromJson(
       json,
       ($checkedConvert) {
         final val = _$GithubRepositoryImpl(
-          id: $checkedConvert('id', (v) => v as int),
           name: $checkedConvert('name', (v) => v as String),
         );
         return val;
@@ -25,6 +24,5 @@ _$GithubRepositoryImpl _$$GithubRepositoryImplFromJson(
 Map<String, dynamic> _$$GithubRepositoryImplToJson(
         _$GithubRepositoryImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'name': instance.name,
     };
