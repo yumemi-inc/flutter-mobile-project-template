@@ -8,41 +8,41 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
-/// A widget for displaying paginated data with asynchronous fetching
-/// capabilities, including pull-to-refresh support.
-///
-/// Features:
-/// 1. Displays widgets created by [_contentBuilder] with available data.
-/// 2. Shows a CircularProgressIndicator while loading the first page.
-/// 3. Presents an error widget for first page load failures.
-/// 4. Loads the next page when the last item is displayed.
-/// 5. Handles errors with an optional callback [_onError] for non-initial
-///    loads.
-/// 6. Enables pull-to-refresh for manual data refresh.
-///
-/// Generics:
-///   N: Notifier type extending [PagingAsyncNotifier] for data fetching.
-///   D: Type of paginated data which the notifier handles.
-///   T: Type of individual items within the paginated data.
-///
-/// Example:
-/// ```dart
-/// CommonPagingView<MyNotifier, MyPagingData, MyItem>(
-///   provider: myNotifierProvider,
-///   contentBuilder: (data, endItem) => ListView.builder(
-///     itemCount: data.items.length + (endItem != null ? 1 : 0),
-///     itemBuilder: (context, index) {
-///       if (index == data.items.length && endItem != null) {
-///         return endItem;
-///       }
-///       return ListTile(title: Text(data.items[index].name));
-///     },
-///   ),
-///   onError: (e) => showErrorDialog(context, e),
-/// )
-/// ```
 class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     D extends PagingData<T>, T> extends ConsumerWidget {
+  /// A widget for displaying paginated data with asynchronous fetching
+  /// capabilities, including pull-to-refresh support.
+  ///
+  /// Features:
+  /// 1. Displays widgets created by [_contentBuilder] with available data.
+  /// 2. Shows a CircularProgressIndicator while loading the first page.
+  /// 3. Presents an error widget for first page load failures.
+  /// 4. Loads the next page when the last item is displayed.
+  /// 5. Handles errors with an optional callback [_onError] for non-initial
+  ///    loads.
+  /// 6. Enables pull-to-refresh for manual data refresh.
+  ///
+  /// Generics:
+  ///   N: Notifier type extending [PagingAsyncNotifier] for data fetching.
+  ///   D: Type of paginated data which the notifier handles.
+  ///   T: Type of individual items within the paginated data.
+  ///
+  /// Example:
+  /// ```dart
+  /// CommonPagingView<MyNotifier, MyPagingData, MyItem>(
+  ///   provider: myNotifierProvider,
+  ///   contentBuilder: (data, endItem) => ListView.builder(
+  ///     itemCount: data.items.length + (endItem != null ? 1 : 0),
+  ///     itemBuilder: (context, index) {
+  ///       if (index == data.items.length && endItem != null) {
+  ///         return endItem;
+  ///       }
+  ///       return ListTile(title: Text(data.items[index].name));
+  ///     },
+  ///   ),
+  ///   onError: (e) => showErrorDialog(context, e),
+  /// )
+  /// ```
   const CommonPagingView({
     required AutoDisposeAsyncNotifierProvider<N, D> provider,
     required Widget Function(D, Widget?) contentBuilder,
