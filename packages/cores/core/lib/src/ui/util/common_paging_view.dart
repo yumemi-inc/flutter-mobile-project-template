@@ -45,7 +45,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
   /// ```
   const CommonPagingView({
     required AutoDisposeAsyncNotifierProvider<N, D> provider,
-    required Widget Function(D, Widget?) contentBuilder,
+    required Widget Function(D data, Widget? endItem) contentBuilder,
     required void Function(AppException e) onError,
     super.key,
   })  : _contentBuilder = contentBuilder,
