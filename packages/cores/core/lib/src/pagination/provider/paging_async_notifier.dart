@@ -28,11 +28,16 @@ abstract class PagingAsyncNotifier<T extends PagingData<U>, U>
 /// T: The type of items in the paging data.
 abstract class PageBasedPagingAsyncNotifier<T>
     extends PagingAsyncNotifier<PageBasedPagingData<T>, T> {
-  Future<PageBasedPagingData<T>> fetch({int page = 1});
+  Future<PageBasedFetchResult<T>> fetch({int page = 1});
 
   @override
-  FutureOr<PageBasedPagingData<T>> build() {
-    return fetch();
+  FutureOr<PageBasedPagingData<T>> build() async {
+    final res = await fetch();
+    return PageBasedPagingData(
+      items: res.items,
+      currentPage: 1,
+      hasMore: res.hasMore,
+    );
   }
 
   @override
@@ -58,4 +63,14 @@ abstract class PageBasedPagingAsyncNotifier<T>
       );
     }
   }
+}
+
+class PageBasedFetchResult<T> {
+  const PageBasedFetchResult({
+    required this.items,
+    required this.hasMore,
+  });
+
+  final List<T> items;
+  final bool hasMore;
 }

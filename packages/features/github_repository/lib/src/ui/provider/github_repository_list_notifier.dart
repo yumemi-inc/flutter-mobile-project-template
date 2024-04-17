@@ -13,13 +13,12 @@ typedef GitHubRepositoryPageState = PageBasedPagingData<GitHubRepository>;
 class PageBasedGitHubRepositoryNotifier
     extends PageBasedPagingAsyncNotifier<GitHubRepository> {
   @override
-  Future<GitHubRepositoryPageState> fetch({int page = 1}) async {
+  Future<PageBasedFetchResult<GitHubRepository>> fetch({int page = 1}) async {
     final res =
         await ref.read(listOrganizationRepositoriesProvider(page: page).future);
     ref.keepAlive();
-    return GitHubRepositoryPageState(
+    return PageBasedFetchResult(
       items: res.items,
-      currentPage: page,
       hasMore: res.hasMore,
     );
   }
