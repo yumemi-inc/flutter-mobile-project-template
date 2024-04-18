@@ -26,16 +26,35 @@ abstract class PagingAsyncNotifier<T extends PagingData<U>, U>
 /// for the next page.
 ///
 /// T: The type of items in the paging data.
+/// Usage Example:
+/// ```dart
+/// class MyPagingNotifier extends PageBasedPagingAsyncNotifier<MyDataType> {
+///   MyPagingNotifier() : super(initialPage: 0); // Start fetching from page 0
+///
+///   @override
+///   Future<PageBasedFetchResult<MyDataType>> fetch({
+///     required int page,
+///   }) async {
+///     // Implement fetching logic here
+///     return fetchMyDataType(page);
+///   }
+/// }
+/// ```
 abstract class PageBasedPagingAsyncNotifier<T>
     extends PagingAsyncNotifier<PageBasedPagingData<T>, T> {
-  Future<PageBasedFetchResult<T>> fetch({int page = 1});
+  PageBasedPagingAsyncNotifier({int initialPage = 1})
+      : _initialPage = initialPage;
+
+  final int _initialPage;
+
+  Future<PageBasedFetchResult<T>> fetch({required int page});
 
   @override
   FutureOr<PageBasedPagingData<T>> build() async {
-    final res = await fetch();
+    final res = await fetch(page: _initialPage);
     return PageBasedPagingData(
       items: res.items,
-      currentPage: 1,
+      currentPage: _initialPage,
       hasMore: res.hasMore,
     );
   }
