@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cores_core/extension.dart';
+import 'package:cores_core/extension/async_value_extension.dart';
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
