@@ -1,5 +1,5 @@
 import 'package:cores_core/exception.dart';
-import 'package:cores_core/extension/async_value_extension.dart';
+import 'package:cores_core/extension/async_value.dart';
 import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
 import 'package:cores_core/src/util/logger.dart';
