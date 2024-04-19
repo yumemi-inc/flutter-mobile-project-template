@@ -24,7 +24,7 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
               routes: [
                 GoRouteData.$route(
                   path: 'github_repository_detail',
-                  factory: $GithubRepositoryDetailPageRouteExtension._fromState,
+                  factory: $GitHubRepositoryDetailPageRouteExtension._fromState,
                 ),
                 GoRouteData.$route(
                   path: 'debug',
@@ -79,10 +79,10 @@ extension $HomePageRouteExtension on HomePageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $GithubRepositoryDetailPageRouteExtension
-    on GithubRepositoryDetailPageRoute {
-  static GithubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
-      GithubRepositoryDetailPageRoute(
+extension $GitHubRepositoryDetailPageRouteExtension
+    on GitHubRepositoryDetailPageRoute {
+  static GitHubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
+      GitHubRepositoryDetailPageRoute(
         state.uri.queryParameters['repository-name']!,
       );
 

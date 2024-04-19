@@ -8,6 +8,8 @@ environment:
   flutter: ^3.19.3
 
 dependencies:
+  cores_core:
+    path: ../../cores/core
   cores_data:
     path: ../../cores/data
   cores_designsystem:
