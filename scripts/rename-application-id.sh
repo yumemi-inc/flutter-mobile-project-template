@@ -50,9 +50,9 @@ sed -i '' "s/namespace \"$OLD_NAMESPACE\"/namespace \"$NEW_APPLICATION_ID\"/" "$
 readonly MAIN_ACTIVITY_START_PATH="$PROJECT_ROOT/apps/app/android/app/src/main/kotlin"
 
 readonly OLD_MAIN_ACTIVITY_PATH="$MAIN_ACTIVITY_START_PATH/$(echo $OLD_PACKAGE_NAME | tr '.' '/')"
-readonly OLD_MAIN_ACTIVITY_CONTENT=$(cat $OLD_MAIN_ACTIVITY_PATH/MainActivity.kt)
+readonly OLD_MAIN_ACTIVITY_CONTENT=$(cat "$OLD_MAIN_ACTIVITY_PATH"/MainActivity.kt)
 
-readonly NEW_MAIN_ACTIVITY_PATH="$MAIN_ACTIVITY_START_PATH/$(echo $NEW_APPLICATION_ID | tr '.' '/')"
+readonly NEW_MAIN_ACTIVITY_PATH="$MAIN_ACTIVITY_START_PATH/$(echo "$NEW_APPLICATION_ID" | tr '.' '/')"
 readonly NEW_MAIN_ACTIVITY_CONTENT=$(printf "%s" "$OLD_MAIN_ACTIVITY_CONTENT" | sed -e "s/package $OLD_NAMESPACE/package $NEW_APPLICATION_ID/")
 
 echo "[Step3] Creating new MainActivity.kt..."
@@ -69,6 +69,6 @@ echo "[Step4] Deleting old MainActivity.kt..."
 # -d delim: Use delim as the field delimiter character instead of the tab character.
 readonly FIRST_DIRECTORY_PATH=$(echo "$OLD_PACKAGE_NAME" | cut -f 1 -d ".")
 
-rm -r "$MAIN_ACTIVITY_START_PATH/$FIRST_DIRECTORY_PATH"
+rm -r "${MAIN_ACTIVITY_START_PATH:?}/$FIRST_DIRECTORY_PATH"
 
 echo "Application ID renaming process completed."
