@@ -17,10 +17,10 @@ To use this script, follow these steps:
 2. Provide the new application ID as an argument when running the script.
 
 ```bash
-$ bash rename-application-id.sh "com.example.new.application.id"
+$ bash rename-application-id.sh "com.example.rename"
 ```
 
-Replace "com.example.new.application.id" with the desired new application ID.
+Replace "com.example.rename" with the desired new application ID.
 
 ## Reference
 

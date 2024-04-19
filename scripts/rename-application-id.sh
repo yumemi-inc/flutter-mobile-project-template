@@ -10,7 +10,7 @@ PROJECT_ROOT=$(git rev-parse --show-toplevel)
 # [Step0] Check if application ID is provided
 if [ -z "$1" ]; then
     echo "Please provide application ID to first argument."
-    echo "Usage: bash $PROJECT_ROOT/scripts/rename-application-id.sh "com.example.rename.application.id""
+    echo "Usage: bash $PROJECT_ROOT/scripts/rename-application-id.sh "com.example.rename""
     exit 1
 fi
 
