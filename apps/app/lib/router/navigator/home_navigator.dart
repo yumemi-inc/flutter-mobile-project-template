@@ -16,10 +16,10 @@ final class HomeNavigatorImpl implements HomeNavigator {
   }
 
   @override
-  void goGithubRepositoryDetailPage(
+  void goGitHubRepositoryDetailPage(
     BuildContext context,
     String repositoryName,
   ) {
-    GithubRepositoryDetailPageRoute(repositoryName).go(context);
+    GitHubRepositoryDetailPageRoute(repositoryName).go(context);
   }
 }
