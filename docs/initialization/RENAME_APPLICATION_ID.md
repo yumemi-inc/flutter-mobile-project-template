@@ -1,6 +1,6 @@
 ## About
 
-Please execute `/scripts/rename-application-id.sh` to automate the process of renaming the application ID in your Flutter project.
+Please execute `/tools/rename-application-id.sh` to automate the process of renaming the application ID in your Flutter project.
 
 This script performs the following steps:
 
