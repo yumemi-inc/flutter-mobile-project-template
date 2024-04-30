@@ -46,3 +46,12 @@ jobs:
         with:
           branch: main
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Workaround: https://github.com/actions/checkout/issues/692#issuecomment-1502203573
+      # Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/$PROJECT_NAME/$PROJECT_NAME/.github/actions/cleanup-copilot-settings'.
+      #        Did you forget to run actions/checkout before running your local action?
+      # Reason: Executing Post Cleanup without checking out after `Push changes` step can lead to the error.
+      #         This occurs when cleaning up a modified remote branch that remains in the stale state from `Fetch sources` step.
+      - name: Check out latest state of original repository
+        # https://github.com/actions/checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
