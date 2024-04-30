@@ -3,7 +3,7 @@ name: Template Cleanup
 on:
   push:
     branches:
-      - test/issue-157
+      - main
 
 jobs:
   template-cleanup:
