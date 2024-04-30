@@ -48,8 +48,3 @@ runs:
     - name: Show settings.json
       run: cat ${{ inputs.settings-json-path }}
       shell: sh
-
-    # Workaround: https://github.com/actions/checkout/issues/692#issuecomment-1502203573
-    - name: Check out the original repository
-      # https://github.com/actions/checkout
-      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
