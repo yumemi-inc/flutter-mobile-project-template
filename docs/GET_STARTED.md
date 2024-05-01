@@ -3,17 +3,17 @@
 ### Advance preparation
 
 - Install the IDEs.
-    - [IntelliJ IDEA], [Android Studio] or [Visual Studio Code]
-    - [Xcode]
+  - [IntelliJ IDEA], [Android Studio] or [Visual Studio Code]
+  - [Xcode]
 - Enable the [fvm] command.
 - Enable the [melos] command.
-    - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
-    - Then, run the following command to globally activate the melos command.
+  - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
+  - Then, run the following command to globally activate the melos command.
 
-        ```shell
-        MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
-        fvm dart pub global activate melos $MELOS_VERSION
-        ```
+    ```shell
+    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
+    fvm dart pub global activate melos $MELOS_VERSION
+    ```
 
 - Enable the [mason_cli] command.
 
@@ -29,7 +29,7 @@ If you use [Visual Studio Code], reload the SDK by reloading the window.
 
 If you use [IntelliJ IDEA] or [Android Studio], please see the following document:
 
-https://fvm.app/docs/getting_started/configuration#android-studio
+<https://fvm.app/docs/getting_started/configuration#android-studio>
 
 ### Install dependencies
 
