@@ -20,12 +20,15 @@ jobs:
               - "**.yaml"
               - "**/pubspec.lock"
               - "scripts/**"
+
+      # https://github.com/peter-evans/create-or-update-comment
       - name: Comment
         if: ${{ steps.filter.outputs.src == 'false' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr comment -b "チェック対象ファイルの変更がなかったため、checkジョブをスキップしました"
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
 
   check:
     needs: pre-check
