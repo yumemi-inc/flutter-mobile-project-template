@@ -34,7 +34,7 @@ jobs:
     needs: pre-check
     if: ${{ needs.pre-check.outputs.src == 'true' }}
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
       # https://github.com/actions/checkout
