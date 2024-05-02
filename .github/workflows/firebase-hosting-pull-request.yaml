@@ -21,7 +21,7 @@ on:
 jobs:
   build-and-preview:
     runs-on: ubuntu-22.04
-    # NOTE: See docs/FIREBASE_HOSTING_PREVIEW.md.
+    # NOTE: See https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/FIREBASE_HOSTING_PREVIEW.md
     if: github.event.repository.name == 'flutter-mobile-project-template'
     permissions:
       checks: write

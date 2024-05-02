@@ -10,4 +10,4 @@
 - [Firebase Hosting Preview]
 
 <!-- Links -->
-[Firebase Hosting Preview]: /docs/FIREBASE_HOSTING_PREVIEW.md
+[Firebase Hosting Preview]: https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/FIREBASE_HOSTING_PREVIEW.md
