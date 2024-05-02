@@ -11,7 +11,7 @@ on:
       - ".vscode/**"
       - "apps/app/**"
       - "docs/**"
-      - "scrpts/**"
+      - "scripts/**"
       - "tools/**"
       - "mason.yaml"
       - "**/docs/**"
