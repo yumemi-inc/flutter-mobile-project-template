@@ -10,6 +10,8 @@ jobs:
     outputs:
       src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
     steps:
       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
         id: filter
@@ -34,7 +36,7 @@ jobs:
     needs: pre-check
     if: ${{ needs.pre-check.outputs.src == 'true' }}
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
       # https://github.com/actions/checkout
