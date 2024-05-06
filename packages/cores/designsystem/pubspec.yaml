@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   theme_extensions_builder: ^3.0.1
-  yumemi_lints: ^1.3.0
+  yumemi_lints: ^2.0.0
 
 flutter:
   uses-material-design: true
