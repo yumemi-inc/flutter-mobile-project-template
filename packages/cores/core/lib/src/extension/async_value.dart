@@ -1,3 +1,4 @@
+import 'package:cores_core/util.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 extension AsyncValueExtension<T> on AsyncValue<T> {
@@ -20,7 +21,11 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
   /// even if subsequent fetch attempts result in errors,
   /// ideal for maintaining a seamless user experience.
   R whenIgnorableError<R>({
-    required R Function(T data, {required bool hasError}) data,
+    required R Function(
+      T data, {
+      required bool hasError,
+      required bool isLoading,
+    }) data,
     required R Function(Object error, StackTrace stackTrace) error,
     required R Function() loading,
     bool skipLoadingOnReload = false,
@@ -29,8 +34,9 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
     bool skipErrorOnHasValue = false,
   }) {
     if (skipErrorOnHasValue) {
+      logger.shout(isLoading);
       if (hasValue && hasError) {
-        return data(requireValue, hasError: true);
+        return data(requireValue, hasError: true, isLoading: isLoading);
       }
     }
 
@@ -38,7 +44,7 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
       skipLoadingOnReload: skipLoadingOnReload,
       skipLoadingOnRefresh: skipLoadingOnRefresh,
       skipError: skipError,
-      data: (d) => data(d, hasError: hasError),
+      data: (d) => data(d, hasError: hasError, isLoading: isLoading),
       error: error,
       loading: loading,
     );

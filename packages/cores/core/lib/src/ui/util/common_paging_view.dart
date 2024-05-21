@@ -87,19 +87,35 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     );
 
     return ref.watch(_provider).whenIgnorableError(
-          data: (data, {required hasError}) {
+          data: (
+            data, {
+            required hasError,
+            required isLoading,
+          }) {
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),
               child: _contentBuilder(
                 data,
                 // Displays EndItem to detect scroll end
                 // if more data is available and no errors.
-                data.hasMore && !hasError
-                    ? _EndItem(
-                        onScrollEnd: () async =>
-                            ref.read(_provider.notifier).loadNext(),
-                      )
-                    : null,
+                switch (data.hasMore) {
+                  true when hasError && isLoading => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16),
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  true when hasError && !isLoading => _EndItemWhenError(
+                      onPressed: () async =>
+                          ref.read(_provider.notifier).loadNext(),
+                    ),
+                  true when !hasError => _EndItem(
+                      onScrollEnd: () async =>
+                          ref.read(_provider.notifier).loadNext(),
+                    ),
+                  true => null,
+                  false => null,
+                },
               ),
             );
           },
