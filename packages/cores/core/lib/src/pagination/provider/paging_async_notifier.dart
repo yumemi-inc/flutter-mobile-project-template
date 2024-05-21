@@ -62,7 +62,7 @@ abstract class PageBasedPagingAsyncNotifier<T>
   @override
   Future<void> loadNext() async {
     final value = state.valueOrNull;
-    if (value == null || state.hasError) {
+    if (value == null) {
       return;
     }
 
