@@ -180,3 +180,48 @@ class _LoadingItem extends StatelessWidget {
   Widget build(BuildContext context) =>
       const Center(child: CircularProgressIndicator());
 }
+
+class _EndItemWhenError extends StatelessWidget {
+  const _EndItemWhenError({required void Function() onPressed})
+      : _onPressed = onPressed;
+  final void Function() _onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 130,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Flexible(
+            flex: 3,
+            child: Center(
+              child: Icon(Icons.cloud_off),
+            ),
+          ),
+          const Flexible(
+            flex: 2,
+            child: Center(
+              child: Text(
+                'Please check your connection and try again.',
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 3,
+            child: Center(
+              child: // ElevatedButton(
+                  ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: const StadiumBorder(),
+                ),
+                onPressed: _onPressed,
+                child: const Text('refresh'),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
