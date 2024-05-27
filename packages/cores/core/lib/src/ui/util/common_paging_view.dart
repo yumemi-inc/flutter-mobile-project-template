@@ -4,7 +4,6 @@ import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
 import 'package:cores_core/src/util/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
