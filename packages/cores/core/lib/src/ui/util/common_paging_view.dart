@@ -4,6 +4,7 @@ import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
 import 'package:cores_core/src/util/logger.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
@@ -64,6 +65,33 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
 
   final void Function(AppException e) _onError;
 
+  Widget _endItem(
+    D data,
+    WidgetRef ref, {
+    required bool hasError,
+    required bool isLoading,
+  }) {
+    if (hasError && isLoading) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
+    if (hasError && !isLoading) {
+      return _EndItemWhenError(
+        onPressed: () async => ref.read(_provider.notifier).loadNext(),
+      );
+    }
+    if (!hasError) {
+      return _EndItem(
+        onScrollEnd: () async => ref.read(_provider.notifier).loadNext(),
+      );
+    }
+    return const SizedBox.shrink();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
@@ -96,26 +124,12 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
               onRefresh: () async => ref.refresh(_provider.future),
               child: _contentBuilder(
                 data,
-                // Displays EndItem to detect scroll end
-                // if more data is available and no errors.
-                switch (data.hasMore) {
-                  true when hasError && isLoading => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(16),
-                        child: CircularProgressIndicator(),
-                      ),
-                    ),
-                  true when hasError && !isLoading => _EndItemWhenError(
-                      onPressed: () async =>
-                          ref.read(_provider.notifier).loadNext(),
-                    ),
-                  true when !hasError => _EndItem(
-                      onScrollEnd: () async =>
-                          ref.read(_provider.notifier).loadNext(),
-                    ),
-                  true => null,
-                  false => null,
-                },
+                _endItem(
+                  data,
+                  ref,
+                  hasError: hasError,
+                  isLoading: isLoading,
+                ),
               ),
             );
           },
