@@ -226,7 +226,7 @@ class _EndItemWhenError extends StatelessWidget {
           Flexible(
             flex: 3,
             child: Center(
-              child: // ElevatedButton(
+              child:
                   ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
