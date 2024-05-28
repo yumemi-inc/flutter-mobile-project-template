@@ -70,6 +70,10 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     required bool hasError,
     required bool isLoading,
   }) {
+    if (!data.hasMore) {
+      return const SizedBox.shrink();
+    }
+
     if (hasError && isLoading) {
       return const Center(
         child: Padding(
@@ -78,16 +82,19 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
         ),
       );
     }
+
     if (hasError && !isLoading) {
       return _EndItemWhenError(
         onPressed: () async => ref.read(_provider.notifier).loadNext(),
       );
     }
+
     if (!hasError) {
       return _EndItem(
         onScrollEnd: () async => ref.read(_provider.notifier).loadNext(),
       );
     }
+    
     return const SizedBox.shrink();
   }
 
@@ -239,8 +246,7 @@ class _EndItemWhenError extends StatelessWidget {
           Flexible(
             flex: 3,
             child: Center(
-              child:
-                  ElevatedButton(
+              child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
                 ),
