@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 // Generated code from https://m3.material.io/theme-builder#/custom
+//
+// NOTE: 上記サイトで生成したコードを変更してColorSchemeを定義しています。
+// 生成されたコードには非推奨なプロパティが含まれるため。（2024-05-28時点）
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
