@@ -1,7 +1,7 @@
 import 'package:cores_designsystem/src/theme_extensions/app_colors/app_colors.dart';
 import 'package:cores_designsystem/src/themes/app_bar_theme.dart';
 import 'package:cores_designsystem/src/themes/bottom_navigation_bar_theme.dart';
-import 'package:cores_designsystem/src/themes/color_schemes.g.dart';
+import 'package:cores_designsystem/src/themes/color_schemes.dart';
 import 'package:flutter/material.dart';
 
 /// Create a light theme.
