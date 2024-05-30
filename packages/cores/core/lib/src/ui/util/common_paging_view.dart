@@ -94,7 +94,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
         onScrollEnd: () async => ref.read(_provider.notifier).loadNext(),
       );
     }
-    
+
     return const SizedBox.shrink();
   }
 
