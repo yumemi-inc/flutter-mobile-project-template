@@ -1,25 +1,24 @@
-## About Icon
-
+## アイコンについて
+言語: 日本語 | [English](ABOUT_ICON-EN.md)
 ### iOS
 
-- For iOS icons, the image size used by the Apple Store is 1024x1024, and for other sizes, [flutter_launcher_icons] can automatically generate smaller ones.
-- Therefore, for the icons you need, 1024x1024 is fine; smaller than 1024x1024 is fine, but too small may result in poor quality icons.
+- iOSのアイコンの場合、Apple Storeで使用されている画像サイズは1024x1024で、それ以外のサイズの場合は[flutter_launcher_icons]が自動的に小さいものを生成します。
+- アイコンのサイズは1024x1024以下でも問題ありませんが、小さすぎると画質が悪いアイコンになる可能性があります。 
 
 ### Android
+- Adaptive Launcher IconsはAndroid 8.0（APIレベル26）で導入され、デバイスの種類ごとに異なる形で表示できるようになりました。
+  - adaptive_icon_foreground`（アダプティブアイコンフォアグラウンド
+      - ロゴまたはアイコン画像
+      - 画像のサイズは1024x1024。
+      - アイコンの大きさは画像の大きさの0.67倍程度にすると収まりが良い。
 
-- Adaptive Launcher Icons were introduced in Android 8.0 (API level 26), allowing different shapes to be displayed for each device model.
-  - `adaptive_icon_foreground`
-    - Logo or icon image
-    - The size of the image should be 1024x1024.
-    - The size of the icon should be about 0.67 times larger than the size of the image to make it fit better.
+  - adaptive_icon_background`（アダプティブアイコンバックグラウンド
+      - アイコンの背景画像
+      - カラーコードまたは背景画像が必須。
+      - 画像のサイズは1024x1024。
 
-  - `adaptive_icon_background`
-    - Icon background image
-    - A color code or background image is required.
-    - As for the size of the image, 1024x1024 is fine.
-
-- The following table includes specific icons. There is a border on the image, but it was added to make it visible; however, the border is not necessary when adding icons.
-- For a detailed explanation, please check [adaptive icon guide].
+- 以下の表には、特定のアイコンが含まれています。画像には枠線がありますが、視認性のためにつけているだけで、アイコンを追加する際には枠線は必要ありません。
+- 詳しい説明は[adaptive icon guide]を確認してください。
 
 |`adaptive_icon_foreground` | `adaptive_icon_background`|
 |:--------------------------:|:--------------------------:|
