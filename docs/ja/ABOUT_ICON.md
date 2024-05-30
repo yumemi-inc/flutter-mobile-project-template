@@ -10,12 +10,12 @@
 ### Android
 
 - Adaptive Launcher IconsはAndroid 8.0（APIレベル26）で導入され、デバイスの種類ごとに異なる形で表示できるようになりました。
-  - adaptive_icon_foreground
+  - `adaptive_icon_foreground`
     - ロゴまたはアイコン画像
     - 画像のサイズは1024x1024。
     - アイコンの大きさは画像の大きさの0.67倍程度にすると収まりが良い。
 
-  - adaptive_icon_background
+  - `adaptive_icon_background`
     - アイコンの背景画像
     - カラーコードまたは背景画像が必須。
     - 画像のサイズは1024x1024。
