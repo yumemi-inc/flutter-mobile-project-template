@@ -1,29 +1,29 @@
-# Firebase Hosting Preview
+# Firebase Hosting プレビュー
 
-Language: English | [日本語](/docs/ja/FIREBASE_HOSTING_PREVIEW.md)
+言語: 日本語 | [English](/docs/en/FIREBASE_HOSTING_PREVIEW.md)
 
-In this project, the Widgetbook of `apps/catalog` is made available for review at PullRequest time.
-When you create a new project using this template project, please follow the instructions below to set it up.
+このプロジェクトでは、`apps/catalog`のWidgetbookをPullRequest時にレビューできるようにします。
+このテンプレートプロジェクトを使用して新規プロジェクトを作成する場合は、以下の手順に従って設定してください。
 
 ![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
 
-## 1. Create Firebase project
+## 1. 新規Firebaseプロジェクトの作成
 
-Create a Firebase project according to the [documentation][1].
+[ドキュメント][1] に従ってFirebaseプロジェクトを作成します。
 
-## 2. Initialize Firebase Hosting
+## 2. Firebase Hosting の初期化
 
-Initialize Firebase Hosting according to the [documentation][2].
+[ドキュメント][2] に従ってFirebase Hostingを初期化します。
 
-## 3. Update the project's Firebase Hosting settings
+## 3.プロジェクトのFirebase Hosting 設定を更新する
 
-Execute the following command
+以下のコマンドを実行する。
 
 ```shell
 firebase init hosting:github
 ```
 
-Complete the setup using the following output as a reference
+以下の出力を参考にセットアップを完了する。
 
 ```shell
 $ firebase init hosting:github
@@ -81,27 +81,25 @@ i  Writing project information to .firebaserc...
 ✔  Firebase initialization complete!
 ```
 
-## 4. Change workflow content
+## 4. ワークフローの内容を変更する
 
-Modify `.github/workflows/firebase-hosting-pull-request.yaml`.
+`.github/workflows/firebase-hosting-pull-request.yaml` を修正する。
 
-### 4-1. Remove repository name condition
+### 4-1. リポジトリ名条件の削除
 
-To avoid inadvertent execution of the workflow when a new project is created based on this template project, we have
-included an activation condition by repository name.
-This description is no longer needed during setup, so please delete it.
+このテンプレートプロジェクトを元に新規プロジェクトを作成した際に、誤ってワークフローが実行されないように、リポジトリ名による有効化条件を記述しています。この記述はセットアップ時に不要になりましたので、削除してください。
 
 ![firebase-hosting-preview-02.png](/docs/images/firebase-hosting-preview-02.png)
 
-### 4-2. Change Firebase Service Account name
+### 4-2. Firebase　Service Account名の変更
 
-Replace with the name of the Firebase Service Account created by the `firebase init hosting:github` command.
+`firebase init hosting:github`コマンドで作成したFirebaseサービスアカウント名に置き換えてください。
 
 ![firebase-hosting-preview-03.png](/docs/images/firebase-hosting-preview-03.png)
 
-### 4-3. Change projectId to the ID of the relevant project
+### 4-3. projectIdを該当プロジェクトのIDに変更する
 
-Replace the Firebase project.
+Firebaseプロジェクトを置き換える。
 
 ![firebase-hosting-preview-04.png](/docs/images/firebase-hosting-preview-04.png)
 
