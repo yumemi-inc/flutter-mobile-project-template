@@ -1,6 +1,6 @@
 ## アイコンについて
 
-言語: 日本語 | [English](/docs/en/ABOUT_ICON-EN.md)
+言語: 日本語 | [English](/docs/en/ABOUT_ICON.md)
 
 ### iOS
 
