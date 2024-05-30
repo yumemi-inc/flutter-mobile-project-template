@@ -1,5 +1,5 @@
 ## About Icon
-Language: English | [日本語](ABOUT_ICON.md)
+Language: English | [日本語](/docs/ja/ABOUT_ICON.md)
 ### iOS
 
 - For iOS icons, the image size used by the Apple Store is 1024x1024, and for other sizes, [flutter_launcher_icons] can automatically generate smaller ones.
