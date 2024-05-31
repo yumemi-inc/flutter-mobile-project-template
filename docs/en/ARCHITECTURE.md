@@ -1,5 +1,7 @@
 # Architecture
 
+Language: English | [日本語](/docs/ja/ARCHITECTURE.md)
+
 > [!TIP]
 > Responsibilities should be discussed at the startup of the project, as how to separate them depends on the project.
 
