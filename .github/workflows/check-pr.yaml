@@ -69,17 +69,20 @@ jobs:
         run: melos run report_test --no-select
         continue-on-error: true
 
+      # https://github.com/andstor/file-existence-action
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@076e0072799f4942c8bc574a82233e1e4d13e9d6 # v3.0.0
         with: 
-          files: "(apps|packages/cores|packages/features)/*/test_report.log"
+          # https://github.com/isaacs/node-glob の形式
+          files: "{apps,packages/cores,packages/features}/*/test_report.log"
 
       # https://github.com/dorny/test-reporter
       - name: Report test
         uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
         with:
           name: "flutter test"
+          # https://github.com/mrmlnc/fast-glob の形式
           path: "(apps|packages/cores|packages/features)/*/test_report.log"
           reporter: "flutter-json"
           fail-on-error: "true"
