@@ -1,9 +1,11 @@
 # Firebase Hosting Preview
 
+Language: English | [日本語](/docs/ja/FIREBASE_HOSTING_PREVIEW.md)
+
 In this project, the Widgetbook of `apps/catalog` is made available for review at PullRequest time.
 When you create a new project using this template project, please follow the instructions below to set it up.
 
-![firebase-hosting-preview-01.png](images/firebase-hosting-preview-01.png)
+![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
 
 ## 1. Create Firebase project
 
@@ -89,19 +91,19 @@ To avoid inadvertent execution of the workflow when a new project is created bas
 included an activation condition by repository name.
 This description is no longer needed during setup, so please delete it.
 
-![firebase-hosting-preview-02.png](images/firebase-hosting-preview-02.png)
+![firebase-hosting-preview-02.png](/docs/images/firebase-hosting-preview-02.png)
 
 ### 4-2. Change Firebase Service Account name
 
 Replace with the name of the Firebase Service Account created by the `firebase init hosting:github` command.
 
-![firebase-hosting-preview-03.png](images/firebase-hosting-preview-03.png)
+![firebase-hosting-preview-03.png](/docs/images/firebase-hosting-preview-03.png)
 
 ### 4-3. Change projectId to the ID of the relevant project
 
 Replace the Firebase project.
 
-![firebase-hosting-preview-04.png](images/firebase-hosting-preview-04.png)
+![firebase-hosting-preview-04.png](/docs/images/firebase-hosting-preview-04.png)
 
 <!-- Links -->
 
