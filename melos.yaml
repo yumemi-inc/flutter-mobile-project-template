@@ -26,6 +26,8 @@ command:
       riverpod_generator: ^2.4.0
       riverpod_lint: ^2.3.10
       yumemi_lints: ^2.0.0
+    hooks:
+      post: melos run yumemi_lints_update
 
 scripts:
   report_test:
@@ -59,6 +61,11 @@ scripts:
       orderDependents: true
     packageFilters:
       dependsOn: flutter_localizations
+
+  yumemi_lints_update:
+    exec: dart run yumemi_lints update
+    packageFilters:
+      dependsOn: yumemi_lints
 
 ide:
   intellij:
