@@ -83,7 +83,7 @@ jobs:
         with:
           name: "flutter test"
           # https://github.com/mrmlnc/fast-glob の形式
-          path: "(apps|packages)/*/test_report.log"
+          path: "(apps|packages)/**/test_report.log"
           reporter: "flutter-json"
           fail-on-error: "true"
         if: steps.check_files.outputs.files_exists == 'true'
