@@ -75,7 +75,7 @@ jobs:
         uses: andstor/file-existence-action@076e0072799f4942c8bc574a82233e1e4d13e9d6 # v3.0.0
         with: 
           # https://github.com/isaacs/node-glob の形式
-          files: "{apps,packages/cores,packages/features}/*/test_report.log"
+          files: "(apps|packages/cores|packages/features)/*/test_report.log"
 
       # https://github.com/dorny/test-reporter
       - name: Report test
