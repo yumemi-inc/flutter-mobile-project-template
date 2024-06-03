@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 // Generated code from https://m3.material.io/theme-builder#/custom
+//
+// NOTE: 上記サイトで生成したコードを変更してColorSchemeを定義しています。
+// 生成されたコードには非推奨なプロパティが含まれるため。（2024-05-28時点）
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
@@ -20,11 +23,9 @@ const lightColorScheme = ColorScheme(
   errorContainer: Color(0xFFFFDAD6),
   onError: Color(0xFFFFFFFF),
   onErrorContainer: Color(0xFF410002),
-  background: Color(0xFFFCFCFF),
-  onBackground: Color(0xFF1A1C1E),
   surface: Color(0xFFFCFCFF),
   onSurface: Color(0xFF1A1C1E),
-  surfaceVariant: Color(0xFFDEE3EA),
+  surfaceContainerHighest: Color(0xFFDEE3EA),
   onSurfaceVariant: Color(0xFF42474D),
   outline: Color(0xFF72787E),
   onInverseSurface: Color(0xFFF0F0F4),
@@ -54,11 +55,9 @@ const darkColorScheme = ColorScheme(
   errorContainer: Color(0xFF93000A),
   onError: Color(0xFF690005),
   onErrorContainer: Color(0xFFFFDAD6),
-  background: Color(0xFF1A1C1E),
-  onBackground: Color(0xFFE2E2E5),
   surface: Color(0xFF1A1C1E),
   onSurface: Color(0xFFE2E2E5),
-  surfaceVariant: Color(0xFF42474D),
+  surfaceContainerHighest: Color(0xFF42474D),
   onSurfaceVariant: Color(0xFFC1C7CE),
   outline: Color(0xFF8C9198),
   onInverseSurface: Color(0xFF1A1C1E),

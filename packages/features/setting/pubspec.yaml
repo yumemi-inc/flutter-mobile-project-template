@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 0.0.1
 
 environment:
-  sdk: ^3.3.1
-  flutter: ^3.19.3
+  sdk: ^3.4.1
+  flutter: ^3.22.1
 
 dependencies:
   cores_core:
@@ -19,7 +19,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.5.1
-  intl: ^0.18.1
+  intl: ^0.19.0
 
 dev_dependencies:
   yumemi_lints: ^2.0.0

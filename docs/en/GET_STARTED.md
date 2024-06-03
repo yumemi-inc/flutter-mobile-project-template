@@ -1,5 +1,7 @@
 ## Get Started
 
+Language: English | [日本語](/docs/ja/GET_STARTED.md)
+
 ### Advance preparation
 
 - Install the IDEs.
