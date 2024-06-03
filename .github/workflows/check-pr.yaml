@@ -63,7 +63,7 @@ jobs:
           fi
 
       - name: Check format
-        run: melos run check_format:ci
+        run: melos format --output none --set-exit-if-changed
 
       - name: Run test
         run: melos run report_test --no-select
