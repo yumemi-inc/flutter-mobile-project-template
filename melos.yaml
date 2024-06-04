@@ -27,12 +27,14 @@ command:
       riverpod_generator: ^2.4.0
       riverpod_lint: ^2.3.10
       yumemi_lints: ^2.0.0
+      test: ^1.24.0
 
 scripts:
   report_test:
     exec: flutter test --no-pub --machine > test_report.log
     packageFilters:
       flutter: true
+      dependsOn: test
 
   format:
     exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
