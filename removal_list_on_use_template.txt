@@ -11,4 +11,4 @@ LICENSE.md
 
 .firebaserc
 
-docs/initialization
+.github/initialization
