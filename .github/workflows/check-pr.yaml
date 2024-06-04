@@ -52,19 +52,6 @@ jobs:
         with:
           fatal-infos: true
 
-      - run: dart pub global activate custom_lint
-      - run: melos run report_custom_lint:ci2 --no-select
-
-      # - name: Report custom_lint result
-      #   run: |
-      #     echo "::add-matcher::.github/problem_matchers/custom_lint.json"
-      #     melos run report_custom_lint:ci --no-select || result=$?
-      #     echo "::remove-matcher owner=custom_lint::"
-
-      #     if [ -n "$result" ]; then
-      #       exit 1
-      #     fi
-
       - name: Check format
         run: melos format --output none --set-exit-if-changed
 
@@ -90,3 +77,21 @@ jobs:
           reporter: "flutter-json"
           fail-on-error: "true"
         if: steps.check_files.outputs.files_exists == 'true'
+
+  # custom_lintが時間かかるのでcheckと並列させる
+  custom_lint_check:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.src == 'true' && github.base_ref == 'feature/fast_ci' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+
+    steps:
+      - name: Report custom_lint result
+        run: |
+          echo "::add-matcher::.github/problem_matchers/custom_lint.json"
+          melos run report_custom_lint:ci --no-select || result=$?
+          echo "::remove-matcher owner=custom_lint::"
+
+          if [ -n "$result" ]; then
+            exit 1
+          fi
