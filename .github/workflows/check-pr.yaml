@@ -86,6 +86,13 @@ jobs:
     timeout-minutes: 20
 
     steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
       - name: Report custom_lint result
         run: |
           echo "::add-matcher::.github/problem_matchers/custom_lint.json"
