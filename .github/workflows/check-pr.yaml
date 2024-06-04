@@ -52,16 +52,6 @@ jobs:
         with:
           fatal-infos: true
 
-      - name: Report custom_lint result
-        run: |
-          echo "::add-matcher::.github/problem_matchers/custom_lint.json"
-          melos run report_custom_lint:ci --no-select || result=$?
-          echo "::remove-matcher owner=custom_lint::"
-
-          if [ -n "$result" ]; then
-            exit 1
-          fi
-
       - name: Check format
         run: melos format --output none --set-exit-if-changed
 
@@ -87,3 +77,28 @@ jobs:
           path: "(apps|packages)/**/test_report.log"
           reporter: "flutter-json"
           fail-on-error: "true"
+
+  # custom_lintが時間かかるのでcheckと並列させる
+  custom_lint_check:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Report custom_lint result
+        run: |
+          echo "::add-matcher::.github/problem_matchers/custom_lint.json"
+          melos run report_custom_lint:ci --no-select || result=$?
+          echo "::remove-matcher owner=custom_lint::"
+
+          if [ -n "$result" ]; then
+            exit 1
+          fi
