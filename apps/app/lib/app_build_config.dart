@@ -9,13 +9,7 @@ final class AppBuildConfig implements BuildConfig {
     required this.buildNumber,
     required this.buildSignature,
     this.installerStore,
-  }) : flavor = switch (appFlavor) {
-          'dev' => Flavor.dev,
-          'stg' => Flavor.stg,
-          'prod' => Flavor.prd,
-          // default flavor
-          _ => Flavor.dev,
-        };
+  }) : flavor = Flavor.values.byName(appFlavor);
 
   @override
   String appName;

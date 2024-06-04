@@ -52,6 +52,47 @@ jobs:
         with:
           fatal-infos: true
 
+      - name: Check format
+        run: melos format --output none --set-exit-if-changed
+
+      - name: Run test
+        run: melos run report_test --no-select
+        continue-on-error: true
+
+      # https://github.com/andstor/file-existence-action
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@076e0072799f4942c8bc574a82233e1e4d13e9d6 # v3.0.0
+        with: 
+          # https://github.com/isaacs/node-glob の形式
+          files: "**/test_report.log"
+
+      # https://github.com/dorny/test-reporter
+      - name: Report test
+        if: steps.check_files.outputs.files_exists == 'true'
+        uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
+        with:
+          name: "flutter test"
+          # https://github.com/mrmlnc/fast-glob の形式
+          path: "(apps|packages)/**/test_report.log"
+          reporter: "flutter-json"
+          fail-on-error: "true"
+
+  # custom_lintが時間かかるのでcheckと並列させる
+  custom_lint_check:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
       - name: Report custom_lint result
         run: |
           echo "::add-matcher::.github/problem_matchers/custom_lint.json"
@@ -61,19 +102,3 @@ jobs:
           if [ -n "$result" ]; then
             exit 1
           fi
-
-      - name: Check format
-        run: melos run check_format:ci
-
-      - name: Run test
-        run: melos run report_test --no-select
-        continue-on-error: true
-
-      # https://github.com/dorny/test-reporter
-      - name: Report test
-        uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
-        with:
-          name: "flutter test"
-          path: "(apps|packages/cores|packages/features)/*/test_report.log"
-          reporter: "flutter-json"
-          fail-on-error: "true"
