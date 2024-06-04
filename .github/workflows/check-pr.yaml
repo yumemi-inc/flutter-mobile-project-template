@@ -69,6 +69,7 @@ jobs:
 
       # https://github.com/dorny/test-reporter
       - name: Report test
+        if: steps.check_files.outputs.files_exists == 'true'
         uses: dorny/test-reporter@eaa763f6ffc21c7a37837f56cd5f9737f27fc6c8 # v1.8.0
         with:
           name: "flutter test"
@@ -76,7 +77,6 @@ jobs:
           path: "(apps|packages)/**/test_report.log"
           reporter: "flutter-json"
           fail-on-error: "true"
-        if: steps.check_files.outputs.files_exists == 'true'
 
   # custom_lintが時間かかるのでcheckと並列させる
   custom_lint_check:
