@@ -1,30 +1,30 @@
-## About
+## 概要
 
-Please execute `/tools/rename-application-id.sh` to automate the process of renaming the application ID in your Flutter project.
+`/tools/rename-application-id.sh`を実行して、FlutterプロジェクトのアプリケーションIDの名前を変更するプロセスを自動化してください。
 
-This script performs the following steps:
+このスクリプトは以下のステップを実行します：
 
-1. Replace Application ID in Configuration JSON Files: Modifies the application ID definition in the configuration JSON files within the flavor directory.
-2. Replace Namespace Definition in build.gradle: Updates the namespace definition in the build.gradle file in the app module with the new application ID.
-3. Create New MainActivity.kt: Generates a new MainActivity.kt file with the updated package name.
-4. Delete Old MainActivity.kt: Removes the old MainActivity.kt file.
+1. `flavor`ディレクトリ内の構成JSONファイルのアプリケーションID定義を変更します。
+2. `app`モジュール内の`build.gradle`ファイルの`namespace`の定義を新しいアプリケーションIDで更新します。
+3. 更新されたパッケージ名で新しい`MainActivity.kt`ファイルを生成します。
+4. 古い`MainActivity.kt`ファイルを削除します。
 
-## Usage
+## 使用方法
 
-To use this script, follow these steps:
+このスクリプトを使用するには、以下の手順に従ってください：
 
-1. Make sure you have the necessary permissions to execute the script.
-2. Provide the new application ID as an argument when running the script.
+1. スクリプトの実行に必要な権限があることを確認してください。
+2. スクリプトの実行時に、新しいアプリケーションIDを引数として指定する。
 
 ```bash
 bash rename-application-id.sh "com.example.rename"
 ```
 
-Replace "com.example.rename" with the desired new application ID.
+`com.example.rename`を希望する新しいアプリケーションIDに置き換える。
 
-## Reference
+## 参考
 
 - [Configure the app module](https://developer.android.com/build/configure-app-module)
 - [CFBundleIdentifier](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier)
 
-*Generated with assistance from ChatGPT 3.5*
+*ChatGPT 3.5の支援により作成。*
