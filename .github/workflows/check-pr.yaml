@@ -12,6 +12,7 @@ jobs:
     permissions:
       pull-requests: write
     outputs:
+      gen: ${{ steps.filter.outputs.gen }}
       markdown: ${{ steps.filter.outputs.markdown }}
       src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
@@ -22,6 +23,10 @@ jobs:
         id: filter
         with:
           filters: |
+            gen:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
             markdown:
               - "**.md"
             src:
@@ -110,6 +115,11 @@ jobs:
             exit 1
           fi
 
+  diff-gen:
+    uses: ./.github/workflows/wc-check-diff.yaml
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.gen == 'true' }}
+
   markdown:
     uses: ./.github/workflows/wc-check-markdown.yaml
     needs: pre-check
@@ -120,6 +130,7 @@ jobs:
     needs:
       - check
       - custom_lint_check
+      - diff-gen
       - markdown
     permissions: { }
     if: failure()
