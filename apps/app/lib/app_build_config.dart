@@ -40,11 +40,11 @@ final class AppBuildConfig implements BuildConfig {
 
   @override
   String toString() => 'AppBuildConfig('
+      'buildSignature: $buildSignature, '
       'appName: $appName, '
       'buildNumber: $buildNumber, '
       'packageName: $packageName, '
       'version: $version, '
-      'buildSignature: $buildSignature, '
       'flavor: $flavor, '
       'installerStore: $installerStore)';
 }
