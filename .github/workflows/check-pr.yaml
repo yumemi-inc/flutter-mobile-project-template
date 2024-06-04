@@ -12,6 +12,7 @@ jobs:
     permissions:
       pull-requests: write
     outputs:
+      markdown: ${{ steps.filter.outputs.markdown }}
       src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
     timeout-minutes: 5
@@ -21,6 +22,8 @@ jobs:
         id: filter
         with:
           filters: |
+            markdown:
+              - "**.md"
             src:
               - "**.dart"
               - "**.yaml"
@@ -107,11 +110,27 @@ jobs:
             exit 1
           fi
 
+  check-markdown:
+    needs: pre-check
+    if: ${{ needs.pre-check.outputs.markdown == 'true' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      # https://github.com/DavidAnson/markdownlint-cli2-action
+      - name: Check Markdown
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
+
   status-check:
     runs-on: ubuntu-22.04
     needs:
       - check
       - custom_lint_check
+      - check-markdown
     permissions: { }
     if: failure()
     steps:
