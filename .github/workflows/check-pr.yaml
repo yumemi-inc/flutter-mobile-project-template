@@ -106,3 +106,13 @@ jobs:
           if [ -n "$result" ]; then
             exit 1
           fi
+
+  status-check:
+    runs-on: ubuntu-22.04
+    needs:
+      - check
+      - custom_lint_check
+    permissions: { }
+    if: failure()
+    steps:
+      - run: exit 1
