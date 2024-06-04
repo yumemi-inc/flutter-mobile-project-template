@@ -17,6 +17,14 @@ runs:
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
         cache: true
 
+    - name: Add pub cache bin to PATH
+      run: echo "$HOME/.pub-cache/bin" >> $GITHUB_PATH
+      shell: bash
+
+    - name: Add pub cache to PATH
+      run: echo "PUB_CACHE="$HOME/.pub-cache"" >> $GITHUB_ENV
+      shell: bash
+
     - name: Setup melos
       run: |
         mkdir -p .fvm
