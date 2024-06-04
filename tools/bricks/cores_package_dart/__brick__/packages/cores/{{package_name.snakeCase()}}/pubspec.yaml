@@ -7,4 +7,4 @@ environment:
 
 dev_dependencies:
   test: ^1.24.0
-  yumemi_lints: ^2.0.0
+  yumemi_lints: ^2.1.0

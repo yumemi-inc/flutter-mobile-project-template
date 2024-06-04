@@ -20,4 +20,4 @@ dependencies:
 dev_dependencies:
   custom_lint: ^0.6.4
   riverpod_lint: ^2.3.10
-  yumemi_lints: ^2.0.0
+  yumemi_lints: ^2.1.0
