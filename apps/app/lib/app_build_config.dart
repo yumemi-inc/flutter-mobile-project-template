@@ -44,7 +44,7 @@ final class AppBuildConfig implements BuildConfig {
       'buildNumber: $buildNumber, '
       'packageName: $packageName, '
       'version: $version, '
-      'flavor: $flavor, '
       'buildSignature: $buildSignature, '
+      'flavor: $flavor, '
       'installerStore: $installerStore)';
 }
