@@ -7,22 +7,22 @@ runs:
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
-        title: "[Initialization] Set up GitHub Auto Assignment for Pull Requests"
-        content-filepath: docs/initialization/GITHUB_AUTO_ASSIGNMENT.md
+        title: "[初期セットアップ] Pull Requestのレビュワーを自動アサインする設定"
+        content-filepath: .github/initialization/GITHUB_AUTO_ASSIGNMENT.md
         labels: initialization
 
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
-        title: "[Initialization] Rename application ID"
-        content-filepath: docs/initialization/RENAME_APPLICATION_ID.md
+        title: "[初期セットアップ] アプリIDのリネーム"
+        content-filepath: .github/initialization/RENAME_APPLICATION_ID.md
         labels: initialization
 
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
-        title: "[Optional] Set up Workflow for Deployment within Pull Request"
-        content-filepath: docs/initialization/DEPLOYMENT_WITHIN_PR.md
+        title: "[初期セットアップ（任意）] Pull Request内でデプロイのワークフローを設定する"
+        content-filepath: .github/initialization/DEPLOYMENT_WITHIN_PR.md
         labels: |
           initialization
           optional
