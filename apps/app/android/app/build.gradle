@@ -29,7 +29,8 @@ if (project.hasProperty('dart-defines')) {
         .split(',')
         .collectEntries { entry ->
             def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
-            [(pair.first()): pair.last()]
+            // valueがemtpyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
+            pair.length == 2 ? [(pair.first()): pair.last()] : [:]
         }
 }
 
@@ -54,7 +55,9 @@ android {
 
     defaultConfig {
         applicationId = "${dartDefines.appId}"
-        applicationIdSuffix = "${dartDefines.appIdSuffix}"
+        if (dartDefines.appIdSuffix != null) {
+            applicationIdSuffix = "${dartDefines.appIdSuffix}"
+        }
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion = flutter.minSdkVersion
