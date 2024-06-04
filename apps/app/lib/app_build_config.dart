@@ -1,4 +1,3 @@
-import 'package:cores_core/extension.dart';
 import 'package:cores_core/model.dart';
 
 final class AppBuildConfig implements BuildConfig {
@@ -10,7 +9,7 @@ final class AppBuildConfig implements BuildConfig {
     required this.buildNumber,
     required this.buildSignature,
     this.installerStore,
-  }) : flavor = Flavor.values.byNameOrNull(appFlavor) ?? Flavor.dev;
+  }) : flavor = Flavor.values.byName(appFlavor);
 
   @override
   String appName;
