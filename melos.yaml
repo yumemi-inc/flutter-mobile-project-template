@@ -36,11 +36,9 @@ scripts:
       flutter: true
       dependsOn: test
 
-  format:
+  # ローカルでフォーマットとdart fix --applyを実行する
+  format_and_fix:
     exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
-
-  check_format:ci:
-    exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
 
   report_custom_lint:ci:
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
