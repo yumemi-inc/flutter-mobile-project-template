@@ -10,7 +10,7 @@ Future<List<Override>> initializeProviders() async {
   overrides.addAll(
     [
       sharedPreferencesProvider.overrideWithValue(preferences),
-    ],
+		    ],
   );
   return overrides;
 }

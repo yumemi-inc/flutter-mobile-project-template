@@ -16,6 +16,7 @@ class MainPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10n.of(context);
     return Scaffold(
+
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
@@ -23,6 +24,7 @@ class MainPage extends ConsumerWidget {
           NavigationDestination(
             label: l.bottomTabHome,
             icon: const Icon(Icons.home),
+
           ),
           NavigationDestination(
             label: l.bottomTabSettings,
