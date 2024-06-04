@@ -10,3 +10,5 @@ LICENSE.md
 .github/workflows/template-cleanup.yaml
 
 .firebaserc
+
+docs/initialization
