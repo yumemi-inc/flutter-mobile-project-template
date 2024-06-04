@@ -13,6 +13,7 @@ jobs:
       pull-requests: write
     outputs:
       gen: ${{ steps.filter.outputs.gen }}
+      lint: ${{ steps.filter.outputs.lint }}
       markdown: ${{ steps.filter.outputs.markdown }}
       src: ${{ steps.filter.outputs.src }}
     runs-on: ubuntu-22.04
@@ -27,6 +28,11 @@ jobs:
               - "**.dart"
               - "**.yaml"
               - "**/pubspec.lock"
+            lint:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/report-custom-lint-ci.sh"
             markdown:
               - "**.md"
             src:
@@ -91,9 +97,9 @@ jobs:
           fail-on-error: "true"
 
   # custom_lintが時間かかるのでcheckと並列させる
-  custom_lint_check:
+  lint:
     needs: pre-check
-    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    if: ${{ needs.pre-check.outputs.lint == 'true' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
 
@@ -129,8 +135,8 @@ jobs:
     runs-on: ubuntu-22.04
     needs:
       - check
-      - custom_lint_check
       - diff-gen
+      - lint
       - markdown
     permissions: { }
     if: failure()
