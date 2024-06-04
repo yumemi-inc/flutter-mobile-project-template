@@ -81,7 +81,7 @@ jobs:
   # custom_lintが時間かかるのでcheckと並列させる
   custom_lint_check:
     needs: pre-check
-    if: ${{ needs.pre-check.outputs.src == 'true' && github.base_ref == 'feature/fast_ci' }}
+    if: ${{ needs.pre-check.outputs.src == 'true' && github.base_ref == 'feature/new_format' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
 
