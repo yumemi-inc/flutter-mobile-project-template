@@ -27,6 +27,7 @@ command:
       riverpod_generator: ^2.4.0
       riverpod_lint: ^2.3.10
       yumemi_lints: ^2.1.0
+      test: ^1.24.0
     hooks:
       post: melos run yumemi_lints_update
 
@@ -35,12 +36,11 @@ scripts:
     exec: flutter test --no-pub --machine > test_report.log
     packageFilters:
       flutter: true
+      dependsOn: test
 
-  format:
+  # ローカルでフォーマットとdart fix --applyを実行する
+  format_and_fix:
     exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
-
-  check_format:ci:
-    exec: bash "$MELOS_ROOT_PATH/scripts/check-format-ci.sh"
 
   report_custom_lint:ci:
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"

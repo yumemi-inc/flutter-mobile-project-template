@@ -13,6 +13,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  test: ^1.24.0
   yumemi_lints: ^2.1.0
 
 flutter:
