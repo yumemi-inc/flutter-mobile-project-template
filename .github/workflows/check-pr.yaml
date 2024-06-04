@@ -79,9 +79,10 @@ jobs:
         if: steps.check_files.outputs.files_exists == 'true'
 
   # custom_lintが時間かかるのでcheckと並列させる
+  # このjobはmainブランチにマージする時PRでだけ実行される（ブランチ運用に合わせて条件を変えてください）
   custom_lint_check:
     needs: pre-check
-    if: ${{ needs.pre-check.outputs.src == 'true' && github.base_ref == 'feature/new_format' }}
+    if: ${{ needs.pre-check.outputs.src == 'true' && github.base_ref == 'main' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
 
