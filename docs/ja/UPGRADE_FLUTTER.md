@@ -1,6 +1,7 @@
 ### 手順
 
 <!-- 英語版のドキュメントを作成してリンクさせる -->
+言語: 日本語 | [English](/docs/en/UPGRADE_FLUTTER.md)
 
 1. `fvm use <upgrade version>` を実行
 2. `pubspec.yaml` の `sdk, flutter` 部分のバージョンを変更
