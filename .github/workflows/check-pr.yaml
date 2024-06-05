@@ -8,42 +8,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pre-check:
+  changes:
+    uses: ./.github/workflows/wc-changes.yml
+
+  skip-comment:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.any == 'false' }}
     permissions:
       pull-requests: write
-    outputs:
-      gen: ${{ steps.filter.outputs.gen }}
-      lint: ${{ steps.filter.outputs.lint }}
-      markdown: ${{ steps.filter.outputs.markdown }}
-      src: ${{ steps.filter.outputs.src }}
-    runs-on: ubuntu-22.04
     timeout-minutes: 5
 
     steps:
-      - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
-        id: filter
-        with:
-          filters: |
-            gen:
-              - "**.dart"
-              - "**.yaml"
-              - "**/pubspec.lock"
-            lint:
-              - "**.dart"
-              - "**.yaml"
-              - "**/pubspec.lock"
-              - "scripts/report-custom-lint-ci.sh"
-            markdown:
-              - "**.md"
-            src:
-              - "**.dart"
-              - "**.yaml"
-              - "**/pubspec.lock"
-              - "scripts/**"
-
       # https://github.com/peter-evans/create-or-update-comment
       - name: Comment
-        if: ${{ steps.filter.outputs.changes == '[]' }}
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           issue-number: ${{ github.event.pull_request.number }}
@@ -51,8 +29,8 @@ jobs:
             チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
 
   check:
-    needs: pre-check
-    if: ${{ needs.pre-check.outputs.src == 'true' }}
+    needs: changes
+    if: ${{ needs.changes.outputs.src == 'true' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
 
@@ -98,8 +76,8 @@ jobs:
 
   # custom_lintが時間かかるのでcheckと並列させる
   lint:
-    needs: pre-check
-    if: ${{ needs.pre-check.outputs.lint == 'true' }}
+    needs: changes
+    if: ${{ needs.changes.outputs.lint == 'true' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
 
@@ -123,13 +101,13 @@ jobs:
 
   diff-gen:
     uses: ./.github/workflows/wc-check-diff.yaml
-    needs: pre-check
-    if: ${{ needs.pre-check.outputs.gen == 'true' }}
+    needs: changes
+    if: ${{ needs.changes.outputs.gen == 'true' }}
 
   markdown:
     uses: ./.github/workflows/wc-check-markdown.yaml
-    needs: pre-check
-    if: ${{ needs.pre-check.outputs.markdown == 'true' }}
+    needs: changes
+    if: ${{ needs.changes.outputs.markdown == 'true' }}
 
   status-check:
     runs-on: ubuntu-22.04
