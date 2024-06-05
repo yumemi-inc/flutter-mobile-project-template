@@ -17,6 +17,25 @@ runs:
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
         cache: true
 
+    # https://github.com/actions/cache
+    - name: cache pub
+      id: cache
+      uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+      env:
+        cache-name: pub
+      with:
+        # pub-cache files are stored in `~/.pub-cache` on Linux/macOS
+        path: ~/.pub-cache
+        key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
+          ${{ runner.os }}-${{ env.cache-name }}-
+          ${{ runner.os }}-
+
+    - name: Path pub-cache
+      shell: bash
+      run: echo "$HOME/.pub-cache/bin" >> "$GITHUB_PATH"
+
     - name: Setup melos
       run: |
         mkdir -p .fvm
