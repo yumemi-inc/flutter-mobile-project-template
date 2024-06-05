@@ -2,9 +2,9 @@
 
 言語: 日本語 | [English](/docs/en/BRANCH.md)
 
-## ブランチルール
+## ブランチ保護ルール
 
-[ブランチルール](https://docs.github.com/ja/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) について記載します。
+[ブランチ保護ルール](https://docs.github.com/ja/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) について記載します。
 
 ### ステータスチェック
 
