@@ -1,18 +1,11 @@
 name: Check generated code is latest
 
 on:
-  workflow_dispatch:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - "**.dart"
-      - "**.yaml"
-      - "**/pubspec.lock"
+  workflow_call:
 
 jobs:
   check:
     runs-on: ubuntu-22.04
-
     timeout-minutes: 10
 
     steps:
