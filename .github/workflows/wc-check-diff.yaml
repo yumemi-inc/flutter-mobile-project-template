@@ -16,6 +16,22 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
+      # https://github.com/actions/cache
+      - name: Cache build runner
+        id: cache-build-runner
+        uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
+        env:
+          cache-name: build-runner
+        with:
+          path: |
+            **/.dart_tool/build
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/asset_graph.json') }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/asset_graph.json') }}-${{ hashFiles('**/pubspec.lock') }}
+            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
+            ${{ runner.os }}-${{ env.cache-name }}-
+            ${{ runner.os }}-
+
       - name: Regenerate code
         run: melos run regenerate_code --no-select
 
