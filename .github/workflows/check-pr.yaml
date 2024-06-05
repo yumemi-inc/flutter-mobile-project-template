@@ -91,7 +91,7 @@ jobs:
           fail-on-error: "true"
 
   # custom_lintが時間かかるのでcheckと並列させる
-  lint:
+  custom-lint:
     needs:
       - changes
       - cache-dependencies
@@ -133,8 +133,8 @@ jobs:
     runs-on: ubuntu-22.04
     needs:
       - check
+      - custom-lint
       - diff-gen
-      - lint
       - markdown
     permissions: { }
     if: failure()
