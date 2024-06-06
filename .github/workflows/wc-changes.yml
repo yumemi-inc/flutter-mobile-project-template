@@ -1,0 +1,74 @@
+name: "Check for changes in paths"
+
+on:
+  workflow_call:
+    outputs:
+      gen:
+        value: ${{ jobs.changes.outputs.gen }}
+      lint:
+        value: ${{ jobs.changes.outputs.lint }}
+      any:
+        value: ${{ jobs.changes.outputs.any }}
+      markdown:
+        value: ${{ jobs.changes.outputs.markdown }}
+      src:
+        value: ${{ jobs.changes.outputs.src }}
+      dependencies:
+        value: ${{ jobs.changes.outputs.dependencies }}
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  changes:
+    runs-on: ubuntu-22.04
+    outputs:
+      any: ${{ steps.filter.outputs.changes != '[]' }}
+      gen: ${{ steps.filter.outputs.gen }}
+      lint: ${{ steps.filter.outputs.lint }}
+      markdown: ${{ steps.filter.outputs.markdown }}
+      src: ${{ steps.filter.outputs.src }}
+      dependencies: ${{ steps.needs.outputs.dependencies }}
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+
+      # https://github.com/marketplace/actions/paths-changes-filter
+      - name: Paths Changes Filter
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        id: filter
+        with:
+          filters: |
+            gen:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+            lint:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/report-custom-lint-ci.sh"
+            markdown:
+              - "**.md"
+            src:
+              - "**.dart"
+              - "**.yaml"
+              - "**/pubspec.lock"
+              - "scripts/**"
+
+      - name: Check for dependencies changes
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        id: needs
+        with:
+          script: |
+            const changes = ${{ steps.filter.outputs.changes }};
+            
+            // 依存関係の解決が必要な変更箇所
+            const dependencies = [
+              'gen',
+              'lint',
+              'src',
+            ];
+            core.setOutput('dependencies', changes.some(value => dependencies.includes(value)));
