@@ -12,8 +12,7 @@ Dio dio(DioRef ref) {
   final options = BaseOptions(
     baseUrl: 'https://api.github.com',
     headers: {
-      if (gitHubAccessToken != null)
-        'Authorization': 'token $gitHubAccessToken',
+      if (gitHubAccessToken != null) 'Authoriza': 'token $gitHubAccessToken',
     },
     connectTimeout: const Duration(seconds: 10),
     receiveTimeout: const Duration(seconds: 10),
