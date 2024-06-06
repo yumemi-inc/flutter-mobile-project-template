@@ -35,10 +35,40 @@
   color: "ffffff"
   description: "This will not be worked on"
 
-# TODO: Type labels
+# App Package labels
+- name: "@apps/app"
+  color: "e261d6"
+  description: "Application development"
 
-# TODO: App Package labels
+- name: "@apps/catalog"
+  color: "d4f227"
+  description: "Catalog development"
 
-# TODO: Core Package labels
+# Core Package labels
+- name: "@cores/core"
+  color: "0b2ebd"
 
-# TODO: Feature Package labels
+- name: "@cores/data"
+  color: "50D413"
+
+- name: "@cores/designsystem"
+  color: "936116"
+
+- name: "@cores/init"
+  color: "DC79FD"
+
+- name: "@cores/navigation"
+  color: "D1A70E"
+
+# Feature Package labels
+- name: "@features/debug"
+  color: "48360E"
+
+- name: "@features/github_repository"
+  color: "3bc0ec"
+
+- name: "@features/setting"
+  color: "1e266d"
+
+- name: "@features/webview"
+  color: "6fe0ba"
