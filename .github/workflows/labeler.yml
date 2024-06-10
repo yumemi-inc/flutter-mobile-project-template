@@ -1,0 +1,17 @@
+name: "Pull Request Labeler"
+
+on:
+  pull_request_target:
+
+jobs:
+  triage:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      # https://github.com/srvaroa/labeler
+      - name: Label manager for PRs and Issues based on configurable conditions
+        uses: srvaroa/labeler@1eec6d9e7c5fa5864840279978680302f955fc37 # v1.10.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
