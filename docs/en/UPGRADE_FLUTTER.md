@@ -17,8 +17,12 @@ command:
 
 > [!NOTE]
 > The rule version of yumemi_lints needs to be updated in `analysis_options.yaml`, which is updated automatically by the post hooks in `melos bootstrap`.
-`include: package:yumemi_lints/flutter/3.22/recommended.yaml`.
-However, the version of yumemi_lints itself may be out of date and not compatible with the latest Flutter version, so please update yumemi_lints in that case.
+>
+>```yaml
+>include: package:yumemi_lints/flutter/3.22/recommended.yaml
+>```
+>
+>However, the version of yumemi_lints itself may be out of date and not compatible with the latest Flutter version, so please update yumemi_lints in that case.
 
 4. Run `melos bootstrap`
 5. Confirm that the application can be launched on iOS
