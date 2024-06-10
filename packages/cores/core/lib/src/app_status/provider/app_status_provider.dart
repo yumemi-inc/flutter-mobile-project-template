@@ -1,6 +1,4 @@
 import 'package:cores_core/src/app_status/model/app_status.dart';
-import 'package:cores_core/src/app_status/model/force_update_status.dart';
-import 'package:cores_core/src/app_status/model/maintenance_mode_status.dart';
 import 'package:cores_core/src/app_status/provider/force_update_provider.dart';
 import 'package:cores_core/src/app_status/provider/maintenance_mode_provider.dart';
 
@@ -14,11 +12,7 @@ AppStatus appStatus(AppStatusRef ref) {
   final forceUpdateState = ref.watch(forceUpdateProvider);
 
   return AppStatus(
-    maintenanceModeStatus: MaintenanceModeStatus(
-      enabled: maintenanceModeState.enabled,
-    ),
-    forceUpdateStatus: ForceUpdateStatus(
-      enabled: forceUpdateState.enabled,
-    ),
+    maintenanceModeStatus: maintenanceModeState,
+    forceUpdateStatus: forceUpdateState,
   );
 }
