@@ -8,11 +8,11 @@ part 'app_status_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 AppStatus appStatus(AppStatusRef ref) {
-  final maintenanceModeState = ref.watch(maintenanceModeProvider);
-  final forceUpdateState = ref.watch(forceUpdateProvider);
+  final maintenanceModeStatus = ref.watch(maintenanceModeProvider);
+  final forceUpdateStatus = ref.watch(forceUpdateProvider);
 
   return AppStatus(
-    maintenanceModeStatus: maintenanceModeState,
-    forceUpdateStatus: forceUpdateState,
+    maintenanceModeStatus: maintenanceModeStatus,
+    forceUpdateStatus: forceUpdateStatus,
   );
 }
