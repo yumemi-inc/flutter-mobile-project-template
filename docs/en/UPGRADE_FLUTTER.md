@@ -1,14 +1,29 @@
+<!-- markdownlint-disable MD029 -->
 ### Procedure
 
-<!-- 英語版のドキュメントを作成してリンクさせる -->
 Language: English | [日本語](/docs/ja/UPGRADE_FLUTTER.md)
 
 1. Run `fvm use <upgrade version>`
-2. Change the version of the `sdk` and `flutter` part of `pubspec.yaml`.
-3. Run `fvm flutter pub get` to update `pubspec.lock`
-4. Confirm that the application can be launched on iOS
-5. Confirm that the application can be launched on Android
-6. Follow the [Migration Guide](https://docs.flutter.dev/release/breaking-changes) and fix deprecated parts as needed.
+2. Update the version of the `sdk` and `flutter` part of `pubspec.yaml`
+3. Update the versions of `sdk` and `flutter` in the bootstrap section of `melos.yaml`
+
+```yaml
+command:
+  bootstrap:
+    environment:
+      sdk: ^3.4.1
+      flutter: ^3.22.1
+```
+
+> [!NOTE]
+> The rule version of yumemi_lints needs to be updated in `analysis_options.yaml`, which is updated automatically by the post hooks in `melos bootstrap`.
+`include: package:yumemi_lints/flutter/3.22/recommended.yaml`.
+However, the version of yumemi_lints itself may be out of date and not compatible with the latest Flutter version, so please update yumemi_lints in that case.
+
+4. Run `melos bootstrap`
+5. Confirm that the application can be launched on iOS
+6. Confirm that the application can be launched on Android
+7. Follow the [Migration Guide](https://docs.flutter.dev/release/breaking-changes) and fix deprecated parts as needed.
 
 ### Points to note
 
