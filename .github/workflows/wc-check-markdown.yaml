@@ -1,14 +1,11 @@
 name: Check Markdown
 
 on:
-  pull_request:
-    paths:
-      - "**.md"
+  workflow_call:
 
 jobs:
-  check-markdown:
+  check:
     runs-on: ubuntu-22.04
-
     timeout-minutes: 10
 
     steps:
