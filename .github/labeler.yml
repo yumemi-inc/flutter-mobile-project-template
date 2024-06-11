@@ -1,0 +1,50 @@
+# noinspection YAMLSchemaValidation
+version: 1
+
+labels:
+  # App Package labels
+  - label: "@apps/app"
+    files:
+      - "apps/app/.+"
+
+  - label: "@apps/catalog"
+    files:
+      - "apps/catalog/.+"
+
+  # Core Package labels
+  - label: "@cores/core"
+    files:
+      - "packages/cores/core/.+"
+
+  - label: "@cores/data"
+    files:
+      - "packages/cores/data/.+"
+
+  - label: "@cores/designsystem"
+    files:
+      - "packages/cores/designsystem/.+"
+
+  - label: "@cores/init"
+    files:
+      - "packages/cores/init/.+"
+
+  - label: "@cores/navigation"
+    files:
+      - "packages/cores/navigation/.+"
+
+  # Feature Package labels
+  - label: "@features/debug"
+    files:
+      - "packages/features/debug_mode/.+"
+
+  - label: "@feature/github_repository"
+    files:
+      - "packages/features/github_repository/.+"
+
+  - label: "@feature/setting"
+    files:
+      - "packages/features/setting/.+"
+
+  - label: "@feature/webview"
+    files:
+      - "packages/features/webview/.+"
