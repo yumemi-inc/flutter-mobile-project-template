@@ -4,22 +4,22 @@
 Language: English | [日本語](/docs/ja/UPGRADE_FLUTTER.md)
 
 1. Run `fvm use <upgrade version>`
-2. Update the version of the `sdk` and `flutter` part of `pubspec.yaml`
+2. Update `sdk` version in the root-level `pubspec.yaml`
 3. Update the versions of `sdk` and `flutter` in the bootstrap section of `melos.yaml`
 
 ```yaml
 command:
   bootstrap:
     environment:
-      sdk: ^3.4.1
-      flutter: ^3.22.1
+      sdk: ^x.x.x
+      flutter: ^x.x.x
 ```
 
 > [!NOTE]
 > The rule version of yumemi_lints needs to be updated in `analysis_options.yaml`, which is updated automatically by the post hooks in `melos bootstrap`.
 >
 >```yaml
->include: package:yumemi_lints/flutter/3.22/recommended.yaml
+>include: package:yumemi_lints/flutter/x.x.x/recommended.yaml
 >```
 >
 >However, the version of yumemi_lints itself may be out of date and not compatible with the latest Flutter version, so please update yumemi_lints in that case.
