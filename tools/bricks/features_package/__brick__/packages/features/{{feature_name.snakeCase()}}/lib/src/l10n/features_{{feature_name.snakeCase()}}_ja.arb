@@ -1,0 +1,7 @@
+{
+  "{{feature_name.camelCase()}}Text": "{{feature_name.pascalCase()}} テキスト",
+  "{{feature_name.camelCase()}}BarAppBarTitle": "{{feature_name.pascalCase()}} Bar",
+  "{{feature_name.camelCase()}}BarText": "{{feature_name.pascalCase()}} Bar テキスト",
+  "{{feature_name.camelCase()}}FooAppBarTitle": "{{feature_name.pascalCase()}} Foo",
+  "{{feature_name.camelCase()}}FooText": "{{feature_name.pascalCase()}} Foo テキスト"
+}
