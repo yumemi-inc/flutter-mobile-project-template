@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cores_core/app_status.dart';
+import 'package:cores_navigation/providers.dart';
 import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,6 +11,7 @@ class DebugPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final navigator = ref.watch(navigationNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Mode'),
