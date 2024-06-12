@@ -9,6 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/main_page.dart';
 import 'package:flutter_app/router/navigator/home_navigator.dart';
+import 'package:flutter_app/router/navigator/navigation_navigator.dart';
 import 'package:flutter_app/router/navigator/setting_navigator.dart';
 import 'package:flutter_app/ui/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,6 +22,7 @@ part 'package:flutter_app/router/routes/main/home/web_page_route.dart';
 part 'package:flutter_app/router/routes/main/main_page_shell_route.dart';
 part 'package:flutter_app/router/routes/main/setting/setting_shell_branch.dart';
 part 'package:flutter_app/router/routes/maintenance_page_route.dart';
+part 'package:flutter_app/router/routes/navigation_page_route.dart';
 part 'router.g.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
