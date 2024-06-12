@@ -42,6 +42,12 @@ class DebugPage extends ConsumerWidget {
                     );
               },
             ),
+             _FixSizedElevatedButton(
+              title: '画面遷移',
+              onPressed: () async {
+                navigator.goNavigationPage(context);
+              },
+            ),
           ],
         ),
       ),
