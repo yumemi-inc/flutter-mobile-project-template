@@ -26,3 +26,25 @@ class NavigationPageRoute extends GoRouteData {
     return const NavigationPage();
   }
 }
+
+class PageARoute extends GoRouteData {
+  const PageARoute();
+
+  static const path = 'page_a';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const PageA();
+  }
+}
+
+class PageBRoute extends GoRouteData {
+  const PageBRoute();
+
+  static const path = 'page_b';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return const PageB();
+  }
+}
