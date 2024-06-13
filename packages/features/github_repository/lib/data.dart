@@ -1,1 +1,1 @@
-export 'src/data/provider/index.dart';
+export 'src/data/provider/scroll_notifier.dart';

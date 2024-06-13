@@ -1,1 +1,1 @@
-export 'src/provider/index.dart';
+export 'src/provider/initialize_providers.dart';
