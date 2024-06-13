@@ -11,7 +11,7 @@ class DebugPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navigator = ref.watch(navigationNavigatorProvider);
+    final navigator = ref.watch(debugNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Mode'),
@@ -44,7 +44,7 @@ class DebugPage extends ConsumerWidget {
                     );
               },
             ),
-             _FixSizedElevatedButton(
+            _FixSizedElevatedButton(
               title: '画面遷移',
               onPressed: () async {
                 navigator.goNavigationPage(context);
