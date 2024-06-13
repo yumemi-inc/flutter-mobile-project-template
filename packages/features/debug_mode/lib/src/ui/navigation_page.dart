@@ -1,3 +1,4 @@
+import 'package:cores_navigation/providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,6 +7,7 @@ class NavigationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final navigator = ref.watch(debugNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('画面遷移ページ'),
@@ -15,11 +17,11 @@ class NavigationPage extends ConsumerWidget {
           children: [
             _FixSizedElevatedButton(
               title: '画面A',
-              onPressed: () async {},
+              onPressed: () => navigator.goPageA(context),
             ),
             _FixSizedElevatedButton(
               title: '画面B',
-              onPressed: () async {},
+              onPressed: () => navigator.goPageB(context),
             ),
           ],
         ),
