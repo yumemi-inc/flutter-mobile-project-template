@@ -1,4 +1,5 @@
 import 'package:cores_navigation/providers.dart';
+import 'package:features_debug_mode/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -8,19 +9,20 @@ class NavigationPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final navigator = ref.watch(debugNavigatorProvider);
+    final l10n = L10nDebug.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('画面遷移ページ'),
+        title: Text(l10n.navigationPageAppBar),
       ),
       body: Center(
         child: Column(
           children: [
             _FixSizedElevatedButton(
-              title: '画面A',
+              title: l10n.pageA,
               onPressed: () => navigator.goPageA(context),
             ),
             _FixSizedElevatedButton(
-              title: '画面B',
+              title: l10n.pageB,
               onPressed: () => navigator.goPageB(context),
             ),
           ],

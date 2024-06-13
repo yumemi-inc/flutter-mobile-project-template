@@ -1,3 +1,4 @@
+import 'package:features_debug_mode/l10n.dart';
 import 'package:flutter/material.dart';
 
 class PageA extends StatelessWidget {
@@ -5,9 +6,10 @@ class PageA extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10nDebug.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('画面A'),
+        title: Text(l10n.pageA),
       ),
     );
   }

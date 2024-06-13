@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cores_core/app_status.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
+import 'package:features_debug_mode/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,15 +13,16 @@ class DebugPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final navigator = ref.watch(debugNavigatorProvider);
+    final l10n = L10nDebug.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Debug Mode'),
+        title: Text(l10n.debugAppBar),
       ),
       body: Center(
         child: Column(
           children: [
             _FixSizedElevatedButton(
-              title: 'Show error SnackBar',
+              title: l10n.showErrorSnackBar,
               onPressed: () async {
                 unawaited(
                   ref.read(exceptionGeneratorApiProvider.notifier).request(),
@@ -28,7 +30,7 @@ class DebugPage extends ConsumerWidget {
               },
             ),
             _FixSizedElevatedButton(
-              title: 'Enable maintenance mode',
+              title: l10n.enableMaintenanceMode,
               onPressed: () async {
                 ref
                     .read(maintenanceModeProvider.notifier)
@@ -36,7 +38,7 @@ class DebugPage extends ConsumerWidget {
               },
             ),
             _FixSizedElevatedButton(
-              title: 'Enable force update',
+              title: l10n.enableForceUpdate,
               onPressed: () async {
                 ref.read(forceUpdateVersionProvider.notifier).update(
                       iosTargetVersion: '9.9.9',
@@ -45,7 +47,7 @@ class DebugPage extends ConsumerWidget {
               },
             ),
             _FixSizedElevatedButton(
-              title: '画面遷移',
+              title: l10n.navigation,
               onPressed: () => navigator.goNavigationPage(context),
             ),
           ],

@@ -5,6 +5,7 @@ import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_init/provider.dart';
+import 'package:features_debug_mode/l10n.dart';
 import 'package:features_setting/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app_initializer.dart';
@@ -61,10 +62,12 @@ class MainApp extends ConsumerWidget {
       localizationsDelegates: const [
         ...L10n.localizationsDelegates,
         ...L10nSetting.localizationsDelegates,
+        ...L10nDebug.localizationsDelegates
       ],
       supportedLocales: const [
         ...L10n.supportedLocales,
         ...L10nSetting.supportedLocales,
+        ...L10nDebug.supportedLocales
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       routerConfig: ref.watch(routerProvider),
