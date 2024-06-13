@@ -23,7 +23,12 @@ class NavigationPageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const NavigationPage();
+    return ProviderScope(
+      overrides: [
+        debugNavigatorProvider.overrideWithValue(const DebugNavigatorImpl()),
+      ],
+        child: NavigationPage(),
+    );
   }
 }
 
