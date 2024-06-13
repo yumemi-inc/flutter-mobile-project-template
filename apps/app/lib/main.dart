@@ -62,12 +62,12 @@ class MainApp extends ConsumerWidget {
       localizationsDelegates: const [
         ...L10n.localizationsDelegates,
         ...L10nSetting.localizationsDelegates,
-        ...L10nDebug.localizationsDelegates
+        ...L10nDebug.localizationsDelegates,
       ],
       supportedLocales: const [
         ...L10n.supportedLocales,
         ...L10nSetting.supportedLocales,
-        ...L10nDebug.supportedLocales
+        ...L10nDebug.supportedLocales,
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       routerConfig: ref.watch(routerProvider),
