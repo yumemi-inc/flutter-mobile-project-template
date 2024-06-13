@@ -1,1 +1,1 @@
-export 'src/shared_preferences/index.dart';
+export 'src/shared_preferences/provider/shared_preferences.dart';

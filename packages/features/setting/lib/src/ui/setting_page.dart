@@ -2,7 +2,8 @@ import 'package:cores_core/provider.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_navigation/providers.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
-import 'package:features_setting/src/ui/components/index.dart';
+import 'package:features_setting/src/ui/components/setting_section_spacer.dart';
+import 'package:features_setting/src/ui/components/setting_section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
