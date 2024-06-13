@@ -11,7 +11,6 @@ part of 'router.dart';
 List<RouteBase> get $appRoutes => [
       $mainPageShellRoute,
       $maintenancePageRoute,
-      $navigationPageRoute,
     ];
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
@@ -29,8 +28,13 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
                 ),
                 GoRouteData.$route(
                   path: 'debug',
-                  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
                   factory: $DebugPageRouteExtension._fromState,
+                  routes: [
+                    GoRouteData.$route(
+                      path: 'navigation',
+                      factory: $NavigationPageRouteExtension._fromState,
+                    ),
+                  ],
                 ),
                 GoRouteData.$route(
                   path: 'web',
@@ -122,6 +126,24 @@ extension $DebugPageRouteExtension on DebugPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
+extension $NavigationPageRouteExtension on NavigationPageRoute {
+  static NavigationPageRoute _fromState(GoRouterState state) =>
+      const NavigationPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/debug/navigation',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
 extension $WebPageRouteExtension on WebPageRoute {
   static WebPageRoute _fromState(GoRouterState state) => const WebPageRoute();
 
@@ -186,29 +208,6 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
 
   String get location => GoRouteData.$location(
         '/maintenance',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-RouteBase get $navigationPageRoute => GoRouteData.$route(
-      path: '/navigation',
-      factory: $NavigationPageRouteExtension._fromState,
-    );
-
-extension $NavigationPageRouteExtension on NavigationPageRoute {
-  static NavigationPageRoute _fromState(GoRouterState state) =>
-      const NavigationPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/navigation',
       );
 
   void go(BuildContext context) => context.go(location);

@@ -5,10 +5,24 @@ class DebugPageRoute extends GoRouteData {
 
   static const path = 'debug';
 
-  static final $parentNavigatorKey = _rootNavigatorKey;
+  @override
+  Widget build(BuildContext context, GoRouterState state) {
+    return ProviderScope(
+      overrides: [
+        debugNavigatorProvider.overrideWithValue(const DebugNavigatorImpl()),
+      ],
+      child: const DebugPage(),
+    );
+  }
+}
+
+class NavigationPageRoute extends GoRouteData {
+  const NavigationPageRoute();
+
+  static const path = 'navigation';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const DebugPage();
+    return const NavigationPage();
   }
 }
