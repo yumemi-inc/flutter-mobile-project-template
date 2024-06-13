@@ -33,14 +33,16 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
                     GoRouteData.$route(
                       path: 'navigation',
                       factory: $NavigationPageRouteExtension._fromState,
-                    ),
-                    GoRouteData.$route(
-                      path: 'page_a',
-                      factory: $PageARouteExtension._fromState,
-                    ),
-                    GoRouteData.$route(
-                      path: 'page_b',
-                      factory: $PageBRouteExtension._fromState,
+                      routes: [
+                        GoRouteData.$route(
+                          path: 'page_a',
+                          factory: $PageARouteExtension._fromState,
+                        ),
+                        GoRouteData.$route(
+                          path: 'page_b',
+                          factory: $PageBRouteExtension._fromState,
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -156,7 +158,7 @@ extension $PageARouteExtension on PageARoute {
   static PageARoute _fromState(GoRouterState state) => const PageARoute();
 
   String get location => GoRouteData.$location(
-        '/debug/page_a',
+        '/debug/navigation/page_a',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -173,7 +175,7 @@ extension $PageBRouteExtension on PageBRoute {
   static PageBRoute _fromState(GoRouterState state) => const PageBRoute();
 
   String get location => GoRouteData.$location(
-        '/debug/page_b',
+        '/debug/navigation/page_b',
       );
 
   void go(BuildContext context) => context.go(location);

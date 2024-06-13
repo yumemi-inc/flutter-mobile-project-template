@@ -13,12 +13,14 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
           routes: [
             TypedGoRoute<NavigationPageRoute>(
               path: NavigationPageRoute.path,
-            ),
-            TypedGoRoute<PageARoute>(
-              path: PageARoute.path,
-            ),
-            TypedGoRoute<PageBRoute>(
-              path: PageBRoute.path,
+              routes: [
+                TypedGoRoute<PageARoute>(
+                  path: PageARoute.path,
+                ),
+                TypedGoRoute<PageBRoute>(
+                  path: PageBRoute.path,
+                ),
+              ],
             ),
           ],
         ),
