@@ -27,8 +27,8 @@ import 'l10n_ja.dart';
 /// ```
 ///
 /// ## Update pubspec.yaml
-// ///
-// /// Please make sure to update your pubspec.yaml to include the following
+///
+/// Please make sure to update your pubspec.yaml to include the following
 /// packages:
 ///
 /// ```yaml
