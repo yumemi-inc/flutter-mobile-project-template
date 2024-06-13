@@ -1,0 +1,10 @@
+{
+  "debugAppBar": "デバッグモード",
+  "showErrorSnackBar": "エラーSnackBarを表示",
+  "enableMaintenanceMode": "メンテナンスモードを有効化",
+  "enableForceUpdate": "強制アップデートを有効化",
+  "navigation": "NavigationPageへ遷移",
+  "navigationPageAppBar": "画面遷移画面",
+  "pageA": "Page A",
+  "pageB": "Page B"
+}

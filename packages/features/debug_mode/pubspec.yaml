@@ -19,6 +19,8 @@ dependencies:
   dio: ^5.4.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_riverpod: ^2.5.1
   riverpod_annotation: ^2.3.5
 

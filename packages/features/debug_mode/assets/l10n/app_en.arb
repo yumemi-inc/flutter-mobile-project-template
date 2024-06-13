@@ -1,0 +1,11 @@
+{
+  "debugAppBar": "Debug Mode",
+  "showErrorSnackBar": "Show error SnackBar",
+  "enableMaintenanceMode": "Enable maintenance mode",
+  "enableForceUpdate": "Enable force update",
+  "navigation": "Go to NavigationPage",
+  "settingVersion": "Version",
+  "navigationPageAppBar": "Navigation Page",
+  "pageA": "Page A",
+  "pageB": "Page B"
+}
