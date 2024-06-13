@@ -34,6 +34,14 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
                       path: 'navigation',
                       factory: $NavigationPageRouteExtension._fromState,
                     ),
+                    GoRouteData.$route(
+                      path: 'page_a',
+                      factory: $PageARouteExtension._fromState,
+                    ),
+                    GoRouteData.$route(
+                      path: 'page_b',
+                      factory: $PageBRouteExtension._fromState,
+                    ),
                   ],
                 ),
                 GoRouteData.$route(
@@ -132,6 +140,40 @@ extension $NavigationPageRouteExtension on NavigationPageRoute {
 
   String get location => GoRouteData.$location(
         '/debug/navigation',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $PageARouteExtension on PageARoute {
+  static PageARoute _fromState(GoRouterState state) => const PageARoute();
+
+  String get location => GoRouteData.$location(
+        '/debug/page_a',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $PageBRouteExtension on PageBRoute {
+  static PageBRoute _fromState(GoRouterState state) => const PageBRoute();
+
+  String get location => GoRouteData.$location(
+        '/debug/page_b',
       );
 
   void go(BuildContext context) => context.go(location);

@@ -14,6 +14,12 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
             TypedGoRoute<NavigationPageRoute>(
               path: NavigationPageRoute.path,
             ),
+            TypedGoRoute<PageARoute>(
+              path: PageARoute.path,
+            ),
+            TypedGoRoute<PageBRoute>(
+              path: PageBRoute.path,
+            ),
           ],
         ),
         TypedGoRoute<WebPageRoute>(
