@@ -6,25 +6,23 @@ part of 'provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$navigationNavigatorHash() =>
-    r'fa87b8f037c618f9f3172755899b7e11a551f874';
+String _$debugNavigatorHash() => r'970277996b93ee7b66a378adab09bdea78427b0f';
 
-/// See also [navigationNavigator].
-@ProviderFor(navigationNavigator)
-final navigationNavigatorProvider =
-    AutoDisposeProvider<NavigationNavigator>.internal(
+/// See also [debugNavigator].
+@ProviderFor(debugNavigator)
+final debugNavigatorProvider = AutoDisposeProvider<DebugNavigator>.internal(
   (_) => throw UnsupportedError(
-    'The provider "navigationNavigatorProvider" is expected to get overridden/scoped, '
+    'The provider "debugNavigatorProvider" is expected to get overridden/scoped, '
     'but was accessed without an override.',
   ),
-  name: r'navigationNavigatorProvider',
+  name: r'debugNavigatorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$navigationNavigatorHash,
+      : _$debugNavigatorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef NavigationNavigatorRef = AutoDisposeProviderRef<NavigationNavigator>;
+typedef DebugNavigatorRef = AutoDisposeProviderRef<DebugNavigator>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
