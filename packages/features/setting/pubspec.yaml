@@ -9,11 +9,11 @@ environment:
 
 dependencies:
   cores_core:
-    path: ../../../packages/cores/core
+    path: ../../cores/core
   cores_data:
-    path: ../../../packages/cores/data
+    path: ../../cores/data
   cores_navigation:
-    path: ../../../packages/cores/navigation
+    path: ../../cores/navigation
   flutter:
     sdk: flutter
   flutter_localizations:
