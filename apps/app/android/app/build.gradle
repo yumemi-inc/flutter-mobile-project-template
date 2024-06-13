@@ -54,7 +54,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "${dartDefines.appId}"
+        applicationId = "${dartDefines.appIdAndroid}"
         if (dartDefines.appIdSuffix != null) {
             applicationIdSuffix = "${dartDefines.appIdSuffix}"
         }
