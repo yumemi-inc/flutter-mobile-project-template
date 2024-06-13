@@ -27,7 +27,7 @@ class NavigationPageRoute extends GoRouteData {
       overrides: [
         debugNavigatorProvider.overrideWithValue(const DebugNavigatorImpl()),
       ],
-        child: const NavigationPage(),
+      child: const NavigationPage(),
     );
   }
 }

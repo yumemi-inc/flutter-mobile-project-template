@@ -9,6 +9,7 @@ final class DebugNavigatorImpl implements DebugNavigator {
   void goNavigationPage(BuildContext context) {
     const NavigationPageRoute().go(context);
   }
+
   @override
   void goPageA(BuildContext context) {
     const PageARoute().go(context);
