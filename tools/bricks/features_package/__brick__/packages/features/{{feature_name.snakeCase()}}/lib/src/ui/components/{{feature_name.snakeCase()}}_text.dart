@@ -1,7 +1,7 @@
 import 'package:features_{{feature_name.snakeCase()}}/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
-final class {{feature_name.pascalCase()}}Text extends StatelessWidget {
+class {{feature_name.pascalCase()}}Text extends StatelessWidget {
   const {{feature_name.pascalCase()}}Text({super.key});
 
   @override

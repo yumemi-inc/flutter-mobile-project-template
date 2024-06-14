@@ -1,7 +1,7 @@
 import 'package:features_{{feature_name.snakeCase()}}/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
-final class BarText extends StatelessWidget {
+class BarText extends StatelessWidget {
   const BarText({super.key});
 
   @override

@@ -3,7 +3,7 @@ import 'package:features_{{feature_name.snakeCase()}}/src/ui/components/{{featur
 import 'package:features_{{feature_name.snakeCase()}}/src/ui/pages/foo/components/foo_text.dart';
 import 'package:flutter/material.dart';
 
-final class FooPage extends StatelessWidget {
+class FooPage extends StatelessWidget {
   const FooPage({super.key});
 
   @override
