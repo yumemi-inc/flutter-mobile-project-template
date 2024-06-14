@@ -31,7 +31,7 @@ command:
       test: ^1.24.0
       flutter_gen_runner: ^5.5.0+1
     hooks:
-      post: melos run yumemi_lints_update
+      post: melos run yumemi_lints_update && grind generate-package-labels && grind generate-package-labeler
 
 scripts:
   report_test:
