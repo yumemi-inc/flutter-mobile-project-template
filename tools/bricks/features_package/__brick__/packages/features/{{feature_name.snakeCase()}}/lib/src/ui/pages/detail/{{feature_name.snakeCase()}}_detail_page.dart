@@ -1,10 +1,10 @@
 import 'package:features_{{feature_name.snakeCase()}}/src/gen/l10n/l10n.dart';
 import 'package:features_{{feature_name.snakeCase()}}/src/ui/components/{{feature_name.snakeCase()}}_text.dart';
-import 'package:features_{{feature_name.snakeCase()}}/src/ui/pages/bar/components/bar_text.dart';
+import 'package:features_{{feature_name.snakeCase()}}/src/ui/pages/detail/components/{{feature_name.snakeCase()}}_detail_text.dart';
 import 'package:flutter/material.dart';
 
-class BarPage extends StatelessWidget {
-  const BarPage({super.key});
+class {{feature_name.pascalCase()}}DetailPage extends StatelessWidget {
+  const {{feature_name.pascalCase()}}DetailPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class BarPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.{{feature_name.camelCase()}}BarAppBarTitle),
+        title: Text(l10n.{{feature_name.camelCase()}}DetailAppBarTitle),
       ),
       body: const SafeArea(
         child: Center(
@@ -20,7 +20,7 @@ class BarPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               {{feature_name.pascalCase()}}Text(),
-              BarText(),
+              {{feature_name.pascalCase()}}DetailText(),
             ],
           ),
         ),
