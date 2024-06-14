@@ -34,7 +34,6 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
     bool skipErrorOnHasValue = false,
   }) {
     if (skipErrorOnHasValue) {
-      logger.shout(isLoading);
       if (hasValue && hasError) {
         return data(requireValue, hasError: true, isLoading: isLoading);
       }
