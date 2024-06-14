@@ -35,7 +35,7 @@
   color: "ffffff"
   description: "This will not be worked on"
 
-# App Package labels
+# <!-- This is an auto-generated label -->
 - name: "@apps/app"
   color: "e261d6"
   description: "Application development"
