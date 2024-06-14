@@ -29,7 +29,7 @@ command:
       yumemi_lints: ^2.1.0
       test: ^1.24.0
     hooks:
-      post: melos run yumemi_lints_update
+      post: melos run yumemi_lints_update && grind generate-package-labels && grind generate-package-labeler
 
 scripts:
   report_test:
