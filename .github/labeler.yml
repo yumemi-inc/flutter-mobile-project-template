@@ -2,6 +2,7 @@
 version: 1
 
 labels:
+  # <!-- This is an auto-generated label -->
   # App Package labels
   - label: "@apps/app"
     files:
