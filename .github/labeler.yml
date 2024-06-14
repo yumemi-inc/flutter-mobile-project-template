@@ -3,49 +3,46 @@ version: 1
 
 labels:
   # <!-- This is an auto-generated label -->
-  # App Package labels
-  - label: "@apps/app"
-    files:
-      - "apps/app/.+"
-
   - label: "@apps/catalog"
     files:
-      - "apps/catalog/.+"
+      - apps/catalog/.+
 
-  # Core Package labels
-  - label: "@cores/core"
+  - label: "@packages/cores/core"
     files:
-      - "packages/cores/core/.+"
+      - packages/cores/core/.+
 
-  - label: "@cores/data"
+  - label: "@packages/cores/data"
     files:
-      - "packages/cores/data/.+"
+      - packages/cores/data/.+
 
-  - label: "@cores/designsystem"
+  - label: "@packages/cores/designsystem"
     files:
-      - "packages/cores/designsystem/.+"
+      - packages/cores/designsystem/.+
 
-  - label: "@cores/init"
+  - label: "@packages/cores/init"
     files:
-      - "packages/cores/init/.+"
+      - packages/cores/init/.+
 
-  - label: "@cores/navigation"
+  - label: "@packages/cores/navigation"
     files:
-      - "packages/cores/navigation/.+"
+      - packages/cores/navigation/.+
 
-  # Feature Package labels
-  - label: "@features/debug"
+  - label: "@packages/features/debug_mode"
     files:
-      - "packages/features/debug_mode/.+"
+      - packages/features/debug_mode/.+
 
-  - label: "@feature/github_repository"
+  - label: "@packages/features/github_repository"
     files:
-      - "packages/features/github_repository/.+"
+      - packages/features/github_repository/.+
 
-  - label: "@feature/setting"
+  - label: "@packages/features/setting"
     files:
-      - "packages/features/setting/.+"
+      - packages/features/setting/.+
 
-  - label: "@feature/webview"
+  - label: "@packages/features/webview"
     files:
-      - "packages/features/webview/.+"
+      - packages/features/webview/.+
+
+  - label: "@apps/app"
+    files:
+      - apps/app/.+
