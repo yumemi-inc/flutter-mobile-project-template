@@ -2,7 +2,7 @@ arb-dir: assets/l10n
 output-dir: lib/src/gen/l10n
 template-arb-file: app_ja.arb
 output-localization-file: l10n.dart
-output-class: L10nSetting
+output-class: L10n
 synthetic-package: false
 preferred-supported-locales:
   - ja

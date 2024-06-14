@@ -1,1 +1,1 @@
-export 'src/gen/l10n/l10n.dart' show L10nSetting;
+export 'src/gen/l10n/l10n.dart' show L10n;
