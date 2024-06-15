@@ -15,7 +15,7 @@ class SettingPage extends ConsumerWidget {
     final navigator = ref.watch(settingNavigatorProvider);
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
-    final l10n = L10nSetting.of(context);
+    final l10n = L10n.of(context);
 
     return Scaffold(
       appBar: AppBar(

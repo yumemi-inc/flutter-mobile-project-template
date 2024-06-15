@@ -1,0 +1,38 @@
+name: features_{{feature_name.snakeCase()}}
+description: "This package provides {{feature_name.snakeCase()}} features."
+publish_to: 'none'
+version: 0.0.1
+
+environment:
+  sdk: ^3.4.1
+  flutter: ^3.22.1
+
+dependencies:
+  cores_core:
+    path: ../../cores/core
+  cores_data:
+    path: ../../cores/data
+  cores_designsystem:
+    path: ../../cores/designsystem
+  flutter:
+    sdk: flutter
+  flutter_hooks: ^0.20.5
+  flutter_localizations:
+    sdk: flutter
+  freezed_annotation: ^2.4.1
+  hooks_riverpod: ^2.5.1
+  intl: ^0.19.0
+  riverpod_annotation: ^2.3.5
+
+dev_dependencies:
+  build_runner: ^2.4.7
+  custom_lint: ^0.6.4
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.4.7
+  json_serializable: ^6.7.1
+  riverpod_generator: ^2.4.0
+  riverpod_lint: ^2.3.10
+  yumemi_lints: ^2.1.0
+
+flutter:
