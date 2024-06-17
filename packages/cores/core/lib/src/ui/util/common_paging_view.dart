@@ -75,12 +75,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     }
 
     if (hasError && isLoading) {
-      return const Center(
-        child: Padding(
-          padding: EdgeInsets.all(16),
-          child: CircularProgressIndicator(),
-        ),
-      );
+      return const _ReloadingItem();
     }
 
     if (hasError && !isLoading) {
@@ -156,6 +151,19 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
           // without hiding existing content.
           skipErrorOnHasValue: true,
         );
+  }
+}
+
+class _ReloadingItem extends StatelessWidget {
+  const _ReloadingItem();
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
 
