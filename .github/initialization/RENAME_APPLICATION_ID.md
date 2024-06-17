@@ -6,8 +6,8 @@
 
 1. `flavor` ディレクトリ内の JSON ファイルのアプリケーション ID 定義を変更します。
 2. `app` モジュール内の `build.gradle` ファイルの `namespace` の定義を新しいアプリケーション ID で更新します。
-3. 更新されたパッケージ名で新しい `MainActivity.kt` ファイルを生成します。
-4. 古い `MainActivity.kt` ファイルを削除します。
+3. 古い `MainActivity.kt` ファイルを削除します。
+4. 更新されたパッケージ名で新しい `MainActivity.kt` ファイルを作成します。
 
 ## 使用方法
 

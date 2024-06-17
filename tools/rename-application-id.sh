@@ -49,7 +49,9 @@ readonly APP_BUILD_GRADLE_PATH="$PROJECT_ROOT/apps/app/android/app/build.gradle"
 
 sed -i '' "s/namespace \"$OLD_NAMESPACE\"/namespace \"$NEW_ANDROID_APPLICATION_ID\"/" "$APP_BUILD_GRADLE_PATH"
 
-# [Step3] Create new MainActivity.kt
+# [Step3] Delete old MainActivity.kt
+echo "[Step3] Deleting old MainActivity.kt..."
+# Backup old MainActivity.kt content and replace the application ID in the content.
 readonly MAIN_ACTIVITY_START_PATH="$PROJECT_ROOT/apps/app/android/app/src/main/kotlin"
 
 readonly OLD_MAIN_ACTIVITY_PATH="$MAIN_ACTIVITY_START_PATH/$(echo $OLD_PACKAGE_NAME | tr '.' '/')"
@@ -57,21 +59,18 @@ readonly OLD_MAIN_ACTIVITY_CONTENT=$(cat "$OLD_MAIN_ACTIVITY_PATH"/MainActivity.
 
 readonly NEW_MAIN_ACTIVITY_PATH="$MAIN_ACTIVITY_START_PATH/$(echo "$NEW_ANDROID_APPLICATION_ID" | tr '.' '/')"
 readonly NEW_MAIN_ACTIVITY_CONTENT=$(printf "%s" "$OLD_MAIN_ACTIVITY_CONTENT" | sed -e "s/package $OLD_NAMESPACE/package $NEW_ANDROID_APPLICATION_ID/")
-
-echo "[Step3] Creating new MainActivity.kt..."
-
-# [Options] -p: Create intermediate directories as required.
-mkdir -p "$NEW_MAIN_ACTIVITY_PATH"
-echo "$NEW_MAIN_ACTIVITY_CONTENT" > "$NEW_MAIN_ACTIVITY_PATH/MainActivity.kt"
-
-# [Step4] Delete old MainActivity.kt
-echo "[Step4] Deleting old MainActivity.kt..."
-
 # [Options]
 # -f list: The list specifies fields, separated in the input by the field delimiter character
 # -d delim: Use delim as the field delimiter character instead of the tab character.
 readonly FIRST_DIRECTORY_PATH=$(echo "$OLD_PACKAGE_NAME" | cut -f 1 -d ".")
 
 rm -r "${MAIN_ACTIVITY_START_PATH:?}/$FIRST_DIRECTORY_PATH"
+
+# [Step4] Create new MainActivity.kt
+echo "[Step4] Creating new MainActivity.kt..."
+
+# [Options] -p: Create intermediate directories as required.
+mkdir -p "$NEW_MAIN_ACTIVITY_PATH"
+echo "$NEW_MAIN_ACTIVITY_CONTENT" > "$NEW_MAIN_ACTIVITY_PATH/MainActivity.kt"
 
 echo "Application ID renaming process completed."
