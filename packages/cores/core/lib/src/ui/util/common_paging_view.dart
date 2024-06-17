@@ -64,14 +64,14 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
 
   final void Function(AppException e) _onError;
 
-  Widget _endItem(
+  Widget? _endItem(
     D data,
     WidgetRef ref, {
     required bool hasError,
     required bool isLoading,
   }) {
     if (!data.hasMore) {
-      return const SizedBox.shrink();
+      return null;
     }
 
     if (hasError && isLoading) {
