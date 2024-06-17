@@ -129,6 +129,8 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),
               child: _contentBuilder(
+                // Displays EndItem to detect scroll end
+                // if more data is available and no errors.
                 data,
                 _endItem(
                   data,
