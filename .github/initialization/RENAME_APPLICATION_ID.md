@@ -1,30 +1,32 @@
 ## 概要
 
-`/tools/rename-application-id.sh`を実行して、FlutterプロジェクトのアプリケーションIDの名前を変更するプロセスを自動化してください。
+`/tools/rename-application-id.sh` を実行して、Flutter プロジェクトのアプリケーション ID の名前を変更してください。
 
-このスクリプトは以下のステップを実行します：
+このスクリプトは以下のステップを実行します:
 
-1. `flavor`ディレクトリ内の構成JSONファイルのアプリケーションID定義を変更します。
-2. `app`モジュール内の`build.gradle`ファイルの`namespace`の定義を新しいアプリケーションIDで更新します。
-3. 更新されたパッケージ名で新しい`MainActivity.kt`ファイルを生成します。
-4. 古い`MainActivity.kt`ファイルを削除します。
+1. `flavor` ディレクトリ内の JSON ファイルのアプリケーション ID 定義を変更します。
+2. `app` モジュール内の `build.gradle` ファイルの `namespace` の定義を新しいアプリケーション ID で更新します。
+3. 古い `MainActivity.kt` ファイルを削除します。
+4. 更新されたパッケージ名で新しい `MainActivity.kt` ファイルを作成します。
 
 ## 使用方法
 
-このスクリプトを使用するには、以下の手順に従ってください：
+このスクリプトを使用するには、以下の手順に従ってください:
 
 1. スクリプトの実行に必要な権限があることを確認してください。
-2. スクリプトの実行時に、新しいアプリケーションIDを引数として指定する。
+2. スクリプトの実行時に、新しいアプリケーションIDを引数として指定してください。
+   - 第 1 引数: Android のアプリケーションID
+   - 第 2 引数: iOS の Bundle ID
 
-```bash
-bash rename-application-id.sh "com.example.rename"
+```sh
+cd tools
+chmod +x rename-application-id.sh # 必要に応じて設定してください。
+./rename-application-id.sh "com.example.android.rename" "com.example.ios.rename"
 ```
 
-`com.example.rename`を希望する新しいアプリケーションIDに置き換える。
+これにより Android の Application ID が `com.example.android.rename` へ、iOS の Bundle ID が `com.example.ios.rename` へ変更されます。
 
 ## 参考
 
 - [Configure the app module](https://developer.android.com/build/configure-app-module)
 - [CFBundleIdentifier](https://developer.apple.com/documentation/bundleresources/information_property_list/cfbundleidentifier)
-
-*ChatGPT 3.5の支援により作成。*
