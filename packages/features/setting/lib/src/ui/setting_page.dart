@@ -1,6 +1,7 @@
 import 'package:cores_core/provider.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_navigation/providers.dart';
+import 'package:features_setting/gen/assets.gen.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
 import 'package:features_setting/src/ui/components/setting_section_spacer.dart';
 import 'package:features_setting/src/ui/components/setting_section_title.dart';
@@ -50,6 +51,18 @@ class SettingPage extends ConsumerWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               [
+                // featureでassetsを使う場合はpackageを指定する
+                Image.asset(
+                  'assets/yumemi_logo.png',
+                  package: 'features_setting',
+                  width: 100,
+                  height: 100,
+                ),
+                // こちらはflutter_genを使う場合
+                Assets.yumemiLogo.image(
+                  width: 100,
+                  height: 100,
+                ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 24,
