@@ -64,6 +64,14 @@ scripts:
     packageFilters:
       dependsOn: flutter_localizations
 
+  watch:
+    run: dart run build_runner watch -d
+    exec:
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
+
   yumemi_lints_update:
     exec: dart run yumemi_lints update
     packageFilters:

@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'provider.dart';
+// ignore_for_file: type=lint, duplicate_ignore
+
+part of 'navigator_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$settingNavigatorHash() => r'fc6b868855bdd2ee18786d0ae3c9c81619487337';
+String _$settingNavigatorHash() => r'8e6c0e4343784745bdfbe2f4894f2fc2cb8400b8';
 
 /// See also [settingNavigator].
 @ProviderFor(settingNavigator)
 final settingNavigatorProvider = AutoDisposeProvider<SettingNavigator>.internal(
-  (_) => throw UnsupportedError(
-    'The provider "settingNavigatorProvider" is expected to get overridden/scoped, '
-    'but was accessed without an override.',
-  ),
+  settingNavigator,
   name: r'settingNavigatorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$settingNavigatorHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 typedef SettingNavigatorRef = AutoDisposeProviderRef<SettingNavigator>;

@@ -1,4 +1,4 @@
-import 'package:cores_navigation/navigators.dart';
+import 'package:features_setting/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/router/provider/router.dart';
 

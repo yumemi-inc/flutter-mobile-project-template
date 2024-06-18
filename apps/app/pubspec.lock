@@ -221,13 +221,6 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
-  cores_navigation:
-    dependency: "direct main"
-    description:
-      path: "../../packages/cores/navigation"
-      relative: true
-    source: path
-    version: "0.0.1"
   coverage:
     dependency: transitive
     description:

@@ -1,9 +1,14 @@
 import 'package:cores_designsystem/theme_extensions.dart';
-import 'package:cores_navigation/providers.dart';
 import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
+import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+abstract interface class HomeNavigator {
+  void goDebugPage(BuildContext context);
+  void goWebPage(BuildContext context);
+}
 
 class HomePage extends ConsumerWidget {
   const HomePage({

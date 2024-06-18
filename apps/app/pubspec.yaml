@@ -16,8 +16,6 @@ dependencies:
     path: ../../packages/cores/designsystem
   cores_init:
     path: ../../packages/cores/init
-  cores_navigation:
-    path: ../../packages/cores/navigation
   features_debug_mode:
     path: ../../packages/features/debug_mode
   features_github_repository:

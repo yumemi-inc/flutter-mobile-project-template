@@ -1,26 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'provider.dart';
+// ignore_for_file: type=lint, duplicate_ignore
+
+part of 'navigator_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homeNavigatorHash() => r'df97d483d8ee4909452940450da3e752b1dab834';
+String _$homeNavigatorHash() => r'e9802a1819aed34048a7eee64edd51b98625ad93';
 
 /// See also [homeNavigator].
 @ProviderFor(homeNavigator)
 final homeNavigatorProvider = AutoDisposeProvider<HomeNavigator>.internal(
-  (_) => throw UnsupportedError(
-    'The provider "homeNavigatorProvider" is expected to get overridden/scoped, '
-    'but was accessed without an override.',
-  ),
+  homeNavigator,
   name: r'homeNavigatorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
       : _$homeNavigatorHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 typedef HomeNavigatorRef = AutoDisposeProviderRef<HomeNavigator>;

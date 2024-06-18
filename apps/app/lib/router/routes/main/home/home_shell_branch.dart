@@ -40,6 +40,8 @@ class HomePageRoute extends GoRouteData {
       child: ProviderScope(
         overrides: [
           homeNavigatorProvider.overrideWithValue(const HomeNavigatorImpl()),
+          githubRepositoryListNavigatorProvider
+              .overrideWithValue(const GithubRepositoryListNavigatorImpl()),
         ],
         child: const HomePage(),
       ),
