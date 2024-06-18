@@ -84,12 +84,14 @@ extension $GitHubRepositoryDetailPageRouteExtension
   static GitHubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
       GitHubRepositoryDetailPageRoute(
         state.uri.queryParameters['repository-name']!,
+        state.uri.queryParameters['description'],
       );
 
   String get location => GoRouteData.$location(
         '/github_repository_detail',
         queryParams: {
           'repository-name': repositoryName,
+          if (description != null) 'description': description,
         },
       );
 

@@ -48,14 +48,18 @@ class HomePageRoute extends GoRouteData {
 }
 
 class GitHubRepositoryDetailPageRoute extends GoRouteData {
-  const GitHubRepositoryDetailPageRoute(this.repositoryName);
+  const GitHubRepositoryDetailPageRoute(this.repositoryName, this.description);
 
   final String repositoryName;
+  final String? description;
 
   static const path = 'github_repository_detail';
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return GitHubRepositoryDetailPage(repositoryName: repositoryName);
+    return GitHubRepositoryDetailPage(
+      repositoryName: repositoryName,
+      description: description,
+    );
   }
 }
