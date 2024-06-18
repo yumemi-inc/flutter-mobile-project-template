@@ -23,8 +23,8 @@ class HomeShellBranch extends StatefulShellBranchData {
   const HomeShellBranch();
 }
 
-final class HomeNavigatorImpl implements HomeNavigator {
-  const HomeNavigatorImpl();
+final class _HomeNavigatorImpl implements HomeNavigator {
+  const _HomeNavigatorImpl();
 
   @override
   void goDebugPage(BuildContext context) {
@@ -37,9 +37,9 @@ final class HomeNavigatorImpl implements HomeNavigator {
   }
 }
 
-final class GithubRepositoryListNavigatorImpl
+final class _GithubRepositoryListNavigatorImpl
     implements GithubRepositoryListNavigator {
-  const GithubRepositoryListNavigatorImpl();
+  const _GithubRepositoryListNavigatorImpl();
 
   @override
   void goGitHubRepositoryDetailPage(
@@ -67,9 +67,9 @@ class HomePageRoute extends GoRouteData {
       // navigation or the state.
       child: ProviderScope(
         overrides: [
-          homeNavigatorProvider.overrideWithValue(const HomeNavigatorImpl()),
+          homeNavigatorProvider.overrideWithValue(const _HomeNavigatorImpl()),
           githubRepositoryListNavigatorProvider
-              .overrideWithValue(const GithubRepositoryListNavigatorImpl()),
+              .overrideWithValue(const _GithubRepositoryListNavigatorImpl()),
         ],
         child: const HomePage(),
       ),
