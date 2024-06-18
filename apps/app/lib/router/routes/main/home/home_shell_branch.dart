@@ -23,6 +23,34 @@ class HomeShellBranch extends StatefulShellBranchData {
   const HomeShellBranch();
 }
 
+final class HomeNavigatorImpl implements HomeNavigator {
+  const HomeNavigatorImpl();
+
+  @override
+  void goDebugPage(BuildContext context) {
+    const DebugPageRoute().go(context);
+  }
+
+  @override
+  void goWebPage(BuildContext context) {
+    const WebPageRoute().go(context);
+  }
+}
+
+final class GithubRepositoryListNavigatorImpl
+    implements GithubRepositoryListNavigator {
+  const GithubRepositoryListNavigatorImpl();
+
+  @override
+  void goGitHubRepositoryDetailPage(
+    BuildContext context,
+    String repositoryName,
+    String? description,
+  ) {
+    GitHubRepositoryDetailPageRoute(repositoryName, description).go(context);
+  }
+}
+
 class HomePageRoute extends GoRouteData {
   const HomePageRoute();
 

@@ -17,6 +17,15 @@ class SettingShellBranch extends StatefulShellBranchData {
   const SettingShellBranch();
 }
 
+final class SettingNavigatorImpl implements SettingNavigator {
+  const SettingNavigatorImpl();
+
+  @override
+  void goLicensePage(BuildContext context) {
+    const LicensePageRoute().go(context);
+  }
+}
+
 class SettingPageRoute extends GoRouteData {
   const SettingPageRoute();
 
