@@ -1,6 +1,6 @@
 name: features_setting
 description: "This package provides setting feature."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:
@@ -22,7 +22,18 @@ dependencies:
   intl: ^0.19.0
 
 dev_dependencies:
+  build_runner: ^2.4.7
+  flutter_gen_runner: ^5.5.0+1
   yumemi_lints: ^2.1.0
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/
+
+flutter_gen:
+  output: lib/src/gen/assets
+  assets:
+    outputs:
+      package_parameter_enabled: true

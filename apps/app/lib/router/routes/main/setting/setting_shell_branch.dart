@@ -42,6 +42,8 @@ class LicensePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const LicensePage();
+    return LicensePage(
+      applicationIcon: CommonAssets.yumemiLogo.image(height: 100, width: 100),
+    );
   }
 }
