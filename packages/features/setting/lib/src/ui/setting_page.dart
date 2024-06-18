@@ -51,14 +51,8 @@ class SettingPage extends ConsumerWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                // featureでassetsを使う場合はpackageを指定する
-                Image.asset(
-                  'assets/yumemi_logo.png',
-                  package: 'features_setting',
-                  width: 100,
-                  height: 100,
-                ),
-                // こちらはflutter_genを使う場合
+                // 同一パッケージのassetsはこのように使います
+                // 汎用的なassetsはcores_designsystemのCommonAssetsを使います
                 Assets.yumemiLogo.image(
                   width: 100,
                   height: 100,
