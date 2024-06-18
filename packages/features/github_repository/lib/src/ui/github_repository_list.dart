@@ -47,6 +47,7 @@ class GitHubRepositoryList extends HookConsumerWidget {
             onTap: () => navigator.goGitHubRepositoryDetailPage(
               context,
               data.items[index].name,
+              data.items[index].description,
             ),
             text: data.items[index].name,
           );

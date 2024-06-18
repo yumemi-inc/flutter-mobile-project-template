@@ -5,6 +5,6 @@ abstract interface class HomeNavigator {
   void goWebPage(BuildContext context);
   void goGitHubRepositoryDetailPage(
     BuildContext context,
-    String repositoryName,
+    String repositoryName, String? description,
   );
 }

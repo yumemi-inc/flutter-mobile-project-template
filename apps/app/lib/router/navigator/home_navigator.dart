@@ -19,7 +19,8 @@ final class HomeNavigatorImpl implements HomeNavigator {
   void goGitHubRepositoryDetailPage(
     BuildContext context,
     String repositoryName,
+    String? description,
   ) {
-    GitHubRepositoryDetailPageRoute(repositoryName).go(context);
+    GitHubRepositoryDetailPageRoute(repositoryName, description).go(context);
   }
 }
