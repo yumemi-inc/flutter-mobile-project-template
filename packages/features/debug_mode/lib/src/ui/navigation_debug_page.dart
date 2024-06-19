@@ -156,9 +156,12 @@ final class _Route {
   late final String path = _path;
 
   String get _path {
-    if (_parentRoute == null) {
+    final parentPath = _parentRoute?._path;
+    final childPath = _goRoute.path;
+    if (parentPath == null) {
       return _goRoute.path;
     }
-    return '${_parentRoute._path}/${_goRoute.path}';
+
+    return '${parentPath == '/' ? '' : parentPath}/$childPath';
   }
 }
