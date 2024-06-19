@@ -5,7 +5,7 @@ import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract interface class HomeNavigator {
+abstract interface class HomePageNavigator {
   void goDebugPage(BuildContext context);
   void goWebPage(BuildContext context);
 }
@@ -18,7 +18,7 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final l = L10n.of(context);
-    final navigator = ref.watch(homeNavigatorProvider);
+    final navigator = ref.watch(homePageNavigatorProvider);
     return Scaffold(
       appBar: AppBar(
         title: Text(l.appBar),
@@ -40,7 +40,7 @@ class HomePage extends ConsumerWidget {
           color: context.appColors.icon,
         ),
       ),
-      body: const GitHubRepositoryList(),
+      body: const GitHubRepositoryListPage(),
     );
   }
 }
