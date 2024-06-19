@@ -5,6 +5,10 @@ import 'package:features_debug_mode/src/data/api/provider/exception_generator_ap
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+abstract interface class DebugNavigator {
+  void goNavigationDebugPage(BuildContext context);
+}
+
 class DebugPage extends ConsumerWidget {
   const DebugPage({super.key});
 
