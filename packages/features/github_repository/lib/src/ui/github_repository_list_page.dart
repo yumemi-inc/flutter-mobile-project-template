@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-abstract interface class GithubRepositoryListNavigator {
+abstract interface class GitHubRepositoryListPageNavigator {
   void goGitHubRepositoryDetailPage(
     BuildContext context,
     String repositoryName,
@@ -22,13 +22,13 @@ typedef GitHubRepositoryPagingView = CommonPagingView<
     GitHubRepositoryPageState,
     GitHubRepository>;
 
-class GitHubRepositoryList extends HookConsumerWidget {
-  const GitHubRepositoryList({super.key});
+class GitHubRepositoryListPage extends HookConsumerWidget {
+  const GitHubRepositoryListPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
-    final navigator = ref.watch(githubRepositoryListNavigatorProvider);
+    final navigator = ref.watch(gitHubRepositoryListPageNavigatorProvider);
     ref.listen(scrollNotifierProvider, (_, __) async {
       if (!context.mounted) {
         return;

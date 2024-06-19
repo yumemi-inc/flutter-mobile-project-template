@@ -8,7 +8,7 @@ import 'package:features_setting/src/ui/provider/navigator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract interface class SettingNavigator {
+abstract interface class SettingPageNavigator {
   void goLicensePage(BuildContext context);
 }
 
@@ -17,7 +17,7 @@ class SettingPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navigator = ref.watch(settingNavigatorProvider);
+    final navigator = ref.watch(settingPageNavigatorProvider);
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
     final l10n = L10n.of(context);
