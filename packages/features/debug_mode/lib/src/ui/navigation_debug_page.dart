@@ -159,7 +159,7 @@ final class _Route {
     final parentPath = _parentRoute?._path;
     final childPath = _goRoute.path;
     if (parentPath == null) {
-      return _goRoute.path;
+      return childPath;
     }
 
     return '${parentPath == '/' ? '' : parentPath}/$childPath';
