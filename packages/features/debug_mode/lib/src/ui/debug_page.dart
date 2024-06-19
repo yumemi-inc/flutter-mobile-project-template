@@ -2,10 +2,11 @@ import 'dart:async';
 
 import 'package:cores_core/app_status.dart';
 import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
+import 'package:features_debug_mode/src/ui/provider/navigator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-abstract interface class DebugNavigator {
+abstract interface class DebugPageNavigator {
   void goNavigationDebugPage(BuildContext context);
 }
 
@@ -45,6 +46,12 @@ class DebugPage extends ConsumerWidget {
                       androidTargetVersion: '9.9.9',
                     );
               },
+            ),
+            _FixSizedElevatedButton(
+              title: 'Go navigation debug page',
+              onPressed: () => ref
+                  .read(debugPageNavigatorProvider)
+                  .goNavigationDebugPage(context),
             ),
           ],
         ),
