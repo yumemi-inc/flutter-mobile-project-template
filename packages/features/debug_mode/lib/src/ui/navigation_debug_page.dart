@@ -26,50 +26,6 @@ class NavigationDebugPage extends ConsumerWidget {
   }
 }
 
-class StatefulShellRouteView extends StatelessWidget {
-  const StatefulShellRouteView({
-    required StatefulShellRoute route,
-    super.key,
-  }) : _route = route;
-
-  final StatefulShellRoute _route;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: _route.routes
-          .map(
-            (route) => switch (route) {
-              GoRoute() => GoRouteView(route: route),
-              StatefulShellRoute() => StatefulShellRouteView(route: route),
-              _ => const SizedBox.shrink(),
-            },
-          )
-          .toList(),
-    );
-  }
-}
-
-class GoRouteView extends StatelessWidget {
-  const GoRouteView({
-    required GoRoute route,
-    super.key,
-  }) : _route = route;
-
-  final GoRoute _route;
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(_route.path),
-      onTap: () {
-        final router = GoRouter.of(context);
-        router.go(_route.path);
-      },
-    );
-  }
-}
-
 final class RouteDropdownMenu extends HookWidget {
   const RouteDropdownMenu({super.key});
 
