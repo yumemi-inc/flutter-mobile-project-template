@@ -5,5 +5,7 @@ bricks:
     path: tools/bricks/cores_package_dart
   features_package_core:
     path: tools/bricks/features_package_core
+  features_package:
+    path: tools/bricks/features_package
   brick:
     path: tools/bricks/brick

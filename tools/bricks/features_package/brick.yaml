@@ -1,0 +1,13 @@
+name: features_package
+description: featureパッケージを作成するbrickです。既存パッケージにriverpodやfreezedの依存を追加する際も使えます。
+
+version: 0.1.0
+
+environment:
+  mason: ">=0.1.0-dev.52 <0.1.0"
+
+vars:
+  feature_name:
+    type: string
+    description: Feature name
+    prompt: 'What is feature name? (example: foo_bar)'
