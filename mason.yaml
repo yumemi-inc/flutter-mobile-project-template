@@ -3,7 +3,7 @@ bricks:
     path: tools/bricks/cores_package_flutter
   cores_package_dart:
     path: tools/bricks/cores_package_dart
-  features_package:
-    path: tools/bricks/features_package
+  features_package_core:
+    path: tools/bricks/features_package_core
   brick:
     path: tools/bricks/brick
