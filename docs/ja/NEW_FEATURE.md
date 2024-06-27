@@ -1,6 +1,7 @@
 # featureパッケージ追加からに画面遷移するまでの手順
 
-言語: 日本語 | [English](/docs/en/NEW_FEATURE.md)
+<!-- とりあえず英語版はないので一旦コメントアウト -->
+<!-- 言語: 日本語 | [English](/docs/en/NEW_FEATURE.md) -->
 
 ## 1. appのpubspecに依存を追加
 
@@ -22,29 +23,14 @@ What is feature name? (example: foo_bar): sample
 
 features_packageでriverpodやfreezedを依存関係に含めるかを聞かれるので答える。
 
-```bash
-? Are you need riverpod? (Y/n) Yes
-? Are you need freezed? (Y/n) Yes
+```shell
+? Are you need riverpod? (Y/n) 
+? Are you need freezed? (Y/n) 
 ```
 
 その後`./packages/features/`に`sample`ができていることを確認する。
 
-## 3. 作成したfeatureをappsの依存関係に追加
-
-作成したfeatureをappsの依存関係に追加するために、`apps/app/pubspec.yaml`に作成したfeatureのパスを追記
-
-```yaml
-// apps/app/pubspec.yaml
-  ...
-  features_sample:
-    path: ../../packages/features/sample
-```
-
-以下のコマンドで追加された依存関係を読み込む
-
-```shell
-melos bs
-```
+---
 
 **既存のページから新しく作成した画面に遷移したい場合と
 BottomNavigationBarに新たに画面を追加したい場合では手順が違うので分けて説明する**
@@ -93,14 +79,21 @@ class SamplePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return SampleListPage(
-      applicationIcon: CommonAssets.yumemiLogo.image(height: 100, width: 100),
-    );
+    return const SampleListPage();
   }
 }
 ```
 
-**4. appにTypedGoRouteを追加**
+**4. `./apps/app/lib/router/provider/router.dart`に以下を追加**
+
+```dart
+// apps/app/lib/router/provider/router.dart
+
+// 新たに作成されたfeatureのuiをimportする
+import 'package:features_sample/ui.dart';
+```
+
+**5. appにTypedGoRouteを追加**
 
 ```dart
 // apps/app/lib/router/routes/main/setting/setting_shell_branch.dart
@@ -123,44 +116,19 @@ const settingShellBranch = TypedStatefulShellBranch<SettingShellBranch>(
 );
 ```
 
-**5. navigatorとappのコード生成**
+**6. navigatorとappのコード生成**
 `./apps/app`内で以下のコマンドを実行しnavigatorとappのコード生成を行う。
 
 ```bash
 fvm dart run build_runner build --delete-conflicting-outputs
 ```
 
-**6. 画面遷移**
+**7. 画面遷移**
 以下の関数で画面遷移ができることを確認する。
 
 ```dart
-navigator.goSamplePage(context)
-```
-
-**7. `main.dart`で追加パッケージのl10nをMaterialAppに追加**
-
-```dart
-// apps/app/lib/main.dart
-
-import 'package:features_sample/l10n.dart'; // importする
-
-return MaterialApp.router(
- localizationsDelegates: const [
-  ...L10n.localizationsDelegates,
-  ...SettingL10n.localizationsDelegates,
-  ...SampleL10n.localizationsDelegates, // 追加
- ],
- supportedLocales: const [
-  ...L10n.supportedLocales,
-  ...SettingL10n.supportedLocales,
-  ...SampleL10n.supportedLocales, // 追加
- ],
- scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
- routerConfig: ref.watch(routerProvider),
- theme: lightTheme(),
- darkTheme: darkTheme(),
- themeMode: themeMode,
-);
+final navigator = ref.watch(settingPageNavigatorProvider);
+navigator.goSamplePage(context);
 ```
 
 ## 4b. 遷移元が存在しない場合 (BottomNavigationBarに新たに画面を追加したい時)
@@ -186,9 +154,9 @@ Widget build(BuildContext context, WidgetRef ref) {
             icon: const Icon(Icons.settings),
           ),
           //ここに追加
-          NavigationDestination(
-            label: "sample",
-            icon: const Icon(Icons.heart_broken),
+          const NavigationDestination(
+            label: 'sample',
+            icon: Icon(Icons.heart_broken),
           ),
         ],
 ```
@@ -220,9 +188,10 @@ class SamplePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const SamplePage();
+    return const SampleListPage();
   }
 }
+
 ```
 
 **3. `./apps/app/lib/router/provider/router.dart`に以下を追加**
@@ -230,7 +199,7 @@ class SamplePageRoute extends GoRouteData {
 ```dart
 // apps/app/lib/router/provider/router.dart
 
-// 新たに作成されたfeatureをimport可能にする
+// 新たに作成されたfeatureのuiをimportする
 import 'package:features_sample/ui.dart';
 
 // 新たに作成されたShellBranchを有効化する
@@ -271,28 +240,4 @@ class MainPageShellRoute extends StatefulShellRouteData {
 fvm dart run build_runner build --delete-conflicting-outputs
 ```
 
-**6. `main.dart`で追加パッケージのl10nをMaterialAppに追加**
-
-```dart
-// apps/app/lib/main.dart
-
-import 'package:features_sample/l10n.dart'; // importする
-
-return MaterialApp.router(
-      localizationsDelegates: const [
-        ...L10n.localizationsDelegates,
-        ...SettingL10n.localizationsDelegates,
-        ...SampleL10n.localizationsDelegates, // 追加
-      ],
-      supportedLocales: const [
-        ...L10n.supportedLocales,
-        ...SettingL10n.supportedLocales,
-        ...SampleL10n.supportedLocales, // 追加
-      ],
-      scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
-      routerConfig: ref.watch(routerProvider),
-      theme: lightTheme(),
-      darkTheme: darkTheme(),
-      themeMode: themeMode,
-    );
-```
+**6. 新しくできたボトムナビゲーションのタブを押して画面遷移するか確認する**
