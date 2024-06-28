@@ -64,6 +64,31 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
 
   final void Function(AppException e) _onError;
 
+  Widget? _endItem(
+    D data,
+    WidgetRef ref, {
+    required bool hasError,
+    required bool isLoading,
+  }) {
+    if (!data.hasMore) {
+      return null;
+    }
+
+    if (hasError && isLoading) {
+      return const _ReloadingItem();
+    }
+
+    if (hasError && !isLoading) {
+      return _EndItemWhenError(
+        onPressed: () async => ref.read(_provider.notifier).loadNext(),
+      );
+    }
+
+    return _EndItem(
+      onScrollEnd: () async => ref.read(_provider.notifier).loadNext(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(
@@ -87,19 +112,23 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     );
 
     return ref.watch(_provider).whenIgnorableError(
-          data: (data, {required hasError}) {
+          data: (
+            data, {
+            required hasError,
+            required isLoading,
+          }) {
             return RefreshIndicator(
               onRefresh: () async => ref.refresh(_provider.future),
               child: _contentBuilder(
-                data,
                 // Displays EndItem to detect scroll end
                 // if more data is available and no errors.
-                data.hasMore && !hasError
-                    ? _EndItem(
-                        onScrollEnd: () async =>
-                            ref.read(_provider.notifier).loadNext(),
-                      )
-                    : null,
+                data,
+                _endItem(
+                  data,
+                  ref,
+                  hasError: hasError,
+                  isLoading: isLoading,
+                ),
               ),
             );
           },
@@ -118,6 +147,19 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
           // without hiding existing content.
           skipErrorOnHasValue: true,
         );
+  }
+}
+
+class _ReloadingItem extends StatelessWidget {
+  const _ReloadingItem();
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(16),
+        child: CircularProgressIndicator(),
+      ),
+    );
   }
 }
 
@@ -179,4 +221,48 @@ class _LoadingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       const Center(child: CircularProgressIndicator());
+}
+
+class _EndItemWhenError extends StatelessWidget {
+  const _EndItemWhenError({required void Function() onPressed})
+      : _onPressed = onPressed;
+  final void Function() _onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 130,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Flexible(
+            flex: 3,
+            child: Center(
+              child: Icon(Icons.cloud_off),
+            ),
+          ),
+          const Flexible(
+            flex: 2,
+            child: Center(
+              child: Text(
+                'Please check your connection and try again.',
+              ),
+            ),
+          ),
+          Flexible(
+            flex: 3,
+            child: Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: const StadiumBorder(),
+                ),
+                onPressed: _onPressed,
+                child: const Text('refresh'),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
