@@ -3,17 +3,15 @@
 <!-- とりあえず英語版はないので一旦コメントアウト -->
 <!-- 言語: 日本語 | [English](/docs/en/NEW_FEATURE.md) -->
 
-## 1. appのpubspecに依存を追加
+## 1. features_package(masonのbrick) で新しいパッケージを作成
 
 ```shell
-mason get && melos bs
-```
-
-## 2. 新規brickを作成
-
-```bash
 mason make features_package
 ```
+
+> [!Note]
+> `mason make`で失敗する場合はbrickのセットアップが終了していないかもしれません。
+`mason list` でfeatures_packageが出ない場合は、`mason get`を実行してください。
 
 featureの名前が聞かれるので以下のようにスネークケースで入力する。(以下新たに作成したfeature名はsampleとする)
 
@@ -35,7 +33,7 @@ features_packageでriverpodやfreezedを依存関係に含めるかを聞かれ�
 **既存のページから新しく作成した画面に遷移したい場合と
 BottomNavigationBarに新たに画面を追加したい場合では手順が違うので分けて説明する**
 
-## 4a. 遷移元が存在する場合 (Settingページから飛びたい場合)
+## 2a. 遷移元が存在する場合 (Settingページから飛びたい場合等)
 
 sampleをsettingページから遷移させる場合をここでは示す。
 
@@ -119,8 +117,8 @@ const settingShellBranch = TypedStatefulShellBranch<SettingShellBranch>(
 **6. navigatorとappのコード生成**
 `./apps/app`内で以下のコマンドを実行しnavigatorとappのコード生成を行う。
 
-```bash
-fvm dart run build_runner build --delete-conflicting-outputs
+```shell
+melos run regenerate_by_using_build_runner --no-select
 ```
 
 **7. 画面遷移**
@@ -131,7 +129,7 @@ final navigator = ref.watch(settingPageNavigatorProvider);
 navigator.goSamplePage(context);
 ```
 
-## 4b. 遷移元が存在しない場合 (BottomNavigationBarに新たに画面を追加したい時)
+## 4b. 遷移元が存在しない場合 (BottomNavigationBarに新たにタブを追加したい時)
 
 **1. 新しいNavigationDestinationを追加**
 
@@ -237,7 +235,7 @@ class MainPageShellRoute extends StatefulShellRouteData {
 **5. `./apps/app`にて、go_router周りのコード生成**
 
 ```shell
-fvm dart run build_runner build --delete-conflicting-outputs
+melos run regenerate_by_using_build_runner --no-select
 ```
 
 **6. 新しくできたボトムナビゲーションのタブを押して画面遷移するか確認する**
