@@ -36,6 +36,7 @@ void runGeneratePackageLabeler() {
         rootDir: rootDir,
         melosPackageList: fetchMelosPackageList(),
       ),
+      // NOTE: 末尾に改行を追加するために空文字を追加
       '',
     ].join('\n'),
   );
