@@ -28,6 +28,8 @@ void runGeneratePackageLabels() {
         'Create `.github/labels.yml` and run it again.',
       ].join('\n'),
     );
+  } else {
+    log('labelsFile: ${labelsFile.path}');
   }
 
   // 自動生成の区切り行を探す

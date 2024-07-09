@@ -24,6 +24,8 @@ void runGeneratePackageLabeler() {
         'Create `.github/labeler.yml` and run it again.',
       ].join('\n'),
     );
+  } else {
+    log('labelerFile: ${labelerFile.path}');
   }
 
   // コメント行を保持しつつ新しいYAML内容に置き換える
