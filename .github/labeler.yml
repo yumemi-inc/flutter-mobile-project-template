@@ -23,10 +23,6 @@ labels:
     files:
       - packages/cores/init/.+
 
-  - label: "@packages/cores/navigation"
-    files:
-      - packages/cores/navigation/.+
-
   - label: "@packages/features/debug_mode"
     files:
       - packages/features/debug_mode/.+

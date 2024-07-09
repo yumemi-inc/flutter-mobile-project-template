@@ -60,11 +60,6 @@
   description: packages cores init package
   from_name: "@cores/init"
 
-- name: "@packages/cores/navigation"
-  color: D1A70E
-  description: packages cores navigation package
-  from_name: "@cores/navigation"
-
 - name: "@packages/features/debug_mode"
   color: 48360E
   description: packages features debug_mode package
