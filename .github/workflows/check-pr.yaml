@@ -28,6 +28,25 @@ jobs:
           body: |
             チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
 
+  check-actions:
+    runs-on: ubuntu-22.04
+    needs: changes
+    if: ${{ needs.changes.outputs.actions == 'true' }}
+    timeout-minutes: 10
+
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      # https://github.com/marketplace/actions/actionlint-with-reviewdog
+      - uses: reviewdog/action-actionlint@afad3b6ab835e5611bda8c8193377e2d5c21413d # v1.51.0
+        with:
+          fail_on_error: true
+          filter_mode: nofilter
+          level: error
+          reporter: github-pr-review
+
   cache-dependencies:
     runs-on: ubuntu-22.04
     needs: changes
@@ -132,6 +151,7 @@ jobs:
   status-check:
     runs-on: ubuntu-22.04
     needs:
+      - check-actions
       - check
       - custom-lint
       - diff-gen

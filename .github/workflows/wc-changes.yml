@@ -9,6 +9,8 @@ on:
         value: ${{ jobs.changes.outputs.lint }}
       any:
         value: ${{ jobs.changes.outputs.any }}
+      actions:
+        value: ${{ jobs.changes.outputs.actions }}
       markdown:
         value: ${{ jobs.changes.outputs.markdown }}
       src:
@@ -25,6 +27,7 @@ jobs:
     runs-on: ubuntu-22.04
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
+      actions: ${{ steps.filter.outputs.actions }}
       gen: ${{ steps.filter.outputs.gen }}
       lint: ${{ steps.filter.outputs.lint }}
       markdown: ${{ steps.filter.outputs.markdown }}
@@ -41,6 +44,11 @@ jobs:
         id: filter
         with:
           filters: |
+            actions:
+              - '.github/actions/**/action.yml'
+              - '.github/actions/**/action.yaml'
+              - '.github/workflows/*.yml'
+              - '.github/workflows/*.yaml'
             gen:
               - "**.dart"
               - "**.yaml"
