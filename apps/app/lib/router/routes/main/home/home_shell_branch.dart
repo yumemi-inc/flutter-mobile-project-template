@@ -8,14 +8,6 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
         TypedGoRoute<GitHubRepositoryDetailPageRoute>(
           path: GitHubRepositoryDetailPageRoute.path,
         ),
-        TypedGoRoute<DebugPageRoute>(
-          path: DebugPageRoute.path,
-          routes: [
-            TypedGoRoute<NavigationDebugPageRoute>(
-              path: NavigationDebugPageRoute.path,
-            ),
-          ],
-        ),
         TypedGoRoute<WebPageRoute>(
           path: WebPageRoute.path,
         ),
@@ -33,7 +25,9 @@ final class _HomePageNavigatorImpl implements HomePageNavigator {
 
   @override
   void goDebugPage(BuildContext context) {
-    const DebugPageRoute().go(context);
+    unawaited(
+      const DebugPageRoute().push(context),
+    );
   }
 
   @override

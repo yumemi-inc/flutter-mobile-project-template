@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/common_assets.dart';
@@ -31,7 +33,16 @@ GoRouter router(RouterRef ref) {
   );
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    routes: $appRoutes,
+    routes: [
+      ...$appRoutes.where((route) {
+        if (route is GoRoute) {
+          return route.path != DebugPageRoute.path;
+        }
+
+        return true;
+      }),
+      if (kDebugMode) $debugPageRoute,
+    ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {

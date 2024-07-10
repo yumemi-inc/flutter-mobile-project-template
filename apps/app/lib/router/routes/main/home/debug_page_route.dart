@@ -5,14 +5,24 @@ final class _DebugPageNavigatorImpl implements DebugPageNavigator {
 
   @override
   void goNavigationDebugPage(BuildContext context) {
-    const NavigationDebugPageRoute().go(context);
+    unawaited(
+      const NavigationDebugPageRoute().push(context),
+    );
   }
 }
 
+@TypedGoRoute<DebugPageRoute>(
+  path: DebugPageRoute.path,
+  routes: [
+    TypedGoRoute<NavigationDebugPageRoute>(
+      path: NavigationDebugPageRoute.path,
+    ),
+  ],
+)
 class DebugPageRoute extends GoRouteData {
   const DebugPageRoute();
 
-  static const path = 'debug';
+  static const path = '/debug';
 
   static final $parentNavigatorKey = _rootNavigatorKey;
 
