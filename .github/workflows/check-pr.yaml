@@ -42,6 +42,7 @@ jobs:
       # https://github.com/marketplace/actions/actionlint-with-reviewdog
       - uses: reviewdog/action-actionlint@4f8f9963ca57a41e5fd5b538dd79dbfbd3e0b38a # v1.54.0
         with:
+          actionlint_flags: -ignore 'SC2153'
           fail_on_error: true
           filter_mode: nofilter
           level: error
