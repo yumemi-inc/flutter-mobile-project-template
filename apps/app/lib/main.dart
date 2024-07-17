@@ -4,7 +4,6 @@ import 'package:cores_core/provider.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
-import 'package:cores_init/provider.dart';
 import 'package:features_setting/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app_initializer.dart';
@@ -15,12 +14,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final (buildConfig: buildConfig) = await AppInitializer.initialize();
+  final (
+    buildConfig: buildConfig,
+    overrideProviders: overrideProviders,
+  ) = await AppInitializer.initialize();
 
   runApp(
     ProviderScope(
       overrides: [
-        ...await initializeProviders(),
+        ...overrideProviders,
         buildConfigProvider.overrideWithValue(buildConfig),
       ],
       child: const MainApp(),
