@@ -16,7 +16,7 @@ import 'utils/path.dart';
 /**
  * `.github/labels.yml` のパッケージ部分を生成する
  */
-void runGeneratePackageLabels() {
+void main(List<String> args) {
   final rootDir = fetchGitRootDirPath();
   log('rootDir: $rootDir');
 

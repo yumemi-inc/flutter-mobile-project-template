@@ -14,7 +14,7 @@ import 'utils/path.dart';
 /**
  * `.github/labeler.yml` のパッケージ部分を生成する
  */
-void runGeneratePackageLabeler() {
+void main(List<String> args) {
   final rootDir = fetchGitRootDirPath();
   final labelerFile = File(join(rootDir, '.github', 'labeler.yml'));
   if (!labelerFile.existsSync()) {
