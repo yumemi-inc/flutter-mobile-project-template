@@ -31,9 +31,17 @@ command:
       test: ^1.24.0
       flutter_gen_runner: ^5.5.0+1
     hooks:
-      post: melos run yumemi_lints_update && grind generate-package-labels && grind generate-package-labeler
+      post: melos run bootstrap:post
 
 scripts:
+  # bootstrap 後に実行する script 群
+  bootstrap:post:
+    description: bootstrap post hooks
+    steps:
+      - yumemi_lints_update
+      - gen:labeler
+      - gen:labels
+
   report_test:
     exec: flutter test --no-pub --machine > test_report.log
     packageFilters:
@@ -69,6 +77,12 @@ scripts:
     exec: dart run yumemi_lints update
     packageFilters:
       dependsOn: yumemi_lints
+
+  # `.github/labeler.yml` のパッケージ部分を生成する
+  gen:labeler: dart run ./tools/gen_labeler.dart
+
+  # `.github/labels.yml` のパッケージ部分を生成する
+  gen:labels: dart run ./tools/gen_labels.dart
 
 ide:
   intellij:
