@@ -19,10 +19,6 @@ labels:
     files:
       - packages/cores/designsystem/.+
 
-  - label: "@packages/cores/init"
-    files:
-      - packages/cores/init/.+
-
   - label: "@packages/features/debug_mode"
     files:
       - packages/features/debug_mode/.+
