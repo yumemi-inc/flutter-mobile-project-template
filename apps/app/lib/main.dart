@@ -1,6 +1,5 @@
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
-import 'package:cores_core/provider.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
@@ -14,16 +13,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final (
-    buildConfig: buildConfig,
-    overrideProviders: overrideProviders,
-  ) = await AppInitializer.initialize();
+  final (overrideProviders: overrideProviders,) =
+      await AppInitializer.initialize();
 
   runApp(
     ProviderScope(
       overrides: [
         ...overrideProviders,
-        buildConfigProvider.overrideWithValue(buildConfig),
       ],
       child: const MainApp(),
     ),
