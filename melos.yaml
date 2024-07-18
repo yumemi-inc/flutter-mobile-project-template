@@ -38,9 +38,9 @@ scripts:
   bootstrap:post:
     description: bootstrap post hooks
     steps:
-      - melos yumemi_lints_update
-      - melos gen:labeler
-      - melos gen:labels
+      - yumemi_lints_update
+      - gen:labeler
+      - gen:labels
 
   report_test:
     exec: flutter test --no-pub --machine > test_report.log
