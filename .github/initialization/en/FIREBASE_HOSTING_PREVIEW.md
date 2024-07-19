@@ -1,7 +1,5 @@
 # Firebase Hosting Preview
 
-Language: English | [日本語](/.github/initialization/ja/FIREBASE_HOSTING_PREVIEW.md)
-
 In this project, the Widgetbook of `apps/catalog` is made available for review at PullRequest time.
 When you create a new project using this template project, please follow the instructions below to set it up.
 

@@ -1,7 +1,5 @@
 # スプラッシュ画面の設定
 
-言語: 日本語 | [English](/.github/initialization/en/SPLASH_SCREEN.md)
-
 ## 手順
 
 ### 1. 依存関係の追加

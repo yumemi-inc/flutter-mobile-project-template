@@ -1,7 +1,5 @@
 # Firebase Hosting プレビュー
 
-言語: 日本語 | [English](/.github/initialization/en/FIREBASE_HOSTING_PREVIEW.md)
-
 このプロジェクトでは、`apps/catalog`のWidgetbookをPullRequest時にレビューできるようにします。
 このテンプレートプロジェクトを使用して新規プロジェクトを作成する場合は、以下の手順に従って設定してください。
 
