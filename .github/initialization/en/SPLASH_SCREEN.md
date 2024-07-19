@@ -1,6 +1,6 @@
 # Setting up Splash Screen
 
-Language: English | [日本語](/docs/ja/SPLASH_SCREEN.md)
+Language: English | [日本語](/.github/initialization/ja/SPLASH_SCREEN.md)
 
 ## Procedure
 

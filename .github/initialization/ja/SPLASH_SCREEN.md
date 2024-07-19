@@ -1,6 +1,6 @@
 # スプラッシュ画面の設定
 
-言語: 日本語 | [English](/docs/en/SPLASH_SCREEN.md)
+言語: 日本語 | [English](/.github/initialization/en/SPLASH_SCREEN.md)
 
 ## 手順
 

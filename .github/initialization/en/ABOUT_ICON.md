@@ -1,6 +1,6 @@
 ## About Icon
 
-Language: English | [日本語](/docs/ja/ABOUT_ICON.md)
+Language: English | [日本語](/.github/initialization/ja/ABOUT_ICON.md)
 
 ### iOS
 
