@@ -55,11 +55,6 @@
   description: packages cores designsystem package
   from_name: "@cores/designsystem"
 
-- name: "@packages/cores/init"
-  color: DC79FD
-  description: packages cores init package
-  from_name: "@cores/init"
-
 - name: "@packages/features/debug_mode"
   color: 48360E
   description: packages features debug_mode package
