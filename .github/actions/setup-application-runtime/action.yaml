@@ -17,12 +17,6 @@ runs:
         channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
         cache: true
 
-    - name: Activate grinder
-      run: |
-        GRINDER_VERSION=$(cat pubspec.lock | yq ".packages.grinder.version" -r)
-        dart pub global activate grinder $GRINDER_VERSION
-      shell: bash
-
     - name: Setup melos
       run: |
         mkdir -p .fvm
