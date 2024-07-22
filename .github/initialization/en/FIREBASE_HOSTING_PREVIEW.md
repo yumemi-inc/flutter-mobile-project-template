@@ -1,7 +1,11 @@
 # Firebase Hosting Preview
 
-In this project, the Widgetbook of `apps/catalog` is made available for review at PullRequest time.
-When you create a new project using this template project, please follow the instructions below to set it up.
+Response to this Issue is optional.
+
+This project has a workflow to make the `apps/catalog` widgetbook available for preview on PullRequest.
+The preview will be deployed on Firebase.
+
+To activate the workflow, please follow these steps.
 
 ![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
 

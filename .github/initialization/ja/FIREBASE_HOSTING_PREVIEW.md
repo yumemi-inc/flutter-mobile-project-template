@@ -1,7 +1,11 @@
 # Firebase Hosting プレビュー
 
-このプロジェクトでは、`apps/catalog`のWidgetbookをPullRequest時にレビューできるようにします。
-このテンプレートプロジェクトを使用して新規プロジェクトを作成する場合は、以下の手順に従って設定してください。
+この Issue の対応は任意です。
+
+このプロジェクトでは `apps/catalog` の Widgetbook を PullRequest 時にプレビューできるようにするワークフローが用意されています。
+プレビューは Firebase 上にデプロイされます。
+
+ワークフローを有効化するためには、以下の手順に従って設定してください。
 
 ![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
 
