@@ -16,8 +16,6 @@ dependencies:
     path: ../../packages/cores/designsystem
   features_debug_mode:
     path: ../../packages/features/debug_mode
-  features_github_repository:
-    path: ../../packages/features/github_repository
   features_setting:
     path: ../../packages/features/setting
   features_webview:
@@ -33,6 +31,8 @@ dependencies:
   json_annotation: ^4.8.1
   package_info_plus: ^5.0.1
   riverpod_annotation: ^2.3.5
+  samples_github_repository:
+    path: ../../packages/samples/github_repository
   shared_preferences: ^2.2.2
 
 dev_dependencies:

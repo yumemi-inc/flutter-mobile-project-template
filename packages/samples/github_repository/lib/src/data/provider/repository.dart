@@ -1,6 +1,6 @@
 import 'package:cores_data/network.dart';
-import 'package:features_github_repository/src/domain/model/github_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:samples_github_repository/src/domain/model/github_repository.dart';
 
 part 'repository.g.dart';
 
@@ -30,6 +30,7 @@ class GitHubRepositoryResult {
     required this.items,
     required this.hasMore,
   });
+
   final List<GitHubRepository> items;
   final bool hasMore;
 }

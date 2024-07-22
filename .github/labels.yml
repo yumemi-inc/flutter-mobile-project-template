@@ -60,11 +60,6 @@
   description: packages features debug_mode package
   from_name: "@cores/debug"
 
-- name: "@packages/features/github_repository"
-  color: 3bc0ec
-  description: packages features github_repository package
-  from_name: "@cores/github_repository"
-
 - name: "@packages/features/setting"
   color: 1e266d
   description: packages features setting package
@@ -78,3 +73,8 @@
 - name: "@apps/app"
   color: e261d6
   description: Application development
+
+- name: "@packages/samples/github_repository"
+  color: e909bc
+  description: packages samples github_repository package
+  from_name: "@packages/features/github_repository"
