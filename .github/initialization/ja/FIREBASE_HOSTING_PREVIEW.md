@@ -7,7 +7,7 @@
 
 ワークフローを有効化するためには、以下の手順に従って設定してください。
 
-![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
+![firebase-hosting-preview-01.png](https://github.com/user-attachments/assets/f77a9a75-a75f-4fb2-a469-0b0346c1f9cd)
 
 ## 1. 新規Firebaseプロジェクトの作成
 
@@ -91,19 +91,19 @@ i  Writing project information to .firebaserc...
 
 このテンプレートプロジェクトを元に新規プロジェクトを作成した際に、誤ってワークフローが実行されないように、リポジトリ名による有効化条件を記述しています。この記述はセットアップ後は不要になりますので、削除してください。
 
-![firebase-hosting-preview-02.png](/docs/images/firebase-hosting-preview-02.png)
+![firebase-hosting-preview-02.png](https://github.com/user-attachments/assets/04475d96-986d-44de-b945-25c4308b5d26)
 
 ### 4-2. Firebase　Service Account名の変更
 
 `firebase init hosting:github`コマンドで作成したFirebaseサービスアカウント名に置き換えてください。
 
-![firebase-hosting-preview-03.png](/docs/images/firebase-hosting-preview-03.png)
+![firebase-hosting-preview-03.png](https://github.com/user-attachments/assets/89246f05-b099-4f46-9308-de3063704258)
 
 ### 4-3. projectIdを該当プロジェクトのIDに変更する
 
 Firebaseプロジェクトを置き換える。
 
-![firebase-hosting-preview-04.png](/docs/images/firebase-hosting-preview-04.png)
+![firebase-hosting-preview-04.png](https://github.com/user-attachments/assets/b36cc6e3-fa83-4c61-a55f-59c4e7c0e5e6)
 
 <!-- Links -->
 
