@@ -1,11 +1,9 @@
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
-import 'package:cores_core/provider.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
-import 'package:cores_init/provider.dart';
-import 'package:features_setting/l10n.dart' as features_setting;
+import 'package:features_setting/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
@@ -15,13 +13,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final (buildConfig: buildConfig) = await AppInitializer.initialize();
+  final (overrideProviders: overrideProviders,) =
+      await AppInitializer.initialize();
 
   runApp(
     ProviderScope(
       overrides: [
-        ...await initializeProviders(),
-        buildConfigProvider.overrideWithValue(buildConfig),
+        ...overrideProviders,
       ],
       child: const MainApp(),
     ),
@@ -60,11 +58,11 @@ class MainApp extends ConsumerWidget {
     return MaterialApp.router(
       localizationsDelegates: const [
         ...L10n.localizationsDelegates,
-        ...features_setting.L10n.localizationsDelegates,
+        ...SettingL10n.localizationsDelegates,
       ],
       supportedLocales: const [
         ...L10n.supportedLocales,
-        ...features_setting.L10n.supportedLocales,
+        ...SettingL10n.supportedLocales,
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       routerConfig: ref.watch(routerProvider),

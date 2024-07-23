@@ -14,8 +14,6 @@ dependencies:
     path: ../../cores/data
   cores_designsystem:
     path: ../../cores/designsystem
-  cores_navigation:
-    path: ../../cores/navigation
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5

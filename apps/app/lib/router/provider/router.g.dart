@@ -9,9 +9,59 @@ part of 'router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+      $debugPageRoute,
       $mainPageShellRoute,
       $maintenancePageRoute,
     ];
+
+RouteBase get $debugPageRoute => GoRouteData.$route(
+      path: '/debug',
+      parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
+      factory: $DebugPageRouteExtension._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'navigation_debug',
+          parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
+          factory: $NavigationDebugPageRouteExtension._fromState,
+        ),
+      ],
+    );
+
+extension $DebugPageRouteExtension on DebugPageRoute {
+  static DebugPageRoute _fromState(GoRouterState state) =>
+      const DebugPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/debug',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
+  static NavigationDebugPageRoute _fromState(GoRouterState state) =>
+      const NavigationDebugPageRoute();
+
+  String get location => GoRouteData.$location(
+        '/debug/navigation_debug',
+      );
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
       factory: $MainPageShellRouteExtension._fromState,
@@ -25,11 +75,6 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
                 GoRouteData.$route(
                   path: 'github_repository_detail',
                   factory: $GitHubRepositoryDetailPageRouteExtension._fromState,
-                ),
-                GoRouteData.$route(
-                  path: 'debug',
-                  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
-                  factory: $DebugPageRouteExtension._fromState,
                 ),
                 GoRouteData.$route(
                   path: 'web',
@@ -84,31 +129,15 @@ extension $GitHubRepositoryDetailPageRouteExtension
   static GitHubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
       GitHubRepositoryDetailPageRoute(
         state.uri.queryParameters['repository-name']!,
+        state.uri.queryParameters['description'],
       );
 
   String get location => GoRouteData.$location(
         '/github_repository_detail',
         queryParams: {
           'repository-name': repositoryName,
+          if (description != null) 'description': description,
         },
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $DebugPageRouteExtension on DebugPageRoute {
-  static DebugPageRoute _fromState(GoRouterState state) =>
-      const DebugPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/debug',
       );
 
   void go(BuildContext context) => context.go(location);
@@ -201,7 +230,7 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'd280eca8c92770f9cc2f7077be3fd7543b19be7c';
+String _$routerHash() => r'5d88c25cc5d555a8a20b1b579a21bed1851a3ea6';
 
 /// See also [router].
 @ProviderFor(router)

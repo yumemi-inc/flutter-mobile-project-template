@@ -1,6 +1,11 @@
 name: "Create issues at initialization"
 description: "Create GitHub Issues based on initialization of Yumemi Inc. flutter mobile project template"
 
+inputs:
+  language:
+    description: "The language of the issue to create. ja / en are supported, and ja is set by default."
+    default: "ja"
+
 runs:
   using: "composite"
   steps:
@@ -8,21 +13,37 @@ runs:
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
         title: "[初期セットアップ] Pull Requestのレビュワーを自動アサインする設定"
-        content-filepath: .github/initialization/GITHUB_AUTO_ASSIGNMENT.md
+        content-filepath: .github/initialization/${{ inputs.language }}/GITHUB_AUTO_ASSIGNMENT.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
+        title: "[初期セットアップ] アイコンの設定"
+        content-filepath: .github/initialization/${{ inputs.language }}/ABOUT_ICON.md
         labels: initialization
 
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
         title: "[初期セットアップ] アプリIDのリネーム"
-        content-filepath: .github/initialization/RENAME_APPLICATION_ID.md
+        content-filepath: .github/initialization/${{ inputs.language }}/RENAME_APPLICATION_ID.md
         labels: initialization
 
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
+        title: "[初期セットアップ（任意）] スプラッシュ画面の設定"
+        content-filepath: .github/initialization/${{ inputs.language }}/SPLASH_SCREEN.md
+        labels: |
+          initialization
+          optional
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
         title: "[初期セットアップ（任意）] Pull Request内でデプロイのワークフローを設定する"
-        content-filepath: .github/initialization/DEPLOYMENT_WITHIN_PR.md
+        content-filepath: .github/initialization/${{ inputs.language }}/FIREBASE_HOSTING_PREVIEW.md
         labels: |
           initialization
           optional

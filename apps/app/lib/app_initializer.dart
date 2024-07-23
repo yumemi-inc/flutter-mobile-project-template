@@ -1,28 +1,34 @@
 import 'dart:async';
 
-import 'package:cores_core/model.dart';
+import 'package:cores_core/provider.dart';
 import 'package:cores_core/util.dart';
+import 'package:cores_data/shared_preferences.dart';
 import 'package:flutter_app/app_build_config.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 typedef InitializedValues = ({
-  BuildConfig buildConfig,
+  List<Override> overrideProviders,
 });
 
 final class AppInitializer {
   AppInitializer._();
 
   static Future<InitializedValues> initialize() async {
-    final buildConfig = await _initializeBuildConfig();
+    final overrideProviders = await _initializeProviders();
 
-    logger.info(buildConfig);
-    return (buildConfig: buildConfig);
+    return (overrideProviders: overrideProviders);
   }
 
-  static Future<BuildConfig> _initializeBuildConfig() async {
-    final packageInfo = await PackageInfo.fromPlatform();
+  /// Returns list of [Override] that should be applied to root [ProviderScope].
+  static Future<List<Override>> _initializeProviders() async {
+    final overrides = <Override>[];
 
-    return AppBuildConfig(
+    final packageInfo = await PackageInfo.fromPlatform();
+    final preferences = await SharedPreferences.getInstance();
+
+    final buildConfig = AppBuildConfig(
       // ignore: do_not_use_environment
       appFlavor: const String.fromEnvironment('flavor'),
       appName: packageInfo.appName,
@@ -32,5 +38,15 @@ final class AppInitializer {
       buildSignature: packageInfo.buildSignature,
       installerStore: packageInfo.installerStore,
     );
+
+    logger.info(buildConfig);
+
+    overrides.addAll(
+      [
+        sharedPreferencesProvider.overrideWithValue(preferences),
+        buildConfigProvider.overrideWithValue(buildConfig),
+      ],
+    );
+    return overrides;
   }
 }

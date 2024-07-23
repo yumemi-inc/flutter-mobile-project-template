@@ -35,40 +35,46 @@
   color: "ffffff"
   description: "This will not be worked on"
 
-# App Package labels
-- name: "@apps/app"
-  color: "e261d6"
-  description: "Application development"
-
+# <!-- This is an auto-generated label -->
 - name: "@apps/catalog"
-  color: "d4f227"
-  description: "Catalog development"
+  color: d4f227
+  description: Catalog development
 
-# Core Package labels
-- name: "@cores/core"
-  color: "0b2ebd"
+- name: "@packages/cores/core"
+  color: 0b2ebd
+  description: packages cores core package
+  from_name: "@cores/core"
 
-- name: "@cores/data"
-  color: "50D413"
+- name: "@packages/cores/data"
+  color: 50D413
+  description: packages cores data package
+  from_name: "@cores/data"
 
-- name: "@cores/designsystem"
-  color: "936116"
+- name: "@packages/cores/designsystem"
+  color: b4cef5
+  description: packages cores designsystem package
+  from_name: "@cores/designsystem"
 
-- name: "@cores/init"
-  color: "DC79FD"
+- name: "@packages/features/debug_mode"
+  color: 48360E
+  description: packages features debug_mode package
+  from_name: "@cores/debug"
 
-- name: "@cores/navigation"
-  color: "D1A70E"
+- name: "@packages/features/github_repository"
+  color: 3bc0ec
+  description: packages features github_repository package
+  from_name: "@cores/github_repository"
 
-# Feature Package labels
-- name: "@features/debug"
-  color: "48360E"
+- name: "@packages/features/setting"
+  color: 1e266d
+  description: packages features setting package
+  from_name: "@cores/setting"
 
-- name: "@features/github_repository"
-  color: "3bc0ec"
+- name: "@packages/features/webview"
+  color: 6fe0ba
+  description: packages features webview package
+  from_name: "@cores/webview"
 
-- name: "@features/setting"
-  color: "1e266d"
-
-- name: "@features/webview"
-  color: "6fe0ba"
+- name: "@apps/app"
+  color: e261d6
+  description: Application development

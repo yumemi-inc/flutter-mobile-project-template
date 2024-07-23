@@ -7,6 +7,7 @@ part 'github_repository.g.dart';
 class GitHubRepository with _$GitHubRepository {
   const factory GitHubRepository({
     required String name,
+    required String? description,
   }) = _GitHubRepository;
 
   factory GitHubRepository.fromJson(Map<String, dynamic> json) =>

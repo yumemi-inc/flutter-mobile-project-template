@@ -21,6 +21,7 @@ GitHubRepository _$GitHubRepositoryFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GitHubRepository {
   String get name => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $GitHubRepositoryCopyWith<$Res> {
           GitHubRepository value, $Res Function(GitHubRepository) then) =
       _$GitHubRepositoryCopyWithImpl<$Res, GitHubRepository>;
   @useResult
-  $Res call({String name});
+  $Res call({String name, String? description});
 }
 
 /// @nodoc
@@ -51,12 +52,17 @@ class _$GitHubRepositoryCopyWithImpl<$Res, $Val extends GitHubRepository>
   @override
   $Res call({
     Object? name = null,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$GitHubRepositoryImplCopyWith<$Res>
       __$$GitHubRepositoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name});
+  $Res call({String name, String? description});
 }
 
 /// @nodoc
@@ -84,12 +90,17 @@ class __$$GitHubRepositoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? description = freezed,
   }) {
     return _then(_$GitHubRepositoryImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -97,17 +108,19 @@ class __$$GitHubRepositoryImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$GitHubRepositoryImpl implements _GitHubRepository {
-  const _$GitHubRepositoryImpl({required this.name});
+  const _$GitHubRepositoryImpl({required this.name, required this.description});
 
   factory _$GitHubRepositoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$GitHubRepositoryImplFromJson(json);
 
   @override
   final String name;
+  @override
+  final String? description;
 
   @override
   String toString() {
-    return 'GitHubRepository(name: $name)';
+    return 'GitHubRepository(name: $name, description: $description)';
   }
 
   @override
@@ -115,12 +128,14 @@ class _$GitHubRepositoryImpl implements _GitHubRepository {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GitHubRepositoryImpl &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, name, description);
 
   @JsonKey(ignore: true)
   @override
@@ -138,14 +153,17 @@ class _$GitHubRepositoryImpl implements _GitHubRepository {
 }
 
 abstract class _GitHubRepository implements GitHubRepository {
-  const factory _GitHubRepository({required final String name}) =
-      _$GitHubRepositoryImpl;
+  const factory _GitHubRepository(
+      {required final String name,
+      required final String? description}) = _$GitHubRepositoryImpl;
 
   factory _GitHubRepository.fromJson(Map<String, dynamic> json) =
       _$GitHubRepositoryImpl.fromJson;
 
   @override
   String get name;
+  @override
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$GitHubRepositoryImplCopyWith<_$GitHubRepositoryImpl> get copyWith =>

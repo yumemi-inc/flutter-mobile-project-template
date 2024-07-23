@@ -1,5 +1,5 @@
 name: features_package
-description: A new brick created with the Mason CLI.
+description: featureパッケージを作成するbrickです。既存パッケージにriverpodやfreezedの依存を追加する際も使えます。
 
 version: 0.1.0
 
@@ -11,3 +11,13 @@ vars:
     type: string
     description: Feature name
     prompt: 'What is feature name? (example: foo_bar)'
+  use_riverpod:
+    type: boolean
+    description: Whether to use riverpod
+    default: true
+    prompt: Are you need riverpod?
+  use_freezed:
+    type: boolean
+    description: Whether to use freezed
+    default: true
+    prompt: Are you need freezed?

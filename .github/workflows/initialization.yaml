@@ -1,0 +1,82 @@
+name: Initialization
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  condition:
+    runs-on: ubuntu-22.04
+    outputs:
+      execute: ${{ steps.condition.outputs.execute }}
+    steps:
+      - id: condition
+        run: |
+          if [[ "${{ github.event.repository.name }}" != "flutter-mobile-project-template" ]]; then
+            echo "execute=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "execute=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  create-issues:
+    runs-on: ubuntu-22.04
+    permissions:
+      issues: write
+    needs: condition
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Create Issues at Initialization
+        uses: ./.github/actions/create-issue-at-initialization
+
+  cleanup:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    needs:
+      - condition
+      - create-issues
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Cleanup Copilot Settings
+        uses: ./.github/actions/cleanup-copilot-settings
+
+      # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      # Important: Please list the necessary steps above this line.
+      # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.
+      # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      - name: Remove unnecessary files
+        uses: ./.github/actions/remove-unnecessary-files
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Template cleanup"
+
+      # https://github.com/ad-m/github-push-action
+      - name: Push changes
+        uses: ad-m/github-push-action@d91a481090679876dfc4178fef17f286781251df # v0.8.0
+        with:
+          branch: main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Workaround: https://github.com/actions/checkout/issues/692#issuecomment-1502203573
+      # Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/$PROJECT_NAME/$PROJECT_NAME/.github/actions/cleanup-copilot-settings'.
+      #        Did you forget to run actions/checkout before running your local action?
+      # Reason: Executing Post Cleanup without checking out after `Push changes` step can lead to the error.
+      #         This occurs when cleaning up a modified remote branch that remains in the stale state from `Fetch sources` step.
+      - name: Check out latest state of original repository
+        # https://github.com/actions/checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1

@@ -1,16 +1,17 @@
+import 'dart:async';
+
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/util.dart';
-import 'package:cores_navigation/providers.dart';
+import 'package:cores_designsystem/common_assets.dart';
 import 'package:features_debug_mode/ui.dart';
 import 'package:features_github_repository/ui.dart';
-import 'package:features_setting/setting.dart';
+import 'package:features_setting/ui.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/main_page.dart';
-import 'package:flutter_app/router/navigator/home_navigator.dart';
-import 'package:flutter_app/router/navigator/setting_navigator.dart';
 import 'package:flutter_app/ui/home_page.dart';
+import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -32,7 +33,16 @@ GoRouter router(RouterRef ref) {
   );
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
-    routes: $appRoutes,
+    routes: [
+      ...$appRoutes.where((route) {
+        if (route is GoRoute) {
+          return route.path != DebugPageRoute.path;
+        }
+
+        return true;
+      }),
+      if (kDebugMode) $debugPageRoute,
+    ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {

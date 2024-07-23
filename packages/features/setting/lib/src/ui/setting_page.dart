@@ -1,18 +1,23 @@
 import 'package:cores_core/provider.dart';
 import 'package:cores_data/theme_mode.dart';
-import 'package:cores_navigation/providers.dart';
+import 'package:features_setting/src/gen/assets/assets.gen.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
 import 'package:features_setting/src/ui/components/setting_section_spacer.dart';
 import 'package:features_setting/src/ui/components/setting_section_title.dart';
+import 'package:features_setting/src/ui/provider/navigator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+abstract interface class SettingPageNavigator {
+  void goLicensePage(BuildContext context);
+}
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navigator = ref.watch(settingNavigatorProvider);
+    final navigator = ref.watch(settingPageNavigatorProvider);
     final currentThemeMode = ref.watch(themeModeNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
     final l10n = L10n.of(context);
@@ -50,6 +55,12 @@ class SettingPage extends ConsumerWidget {
           SliverList(
             delegate: SliverChildListDelegate(
               [
+                // 同一パッケージのassetsはこのように使います
+                // 汎用的なassetsはcores_designsystemのCommonAssetsを使います
+                Assets.yumemiLogo.image(
+                  width: 100,
+                  height: 100,
+                ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(
                     horizontal: 24,

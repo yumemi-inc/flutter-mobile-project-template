@@ -17,6 +17,15 @@ class SettingShellBranch extends StatefulShellBranchData {
   const SettingShellBranch();
 }
 
+final class _SettingPageNavigatorImpl implements SettingPageNavigator {
+  const _SettingPageNavigatorImpl();
+
+  @override
+  void goLicensePage(BuildContext context) {
+    const LicensePageRoute().go(context);
+  }
+}
+
 class SettingPageRoute extends GoRouteData {
   const SettingPageRoute();
 
@@ -26,8 +35,8 @@ class SettingPageRoute extends GoRouteData {
   Widget build(BuildContext context, GoRouterState state) {
     return ProviderScope(
       overrides: [
-        settingNavigatorProvider.overrideWithValue(
-          const SettingNavigatorImpl(),
+        settingPageNavigatorProvider.overrideWithValue(
+          const _SettingPageNavigatorImpl(),
         ),
       ],
       child: const SettingPage(),
@@ -42,6 +51,8 @@ class LicensePageRoute extends GoRouteData {
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const LicensePage();
+    return LicensePage(
+      applicationIcon: CommonAssets.yumemiLogo.image(height: 100, width: 100),
+    );
   }
 }
