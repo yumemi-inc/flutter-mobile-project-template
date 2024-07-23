@@ -1,11 +1,13 @@
 # Firebase Hosting Preview
 
-Language: English | [日本語](/docs/ja/FIREBASE_HOSTING_PREVIEW.md)
+Response to this Issue is optional.
 
-In this project, the Widgetbook of `apps/catalog` is made available for review at PullRequest time.
-When you create a new project using this template project, please follow the instructions below to set it up.
+This project has a workflow to make the `apps/catalog` widgetbook available for preview on PullRequest.
+The preview will be deployed on Firebase.
 
-![firebase-hosting-preview-01.png](/docs/images/firebase-hosting-preview-01.png)
+To activate the workflow, please follow these steps.
+
+![firebase-hosting-preview-01.png](https://github.com/user-attachments/assets/f77a9a75-a75f-4fb2-a469-0b0346c1f9cd)
 
 ## 1. Create Firebase project
 
@@ -91,19 +93,19 @@ To avoid inadvertent execution of the workflow when a new project is created bas
 included an activation condition by repository name.
 This description is no longer needed during setup, so please delete it.
 
-![firebase-hosting-preview-02.png](/docs/images/firebase-hosting-preview-02.png)
+![firebase-hosting-preview-02.png](https://github.com/user-attachments/assets/04475d96-986d-44de-b945-25c4308b5d26)
 
 ### 4-2. Change Firebase Service Account name
 
 Replace with the name of the Firebase Service Account created by the `firebase init hosting:github` command.
 
-![firebase-hosting-preview-03.png](/docs/images/firebase-hosting-preview-03.png)
+![firebase-hosting-preview-03.png](https://github.com/user-attachments/assets/89246f05-b099-4f46-9308-de3063704258)
 
 ### 4-3. Change projectId to the ID of the relevant project
 
 Replace the Firebase project.
 
-![firebase-hosting-preview-04.png](/docs/images/firebase-hosting-preview-04.png)
+![firebase-hosting-preview-04.png](https://github.com/user-attachments/assets/b36cc6e3-fa83-4c61-a55f-59c4e7c0e5e6)
 
 <!-- Links -->
 

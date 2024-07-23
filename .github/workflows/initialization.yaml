@@ -1,4 +1,4 @@
-name: Template Cleanup
+name: Initialization
 
 on:
   push:
@@ -6,15 +6,26 @@ on:
       - main
 
 jobs:
-  template-cleanup:
-    runs-on: ubuntu-latest
+  condition:
+    runs-on: ubuntu-22.04
+    outputs:
+      execute: ${{ steps.condition.outputs.execute }}
+    steps:
+      - id: condition
+        run: |
+          if [[ "${{ github.event.repository.name }}" != "flutter-mobile-project-template" ]]; then
+            echo "execute=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "execute=false" >> "$GITHUB_OUTPUT"
+          fi
 
+  create-issues:
+    runs-on: ubuntu-22.04
     permissions:
-      contents: write
       issues: write
-
+    needs: condition
+    if: needs.condition.outputs.execute == 'true'
     timeout-minutes: 10
-    if: github.event.repository.name != 'flutter-mobile-project-template'
     steps:
       # https://github.com/actions/checkout
       - name: Fetch sources
@@ -23,12 +34,26 @@ jobs:
       - name: Create Issues at Initialization
         uses: ./.github/actions/create-issue-at-initialization
 
+  cleanup:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    needs:
+      - condition
+      - create-issues
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - name: Cleanup Copilot Settings
         uses: ./.github/actions/cleanup-copilot-settings
 
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-      # Important: Please list the necessary steps above this line.  
-      # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.  
+      # Important: Please list the necessary steps above this line.
+      # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       - name: Remove unnecessary files
         uses: ./.github/actions/remove-unnecessary-files
