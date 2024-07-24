@@ -44,6 +44,29 @@ scripts:
 
   # dependsOn で or 条件で指定することができないため
   # スクリプトを Flutter と Dart に分けている
+  test:
+    steps:
+      - test_flutter
+      - test_dart
+
+  test_flutter:
+    run: flutter test
+    exec:
+      concurrency: 1
+    packageFilters:
+      dependsOn: flutter_test
+      dirExists: test
+
+  test_dart:
+    run: dart test
+    exec:
+      concurrency: 1
+    packageFilters:
+      dependsOn: test
+      dirExists: test
+
+  # dependsOn で or 条件で指定することができないため
+  # スクリプトを Flutter と Dart に分けている
   report_test:
     steps:
       - report_test_flutter
