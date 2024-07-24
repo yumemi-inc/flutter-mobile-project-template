@@ -7,7 +7,7 @@ LICENSE.md
 .github/actions/remove-unnecessary-files
 .github/actions/create-issue-at-initialization
 
-.github/workflows/template-cleanup.yaml
+.github/workflows/initialization.yaml
 
 .firebaserc
 
