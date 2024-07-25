@@ -1,5 +1,4 @@
 name: template_workspace
-
 environment:
   sdk: ^3.3.1
 

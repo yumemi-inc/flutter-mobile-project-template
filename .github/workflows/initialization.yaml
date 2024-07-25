@@ -58,6 +58,9 @@ jobs:
       - name: Remove unnecessary files
         uses: ./.github/actions/remove-unnecessary-files
 
+      - name: Fill project name
+        uses: ./.github/actions/fill-project-name
+
       - name: Commit files
         run: |
           git config --local user.email "action@github.com"
