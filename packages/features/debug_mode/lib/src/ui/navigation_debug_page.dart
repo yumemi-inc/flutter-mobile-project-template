@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path/path.dart' as p;
 
 class NavigationDebugPage extends ConsumerWidget {
   const NavigationDebugPage({super.key});
@@ -39,15 +40,13 @@ final class RouteDropdownMenu extends HookWidget {
         return routes
             .map(
               (route) {
-                final routePath = route.path;
-
                 // デバッグ関連のルートは除外する
-                if (routePath.contains('debug')) {
+                if (route.path.contains('debug')) {
                   return null;
                 }
                 return DropdownMenuEntry<_Route>(
                   value: route,
-                  label: routePath,
+                  label: route.label,
                 );
               },
             )
@@ -56,21 +55,41 @@ final class RouteDropdownMenu extends HookWidget {
       },
       routeBases,
     );
+    final pathEditController = useTextEditingController();
+
     // DropdownMenu を親の横幅に合わせる
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return DropdownMenu<_Route>(
-          width: constraints.maxWidth,
-          dropdownMenuEntries: dropdownMenuEntries,
-          // hintText: l.routeDropDownHintText,
-          onSelected: (route) {
-            if (route == null) {
-              return;
-            }
-            router.go(route.path);
+    return Column(
+      children: [
+        LayoutBuilder(
+          builder: (context, constraints) {
+            return DropdownMenu<_Route>(
+              width: constraints.maxWidth,
+              dropdownMenuEntries: dropdownMenuEntries,
+              // hintText: l.routeDropDownHintText,
+              onSelected: (selectedRoute) {
+                if (selectedRoute == null) {
+                  return;
+                }
+                pathEditController.text = selectedRoute.path;
+              },
+            );
           },
-        );
-      },
+        ),
+        const SizedBox.square(dimension: 16),
+        TextField(
+          controller: pathEditController,
+          decoration: const InputDecoration(label: Text('Path')),
+          maxLines: 2,
+        ),
+        const SizedBox.square(dimension: 16),
+        ElevatedButton(
+          onPressed: () {
+            final path = pathEditController.text;
+            router.go(path);
+          },
+          child: const Text('Go'),
+        ),
+      ],
     );
   }
 }
@@ -81,10 +100,16 @@ extension _ToRoutes on List<RouteBase> {
     for (final routeBase in this) {
       switch (routeBase) {
         case GoRoute():
+          var routePath = routeBase.path;
+          if (parentRoute != null) {
+            routePath = p.join(parentRoute.path, routePath);
+          }
+
           final route = _Route(
-            goRoute: routeBase,
-            parentRoute: parentRoute,
+            label: routeBase.path,
+            path: routePath,
           );
+
           routes.add(route);
 
           final childRouteBases = routeBase.routes;
@@ -101,23 +126,10 @@ extension _ToRoutes on List<RouteBase> {
 
 final class _Route {
   _Route({
-    required GoRoute goRoute,
-    _Route? parentRoute,
-  })  : _goRoute = goRoute,
-        _parentRoute = parentRoute;
+    required this.label,
+    required this.path,
+  });
 
-  final GoRoute _goRoute;
-  final _Route? _parentRoute;
-
-  late final String path = _path;
-
-  String get _path {
-    final parentPath = _parentRoute?._path;
-    final childPath = _goRoute.path;
-    if (parentPath == null) {
-      return childPath;
-    }
-
-    return '${parentPath == '/' ? '' : parentPath}/$childPath';
-  }
+  final String label;
+  final String path;
 }
