@@ -42,11 +42,51 @@ scripts:
       - gen:labeler
       - gen:labels
 
-  report_test:
-    exec: flutter test --no-pub --machine > test_report.log
+  # dependsOn で or 条件で指定することができないため
+  # スクリプトを Flutter と Dart に分けている
+  test:
+    steps:
+      - test_flutter
+      - test_dart
+
+  test_flutter:
+    run: flutter test
+    exec:
+      concurrency: 1
     packageFilters:
-      flutter: true
+      dependsOn: flutter_test
+      dirExists: test
+
+  test_dart:
+    run: dart test
+    exec:
+      concurrency: 1
+    packageFilters:
       dependsOn: test
+      dirExists: test
+
+  # dependsOn で or 条件で指定することができないため
+  # スクリプトを Flutter と Dart に分けている
+  report_test:
+    steps:
+      - report_test_flutter
+      - report_test_dart
+
+  report_test_flutter:
+    run: flutter test --no-pub --machine > test_report.log
+    exec:
+      concurrency: 1
+    packageFilters:
+      dependsOn: flutter_test
+      dirExists: test
+
+  report_test_dart:
+    run: dart test --file-reporter="json:test_report.log"
+    exec:
+      concurrency: 1
+    packageFilters:
+      dependsOn: test
+      dirExists: test
 
   # ローカルでフォーマットとdart fix --applyを実行する
   format_and_fix:
