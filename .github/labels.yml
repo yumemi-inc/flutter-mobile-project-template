@@ -74,6 +74,10 @@
   color: e261d6
   description: Application development
 
+- name: "@samples/github_app"
+  color: 73d994
+  description: samples github_app package
+
 - name: "@packages/samples/github_repository"
   color: e909bc
   description: packages samples github_repository package
