@@ -36,17 +36,17 @@ final class RouteDropdownMenu extends HookWidget {
     final routeBases = router.configuration.routes;
     final dropdownMenuEntries = useMemoized(
       () {
-        final routes = routeBases.toRoutes();
-        return routes
+        final paths = routeBases.toPaths();
+        return paths
             .map(
-              (route) {
+              (path) {
                 // デバッグ関連のルートは除外する
-                if (route.path.contains('debug')) {
+                if (path.contains('debug')) {
                   return null;
                 }
-                return DropdownMenuEntry<_Route>(
-                  value: route,
-                  label: route.label,
+                return DropdownMenuEntry<String>(
+                  value: path,
+                  label: path,
                 );
               },
             )
@@ -62,15 +62,15 @@ final class RouteDropdownMenu extends HookWidget {
       children: [
         LayoutBuilder(
           builder: (context, constraints) {
-            return DropdownMenu<_Route>(
+            return DropdownMenu<String>(
               width: constraints.maxWidth,
               dropdownMenuEntries: dropdownMenuEntries,
               // hintText: l.routeDropDownHintText,
-              onSelected: (selectedRoute) {
-                if (selectedRoute == null) {
+              onSelected: (selectedPath) {
+                if (selectedPath == null) {
                   return;
                 }
-                pathEditController.text = selectedRoute.path;
+                pathEditController.text = selectedPath;
               },
             );
           },
@@ -78,7 +78,10 @@ final class RouteDropdownMenu extends HookWidget {
         const SizedBox.square(dimension: 16),
         TextField(
           controller: pathEditController,
-          decoration: const InputDecoration(label: Text('Path')),
+          decoration: const InputDecoration(
+            label: Text('Path'),
+            border: OutlineInputBorder(),
+          ),
           maxLines: 2,
         ),
         const SizedBox.square(dimension: 16),
@@ -94,42 +97,27 @@ final class RouteDropdownMenu extends HookWidget {
   }
 }
 
-extension _ToRoutes on List<RouteBase> {
-  List<_Route> toRoutes([_Route? parentRoute]) {
-    final routes = <_Route>[];
+extension _ToPaths on List<RouteBase> {
+  List<String> toPaths([String? parentPath]) {
+    final routes = <String>[];
     for (final routeBase in this) {
       switch (routeBase) {
         case GoRoute():
-          var routePath = routeBase.path;
-          if (parentRoute != null) {
-            routePath = p.join(parentRoute.path, routePath);
+          var path = routeBase.path;
+          if (parentPath != null) {
+            path = p.join(parentPath, path);
           }
 
-          final route = _Route(
-            label: routeBase.path,
-            path: routePath,
-          );
-
-          routes.add(route);
+          routes.add(path);
 
           final childRouteBases = routeBase.routes;
           if (childRouteBases.isNotEmpty) {
-            routes.addAll(childRouteBases.toRoutes(route));
+            routes.addAll(childRouteBases.toPaths(path));
           }
         case ShellRoute() || StatefulShellRoute():
-          routes.addAll(routeBase.routes.toRoutes());
+          routes.addAll(routeBase.routes.toPaths());
       }
     }
     return routes;
   }
-}
-
-final class _Route {
-  _Route({
-    required this.label,
-    required this.path,
-  });
-
-  final String label;
-  final String path;
 }
