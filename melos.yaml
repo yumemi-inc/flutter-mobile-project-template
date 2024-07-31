@@ -6,6 +6,7 @@ packages:
   - packages/cores/*
   - packages/features/*
   - packages/samples/*
+  - samples/*
 
 command:
   bootstrap:
