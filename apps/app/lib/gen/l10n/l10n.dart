@@ -113,6 +113,12 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'設定'**
   String get bottomTabSettings;
+
+  /// No description provided for @home.
+  ///
+  /// In ja, this message translates to:
+  /// **'ホーム'**
+  String get home;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:samples_github_repository/ui.dart';
 
 abstract interface class HomePageNavigator {
   void goDebugPage(BuildContext context);
+
   void goWebPage(BuildContext context);
 }
 
@@ -42,7 +42,9 @@ class HomePage extends ConsumerWidget {
           color: context.appColors.icon,
         ),
       ),
-      body: const GitHubRepositoryListPage(),
+      body: Center(
+        child: Text(l.home),
+      ),
     );
   }
 }
