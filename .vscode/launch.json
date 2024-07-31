@@ -40,6 +40,13 @@
             "request": "launch",
             "program": "lib/main.dart",
             "type": "dart",
+        },
+        {
+            "name": "samples-github-app",
+            "cwd": "samples/github_app",
+            "request": "launch",
+            "program": "lib/main.dart",
+            "type": "dart"
         }
     ]
 }
