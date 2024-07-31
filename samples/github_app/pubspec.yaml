@@ -10,6 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.5.1
+  samples_github_repository:
+    path: ../../packages/samples/github_repository
 
 dev_dependencies:
   flutter_test:
