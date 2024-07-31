@@ -23,10 +23,6 @@ labels:
     files:
       - packages/features/debug_mode/.+
 
-  - label: "@packages/features/github_repository"
-    files:
-      - packages/features/github_repository/.+
-
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+
@@ -38,3 +34,11 @@ labels:
   - label: "@apps/app"
     files:
       - apps/app/.+
+
+  - label: "@samples/github_app"
+    files:
+      - samples/github_app/.+
+
+  - label: "@packages/samples/github_repository"
+    files:
+      - packages/samples/github_repository/.+

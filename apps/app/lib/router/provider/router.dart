@@ -4,7 +4,6 @@ import 'package:cores_core/app_status.dart';
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/common_assets.dart';
 import 'package:features_debug_mode/ui.dart';
-import 'package:features_github_repository/ui.dart';
 import 'package:features_setting/ui.dart';
 import 'package:features_webview/webview.dart';
 import 'package:flutter/foundation.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:samples_github_repository/ui.dart';
 
 part 'package:flutter_app/router/routes/main/home/debug_page_route.dart';
 part 'package:flutter_app/router/routes/main/home/home_shell_branch.dart';

@@ -1,10 +1,10 @@
 import 'package:cores_designsystem/theme_extensions.dart';
-import 'package:features_github_repository/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/ui/provider/navigator_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:samples_github_repository/ui.dart';
 
 abstract interface class HomePageNavigator {
   void goDebugPage(BuildContext context);

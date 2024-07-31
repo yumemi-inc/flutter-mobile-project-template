@@ -1,13 +1,13 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_designsystem/components.dart';
-import 'package:features_github_repository/src/data/provider/scroll_notifier.dart';
-import 'package:features_github_repository/src/domain/model/github_repository.dart';
-import 'package:features_github_repository/src/ui/provider/github_repository_list_notifier.dart';
-import 'package:features_github_repository/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:samples_github_repository/src/data/provider/scroll_notifier.dart';
+import 'package:samples_github_repository/src/domain/model/github_repository.dart';
+import 'package:samples_github_repository/src/ui/provider/github_repository_list_notifier.dart';
+import 'package:samples_github_repository/ui.dart';
 
 abstract interface class GitHubRepositoryListPageNavigator {
   void goGitHubRepositoryDetailPage(
