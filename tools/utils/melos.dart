@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:grinder/grinder.dart';
-
 import '../model/melos_package.dart';
+import 'command_runner.dart';
 
 /// melos list --json の結果をパースして [MelosPackage] のリストを返す
 List<MelosPackage> fetchMelosPackageList({
