@@ -1,13 +1,13 @@
 // ignore_for_file: unreachable_from_main
 import 'dart:io';
 
-import 'package:grinder/grinder.dart';
 import 'package:path/path.dart';
 import 'package:yaml_edit/yaml_edit.dart';
 
 import 'model/melos_package.dart';
 import 'utils/constants.dart';
 import 'utils/label.dart';
+import 'utils/logger.dart';
 import 'utils/melos.dart';
 import 'utils/path.dart';
 
