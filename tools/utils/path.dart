@@ -1,4 +1,4 @@
-import 'package:grinder/grinder.dart';
+import 'command_runner.dart';
 
 String fetchGitRootDirPath({
   void Function()? onFailure,

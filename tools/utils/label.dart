@@ -1,5 +1,5 @@
-import 'package:grinder/grinder.dart';
 import 'constants.dart';
+import 'logger.dart';
 
 /**
  * 自動生成の境界となるインデックスを解決する
