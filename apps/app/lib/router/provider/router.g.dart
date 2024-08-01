@@ -73,10 +73,6 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
               factory: $HomePageRouteExtension._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: 'github_repository_detail',
-                  factory: $GitHubRepositoryDetailPageRouteExtension._fromState,
-                ),
-                GoRouteData.$route(
                   path: 'web',
                   parentNavigatorKey: WebPageRoute.$parentNavigatorKey,
                   factory: $WebPageRouteExtension._fromState,
@@ -112,32 +108,6 @@ extension $HomePageRouteExtension on HomePageRoute {
 
   String get location => GoRouteData.$location(
         '/',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $GitHubRepositoryDetailPageRouteExtension
-    on GitHubRepositoryDetailPageRoute {
-  static GitHubRepositoryDetailPageRoute _fromState(GoRouterState state) =>
-      GitHubRepositoryDetailPageRoute(
-        state.uri.queryParameters['repository-name']!,
-        state.uri.queryParameters['description'],
-      );
-
-  String get location => GoRouteData.$location(
-        '/github_repository_detail',
-        queryParams: {
-          'repository-name': repositoryName,
-          if (description != null) 'description': description,
-        },
       );
 
   void go(BuildContext context) => context.go(location);

@@ -31,8 +31,6 @@ dependencies:
   json_annotation: ^4.8.1
   package_info_plus: ^5.0.1
   riverpod_annotation: ^2.3.5
-  samples_github_repository:
-    path: ../../packages/samples/github_repository
   shared_preferences: ^2.2.2
 
 dev_dependencies:

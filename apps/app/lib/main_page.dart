@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:samples_github_repository/data.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({
@@ -30,15 +29,10 @@ class MainPage extends ConsumerWidget {
           ),
         ],
         onDestinationSelected: (index) async {
-          final canPop = GoRouter.of(context).canPop();
-          if (navigationShell.currentIndex == index && !canPop) {
-            ref.read(scrollNotifierProvider.notifier).notifyScrollToTop();
-          } else {
-            navigationShell.goBranch(
-              index,
-              initialLocation: index == navigationShell.currentIndex,
-            );
-          }
+          navigationShell.goBranch(
+            index,
+            initialLocation: index == navigationShell.currentIndex,
+          );
         },
       ),
     );

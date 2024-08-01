@@ -5,9 +5,6 @@ const homeShellBranch = TypedStatefulShellBranch<HomeShellBranch>(
     TypedGoRoute<HomePageRoute>(
       path: HomePageRoute.path,
       routes: [
-        TypedGoRoute<GitHubRepositoryDetailPageRoute>(
-          path: GitHubRepositoryDetailPageRoute.path,
-        ),
         TypedGoRoute<WebPageRoute>(
           path: WebPageRoute.path,
         ),
@@ -36,20 +33,6 @@ final class _HomePageNavigatorImpl implements HomePageNavigator {
   }
 }
 
-final class _GithubRepositoryListPageNavigatorImpl
-    implements GitHubRepositoryListPageNavigator {
-  const _GithubRepositoryListPageNavigatorImpl();
-
-  @override
-  void goGitHubRepositoryDetailPage(
-    BuildContext context,
-    String repositoryName,
-    String? description,
-  ) {
-    GitHubRepositoryDetailPageRoute(repositoryName, description).go(context);
-  }
-}
-
 class HomePageRoute extends GoRouteData {
   const HomePageRoute();
 
@@ -66,31 +49,12 @@ class HomePageRoute extends GoRouteData {
       // navigation or the state.
       child: ProviderScope(
         overrides: [
-          homePageNavigatorProvider
-              .overrideWithValue(const _HomePageNavigatorImpl()),
-          gitHubRepositoryListPageNavigatorProvider.overrideWithValue(
-            const _GithubRepositoryListPageNavigatorImpl(),
+          homePageNavigatorProvider.overrideWithValue(
+            const _HomePageNavigatorImpl(),
           ),
         ],
         child: const HomePage(),
       ),
-    );
-  }
-}
-
-class GitHubRepositoryDetailPageRoute extends GoRouteData {
-  const GitHubRepositoryDetailPageRoute(this.repositoryName, this.description);
-
-  final String repositoryName;
-  final String? description;
-
-  static const path = 'github_repository_detail';
-
-  @override
-  Widget build(BuildContext context, GoRouterState state) {
-    return GitHubRepositoryDetailPage(
-      repositoryName: repositoryName,
-      description: description,
     );
   }
 }

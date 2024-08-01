@@ -14,4 +14,7 @@ class L10nJa extends L10n {
 
   @override
   String get bottomTabSettings => '設定';
+
+  @override
+  String get home => 'ホーム';
 }

@@ -479,14 +479,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
-  hooks_riverpod:
-    dependency: transitive
-    description:
-      name: hooks_riverpod
-      sha256: "45b2030a18bcd6dbd680c2c91bc3b33e3fe7c323e3acb5ecec93a613e2fbaa8a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.5.1"
   hotreloader:
     dependency: transitive
     description:
@@ -799,13 +791,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
-  samples_github_repository:
-    dependency: "direct main"
-    description:
-      path: "../../packages/samples/github_repository"
-      relative: true
-    source: path
-    version: "0.0.1"
   shared_preferences:
     dependency: "direct main"
     description:
