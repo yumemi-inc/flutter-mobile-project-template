@@ -42,3 +42,7 @@ labels:
   - label: "@packages/samples/github_repository"
     files:
       - packages/samples/github_repository/.+
+
+  - label: "@apps/website"
+    files:
+      - apps/website/.+
