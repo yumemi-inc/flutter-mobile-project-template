@@ -78,3 +78,7 @@
 - name: "@apps/app"
   color: e261d6
   description: Application development
+
+- name: "@apps/website"
+  color: 08fc33
+  description: apps website package

@@ -38,3 +38,7 @@ labels:
   - label: "@apps/app"
     files:
       - apps/app/.+
+
+  - label: "@apps/website"
+    files:
+      - apps/website/.+
