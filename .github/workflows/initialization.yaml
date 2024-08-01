@@ -51,6 +51,9 @@ jobs:
       - name: Cleanup Copilot Settings
         uses: ./.github/actions/cleanup-copilot-settings
 
+      - name: Cleanup Samples
+        uses: ./.github/actions/cleanup-samples
+
       # ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
       # Important: Please list the necessary steps above this line.
       # Reason: This step involves removing files from the project, which may lead to unexpected outcomes for your step.
@@ -60,6 +63,10 @@ jobs:
 
       - name: Fill project name
         uses: ./.github/actions/fill-project-name
+
+      # generate labels
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
 
       - name: Commit files
         run: |
