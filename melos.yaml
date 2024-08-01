@@ -5,6 +5,8 @@ packages:
   - apps/*
   - packages/cores/*
   - packages/features/*
+  - packages/samples/*
+  - samples/*
 
 command:
   bootstrap:
