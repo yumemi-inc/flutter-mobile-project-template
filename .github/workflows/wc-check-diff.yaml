@@ -28,9 +28,6 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}-${{ hashFiles('**/*.dart') }}
           restore-keys: |
             ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}-${{ hashFiles('**/*.dart') }}
-            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
-            ${{ runner.os }}-${{ env.cache-name }}-
-            ${{ runner.os }}-
 
       - name: Regenerate code
         run: melos run regenerate_code --no-select
