@@ -6,6 +6,7 @@ LICENSE.md
 apps/website
 
 .github/actions/cleanup-copilot-settings
+.github/actions/cleanup-samples
 .github/actions/remove-unnecessary-files
 .github/actions/create-issue-at-initialization
 
@@ -14,3 +15,8 @@ apps/website
 .firebaserc
 
 .github/initialization
+
+# samples
+.idea/runConfigurations/samples_github_app.xml
+packages/samples
+samples
