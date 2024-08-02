@@ -21,13 +21,6 @@ final class _HomePageNavigatorImpl implements HomePageNavigator {
   const _HomePageNavigatorImpl();
 
   @override
-  void goDebugPage(BuildContext context) {
-    unawaited(
-      const DebugPageRoute().push(context),
-    );
-  }
-
-  @override
   void goWebPage(BuildContext context) {
     const WebPageRoute().go(context);
   }
