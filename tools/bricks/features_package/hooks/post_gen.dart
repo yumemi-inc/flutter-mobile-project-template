@@ -39,7 +39,6 @@ void _addDependency({
         'flutter_hooks',
         'hooks_riverpod',
         'riverpod_annotation',
-        'dev:build_runner',
         'dev:riverpod_generator',
         'dev:riverpod_lint',
         'dev:custom_lint'
@@ -57,7 +56,6 @@ void _addDependency({
         'add',
         'freezed_annotation',
         'json_annotation',
-        'dev:build_runner',
         'dev:freezed',
         'dev:json_serializable',
       ],
