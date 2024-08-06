@@ -19,6 +19,12 @@ void run(HookContext context) {
     useFreezed: useFreezed,
   );
 
+  _replaceBuildYaml(
+    featureName: featureName,
+    useRiverpod: useRiverpod,
+    useFreezed: useFreezed,
+  );
+
   if (useRiverpod || useFreezed) {
     Process.runSync('melos', ['bs']);
   }
@@ -90,6 +96,62 @@ analyzer:
   errors:
     # https://pub.dev/packages/freezed#install
     invalid_annotation_target: ignore
+''');
+  }
+
+  // 変更をファイルに書き込む
+  File(filePath).writeAsStringSync(sb.toString());
+}
+
+void _replaceBuildYaml({
+  required String featureName,
+  required bool useRiverpod,
+  required bool useFreezed,
+  }) {
+  final filePath = 'packages/features/$featureName/build.yaml';
+
+  final sb = StringBuffer();
+  sb.write('''
+targets:
+  \$default:
+    builders:
+''');
+
+  if (useRiverpod) {
+    sb.write('''
+      riverpod_generator:
+        generate_for:
+          include:
+            - lib/{provider,**/provider}/**.dart
+''');
+  }
+  if (useFreezed) {
+    sb.write('''
+      freezed:
+        # https://github.com/dart-lang/build/blob/master/docs/faq.md#how-do-i-avoid-running-builders-on-unnecessary-inputs
+        generate_for:
+          include:
+            - lib/{model,**/model}/**.dart
+      # https://github.com/google/json_serializable.dart/tree/master/json_serializable#build-configuration
+      json_serializable:
+        generate_for:
+          include:
+            - lib/{model,**/model}/**.dart
+        options:
+          field_rename: snake
+          # json のデシリアライズ時に発生する Exception を CheckedFromJsonException にまとめる
+          checked: true
+''');
+  }
+
+  if (useRiverpod || useFreezed) {
+    sb.write('''
+      # https://github.com/dart-lang/source_gen#ignore_for_file
+      source_gen:combining_builder:
+        options:
+          ignore_for_file:
+            - type=lint
+            - duplicate_ignore
 ''');
   }
 
