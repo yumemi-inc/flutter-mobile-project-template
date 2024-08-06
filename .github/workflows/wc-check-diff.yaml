@@ -25,9 +25,13 @@ jobs:
         with:
           path: |
             **/.dart_tool/build
-          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}-${{ hashFiles('**/*.dart') }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}-${{ hashFiles('**/*.dart') }}
+          key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
+
+
+        # TODO: マージ前に削除
+      - name: Debug
+        run: ls -lAh packages/features/debug_mode
 
       - name: Regenerate code
         run: melos run regenerate_code --no-select
