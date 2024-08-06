@@ -28,6 +28,9 @@ void run(HookContext context) {
   if (useRiverpod || useFreezed) {
     Process.runSync('melos', ['bs']);
   }
+
+  // import の並び替えなどの fix 適用
+  Process.runSync('dart', ['fix', '--apply']);
 }
 
 void _addDependency({

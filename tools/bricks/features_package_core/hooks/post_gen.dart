@@ -79,6 +79,5 @@ void _addL10n({
   File(filePath).writeAsStringSync(fileContent);
 
   // フォーマット
-  // importのソート未対応
   Process.runSync('dart', ['format', filePath]);
 }
