@@ -28,8 +28,6 @@ jobs:
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
           restore-keys: |
             ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
-            ${{ runner.os }}-${{ env.cache-name }}-
-            ${{ runner.os }}-
 
 
         # TODO: マージ前に削除
