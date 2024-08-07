@@ -1,10 +1,14 @@
+import 'dart:async';
+
 import 'package:cores_core/app_status.dart';
 import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:features_setting/l10n.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/provider/router.dart';
@@ -31,6 +35,7 @@ class MainApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
 
     ref.listen<AppException?>(
@@ -69,6 +74,27 @@ class MainApp extends ConsumerWidget {
       theme: lightTheme(),
       darkTheme: darkTheme(),
       themeMode: themeMode,
+      shortcuts: kDebugMode
+          ? {
+              LogicalKeySet(
+                LogicalKeyboardKey.shift,
+                LogicalKeyboardKey.keyD,
+              ): const _DebugIntent(),
+            }
+          : null,
+      actions: kDebugMode
+          ? <Type, Action<Intent>>{
+              _DebugIntent: CallbackAction<_DebugIntent>(
+                onInvoke: (_) => unawaited(
+                  router.push(const DebugPageRoute().location),
+                ),
+              ),
+            }
+          : null,
     );
   }
+}
+
+class _DebugIntent extends Intent {
+  const _DebugIntent();
 }
