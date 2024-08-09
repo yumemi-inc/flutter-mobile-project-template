@@ -1,7 +1,5 @@
 {
-  "maintainText": "Maintain テキスト",
-  "maintainListAppBarTitle": "Maintain 一覧",
-  "maintainListText": "Maintain 一覧 テキスト",
-  "maintainDetailAppBarTitle": "Maintain 詳細",
-  "maintainDetailText": "Maintain 詳細 テキスト"
+  "maintainAppBar": "メンテナンスモード",
+  "maintainDescription": "メンテナンス中です.\n\n\n",
+  "maintainDisableButtonTitle": "メンテナンスモードを無効にする"
 }

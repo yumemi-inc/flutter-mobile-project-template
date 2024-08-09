@@ -1,7 +1,5 @@
 {
-  "maintainText": "Maintain Text",
-  "maintainListAppBarTitle": "Maintain List",
-  "maintainListText": "Maintain List Text",
-  "maintainDetailAppBarTitle": "Maintain Detail",
-  "maintainDetailText": "Maintain Detail Text"
+  "maintainAppBar": "Maintenance mode",
+  "maintainDescription": "Maintenance in progress.\n\n\n",
+  "maintainDisableButtonTitle": "Disable maintenance mode"
 }

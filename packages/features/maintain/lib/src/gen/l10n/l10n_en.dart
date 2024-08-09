@@ -7,17 +7,11 @@ class L10nEn extends L10n {
   L10nEn([String locale = 'en']) : super(locale);
 
   @override
-  String get maintainText => 'Maintain Text';
+  String get maintainAppBar => 'Maintenance mode';
 
   @override
-  String get maintainListAppBarTitle => 'Maintain List';
+  String get maintainDescription => 'Maintenance in progress.\n\n\n';
 
   @override
-  String get maintainListText => 'Maintain List Text';
-
-  @override
-  String get maintainDetailAppBarTitle => 'Maintain Detail';
-
-  @override
-  String get maintainDetailText => 'Maintain Detail Text';
+  String get maintainDisableButtonTitle => 'Disable maintenance mode';
 }

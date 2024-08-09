@@ -7,17 +7,11 @@ class L10nJa extends L10n {
   L10nJa([String locale = 'ja']) : super(locale);
 
   @override
-  String get maintainText => 'Maintain テキスト';
+  String get maintainAppBar => 'メンテナンスモード';
 
   @override
-  String get maintainListAppBarTitle => 'Maintain 一覧';
+  String get maintainDescription => 'メンテナンス中です.\n\n\n';
 
   @override
-  String get maintainListText => 'Maintain 一覧 テキスト';
-
-  @override
-  String get maintainDetailAppBarTitle => 'Maintain 詳細';
-
-  @override
-  String get maintainDetailText => 'Maintain 詳細 テキスト';
+  String get maintainDisableButtonTitle => 'メンテナンスモードを無効にする';
 }
