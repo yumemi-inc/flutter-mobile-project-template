@@ -26,8 +26,7 @@ environment:
 #  * a list of values (enums only)
 #  * an optional separator (list only)
 vars:
-  name:
+  package_name:
     type: string
-    description: Your name
-    default: Dash
-    prompt: What is your name?
+    description: Package name
+    prompt: What is Package name?
