@@ -16,6 +16,8 @@ dependencies:
     path: ../../packages/cores/designsystem
   features_debug_mode:
     path: ../../packages/features/debug_mode
+  features_maintain:
+    path: ../../packages/features/maintain
   features_setting:
     path: ../../packages/features/setting
   features_webview:
