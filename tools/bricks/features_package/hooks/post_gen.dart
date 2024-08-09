@@ -46,6 +46,7 @@ void _addDependency({
         'pub',
         'add',
         'flutter_hooks',
+        'flutter_riverpod',
         'hooks_riverpod',
         'riverpod_annotation',
         'dev:riverpod_generator',
