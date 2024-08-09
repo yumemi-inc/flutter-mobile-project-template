@@ -1,4 +1,4 @@
-part of 'package:flutter_app/router/provider/router.dart';
+part of 'package:flutter_app/router/router.dart';
 
 final class _DebugPageNavigatorImpl implements DebugPageNavigator {
   const _DebugPageNavigatorImpl();
