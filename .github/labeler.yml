@@ -23,6 +23,10 @@ labels:
     files:
       - packages/features/debug_mode/.+
 
+  - label: "@packages/features/maintain"
+    files:
+      - packages/features/maintain/.+
+
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+
