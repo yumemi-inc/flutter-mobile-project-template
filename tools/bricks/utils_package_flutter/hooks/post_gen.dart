@@ -1,5 +1,6 @@
+import 'dart:io';
 import 'package:mason/mason.dart';
 
 void run(HookContext context) {
-  // TODO: add post-generation logic.
+  Process.runSync('melos', ['bs']);
 }
