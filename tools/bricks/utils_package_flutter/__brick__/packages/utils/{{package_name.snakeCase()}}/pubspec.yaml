@@ -1,4 +1,4 @@
-name: cores_{{package_name.snakeCase()}}
+name: utils_{{package_name.snakeCase()}}
 description: "A new Flutter package project."
 version: 0.0.1
 
