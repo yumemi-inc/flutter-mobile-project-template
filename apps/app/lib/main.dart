@@ -5,6 +5,7 @@ import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
+import 'package:features_maintain/l10n.dart';
 import 'package:features_setting/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -62,10 +63,12 @@ class MainApp extends ConsumerWidget {
 
     return MaterialApp.router(
       localizationsDelegates: const [
+        ...MaintainL10n.localizationsDelegates,
         ...L10n.localizationsDelegates,
         ...SettingL10n.localizationsDelegates,
       ],
       supportedLocales: const [
+        ...MaintainL10n.supportedLocales,
         ...L10n.supportedLocales,
         ...SettingL10n.supportedLocales,
       ],

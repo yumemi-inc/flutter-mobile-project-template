@@ -1,22 +1,25 @@
 import 'package:cores_core/app_status.dart';
+import 'package:features_maintain/src/gen/l10n/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MaintenancePage extends ConsumerWidget {
   const MaintenancePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = L10n.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Maintenance mode'),
+        title: Text(l10n.maintainAppBar),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Maintenance in progress.\n\n\n',
+            Text(
+              l10n.maintainDescription,
             ),
             ElevatedButton(
               onPressed: () {
@@ -24,7 +27,7 @@ class MaintenancePage extends ConsumerWidget {
                     .read(maintenanceModeProvider.notifier)
                     .update(enabled: false);
               },
-              child: const Text('Disable maintenance mode'),
+              child: Text(l10n.maintainDisableButtonTitle),
             ),
           ],
         ),
