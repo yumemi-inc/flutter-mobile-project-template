@@ -105,7 +105,7 @@ abstract class L10n {
   /// No description provided for @maintainDescription.
   ///
   /// In ja, this message translates to:
-  /// **'メンテナンス中です.\n\n\n'**
+  /// **'メンテナンス中です.'**
   String get maintainDescription;
 
   /// No description provided for @maintainDisableButtonTitle.

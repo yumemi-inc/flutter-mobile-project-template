@@ -10,7 +10,7 @@ class L10nJa extends L10n {
   String get maintainAppBar => 'メンテナンスモード';
 
   @override
-  String get maintainDescription => 'メンテナンス中です.\n\n\n';
+  String get maintainDescription => 'メンテナンス中です.';
 
   @override
   String get maintainDisableButtonTitle => 'メンテナンスモードを無効にする';

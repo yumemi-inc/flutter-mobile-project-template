@@ -1,5 +1,5 @@
 {
   "maintainAppBar": "Maintenance mode",
-  "maintainDescription": "Maintenance in progress.\n\n\n",
+  "maintainDescription": "Maintenance in progress.",
   "maintainDisableButtonTitle": "Disable maintenance mode"
 }
