@@ -21,6 +21,7 @@ class MaintenancePage extends ConsumerWidget {
             Text(
               l10n.maintainDescription,
             ),
+            const SizedBox(height: 64),
             ElevatedButton(
               onPressed: () {
                 ref

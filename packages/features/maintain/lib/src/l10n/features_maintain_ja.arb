@@ -1,5 +1,5 @@
 {
   "maintainAppBar": "メンテナンスモード",
-  "maintainDescription": "メンテナンス中です.\n\n\n",
+  "maintainDescription": "メンテナンス中です.",
   "maintainDisableButtonTitle": "メンテナンスモードを無効にする"
 }
