@@ -285,6 +285,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  features_force_update:
+    dependency: "direct main"
+    description:
+      path: "../../packages/features/force_update"
+      relative: true
+    source: path
+    version: "0.0.1"
   features_maintain:
     dependency: "direct main"
     description:

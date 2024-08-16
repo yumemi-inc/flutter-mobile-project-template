@@ -60,6 +60,10 @@
   description: packages features debug_mode package
   from_name: "@cores/debug"
 
+- name: "@packages/features/force_update"
+  color: 64fa8a
+  description: packages features force_update package
+
 - name: "@packages/features/maintain"
   color: 6004a3
   description: packages features maintain package

@@ -23,6 +23,10 @@ labels:
     files:
       - packages/features/debug_mode/.+
 
+  - label: "@packages/features/force_update"
+    files:
+      - packages/features/force_update/.+
+
   - label: "@packages/features/maintain"
     files:
       - packages/features/maintain/.+
