@@ -1,6 +1,6 @@
 import 'package:cores_core/provider.dart';
-import 'package:features_force_update/src/app_status/model/force_update_status.dart';
-import 'package:features_force_update/src/app_status/provider/force_update_version_provider.dart';
+import 'package:features_force_update/src/model/force_update_status.dart';
+import 'package:features_force_update/src/provider/force_update_version_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'force_update_provider.g.dart';
