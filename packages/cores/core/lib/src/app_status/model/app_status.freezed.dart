@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppStatus {
   MaintenanceModeStatus get maintenanceModeStatus =>
       throw _privateConstructorUsedError;
-  ForceUpdateStatus get forceUpdateStatus => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStatusCopyWith<AppStatus> get copyWith =>
@@ -30,12 +29,9 @@ abstract class $AppStatusCopyWith<$Res> {
   factory $AppStatusCopyWith(AppStatus value, $Res Function(AppStatus) then) =
       _$AppStatusCopyWithImpl<$Res, AppStatus>;
   @useResult
-  $Res call(
-      {MaintenanceModeStatus maintenanceModeStatus,
-      ForceUpdateStatus forceUpdateStatus});
+  $Res call({MaintenanceModeStatus maintenanceModeStatus});
 
   $MaintenanceModeStatusCopyWith<$Res> get maintenanceModeStatus;
-  $ForceUpdateStatusCopyWith<$Res> get forceUpdateStatus;
 }
 
 /// @nodoc
@@ -52,17 +48,12 @@ class _$AppStatusCopyWithImpl<$Res, $Val extends AppStatus>
   @override
   $Res call({
     Object? maintenanceModeStatus = null,
-    Object? forceUpdateStatus = null,
   }) {
     return _then(_value.copyWith(
       maintenanceModeStatus: null == maintenanceModeStatus
           ? _value.maintenanceModeStatus
           : maintenanceModeStatus // ignore: cast_nullable_to_non_nullable
               as MaintenanceModeStatus,
-      forceUpdateStatus: null == forceUpdateStatus
-          ? _value.forceUpdateStatus
-          : forceUpdateStatus // ignore: cast_nullable_to_non_nullable
-              as ForceUpdateStatus,
     ) as $Val);
   }
 
@@ -72,14 +63,6 @@ class _$AppStatusCopyWithImpl<$Res, $Val extends AppStatus>
     return $MaintenanceModeStatusCopyWith<$Res>(_value.maintenanceModeStatus,
         (value) {
       return _then(_value.copyWith(maintenanceModeStatus: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ForceUpdateStatusCopyWith<$Res> get forceUpdateStatus {
-    return $ForceUpdateStatusCopyWith<$Res>(_value.forceUpdateStatus, (value) {
-      return _then(_value.copyWith(forceUpdateStatus: value) as $Val);
     });
   }
 }
@@ -92,14 +75,10 @@ abstract class _$$AppStatusImplCopyWith<$Res>
       __$$AppStatusImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {MaintenanceModeStatus maintenanceModeStatus,
-      ForceUpdateStatus forceUpdateStatus});
+  $Res call({MaintenanceModeStatus maintenanceModeStatus});
 
   @override
   $MaintenanceModeStatusCopyWith<$Res> get maintenanceModeStatus;
-  @override
-  $ForceUpdateStatusCopyWith<$Res> get forceUpdateStatus;
 }
 
 /// @nodoc
@@ -114,17 +93,12 @@ class __$$AppStatusImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? maintenanceModeStatus = null,
-    Object? forceUpdateStatus = null,
   }) {
     return _then(_$AppStatusImpl(
       maintenanceModeStatus: null == maintenanceModeStatus
           ? _value.maintenanceModeStatus
           : maintenanceModeStatus // ignore: cast_nullable_to_non_nullable
               as MaintenanceModeStatus,
-      forceUpdateStatus: null == forceUpdateStatus
-          ? _value.forceUpdateStatus
-          : forceUpdateStatus // ignore: cast_nullable_to_non_nullable
-              as ForceUpdateStatus,
     ));
   }
 }
@@ -132,17 +106,14 @@ class __$$AppStatusImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppStatusImpl with DiagnosticableTreeMixin implements _AppStatus {
-  const _$AppStatusImpl(
-      {required this.maintenanceModeStatus, required this.forceUpdateStatus});
+  const _$AppStatusImpl({required this.maintenanceModeStatus});
 
   @override
   final MaintenanceModeStatus maintenanceModeStatus;
-  @override
-  final ForceUpdateStatus forceUpdateStatus;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppStatus(maintenanceModeStatus: $maintenanceModeStatus, forceUpdateStatus: $forceUpdateStatus)';
+    return 'AppStatus(maintenanceModeStatus: $maintenanceModeStatus)';
   }
 
   @override
@@ -150,8 +121,8 @@ class _$AppStatusImpl with DiagnosticableTreeMixin implements _AppStatus {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'AppStatus'))
-      ..add(DiagnosticsProperty('maintenanceModeStatus', maintenanceModeStatus))
-      ..add(DiagnosticsProperty('forceUpdateStatus', forceUpdateStatus));
+      ..add(
+          DiagnosticsProperty('maintenanceModeStatus', maintenanceModeStatus));
   }
 
   @override
@@ -160,14 +131,11 @@ class _$AppStatusImpl with DiagnosticableTreeMixin implements _AppStatus {
         (other.runtimeType == runtimeType &&
             other is _$AppStatusImpl &&
             (identical(other.maintenanceModeStatus, maintenanceModeStatus) ||
-                other.maintenanceModeStatus == maintenanceModeStatus) &&
-            (identical(other.forceUpdateStatus, forceUpdateStatus) ||
-                other.forceUpdateStatus == forceUpdateStatus));
+                other.maintenanceModeStatus == maintenanceModeStatus));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, maintenanceModeStatus, forceUpdateStatus);
+  int get hashCode => Object.hash(runtimeType, maintenanceModeStatus);
 
   @JsonKey(ignore: true)
   @override
@@ -178,13 +146,11 @@ class _$AppStatusImpl with DiagnosticableTreeMixin implements _AppStatus {
 
 abstract class _AppStatus implements AppStatus {
   const factory _AppStatus(
-      {required final MaintenanceModeStatus maintenanceModeStatus,
-      required final ForceUpdateStatus forceUpdateStatus}) = _$AppStatusImpl;
+          {required final MaintenanceModeStatus maintenanceModeStatus}) =
+      _$AppStatusImpl;
 
   @override
   MaintenanceModeStatus get maintenanceModeStatus;
-  @override
-  ForceUpdateStatus get forceUpdateStatus;
   @override
   @JsonKey(ignore: true)
   _$$AppStatusImplCopyWith<_$AppStatusImpl> get copyWith =>
