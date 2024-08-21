@@ -21,21 +21,6 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
       return false;
     }
 
-    final currentVersionList = currentVersion.versionList;
-    final targetVersionList = targetVersion.versionList;
-    for (var i = 0; i < 3; ++i) {
-      if (currentVersionList[i] > targetVersionList[i]) {
-        /// Example:
-        /// currentVersionList = [1, 1, 0]
-        /// targetVersionList = [1, 0, 9]
-        return false;
-      } else if (currentVersionList[i] < targetVersionList[i]) {
-        /// Example:
-        /// currentVersionList = [1, 0, 9]
-        /// targetVersionList = [1, 1, 0]
-        return true;
-      }
-    }
-    return false;
+    return currentVersion < targetVersion;
   }
 }
