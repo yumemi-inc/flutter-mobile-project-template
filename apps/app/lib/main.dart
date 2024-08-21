@@ -51,7 +51,7 @@ class MainApp extends ConsumerWidget {
       },
     );
 
-    ref.listen<ForceUpdateSettingsState>(forceUpdateProvider, (_, forceUpdateStatus) {
+    ref.listen(forceUpdateProvider, (_, forceUpdateStatus) {
       final forceUpdateEnabled = forceUpdateStatus.enabled;
       if (forceUpdateEnabled) {
         SnackBarManager.showSnackBar(
