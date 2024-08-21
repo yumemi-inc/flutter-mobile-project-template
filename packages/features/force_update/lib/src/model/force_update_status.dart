@@ -1,4 +1,3 @@
-import 'package:cores_core/util.dart';
 import 'package:features_force_update/force_update_status.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,35 +16,13 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
     required VersionString currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
-    /// Example: '1.0.9' -> [1, 0, 9]
-    List<int> getVersionList(String version) {
-      final versionParts = version.split('.');
-
-      if (versionParts.length != 3) {
-        logger.warning(
-          'Invalid version format for Semantic Versioning: $version',
-        );
-        return [0, 0, 0];
-      }
-
-      try {
-        return versionParts.map(int.parse).toList();
-      } on FormatException catch (_) {
-        logger.warning(
-          '''Invalid format when attempting to parse a List into integers: $versionParts''',
-        );
-        return [0, 0, 0];
-      }
-    }
-
-    final currentVersionList = getVersionList(currentVersion.value);
+    final currentVersionList = currentVersion.versionList;
     List<int> targetVersionList;
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      targetVersionList =
-          getVersionList(forceUpdateTargetVersion.android.value);
+      targetVersionList = forceUpdateTargetVersion.android.versionList;
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      targetVersionList = getVersionList(forceUpdateTargetVersion.ios.value);
+      targetVersionList = forceUpdateTargetVersion.ios.versionList;
     } else {
       /// If the platform is not Android / iOS, force update is always disabled.
       return false;
