@@ -8,12 +8,12 @@ part of 'force_update_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$forceUpdateHash() => r'fcde6baa8c9b36f9c1c1d98f919e23622000d966';
+String _$forceUpdateHash() => r'263cf88bba96f8e102a808604cc66bedec72d82c';
 
 /// See also [ForceUpdate].
 @ProviderFor(ForceUpdate)
 final forceUpdateProvider =
-    NotifierProvider<ForceUpdate, ForceUpdateStatus>.internal(
+    NotifierProvider<ForceUpdate, ForceUpdateSettingsState>.internal(
   ForceUpdate.new,
   name: r'forceUpdateProvider',
   debugGetCreateSourceHash:
@@ -22,6 +22,6 @@ final forceUpdateProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$ForceUpdate = Notifier<ForceUpdateStatus>;
+typedef _$ForceUpdate = Notifier<ForceUpdateSettingsState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
