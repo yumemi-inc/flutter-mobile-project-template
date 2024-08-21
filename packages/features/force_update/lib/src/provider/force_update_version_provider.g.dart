@@ -9,7 +9,7 @@ part of 'force_update_version_provider.dart';
 // **************************************************************************
 
 String _$forceUpdateVersionHash() =>
-    r'2341114642ae345a8a1bd0d7b43176d27b88769e';
+    r'ed2afd8f23a9913161d771e835900d79d4198bab';
 
 /// See also [ForceUpdateVersion].
 @ProviderFor(ForceUpdateVersion)

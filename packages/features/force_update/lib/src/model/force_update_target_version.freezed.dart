@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ForceUpdateTargetVersion {
-  String get ios => throw _privateConstructorUsedError;
-  String get android => throw _privateConstructorUsedError;
+  VersionString get ios => throw _privateConstructorUsedError;
+  VersionString get android => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ForceUpdateTargetVersionCopyWith<ForceUpdateTargetVersion> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ForceUpdateTargetVersionCopyWith<$Res> {
           $Res Function(ForceUpdateTargetVersion) then) =
       _$ForceUpdateTargetVersionCopyWithImpl<$Res, ForceUpdateTargetVersion>;
   @useResult
-  $Res call({String ios, String android});
+  $Res call({VersionString ios, VersionString android});
 }
 
 /// @nodoc
@@ -54,11 +54,11 @@ class _$ForceUpdateTargetVersionCopyWithImpl<$Res,
       ios: null == ios
           ? _value.ios
           : ios // ignore: cast_nullable_to_non_nullable
-              as String,
+              as VersionString,
       android: null == android
           ? _value.android
           : android // ignore: cast_nullable_to_non_nullable
-              as String,
+              as VersionString,
     ) as $Val);
   }
 }
@@ -72,7 +72,7 @@ abstract class _$$ForceUpdateTargetVersionImplCopyWith<$Res>
       __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String ios, String android});
+  $Res call({VersionString ios, VersionString android});
 }
 
 /// @nodoc
@@ -95,11 +95,11 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
       ios: null == ios
           ? _value.ios
           : ios // ignore: cast_nullable_to_non_nullable
-              as String,
+              as VersionString,
       android: null == android
           ? _value.android
           : android // ignore: cast_nullable_to_non_nullable
-              as String,
+              as VersionString,
     ));
   }
 }
@@ -109,14 +109,13 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
 class _$ForceUpdateTargetVersionImpl
     with DiagnosticableTreeMixin
     implements _ForceUpdateTargetVersion {
-  const _$ForceUpdateTargetVersionImpl({this.ios = '', this.android = ''});
+  const _$ForceUpdateTargetVersionImpl(
+      {required this.ios, required this.android});
 
   @override
-  @JsonKey()
-  final String ios;
+  final VersionString ios;
   @override
-  @JsonKey()
-  final String android;
+  final VersionString android;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -154,13 +153,13 @@ class _$ForceUpdateTargetVersionImpl
 
 abstract class _ForceUpdateTargetVersion implements ForceUpdateTargetVersion {
   const factory _ForceUpdateTargetVersion(
-      {final String ios,
-      final String android}) = _$ForceUpdateTargetVersionImpl;
+      {required final VersionString ios,
+      required final VersionString android}) = _$ForceUpdateTargetVersionImpl;
 
   @override
-  String get ios;
+  VersionString get ios;
   @override
-  String get android;
+  VersionString get android;
   @override
   @JsonKey(ignore: true)
   _$$ForceUpdateTargetVersionImplCopyWith<_$ForceUpdateTargetVersionImpl>

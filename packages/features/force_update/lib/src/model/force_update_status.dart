@@ -1,5 +1,5 @@
 import 'package:cores_core/util.dart';
-import 'package:features_force_update/src/model/force_update_target_version.dart';
+import 'package:features_force_update/force_update_status.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,7 +14,7 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
   const ForceUpdateStatus._();
 
   static bool isForceUpdateEnabled({
-    required String currentVersion,
+    required VersionString currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
     /// Example: '1.0.9' -> [1, 0, 9]
@@ -38,13 +38,14 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
       }
     }
 
-    final currentVersionList = getVersionList(currentVersion);
+    final currentVersionList = getVersionList(currentVersion.value);
     List<int> targetVersionList;
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      targetVersionList = getVersionList(forceUpdateTargetVersion.android);
+      targetVersionList =
+          getVersionList(forceUpdateTargetVersion.android.value);
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      targetVersionList = getVersionList(forceUpdateTargetVersion.ios);
+      targetVersionList = getVersionList(forceUpdateTargetVersion.ios.value);
     } else {
       /// If the platform is not Android / iOS, force update is always disabled.
       return false;
