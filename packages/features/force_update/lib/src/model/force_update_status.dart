@@ -16,18 +16,13 @@ class ForceUpdateStatus with _$ForceUpdateStatus {
     required VersionString currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
-    final currentVersionList = currentVersion.versionList;
-    List<int> targetVersionList;
-
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      targetVersionList = forceUpdateTargetVersion.android.versionList;
-    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
-      targetVersionList = forceUpdateTargetVersion.ios.versionList;
-    } else {
-      /// If the platform is not Android / iOS, force update is always disabled.
+    final targetVersion = forceUpdateTargetVersion.defaultTargetPlatformVersion;
+    if (targetVersion == null) {
       return false;
     }
 
+    final currentVersionList = currentVersion.versionList;
+    final targetVersionList = targetVersion.versionList;
     for (var i = 0; i < 3; ++i) {
       if (currentVersionList[i] > targetVersionList[i]) {
         /// Example:

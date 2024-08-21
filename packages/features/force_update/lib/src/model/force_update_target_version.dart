@@ -10,4 +10,14 @@ class ForceUpdateTargetVersion with _$ForceUpdateTargetVersion {
     required VersionString ios,
     required VersionString android,
   }) = _ForceUpdateTargetVersion;
+
+  const ForceUpdateTargetVersion._();
+
+  VersionString? get defaultTargetPlatformVersion {
+    return switch (defaultTargetPlatform) {
+      TargetPlatform.android => android,
+      TargetPlatform.iOS => ios,
+      _ => null,
+    };
+  }
 }

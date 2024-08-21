@@ -106,11 +106,11 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ForceUpdateTargetVersionImpl
-    with DiagnosticableTreeMixin
-    implements _ForceUpdateTargetVersion {
+class _$ForceUpdateTargetVersionImpl extends _ForceUpdateTargetVersion
+    with DiagnosticableTreeMixin {
   const _$ForceUpdateTargetVersionImpl(
-      {required this.ios, required this.android});
+      {required this.ios, required this.android})
+      : super._();
 
   @override
   final VersionString ios;
@@ -151,10 +151,11 @@ class _$ForceUpdateTargetVersionImpl
           _$ForceUpdateTargetVersionImpl>(this, _$identity);
 }
 
-abstract class _ForceUpdateTargetVersion implements ForceUpdateTargetVersion {
+abstract class _ForceUpdateTargetVersion extends ForceUpdateTargetVersion {
   const factory _ForceUpdateTargetVersion(
       {required final VersionString ios,
       required final VersionString android}) = _$ForceUpdateTargetVersionImpl;
+  const _ForceUpdateTargetVersion._() : super._();
 
   @override
   VersionString get ios;
