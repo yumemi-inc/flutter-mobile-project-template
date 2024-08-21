@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cores_core/app_status.dart';
 import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
 import 'package:features_debug_mode/src/ui/provider/navigator_provider.dart';
-import 'package:features_force_update/force_update_status.dart';
+import 'package:features_force_update/force_update.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
