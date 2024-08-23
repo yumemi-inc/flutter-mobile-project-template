@@ -1,16 +1,17 @@
-import 'package:features_force_update/force_update_status.dart';
+import 'package:features_force_update/src/model/force_update_target_version.dart';
+import 'package:features_force_update/src/model/version_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'force_update_status.freezed.dart';
+part 'force_update_settings_state.freezed.dart';
 
 @freezed
-class ForceUpdateStatus with _$ForceUpdateStatus {
-  const factory ForceUpdateStatus({
+class ForceUpdateSettingsState with _$ForceUpdateSettingsState {
+  const factory ForceUpdateSettingsState({
     @Default(false) bool enabled,
-  }) = _ForceUpdateStatus;
+  }) = _ForceUpdateSettingsState;
 
-  const ForceUpdateStatus._();
+  const ForceUpdateSettingsState._();
 
   static bool isForceUpdateEnabled({
     required VersionString currentVersion,

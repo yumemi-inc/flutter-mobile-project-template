@@ -1,10 +1,10 @@
-import 'package:features_force_update/force_update_status.dart';
+import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group(
-    'ForceUpdateStatus#isForceUpdateEnabled(強制バージョンアップの対象バージョンかどうか判定する)',
+    'ForceUpdateSettingsState#enabled(強制バージョンアップの対象バージョンかどうか判定する)',
     () {
       test(
           '''プラットフォームがiOS_現在のアプリバージョンよりも強制アップデートバージョンが大きい場合(パッチバージョン)_強制バージョンアップの対象であること''',
@@ -18,7 +18,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -39,7 +39,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -60,7 +60,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -81,7 +81,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -102,7 +102,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -123,7 +123,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -144,7 +144,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -163,7 +163,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -184,7 +184,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -205,7 +205,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -226,7 +226,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -247,7 +247,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -268,7 +268,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -289,7 +289,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -310,7 +310,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -331,7 +331,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -352,7 +352,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -371,7 +371,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -392,7 +392,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
@@ -413,7 +413,7 @@ void main() {
         );
 
         // act
-        final actual = ForceUpdateStatus.isForceUpdateEnabled(
+        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
           currentVersion: currentVersion,
           forceUpdateTargetVersion: forceUpdateTargetVersion,
         );
