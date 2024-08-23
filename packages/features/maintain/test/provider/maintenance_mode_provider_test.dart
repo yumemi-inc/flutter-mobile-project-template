@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_redundant_argument_values
 
-import 'package:features_maintain/src/model/maintenance_mode_status.dart';
+import 'package:features_maintain/src/model/maintenance_mode_settings_state.dart';
 import 'package:features_maintain/src/provider/maintenance_mode_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -41,7 +41,7 @@ void main() {
         final actual = subscription.read();
 
         // assert
-        const expected = MaintenanceModeStatus(
+        const expected = MaintenanceModeSettingsState(
           enabled: false,
         );
         expect(actual, expected);
@@ -68,7 +68,7 @@ void main() {
         final actual = subscription.read();
 
         // assert
-        const expected = MaintenanceModeStatus(
+        const expected = MaintenanceModeSettingsState(
           enabled: true,
         );
         expect(actual, expected);
@@ -93,7 +93,7 @@ void main() {
       final actual = subscription.read();
 
       // assert
-      const expected = MaintenanceModeStatus(
+      const expected = MaintenanceModeSettingsState(
         enabled: false,
       );
       expect(actual, expected);

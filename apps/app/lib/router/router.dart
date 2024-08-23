@@ -28,7 +28,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 @Riverpod(keepAlive: true)
 GoRouter router(RouterRef ref) {
-  final maintenanceModeStatus = ref.watch(maintenanceModeProvider);
+  final maintenanceModeSettingsState = ref.watch(maintenanceModeProvider);
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -44,7 +44,7 @@ GoRouter router(RouterRef ref) {
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {
-      final maintenanceModeEnabled = maintenanceModeStatus.enabled;
+      final maintenanceModeEnabled = maintenanceModeSettingsState.enabled;
 
       if (maintenanceModeEnabled) {
         return MaintenancePageRoute.path;
