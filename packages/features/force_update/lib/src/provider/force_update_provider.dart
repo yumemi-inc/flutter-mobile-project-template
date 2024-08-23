@@ -1,5 +1,6 @@
 import 'package:cores_core/provider.dart';
 import 'package:features_force_update/src/model/force_update_status.dart';
+import 'package:features_force_update/src/model/version_string.dart';
 import 'package:features_force_update/src/provider/force_update_version_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,7 +16,7 @@ class ForceUpdate extends _$ForceUpdate {
     );
 
     final enabled = ForceUpdateStatus.isForceUpdateEnabled(
-      currentVersion: currentVersion,
+      currentVersion: VersionString(currentVersion),
       forceUpdateTargetVersion: forceUpdateVersionState,
     );
 

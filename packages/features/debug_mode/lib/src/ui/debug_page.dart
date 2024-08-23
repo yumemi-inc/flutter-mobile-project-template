@@ -43,8 +43,8 @@ class DebugPage extends ConsumerWidget {
               title: 'Enable force update',
               onPressed: () async {
                 ref.read(forceUpdateVersionProvider.notifier).update(
-                      iosTargetVersion: '9.9.9',
-                      androidTargetVersion: '9.9.9',
+                      iosTargetVersion: VersionString('9.9.9'),
+                      androidTargetVersion: VersionString('9.9.9'),
                     );
               },
             ),

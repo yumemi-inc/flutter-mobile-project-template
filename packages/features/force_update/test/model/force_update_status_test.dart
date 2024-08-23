@@ -1,7 +1,4 @@
-// ignore_for_file: avoid_redundant_argument_values
-
-import 'package:features_force_update/src/model/force_update_status.dart';
-import 'package:features_force_update/src/model/force_update_target_version.dart';
+import 'package:features_force_update/force_update_status.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,10 +11,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.0',
-          ios: '1.0.1',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.0'),
+          ios: VersionString('1.0.1'),
         );
 
         // act
@@ -35,10 +32,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.9';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.9',
-          ios: '1.1.0',
+        final currentVersion = VersionString('1.0.9');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.9'),
+          ios: VersionString('1.1.0'),
         );
 
         // act
@@ -56,10 +53,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.9.9';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.9.9',
-          ios: '2.0.0',
+        final currentVersion = VersionString('1.9.9');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.9.9'),
+          ios: VersionString('2.0.0'),
         );
 
         // act
@@ -77,10 +74,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.0',
-          ios: '1.0.0',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.0'),
+          ios: VersionString('1.0.0'),
         );
 
         // act
@@ -98,10 +95,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.1';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.1',
-          ios: '1.0.0',
+        final currentVersion = VersionString('1.0.1');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.1'),
+          ios: VersionString('1.0.0'),
         );
 
         // act
@@ -119,10 +116,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.1.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.1.0',
-          ios: '1.0.9',
+        final currentVersion = VersionString('1.1.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.1.0'),
+          ios: VersionString('1.0.9'),
         );
 
         // act
@@ -140,10 +137,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '2.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '2.0.0',
-          ios: '1.9.9',
+        final currentVersion = VersionString('2.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('2.0.0'),
+          ios: VersionString('1.9.9'),
         );
 
         // act
@@ -159,10 +156,10 @@ void main() {
       test('''プラットフォームがiOS_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.1',
-          ios: '',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.1'),
+          ios: VersionString(''),
         );
 
         // act
@@ -180,10 +177,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '100000',
-          ios: '100001',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('100000'),
+          ios: VersionString('100001'),
         );
 
         // act
@@ -201,10 +198,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.1',
-          ios: '1.0.1a',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.1'),
+          ios: VersionString('1.0.1a'),
         );
 
         // act
@@ -222,10 +219,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.1',
-          ios: '1.0.0',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.1'),
+          ios: VersionString('1.0.0'),
         );
 
         // act
@@ -243,10 +240,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.9';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.1.0',
-          ios: '1.0.9',
+        final currentVersion = VersionString('1.0.9');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.1.0'),
+          ios: VersionString('1.0.9'),
         );
 
         // act
@@ -264,10 +261,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.9.9';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '2.0.0',
-          ios: '1.9.9',
+        final currentVersion = VersionString('1.9.9');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('2.0.0'),
+          ios: VersionString('1.9.9'),
         );
 
         // act
@@ -285,10 +282,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.0',
-          ios: '1.0.0',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.0'),
+          ios: VersionString('1.0.0'),
         );
 
         // act
@@ -306,10 +303,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.1';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.0',
-          ios: '1.0.1',
+        final currentVersion = VersionString('1.0.1');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.0'),
+          ios: VersionString('1.0.1'),
         );
 
         // act
@@ -327,10 +324,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.1.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.9',
-          ios: '1.1.0',
+        final currentVersion = VersionString('1.1.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.9'),
+          ios: VersionString('1.1.0'),
         );
 
         // act
@@ -348,10 +345,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '2.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.9.9',
-          ios: '2.0.0',
+        final currentVersion = VersionString('2.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.9.9'),
+          ios: VersionString('2.0.0'),
         );
 
         // act
@@ -367,10 +364,10 @@ void main() {
       test('''プラットフォームがAndroid_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '',
-          ios: '1.0.1',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString(''),
+          ios: VersionString('1.0.1'),
         );
 
         // act
@@ -388,10 +385,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '100001',
-          ios: '100000',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('100001'),
+          ios: VersionString('100000'),
         );
 
         // act
@@ -409,10 +406,10 @@ void main() {
           () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        const currentVersion = '1.0.0';
-        const forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: '1.0.1a',
-          ios: '1.0.1',
+        final currentVersion = VersionString('1.0.0');
+        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
+          android: VersionString('1.0.1a'),
+          ios: VersionString('1.0.1'),
         );
 
         // act
