@@ -19,6 +19,7 @@ dependencies:
   flutter_hooks: ^0.20.5
   flutter_localizations:
     sdk: flutter
+  freezed_annotation: ^2.4.1
   hooks_riverpod: ^2.5.1
   intl: ^0.19.0
   riverpod_annotation: ^2.3.5
@@ -28,6 +29,7 @@ dev_dependencies:
   custom_lint: ^0.6.4
   flutter_test:
     sdk: flutter
+  freezed: ^2.4.7
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
   yumemi_lints: ^2.1.0
