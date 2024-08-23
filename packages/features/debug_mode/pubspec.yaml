@@ -17,6 +17,8 @@ dependencies:
   dio: ^5.4.0
   features_force_update:
     path: ../force_update
+  features_maintain:
+    path: ../maintain
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
