@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:cores_core/app_status.dart';
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/common_assets.dart';
 import 'package:features_debug_mode/ui.dart';
+import 'package:features_maintain/provider.dart';
 import 'package:features_maintain/ui.dart';
 import 'package:features_setting/ui.dart';
 import 'package:features_webview/webview.dart';
@@ -28,9 +28,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 @Riverpod(keepAlive: true)
 GoRouter router(RouterRef ref) {
-  final maintenanceModeStatus = ref.watch(
-    appStatusProvider.select((appStatus) => appStatus.maintenanceModeStatus),
-  );
+  final maintenanceModeSettingsState = ref.watch(maintenanceModeProvider);
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     routes: [
@@ -46,7 +44,7 @@ GoRouter router(RouterRef ref) {
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
     redirect: (_, __) {
-      final maintenanceModeEnabled = maintenanceModeStatus.enabled;
+      final maintenanceModeEnabled = maintenanceModeSettingsState.enabled;
 
       if (maintenanceModeEnabled) {
         return MaintenancePageRoute.path;

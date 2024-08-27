@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'maintenance_mode_status.dart';
+part of 'maintenance_mode_settings_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,28 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$MaintenanceModeStatus {
+mixin _$MaintenanceModeSettingsState {
   bool get enabled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MaintenanceModeStatusCopyWith<MaintenanceModeStatus> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MaintenanceModeSettingsStateCopyWith<MaintenanceModeSettingsState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MaintenanceModeStatusCopyWith<$Res> {
-  factory $MaintenanceModeStatusCopyWith(MaintenanceModeStatus value,
-          $Res Function(MaintenanceModeStatus) then) =
-      _$MaintenanceModeStatusCopyWithImpl<$Res, MaintenanceModeStatus>;
+abstract class $MaintenanceModeSettingsStateCopyWith<$Res> {
+  factory $MaintenanceModeSettingsStateCopyWith(
+          MaintenanceModeSettingsState value,
+          $Res Function(MaintenanceModeSettingsState) then) =
+      _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+          MaintenanceModeSettingsState>;
   @useResult
   $Res call({bool enabled});
 }
 
 /// @nodoc
-class _$MaintenanceModeStatusCopyWithImpl<$Res,
-        $Val extends MaintenanceModeStatus>
-    implements $MaintenanceModeStatusCopyWith<$Res> {
-  _$MaintenanceModeStatusCopyWithImpl(this._value, this._then);
+class _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+        $Val extends MaintenanceModeSettingsState>
+    implements $MaintenanceModeSettingsStateCopyWith<$Res> {
+  _$MaintenanceModeSettingsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -58,24 +60,25 @@ class _$MaintenanceModeStatusCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$MaintenanceModeStatusImplCopyWith<$Res>
-    implements $MaintenanceModeStatusCopyWith<$Res> {
-  factory _$$MaintenanceModeStatusImplCopyWith(
-          _$MaintenanceModeStatusImpl value,
-          $Res Function(_$MaintenanceModeStatusImpl) then) =
-      __$$MaintenanceModeStatusImplCopyWithImpl<$Res>;
+abstract class _$$MaintenanceModeSettingsStateImplCopyWith<$Res>
+    implements $MaintenanceModeSettingsStateCopyWith<$Res> {
+  factory _$$MaintenanceModeSettingsStateImplCopyWith(
+          _$MaintenanceModeSettingsStateImpl value,
+          $Res Function(_$MaintenanceModeSettingsStateImpl) then) =
+      __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool enabled});
 }
 
 /// @nodoc
-class __$$MaintenanceModeStatusImplCopyWithImpl<$Res>
-    extends _$MaintenanceModeStatusCopyWithImpl<$Res,
-        _$MaintenanceModeStatusImpl>
-    implements _$$MaintenanceModeStatusImplCopyWith<$Res> {
-  __$$MaintenanceModeStatusImplCopyWithImpl(_$MaintenanceModeStatusImpl _value,
-      $Res Function(_$MaintenanceModeStatusImpl) _then)
+class __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>
+    extends _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+        _$MaintenanceModeSettingsStateImpl>
+    implements _$$MaintenanceModeSettingsStateImplCopyWith<$Res> {
+  __$$MaintenanceModeSettingsStateImplCopyWithImpl(
+      _$MaintenanceModeSettingsStateImpl _value,
+      $Res Function(_$MaintenanceModeSettingsStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +86,7 @@ class __$$MaintenanceModeStatusImplCopyWithImpl<$Res>
   $Res call({
     Object? enabled = null,
   }) {
-    return _then(_$MaintenanceModeStatusImpl(
+    return _then(_$MaintenanceModeSettingsStateImpl(
       enabled: null == enabled
           ? _value.enabled
           : enabled // ignore: cast_nullable_to_non_nullable
@@ -94,8 +97,9 @@ class __$$MaintenanceModeStatusImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$MaintenanceModeStatusImpl implements _MaintenanceModeStatus {
-  const _$MaintenanceModeStatusImpl({this.enabled = false});
+class _$MaintenanceModeSettingsStateImpl
+    implements _MaintenanceModeSettingsState {
+  const _$MaintenanceModeSettingsStateImpl({this.enabled = false});
 
   @override
   @JsonKey()
@@ -103,14 +107,14 @@ class _$MaintenanceModeStatusImpl implements _MaintenanceModeStatus {
 
   @override
   String toString() {
-    return 'MaintenanceModeStatus(enabled: $enabled)';
+    return 'MaintenanceModeSettingsState(enabled: $enabled)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MaintenanceModeStatusImpl &&
+            other is _$MaintenanceModeSettingsStateImpl &&
             (identical(other.enabled, enabled) || other.enabled == enabled));
   }
 
@@ -120,19 +124,22 @@ class _$MaintenanceModeStatusImpl implements _MaintenanceModeStatus {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MaintenanceModeStatusImplCopyWith<_$MaintenanceModeStatusImpl>
-      get copyWith => __$$MaintenanceModeStatusImplCopyWithImpl<
-          _$MaintenanceModeStatusImpl>(this, _$identity);
+  _$$MaintenanceModeSettingsStateImplCopyWith<
+          _$MaintenanceModeSettingsStateImpl>
+      get copyWith => __$$MaintenanceModeSettingsStateImplCopyWithImpl<
+          _$MaintenanceModeSettingsStateImpl>(this, _$identity);
 }
 
-abstract class _MaintenanceModeStatus implements MaintenanceModeStatus {
-  const factory _MaintenanceModeStatus({final bool enabled}) =
-      _$MaintenanceModeStatusImpl;
+abstract class _MaintenanceModeSettingsState
+    implements MaintenanceModeSettingsState {
+  const factory _MaintenanceModeSettingsState({final bool enabled}) =
+      _$MaintenanceModeSettingsStateImpl;
 
   @override
   bool get enabled;
   @override
   @JsonKey(ignore: true)
-  _$$MaintenanceModeStatusImplCopyWith<_$MaintenanceModeStatusImpl>
+  _$$MaintenanceModeSettingsStateImplCopyWith<
+          _$MaintenanceModeSettingsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

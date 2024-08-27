@@ -1,22 +1,11 @@
 // ignore_for_file: avoid_redundant_argument_values
 
-import 'package:cores_core/provider.dart';
-import 'package:cores_core/src/app_status/model/app_status.dart';
-import 'package:cores_core/src/app_status/model/maintenance_mode_status.dart';
-import 'package:cores_core/src/app_status/provider/app_status_provider.dart';
-import 'package:cores_core/src/app_status/provider/maintenance_mode_provider.dart';
-import 'package:cores_core/src/model/build_config.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:features_maintain/src/model/maintenance_mode_settings_state.dart';
+import 'package:features_maintain/src/provider/maintenance_mode_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  final fakeBuildConfig = FakeBuildConfig(
-    appName: 'appName',
-    packageName: 'packageName',
-    version: '1.0.0',
-    buildNumber: '100000',
-  );
-
   ProviderContainer createContainer({
     ProviderContainer? parent,
     List<Override> overrides = const [],
@@ -35,29 +24,25 @@ void main() {
     return container;
   }
 
-  group('appStatusProvider(アプリ状態)', () {
+  group('MaintenanceMode(メンテナンスモード)', () {
     test(
       'アプリ状態が初期状態の場合_メンテナンスモードが無効であること',
       () {
         // arrange
         final container = createContainer(
           overrides: [
-            buildConfigProvider.overrideWith(
-              (ref) => fakeBuildConfig,
-            ),
             maintenanceModeProvider.overrideWith(MaintenanceMode.new),
           ],
         );
-        final subscription = container.listen(appStatusProvider, (_, __) {});
+        final subscription =
+            container.listen(maintenanceModeProvider, (_, __) {});
 
         // act
         final actual = subscription.read();
 
         // assert
-        const expected = AppStatus(
-          maintenanceModeStatus: MaintenanceModeStatus(
-            enabled: false,
-          ),
+        const expected = MaintenanceModeSettingsState(
+          enabled: false,
         );
         expect(actual, expected);
         subscription.close();
@@ -70,14 +55,11 @@ void main() {
         // arrange
         final container = createContainer(
           overrides: [
-            buildConfigProvider.overrideWith(
-              (ref) => fakeBuildConfig,
-            ),
             maintenanceModeProvider.overrideWith(MaintenanceMode.new),
           ],
         );
         final subscription = container.listen(
-          appStatusProvider,
+          maintenanceModeProvider,
           (_, __) {},
         );
 
@@ -86,10 +68,8 @@ void main() {
         final actual = subscription.read();
 
         // assert
-        const expected = AppStatus(
-          maintenanceModeStatus: MaintenanceModeStatus(
-            enabled: true,
-          ),
+        const expected = MaintenanceModeSettingsState(
+          enabled: true,
         );
         expect(actual, expected);
         subscription.close();
@@ -100,25 +80,21 @@ void main() {
       // arrange
       final container = createContainer(
         overrides: [
-          buildConfigProvider.overrideWith(
-            (ref) => fakeBuildConfig,
-          ),
           maintenanceModeProvider.overrideWith(MaintenanceMode.new),
         ],
       );
       // メンテナンスモードを有効に設定する
       container.read(maintenanceModeProvider.notifier).update(enabled: true);
-      final subscription = container.listen(appStatusProvider, (_, __) {});
+      final subscription =
+          container.listen(maintenanceModeProvider, (_, __) {});
 
       // act
       container.read(maintenanceModeProvider.notifier).update(enabled: false);
       final actual = subscription.read();
 
       // assert
-      const expected = AppStatus(
-        maintenanceModeStatus: MaintenanceModeStatus(
-          enabled: false,
-        ),
+      const expected = MaintenanceModeSettingsState(
+        enabled: false,
       );
       expect(actual, expected);
       subscription.close();
