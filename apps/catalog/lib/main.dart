@@ -20,6 +20,12 @@ class WidgetbookApp extends StatelessWidget {
       // 下のAddonから順番にUseCaseを囲んでいく仕様になっている
       // 例えば、InspectorはDeviceFrameの中に表示される
       addons: [
+        MaterialThemeAddon(
+          themes: [
+            WidgetbookTheme(name: 'Light', data: lightTheme()),
+            WidgetbookTheme(name: 'Dark', data: darkTheme()),
+          ],
+        ),
         DeviceFrameAddon(
           initialDevice: Devices.ios.iPhone13,
           devices: [
@@ -38,12 +44,6 @@ class WidgetbookApp extends StatelessWidget {
           ],
         ),
         InspectorAddon(enabled: true),
-        MaterialThemeAddon(
-          themes: [
-            WidgetbookTheme(name: 'Light', data: lightTheme()),
-            WidgetbookTheme(name: 'Dark', data: darkTheme()),
-          ],
-        ),
         LocalizationAddon(
           locales: [
             const Locale('en', 'US'),
