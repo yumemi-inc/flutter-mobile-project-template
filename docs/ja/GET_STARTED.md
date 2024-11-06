@@ -8,27 +8,34 @@
   - [IntelliJ IDEA], [Android Studio] または [Visual Studio Code]
   - [Xcode]
 - [fvm] コマンドを有効にしてください。
+  - また、以下のコマンドを実行して`.fvmrc`で指定されたバージョンを有効化してください。
+    (masonはmelosのようにfvm経由でのアクセスが難しいため、fvmで現在のバージョンをglobalに設定するようにしている)
+
+    ```shell
+    fvm use --force
+    FLUTTER_VERSION=$(cat .fvmrc | yq ".flutter" -r) && fvm global $FLUTTER_VERSION
+    ```
+
 - [melos] コマンドを有効にしてください。
   - pubspec.lock ファイルを解析して melos コマンドのバージョンを取得するため、[yq] コマンドをインストールしてください。
   - 以下のコマンドを実行して melos コマンドをグローバルに有効にしてください。
 
     ```shell
-    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
-    fvm dart pub global activate melos $MELOS_VERSION
+    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
     ```
 
 - [mason_cli] コマンドを有効にしてください。
+  - 以下のコマンドを実行して mason コマンドをグローバルに有効にしてください。
+
+    ```shell
+    MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
+    ```
+
   - また、ローカルのbricksを有効にするため、以下のコマンドを実行してください。
 
     ```shell
     mason get
     ```
-
-### Flutter SDKのセットアップ
-
-```shell
-fvm use --force
-```
 
 ### FVM を使用するように IDE を設定
 
