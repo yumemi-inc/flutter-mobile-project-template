@@ -8,22 +8,34 @@ Language: English | [日本語](/docs/ja/GET_STARTED.md)
   - [IntelliJ IDEA], [Android Studio] or [Visual Studio Code]
   - [Xcode]
 - Enable the [fvm] command.
+  Also, run the following command to activate the Flutter version specified in `.fvmrc`:
+  (Since both mason and melos may encounter issues when accessed through fvm, we recommend setting the current Flutter version as global in fvm)
+
+  ```shell
+  fvm use --force
+  FLUTTER_VERSION=$(cat .fvmrc | yq ".flutter" -r) && fvm global $FLUTTER_VERSION
+  ```
+
 - Enable the [melos] command.
   - Please install the [yq] command if it is not already installed. The yq command is used to parse the `pubspec.lock` file to extract the version of the melos command.
   - Then, run the following command to globally activate the melos command.
 
     ```shell
-    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
-    fvm dart pub global activate melos $MELOS_VERSION
+    MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
     ```
 
 - Enable the [mason_cli] command.
+  - Run the following command to globally activate the mason_cli command.
 
-### Set up Flutter SDK
+    ```shell
+    MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
+    ```
 
-```shell
-fvm use --force
-```
+  - Also, please run the following command to enable local bricks:
+
+    ```shell
+    mason get
+    ```
 
 ### Set up the IDEs to use fvm
 
