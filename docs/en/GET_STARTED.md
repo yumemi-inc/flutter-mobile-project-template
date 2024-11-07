@@ -9,7 +9,7 @@ Language: English | [日本語](/docs/ja/GET_STARTED.md)
   - [Xcode]
 - Enable the [fvm] command.
   Also, run the following command to activate the Flutter version specified in `.fvmrc`:
-  (Since mason is difficult to access through fvm unlike melos, we set the current version as global in fvm)
+  (Since both mason and melos may encounter issues when accessed through fvm, we recommend setting the current Flutter version as global in fvm)
 
   ```shell
   fvm use --force
