@@ -56,27 +56,28 @@ class WidgetbookApp extends StatelessWidget {
         BuilderAddon(
           name: 'Scaffold',
           builder: (context, child) {
-            const indent = '  ';
-
             // 再帰的にScaffoldの有無を確認する関数
-            bool searchScaffold(Element element, String depth) {
+            bool searchScaffold(Element element, int depth) {
               // 現在のWidgetbookは最上位近くにScaffoldがあるため、それを除外するためにdepthを比較している
-              final hasScaffold = depth.length != indent.length * 2 &&
-                  (element.widget.runtimeType == Scaffold);
+              final hasScaffold = depth > 1 && element.widget is Scaffold;
+              if (hasScaffold) {
+                return true;
+              }
 
-              final results = <bool>[];
-
+              var hasScaffoldInChildren = false;
               // 子要素を走査
               element.visitChildren((child) {
-                results.add(searchScaffold(child, depth + indent));
+                if (!hasScaffoldInChildren) {
+                  hasScaffoldInChildren = searchScaffold(child, depth + 1);
+                }
               });
 
-              return hasScaffold || results.any((result) => result);
+              return hasScaffoldInChildren;
             }
 
             // 走査開始
             final element = context as Element;
-            final hasScaffold = searchScaffold(element, indent);
+            final hasScaffold = searchScaffold(element, 0);
 
             return hasScaffold
                 ? child
