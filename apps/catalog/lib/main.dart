@@ -1,7 +1,6 @@
 import 'package:catalog/main.directories.g.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
@@ -57,8 +56,30 @@ class WidgetbookApp extends StatelessWidget {
         BuilderAddon(
           name: 'Scaffold',
           builder: (context, child) {
-            final scaffoldFinder = find.byType(Scaffold);
-            return scaffoldFinder.hasFound
+            // 再帰的にScaffoldの有無を確認する関数
+            bool searchScaffold(Element element, int depth) {
+              // 現在のWidgetbookは最上位近くにScaffoldがあるため、それを除外するためにdepthを比較している
+              final hasScaffold = depth > 1 && element.widget is Scaffold;
+              if (hasScaffold) {
+                return true;
+              }
+
+              var hasScaffoldInChildren = false;
+              // 子要素を走査
+              element.visitChildren((child) {
+                if (!hasScaffoldInChildren) {
+                  hasScaffoldInChildren = searchScaffold(child, depth + 1);
+                }
+              });
+
+              return hasScaffoldInChildren;
+            }
+
+            // 走査開始
+            final element = context as Element;
+            final hasScaffold = searchScaffold(element, 0);
+
+            return hasScaffold
                 ? child
                 : Scaffold(
                     body: child,
