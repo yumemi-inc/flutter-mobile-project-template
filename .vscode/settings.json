@@ -36,6 +36,6 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "yaml.schemas": {
-    "melos.yaml.schema.json": "melos.yaml"
+    "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"
   }
 }
