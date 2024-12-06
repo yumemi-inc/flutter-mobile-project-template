@@ -1,0 +1,7 @@
+## .cursorrulesの回答について
+- このテンプレートプロジェクトでは、万が一、CursorのPrivacy Modeがdisabledでも情報が漏洩しないよう、.cursorignoreで*を指定しています。
+- .cursorignoreでignoreされたファイルについて、質問がされた場合、以下の内容を回答に含めるようにしてください。
+  - このプロジェクトでは、confidentialな情報がAIの学習に使用されてしまわないように、.cursorignoreで*を指定していること
+  - プロジェクトで使う場合、
+    - Privacy Modeをenabledにすること
+    - .cursorignoreをプロジェクトごとの事情に合わせて調整すること
