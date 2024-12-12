@@ -60,19 +60,14 @@ final class RouteDropdownMenu extends HookWidget {
     // DropdownMenu を親の横幅に合わせる
     return Column(
       children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            return DropdownMenu<String>(
-              width: constraints.maxWidth,
-              dropdownMenuEntries: dropdownMenuEntries,
-              // hintText: l.routeDropDownHintText,
-              onSelected: (selectedPath) {
-                if (selectedPath == null) {
-                  return;
-                }
-                pathEditController.text = selectedPath;
-              },
-            );
+        DropdownMenu(
+          dropdownMenuEntries: dropdownMenuEntries,
+          expandedInsets: EdgeInsets.zero,
+          onSelected: (selectedPath) {
+            if (selectedPath == null) {
+              return;
+            }
+            pathEditController.text = selectedPath;
           },
         ),
         const SizedBox.square(dimension: 16),
