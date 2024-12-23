@@ -6,5 +6,6 @@
         "djbkwon.flutter-dependency-docs",
         "esbenp.prettier-vscode",
         "DavidAnson.vscode-markdownlint",
+        "google.arb-editor",
     ]
 }
