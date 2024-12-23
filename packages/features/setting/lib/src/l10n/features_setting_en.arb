@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "settingAppBar": "Setting",
   "settingThemeSetting": "Theme Setting",
   "settingAbout": "About FlutterMobileTemplate",
