@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "{{feature_name.camelCase()}}Text": "{{feature_name.pascalCase()}} Text",
   "{{feature_name.camelCase()}}ListAppBarTitle": "{{feature_name.pascalCase()}} List",
   "{{feature_name.camelCase()}}ListText": "{{feature_name.pascalCase()}} List Text",

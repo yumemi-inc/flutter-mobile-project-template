@@ -5,6 +5,7 @@ import 'package:mason/mason.dart';
 void run(HookContext context) {
   final featureName = context.vars['feature_name'] as String;
 
+  _renameFiles(featureName: featureName);
   _addFeatureDependency(featureName: featureName);
   _addL10n(featureName: featureName);
 
@@ -16,6 +17,18 @@ void run(HookContext context) {
     'melos',
     ['run', 'regenerate_by_using_gen_l10n'],
   );
+}
+
+/// ファイル名を適切なものに変更
+_renameFiles({
+  required String featureName,
+}) {
+  // ARB 関連
+  final arbDirPath = 'packages/features/$featureName/lib/src/l10n';
+  final enArbFilePath = '$arbDirPath/features_${featureName}_en.arb';
+  final jaArbFilePath = '$arbDirPath/features_${featureName}_ja.arb';
+  File('$enArbFilePath.tmp').renameSync(enArbFilePath);
+  File('$jaArbFilePath.tmp').renameSync(jaArbFilePath);
 }
 
 /// appにfeatureの依存を追加
