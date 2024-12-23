@@ -9,3 +9,5 @@ bricks:
     path: tools/bricks/features_package
   brick:
     path: tools/bricks/brick
+  utils_package_flutter:
+    path: tools/bricks/utils_package_flutter

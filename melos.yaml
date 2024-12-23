@@ -6,6 +6,7 @@ packages:
   - packages/cores/*
   - packages/features/*
   - packages/samples/*
+  - packages/utils/*
   - samples/*
 
 command:
