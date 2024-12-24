@@ -37,5 +37,9 @@
   },
   "yaml.schemas": {
     "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"
-  }
+  },
+  "arb-editor.suppressedWarnings": [
+    // "@example": {} のようなメタデータがない場合の警告を無効化
+    "missing_metadata_for_key",
+  ]
 }
