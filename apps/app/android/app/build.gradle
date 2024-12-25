@@ -29,7 +29,7 @@ if (project.hasProperty('dart-defines')) {
             .split(',')
             .collectEntries { entry ->
                 def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
-                // valueがemtpyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
+                // valueがemptyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
                 pair.length == 2 ? [(pair.first()): pair.last()] : [:]
             }
 }
