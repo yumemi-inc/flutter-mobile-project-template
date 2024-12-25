@@ -26,12 +26,12 @@ if (flutterVersionName == null) {
 def dartDefines = [];
 if (project.hasProperty('dart-defines')) {
     dartDefines = project.property('dart-defines')
-        .split(',')
-        .collectEntries { entry ->
-            def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
-            // valueがemtpyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
-            pair.length == 2 ? [(pair.first()): pair.last()] : [:]
-        }
+            .split(',')
+            .collectEntries { entry ->
+                def pair = new String(entry.decodeBase64(), 'UTF-8').split('=')
+                // valueがemtpyの時にlastがkeyになるので、lengthが2でなければ空のmapにする
+                pair.length == 2 ? [(pair.first()): pair.last()] : [:]
+            }
 }
 
 task copySources(type: Copy) {
@@ -64,7 +64,7 @@ android {
         targetSdkVersion = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
-        resValue "string", "app_name","${dartDefines.appName}"
+        resValue "string", "app_name", "${dartDefines.appName}"
     }
 
     buildTypes {
