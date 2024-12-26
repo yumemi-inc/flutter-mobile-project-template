@@ -60,7 +60,7 @@ class _WebViewState extends State<WebPage> {
     final hasError = useState(false);
     return PopScope(
       canPop: canPop.value,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, _) async {
         if (didPop) {
           return;
         }

@@ -1,3 +1,4 @@
+// FIXME(tatsuatkein): BuildConfig で一箇所にまとめたい
 // ignore_for_file: do_not_use_environment
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
