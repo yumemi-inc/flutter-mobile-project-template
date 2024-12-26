@@ -12,8 +12,8 @@ packages:
 command:
   bootstrap:
     environment:
-      sdk: ^3.5.4
-      flutter: ^3.24.5
+      sdk: ^3.6.0
+      flutter: ^3.27.1
     dependencies:
       flutter_hooks: ^0.20.5
       flutter_riverpod: ^2.6.1
