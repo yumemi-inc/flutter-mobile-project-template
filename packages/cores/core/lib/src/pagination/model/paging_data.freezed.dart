@@ -20,7 +20,9 @@ mixin _$PageBasedPagingData<T> {
   int get currentPage => throw _privateConstructorUsedError;
   bool get hasMore => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PageBasedPagingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PageBasedPagingDataCopyWith<T, PageBasedPagingData<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$PageBasedPagingDataCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PageBasedPagingData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +93,8 @@ class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
       $Res Function(_$PageBasedPagingDataImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of PageBasedPagingData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,7 +162,9 @@ class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_items), currentPage, hasMore);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PageBasedPagingData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
@@ -177,8 +185,11 @@ abstract class _PageBasedPagingData<T> extends PageBasedPagingData<T> {
   int get currentPage;
   @override
   bool get hasMore;
+
+  /// Create a copy of PageBasedPagingData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }
