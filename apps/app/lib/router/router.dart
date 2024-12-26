@@ -27,7 +27,7 @@ part 'router.g.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
 @Riverpod(keepAlive: true)
-GoRouter router(RouterRef ref) {
+GoRouter router(Ref ref) {
   final maintenanceModeSettingsState = ref.watch(maintenanceModeProvider);
   return GoRouter(
     navigatorKey: _rootNavigatorKey,

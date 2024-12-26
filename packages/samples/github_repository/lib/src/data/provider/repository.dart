@@ -1,4 +1,5 @@
 import 'package:cores_data/network.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:samples_github_repository/src/domain/model/github_repository.dart';
 
@@ -6,7 +7,7 @@ part 'repository.g.dart';
 
 @riverpod
 Future<GitHubRepositoryResult> listOrganizationRepositories(
-  ListOrganizationRepositoriesRef ref, {
+  Ref ref, {
   int page = 1,
   int perPage = 30,
   String org = 'yumemi-inc',

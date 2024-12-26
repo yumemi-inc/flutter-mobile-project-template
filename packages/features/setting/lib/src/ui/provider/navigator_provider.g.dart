@@ -9,7 +9,7 @@ part of 'navigator_provider.dart';
 // **************************************************************************
 
 String _$settingPageNavigatorHash() =>
-    r'2024796aedf64170e3445ad4d696ed832a336cc8';
+    r'6939daab6cefc288c4b6802034532171c55fea75';
 
 /// See also [settingPageNavigator].
 @ProviderFor(settingPageNavigator)

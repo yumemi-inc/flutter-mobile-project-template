@@ -9,7 +9,7 @@ part of 'navigator_provider.dart';
 // **************************************************************************
 
 String _$debugPageNavigatorHash() =>
-    r'1234f344ef1cf619e3bfb742d28f6befc251e299';
+    r'8716c128bd9fb8db1107d07189b9db556a01d64e';
 
 /// See also [debugPageNavigator].
 @ProviderFor(debugPageNavigator)

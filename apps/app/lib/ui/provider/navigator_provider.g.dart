@@ -8,7 +8,7 @@ part of 'navigator_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$homePageNavigatorHash() => r'e6967f9a83bac4c9a26b2b70366a462b125318f4';
+String _$homePageNavigatorHash() => r'370dd41aa75ae54c483c524cc1a455f269a3597a';
 
 /// See also [homePageNavigator].
 @ProviderFor(homePageNavigator)

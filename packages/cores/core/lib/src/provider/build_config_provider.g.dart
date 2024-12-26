@@ -8,7 +8,7 @@ part of 'build_config_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$buildConfigHash() => r'9b134dae6dba8b90f2aafc427d97192a85b37e40';
+String _$buildConfigHash() => r'2d81398cb4435e6baf6efb522105d54ca71179f7';
 
 /// See also [buildConfig].
 @ProviderFor(buildConfig)

@@ -1,12 +1,13 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_data/src/network/provider/github_access_token.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'dio.g.dart';
 
 @riverpod
-Dio dio(DioRef ref) {
+Dio dio(Ref ref) {
   final gitHubAccessToken = ref.watch(gitHubAccessTokenProvider);
 
   final options = BaseOptions(

@@ -9,7 +9,7 @@ part of 'navigator_provider.dart';
 // **************************************************************************
 
 String _$gitHubRepositoryListPageNavigatorHash() =>
-    r'7c6451cf6e56c24f939619485c1f45ffc3dcbb4c';
+    r'1e4dd5cbf9009a25a7b036806b35a6be9a2fbac0';
 
 /// See also [gitHubRepositoryListPageNavigator].
 @ProviderFor(gitHubRepositoryListPageNavigator)
