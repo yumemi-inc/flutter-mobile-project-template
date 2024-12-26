@@ -92,6 +92,9 @@ analyzer:
   plugins:
     # https://riverpod.dev/docs/introduction/getting_started#enabling-riverpod_lintcustom_lint
     - custom_lint
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
 ''');
   }
   if (useFreezed) {
