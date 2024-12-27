@@ -9,7 +9,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$listOrganizationRepositoriesHash() =>
-    r'e66cef80657aac21284d89a4e6dd27d825aafa33';
+    r'e563eea8496b6e4cfd966f0ea714319e646cf3d1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -173,6 +173,8 @@ class ListOrganizationRepositoriesProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ListOrganizationRepositoriesRef
     on AutoDisposeFutureProviderRef<GitHubRepositoryResult> {
   /// The parameter `page` of this provider.
@@ -198,4 +200,4 @@ class _ListOrganizationRepositoriesProviderElement
   String get org => (origin as ListOrganizationRepositoriesProvider).org;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

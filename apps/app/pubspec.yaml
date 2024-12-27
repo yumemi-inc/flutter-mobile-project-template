@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 0.0.1
 
 environment:
-  sdk: ^3.4.1
-  flutter: ^3.22.1
+  sdk: ^3.5.4
+  flutter: ^3.24.5
 
 dependencies:
   cores_core:
@@ -40,7 +40,7 @@ dependencies:
 dev_dependencies:
   build_runner: ^2.4.11
   build_verify: ^3.1.0
-  custom_lint: ^0.6.4
+  custom_lint: ^0.7.0
   flutter_launcher_icons: ^0.14.2
   flutter_test:
     sdk: flutter

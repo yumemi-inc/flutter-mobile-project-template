@@ -18,7 +18,9 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ForceUpdateSettingsState {
   bool get enabled => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ForceUpdateSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ForceUpdateSettingsStateCopyWith<ForceUpdateSettingsState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$ForceUpdateSettingsStateCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ForceUpdateSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +83,8 @@ class __$$ForceUpdateSettingsStateImplCopyWithImpl<$Res>
       $Res Function(_$ForceUpdateSettingsStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ForceUpdateSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +133,9 @@ class _$ForceUpdateSettingsStateImpl extends _ForceUpdateSettingsState
   @override
   int get hashCode => Object.hash(runtimeType, enabled);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ForceUpdateSettingsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ForceUpdateSettingsStateImplCopyWith<_$ForceUpdateSettingsStateImpl>
@@ -142,8 +150,11 @@ abstract class _ForceUpdateSettingsState extends ForceUpdateSettingsState {
 
   @override
   bool get enabled;
+
+  /// Create a copy of ForceUpdateSettingsState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForceUpdateSettingsStateImplCopyWith<_$ForceUpdateSettingsStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

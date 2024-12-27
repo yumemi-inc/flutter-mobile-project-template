@@ -9,7 +9,7 @@ part of 'navigator_provider.dart';
 // **************************************************************************
 
 String _$settingPageNavigatorHash() =>
-    r'2024796aedf64170e3445ad4d696ed832a336cc8';
+    r'6939daab6cefc288c4b6802034532171c55fea75';
 
 /// See also [settingPageNavigator].
 @ProviderFor(settingPageNavigator)
@@ -24,6 +24,8 @@ final settingPageNavigatorProvider =
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SettingPageNavigatorRef = AutoDisposeProviderRef<SettingPageNavigator>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

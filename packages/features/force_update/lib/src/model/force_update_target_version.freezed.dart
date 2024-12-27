@@ -19,7 +19,9 @@ mixin _$ForceUpdateTargetVersion {
   VersionString get ios => throw _privateConstructorUsedError;
   VersionString get android => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ForceUpdateTargetVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ForceUpdateTargetVersionCopyWith<ForceUpdateTargetVersion> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$ForceUpdateTargetVersionCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ForceUpdateTargetVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +89,8 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
       $Res Function(_$ForceUpdateTargetVersionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ForceUpdateTargetVersion
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +149,9 @@ class _$ForceUpdateTargetVersionImpl extends _ForceUpdateTargetVersion
   @override
   int get hashCode => Object.hash(runtimeType, ios, android);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ForceUpdateTargetVersion
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ForceUpdateTargetVersionImplCopyWith<_$ForceUpdateTargetVersionImpl>
@@ -161,8 +169,11 @@ abstract class _ForceUpdateTargetVersion extends ForceUpdateTargetVersion {
   VersionString get ios;
   @override
   VersionString get android;
+
+  /// Create a copy of ForceUpdateTargetVersion
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForceUpdateTargetVersionImplCopyWith<_$ForceUpdateTargetVersionImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -29,6 +29,7 @@ final class AppInitializer {
     final preferences = await SharedPreferences.getInstance();
 
     final buildConfig = AppBuildConfig(
+      // NOTE: この buildConfig で集約するため限定的に許可
       // ignore: do_not_use_environment
       appFlavor: const String.fromEnvironment('flavor'),
       appName: packageInfo.appName,
