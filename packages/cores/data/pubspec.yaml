@@ -10,6 +10,8 @@ environment:
 dependencies:
   cores_core:
     path: ../core
+  cores_model:
+    path: ../model
   dio: ^5.7.0
   flutter:
     sdk: flutter

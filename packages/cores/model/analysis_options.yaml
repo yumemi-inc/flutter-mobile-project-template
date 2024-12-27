@@ -1,0 +1,6 @@
+include: package:yumemi_lints/dart/3.5/recommended.yaml
+
+analyzer:
+  plugins:
+    # https://riverpod.dev/docs/introduction/getting_started#enabling-riverpod_lintcustom_lint
+    - custom_lint

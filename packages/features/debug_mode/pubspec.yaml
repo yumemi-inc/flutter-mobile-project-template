@@ -14,6 +14,8 @@ dependencies:
     path: ../../cores/data
   cores_designsystem:
     path: ../../cores/designsystem
+  cores_model:
+    path: ../../cores/model
   dio: ^5.7.0
   features_force_update:
     path: ../force_update

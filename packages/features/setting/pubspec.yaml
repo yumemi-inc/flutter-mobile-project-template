@@ -12,6 +12,8 @@ dependencies:
     path: ../../cores/core
   cores_data:
     path: ../../cores/data
+  cores_model:
+    path: ../../cores/model
   flutter:
     sdk: flutter
   flutter_localizations:
