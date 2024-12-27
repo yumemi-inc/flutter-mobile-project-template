@@ -91,9 +91,7 @@ class WidgetbookApp extends StatelessWidget {
           builder: (context, child) => SafeArea(child: child),
         ),
         AlignmentAddon(),
-        TextScaleAddon(
-          scales: [1.0, 2.0],
-        ),
+        TextScaleAddon(),
       ],
     );
   }
