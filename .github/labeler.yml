@@ -19,6 +19,10 @@ labels:
     files:
       - packages/cores/designsystem/.+
 
+  - label: "@packages/cores/model"
+    files:
+      - packages/cores/model/.+
+
   - label: "@packages/features/debug_mode"
     files:
       - packages/features/debug_mode/.+
