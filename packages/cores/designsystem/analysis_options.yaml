@@ -1,1 +1,9 @@
 include: package:yumemi_lints/flutter/3.24/recommended.yaml
+
+analyzer:
+  exclude:
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/*.gen.dart'
+    - '**/gen/**'
+    - '**/.dart_tool/**'
