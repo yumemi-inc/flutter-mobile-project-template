@@ -79,6 +79,21 @@ scripts:
   # `.github/labels.yml` のパッケージ部分を生成する
   gen:labels: dart run ./tools/gen_labels.dart
 
+  # upgrade
+  upgrade:
+    run: dart pub upgrade
+    exec:
+      concurrency: 1
+      orderDependents: true
+    description: dart pub upgrade.
+
+  upgrade:major:
+    run: dart pub upgrade --major-versions
+    exec:
+      concurrency: 1
+      orderDependents: true
+    description: dart pub upgrade with major versions allowed.
+
   update:yumemi_lints:
     exec: dart run yumemi_lints update
     packageFilters:
