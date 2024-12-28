@@ -59,6 +59,10 @@
   color: 9ebfb6
   description: packages cores model package
 
+- name: "@packages/cores/ui"
+  color: a8dbe7
+  description: packages cores ui package
+
 - name: "@packages/features/debug_mode"
   color: 48360E
   description: packages features debug_mode package
