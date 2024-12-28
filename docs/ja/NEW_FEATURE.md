@@ -118,7 +118,7 @@ const settingShellBranch = TypedStatefulShellBranch<SettingShellBranch>(
 `./apps/app`内で以下のコマンドを実行しnavigatorとappのコード生成を行う。
 
 ```shell
-melos run regenerate_by_using_build_runner --no-select
+melos run gen:build --no-select
 ```
 
 **7. 画面遷移**
@@ -235,7 +235,7 @@ class MainPageShellRoute extends StatefulShellRouteData {
 **5. `./apps/app`にて、go_router周りのコード生成**
 
 ```shell
-melos run regenerate_by_using_build_runner --no-select
+melos run gen:build --no-select
 ```
 
 **6. 新しくできたボトムナビゲーションのタブを押して画面遷移するか確認する**
