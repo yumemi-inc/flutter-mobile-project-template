@@ -226,6 +226,13 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  cores_ui:
+    dependency: "direct main"
+    description:
+      path: "../../packages/cores/ui"
+      relative: true
+    source: path
+    version: "0.1.0"
   coverage:
     dependency: transitive
     description:

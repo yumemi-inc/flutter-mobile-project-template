@@ -1,0 +1,28 @@
+name: cores_ui
+description: This package provides a UI that depends on the model class and is used by all packages.
+version: 0.1.0
+publish_to: "none"
+
+environment:
+  sdk: ^3.6.0
+  flutter: ^3.27.1
+
+dependencies:
+  cores_core:
+    path: ../core
+  cores_designsystem:
+    path: ../designsystem
+  cores_model:
+    path: ../model
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  yumemi_lints: ^2.2.0
+
+flutter:

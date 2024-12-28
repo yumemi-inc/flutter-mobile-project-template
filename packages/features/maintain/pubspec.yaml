@@ -16,6 +16,8 @@ dependencies:
     path: ../../cores/designsystem
   cores_model:
     path: ../../cores/model
+  cores_ui:
+    path: ../../cores/ui
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5
