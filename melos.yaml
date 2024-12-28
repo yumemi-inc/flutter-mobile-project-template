@@ -9,6 +9,12 @@ packages:
   - packages/utils/*
   - samples/*
 
+ide:
+  intellij:
+    # Disabling IntelliJ's automatic configuration.
+    # This is to support different build configurations for environments.
+    enabled: false
+
 command:
   bootstrap:
     environment:
@@ -45,6 +51,38 @@ scripts:
       # - yumemi_lints_update
       - gen:labeler
       - gen:labels
+
+  # @deprecated `melos format` で代用可能
+  # ローカルでフォーマットとdart fix --applyを実行する
+  format_and_fix:
+    exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
+
+  gen: melos run gen:l10n && melos run gen:build
+
+  gen:build:
+    run: dart run build_runner build -d
+    exec:
+      orderDependents: true
+    packageFilters:
+      dependsOn: build_runner
+
+  gen:l10n:
+    run: flutter gen-l10n
+    exec:
+      orderDependents: true
+    packageFilters:
+      dependsOn: flutter_localizations
+
+  # `.github/labeler.yml` のパッケージ部分を生成する
+  gen:labeler: dart run ./tools/gen_labeler.dart
+
+  # `.github/labels.yml` のパッケージ部分を生成する
+  gen:labels: dart run ./tools/gen_labels.dart
+
+  update:yumemi_lints:
+    exec: dart run yumemi_lints update
+    packageFilters:
+      dependsOn: yumemi_lints
 
   # dependsOn で or 条件で指定することができないため
   # スクリプトを Flutter と Dart に分けている
@@ -92,45 +130,7 @@ scripts:
       dependsOn: test
       dirExists: test
 
-  # @deprecated `melos format` で代用可能
-  # ローカルでフォーマットとdart fix --applyを実行する
-  format_and_fix:
-    exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
-
   ci:report:custom_lint:
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
     packageFilters:
       dependsOn: custom_lint
-
-  gen: melos run gen:l10n && melos run gen:build
-
-  gen:build:
-    run: dart run build_runner build -d
-    exec:
-      orderDependents: true
-    packageFilters:
-      dependsOn: build_runner
-
-  gen:l10n:
-    run: flutter gen-l10n
-    exec:
-      orderDependents: true
-    packageFilters:
-      dependsOn: flutter_localizations
-
-  update:yumemi_lints:
-    exec: dart run yumemi_lints update
-    packageFilters:
-      dependsOn: yumemi_lints
-
-  # `.github/labeler.yml` のパッケージ部分を生成する
-  gen:labeler: dart run ./tools/gen_labeler.dart
-
-  # `.github/labels.yml` のパッケージ部分を生成する
-  gen:labels: dart run ./tools/gen_labels.dart
-
-ide:
-  intellij:
-    # Disabling IntelliJ's automatic configuration.
-    # This is to support different build configurations for environments.
-    enabled: false
