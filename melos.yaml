@@ -57,7 +57,10 @@ scripts:
   format_and_fix:
     exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
 
-  gen: melos run gen:l10n && melos run gen:build
+  gen:
+    steps:
+      - gen:l10n
+      - gen:build
 
   gen:build:
     run: dart run build_runner build -d
