@@ -57,7 +57,7 @@ If you use [IntelliJ IDEA] or [Android Studio], please see the following documen
 ### Install dependencies
 
 ```shell
-melos bootstrap
+dart pub get
 ```
 
 ### Run app

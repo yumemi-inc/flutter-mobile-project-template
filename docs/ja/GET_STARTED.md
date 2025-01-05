@@ -61,7 +61,7 @@
 ### 依存関係のインストール
 
 ```shell
-melos bootstrap
+dart pub get
 ```
 
 ### アプリの実行
