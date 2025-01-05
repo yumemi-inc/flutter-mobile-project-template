@@ -7,11 +7,11 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
-  cores_designsystem:
-    path: ../designsystem
-  cores_model:
-    path: ../model
+  cores_designsystem: 0.0.0
+  cores_model: 0.0.0
   flutter:
     sdk: flutter
   flutter_localizations:

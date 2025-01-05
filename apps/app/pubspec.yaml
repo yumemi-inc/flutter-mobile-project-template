@@ -7,27 +7,19 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
-  cores_core:
-    path: ../../packages/cores/core
-  cores_data:
-    path: ../../packages/cores/data
-  cores_designsystem:
-    path: ../../packages/cores/designsystem
-  cores_model:
-    path: ../../packages/cores/model
-  cores_ui:
-    path: ../../packages/cores/ui
-  features_debug_mode:
-    path: ../../packages/features/debug_mode
-  features_force_update:
-    path: ../../packages/features/force_update
-  features_maintain:
-    path: ../../packages/features/maintain
-  features_setting:
-    path: ../../packages/features/setting
-  features_webview:
-    path: ../../packages/features/webview
+  cores_core: 0.0.0
+  cores_data: 0.0.0
+  cores_designsystem: 0.0.0
+  cores_model: 0.0.0
+  cores_ui: 0.0.0
+  features_debug_mode: 0.0.0
+  features_force_update: 0.0.0
+  features_maintain: 0.0.0
+  features_setting: 0.0.0
+  features_webview: 0.0.0
   flutter:
     sdk: flutter
   flutter_localizations:

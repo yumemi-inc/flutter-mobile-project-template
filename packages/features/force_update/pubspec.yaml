@@ -7,13 +7,12 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
-  cores_core:
-    path: ../../cores/core
-  cores_model:
-    path: ../../cores/model
-  cores_ui:
-    path: ../../cores/ui
+  cores_core: 0.0.0
+  cores_model: 0.0.0
+  cores_ui: 0.0.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1

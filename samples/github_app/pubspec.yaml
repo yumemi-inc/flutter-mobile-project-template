@@ -7,12 +7,13 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
-  samples_github_repository:
-    path: ../../packages/samples/github_repository
+  samples_github_repository: 0.0.0
 
 dev_dependencies:
   flutter_test:

@@ -7,22 +7,17 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
-  cores_core:
-    path: ../../cores/core
-  cores_data:
-    path: ../../cores/data
-  cores_designsystem:
-    path: ../../cores/designsystem
-  cores_model:
-    path: ../../cores/model
-  cores_ui:
-    path: ../../cores/ui
+  cores_core: 0.0.0
+  cores_data: 0.0.0
+  cores_designsystem: 0.0.0
+  cores_model: 0.0.0
+  cores_ui: 0.0.0
   dio: ^5.7.0
-  features_force_update:
-    path: ../force_update
-  features_maintain:
-    path: ../maintain
+  features_force_update: 0.0.0
+  features_maintain: 0.0.0
   flutter:
     sdk: flutter
   flutter_hooks: ^0.20.5

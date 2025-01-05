@@ -7,13 +7,12 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
-  cores_designsystem:
-    path: ../../packages/cores/designsystem
-  cores_model:
-    path: ../../packages/cores/model
-  cores_ui:
-    path: ../../packages/cores/ui
+  cores_designsystem: 0.0.0
+  cores_model: 0.0.0
+  cores_ui: 0.0.0
   flutter:
     sdk: flutter
   flutter_test:
