@@ -1,7 +1,7 @@
 name: samples_github_repository
 description: "This package provides sample GitHub repository functionality."
 publish_to: 'none'
-version: 0.0.1
+version: 0.0.0
 
 environment:
   sdk: ^3.6.0

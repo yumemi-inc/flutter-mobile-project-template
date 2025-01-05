@@ -1,6 +1,6 @@
 name: cores_ui
 description: This package provides a UI that depends on the model class and is used by all packages.
-version: 0.1.0
+version: 0.0.0
 publish_to: "none"
 
 environment:
