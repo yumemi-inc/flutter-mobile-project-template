@@ -2,6 +2,15 @@
 
 Language: English | [日本語](/docs/ja/GET_STARTED.md)
 
+### IDE Versions
+
+| IDE | Version |
+| - | - |
+| Android Studio | Ladybug 2024.2.1 Patch 3 |
+| Xcode | 16.2 |
+
+**Note**: We have confirmed that this project works with the IDE versions listed above. The project may not work properly with older or newer versions of these IDEs.
+
 ### Advance preparation
 
 - Install the IDEs.
