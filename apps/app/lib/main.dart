@@ -4,6 +4,7 @@ import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
+import 'package:cores_ui/l10n.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/l10n.dart';
 import 'package:features_setting/l10n.dart';
@@ -67,11 +68,13 @@ class MainApp extends ConsumerWidget {
 
     return MaterialApp.router(
       localizationsDelegates: const [
+        ...CoresUiL10n.localizationsDelegates,
         ...MaintainL10n.localizationsDelegates,
         ...L10n.localizationsDelegates,
         ...SettingL10n.localizationsDelegates,
       ],
       supportedLocales: const [
+        ...CoresUiL10n.supportedLocales,
         ...MaintainL10n.supportedLocales,
         ...L10n.supportedLocales,
         ...SettingL10n.supportedLocales,

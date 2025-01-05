@@ -1,0 +1,11 @@
+arb-dir: lib/src/l10n
+output-dir: lib/src/gen/l10n
+template-arb-file: cores_ui_ja.arb
+output-localization-file: l10n.dart
+output-class: L10n
+synthetic-package: false
+preferred-supported-locales:
+  - ja
+  - en
+nullable-getter: false
+format: true
