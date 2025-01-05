@@ -27,6 +27,3 @@ migrate_working_dir/
 .flutter-plugins
 .flutter-plugins-dependencies
 build/
-
-# Melos related
-/pubspec_overrides.yaml

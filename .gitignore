@@ -10,9 +10,6 @@
 # Keep the run configurations.
 !/.idea/runConfigurations/
 
-# Melos related
-/pubspec_overrides.yaml
-
 # mason related
 /.mason
 
