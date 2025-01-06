@@ -12,6 +12,8 @@ dependencies:
     path: ../../packages/cores/designsystem
   cores_model:
     path: ../../packages/cores/model
+  cores_ui:
+    path: ../../packages/cores/ui
   flutter:
     sdk: flutter
   flutter_test:

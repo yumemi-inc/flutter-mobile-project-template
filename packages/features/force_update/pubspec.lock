@@ -189,10 +189,24 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  cores_designsystem:
+    dependency: "direct overridden"
+    description:
+      path: "../../cores/designsystem"
+      relative: true
+    source: path
+    version: "0.0.1"
   cores_model:
     dependency: "direct main"
     description:
       path: "../../cores/model"
+      relative: true
+    source: path
+    version: "0.1.0"
+  cores_ui:
+    dependency: "direct main"
+    description:
+      path: "../../cores/ui"
       relative: true
     source: path
     version: "0.1.0"
@@ -273,6 +287,11 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_localizations:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_riverpod:
     dependency: "direct main"
     description:
@@ -350,6 +369,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   io:
     dependency: transitive
     description:
@@ -643,6 +670,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
+  theme_extensions_builder_annotation:
+    dependency: transitive
+    description:
+      name: theme_extensions_builder_annotation
+      sha256: edfcd5c2b226f05689e66aade860e688e236509de95c373e985bdb9e9d7c789f
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   timing:
     dependency: transitive
     description:
