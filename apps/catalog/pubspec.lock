@@ -166,13 +166,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
-  cores_core:
-    dependency: "direct overridden"
-    description:
-      path: "../../packages/cores/core"
-      relative: true
-    source: path
-    version: "0.0.1"
   cores_designsystem:
     dependency: "direct main"
     description:
@@ -252,14 +245,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_riverpod:
-    dependency: transitive
-    description:
-      name: flutter_riverpod
-      sha256: "9532ee6db4a943a1ed8383072a2e3eeda041db5657cdf6d2acecf3c21ecbe7e1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.1"
   flutter_test:
     dependency: "direct main"
     description: flutter
@@ -481,22 +466,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
-  riverpod:
-    dependency: transitive
-    description:
-      name: riverpod
-      sha256: "59062512288d3056b2321804332a13ffdd1bf16df70dcc8e506e411280a72959"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.1"
-  riverpod_annotation:
-    dependency: transitive
-    description:
-      name: riverpod_annotation
-      sha256: e14b0bf45b71326654e2705d462f21b958f987087be850afd60578fcd502d1b8
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.6.1"
   shelf:
     dependency: transitive
     description:
@@ -513,14 +482,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  simple_logger:
-    dependency: transitive
-    description:
-      name: simple_logger
-      sha256: "1de79f22bf31e5c33b91e9e302394dac02d8269d474848d33153c3a15c08e970"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.10.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -550,14 +511,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.12.0"
-  state_notifier:
-    dependency: transitive
-    description:
-      name: state_notifier
-      sha256: b8677376aa54f2d7c58280d5a007f9e8774f1968d1fb1c096adcb4792fba29bb
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.0"
   stream_channel:
     dependency: transitive
     description:
@@ -630,14 +583,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
-  visibility_detector:
-    dependency: transitive
-    description:
-      name: visibility_detector
-      sha256: dd5cc11e13494f432d15939c3aa8ae76844c42b723398643ce9addb88a5ed420
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.0+2"
   vm_service:
     dependency: transitive
     description:
