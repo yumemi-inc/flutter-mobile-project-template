@@ -6,7 +6,7 @@
 /*.iml
 /.idea/*
 # Keep the project jsonSchemas.
-!.idea/jsonSchemas.xml
+!/.idea/jsonSchemas.xml
 # Keep the run configurations.
 !/.idea/runConfigurations/
 
