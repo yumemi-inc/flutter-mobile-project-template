@@ -10,6 +10,8 @@ environment:
 dependencies:
   cores_designsystem:
     path: ../../packages/cores/designsystem
+  cores_model:
+    path: ../../packages/cores/model
   flutter:
     sdk: flutter
   flutter_test:

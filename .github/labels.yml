@@ -55,6 +55,10 @@
   description: packages cores designsystem package
   from_name: "@cores/designsystem"
 
+- name: "@packages/cores/model"
+  color: 9ebfb6
+  description: packages cores model package
+
 - name: "@packages/features/debug_mode"
   color: 48360E
   description: packages features debug_mode package

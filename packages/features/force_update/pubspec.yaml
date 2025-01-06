@@ -10,6 +10,8 @@ environment:
 dependencies:
   cores_core:
     path: ../../cores/core
+  cores_model:
+    path: ../../cores/model
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1

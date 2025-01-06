@@ -70,6 +70,13 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  cores_model:
+    dependency: "direct overridden"
+    description:
+      path: "../../packages/cores/model"
+      relative: true
+    source: path
+    version: "0.1.0"
   dio:
     dependency: transitive
     description:

@@ -14,6 +14,8 @@ dependencies:
     path: ../../packages/cores/data
   cores_designsystem:
     path: ../../packages/cores/designsystem
+  cores_model:
+    path: ../../packages/cores/model
   features_debug_mode:
     path: ../../packages/features/debug_mode
   features_force_update:
