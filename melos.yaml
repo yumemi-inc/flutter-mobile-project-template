@@ -50,10 +50,10 @@ scripts:
   # スクリプトを Flutter と Dart に分けている
   test:
     steps:
-      - test_flutter
-      - test_dart
+      - test:flutter
+      - test:dart
 
-  test_flutter:
+  test:flutter:
     run: flutter test
     exec:
       concurrency: 1
@@ -61,7 +61,7 @@ scripts:
       dependsOn: flutter_test
       dirExists: test
 
-  test_dart:
+  test:dart:
     run: dart test
     exec:
       concurrency: 1
@@ -71,12 +71,12 @@ scripts:
 
   # dependsOn で or 条件で指定することができないため
   # スクリプトを Flutter と Dart に分けている
-  report_test:
+  report:test:
     steps:
-      - report_test_flutter
-      - report_test_dart
+      - report:test:flutter
+      - report:test:dart
 
-  report_test_flutter:
+  report:test:flutter:
     run: flutter test --no-pub --machine > test_report.log
     exec:
       concurrency: 1
@@ -84,7 +84,7 @@ scripts:
       dependsOn: flutter_test
       dirExists: test
 
-  report_test_dart:
+  report:test:dart:
     run: dart test --file-reporter="json:test_report.log"
     exec:
       concurrency: 1
@@ -92,32 +92,33 @@ scripts:
       dependsOn: test
       dirExists: test
 
+  # @deprecated `melos format` で代用可能
   # ローカルでフォーマットとdart fix --applyを実行する
   format_and_fix:
     exec: bash "$MELOS_ROOT_PATH/scripts/format.sh"
 
-  report_custom_lint:ci:
+  ci:report:custom_lint:
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
     packageFilters:
       dependsOn: custom_lint
 
-  regenerate_code: melos run regenerate_by_using_gen_l10n && melos run regenerate_by_using_build_runner
+  gen: melos run gen:l10n && melos run gen:build
 
-  regenerate_by_using_build_runner:
+  gen:build:
     run: dart run build_runner build -d
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
 
-  regenerate_by_using_gen_l10n:
+  gen:l10n:
     run: flutter gen-l10n
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: flutter_localizations
 
-  yumemi_lints_update:
+  update:yumemi_lints:
     exec: dart run yumemi_lints update
     packageFilters:
       dependsOn: yumemi_lints

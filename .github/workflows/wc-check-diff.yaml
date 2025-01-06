@@ -29,7 +29,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
 
       - name: Regenerate code
-        run: melos run regenerate_code --no-select
+        run: melos run gen --no-select
 
       - name: Check difference
         run: |
