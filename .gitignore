@@ -3,9 +3,12 @@
 /.dart_tool/*
 
 # IntelliJ related
-/.idea/*
-!/.idea/runConfigurations/
 /*.iml
+/.idea/*
+# Keep the project jsonSchemas.
+!/.idea/jsonSchemas.xml
+# Keep the run configurations.
+!/.idea/runConfigurations/
 
 # Melos related
 /pubspec_overrides.yaml
