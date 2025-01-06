@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JsonSchemaMappingsProjectConfiguration">
+    <state>
+      <map>
+        <entry key="melos.yaml">
+          <value>
+            <SchemaInfo>
+              <option name="generatedName" value="New Schema" />
+              <option name="name" value="melos.yaml" />
+              <option name="relativePathToSchema" value="https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json" />
+              <option name="patterns">
+                <list>
+                  <Item>
+                    <option name="path" value="melos.yaml" />
+                  </Item>
+                </list>
+              </option>
+            </SchemaInfo>
+          </value>
+        </entry>
+      </map>
+    </state>
+  </component>
+</project>
