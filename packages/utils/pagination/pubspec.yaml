@@ -1,0 +1,15 @@
+name: utils_pagination
+description: "This package provides pagination utilities."
+publish_to: "none"
+version: 0.0.1
+
+environment:
+  sdk: ^3.6.0
+  flutter: ^3.27.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  yumemi_lints: ^2.2.0
