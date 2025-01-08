@@ -1,7 +1,7 @@
-import 'package:cores_core/pagination.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:samples_github_repository/src/data/provider/repository.dart';
 import 'package:samples_github_repository/src/domain/model/github_repository.dart';
+import 'package:utils_pagination/pagination.dart';
 
 final pageBasedGitHubRepositoryNotifierProvider = AsyncNotifierProvider
     .autoDispose<PageBasedGitHubRepositoryNotifier, GitHubRepositoryPageState>(
