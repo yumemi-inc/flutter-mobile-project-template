@@ -2,7 +2,7 @@
 
 // ignore_for_file: type=lint, duplicate_ignore, deprecated_member_use
 
-part of 'navigator_provider.dart';
+part of 'github_repository_list_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
