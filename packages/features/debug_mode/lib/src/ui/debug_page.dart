@@ -1,15 +1,20 @@
 import 'dart:async';
 
 import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
-import 'package:features_debug_mode/src/ui/provider/navigator_provider.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'debug_page.g.dart';
 
 abstract interface class DebugPageNavigator {
   void goNavigationDebugPage(BuildContext context);
 }
+
+@Riverpod(dependencies: [])
+DebugPageNavigator debugPageNavigator(Ref ref) => throw UnimplementedError();
 
 class DebugPage extends ConsumerWidget {
   const DebugPage({super.key});
