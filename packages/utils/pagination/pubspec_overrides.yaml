@@ -1,4 +1,0 @@
-# melos_managed_dependency_overrides: cores_core
-dependency_overrides:
-  cores_core:
-    path: ../../cores/core
