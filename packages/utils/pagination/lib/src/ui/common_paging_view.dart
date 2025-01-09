@@ -2,7 +2,8 @@ import 'package:cores_core/exception.dart';
 import 'package:cores_core/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:utils_pagination/pagination.dart';
+import 'package:utils_pagination/model.dart';
+import 'package:utils_pagination/provider.dart';
 import 'package:utils_pagination/src/extension/async_value.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
