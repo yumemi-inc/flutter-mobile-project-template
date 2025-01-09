@@ -57,6 +57,12 @@ scripts:
     packageFilters:
       dirExists: lib
 
+  fix:custom:
+    exec: dart run custom_lint --fix
+    packageFilters:
+      dirExists: lib
+      dependsOn: custom_lint
+
   gen:
     steps:
       - gen:l10n
