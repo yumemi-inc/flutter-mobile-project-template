@@ -57,7 +57,6 @@ scripts:
       すべてのパッケージに `dart fix --apply` を実行します。
       analyze の対象として開発者が気づけるようにしつつ fix からは対象外とするため独自実装です。
     run: bash "$MELOS_ROOT_PATH/scripts/fix.sh"
-
   fix:custom:
     exec: dart run custom_lint --fix
     packageFilters:
@@ -68,42 +67,35 @@ scripts:
     steps:
       - gen:l10n
       - gen:build
-
   gen:build:
     run: dart run build_runner build -d
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
-
   gen:l10n:
     run: flutter gen-l10n
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: flutter_localizations
-
   # `.github/labeler.yml` のパッケージ部分を生成する
   gen:labeler: dart run ./tools/gen_labeler.dart
-
   # `.github/labels.yml` のパッケージ部分を生成する
   gen:labels: dart run ./tools/gen_labels.dart
 
-  # upgrade
   upgrade:
     run: dart pub upgrade
     exec:
       concurrency: 1
       orderDependents: true
     description: dart pub upgrade.
-
   upgrade:major:
     run: dart pub upgrade --major-versions
     exec:
       concurrency: 1
       orderDependents: true
     description: dart pub upgrade with major versions allowed.
-
   update:yumemi_lints:
     exec: dart run yumemi_lints update
     packageFilters:
@@ -115,7 +107,6 @@ scripts:
     steps:
       - test:flutter
       - test:dart
-
   test:flutter:
     run: flutter test
     exec:
@@ -123,7 +114,6 @@ scripts:
     packageFilters:
       dependsOn: flutter_test
       dirExists: test
-
   test:dart:
     run: dart test
     exec:
@@ -138,7 +128,6 @@ scripts:
     steps:
       - report:test:flutter
       - report:test:dart
-
   report:test:flutter:
     run: flutter test --no-pub --machine > test_report.log
     exec:
@@ -146,7 +135,6 @@ scripts:
     packageFilters:
       dependsOn: flutter_test
       dirExists: test
-
   report:test:dart:
     run: dart test --file-reporter="json:test_report.log"
     exec:
