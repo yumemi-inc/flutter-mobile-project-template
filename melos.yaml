@@ -53,9 +53,10 @@ scripts:
       - gen:labels
 
   fix:
-    exec: dart fix --apply lib/
-    packageFilters:
-      dirExists: lib
+    description: |
+      すべてのパッケージに `dart fix --apply` を実行します。
+      analyze の対象として開発者が気づけるようにしつつ fix からは対象外とするため独自実装です。
+    run: bash "$MELOS_ROOT_PATH/scripts/fix.sh"
 
   fix:custom:
     exec: dart run custom_lint --fix
