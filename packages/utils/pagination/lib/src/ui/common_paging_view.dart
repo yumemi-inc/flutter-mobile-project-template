@@ -1,5 +1,4 @@
 import 'package:cores_core/exception.dart';
-import 'package:cores_core/util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:utils_pagination/model.dart';
@@ -100,13 +99,6 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
             _onError(error);
             return;
           }
-          // AppException is expected, so this should never be reached.
-          logger.shout(
-            'Unexpected error type encountered: $error - '
-            'This indicates a need to revise exception handling to ensure only '
-            'AppException is thrown. Please review exception handling '
-            'practices and modify as necessary.',
-          );
         }
       },
     );
