@@ -58,45 +58,52 @@ scripts:
       analyze の対象として開発者が気づけるようにしつつ fix からは対象外とするため独自実装です。
     run: bash "$MELOS_ROOT_PATH/scripts/fix.sh"
   fix:custom:
+    description: すべてのパッケージに custom_lint の fix を実行します。
     exec: dart run custom_lint --fix
     packageFilters:
       dirExists: lib
       dependsOn: custom_lint
 
   gen:
+    description: build_runner と l10n の生成コマンドを実行します。
     steps:
       - gen:l10n
       - gen:build
   gen:build:
+    description: build_runner を使用してコードを生成します。
     run: dart run build_runner build -d
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: build_runner
   gen:l10n:
+    description: 多言語対応のためのローカライゼーションファイルを生成します。
     run: flutter gen-l10n
     exec:
       orderDependents: true
     packageFilters:
       dependsOn: flutter_localizations
-  # `.github/labeler.yml` のパッケージ部分を生成する
-  gen:labeler: dart run ./tools/gen_labeler.dart
-  # `.github/labels.yml` のパッケージ部分を生成する
-  gen:labels: dart run ./tools/gen_labels.dart
+  gen:labeler:
+    description: '`.github/labeler.yml` のパッケージ部分を生成します。'
+    run: dart run ./tools/gen_labeler.dart
+  gen:labels:
+    description: '`.github/labels.yml` のパッケージ部分を生成します。'
+    run: dart run ./tools/gen_labels.dart
 
   upgrade:
+    description: dart pub のバージョンアップを実施します。
     run: dart pub upgrade
     exec:
       concurrency: 1
       orderDependents: true
-    description: dart pub upgrade.
   upgrade:major:
+    description: dart pub のメジャーバージョンアップを実施します。
     run: dart pub upgrade --major-versions
     exec:
       concurrency: 1
       orderDependents: true
-    description: dart pub upgrade with major versions allowed.
   update:yumemi_lints:
+    description: yumemi_lints の更新を実行します。
     exec: dart run yumemi_lints update
     packageFilters:
       dependsOn: yumemi_lints
@@ -104,10 +111,12 @@ scripts:
   # dependsOn で or 条件で指定することができないため
   # スクリプトを Flutter と Dart に分けている
   test:
+    description: すべてのパッケージのテストを実行します。
     steps:
       - test:flutter
       - test:dart
   test:flutter:
+    description: Flutter パッケージのテストを実行します。
     run: flutter test
     exec:
       concurrency: 1
@@ -115,6 +124,7 @@ scripts:
       dependsOn: flutter_test
       dirExists: test
   test:dart:
+    description: Dart パッケージのテストを実行します。
     run: dart test
     exec:
       concurrency: 1
@@ -125,10 +135,12 @@ scripts:
   # dependsOn で or 条件で指定することができないため
   # スクリプトを Flutter と Dart に分けている
   report:test:
+    description: すべてのパッケージのテストレポートを生成します。
     steps:
       - report:test:flutter
       - report:test:dart
   report:test:flutter:
+    description: Flutter パッケージのテストレポートを生成します。
     run: flutter test --no-pub --machine > test_report.log
     exec:
       concurrency: 1
@@ -136,6 +148,7 @@ scripts:
       dependsOn: flutter_test
       dirExists: test
   report:test:dart:
+    description: Dart パッケージのテストレポートを生成します。
     run: dart test --file-reporter="json:test_report.log"
     exec:
       concurrency: 1
@@ -144,6 +157,7 @@ scripts:
       dirExists: test
 
   ci:report:custom_lint:
+    description: CI 環境で custom_lint のレポートを生成します。
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
     packageFilters:
       dependsOn: custom_lint
