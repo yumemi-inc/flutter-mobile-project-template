@@ -2,30 +2,30 @@
 
 // ignore_for_file: type=lint, duplicate_ignore, deprecated_member_use
 
-part of 'navigator_provider.dart';
+part of 'setting_page.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$debugPageNavigatorHash() =>
-    r'8716c128bd9fb8db1107d07189b9db556a01d64e';
+String _$settingPageNavigatorHash() =>
+    r'6939daab6cefc288c4b6802034532171c55fea75';
 
-/// See also [debugPageNavigator].
-@ProviderFor(debugPageNavigator)
-final debugPageNavigatorProvider =
-    AutoDisposeProvider<DebugPageNavigator>.internal(
-  debugPageNavigator,
-  name: r'debugPageNavigatorProvider',
+/// See also [settingPageNavigator].
+@ProviderFor(settingPageNavigator)
+final settingPageNavigatorProvider =
+    AutoDisposeProvider<SettingPageNavigator>.internal(
+  settingPageNavigator,
+  name: r'settingPageNavigatorProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$debugPageNavigatorHash,
+      : _$settingPageNavigatorHash,
   dependencies: const <ProviderOrFamily>[],
   allTransitiveDependencies: const <ProviderOrFamily>{},
 );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef DebugPageNavigatorRef = AutoDisposeProviderRef<DebugPageNavigator>;
+typedef SettingPageNavigatorRef = AutoDisposeProviderRef<SettingPageNavigator>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
