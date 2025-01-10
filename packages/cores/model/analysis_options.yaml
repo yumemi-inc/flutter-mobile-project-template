@@ -1,9 +1,1 @@
 include: package:yumemi_lints/dart/3.5/recommended.yaml
-
-analyzer:
-  exclude:
-    - '**/*.g.dart'
-    - '**/*.freezed.dart'
-    - '**/*.gen.dart'
-    - '**/gen/**'
-    - '**/.dart_tool/**'
