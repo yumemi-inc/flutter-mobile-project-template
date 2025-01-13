@@ -726,10 +726,10 @@ packages:
     dependency: transitive
     description:
       name: markdown
-      sha256: ef2a1298144e3f985cc736b22e0ccdaf188b5b3970648f2d9dc13efd1d9df051
+      sha256: "935e23e1ff3bc02d390bad4d4be001208ee92cc217cb5b5a6c19bc14aaa318c1"
       url: "https://pub.dev"
     source: hosted
-    version: "7.2.2"
+    version: "7.3.0"
   mason:
     dependency: transitive
     description:
@@ -750,10 +750,10 @@ packages:
     dependency: "direct dev"
     description:
       name: mason_cli
-      sha256: e0389aa108c2f09773d0d76665a1dd43b630eba70e2b4f72fa4b703ad49542d6
+      sha256: b6e42b5121ba9526a083dd46ac6d9374f14616db2ac80fcb3b63b1b3152e5a5b
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0-dev.56"
+    version: "0.1.2"
   mason_logger:
     dependency: transitive
     description:
@@ -782,10 +782,10 @@ packages:
     dependency: "direct dev"
     description:
       name: melos
-      sha256: c52e27c0b291e42180aff81cbf5bc6028099e065cfd4e5f9a4095ab603dfd711
+      sha256: fd8cb2c11f85047ba4fd4b8e192841b160f2d3d57df0593494b79a4c851d7782
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "7.0.0-dev.3"
   meta:
     dependency: transitive
     description:
@@ -950,10 +950,10 @@ packages:
     dependency: transitive
     description:
       name: pub_updater
-      sha256: "54e8dc865349059ebe7f163d6acce7c89eb958b8047e6d6e80ce93b13d7c9e60"
+      sha256: "739a0161d73a6974c0675b864fb0cf5147305f7b077b7f03a58fa7a9ab3e7e7d"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.5.0"
   pubspec_parse:
     dependency: transitive
     description:
