@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// TextField
+/// https://api.flutter.dev/flutter/material/TextField-class.html
+
 @UseCase(
   name: 'Default',
   type: TextField,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/TextInputs',
 )
 Widget textField(BuildContext context) {
   return Scaffold(
@@ -28,7 +31,7 @@ Widget textField(BuildContext context) {
 @UseCase(
   name: 'Outline',
   type: TextField,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/TextInputs',
 )
 Widget outlinedTextField(BuildContext context) {
   return Scaffold(

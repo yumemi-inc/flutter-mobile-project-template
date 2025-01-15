@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Menu
+/// https://api.flutter.dev/flutter/material/MenuAnchor-class.html
+
 @UseCase(
   name: 'Menu',
   type: MenuAnchor,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget menu(BuildContext context) {
   final buttonFocusNode = FocusNode(debugLabel: 'Menu Button');

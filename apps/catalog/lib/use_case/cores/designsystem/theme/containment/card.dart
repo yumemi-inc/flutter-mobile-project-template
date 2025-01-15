@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Card
+/// https://api.flutter.dev/flutter/material/Card-class.html
+
 class _SampleCard extends StatelessWidget {
   const _SampleCard({
     required String name,
@@ -24,7 +27,7 @@ class _SampleCard extends StatelessWidget {
 @UseCase(
   name: 'Elevated',
   type: Card,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget elevatedCard(BuildContext context) => const Center(
       child: Padding(
@@ -39,7 +42,7 @@ Widget elevatedCard(BuildContext context) => const Center(
 @UseCase(
   name: 'Outlined',
   type: Card,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget outlinedCard(BuildContext context) => const Center(
       child: Padding(
@@ -54,7 +57,7 @@ Widget outlinedCard(BuildContext context) => const Center(
 @UseCase(
   name: 'Filled',
   type: Card,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget filledCard(BuildContext context) => const Center(
       child: Padding(

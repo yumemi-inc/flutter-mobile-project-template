@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Slider
+/// https://api.flutter.dev/flutter/material/Slider-class.html
+
 @UseCase(
   name: 'Slider',
   type: Slider,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget slider(BuildContext context) {
   var value1 = 30.0;

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Divider
+/// https://api.flutter.dev/flutter/material/Divider-class.html
+
 @UseCase(
   name: 'Default',
   type: Divider,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget divider(BuildContext context) => const Center(
       child: SizedBox(
@@ -23,7 +26,7 @@ Widget divider(BuildContext context) => const Center(
 @UseCase(
   name: 'Vertical',
   type: Divider,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget verticalDivider(BuildContext context) => const Center(
       child: SizedBox(

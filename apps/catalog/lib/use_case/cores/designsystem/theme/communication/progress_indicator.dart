@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// CircularProgressIndicator
+/// https://api.flutter.dev/flutter/material/CircularProgressIndicator-class.html
+
 @UseCase(
   name: 'CircularProgressIndicator',
   type: CircularProgressIndicator,
-  path: '[Theme Preview]/ProgressIndicator',
+  path: '[Theme Preview]/Communication/ProgressIndicator',
 )
 Widget circularProgressIndicator(BuildContext context) =>
     const CircularProgressIndicator();
@@ -13,7 +16,7 @@ Widget circularProgressIndicator(BuildContext context) =>
 @UseCase(
   name: 'CircularProgressIndicatorAdaptive',
   type: CircularProgressIndicator,
-  path: '[Theme Preview]/ProgressIndicator',
+  path: '[Theme Preview]/Communication/ProgressIndicator',
 )
 Widget circularProgressIndicatorAdaptive(BuildContext context) =>
     const CircularProgressIndicator.adaptive();
@@ -21,7 +24,7 @@ Widget circularProgressIndicatorAdaptive(BuildContext context) =>
 @UseCase(
   name: 'LinearProgressIndicator',
   type: LinearProgressIndicator,
-  path: '[Theme Preview]/ProgressIndicator',
+  path: '[Theme Preview]/Communication/ProgressIndicator',
 )
 Widget linearProgressIndicator(BuildContext context) =>
     const LinearProgressIndicator();

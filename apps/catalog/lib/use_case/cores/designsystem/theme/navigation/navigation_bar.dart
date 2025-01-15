@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// NavigationBar
+/// https://api.flutter.dev/flutter/material/NavigationBar-class.html
+
 @UseCase(
   name: 'NavigationBar',
   type: NavigationBar,

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Badge
+/// https://api.flutter.dev/flutter/material/Badge-class.html
+
 @UseCase(
   name: 'Badge',
   type: Badge,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Communication',
 )
 Widget badge(BuildContext context) => Center(
       child: Column(

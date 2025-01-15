@@ -3,10 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// BottomSheet
+/// https://api.flutter.dev/flutter/material/BottomSheet-class.html
+
 @UseCase(
   name: 'BottomSheet',
   type: BottomSheet,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget bottomSheet(BuildContext context) => Scaffold(
       body: Center(

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Switch
+/// https://api.flutter.dev/flutter/material/Switch-class.html
+
 @UseCase(
   name: 'Default',
   type: Switch,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget defaultSwitch(BuildContext context) {
   var value = false;
@@ -50,7 +53,7 @@ Widget defaultSwitch(BuildContext context) {
 @UseCase(
   name: 'Adaptive',
   type: Switch,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget adaptiveSwitch(BuildContext context) {
   var value = false;

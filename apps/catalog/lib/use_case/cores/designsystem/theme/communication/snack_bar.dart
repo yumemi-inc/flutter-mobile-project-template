@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// SnackBar
+/// https://api.flutter.dev/flutter/material/SnackBar-class.html
+
 @UseCase(
   name: 'SnackBar',
   type: SnackBar,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Communication',
 )
 Widget snackBar(BuildContext context) => Scaffold(
       body: Center(

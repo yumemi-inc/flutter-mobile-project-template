@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// ListTile
+/// https://api.flutter.dev/flutter/material/ListTile-class.html
+
 final List<Widget> _listTiles = [
   ListTile(
     leading: const CircleAvatar(child: Text('A')),
@@ -37,7 +40,7 @@ final List<Widget> _listTiles = [
 @UseCase(
   name: 'Default',
   type: ListTile,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget defaultListTile(BuildContext context) => Scaffold(
       appBar: AppBar(title: const Text('ListTile Sample')),
@@ -54,7 +57,7 @@ Widget defaultListTile(BuildContext context) => Scaffold(
 @UseCase(
   name: 'Divider',
   type: ListTile,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Containment',
 )
 Widget separatedListTile(BuildContext context) => Scaffold(
       appBar: AppBar(title: const Text('Separated ListTile Sample')),

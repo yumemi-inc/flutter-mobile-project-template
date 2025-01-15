@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Radio
+/// https://api.flutter.dev/flutter/material/Radio-class.html
+
 @UseCase(
   name: 'Radio',
   type: Radio,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget radio(BuildContext context) {
   _SingingCharacter? character = _SingingCharacter.lafayette;

@@ -104,6 +104,9 @@ class _NavigationDrawerExampleState extends State<_NavigationDrawerExample> {
   }
 }
 
+/// NavigationDrawer
+/// https://api.flutter.dev/flutter/material/NavigationDrawer-class.html
+
 @UseCase(
   name: 'NavigationDrawer',
   type: NavigationDrawer,

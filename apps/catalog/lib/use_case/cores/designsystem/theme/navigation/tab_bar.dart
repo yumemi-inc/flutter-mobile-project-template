@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// TabBar
+/// https://api.flutter.dev/flutter/material/TabBar-class.html
+
 @UseCase(
   name: 'TabBar',
   type: TabBar,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Navigation',
 )
 Widget tabBar(BuildContext context) => DefaultTabController(
       initialIndex: 1,

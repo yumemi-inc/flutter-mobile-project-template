@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
+/// Checkbox
+/// https://api.flutter.dev/flutter/material/Checkbox-class.html
+
 @UseCase(
   name: 'Default',
   type: Checkbox,
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Selection',
 )
 Widget checkbox(BuildContext context) {
   bool? isChecked = true;
