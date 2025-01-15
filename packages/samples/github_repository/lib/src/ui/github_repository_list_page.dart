@@ -1,4 +1,5 @@
-import 'package:cores_core/exception.dart';
+import 'dart:async';
+
 import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -61,7 +62,22 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
           );
         },
       ),
-      onError: ref.read(appExceptionNotifierProvider.notifier).notify,
+      onError: (e) => unawaited(
+        showDialog<void>(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text(e.message),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Close'),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }
