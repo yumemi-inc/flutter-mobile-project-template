@@ -24,8 +24,5 @@ migrate_working_dir/
 /.flutter-plugins-dependencies
 /build/
 
-# Melos related
-/pubspec_overrides.yaml
-
 # custom_lint
 /custom_lint.log
