@@ -16,5 +16,3 @@ for file in "${files[@]}"; do
   dart fix --apply "$file" &
 done
 wait
-
-dart format "${files[@]}"

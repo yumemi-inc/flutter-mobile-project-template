@@ -4,13 +4,19 @@ import 'package:features_setting/src/gen/assets/assets.gen.dart';
 import 'package:features_setting/src/gen/l10n/l10n.dart';
 import 'package:features_setting/src/ui/components/setting_section_spacer.dart';
 import 'package:features_setting/src/ui/components/setting_section_title.dart';
-import 'package:features_setting/src/ui/provider/navigator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'setting_page.g.dart';
 
 abstract interface class SettingPageNavigator {
   void goLicensePage(BuildContext context);
 }
+
+@Riverpod(dependencies: [])
+SettingPageNavigator settingPageNavigator(Ref ref) =>
+    throw UnimplementedError();
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({super.key});
