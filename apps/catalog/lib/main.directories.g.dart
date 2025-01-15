@@ -10,7 +10,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:catalog/use_case/cores/designsystem/components/list_tiles.dart'
-    as _i31;
+    as _i32;
 import 'package:catalog/use_case/cores/designsystem/theme/actions/common_buttons.dart'
     as _i2;
 import 'package:catalog/use_case/cores/designsystem/theme/actions/floating_action_button.dart'
@@ -65,10 +65,12 @@ import 'package:catalog/use_case/cores/designsystem/theme/selection/switch.dart'
     as _i27;
 import 'package:catalog/use_case/cores/designsystem/theme/selection/time_picker.dart'
     as _i28;
-import 'package:catalog/use_case/cores/designsystem/theme/text_inputs/text_field.dart'
+import 'package:catalog/use_case/cores/designsystem/theme/style/color_scheme.dart'
     as _i29;
-import 'package:catalog/use_case/cores/designsystem/theme/typography.dart'
+import 'package:catalog/use_case/cores/designsystem/theme/style/typography.dart'
     as _i30;
+import 'package:catalog/use_case/cores/designsystem/theme/text_inputs/text_field.dart'
+    as _i31;
 import 'package:widgetbook/widgetbook.dart' as _i1;
 
 final directories = <_i1.WidgetbookNode>[
@@ -388,6 +390,27 @@ final directories = <_i1.WidgetbookNode>[
         ],
       ),
       _i1.WidgetbookFolder(
+        name: 'Style',
+        children: [
+          _i1.WidgetbookLeafComponent(
+            name: 'ColorScheme',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i29.buildThemeColorSchemeUseCase,
+              designLink: 'https://m3.material.io/styles/color/overview',
+            ),
+          ),
+          _i1.WidgetbookLeafComponent(
+            name: 'TextTheme',
+            useCase: _i1.WidgetbookUseCase(
+              name: 'Default',
+              builder: _i30.buildThemeTypographyUseCase,
+              designLink: 'https://m3.material.io/styles/typography/overview',
+            ),
+          ),
+        ],
+      ),
+      _i1.WidgetbookFolder(
         name: 'TextInputs',
         children: [
           _i1.WidgetbookComponent(
@@ -395,23 +418,15 @@ final directories = <_i1.WidgetbookNode>[
             useCases: [
               _i1.WidgetbookUseCase(
                 name: 'Default',
-                builder: _i29.textField,
+                builder: _i31.textField,
               ),
               _i1.WidgetbookUseCase(
                 name: 'Outline',
-                builder: _i29.outlinedTextField,
+                builder: _i31.outlinedTextField,
               ),
             ],
           )
         ],
-      ),
-      _i1.WidgetbookLeafComponent(
-        name: 'TextTheme',
-        useCase: _i1.WidgetbookUseCase(
-          name: 'Default',
-          builder: _i30.buildThemeTypographyUseCase,
-          designLink: 'https://m3.material.io/styles/typography/overview',
-        ),
       ),
     ],
   ),
@@ -425,7 +440,7 @@ final directories = <_i1.WidgetbookNode>[
             name: 'TextListTile',
             useCase: _i1.WidgetbookUseCase(
               name: 'TextListTile',
-              builder: _i31.textListTile,
+              builder: _i32.textListTile,
             ),
           )
         ],

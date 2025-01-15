@@ -5,7 +5,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   name: 'Default',
   type: TextTheme,
   designLink: 'https://m3.material.io/styles/typography/overview',
-  path: '[Theme Preview]',
+  path: '[Theme Preview]/Style',
 )
 Widget buildThemeTypographyUseCase(BuildContext context) {
   final theme = Theme.of(context);
