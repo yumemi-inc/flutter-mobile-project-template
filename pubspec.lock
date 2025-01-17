@@ -22,6 +22,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  alchemist:
+    dependency: transitive
+    description:
+      name: alchemist
+      sha256: "2dcbfb0fe2b108797831241e48bb8d2abb902d2626332fb98b5680fb1f6bdb3a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.11.0"
   analyzer:
     dependency: transitive
     description:

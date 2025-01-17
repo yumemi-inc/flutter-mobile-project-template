@@ -22,6 +22,8 @@ workspace:
   # samples
   - packages/samples/github_repository
   - samples/github_app
+  # utils
+  - packages/utils/pagination
 
 dev_dependencies:
   mason_cli: ^0.1.0-dev.55
@@ -175,6 +177,8 @@ melos:
       packageFilters:
         dependsOn: flutter_test
         dirExists: test
+        ignore:
+          - catalog
     report:test:dart:
       description: Dart パッケージのテストレポートを生成します。
       run: dart test --file-reporter="json:test_report.log"
@@ -189,3 +193,20 @@ melos:
       exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
       packageFilters:
         dependsOn: custom_lint
+
+    golden_test:ci:
+      description: golden_test を実行します。
+      run: flutter test --tags golden
+      exec:
+        failFast: true
+      packageFilters:
+        scope:
+          - catalog
+    golden_test:
+      description: golden_test を実行し, ファイルを生成します。
+      run: flutter test --update-goldens
+      exec:
+        failFast: true
+      packageFilters:
+        scope:
+          - catalog
