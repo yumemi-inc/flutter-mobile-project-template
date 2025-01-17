@@ -50,4 +50,4 @@ app.*.map.json
 # Ignore non-CI golden files and failures
 test/**/goldens/**/*.*
 test/**/failures/**/*.*
-!test/**/goldens/ci/*.*
+# !test/**/goldens/ci/*.*
