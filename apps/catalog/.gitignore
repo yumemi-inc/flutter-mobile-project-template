@@ -46,3 +46,7 @@ app.*.map.json
 
 # Melos related
 /pubspec_overrides.yaml
+
+# Ignore non-CI golden files and failures
+test/**/goldens/**/*.*
+test/**/failures/**/*.*
