@@ -23,7 +23,7 @@ void main() {
               onPressed: () async {
                 await showTimePicker(
                   context: context,
-                  initialTime: TimeOfDay.now(),
+                  initialTime: const TimeOfDay(hour: 00, minute: 00),
                   orientation: Orientation.portrait,
                 );
               },

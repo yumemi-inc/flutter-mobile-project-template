@@ -22,7 +22,7 @@ void main() {
         child: Builder(
           builder: (context) => ElevatedButton(
             onPressed: () {
-              final first = DateTime.now();
+              final first = DateTime(2025);
               final last = first.add(const Duration(days: 6));
               unawaited(
                 showDateRangePicker(
