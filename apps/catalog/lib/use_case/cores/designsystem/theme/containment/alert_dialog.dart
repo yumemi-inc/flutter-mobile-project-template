@@ -17,6 +17,7 @@ Widget alertDialog(BuildContext context) => Scaffold(
           onPressed: () {
             unawaited(
               showDialog<void>(
+                useRootNavigator: false,
                 context: context,
                 builder: (context) {
                   return AlertDialog(
@@ -63,6 +64,7 @@ Widget adaptiveAlertDialog(BuildContext context) => Scaffold(
           onPressed: () {
             unawaited(
               showDialog<void>(
+                useRootNavigator: false,
                 context: context,
                 builder: (context) {
                   return AlertDialog.adaptive(
