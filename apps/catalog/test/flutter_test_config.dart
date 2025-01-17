@@ -8,7 +8,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   TestWidgetsFlutterBinding.ensureInitialized();
   //
   // ignore: do_not_use_environment
-  const isRunningInCi = bool.fromEnvironment('GITHUB_ACTIONS');
+  const isRunningInCi = bool.fromEnvironment('CI');
 
   return AlchemistConfig.runWithConfig(
     config: AlchemistConfig(
