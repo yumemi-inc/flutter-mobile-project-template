@@ -59,6 +59,10 @@ labels:
     files:
       - packages/samples/github_repository/.+
 
+  - label: "@packages/utils/pagination"
+    files:
+      - packages/utils/pagination/.+
+
   - label: "@apps/website"
     files:
       - apps/website/.+

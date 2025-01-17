@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:cores_core/extension/async_value.dart';
-import 'package:cores_core/src/pagination/model/paging_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:utils_pagination/src/extension/async_value.dart';
+import 'package:utils_pagination/src/model/paging_data.dart';
 
 /// An abstract notifier for paging logic, handling asynchronous data fetching
 /// and state management.

@@ -1,10 +1,9 @@
-import 'package:cores_core/exception.dart';
-import 'package:cores_core/extension/async_value.dart';
-import 'package:cores_core/src/pagination/model/paging_data.dart';
-import 'package:cores_core/src/pagination/provider/paging_async_notifier.dart';
-import 'package:cores_core/src/util/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:utils_pagination/model.dart';
+import 'package:utils_pagination/provider.dart';
+import 'package:utils_pagination/src/exception/paging_exception.dart';
+import 'package:utils_pagination/src/extension/async_value.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -46,7 +45,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
   const CommonPagingView({
     required AutoDisposeAsyncNotifierProvider<N, D> provider,
     required Widget Function(D data, Widget? endItem) contentBuilder,
-    required void Function(AppException e) onError,
+    required void Function(PagingException e) onError,
     super.key,
   })  : _contentBuilder = contentBuilder,
         _provider = provider,
@@ -62,7 +61,7 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
   /// adding a special widget at that position.
   final Widget Function(D data, Widget? endItem) _contentBuilder;
 
-  final void Function(AppException e) _onError;
+  final void Function(PagingException e) _onError;
 
   Widget? _endItem(
     D data,
@@ -96,17 +95,10 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
       (_, next) {
         if (!next.isLoading && next.hasError) {
           final error = next.error;
-          if (error is AppException) {
+          if (error is PagingException) {
             _onError(error);
             return;
           }
-          // AppException is expected, so this should never be reached.
-          logger.shout(
-            'Unexpected error type encountered: $error - '
-            'This indicates a need to revise exception handling to ensure only '
-            'AppException is thrown. Please review exception handling '
-            'practices and modify as necessary.',
-          );
         }
       },
     );

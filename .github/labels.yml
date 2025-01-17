@@ -99,6 +99,10 @@
   description: packages samples github_repository package
   from_name: "@packages/features/github_repository"
 
+- name: "@packages/utils/pagination"
+  color: 5d7dbc
+  description: packages utils pagination package
+
 - name: "@apps/website"
   color: 3b4ff2
   description: apps website package

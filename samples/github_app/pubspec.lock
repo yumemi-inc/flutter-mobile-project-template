@@ -456,6 +456,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  utils_pagination:
+    dependency: "direct overridden"
+    description:
+      path: "../../packages/utils/pagination"
+      relative: true
+    source: path
+    version: "0.0.1"
   vector_math:
     dependency: transitive
     description:

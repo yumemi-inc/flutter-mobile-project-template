@@ -1,5 +1,5 @@
-import 'package:cores_core/exception.dart';
-import 'package:cores_core/ui.dart';
+import 'dart:async';
+
 import 'package:cores_designsystem/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -8,6 +8,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:samples_github_repository/src/data/provider/scroll_notifier.dart';
 import 'package:samples_github_repository/src/domain/model/github_repository.dart';
 import 'package:samples_github_repository/src/ui/provider/github_repository_list_notifier.dart';
+import 'package:utils_pagination/ui.dart';
 
 part 'github_repository_list_page.g.dart';
 
@@ -69,7 +70,22 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
           );
         },
       ),
-      onError: ref.read(appExceptionNotifierProvider.notifier).notify,
+      onError: (e) => unawaited(
+        showDialog<void>(
+          context: context,
+          builder: (_) {
+            return AlertDialog(
+              title: Text(e.message),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Close'),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }
