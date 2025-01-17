@@ -161,3 +161,21 @@ scripts:
     exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
     packageFilters:
       dependsOn: custom_lint
+
+
+  golden_test:ci:
+    description: golden_test を実行します。
+    run: flutter test --tags golden
+    exec:
+      failFast: true
+    packageFilters:
+      scope: 
+        - catalog
+  golden_test:
+    description: golden_test を実行し, ファイルを生成します。
+    run: flutter test --update-goldens
+    exec:
+      failFast: true
+    packageFilters:
+      scope: 
+        - catalog
