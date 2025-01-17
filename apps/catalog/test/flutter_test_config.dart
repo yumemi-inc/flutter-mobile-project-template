@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:alchemist/alchemist.dart';
 import 'package:cores_designsystem/themes.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
+  TestWidgetsFlutterBinding.ensureInitialized();
   //
   // ignore: do_not_use_environment
-  const isRunningInCi = bool.fromEnvironment('CI');
+  const isRunningInCi = bool.fromEnvironment('GITHUB_ACTIONS');
 
   return AlchemistConfig.runWithConfig(
     config: AlchemistConfig(
