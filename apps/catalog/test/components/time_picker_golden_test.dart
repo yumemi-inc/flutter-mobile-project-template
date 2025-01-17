@@ -1,4 +1,3 @@
-import 'package:catalog/use_case/cores/designsystem/theme/selection/time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,11 +13,24 @@ void main() {
       for (var i = 0; i < button.found.length; i++) {
         await tester.tap(button.at(i));
       }
-      await tester.pumpAndSettle();
+      await tester.pumpAndSettle(const Duration(seconds: 1));
     },
     testScenarios: [
-      const TestScenario(
-        child: Builder(builder: timePicker),
+      TestScenario(
+        child: Builder(
+          builder: (context) {
+            return ElevatedButton(
+              onPressed: () async {
+                await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                  orientation: Orientation.portrait,
+                );
+              },
+              child: const Text('Show TimePicker'),
+            );
+          },
+        ),
       ),
     ],
   );

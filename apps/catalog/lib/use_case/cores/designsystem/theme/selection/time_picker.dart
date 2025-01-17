@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
 /// TimePicker
@@ -10,6 +11,13 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Selection',
 )
 Widget timePicker(BuildContext context) {
+  final orientation = context.knobs.boolean(
+    label: 'Orientation',
+    initialValue: true,
+  )
+      ? Orientation.portrait
+      : Orientation.landscape;
+
   return Scaffold(
     body: Center(
       child: ElevatedButton(
@@ -17,6 +25,7 @@ Widget timePicker(BuildContext context) {
           final result = await showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
+            orientation: orientation,
           );
           if (context.mounted) {
             ScaffoldMessenger.maybeOf(context)?.showSnackBar(
