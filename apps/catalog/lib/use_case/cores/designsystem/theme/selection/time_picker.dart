@@ -15,6 +15,7 @@ Widget timePicker(BuildContext context) {
       child: ElevatedButton(
         onPressed: () async {
           final result = await showTimePicker(
+            useRootNavigator: false,
             context: context,
             initialTime: TimeOfDay.now(),
           );

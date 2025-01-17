@@ -20,6 +20,7 @@ Widget datePicker(BuildContext context) {
             context: context,
             firstDate: first,
             lastDate: last,
+            useRootNavigator: false,
           );
           if (context.mounted) {
             ScaffoldMessenger.maybeOf(context)
