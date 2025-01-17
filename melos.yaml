@@ -147,6 +147,8 @@ scripts:
     packageFilters:
       dependsOn: flutter_test
       dirExists: test
+      ignore:
+        - catalog
   report:test:dart:
     description: Dart パッケージのテストレポートを生成します。
     run: dart test --file-reporter="json:test_report.log"
