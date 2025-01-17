@@ -8,6 +8,7 @@ environment:
   flutter: ^3.27.1
 
 dependencies:
+  alchemist: ^0.11.0
   cores_designsystem:
     path: ../../packages/cores/designsystem
   cores_model:
