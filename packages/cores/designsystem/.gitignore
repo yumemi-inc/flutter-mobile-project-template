@@ -25,6 +25,3 @@ migrate_working_dir/
 **/doc/api/
 .dart_tool/
 build/
-
-# Melos related
-/pubspec_overrides.yaml

@@ -1,6 +1,7 @@
-# https://dart.dev/guides/libraries/private-files
-# Created by `dart pub`
+# Flutter/Dart/Pub related
 /.dart_tool/*
+/.flutter-plugins
+/.flutter-plugins-dependencies
 
 # IntelliJ related
 /*.iml
@@ -9,9 +10,6 @@
 !/.idea/jsonSchemas.xml
 # Keep the run configurations.
 !/.idea/runConfigurations/
-
-# Melos related
-/pubspec_overrides.yaml
 
 # mason related
 /.mason

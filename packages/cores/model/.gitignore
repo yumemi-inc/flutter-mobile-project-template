@@ -22,8 +22,5 @@ migrate_working_dir/
 /.dart_tool/
 /build/
 
-# Melos related
-/pubspec_overrides.yaml
-
 # custom_lint
 /custom_lint.log

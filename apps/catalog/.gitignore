@@ -44,9 +44,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Melos related
-/pubspec_overrides.yaml
-
 # Ignore non-CI golden files and failures
 test/**/goldens/**/*.*
 test/**/failures/**/*.*
