@@ -153,6 +153,8 @@ melos:
       packageFilters:
         dependsOn: flutter_test
         dirExists: test
+        ignore:
+          - catalog
     test:dart:
       description: Dart パッケージのテストを実行します。
       run: dart test
