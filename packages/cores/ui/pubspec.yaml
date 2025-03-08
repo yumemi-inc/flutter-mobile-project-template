@@ -26,3 +26,4 @@ dev_dependencies:
   yumemi_lints: ^2.2.0
 
 flutter:
+  uses-material-design: true

@@ -31,3 +31,6 @@ dev_dependencies:
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10
   yumemi_lints: ^2.2.0
+
+flutter:
+  uses-material-design: true
