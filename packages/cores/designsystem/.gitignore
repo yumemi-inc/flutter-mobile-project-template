@@ -24,7 +24,6 @@ migrate_working_dir/
 # Flutter/Dart/Pub related
 **/doc/api/
 .dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
 build/
-
-# Melos related
-/pubspec_overrides.yaml

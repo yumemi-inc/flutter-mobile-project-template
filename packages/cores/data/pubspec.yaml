@@ -7,6 +7,8 @@ environment:
   sdk: ^3.6.0
   flutter: ^3.27.1
 
+resolution: workspace
+
 dependencies:
   cores_core:
     path: ../core
