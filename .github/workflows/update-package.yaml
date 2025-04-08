@@ -1,0 +1,21 @@
+name: Create issues for package update
+
+on:
+  workflow_dispatch: ## TODO: cronの感覚が決まったら、cromに変更する
+
+jobs:
+  runs:
+    runs-on: ubuntu-latest
+    steps:
+        # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+         
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Create Issues for Package Update 
+        run: melos run ci:update:issue --no-select
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
