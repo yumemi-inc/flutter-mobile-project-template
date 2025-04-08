@@ -195,6 +195,14 @@ melos:
       exec: bash "$MELOS_ROOT_PATH/scripts/report-custom-lint-ci.sh"
       packageFilters:
         dependsOn: custom_lint
+    ci:update:issue:
+      description: CI 環境でパッケージの更新状況を確認し、アップデートが必要なパッケージをIssueとして作成します。
+      run: bash "$MELOS_ROOT_PATH/scripts/update-issues.sh"
+      exec:
+        concurrency: 1
+        orderDependents: true
+      packageFilters:
+        dirExists: lib
 
     golden_test:ci:
       description: golden_test を実行します。
