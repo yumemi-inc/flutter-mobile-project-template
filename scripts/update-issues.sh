@@ -1,27 +1,20 @@
 #!/bin/bash
 
-get_update_packages() {
-    # Removed log output to prevent it from being captured in the return value
-    update_packages=$(dart pub outdated --json | jq -c '.[] | {package: .package, version: .resolvable.version}')
+main() {
+    # .packageと.resolvable.versionを抽出
+    package_list=$(dart pub outdated --json | jq -c '[.packages[] | select(.kind == "dev") | {package: .package, version: .resolvable.version}]')
 
-    if [ -z "$update_packages" ]; then
+    if [ -z "$package_list" ] || [ "$package_list" = '[]' ]; then
         echo "No outdated dev packages found."
         exit 0
     fi
 
-    echo "$update_packages"
-}
-
-
-main() {
-    # .packageと.resolvable.versionを抽出
-    package_list=$(echo "$get_update_packages"
 
     # TODO: --labelsを指定して、特定のラベルを持つissueのみを取得する
     issues=$(gh issue list  --json title,url)
 
     # package_listの要素を1つずつ処理
-    echo "$package_list" | while read -r package_data; do
+    echo "$package_list" | jq -c '.[]' | while read -r package_data; do
         package_name=$(echo "$package_data" | jq -r '.package')
         resolvable_version=$(echo "$package_data" | jq -r '.version')
       
