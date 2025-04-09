@@ -1,14 +1,36 @@
 #!/bin/bash
 
+# バージョン比較関数
+# 戻り値:
+#   0: target_versionが大きい
+#   1: current_versionとtarget_versionが同じ
+#   2: current_versionがtarget_versionより大きい
+compare_versions() {
+    local current_version="$1"
+    local target_version="$2"
+    
+    if [ "$(printf '%s\n' "$current_version" "$target_version" | sort -V | head -n1)" = "$current_version" ] && 
+       [ "$current_version" != "$target_version" ]; then
+        # target_versionが大きい場合は0を返す
+        echo 0
+    elif [ "$current_version" = "$target_version" ]; then
+        # 同じ場合は1を返す
+        echo 1
+    else
+        # current_versionがtarget_versionより大きい場合は1を返す
+        echo 2
+    fi
+}
+
+
 main() {
-    # .packageと.resolvable.versionを抽出
-    package_list=$(dart pub outdated --json | jq -c '[.packages[] | select(.kind == "dev") | {package: .package, version: .resolvable.version}]')
+    # .packageと.current.version、.resolvable.versionを抽出
+    package_list=$(dart pub outdated --json | jq -c '[.packages[] | select(.kind == "dev") | {package: .package, current_version: .current.version, resolvable_version: .resolvable.version}]')
 
     if [ -z "$package_list" ] || [ "$package_list" = '[]' ]; then
         echo "No outdated dev packages found."
         exit 0
     fi
-
 
     # TODO: --labelsを指定して、特定のラベルを持つissueのみを取得する
     issues=$(gh issue list  --json title,url)
@@ -16,7 +38,18 @@ main() {
     # package_listの要素を1つずつ処理
     echo "$package_list" | jq -c '.[]' | while read -r package_data; do
         package_name=$(echo "$package_data" | jq -r '.package')
-        resolvable_version=$(echo "$package_data" | jq -r '.version')
+        current_version=$(echo "$package_data" | jq -r '.current_version')
+        resolvable_version=$(echo "$package_data" | jq -r '.resolvable_version')
+
+        compare_result=$(compare_versions "$current_version" "$resolvable_version")
+        if [ $compare_result -eq 1 ]; then
+            continue;
+        elif [ $compare_result -eq 2 ]; then
+            echo "package: $package_name error /  current_version: $current_version > resolvable_version: $resolvable_version"
+            exit 1
+        fi
+
+
       
         # Issueの命名規則: package_name / resolvable_version
         # 例: build_runner / 2.8.23
