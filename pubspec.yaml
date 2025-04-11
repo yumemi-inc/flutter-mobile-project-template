@@ -212,3 +212,15 @@ melos:
       packageFilters:
         scope:
           - catalog
+
+    pod:repo_update:ios:
+      description: ios の pod のリポジトリを更新します。
+      run: pod repo update
+      packageFilters:
+        fileExists: ios/Podfile
+
+    pod:repo_update:macos:
+      description: macos の pod のリポジトリを更新します。
+      run: pod repo update
+      packageFilters:
+        fileExists: macos/Podfile
