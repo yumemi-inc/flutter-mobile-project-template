@@ -15,4 +15,4 @@ dev_dependencies:
   build_runner: ^2.4.14
   freezed: ^2.5.7
   test: ^1.25.2
-  yumemi_lints: ^2.2.0
+  yumemi_lints: ^3.1.0

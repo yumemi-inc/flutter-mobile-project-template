@@ -66,7 +66,7 @@ melos:
         json_serializable: ^6.8.0
         riverpod_generator: ^2.4.0
         riverpod_lint: ^2.3.10
-        yumemi_lints: ^2.2.0
+        yumemi_lints: ^3.1.0
         test: ^1.25.2
         flutter_gen_runner: ^5.8.0
       hooks:
@@ -77,8 +77,7 @@ melos:
     bootstrap:post:
       description: bootstrap post hooks
       steps:
-        # TODO(tatsutakein): yumemi_lints が最新バージョンに対応した際に再度有効化する
-        # - update:yumemi_lints
+        - update:yumemi_lints
         - gen:labeler
         - gen:labels
 
@@ -212,3 +211,15 @@ melos:
       packageFilters:
         scope:
           - catalog
+
+    pod:repo_update:ios:
+      description: ios の pod のリポジトリを更新します。
+      run: pod repo update
+      packageFilters:
+        fileExists: ios/Podfile
+
+    pod:repo_update:macos:
+      description: macos の pod のリポジトリを更新します。
+      run: pod repo update
+      packageFilters:
+        fileExists: macos/Podfile
