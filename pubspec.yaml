@@ -77,7 +77,6 @@ melos:
     bootstrap:post:
       description: bootstrap post hooks
       steps:
-        # TODO(tatsutakein): yumemi_lints が最新バージョンに対応した際に再度有効化する
         - update:yumemi_lints
         - gen:labeler
         - gen:labels
