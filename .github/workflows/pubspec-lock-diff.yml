@@ -1,0 +1,71 @@
+name: Pubspec.Lock Diff
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/pubspec.lock'
+
+jobs:
+  pubspec-diff:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Generate diff for pubspec.lock
+        id: generate-diff
+        run: |
+          # TODO: main branchのsha256を取得する処理に書き換える
+          main_sha256="0796eb9213d3f80b1385ab15bf10943b568bba6c"
+          
+          # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
+          main_tmpfile=$(mktemp)
+          head_tmpfile=$(mktemp)
+          git show ${main_sha256}:pubspec.lock | yq -o json > $main_tmpfile
+          cat pubspec.lock | yq -o json > $head_tmpfile
+
+          diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
+
+          results_file=()
+
+          # 変更があったパッケージのsha256を取得する
+          edit_sha256=$(echo "$diff_output" | grep '^>.*"sha256":' | \
+            sed -E 's/^>[[:space:]]+//' | \
+            grep -o '"sha256": "[^"]*"' | \
+            sed 's/"sha256": "//' | \
+            sed 's/"$//')
+
+          # 変更があったパッケージのsha256を出力する
+          if [ -n "$edit_sha256" ]; then
+            echo "Changed packages SHA256 hashes:"
+
+            echo "$edit_sha256" | while read -r hash; do
+              if [ -n "$hash" ]; then
+                package_info=$(jq --arg sha "$hash" '
+                  .packages | to_entries[] | 
+                  select(.value.description | type == "object") | 
+                  select(.value.description.sha256 == $sha) | 
+                  {package: .key, version: .value.version}
+                  ' "$head_tmpfile")
+            
+                if [ -n "$package_info" ]; then
+                  # JSON形式の配列に追加する
+                  if [ ${#results_file[@]} -eq 0 ]; then
+                    results_file="[$package_info]"
+                  else
+                    # 既存の配列の末尾の "]" を削除して新しい要素を追加
+                    results_file="${results_file%]}, $package_info]"
+                  fi
+              
+                  echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
+                fi
+              fi
+            done
+          else
+            echo "No package changes detected"
+          fi
