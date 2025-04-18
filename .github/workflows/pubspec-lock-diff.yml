@@ -71,6 +71,7 @@ jobs:
           else
             echo "No package changes detected"
           fi
+
       - name: Check diff for pubspec.yaml
         id: generate-yaml-diff
         if: steps.generate-lock-diff.outputs.lock_diff != ''
@@ -106,3 +107,22 @@ jobs:
 
           echo $results_file
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
+      
+      - name: Create PR comment
+        if: steps.generate-yaml-diff.outputs.lock_diff != ''
+        run: |
+          messages=()
+          
+          echo "${{ steps.generate-yaml-diff.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
+            package=$(echo "$item" | jq -r '.package')
+            current_version=$(echo "$item" | jq -r '.current_version')
+            desired_version=$(echo "$item" | jq -r '.desired_version')
+            
+            messages+="check package $package as it has changed from $current_version to $desired_version."
+          done
+          
+          joined=$(printf "%s\n" "${messages[@]}")
+          
+          echo $joined
+
+          gh pr comment ${{ github.event.number }} --body $joined
