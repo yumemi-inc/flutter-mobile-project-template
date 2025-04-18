@@ -6,6 +6,9 @@ on:
     paths:
       - '**/pubspec.lock'
 
+  # TODO: 検証用のため、検証完了次第削除する
+  workflow_dispatch:
+
 jobs:
   pubspec-diff:
     runs-on: ubuntu-latest
