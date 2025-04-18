@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Generate diff for pubspec.lock
-        id: generate-diff
+        id: generate-lock-diff
         run: |
           # TODO: main branchのsha256を取得する処理に書き換える
           main_sha256="0796eb9213d3f80b1385ab15bf10943b568bba6c"
@@ -66,6 +66,43 @@ jobs:
                 fi
               fi
             done
+
+            echo "lock_diff=$results_file" >> "$GITHUB_OUTPUT"
           else
             echo "No package changes detected"
           fi
+      - name: Check diff for pubspec.yaml
+        id: generate-yaml-diff
+        if: steps.generate-lock-diff.outputs.lock_diff != ''
+        run: |
+          results_file=()
+          
+          echo "$json" | jq -c '.[]' | while read -r item; do
+          
+            package=$(echo "$item" | jq -r '.package')
+            version=$(echo "$item" | jq -r '.version')
+          
+            package_info=$(cat sample.json | jq -c --arg pkg "$package" --arg ver "$version" '
+              (.dev_dependencies // {}) as $dev_deps |
+              (.dependencies // {}) as $deps |
+              (.dependency_overrides // {}) as $overrides |
+              (.melos.command.bootstrap.dependencies // {}) as $bootstrap_deps |
+              (.melos.command.bootstrap.dev_dependencies // {}) as $bootstrap_dev_deps |
+            [
+              ($dev_deps | keys[] | select(. == $pkg and ($dev_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $dev_deps[.], desired_version: $ver}),
+              ($deps | keys[] | select(. == $pkg and ($deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $deps[.], desired_version: $ver}),
+              ($overrides | keys[] | select(. == $pkg and ($overrides[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $overrides[.], desired_version: $ver}),
+              ($bootstrap_deps | keys[] | select(. == $pkg and ($bootstrap_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $bootstrap_deps[.], desired_version: $ver}),
+              ($bootstrap_dev_deps | keys[] | select(. == $pkg and ($bootstrap_dev_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $bootstrap_dev_deps[.], desired_version: $ver})
+            ] | .[]')
+           
+            if [ ${#results_file[@]} -eq 0 ]; then
+              results_file="[$package_info]"
+            else
+              # 既存の配列の末尾の "]" を削除して新しい要素を追加
+              results_file="${results_file%]}, $package_info]"
+            fi
+          done
+
+          echo $results_file
+          echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
