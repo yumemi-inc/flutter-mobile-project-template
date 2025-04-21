@@ -36,8 +36,10 @@ jobs:
           git show ${main_sha}:pubspec.lock | yq -o json > $main_tmpfile
           cat pubspec.lock | yq -o json > $head_tmpfile
 
-          cat "main_tmpfile / $main_tmpfile"
-          cat "head_tmpfile / $head_tmpfile"
+          echo "main_tmpfile"
+          cat $main_tmpfile
+          echo "head_tmpfile"
+          cat $head_tmpfile
 
           diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
 
