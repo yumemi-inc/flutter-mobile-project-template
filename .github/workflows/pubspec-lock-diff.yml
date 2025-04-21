@@ -23,52 +23,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-
-      - name: Install diff tool
-        run: |
-          sudo apt-get update
-          sudo apt install diffutils
-
-          diff --version
-
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
         shell: bash
         run: |
-          diff --version
-
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
 
+          current_sha=$(git log origin/${{ github.ref_name }} -n 1 --pretty=format:"%H" -- pubspec.lock)
+          echo "Latest commit SHA for pubspeck.lock on main branch: ${{ github.ref_name }}"
+
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
-          main_tmpfile=$(mktemp)
           head_tmpfile=$(mktemp)
-          git show ${main_sha}:pubspec.lock | yq -o json | jq -S > $main_tmpfile
           cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
 
           echo "diff_output check"
 
-          diff_output=$(diff $main_tmpfile $head_tmpfile)
+          diff_output=$(git diff $main_sha..$current_sha -- pubspec.lock | grep -oE 'sha256:\s*"?[a-fA-F0-9]{64}"?' | sed -E 's/sha256:\s*"?(.*)"?/\1/')
 
 
           echo "diff_output: $diff_output"
 
           results_file=()
 
-          # 変更があったパッケージのsha256を取得する
-          edit_sha=$(echo "$diff_output" | grep '^>.*"sha256":' | \
-            sed -E 's/^>[[:space:]]+//' | \
-            grep -o '"sha256": "[^"]*"' | \
-            sed 's/"sha256": "//' | \
-            sed 's/"$//')
-
-
           # 変更があったパッケージのsha256を出力する
           if [ -n "$edit_sha" ]; then
             echo "Changed packages SHA hashes: $edit_sha"
 
-            echo "$edit_sha" | while read -r hash; do
+            echo $edit_sha | while read -r hash; do
                 if [ -n "$hash" ]; then
                   package_info=$(jq --arg sha "$hash" '
                     .packages | to_entries[] | 
