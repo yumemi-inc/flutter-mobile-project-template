@@ -26,41 +26,37 @@ jobs:
       - name: Create a diff of pubspec.lock
         id: create-diff-lock
         run: |
-          echo "Current direcoty: $(ped)"
-          ls -la
-
-          cd $GITHUB_WORKSPACE
-          
-          # TODO: main branchのsha256を取得する処理に書き換える
-          main_sha256="0796eb9213d3f80b1385ab15bf10943b568bba6c"
+          git fetch origin main
+          main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
+          echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
           
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
           main_tmpfile=$(mktemp)
           head_tmpfile=$(mktemp)
-          git show ${main_sha256}:pubspec.lock | yq -o json > $main_tmpfile
+          git show ${main_sha}:pubspec.lock | yq -o json > $main_tmpfile
           cat pubspec.lock | yq -o json > $head_tmpfile
 
           diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
 
           results_file=()
 
-          # 変更があったパッケージのsha256を取得する
-          edit_sha256=$(echo "$diff_output" | grep '^>.*"sha256":' | \
+          # 変更があったパッケージのshaを取得する
+          edit_sha=$(echo "$diff_output" | grep '^>.*"sha":' | \
             sed -E 's/^>[[:space:]]+//' | \
-            grep -o '"sha256": "[^"]*"' | \
-            sed 's/"sha256": "//' | \
+            grep -o '"sha": "[^"]*"' | \
+            sed 's/"sha": "//' | \
             sed 's/"$//')
 
-          # 変更があったパッケージのsha256を出力する
-          if [ -n "$edit_sha256" ]; then
-            echo "Changed packages SHA256 hashes:"
+          # 変更があったパッケージのshaを出力する
+          if [ -n "$edit_sha" ]; then
+            echo "Changed packages SHA hashes:"
 
-            echo "$edit_sha256" | while read -r hash; do
+            echo "$edit_sha" | while read -r hash; do
               if [ -n "$hash" ]; then
                 package_info=$(jq --arg sha "$hash" '
                   .packages | to_entries[] | 
                   select(.value.description | type == "object") | 
-                  select(.value.description.sha256 == $sha) | 
+                  select(.value.description.sha == $sha) | 
                   {package: .key, version: .value.version}
                   ' "$head_tmpfile")
             
