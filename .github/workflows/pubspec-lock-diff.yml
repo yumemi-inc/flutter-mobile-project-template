@@ -31,8 +31,8 @@ jobs:
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
 
-          current_sha=$(git log origin/$GITHUB_REF_NAME -n 1 --pretty=format:"%H" -- pubspec.lock)
-          echo "Latest commit SHA for pubspeck.lock on main branch: $GITHUB_REF_NAME"
+          current_sha=$(git log --pretty=format:"%H" -1 pubspec.lock)
+          echo "Latest commit SHA for pubspeck.lock on $GITHUB_REF_NAME branch: $current_sha"
 
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
           head_tmpfile=$(mktemp)
