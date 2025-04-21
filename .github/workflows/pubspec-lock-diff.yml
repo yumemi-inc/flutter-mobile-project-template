@@ -24,21 +24,18 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
 
-      - name: Install jq tool
+      - name: Install diff tool
         run: |
           sudo apt-get update
-          sudo apt-get install jq
+          sudo apt install diffutils
+
+          diff --version
 
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
         run: |
-
-          echo "jq command"
-          jq --version
-
-          echo "yq command"
-          yq --version
-
+          diff --version
+          
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
