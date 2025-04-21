@@ -23,9 +23,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
+
+      - name: Install jq tool
+        run: |
+          sudo apt-get update
+          sudo apt-get install jq
+
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
         run: |
+
+          echo "jq command"
+          jq --version
+
+          echo "yq command"
+          yq --version
+
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
@@ -36,10 +49,7 @@ jobs:
           git show ${main_sha}:pubspec.lock | yq -o json > $main_tmpfile
           cat pubspec.lock | yq -o json > $head_tmpfile
 
-          echo "main_tmpfile"
-          cat $main_tmpfile
-          echo "head_tmpfile"
-          cat $head_tmpfile
+          echo "diff_output check"
 
           diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
 
