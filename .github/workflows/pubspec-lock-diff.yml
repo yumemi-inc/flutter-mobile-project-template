@@ -32,7 +32,7 @@ jobs:
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
 
           current_sha=$(git log --pretty=format:"%H" -1 pubspec.lock)
-          echo "Latest commit SHA for pubspeck.lock on ${{ github.ref }} branch: $current_sha"
+          echo "Latest commit SHA for pubspeck.lock on current branch: $current_sha"
 
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
           head_tmpfile=$(mktemp)
@@ -46,7 +46,7 @@ jobs:
           if [ -n "$diff_output" ]; then
             echo "Changed packages SHA hashes: $diff_output"
 
-            echo $edit_sha | while read -r hash; do
+            echo $diff_output | while read -r hash; do
                 if [ -n "$hash" ]; then
                   package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
                     .packages | to_entries[] | 
