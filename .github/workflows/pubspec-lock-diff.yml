@@ -33,9 +33,10 @@ jobs:
 
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
+        shell: bash
         run: |
           diff --version
-          
+
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
