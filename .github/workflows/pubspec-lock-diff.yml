@@ -29,7 +29,7 @@ jobs:
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
           echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
-          
+
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
           main_tmpfile=$(mktemp)
           head_tmpfile=$(mktemp)
@@ -40,44 +40,45 @@ jobs:
 
           results_file=()
 
-          # 変更があったパッケージのshaを取得する
-          edit_sha=$(echo "$diff_output" | grep '^>.*"sha":' | \
+          # 変更があったパッケージのsha256を取得する
+          edit_sha=$(echo "$diff_output" | grep '^>.*"sha256":' | \
             sed -E 's/^>[[:space:]]+//' | \
-            grep -o '"sha": "[^"]*"' | \
-            sed 's/"sha": "//' | \
+            grep -o '"sha256": "[^"]*"' | \
+            sed 's/"sha256": "//' | \
             sed 's/"$//')
 
-          # 変更があったパッケージのshaを出力する
+
+          # 変更があったパッケージのsha256を出力する
           if [ -n "$edit_sha" ]; then
-            echo "Changed packages SHA hashes:"
+            echo "Changed packages SHA hashes: $edit_sha"
 
             echo "$edit_sha" | while read -r hash; do
-              if [ -n "$hash" ]; then
-                package_info=$(jq --arg sha "$hash" '
-                  .packages | to_entries[] | 
-                  select(.value.description | type == "object") | 
-                  select(.value.description.sha == $sha) | 
-                  {package: .key, version: .value.version}
+                if [ -n "$hash" ]; then
+                  package_info=$(jq --arg sha "$hash" '
+                    .packages | to_entries[] | 
+                    select(.value.description | type == "object") | 
+                    select(.value.description.sha256 == $sha) | 
+                    {package: .key, version: .value.version}
                   ' "$head_tmpfile")
-            
-                if [ -n "$package_info" ]; then
-                  # JSON形式の配列に追加する
-                  if [ ${#results_file[@]} -eq 0 ]; then
-                    results_file="[$package_info]"
-                  else
-                    # 既存の配列の末尾の "]" を削除して新しい要素を追加
-                    results_file="${results_file%]}, $package_info]"
+        
+                  if [ -n "$package_info" ]; then
+                    # JSON形式の配列に追加する
+                    if [ ${#results_file[@]} -eq 0 ]; then
+                      results_file="[$package_info]"
+                    else
+                      # 既存の配列の末尾の "]" を削除して新しい要素を追加
+                      results_file="${results_file%]}, $package_info]"
+                    fi
+          
+                    echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
                   fi
-              
-                  echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
                 fi
-              fi
-            done
+              done
 
-            echo "lock_diff=$results_file" >> "$GITHUB_OUTPUT"
-          else
-            echo "No package changes detected"
-          fi
+              echo "lock_diff=$results_file" >> "$GITHUB_OUTPUT"
+            else
+              echo "No package changes detected"
+            fi
 
       - name: Check the Diff of pubspec.yaml
         id: check-diff-yaml
