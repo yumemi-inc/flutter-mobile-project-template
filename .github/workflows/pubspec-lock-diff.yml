@@ -44,12 +44,12 @@ jobs:
           # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
           main_tmpfile=$(mktemp)
           head_tmpfile=$(mktemp)
-          git show ${main_sha}:pubspec.lock | yq -o json > $main_tmpfile
-          cat pubspec.lock | yq -o json > $head_tmpfile
+          git show ${main_sha}:pubspec.lock | yq -o json | jq -S > $main_tmpfile
+          cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
 
           echo "diff_output check"
 
-          diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
+          diff_output=$(diff $main_tmpfile $head_tmpfile)
 
 
           echo "diff_output: $diff_output"
