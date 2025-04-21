@@ -7,9 +7,9 @@ on:
       - '**/pubspec.lock'
 
   # TODO: 検証用のため、検証完了次第削除する
-  push:
-    branches:
-      - feature/GH-377
+  # push:
+  #   branches:
+  #     - feature/GH-377
   workflow_dispatch: {}
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Create a diff of pubspec.lock
-        id: create-diff-lock
+        id: create_diff_lock
         run: |
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
@@ -36,7 +36,13 @@ jobs:
           git show ${main_sha}:pubspec.lock | yq -o json > $main_tmpfile
           cat pubspec.lock | yq -o json > $head_tmpfile
 
+          cat "main_tmpfile / $main_tmpfile"
+          cat "head_tmpfile / $head_tmpfile"
+
           diff_output=$(diff <(jq -S . $main_tmpfile) <(jq -S . $head_tmpfile))
+
+
+          echo "diff_output: $diff_output"
 
           results_file=()
 
@@ -81,8 +87,8 @@ jobs:
             fi
 
       - name: Check the Diff of pubspec.yaml
-        id: check-diff-yaml
-        if: steps.create-diff-lock.outputs.lock_diff != ''
+        id: check_diff_yaml
+        if: steps.create_diff_lock.outputs.lock_diff != ''
         run: |
           results_file=()
           
@@ -117,11 +123,11 @@ jobs:
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
       
       - name: Create PR comment
-        if: steps.check-diff-yaml.outputs.lock_diff != ''
+        if: steps.check_diff_yaml.outputs.lock_diff != ''
         run: |
           messages=()
           
-          echo "${{ steps.check-diff-yaml.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
+          echo "${{ steps.check_diff_yaml.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
             package=$(echo "$item" | jq -r '.package')
             current_version=$(echo "$item" | jq -r '.current_version')
             desired_version=$(echo "$item" | jq -r '.desired_version')
