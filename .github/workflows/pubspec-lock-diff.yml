@@ -26,6 +26,11 @@ jobs:
       - name: Create a diff of pubspec.lock
         id: create-diff-lock
         run: |
+          echo "Current direcoty: $(ped)"
+          ls -la
+
+          cd $GITHUB_WORKSPACE
+          
           # TODO: main branchのsha256を取得する処理に書き換える
           main_sha256="0796eb9213d3f80b1385ab15bf10943b568bba6c"
           
