@@ -49,29 +49,30 @@ jobs:
             echo "Changed packages SHA hashes: $diff_output"
 
             echo "$diff_output" | while read -r hash; do
-                if [ -n "$hash" ]; then
-                  package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
-                    .packages | to_entries[] | 
-                    select(.value.description | type == "object") | 
-                    select(.value.description.sha256 == $sha) | 
-                    {package: .key, version: .value.version}
-                  ' "$head_tmpfile")
+              if [ -n "$hash" ]; then
+                package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
+                  .packages | to_entries[] | 
+                  select(.value.description | type == "object") | 
+                  select(.value.description.sha256 == $sha) | 
+                  {package: .key, version: .value.version}
+                ' "$head_tmpfile")
         
-                  if [ -n "${package_info}" ]; then
-                    results_file+=( "$package_info" )
-                    echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
-                  fi
+                if [ -n "${package_info}" ]; then
+                  echo "$package_info"
+                  results_file+=( "$package_info" )
+                  echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
                 fi
-              done
+              fi
+            done
 
-              json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
+            json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
 
-              echo "results_file: $results_file"
-              echo "json_output: $json_output"
-              echo "value=$json_output" >> "$GITHUB_OUTPUT"
-            else
-              echo "No package changes detected"
-            fi
+            echo "results_file: $results_file"
+            echo "$json_output"
+            echo "value=$json_output" >> "$GITHUB_OUTPUT"
+          else
+            echo "No package changes detected"
+          fi
 
       - name: Check the diff of pubspec.yaml
         id: check_diff_yaml
@@ -79,7 +80,6 @@ jobs:
         run: |
           head_tmpfile=$(mktemp)
           cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
-
           results_file=()
           
           echo "$json" | jq -c '.[]' | while read -r item; do
@@ -87,7 +87,7 @@ jobs:
             package=$(echo "$item" | jq -r '.package')
             version=$(echo "$item" | jq -r '.version')
           
-            package_info=$(cat $head_tmpfile | jq -c --arg pkg "$package" --arg ver "$version" '
+            package_info=$(cat "$head_tmpfile" | jq -c --arg pkg "$package" --arg ver "$version" '
               (.dev_dependencies // {}) as $dev_deps |
               (.dependencies // {}) as $deps |
               (.dependency_overrides // {}) as $overrides |
