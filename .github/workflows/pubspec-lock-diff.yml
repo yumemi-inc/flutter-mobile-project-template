@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Create a diff of pubspec.lock
-        id: create_diff_lock
+        id: lock
         run: |
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
@@ -74,10 +74,11 @@ jobs:
             fi
 
       - name: Check the Diff of pubspec.yaml
-        id: check_diff_yaml
-        # if: ${{ steps.create_diff_lock.outputs.lock_diff != '' }}
+        id: yaml
         run: |
           results_file=()
+
+          echo "${{ steps.lock.outputs.lock_diff }}"
           
           echo "$json" | jq -c '.[]' | while read -r item; do
           
@@ -110,11 +111,10 @@ jobs:
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
       
       - name: Create PR comment
-        # if: ${{ steps.check_diff_yaml.outputs.lock_diff != '' }}
         run: |
           messages=()
           
-          echo "${{ steps.check_diff_yaml.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
+          echo "${{ steps.yaml.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
             package=$(echo "$item" | jq -r '.package')
             current_version=$(echo "$item" | jq -r '.current_version')
             desired_version=$(echo "$item" | jq -r '.desired_version')
