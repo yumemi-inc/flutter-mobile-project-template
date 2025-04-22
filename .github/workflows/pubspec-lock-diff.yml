@@ -66,6 +66,7 @@ jobs:
 
               json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
 
+              echo "results_file: $results_file"
               echo "json_output: $json_output"
               echo "value=$json_output" >> "$GITHUB_OUTPUT"
             else
@@ -76,6 +77,9 @@ jobs:
         id: check_diff_yaml
         if: ${{ steps.create_diff_lock.outputs.LOCK_DIFF != '' }}
         run: |
+          head_tmpfile=$(mktemp)
+          cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
+
           results_file=()
           
           echo "$json" | jq -c '.[]' | while read -r item; do
@@ -83,7 +87,7 @@ jobs:
             package=$(echo "$item" | jq -r '.package')
             version=$(echo "$item" | jq -r '.version')
           
-            package_info=$(cat sample.json | jq -c --arg pkg "$package" --arg ver "$version" '
+            package_info=$(cat $head_tmpfile | jq -c --arg pkg "$package" --arg ver "$version" '
               (.dev_dependencies // {}) as $dev_deps |
               (.dependencies // {}) as $deps |
               (.dependency_overrides // {}) as $overrides |
