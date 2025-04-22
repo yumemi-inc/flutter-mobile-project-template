@@ -53,13 +53,14 @@ jobs:
                 package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
                   .packages | to_entries[] | 
                   select(.value.description | type == "object") | 
-                  select(.value.description.sha256 == $sha) | 
+                  select(.value.description.sha256 == "$sha") | 
                   {package: .key, version: .value.version}
                 ' "$head_tmpfile")
         
                 if [ -n "${package_info}" ]; then
                   echo "$package_info"
                   results_file+=( "$package_info" )
+                  echo $results_file
                   echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
                 fi
               fi
@@ -94,11 +95,11 @@ jobs:
               (.melos.command.bootstrap.dependencies // {}) as $bootstrap_deps |
               (.melos.command.bootstrap.dev_dependencies // {}) as $bootstrap_dev_deps |
             [
-              ($dev_deps | keys[] | select(. == $pkg and ($dev_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $dev_deps[.], desired_version: $ver}),
-              ($deps | keys[] | select(. == $pkg and ($deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $deps[.], desired_version: $ver}),
-              ($overrides | keys[] | select(. == $pkg and ($overrides[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $overrides[.], desired_version: $ver}),
-              ($bootstrap_deps | keys[] | select(. == $pkg and ($bootstrap_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $bootstrap_deps[.], desired_version: $ver}),
-              ($bootstrap_dev_deps | keys[] | select(. == $pkg and ($bootstrap_dev_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $bootstrap_dev_deps[.], desired_version: $ver})
+              ($dev_deps | keys[] | select(. == "$pkg" and ($dev_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $dev_deps[.], desired_version: $ver}),
+              ($deps | keys[] | select(. == "$pkg" and ($deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $deps[.], desired_version: $ver}),
+              ($overrides | keys[] | select(. == "$pkg" and ($overrides[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $overrides[.], desired_version: $ver}),
+              ($bootstrap_deps | keys[] | select(. == "$pkg" and ($bootstrap_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $bootstrap_deps[.], desired_version: $ver}),
+              ($bootstrap_dev_deps | keys[] | select(. == "$pkg" and ($bootstrap_dev_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $bootstrap_dev_deps[.], desired_version: $ver})
             ] | .[]')
            
             if [ -n "${package_info}" ]; then
