@@ -18,13 +18,16 @@ jobs:
     permissions:
       pull-requests: write
       contents: read
+    outputs:
+      LOCK_DIFF: ${{ steps.create_diff_lock.outputs.value }}
+      YAML_DIFF: ${{ steps.check_diff_yaml.outputs.value }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Create a diff of pubspec.lock
-        id: lock
+        id: create_diff_lock
         run: |
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
@@ -73,12 +76,11 @@ jobs:
               echo "No package changes detected"
             fi
 
-      - name: Check the Diff of pubspec.yaml
-        id: yaml
+      - name: Check the diff of pubspec.yaml
+        id: check_diff_yaml
+        if: ${{ steps.create_diff_lock.outputs.LOCK_DIFF != '' }}
         run: |
           results_file=()
-
-          echo "${{ steps.lock.outputs.lock_diff }}"
           
           echo "$json" | jq -c '.[]' | while read -r item; do
           
@@ -110,11 +112,12 @@ jobs:
           echo "$results_file"
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
       
-      - name: Create PR comment
+      - name: Create pr comment
+        if: ${{ steps.create_diff_lock.outputs.YAML_DIFF != '' }}
         run: |
           messages=()
           
-          echo "${{ steps.yaml.outputs.lock_diff }}" | jq -c '.[]' | while read -r item; do
+          echo "${{ steps.check_diff_yaml.outputs.YAML_DIFF }}" | jq -c '.[]' | while read -r item; do
             package=$(echo "$item" | jq -r '.package')
             current_version=$(echo "$item" | jq -r '.current_version')
             desired_version=$(echo "$item" | jq -r '.desired_version')
