@@ -1,4 +1,4 @@
-name: Pubspec.Lock Diff
+name: pubspec.lock diff
 
 on:
   pull_request:
@@ -76,7 +76,7 @@ jobs:
 
       - name: Check the Diff of pubspec.yaml
         id: check_diff_yaml
-        if: steps.create_diff_lock.outputs.lock_diff != ''
+        if: ${{ steps.create_diff_lock.outputs.lock_diff != '' }}
         run: |
           results_file=()
           
@@ -107,11 +107,11 @@ jobs:
             fi
           done
 
-          echo $results_file
+          echo "$results_file"
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
       
       - name: Create PR comment
-        if: steps.check_diff_yaml.outputs.lock_diff != ''
+        if: ${{ steps.check_diff_yaml.outputs.lock_diff != '' }}
         run: |
           messages=()
           
@@ -124,7 +124,5 @@ jobs:
           done
           
           joined=$(printf "%s\n" "${messages[@]}")
-          
-          echo $joined
 
           gh pr comment ${{ github.event.number }} --body $joined
