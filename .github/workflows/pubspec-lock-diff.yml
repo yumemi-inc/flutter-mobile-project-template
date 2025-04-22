@@ -48,7 +48,7 @@ jobs:
           if [ -n "${diff_output}" ]; then
             echo "Changed packages SHA hashes: $diff_output"
 
-            echo $diff_output | while read -r hash; do
+            echo "$diff_output" | while read -r hash; do
                 if [ -n "$hash" ]; then
                   package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
                     .packages | to_entries[] | 
@@ -63,7 +63,7 @@ jobs:
                       results_file="[$package_info]"
                     else
                       # 既存の配列の末尾の "]" を削除して新しい要素を追加
-                      results_file="${results_file%]}, $package_info]"
+                      results_file="${results_file[@]]}, $package_info]"
                     fi
           
                     echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
@@ -71,7 +71,7 @@ jobs:
                 fi
               done
 
-              echo "lock_diff=$results_file" >> "$GITHUB_OUTPUT"
+              echo "value=$results_file" >> "$GITHUB_OUTPUT"
             else
               echo "No package changes detected"
             fi
@@ -105,12 +105,12 @@ jobs:
               results_file="[$package_info]"
             else
               # 既存の配列の末尾の "]" を削除して新しい要素を追加
-              results_file="${results_file%]}, $package_info]"
+              results_file="${results_file[@]]}, $package_info]"
             fi
           done
 
           echo "$results_file"
-          echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
+          echo "value=$results_file" >> "$GITHUB_OUTPUT"
       
       - name: Create pr comment
         if: ${{ steps.create_diff_lock.outputs.YAML_DIFF != '' }}
@@ -122,9 +122,9 @@ jobs:
             current_version=$(echo "$item" | jq -r '.current_version')
             desired_version=$(echo "$item" | jq -r '.desired_version')
             
-            messages+="check package $package as it has changed from $current_version to $desired_version."
+            messages+=( "check package $package as it has changed from $current_version to $desired_version." )
           done
           
           joined=$(printf "%s\n" "${messages[@]}")
 
-          gh pr comment ${{ github.event.number }} --body $joined
+          gh pr comment "${{ github.event.number }}" --body "$joined"
