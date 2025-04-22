@@ -25,7 +25,6 @@ jobs:
 
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
-        shell: bash
         run: |
           git fetch origin main
           main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
@@ -43,7 +42,7 @@ jobs:
           results_file=()
 
           # 変更があったパッケージのsha256を出力する
-          if [ -n "$diff_output" ]; then
+          if [ -n "${diff_output}" ]; then
             echo "Changed packages SHA hashes: $diff_output"
 
             echo $diff_output | while read -r hash; do
@@ -55,7 +54,7 @@ jobs:
                     {package: .key, version: .value.version}
                   ' "$head_tmpfile")
         
-                  if [ -n "$package_info" ]; then
+                  if [ -n "${package_info}" ]; then
                     # JSON形式の配列に追加する
                     if [ ${#results_file[@]} -eq 0 ]; then
                       results_file="[$package_info]"
@@ -76,7 +75,7 @@ jobs:
 
       - name: Check the Diff of pubspec.yaml
         id: check_diff_yaml
-        if: ${{ steps.create_diff_lock.outputs.lock_diff != '' }}
+        # if: ${{ steps.create_diff_lock.outputs.lock_diff != '' }}
         run: |
           results_file=()
           
@@ -111,7 +110,7 @@ jobs:
           echo "yaml_diff=$results_file" >> "$GITHUB_OUTPUT"
       
       - name: Create PR comment
-        if: ${{ steps.check_diff_yaml.outputs.lock_diff != '' }}
+        # if: ${{ steps.check_diff_yaml.outputs.lock_diff != '' }}
         run: |
           messages=()
           
