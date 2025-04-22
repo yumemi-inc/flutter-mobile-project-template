@@ -58,20 +58,16 @@ jobs:
                   ' "$head_tmpfile")
         
                   if [ -n "${package_info}" ]; then
-                    # JSON形式の配列に追加する
-                    if [ ${#results_file[@]} -eq 0 ]; then
-                      results_file="[$package_info]"
-                    else
-                      # 既存の配列の末尾の "]" を削除して新しい要素を追加
-                      results_file="${results_file[@]]}, $package_info]"
-                    fi
-          
+                    results_file+=( "$package_info" )
                     echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
                   fi
                 fi
               done
 
-              echo "value=$results_file" >> "$GITHUB_OUTPUT"
+              json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
+
+              echo "json_output: $json_output"
+              echo "value=$json_output" >> "$GITHUB_OUTPUT"
             else
               echo "No package changes detected"
             fi
@@ -101,16 +97,14 @@ jobs:
               ($bootstrap_dev_deps | keys[] | select(. == $pkg and ($bootstrap_dev_deps[.] | sub("^\\^"; "")) != $ver) | {package: ., current_version: $bootstrap_dev_deps[.], desired_version: $ver})
             ] | .[]')
            
-            if [ ${#results_file[@]} -eq 0 ]; then
-              results_file="[$package_info]"
-            else
-              # 既存の配列の末尾の "]" を削除して新しい要素を追加
-              results_file="${results_file[@]]}, $package_info]"
+            if [ -n "${package_info}" ]; then
+              results_file+=( "$package_info" )
+              echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
             fi
           done
 
-          echo "$results_file"
-          echo "value=$results_file" >> "$GITHUB_OUTPUT"
+          json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
+          echo "value=$json_output" >> "$GITHUB_OUTPUT"
       
       - name: Create pr comment
         if: ${{ steps.create_diff_lock.outputs.YAML_DIFF != '' }}
