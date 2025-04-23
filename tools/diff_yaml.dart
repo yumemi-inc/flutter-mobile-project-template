@@ -11,6 +11,7 @@ Future<void> main(List<String> args) async {
   final lockFile = File(join(rootDir, yamlPath));
   final currentYaml = loadYaml(lockFile.readAsStringSync());
 
+  await Process.run('git', ['fetch', 'origin', 'main']);
   final mainLock = await Process.run('git', ['show', 'main:$yamlPath'])
       .then((value) => value.stdout);
   final mainYaml = loadYaml(mainLock);
