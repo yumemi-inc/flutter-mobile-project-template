@@ -4,17 +4,14 @@ import 'package:yaml/yaml.dart';
 import 'utils/path.dart';
 
 /// Output the changes in pubspeck.lock in a table format.
-///
-/// args
-///   0: [pubspeck.lock] file path
 Future<void> main(List<String> args) async {
-  final pubspeckLockPath = args[0];
+  final yamlPath = args[0];
 
   final rootDir = fetchGitRootDirPath();
-  final lockFile = File(join(rootDir, pubspeckLockPath));
+  final lockFile = File(join(rootDir, yamlPath));
   final currentYaml = loadYaml(lockFile.readAsStringSync());
 
-  final mainLock = await Process.run('git', ['show', 'main:$pubspeckLockPath'])
+  final mainLock = await Process.run('git', ['show', 'main:$yamlPath'])
       .then((value) => value.stdout);
   final mainYaml = loadYaml(mainLock);
 
@@ -31,6 +28,9 @@ Future<void> main(List<String> args) async {
     rows.add(row);
   }
 
+  if (rows.length == 1) {
+    return;
+  }
   stdout.writeln(rows.join('').trim());
 }
 
