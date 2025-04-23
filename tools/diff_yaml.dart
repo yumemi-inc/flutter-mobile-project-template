@@ -30,6 +30,8 @@ Future<void> main(List<String> args) async {
 
   final rows = [
     '''
+  ## pubspec.lock has been changed
+
   | Change | Diff |
   | :---   | :--- |
   '''
