@@ -11,17 +11,23 @@ Future<void> main(List<String> args) async {
   final lockFile = File(join(rootDir, yamlPath));
   final currentYaml = loadYaml(lockFile.readAsStringSync());
 
-  await Process.run('git', ['fetch', 'origin', 'main']);
+  final exitCode = await Process.run('git', ['fetch', 'origin', 'main'])
+      .then((e) => e.exitCode);
+  if (exitCode != 0) {
+    throw Exception('Failed to execute git fetch origin main');
+  }
+
   final mainLock = await Process.run('git', ['show', 'main:$yamlPath'])
       .then((value) => value.stdout);
+
+  if (mainLock.isEmpty) {
+    throw Exception('Failed to execute git show main:$yamlPath');
+  }
   final mainYaml = loadYaml(mainLock);
 
-  print('current: $currentYaml');
-  print('main: $mainYaml');
-
-  if (currentYaml is! Map || mainYaml is! Map) {
-    throw FormatException('currentYaml: $currentYaml / mainYaml: $mainYaml');
-  }
+  // if (currentYaml is! Map || mainYaml is! Map) {
+  //   throw FormatException('currentYaml: $currentYaml / mainYaml: $mainYaml');
+  // }
 
   final compareValue = compareMap(mainYaml, currentYaml);
 
