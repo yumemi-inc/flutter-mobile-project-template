@@ -31,7 +31,7 @@ jobs:
         run: |
           diff=$(dart run ./tools/diff_yaml.dart pubspec.lock)
 
-          if [ -z "$VARIABLE" ]; then
+          if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
