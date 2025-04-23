@@ -20,110 +20,21 @@ jobs:
       contents: read
     outputs:
       LOCK_DIFF: ${{ steps.create_diff_lock.outputs.value }}
-      YAML_DIFF: ${{ steps.check_diff_yaml.outputs.value }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
       - name: Create a diff of pubspec.lock
         id: create_diff_lock
         run: |
-          git fetch origin main
-          main_sha=$(git log origin/main -n 1 --pretty=format:"%H" -- pubspec.lock)
-          echo "Latest commit SHA for pubspeck.lock on main branch: $main_sha"
+          diff=$(dart run ./tools/diff_yaml.dart pubspec.lock)
+          echo "value=$diff" >> "$GITHUB_OUTPUT"
 
-          current_sha=$(git log --pretty=format:"%H" -1 pubspec.lock)
-          echo "Latest commit SHA for pubspeck.lock on current branch: $current_sha"
-
-          # NOTE: 「File name too long」とエラーが発生するため、ファイルに出力し、以降の処理はファイル参照とする
-          head_tmpfile=$(mktemp)
-          cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
-
-          diff_output=$(git diff $main_sha..$current_sha -- pubspec.lock | grep -oE 'sha256:\s*"?[a-fA-F0-9]{64}"?' | sed -E 's/sha256:\s*"?(.*)"?/\1/')
-
-          results_file=()
-
-          # 変更があったパッケージのsha256を出力する
-          if [ -n "${diff_output}" ]; then
-            echo "Changed packages SHA hashes: $diff_output"
-
-            echo "$diff_output" | while read -r hash; do
-              if [ -n "$hash" ]; then
-                package_info=$(jq --arg sha $(echo $hash | tr -d '"') '
-                  .packages | to_entries[] | 
-                  select(.value.description | type == "object") | 
-                  select(.value.description.sha256 == "$sha") | 
-                  {package: .key, version: .value.version}
-                ' "$head_tmpfile")
-        
-                if [ -n "${package_info}" ]; then
-                  echo "$package_info"
-                  results_file+=( "$package_info" )
-                  echo $results_file
-                  echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
-                fi
-              fi
-            done
-
-            json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
-
-            echo "results_file: $results_file"
-            echo "$json_output"
-            echo "value=$json_output" >> "$GITHUB_OUTPUT"
-          else
-            echo "No package changes detected"
-          fi
-
-      - name: Check the diff of pubspec.yaml
-        id: check_diff_yaml
+      - name: Create PR comment
         if: ${{ steps.create_diff_lock.outputs.LOCK_DIFF != '' }}
-        run: |
-          head_tmpfile=$(mktemp)
-          cat pubspec.lock | yq -o json | jq -S > $head_tmpfile
-          results_file=()
-          
-          echo "$json" | jq -c '.[]' | while read -r item; do
-          
-            package=$(echo "$item" | jq -r '.package')
-            version=$(echo "$item" | jq -r '.version')
-          
-            package_info=$(cat "$head_tmpfile" | jq -c --arg pkg "$package" --arg ver "$version" '
-              (.dev_dependencies // {}) as $dev_deps |
-              (.dependencies // {}) as $deps |
-              (.dependency_overrides // {}) as $overrides |
-              (.melos.command.bootstrap.dependencies // {}) as $bootstrap_deps |
-              (.melos.command.bootstrap.dev_dependencies // {}) as $bootstrap_dev_deps |
-            [
-              ($dev_deps | keys[] | select(. == "$pkg" and ($dev_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $dev_deps[.], desired_version: $ver}),
-              ($deps | keys[] | select(. == "$pkg" and ($deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $deps[.], desired_version: $ver}),
-              ($overrides | keys[] | select(. == "$pkg" and ($overrides[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $overrides[.], desired_version: $ver}),
-              ($bootstrap_deps | keys[] | select(. == "$pkg" and ($bootstrap_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $bootstrap_deps[.], desired_version: $ver}),
-              ($bootstrap_dev_deps | keys[] | select(. == "$pkg" and ($bootstrap_dev_deps[.] | sub("^\\^"; "")) != "$ver") | {package: ., current_version: $bootstrap_dev_deps[.], desired_version: $ver})
-            ] | .[]')
-           
-            if [ -n "${package_info}" ]; then
-              results_file+=( "$package_info" )
-              echo "Package: $(echo "$package_info" | jq -r '.package') Version: $(echo "$package_info" | jq -r '.version')"
-            fi
-          done
-
-          json_output=$(printf '%s\n' "${results_file[@]}" | jq -s .)
-          echo "value=$json_output" >> "$GITHUB_OUTPUT"
-      
-      - name: Create pr comment
-        if: ${{ steps.create_diff_lock.outputs.YAML_DIFF != '' }}
-        run: |
-          messages=()
-          
-          echo "${{ steps.check_diff_yaml.outputs.YAML_DIFF }}" | jq -c '.[]' | while read -r item; do
-            package=$(echo "$item" | jq -r '.package')
-            current_version=$(echo "$item" | jq -r '.current_version')
-            desired_version=$(echo "$item" | jq -r '.desired_version')
-            
-            messages+=( "check package $package as it has changed from $current_version to $desired_version." )
-          done
-          
-          joined=$(printf "%s\n" "${messages[@]}")
-
-          gh pr comment "${{ github.event.number }}" --body "$joined"
+        run: gh pr comment "${{ github.event.number }}" --body "${{ steps.create_diff_lock.outputs.LOCK_DIFF }}"
