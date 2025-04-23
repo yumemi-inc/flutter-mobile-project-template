@@ -18,8 +18,6 @@ jobs:
     permissions:
       pull-requests: write
       contents: read
-    outputs:
-      LOCK_DIFF: ${{ steps.create_diff_lock.outputs.value }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -29,12 +27,13 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Create a diff of pubspec.lock
-        id: create_diff_lock
+      - name: Check diff of pubspec.lock
         run: |
           diff=$(dart run ./tools/diff_yaml.dart pubspec.lock)
-          echo "value=$diff" >> "$GITHUB_OUTPUT"
 
-      - name: Create PR comment
-        if: ${{ steps.create_diff_lock.outputs.LOCK_DIFF != '' }}
-        run: gh pr comment "${{ github.event.number }}" --body "${{ steps.create_diff_lock.outputs.LOCK_DIFF }}"
+          if [ -z "$VARIABLE" ]; then
+            echo "No change in pubspeck.lock"
+          else
+            echo "There is a change in pubspeck.lock."
+            gh pr comment "${{ github.event.number }}" --body "$diff"
+          fi
