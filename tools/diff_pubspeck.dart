@@ -1,9 +1,10 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart';
 import 'package:yaml/yaml.dart';
 import 'utils/path.dart';
 
+/// Output the changes in pubspeck.lock in a table format.
+///
 /// args
 ///   0: [pubspeck.lock] file path
 Future<void> main(List<String> args) async {
@@ -19,10 +20,21 @@ Future<void> main(List<String> args) async {
 
   final compareValue = compareMap(mainYaml, currentYaml);
 
-  stdout.writeln(jsonEncode(compareValue));
+  final rows = [
+    '''
+  | Change | Diff |
+  | :---   | :--- |
+  '''
+  ];
+  for (final entry in compareValue.entries) {
+    final row = '|' + entry.key + '|' + entry.value.toString() + '|' + '\n';
+    rows.add(row);
+  }
+
+  stdout.writeln(rows.join('').trim());
 }
 
-/// [Map]を比較し、[previous]と[current]で異なる要素を[Map<String, dynami>]返す
+/// Compares [Maps] and returns a [Map<String, dynami>] of the elements that differ between [previous] and [current].
 Map<String, dynamic> compareMap(
   Map previous,
   Map current, [
