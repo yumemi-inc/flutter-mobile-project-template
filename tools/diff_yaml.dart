@@ -16,8 +16,12 @@ Future<void> main(List<String> args) async {
       .then((value) => value.stdout);
   final mainYaml = loadYaml(mainLock);
 
-  stdout.writeln('current: $currentYaml');
-  stdout.writeln('main: $mainYaml');
+  print('current: $currentYaml');
+  print('main: $mainYaml');
+
+  if (currentYaml is! Map || mainYaml is! Map) {
+    throw FormatException('currentYaml: $currentYaml / mainYaml: $mainYaml');
+  }
 
   final compareValue = compareMap(mainYaml, currentYaml);
 
