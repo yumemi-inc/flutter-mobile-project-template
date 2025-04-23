@@ -17,17 +17,14 @@ Future<void> main(List<String> args) async {
     throw Exception('Failed to execute git fetch origin main');
   }
 
-  final mainLock = await Process.run('git', ['show', 'main:$yamlPath'])
-      .then((value) => value.stdout);
+  final (mainLock, error) =
+      await Process.run('git', ['show', 'origin/main:$yamlPath'])
+          .then((value) => (value.stdout, value.stderr));
 
-  if (mainLock.isEmpty) {
-    throw Exception('Failed to execute git show main:$yamlPath');
+  if (error.isNotEmpty) {
+    throw Exception('Failed to execute git show main:$yamlPath / $stderr');
   }
   final mainYaml = loadYaml(mainLock);
-
-  // if (currentYaml is! Map || mainYaml is! Map) {
-  //   throw FormatException('currentYaml: $currentYaml / mainYaml: $mainYaml');
-  // }
 
   final compareValue = compareMap(mainYaml, currentYaml);
 
@@ -45,6 +42,7 @@ Future<void> main(List<String> args) async {
   if (rows.length == 1) {
     return;
   }
+
   stdout.writeln(rows.join('').trim());
 }
 
