@@ -37,3 +37,5 @@ jobs:
             echo "There is a change in pubspeck.lock."
             gh pr comment "${{ github.event.number }}" --body "$diff"
           fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
