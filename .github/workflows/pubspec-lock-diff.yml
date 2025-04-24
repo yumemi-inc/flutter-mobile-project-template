@@ -23,7 +23,7 @@ jobs:
 
       - name: Check diff of pubspec.lock
         run: |
-          diff=$(dart run ./tools/diff_yaml.dart pubspec.lock)
+          diff=$(dart run ./tools/diff_yaml.dart pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
