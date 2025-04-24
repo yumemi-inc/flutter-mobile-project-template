@@ -32,22 +32,21 @@ Future<void> main(List<String> args) async {
 
 | Change | Diff |
 | :---   | :--- |
-    ''');
+''');
 
     for (final entry in compareValue.entries) {
       final row = '|' + entry.key + '|' + entry.value.toString() + '|' + '\n';
       rows.add(row);
     }
 
-    rows.add('''
-    ---
-    ''');
+    rows.add('---');
   }
 
   final diffVersions = diffPkgVersion(currentYaml, currentLock);
 
   if (diffVersions.isNotEmpty) {
     rows.add('''
+
 ## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
       
 | package | pubspec.yaml | pubspec.lock | 
