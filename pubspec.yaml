@@ -33,7 +33,7 @@ dev_dependencies:
   yaml_edit: ^2.2.2
 
 dependency_overrides:
-  file: ^7.0.0
+  file: ^7.0.1
   path: ^1.9.1
 
 melos:
