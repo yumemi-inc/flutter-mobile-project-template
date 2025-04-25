@@ -4,6 +4,9 @@
         "en",
         "ja"    
     ],
+    "ignorePaths": [
+        "cspell.jsonc",
+    ],
     "import": [
         "@cspell/dict-dart/cspell-ext.json",
         "@cspell/dict-flutter/cspell-ext.json"
