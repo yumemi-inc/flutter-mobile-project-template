@@ -11,6 +11,42 @@ extension YamlMapToJson on YamlMap {
   }
 }
 
+/// pubspec.yaml と pubspec.lock ファイルの差分を分析し、Markdown フォーマットで出力するツール
+///
+/// このツールは以下の２つの比較を行います：
+/// 1. 現在のブランチと origin/main ブランチの pubspec.lock ファイルの差分
+/// 2. 現在の pubspec.yaml と pubspec.lock のパッケージバージョン表記の違い
+///
+/// 使用例:
+/// ```dart
+/// dart diff_yaml.dart pubspec.yaml pubspec.lock
+/// ```
+///
+/// 出力形式:
+/// 1. pubspec.lock の変更がある場合:
+/// ```markdown
+/// ## pubspec.lock has been changed
+/// | Change | Diff |
+/// | :---   | :--- |
+/// | package.version | {"previous": "1.0.0", "current": "2.0.0"} |
+/// ```
+///
+/// 2. バージョン表記の違いがある場合:
+/// ```markdown
+/// ## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
+/// | package | pubspec.yaml | pubspec.lock |
+/// | :---    | :---         | :---         |
+/// | package_name | ^1.0.0 | 1.0.1 |
+/// ```
+///
+/// パラメータ:
+/// * [args] - コマンドライン引数
+///   - args[0]: pubspec.yaml のパス
+///   - args[1]: pubspec.lock のパス
+///
+/// 例外:
+/// * [ProcessException] - Git コマンドの実行に失敗した場合
+/// * [FileSystemException] - ファイルの読み込みに失敗した場合
 Future<void> main(List<String> args) async {
   final yamlPath = args[0];
   final lockPath = args[1];
@@ -65,18 +101,29 @@ Future<void> main(List<String> args) async {
 
 /// 実行ブランチとorigin/mainのpubspec.lockの内容を比較し、表記が異なるものを返す
 Future<Map<String, dynamic>> diffLockContent(String path, YamlMap lock) async {
-  final exitCode = await Process.run('git', ['fetch', 'origin', 'main'])
-      .then((e) => e.exitCode);
+  const executable = 'git';
+
+  const fetchArguments = ['fetch', 'origin', 'main'];
+  final exitCode =
+      await Process.run(executable, fetchArguments).then((e) => e.exitCode);
   if (exitCode != 0) {
-    throw Exception('Failed to execute git fetch origin main');
+    throw ProcessException(
+      executable,
+      fetchArguments,
+      'Failed to execute git fetch origin main',
+    );
   }
 
-  final (success, error) =
-      await Process.run('git', ['show', 'origin/main:$path'])
-          .then((value) => (value.stdout as String, value.stderr as String));
+  final showArguments = ['show', 'origin/main:$path'];
+  final (success, error) = await Process.run(executable, showArguments)
+      .then((value) => (value.stdout as String, value.stderr as String));
 
   if (error.isNotEmpty) {
-    throw Exception('Failed to execute git show main:$path / $stderr');
+    throw ProcessException(
+      executable,
+      showArguments,
+      'Failed to execute git show main:$path / $stderr',
+    );
   }
   final mainLock = loadYaml(success);
 
