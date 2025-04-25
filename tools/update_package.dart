@@ -2,12 +2,25 @@ import 'dart:convert';
 import 'dart:io';
 import 'model/package_info.dart';
 
-Future<String?> main() async {
-  final json = await Process.run('dart', ['pub', 'outdated', '--json']).then(
-    (e) => jsonDecode(e.stdout),
+/// dart pub outdated を時加工し、パッケージの更新有無を取得する
+Future<void> main() async {
+  const executable = 'dart';
+  const arguments = ['pub', 'outdated', '--json'];
+
+  final json = await Process.run(executable, arguments).then(
+    (e) => e.stdout as String,
   );
 
-  final packageInfo = PackageInfo.fromJson(json);
+  if (json.isEmpty) {
+    throw ProcessException(
+      executable,
+      arguments,
+      'Failed to execute $executable $arguments',
+    );
+  }
+
+  final packageInfo =
+      PackageInfo.fromJson(jsonDecode(json) as Map<String, dynamic>);
 
   final shouldUpdatePkg = packageInfo.packages.where((pkg) {
     if (pkg.current != null && pkg.kind != Kind.transitive) {
@@ -19,7 +32,7 @@ Future<String?> main() async {
   });
 
   if (shouldUpdatePkg.isEmpty) {
-    return null;
+    return;
   }
 
   final rows = [
@@ -37,8 +50,5 @@ Future<String?> main() async {
     rows.add(row);
   }
 
-  final jsonString = rows.join('').trim();
-  stdout.writeln(jsonString);
-
-  return jsonString;
+  stdout.writeln(rows.join('').trim());
 }
