@@ -78,7 +78,7 @@ Future<Map<String, dynamic>> diffLockContent(String path, YamlMap lock) async {
 
   final (success, error) =
       await Process.run('git', ['show', 'origin/main:$path'])
-          .then((value) => (value.stdout, value.stderr));
+          .then((value) => (value.stdout as String, value.stderr as String));
 
   if (error.isNotEmpty) {
     throw Exception('Failed to execute git show main:$path / $stderr');
