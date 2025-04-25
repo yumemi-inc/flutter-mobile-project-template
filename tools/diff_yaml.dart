@@ -50,17 +50,12 @@ Future<void> main(List<String> args) async {
 ## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
       
 | package | pubspec.yaml | pubspec.lock | 
-| :---    | :---         |  :---        |
+| :---    | :---         | :---         |
 ''');
 
     for (final diff in diffVersions) {
-      final row = '|' +
-          diff['package'] +
-          '|' +
-          diff['pubspec.yaml'] +
-          '|' +
-          diff['pubspec.lock'] +
-          '|' '\n';
+      final row =
+          '| ${diff['package']} | ${diff['pubspec.yaml']} | ${diff['pubspec.lock']} | \n';
       rows.add(row);
     }
   }
