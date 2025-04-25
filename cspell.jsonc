@@ -6,6 +6,9 @@
     ],
     "ignorePaths": [
         "cspell.jsonc",
+        // IDE関連
+        ".idea",
+        ".vscode",
     ],
     "import": [
         "@cspell/dict-dart/cspell-ext.json",
