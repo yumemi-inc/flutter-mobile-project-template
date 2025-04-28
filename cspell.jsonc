@@ -1,0 +1,17 @@
+{
+    "version": "0.2",
+    "language": [
+        "en",
+        "ja"    
+    ],
+    "ignorePaths": [
+        "cspell.jsonc",
+        // IDE関連
+        ".idea",
+        ".vscode",
+    ],
+    "import": [
+        "@cspell/dict-dart/cspell-ext.json",
+        "@cspell/dict-flutter/cspell-ext.json"
+    ]
+}
