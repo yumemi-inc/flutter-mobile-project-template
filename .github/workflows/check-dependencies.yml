@@ -1,4 +1,4 @@
-name: pubspec.lock diff
+name: Check dependencies
 
 on:
   pull_request:
