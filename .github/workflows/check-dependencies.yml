@@ -28,12 +28,17 @@ jobs:
         run: |
           echo ${{ github.event.pull_request.base.ref }}
 
+          echo ${{ github.head_ref }}
+          echo ${{ github.ref_name }}
+          echo ${{ github.base_ref }}
+          echo ${{ github.event.pull_request.head.ref }}
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       - name: Check diff of pubspec.lock
         run: |
-          diff=$(dart run ./tools/diff_yaml.dart ${{ github.event.pull_request.base.ref }} pubspec.yaml pubspec.lock)
+          diff=$(dart run ./tools/diff_yaml.dart ${{ github.head_ref }} pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
