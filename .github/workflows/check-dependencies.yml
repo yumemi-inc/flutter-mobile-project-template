@@ -18,12 +18,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
+      - name: test output base_ref
+        run: |
+          echo ${{ github.base_ref }}
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       - name: Check diff of pubspec.lock
         run: |
-          diff=$(dart run ./tools/diff_yaml.dart pubspec.yaml pubspec.lock)
+          diff=$(dart run ./tools/diff_yaml.dart ${{ github.base_ref }} pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
