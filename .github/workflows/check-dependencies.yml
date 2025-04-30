@@ -7,6 +7,12 @@ on:
       - '**/pubspec.yaml'
       - '**/pubspec.lock'
 
+  # TODO: 検証用に追加したため、merge前に削除する
+  push:
+    branches:
+      - feature/refactor-pkg-depend
+  workflow_dispatch:
+
 jobs:
   pubspec-diff:
     runs-on: ubuntu-24.04
