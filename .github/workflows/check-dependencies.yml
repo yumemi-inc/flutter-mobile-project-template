@@ -14,11 +14,12 @@ on:
   workflow_dispatch:
 
 jobs:
-  pubspec-diff:
+  pubspec:
     runs-on: ubuntu-24.04
     permissions:
-      pull-requests: write
       contents: read
+    outputs:
+      markdown: ${{ steps.dependencies.outputs.diff }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -27,7 +28,8 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Check diff of pubspec.lock
+      - name: Check dependent packages
+        id: dependencies
         run: |
           baseRefName=$(gh pr view feature/refactor-pkg-depend --json baseRefName --jq .baseRefName)
 
@@ -39,7 +41,28 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            gh pr comment "${{ github.event.number }}" --body "$diff"
+            echo "::set-output name=diff::$diff"
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  markdown:
+    uses: ./.github/workflows/wc-check-markdown.yaml
+    needs: pubspec
+    if: ${{ needs.pubspec.outputs.markdown != '' }}
+
+  skip-comment:
+    runs-on: ubuntu-22.04
+    needs: [pubspec, markdown]
+    permissions:
+      pull-requests: write
+    timeout-minutes: 5
+
+    steps:
+      # https://github.com/peter-evans/create-or-update-comment
+      - name: Comment
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ needs.pubspec.outputs.markdown }}
+            
