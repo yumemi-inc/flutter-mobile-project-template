@@ -1,7 +1,7 @@
 name: Check dependencies
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize]
     paths:
       - '**/pubspec.yaml'
@@ -24,21 +24,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
-      - name: test output ref branch
-        run: |
-          echo ${{ github.event.pull_request.base.ref }}
-
-          echo ${{ github.head_ref }}
-          echo ${{ github.ref_name }}
-          echo ${{ github.base_ref }}
-          echo ${{ github.event.pull_request.head.ref }}
-
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       - name: Check diff of pubspec.lock
         run: |
-          diff=$(dart run ./tools/diff_yaml.dart ${{ github.head_ref }} pubspec.yaml pubspec.lock)
+          baseRefName=$(gh pr view feature/refactor-pkg-depend --json baseRefName --jq .baseRefName)
+
+          echo "The base branch is $baseRefName"
+
+          diff=$(dart run ./tools/diff_yaml.dart $baseRefName pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
