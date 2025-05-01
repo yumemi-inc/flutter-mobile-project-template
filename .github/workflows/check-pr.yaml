@@ -94,7 +94,7 @@ jobs:
         run: melos list --cycles
 
       - name: Check dependencies
-        uses: ./.github/actions/setup-application-runtime
+        uses: ./.github/actions/check-dependencies
 
       - name: Run test
         run: melos run report:test --no-select
