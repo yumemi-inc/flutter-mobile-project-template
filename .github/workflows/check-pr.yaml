@@ -1,7 +1,6 @@
 name: check-pr
 
 on:
-  workflow_dispatch:
   pull_request:
 
 concurrency:
@@ -70,9 +69,6 @@ jobs:
     if: ${{ needs.changes.outputs.src == 'true' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
-    permissions:
-      pull-requests: write
-      contents: read
 
     steps:
       # https://github.com/actions/checkout
