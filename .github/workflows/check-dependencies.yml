@@ -64,6 +64,10 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        
       - name: Get PR number
         run: |
           branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
@@ -79,5 +83,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           issue-number: env.PR_NUMBER
-          body: ${{ needs.check-dependencies.outputs.markdown }}
+          body-path: diff.md
             
