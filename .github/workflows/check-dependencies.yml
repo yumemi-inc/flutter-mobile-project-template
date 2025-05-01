@@ -45,9 +45,7 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            path="$GITHUB_WORKSPACE/$MD_NAME"
-            echo $diff > $path
-            echo "MD_PATH=$path" >> $GITHUB_ENV
+            echo "diff=$diff" >> $GITHUB_OUTPUT
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,7 +55,8 @@ jobs:
       #   uses: ./.github/workflows/wc-check-markdown.yaml
        
       - name: Get PR number
-        if: ${{ env.MD_PATH != '' }}
+        id: number
+        if: $${{ steps.dependencies.outputs.diff != '' }}
         run: |
           branch=$(git branch --show-current)
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].number')
@@ -67,12 +66,12 @@ jobs:
             exit 1
           fi
 
-          echo "PR_NUMBER=$number" >> $GITHUB_ENV
+          echo "number=$number" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Comment
-        if: ${{ env.PR_NUMBER != '' }}
-        run: gh pr comment "${{ env.PR_NUMBER }}" --body-file "${{ env.MD_PATH }}"
+        if: ${{ steps.number.outputs.number != '' }}
+        run: gh pr comment "${{ steps.number.outputs.number }}" --body "${{ steps.dependencies.outputs.diff }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
