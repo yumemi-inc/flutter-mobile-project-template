@@ -94,6 +94,9 @@ jobs:
       - name: Check for circular dependencies
         run: melos list --cycles
 
+      - name: Check file
+        run: cat ./.github/actions/check-dependencies/action.yml
+
       - name: Check package dependencies
         uses: ./.github/actions/check-dependencies
         with:
