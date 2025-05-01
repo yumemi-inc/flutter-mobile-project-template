@@ -69,6 +69,9 @@ jobs:
     if: ${{ needs.changes.outputs.src == 'true' }}
     runs-on: ubuntu-22.04
     timeout-minutes: 20
+    permissions:
+      pull-requests: write
+      contents: read
 
     steps:
       # https://github.com/actions/checkout
@@ -89,6 +92,9 @@ jobs:
 
       - name: Check for circular dependencies
         run: melos list --cycles
+
+      - name: Check dependencies
+        uses: ./.github/actions/setup-application-runtime
 
       - name: Run test
         run: melos run report:test --no-select

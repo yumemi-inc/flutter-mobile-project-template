@@ -1,0 +1,70 @@
+name: Check dependencies
+description: Report package updates and differences in notation in pr comments.
+
+runs:
+  using: "composite"
+  steps:
+    # https://github.com/marketplace/actions/checkout
+    - name: Checkout
+      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+    - name: Setup Application Runtime
+      uses: ./.github/actions/setup-application-runtime
+
+    - name: Get current branch
+      id: branch
+      run: |
+        branch=$(git branch --show-current)
+
+        if [ -z "$branch" ]; then
+          echo "Failed to get branch"
+          exit 1
+        fi
+
+        echo "branch=$branch" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Check package dependencies
+      id: dependencies
+      run: |
+        baseRefName=$(gh pr view ${{ steps.branch.outputs.branch }} --json baseRefName --jq .baseRefName)
+
+        echo "The base branch is $baseRefName"
+
+        diff=$(dart run ./tools/diff_yaml.dart $baseRefName pubspec.yaml pubspec.lock)
+
+        if [ -z "$diff" ]; then
+          echo "No change in pubspeck.lock"
+        else
+          echo "There is a change in pubspeck.lock."
+
+          path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
+          echo "$diff" > $path
+          echo "path=$path" >> $GITHUB_OUTPUT
+        fi
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+
+    - name: Get PR number
+      id: number
+      if: $${{ steps.dependencies.outputs.path != '' }}
+      run: |
+        number=$(gh pr list --head $${{ steps.branch.outputs.branch != '' }}  --state open --json number --jq '.[0].number')
+
+        if [ -z "$number" ]; then
+          echo "Failed to get PR number"
+          exit 1
+        fi
+
+        echo "number=$number" >> $GITHUB_OUTPUT
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+      
+    - name: Comment
+      if: ${{ steps.number.outputs.number != '' }}
+      run: gh pr comment "${{ steps.number.outputs.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
