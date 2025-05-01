@@ -93,8 +93,8 @@ jobs:
       - name: Check for circular dependencies
         run: melos list --cycles
 
-      - name: Check dependencies
-        uses: ./.github/actions/check-dependencies
+      - name: Check package dependencies
+        uses: .github/actions/check-dependencies
 
       - name: Run test
         run: melos run report:test --no-select
