@@ -223,5 +223,3 @@ melos:
       run: pod repo update
       packageFilters:
         fileExists: macos/Podfile
-dependencies:
-  bloc: ^9.0.0
