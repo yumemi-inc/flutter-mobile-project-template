@@ -34,7 +34,9 @@ jobs:
       - name: Check dependent packages
         id: dependencies
         run: |
-          branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
+          branch=$(git branch --show-current)
+
+          echo "Run bracnh is $branch"
           
           baseRefName=$(gh pr view $branch --json baseRefName --jq .baseRefName)
 
@@ -73,7 +75,8 @@ jobs:
 
       - name: Get PR number
         run: |
-          branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
+          branch=$(git branch --show-current)
+          echo 'current branch is $branch'
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].numbe')
 
           echo "PR Number is $number"
