@@ -94,49 +94,11 @@ jobs:
       - name: Check for circular dependencies
         run: melos list --cycles
 
-      - name: Get branch
-        id: branch
-        run: |
-          current_branch=$(git branch --show-current)
-          
-          if [ -z "$current_branch" ]; then
-            echo "Failed to get branch"
-            exit 1
-          fi
-
-          echo "current_branch=$current_branch" >> $GITHUB_OUTPUT
-
-          base_branch=$(gh pr view $current_branch --json baseRefName --jq .baseRefName)
-
-          if [ -z "$base_branch" ]; then
-            echo "Failed to get branch"
-            exit 1
-          fi
-
-          echo "base_branch=$base_branch" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-      - name: Get PR number
-        id: number
-        run: |
-          cd $GITHUB_WORKSPACE
-          number=$(gh pr list --head ${{ steps.branch.outputs.current_branch }} --state open --json number --jq '.[0].number')
-
-          if [ -z "$number" ]; then
-            echo "Failed to get PR number"
-            exit 1
-          fi
-
-          echo "number=$number" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Check package dependencies
         uses: ./.github/actions/check-dependencies
         with:
-          base_branch:  ${{ steps.branch.outputs.base_branch }} 
-          pr_number: ${{ steps.number.outputs.number }}
+          base_branch:  ${{ github.base_ref }}
+          pr_number: ${{ github.event.pull_request.number }}
 
       - name: Run test
         run: melos run report:test --no-select
