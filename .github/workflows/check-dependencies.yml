@@ -21,8 +21,6 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
-    outputs:
-      MD_PATH: ${{ steps.dependencies.outputs.MD_PATH }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -46,32 +44,19 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            echo $diff > $MD_NAME
             path="$GITHUB_WORKSPACE/$MD_NAME"
-            echo "MD_PATH=$path" >> $GITHUB_OUTPUT
+            echo $diff > $path
+            echo "MD_PATH=$path" >> $GITHUB_ENV
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  markdown:
-    uses: ./.github/workflows/wc-check-markdown.yaml
-    needs: check-dependencies
-    if: ${{ needs.check-dependencies.outputs.MD_PATH != '' }}
-
-  update-comment:
-    runs-on: ubuntu-22.04
-    needs: [check-dependencies, markdown]
-    permissions:
-      contents: read
-      pull-requests: write
-    timeout-minutes: 5
-
-    steps:
-      # https://github.com/marketplace/actions/checkout
-      - name: Checkout
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-
+      - name: Check markdown
+        if: env.MD_PATH != ''
+        uses: ./.github/workflows/wc-check-markdown.yaml
+       
       - name: Get PR number
+        if: env.MD_PATH != ''
         run: |
           branch=$(git branch --show-current)
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].number')
@@ -81,15 +66,14 @@ jobs:
             exit 1
           fi
 
-          echo "PR Number is $number"
           echo "PR_NUMBER=$number" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # https://github.com/peter-evans/create-or-update-comment
       - name: Comment
+        if: env.PR_NUMBER != ''
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           issue-number: env.PR_NUMBER
-          body-path: ${{ needs.check-dependencies.outputs.MD_PATH }}
-            
+          body-path: env.MD_PATH
