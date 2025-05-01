@@ -16,6 +16,7 @@ runs:
     - name: Get current branch
       id: branch
       run: |
+        cd $GITHUB_WORKSPACE
         branch=$(git branch --show-current)
 
         if [ -z "$branch" ]; then
@@ -29,6 +30,7 @@ runs:
     - name: Check package dependencies
       id: dependencies
       run: |
+        cd $GITHUB_WORKSPACE
         baseRefName=$(gh pr view ${{ steps.branch.outputs.branch }} --json baseRefName --jq .baseRefName)
 
         echo "The base branch is $baseRefName"
@@ -52,6 +54,7 @@ runs:
       id: number
       if: $${{ steps.dependencies.outputs.path != '' }}
       run: |
+        cd $GITHUB_WORKSPACE
         number=$(gh pr list --head $${{ steps.branch.outputs.branch != '' }}  --state open --json number --jq '.[0].number')
 
         if [ -z "$number" ]; then
@@ -66,7 +69,9 @@ runs:
       
     - name: Comment
       if: ${{ steps.number.outputs.number != '' }}
-      run: gh pr comment "${{ steps.number.outputs.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
+      run: |
+        cd $GITHUB_WORKSPACE
+        gh pr comment "${{ steps.number.outputs.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
       env:
         GH_TOKEN: ${{ inputs.gh_token }} 
       shell: bash
