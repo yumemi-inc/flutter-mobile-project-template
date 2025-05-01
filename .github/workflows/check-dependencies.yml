@@ -30,12 +30,22 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Check dependent packages
-        id: dependencies
+      - name: Get current branch
+        id: branch
         run: |
           branch=$(git branch --show-current)
-          
-          baseRefName=$(gh pr view $branch --json baseRefName --jq .baseRefName)
+
+          if [ -z "$branch" ]; then
+            echo "Failed to get branch"
+            exit 1
+          fi
+
+          echo "branch=$branch" >> $GITHUB_OUTPUT
+
+      - name: Check package dependencies
+        id: dependencies
+        run: |
+          baseRefName=$(gh pr view $${{ steps.branch.outputs.branch != '' }} --json baseRefName --jq .baseRefName)
 
           echo "The base branch is $baseRefName"
 
@@ -53,19 +63,18 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Check markdown
-      #   if: env.MD_PATH != ''
-      #   uses: ./.github/workflows/wc-check-markdown.yaml
+      - name: Check markdown
+        if: $${{ steps.dependencies.outputs.path != '' }}
+        uses: ./.github/workflows/wc-check-markdown.yaml
        
       - name: Get PR number
         id: number
         if: $${{ steps.dependencies.outputs.path != '' }}
         run: |
-          branch=$(git branch --show-current)
-          number=$(gh pr list --head $branch --state open --json number --jq '.[0].number')
+          number=$(gh pr list --head $${{ steps.branch.outputs.branch != '' }}  --state open --json number --jq '.[0].number')
 
           if [ -z "$number" ]; then
-            echo "Failed to obtain PR number"
+            echo "Failed to get PR number"
             exit 1
           fi
 
