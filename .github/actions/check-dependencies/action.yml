@@ -1,4 +1,4 @@
-name: Check dependencies
+name: Check package dependencies
 description: Report package updates and differences in notation in pr comments.
 
 inputs:
@@ -9,13 +9,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # https://github.com/marketplace/actions/checkout
-    - name: Checkout
-      uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-
-    - name: Setup Application Runtime
-      uses: ./.github/actions/setup-application-runtime
-
     - name: Get current branch
       id: branch
       run: |
