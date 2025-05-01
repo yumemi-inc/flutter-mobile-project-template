@@ -45,7 +45,10 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            echo "diff=$diff" >> $GITHUB_OUTPUT
+
+            path="$GITHUB_WORKSPACE/$MD_NAME"
+            echo "$diff" > $path
+            echo "path=$path" >> $GITHUB_OUTPUT
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,7 +59,7 @@ jobs:
        
       - name: Get PR number
         id: number
-        if: $${{ steps.dependencies.outputs.diff != '' }}
+        if: $${{ steps.dependencies.outputs.path != '' }}
         run: |
           branch=$(git branch --show-current)
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].number')
@@ -72,6 +75,6 @@ jobs:
 
       - name: Comment
         if: ${{ steps.number.outputs.number != '' }}
-        run: gh pr comment "${{ steps.number.outputs.number }}" --body "${{ steps.dependencies.outputs.diff }}"
+        run: gh pr comment "${{ steps.number.outputs.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
