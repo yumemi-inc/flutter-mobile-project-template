@@ -49,7 +49,7 @@ jobs:
           else
             echo "There is a change in pubspeck.lock."
             echo $diff > $MD_NAME
-            path="$GITHUB_WORKSPACE/$FILE_NAME"
+            path="$GITHUB_WORKSPACE/$MD_NAME"
             echo "MD_PATH=$path" >> $GITHUB_OUTPUT
           fi
         env:
@@ -76,8 +76,13 @@ jobs:
       - name: Get PR number
         run: |
           branch=$(git branch --show-current)
-          echo 'current branch is $branch'
+          echo "Run bracnh is $branch"
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].numbe')
+
+          if [ -z "$number" ]; then
+            echo "Failed to obtain PR number"
+            exit 1
+          fi
 
           echo "PR Number is $number"
           echo "PR_NUMBER=$number" >> $GITHUB_ENV
