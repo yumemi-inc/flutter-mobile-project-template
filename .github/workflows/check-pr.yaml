@@ -95,7 +95,7 @@ jobs:
         run: melos list --cycles
 
       - name: Check package dependencies
-        uses: ./.github/actions/check-dependencies/action.yml
+        uses: ./.github/actions/check-dependencies
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
 
