@@ -45,7 +45,7 @@ jobs:
       - name: Check package dependencies
         id: dependencies
         run: |
-          baseRefName=$(gh pr view $${{ steps.branch.outputs.branch != '' }} --json baseRefName --jq .baseRefName)
+          baseRefName=$(gh pr view $${{ steps.branch.outputs.branch }} --json baseRefName --jq .baseRefName)
 
           echo "The base branch is $baseRefName"
 
@@ -63,9 +63,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check markdown
+       # https://github.com/DavidAnson/markdownlint-cli2-action
+      - name: Check Markdown
         if: $${{ steps.dependencies.outputs.path != '' }}
-        uses: ./.github/workflows/wc-check-markdown.yaml
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
        
       - name: Get PR number
         id: number
