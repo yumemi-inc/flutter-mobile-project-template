@@ -13,13 +13,16 @@ on:
       - feature/refactor-pkg-depend
   workflow_dispatch:
 
+env:
+  MD_NAME: diff.md
+
 jobs:
   check-dependencies:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
     outputs:
-      HAS_DIFF: ${{ steps.dependencies.outputs.HAS_DIFF }}
+      MD_PATH: ${{ steps.dependencies.outputs.MD_PATH }}
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -41,11 +44,11 @@ jobs:
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
-            echo "HAS_DIFF=false" >> $GITHUB_OUTPUT
           else
             echo "There is a change in pubspeck.lock."
-            echo $diff > diff.md
-            echo "HAS_DIFF=true" >> $GITHUB_OUTPUT
+            echo $diff > $MD_NAME
+            path="$GITHUB_WORKSPACE/$FILE_NAME"
+            echo "MD_PATH=$path" >> $GITHUB_OUTPUT
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,7 +56,7 @@ jobs:
   markdown:
     uses: ./.github/workflows/wc-check-markdown.yaml
     needs: check-dependencies
-    if: ${{ needs.check-dependencies.outputs.HAS_DIFF == 'true' }}
+    if: ${{ needs.check-dependencies.outputs.MD_PATH != '' }}
 
   update-comment:
     runs-on: ubuntu-22.04
@@ -67,7 +70,7 @@ jobs:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        
+
       - name: Get PR number
         run: |
           branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
@@ -83,5 +86,5 @@ jobs:
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           issue-number: env.PR_NUMBER
-          body-path: diff.md
+          body-path: ${{ needs.check-dependencies.outputs.MD_PATH }}
             
