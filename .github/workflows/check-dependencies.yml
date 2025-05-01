@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pubspec:
+  check-dependencies:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
@@ -31,7 +31,13 @@ jobs:
       - name: Check dependent packages
         id: dependencies
         run: |
-          baseRefName=$(gh pr view feature/refactor-pkg-depend --json baseRefName --jq .baseRefName)
+          branch=${GITHUB_HEAD_REF:-$GITHUB_REF_NAME}
+
+          echo $branch
+          echo $GITHUB_HEAD_REF
+          echo $GIHUB_REF_NAME
+          
+          baseRefName=$(gh pr view $branch --json baseRefName --jq .baseRefName)
 
           echo "The base branch is $baseRefName"
 
@@ -41,28 +47,38 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            echo "::set-output name=diff::$diff"
+            echo "diff=$diff" >> $GITHUB_OUTPUT
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   markdown:
     uses: ./.github/workflows/wc-check-markdown.yaml
-    needs: pubspec
-    if: ${{ needs.pubspec.outputs.markdown != '' }}
+    needs: check-dependencies
+    if: ${{ needs.check-dependencies.outputs.markdown != '' }}
 
-  skip-comment:
+  update-comment:
     runs-on: ubuntu-22.04
-    needs: [pubspec, markdown]
+    needs: [check-dependencies, markdown]
     permissions:
+      contents: read
       pull-requests: write
     timeout-minutes: 5
 
     steps:
+      - name: Get PR number
+        run: |
+          number=$(gh pr list --head feature/refactor-pkg-depend  --state open --json number --jq '.[0].numbe')
+
+          echo "PR Number is $number"
+          echo "PR_NUMBER=$number" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       # https://github.com/peter-evans/create-or-update-comment
       - name: Comment
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: ${{ needs.pubspec.outputs.markdown }}
+          issue-number: env.PR_NUMBER
+          body: ${{ needs.check-dependencies.outputs.markdown }}
             
