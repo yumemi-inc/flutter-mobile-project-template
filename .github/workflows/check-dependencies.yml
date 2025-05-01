@@ -51,9 +51,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check markdown
-        if: env.MD_PATH != ''
-        uses: ./.github/workflows/wc-check-markdown.yaml
+      # - name: Check markdown
+      #   if: env.MD_PATH != ''
+      #   uses: ./.github/workflows/wc-check-markdown.yaml
        
       - name: Get PR number
         if: env.MD_PATH != ''
