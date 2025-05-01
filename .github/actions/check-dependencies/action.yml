@@ -1,6 +1,11 @@
 name: Check dependencies
 description: Report package updates and differences in notation in pr comments.
 
+inputs:
+  gh_token:
+    description: 'GitHub API tokene'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -43,7 +48,7 @@ runs:
           echo "path=$path" >> $GITHUB_OUTPUT
         fi
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ inputs.gh_token }} 
       shell: bash
 
     - name: Get PR number
@@ -59,12 +64,12 @@ runs:
 
         echo "number=$number" >> $GITHUB_OUTPUT
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ inputs.gh_token }} 
       shell: bash
       
     - name: Comment
       if: ${{ steps.number.outputs.number != '' }}
       run: gh pr comment "${{ steps.number.outputs.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
       env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ inputs.gh_token }} 
       shell: bash

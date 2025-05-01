@@ -94,7 +94,9 @@ jobs:
         run: melos list --cycles
 
       - name: Check package dependencies
-        uses: .github/actions/check-dependencies
+        uses: ./.github/actions/check-dependencies
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run test
         run: melos run report:test --no-select
