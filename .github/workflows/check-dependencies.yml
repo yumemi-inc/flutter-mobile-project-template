@@ -20,6 +20,7 @@ jobs:
   check-dependencies:
     runs-on: ubuntu-24.04
     permissions:
+      pull-requests: write
       contents: read
     steps:
       # https://github.com/marketplace/actions/checkout
