@@ -73,3 +73,5 @@ jobs:
       - name: Comment
         if: ${{ env.PR_NUMBER != '' }}
         run: gh pr comment "${{ env.PR_NUMBER }}" --body-file "${{ env.MD_PATH }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
