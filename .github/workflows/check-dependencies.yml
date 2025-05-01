@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  MD_PATH: "$GITHUB_WORKSPACE/diff.md"
+  MD_NAME: diff.md
 
 jobs:
   check-dependencies:
@@ -44,7 +44,9 @@ jobs:
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            echo $diff > $MD_PATH
+            path="$GITHUB_WORKSPACE/$MD_NAME"
+            echo $diff > $path
+            echo "MD_PATH=$path" >> $GITHUB_ENV
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,7 +56,7 @@ jobs:
       #   uses: ./.github/workflows/wc-check-markdown.yaml
        
       - name: Get PR number
-        if: env.MD_PATH != ''
+        if: ${{ env.MD_PATH != '' }}
         run: |
           branch=$(git branch --show-current)
           number=$(gh pr list --head $branch --state open --json number --jq '.[0].number')
@@ -70,8 +72,8 @@ jobs:
 
       # https://github.com/peter-evans/create-or-update-comment
       - name: Comment
-        if: env.PR_NUMBER != ''
+        if: ${{ env.PR_NUMBER != '' }}
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
-          issue-number: env.PR_NUMBER
-          body-path: $MD_PATH
+          issue-number: ${{ env.PR_NUMBER }}
+          body-path: ${{ env.MD_PATH }}
