@@ -90,11 +90,11 @@ jobs:
       - name: Check for circular dependencies
         run: melos list --cycles
 
-      - name: Check package dependencies
-        uses: ./.github/actions/check-dependencies
-        with:
-          base_branch:  ${{ github.base_ref }}
-          pr_number: ${{ github.event.pull_request.number }}
+      # - name: Check package dependencies
+      #   uses: ./.github/actions/check-dependencies
+      #   with:
+      #     base_branch:  ${{ github.base_ref }}
+      #     pr_number: ${{ github.event.pull_request.number }}
 
       - name: Run test
         run: melos run report:test --no-select
@@ -148,6 +148,14 @@ jobs:
 
   diff-gen:
     uses: ./.github/workflows/wc-check-diff.yaml
+    needs:
+      - changes
+      - cache-dependencies
+    if: ${{ needs.changes.outputs.gen == 'true' }}
+
+
+  check-dependencies:
+    uses: ./.github/workflows/check-dependencies.yml
     needs:
       - changes
       - cache-dependencies
