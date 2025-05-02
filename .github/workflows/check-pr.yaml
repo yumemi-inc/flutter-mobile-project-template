@@ -90,12 +90,6 @@ jobs:
       - name: Check for circular dependencies
         run: melos list --cycles
 
-      # - name: Check package dependencies
-      #   uses: ./.github/actions/check-dependencies
-      #   with:
-      #     base_branch:  ${{ github.base_ref }}
-      #     pr_number: ${{ github.event.pull_request.number }}
-
       - name: Run test
         run: melos run report:test --no-select
         continue-on-error: true
