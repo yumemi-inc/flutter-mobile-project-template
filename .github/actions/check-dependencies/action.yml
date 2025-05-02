@@ -26,8 +26,6 @@ runs:
           echo "$diff" > $path
           echo "path=$path" >> $GITHUB_OUTPUT
         fi
-      env:
-        GH_TOKEN: ${{ inputs.gh_token }} 
       shell: bash
 
       # https://github.com/peter-evans/create-or-update-comment
