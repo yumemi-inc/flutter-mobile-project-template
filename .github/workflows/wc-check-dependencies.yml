@@ -32,8 +32,8 @@ jobs:
             echo "There is a change in pubspeck.lock."
 
             path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
-            echo "$diff" > $path
-            echo "path=$path" >> $GITHUB_OUTPUT
+            echo "$diff" > "$path"
+            echo "path=$path" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Comment

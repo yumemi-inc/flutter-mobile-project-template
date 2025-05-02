@@ -149,7 +149,7 @@ jobs:
 
 
   check-dependencies:
-    uses: ./.github/workflows/check-dependencies.yml
+    uses: ./.github/workflows/wc-check-dependencies.yml
     needs:
       - changes
       - cache-dependencies
