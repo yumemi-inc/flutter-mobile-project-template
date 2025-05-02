@@ -14,7 +14,7 @@ extension YamlMapToJson on YamlMap {
 /// pubspec.yaml と pubspec.lock ファイルの差分を分析し、Markdown フォーマットで出力するツール
 ///
 /// このツールは以下の２つの比較を行います：
-/// 1. 現在のブランチと origin/main ブランチの pubspec.lock ファイルの差分
+/// 1. 現在のブランチと 指定した ブランチの pubspec.lock ファイルの差分
 /// 2. 現在の pubspec.yaml と pubspec.lock のパッケージバージョン表記の違い
 ///
 /// 使用例:
@@ -41,8 +41,9 @@ extension YamlMapToJson on YamlMap {
 ///
 /// パラメータ:
 /// * [args] - コマンドライン引数
-///   - args[0]: pubspec.yaml のパス
-///   - args[1]: pubspec.lock のパス
+///   - args[0]: 比較対象のブランチ
+///   - args[1]: pubspec.yaml のパス
+///   - args[2]: pubspec.lock のパス
 ///
 /// 例外:
 /// * [ProcessException] - Git コマンドの実行に失敗した場合
