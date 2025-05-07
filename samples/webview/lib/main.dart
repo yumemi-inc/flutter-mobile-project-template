@@ -42,9 +42,9 @@ class _WebViewState extends State<WebPage> {
   final GlobalKey _webViewKey = GlobalKey();
   PullToRefreshController? _pullToRefreshController;
   InAppWebViewController? _webViewController;
-  bool isLoading = false;
-  bool canPop = false;
-  bool hasError = false;
+  bool _isLoading = false;
+  bool _canPop = false;
+  bool _hasError = false;
 
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _WebViewState extends State<WebPage> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: canPop,
+      canPop: _canPop,
       onPopInvokedWithResult: (didPop, _) async {
         if (didPop) {
           return;
@@ -98,7 +98,7 @@ class _WebViewState extends State<WebPage> {
         body: Stack(
           children: [
             Visibility(
-              visible: !hasError,
+              visible: !_hasError,
               child: InAppWebView(
                 onWebViewCreated: (controller) {
                   _webViewController = controller;
@@ -110,7 +110,7 @@ class _WebViewState extends State<WebPage> {
                 pullToRefreshController: _pullToRefreshController,
                 onLoadStart: (_, __) async {
                   setState(() {
-                    isLoading = true;
+                    _isLoading = true;
                   });
                 },
                 initialSettings: InAppWebViewSettings(
@@ -119,39 +119,39 @@ class _WebViewState extends State<WebPage> {
                 onProgressChanged: (_, progress) async {
                   if (progress == 100) {
                     setState(() {
-                      isLoading = false;
+                      _isLoading = false;
                     });
                     await _pullToRefreshController?.endRefreshing();
                   }
                   final canGoBack = await _webViewController!.canGoBack();
                   setState(() {
-                    canPop = canGoBack;
+                    _canPop = canGoBack;
                   });
                 },
                 onLoadStop: (_, __) async {
                   await _pullToRefreshController?.endRefreshing();
 
                   setState(() {
-                    isLoading = false;
+                    _isLoading = false;
                   });
                 },
                 onReceivedError: (controller, request, error) async {
-                  if (isLoading) {
+                  if (_isLoading) {
                     await _pullToRefreshController?.endRefreshing();
 
                     setState(() {
-                      isLoading = false;
+                      _isLoading = false;
                     });
                   }
                   if (request.isForMainFrame ?? true) {
                     setState(() {
-                      hasError = true;
+                      _hasError = true;
                     });
                   }
                 },
               ),
             ),
-            if (hasError)
+            if (_hasError)
               Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +160,7 @@ class _WebViewState extends State<WebPage> {
                     TextButton(
                       onPressed: () async {
                         setState(() {
-                          hasError = false;
+                          _hasError = false;
                         });
                         await onRefresh();
                       },
@@ -169,7 +169,7 @@ class _WebViewState extends State<WebPage> {
                   ],
                 ),
               ),
-            if (isLoading)
+            if (_isLoading)
               const Center(
                 child: CircularProgressIndicator.adaptive(),
               ),
