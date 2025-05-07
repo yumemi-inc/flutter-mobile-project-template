@@ -4,7 +4,7 @@ description: featureパッケージの主要部分を作成するためのbrick�
 version: 0.1.0
 
 environment:
-  mason: ">=0.1.0-dev.52 <0.1.0"
+  mason: ">=0.1.1 <0.1.2"
 
 vars:
   feature_name:
