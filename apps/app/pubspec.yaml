@@ -52,9 +52,9 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.5.7
   go_router_builder: ^2.7.2
-  json_serializable: ^6.8.0
-  riverpod_generator: ^2.4.0
-  riverpod_lint: ^2.3.10
+  json_serializable: ^6.9.0
+  riverpod_generator: ^2.6.3
+  riverpod_lint: ^2.6.3
   yumemi_lints: ^3.1.0
 
 flutter:
