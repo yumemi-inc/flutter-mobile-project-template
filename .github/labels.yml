@@ -108,5 +108,5 @@
   description: apps website package
 
 - name: "@samples/webview"
-  coolor: "2e8b57"
+  color: c4de78
   description: samples webview package
