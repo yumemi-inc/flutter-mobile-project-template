@@ -97,7 +97,7 @@ class _WebViewState extends State<WebPage> {
         ),
         body: Stack(
           children: [
-            Visibility(
+            Visibility.maintain(
               visible: !_hasError,
               child: InAppWebView(
                 onWebViewCreated: (controller) {
