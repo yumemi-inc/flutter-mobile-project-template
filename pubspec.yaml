@@ -27,14 +27,14 @@ workspace:
   - packages/utils/pagination
 
 dev_dependencies:
-  mason_cli: ^0.1.0-dev.55
+  mason_cli: ^0.1.2
   melos: ^7.0.0-dev.7
   path: ^1.9.1
   yaml: ^3.1.3
   yaml_edit: ^2.2.2
 
 dependency_overrides:
-  file: ^7.0.0
+  file: ^7.0.1
   path: ^1.9.1
 
 melos:
@@ -55,7 +55,7 @@ melos:
         flutter_hooks: ^0.20.5
         flutter_riverpod: ^2.6.1
         freezed_annotation: ^2.4.4
-        hooks_riverpod: ^2.5.1
+        hooks_riverpod: ^2.6.1
         intl: ^0.19.0
         json_annotation: ^4.9.0
         riverpod_annotation: ^2.6.1
@@ -64,11 +64,11 @@ melos:
         build_runner: ^2.4.14
         custom_lint: ^0.7.0
         freezed: ^2.5.7
-        json_serializable: ^6.8.0
-        riverpod_generator: ^2.4.0
-        riverpod_lint: ^2.3.10
+        json_serializable: ^6.9.0
+        riverpod_generator: ^2.6.3
+        riverpod_lint: ^2.6.3
         yumemi_lints: ^3.1.0
-        test: ^1.25.2
+        test: ^1.25.8
         flutter_gen_runner: ^5.8.0
       hooks:
         post: melos run bootstrap:post

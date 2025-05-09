@@ -4,7 +4,7 @@ description: Create Flutter package under utils
 version: 0.1.0+1
 
 environment:
-  mason: ">=0.1.0-dev.57 <0.1.0"
+  mason: ">=0.1.1 <0.1.2"
 
 vars:
   package_name:
