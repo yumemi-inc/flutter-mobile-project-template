@@ -45,7 +45,7 @@ jobs:
             if [ "$issue_numbers_length" -gt 1 ]; then
               exit 1
             elif [ "$issue_numbers_length" -eq 0 ]; then
-              issue_url=$(gh issue create --title "Update package" --label $ISSUE_LABEL --body-file ./tools/templates/issue_improve.md)
+              issue_url=$(gh issue create --title "Update package" --label "$ISSUE_LABEL" --body-file ./tools/templates/issue_improve.md)
               issue_number=$(echo "$issue_url" | sed -E 's/.*\/issues\/([0-9]+)$/\1/')
               echo "$issue_number"
             else
