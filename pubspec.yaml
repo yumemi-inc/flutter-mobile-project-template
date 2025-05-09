@@ -22,6 +22,7 @@ workspace:
   # samples
   - packages/samples/github_repository
   - samples/github_app
+  - samples/webview
   # utils
   - packages/utils/pagination
 

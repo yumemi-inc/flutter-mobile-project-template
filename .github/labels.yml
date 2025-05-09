@@ -106,3 +106,7 @@
 - name: "@apps/website"
   color: 3b4ff2
   description: apps website package
+
+- name: "@samples/webview"
+  color: c4de78
+  description: samples webview package
