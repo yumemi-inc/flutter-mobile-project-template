@@ -45,7 +45,6 @@ jobs:
               echo "エラー: 複数の Issue が見つかりました ($issue_numbers_length 件)"
               exit 1
             elif [ "$issue_numbers_length" -eq 0 ]; then
-              echo "Issue が見つからないので新しく作成します"
               issue_url=$(gh issue create --title "Update package" --body-file .github/ISSUE_TEMPLATE/templates/improve.template.md)
               issue_number=$(echo "$issue_url" | sed -E 's/.*\/issues\/([0-9]+)$/\1/')
               echo "$issue_number"
