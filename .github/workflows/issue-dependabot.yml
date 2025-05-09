@@ -1,10 +1,8 @@
 name: Issue-Dependbot
 
 on:
-  workflow_dispatch: {}
-  push:
-    branches:
-      - feature/35-update-package
+  schedule:
+    - cron: "0 0 * * 1" # 日本標準時感 毎週月曜日の朝9:00
 
 env:
   ISSUE_LABEL: package_update
@@ -27,7 +25,7 @@ jobs:
         run: |
           update=$(dart run ./tools/update_package.dart)
 
-          if [ -z $update ]; then
+          if [ -z "$update" ]; then
             echo "No update"
             exit 0;
           fi
