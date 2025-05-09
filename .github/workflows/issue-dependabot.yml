@@ -1,7 +1,7 @@
 name: Issue-Dependbot
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch: {}
   push:
     branches:
       - feature/35-update-package
@@ -10,7 +10,7 @@ env:
   ISSUE_LABEL: package_update
 
 jobs:
-  condition:
+  dependbot:
     runs-on: ubuntu-22.04
     permissions:
       issues: write
