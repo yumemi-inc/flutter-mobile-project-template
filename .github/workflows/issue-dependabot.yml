@@ -36,7 +36,7 @@ jobs:
 
       - name: Get Issue Number
         id: issue
-        if:  ${{ steps.package.outputs.path != '' }}
+        if: ${{ steps.package.outputs.path != '' }}
         run: |
           getIssueNumber() {
             issue_numbers=$(gh issue list --label "$ISSUE_LABEL" --json number | jq '.[].number')
