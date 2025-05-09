@@ -1,13 +1,16 @@
-import 'dart:io';
 import 'dart:convert';
+import 'dart:io';
+
 import 'package:path/path.dart';
 import 'package:yaml/yaml.dart';
+
 import 'utils/path.dart';
 
 extension YamlMapToJson on YamlMap {
   Map<String, dynamic> toJson() {
     final jsonString = jsonEncode(this);
-    return jsonDecode(jsonString);
+    final toJson = jsonDecode(jsonString) as Map<String, dynamic>;
+    return toJson;
   }
 }
 
@@ -33,7 +36,8 @@ extension YamlMapToJson on YamlMap {
 ///
 /// 2. バージョン表記の違いがある場合:
 /// ```markdown
-/// ## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
+/// Compare pubspec.yaml and pubspec.lock. Packages with
+/// different version notations
 /// | package | pubspec.yaml | pubspec.lock |
 /// | :---    | :---         | :---         |
 /// | package_name | ^1.0.0 | 1.0.1 |
@@ -62,7 +66,7 @@ Future<void> main(List<String> args) async {
 
   final compareValue = await diffLockContent(refBranch, lockPath, currentLock);
 
-  final rows = [];
+  final rows = <String>[];
 
   if (compareValue.isNotEmpty) {
     rows.add('''
@@ -73,7 +77,7 @@ Future<void> main(List<String> args) async {
 ''');
 
     for (final entry in compareValue.entries) {
-      final row = '|' + entry.key + '|' + entry.value.toString() + '|' + '\n';
+      final row = '|${entry.key}|${entry.value}|\n';
       rows.add(row);
     }
 
@@ -86,19 +90,19 @@ Future<void> main(List<String> args) async {
     rows.add('''
 
 ## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
-      
-| package | pubspec.yaml | pubspec.lock | 
+
+| package | pubspec.yaml | pubspec.lock |
 | :---    | :---         | :---         |
 ''');
 
     for (final diff in diffVersions) {
       final row =
-          '| ${diff['package']} | ${diff['pubspec.yaml']} | ${diff['pubspec.lock']} | \n';
+          '''| ${diff['package']} | ${diff['pubspec.yaml']} | ${diff['pubspec.lock']} | \n''';
       rows.add(row);
     }
   }
 
-  stdout.writeln(rows.join('').trim());
+  stdout.writeln(rows.join().trim());
 }
 
 /// 実行ブランチとorigin/mainのpubspec.lockの内容を比較し、表記が異なるものを返す
@@ -132,47 +136,62 @@ Future<Map<String, dynamic>> diffLockContent(
       'Failed to execute git show $remoteRepoName/$branch:$path / $stderr',
     );
   }
-  final mainLock = loadYaml(success);
+  final mainLock = loadYaml(success) as YamlMap;
 
-  return compareMap(mainLock, lock);
+  return compareMap(mainLock.toJson(), lock.toJson());
 }
 
 /// pubspec.yamlとpubspec.lockの内容を参照し、versionの表記が異なるものを返す
-Iterable<Map<String, dynamic>> diffPkgVersion(
+Iterable<Map<String, String>> diffPkgVersion(
   YamlMap yaml,
   YamlMap lock,
 ) {
   final yamlJson = yaml.toJson();
 
   final pkgYaml = <String, dynamic>{}
-    ..addAll(yamlJson['dev_dependencies'])
-    ..addAll(yamlJson['dependency_overrides'])
-    ..addAll(yamlJson['melos']['command']['bootstrap']['dependencies'])
-    ..addAll(yamlJson['melos']['command']['bootstrap']['dev_dependencies']);
-  final lockPackages = Map<String, dynamic>.from(lock['packages']);
+    ..addAll(yamlJson['dev_dependencies'] as Map<String, dynamic>)
+    ..addAll(yamlJson['dependency_overrides'] as Map<String, dynamic>)
+    ..addAll(
+      // NOTE: 厳密な型変換は可読性が低下する為
+      // ignore: avoid_dynamic_calls
+      yamlJson['melos']['command']['bootstrap']['dependencies']
+          as Map<String, dynamic>,
+    )
+    ..addAll(
+      // NOTE: 厳密な型は可読性が低下する為
+      // ignore: avoid_dynamic_calls
+      yamlJson['melos']['command']['bootstrap']['dev_dependencies']
+          as Map<String, dynamic>,
+    );
+
+  final lockPackages = Map<String, dynamic>.from(lock['packages'] as Map);
 
   return lockPackages.entries.where((lockPkg) {
     final name = lockPkg.key;
 
     if (pkgYaml.containsKey(name)) {
-      final yamlVersion = pkgYaml[name].replaceFirst('^', '');
-      final lockVersion = lockPkg.value['version'].toString();
+      final yamlVersion = (pkgYaml[name] as String).replaceFirst('^', '');
+      final lockVersion = (lockPkg.value as Map)['version'].toString();
 
       return yamlVersion != lockVersion;
     }
 
     return false;
-  }).map((e) => {
-        "package": e.key,
-        "pubspec.yaml": pkgYaml[e.key],
-        "pubspec.lock": e.value['version']
-      });
+  }).map(
+    (e) => {
+      'package': e.key,
+      'pubspec.yaml': pkgYaml[e.key] as String,
+      'pubspec.lock': (e.value as Map)['version'] as String,
+    },
+  );
 }
 
-/// Compares [Maps] and returns a [Map<String, dynami>] of the elements that differ between [previous] and [current].
+/// Compares Maps and returns a [Map<String, dynami>] of the elements
+/// that differ between [previous] and [current].
+
 Map<String, dynamic> compareMap(
-  Map previous,
-  Map current, [
+  Map<String, dynamic> previous,
+  Map<String, dynamic> current, [
   String prefix = '',
 ]) {
   final result = <String, dynamic>{};
@@ -180,14 +199,19 @@ Map<String, dynamic> compareMap(
   final allKeys = {...previous.keys, ...current.keys};
 
   for (final key in allKeys) {
-    final fullKey = prefix.isEmpty ? '$key' : '$prefix.$key';
+    final fullKey = prefix.isEmpty ? key : '$prefix.$key';
     final previousValue = previous[key];
     final currentValue = current[key];
 
     if (previousValue is Map || currentValue is Map) {
-      final childDiff =
-          compareMap(previousValue ?? {}, currentValue ?? {}, fullKey);
-      if (childDiff.isNotEmpty) result.addAll(childDiff);
+      final childDiff = compareMap(
+        previousValue as Map<String, dynamic>? ?? {},
+        currentValue as Map<String, dynamic>? ?? {},
+        fullKey,
+      );
+      if (childDiff.isNotEmpty) {
+        result.addAll(childDiff);
+      }
     } else if (previousValue != currentValue) {
       result[fullKey] = {'previous': previousValue, 'current': currentValue};
     }

@@ -1,3 +1,4 @@
+import 'dart:developer' as dev;
 import 'dart:io' as io;
 
 final _useAnsi = io.stdout.supportsAnsiEscapes &&
@@ -14,7 +15,7 @@ String _code(String ansiCode) => _useAnsi ? ansiCode : '';
 
 void log(String message) {
   final lines = message.trimRight().split('\n');
-  print("  ${lines.join('\n  ')}");
+  dev.log("  ${lines.join('\n  ')}");
 }
 
 Never fail(String message) {
