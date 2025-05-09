@@ -6,6 +6,9 @@ on:
     branches:
       - feature/35-update-package
 
+env:
+  ISSUE_LABEL: package_update
+
 jobs:
   condition:
     runs-on: ubuntu-22.04
@@ -38,14 +41,14 @@ jobs:
         if:  ${{ steps.package.outputs.path != '' }}
         run: |
           getIssueNumber() {
-            issue_numbers=$(gh issue list --label "package_update" --json number | jq '.[].number')
+            issue_numbers=$(gh issue list --label "$ISSUE_LABEL" --json number | jq '.[].number')
             
             issue_numbers_length=$(echo "$issue_numbers" | grep -c .)
             if [ "$issue_numbers_length" -gt 1 ]; then
               echo "エラー: 複数の Issue が見つかりました ($issue_numbers_length 件)"
               exit 1
             elif [ "$issue_numbers_length" -eq 0 ]; then
-              issue_url=$(gh issue create --title "Update package" --body-file ./tools/templates/issue_improve.md)
+              issue_url=$(gh issue create --title "Update package" --label $ISSUE_LABEL --body-file ./tools/templates/issue_improve.md)
               issue_number=$(echo "$issue_url" | sed -E 's/.*\/issues\/([0-9]+)$/\1/')
               echo "$issue_number"
             else
