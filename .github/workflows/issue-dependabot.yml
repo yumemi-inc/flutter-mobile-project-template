@@ -10,8 +10,7 @@ jobs:
   condition:
     runs-on: ubuntu-22.04
     permissions:
-      pull-requests: write
-      contents: read
+      issues: write
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -59,6 +58,8 @@ jobs:
 
           echo "Issue Number: $issue_number"
           echo "number=$issue_number" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Comment
         if: ${{ steps.issue.outputs.number != '' }}
