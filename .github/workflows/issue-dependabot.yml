@@ -1,0 +1,74 @@
+name: Issue-Dependbot
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+      - feature/35-update-package
+
+jobs:
+  condition:
+    runs-on: ubuntu-22.04
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Check for package updates
+        id: package
+        run: |
+          update=$(dart run ./tools/update_package.dart)
+
+          if [ -z $update ]; then
+            echo "No update"
+            exit 0;
+          fi
+
+          path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
+          echo "$update" > "$path"
+          echo "path=$path" >> "$GITHUB_OUTPUT"
+
+      - name: Get Issue Number
+        id: issue
+        if:  ${{ steps.package.outputs.path != '' }}
+        run: |
+          getIssueNumber() {
+            issue_numbers=$(gh issue list --label "package_update" --json number | jq '.[].number')
+            
+            issue_numbers_length=$(echo "$issue_numbers" | grep -c .)
+            if [ "$issue_numbers_length" -gt 1 ]; then
+              echo "エラー: 複数の Issue が見つかりました ($issue_numbers_length 件)"
+              exit 1
+            elif [ "$issue_numbers_length" -eq 0 ]; then
+              echo "Issue が見つからないので新しく作成します"
+              issue_url=$(gh issue create --title "Update package" --body-file .github/ISSUE_TEMPLATE/templates/improve.template.md)
+              issue_number=$(echo "$issue_url" | sed -E 's/.*\/issues\/([0-9]+)$/\1/')
+              echo "$issue_number"
+            else
+              echo "$issue_numbers"
+            fi
+          }
+          
+          issue_number=$(getIssueNumber)
+
+          echo "Issue Number: $issue_number"
+          echo "number=$issue_number" >> "$GITHUB_OUTPUT"
+        
+      - name: Comment
+        if: ${{ steps.issue.outputs.number != '' }}
+        run: gh issue comment "${{ steps.issue.outputs.number  }}" --body-file "${{ steps.package.outputs.path }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
+              
+
+
+    
