@@ -14,7 +14,7 @@ extension YamlMapToJson on YamlMap {
 /// pubspec.yaml と pubspec.lock ファイルの差分を分析し、Markdown フォーマットで出力するツール
 ///
 /// このツールは以下の２つの比較を行います：
-/// 1. 現在のブランチと origin/main ブランチの pubspec.lock ファイルの差分
+/// 1. 現在のブランチと 指定した ブランチの pubspec.lock ファイルの差分
 /// 2. 現在の pubspec.yaml と pubspec.lock のパッケージバージョン表記の違い
 ///
 /// 使用例:
@@ -41,15 +41,17 @@ extension YamlMapToJson on YamlMap {
 ///
 /// パラメータ:
 /// * [args] - コマンドライン引数
-///   - args[0]: pubspec.yaml のパス
-///   - args[1]: pubspec.lock のパス
+///   - args[0]: 比較対象のブランチ
+///   - args[1]: pubspec.yaml のパス
+///   - args[2]: pubspec.lock のパス
 ///
 /// 例外:
 /// * [ProcessException] - Git コマンドの実行に失敗した場合
 /// * [FileSystemException] - ファイルの読み込みに失敗した場合
 Future<void> main(List<String> args) async {
-  final yamlPath = args[0];
-  final lockPath = args[1];
+  final refBranch = args[0];
+  final yamlPath = args[1];
+  final lockPath = args[2];
 
   final rootDir = fetchGitRootDirPath();
 
@@ -58,7 +60,7 @@ Future<void> main(List<String> args) async {
   final lockFile = File(join(rootDir, lockPath));
   final currentLock = loadYaml(lockFile.readAsStringSync()) as YamlMap;
 
-  final compareValue = await diffLockContent(lockPath, currentLock);
+  final compareValue = await diffLockContent(refBranch, lockPath, currentLock);
 
   final rows = [];
 
@@ -100,10 +102,15 @@ Future<void> main(List<String> args) async {
 }
 
 /// 実行ブランチとorigin/mainのpubspec.lockの内容を比較し、表記が異なるものを返す
-Future<Map<String, dynamic>> diffLockContent(String path, YamlMap lock) async {
+Future<Map<String, dynamic>> diffLockContent(
+  String branch,
+  String path,
+  YamlMap lock, {
+  String remoteRepoName = 'origin',
+}) async {
   const executable = 'git';
 
-  const fetchArguments = ['fetch', 'origin', 'main'];
+  final fetchArguments = ['fetch', remoteRepoName, branch];
   final exitCode =
       await Process.run(executable, fetchArguments).then((e) => e.exitCode);
   if (exitCode != 0) {
@@ -114,7 +121,7 @@ Future<Map<String, dynamic>> diffLockContent(String path, YamlMap lock) async {
     );
   }
 
-  final showArguments = ['show', 'origin/main:$path'];
+  final showArguments = ['show', '$remoteRepoName/$branch:$path'];
   final (success, error) = await Process.run(executable, showArguments)
       .then((value) => (value.stdout as String, value.stderr as String));
 
@@ -122,7 +129,7 @@ Future<Map<String, dynamic>> diffLockContent(String path, YamlMap lock) async {
     throw ProcessException(
       executable,
       showArguments,
-      'Failed to execute git show main:$path / $stderr',
+      'Failed to execute git show $remoteRepoName/$branch:$path / $stderr',
     );
   }
   final mainLock = loadYaml(success);

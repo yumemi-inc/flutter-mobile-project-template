@@ -1,14 +1,10 @@
 name: Check dependencies
 
 on:
-  pull_request:
-    types: [opened, synchronize]
-    paths:
-      - '**/pubspec.yaml'
-      - '**/pubspec.lock'
+  workflow_call:
 
 jobs:
-  pubspec-diff:
+  check-dependencies:
     runs-on: ubuntu-24.04
     permissions:
       pull-requests: write
@@ -21,15 +17,27 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Check diff of pubspec.lock
+      - name: Check package dependencies
+        id: dependencies
         run: |
-          diff=$(dart run ./tools/diff_yaml.dart pubspec.yaml pubspec.lock)
+          baseRefName="${{ github.base_ref }}"
+
+          echo "The base branch is $baseRefName"
+
+          diff=$(dart run ./tools/diff_yaml.dart $baseRefName pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
             echo "No change in pubspeck.lock"
           else
             echo "There is a change in pubspeck.lock."
-            gh pr comment "${{ github.event.number }}" --body "$diff"
+
+            path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
+            echo "$diff" > "$path"
+            echo "path=$path" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Comment
+        if: ${{ steps.dependencies.outputs.path != '' }}
+        run: gh pr comment "${{ github.event.pull_request.number }}" --body-file "${{ steps.dependencies.outputs.path }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
