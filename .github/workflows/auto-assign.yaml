@@ -4,9 +4,6 @@ on:
   pull_request:
     types: [ opened, ready_for_review ]
 
-permissions:
-  pull-requests: write
-
 jobs:
   count-reviewers:
     if: github.event.pull_request.draft == false
@@ -29,6 +26,8 @@ jobs:
     if: needs.count-reviewers.outputs.count == '0'
     runs-on: ubuntu-22.04
     timeout-minutes: 5
+    permissions:
+      pull-requests: write
     steps:
       # https://github.com/marketplace/actions/create-github-app-token
       - name: Generate a token
@@ -61,6 +60,8 @@ jobs:
     if: always()
     runs-on: ubuntu-22.04
     timeout-minutes: 5
+    permissions:
+      pull-requests: write
     steps:
       # https://github.com/marketplace/actions/review-assign-action
       - name: Request assignees
