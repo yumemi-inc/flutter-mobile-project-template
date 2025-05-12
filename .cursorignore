@@ -1,1 +1,84 @@
+# 最初にすべてのファイルを除外
 *
+
+# 許可するディレクトリ
+!apps
+!apps/**
+!docs
+!docs/**
+!packages
+!packages/**
+!samples
+!samples/**
+!scripts
+!scripts/**
+!tools
+!tools/**
+
+# 自身も許可
+!.cursorignore
+
+# 注意: Cursorはデフォルトで.gitignoreに記載されたファイルも自動的に除外します
+# 以下の設定は.gitignoreの内容と重複しますが、.gitignore が .cursorignore 扱いにならないため明示的に記載しています
+
+# プラットフォーム 関連の除外
+ios/
+android/
+
+# 共通の除外パターン
+# Flutter/Dart関連
+.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+**/build/
+**/doc/api/
+**/ios/Flutter/.last_build_id
+
+# Symbolication関連
+app.*.symbols
+app.*.map.json
+
+# IDEとエディタ関連
+*.iml
+**/*.iml
+*.ipr
+*.iws
+.idea/
+**/.idea/*
+!/.idea/jsonSchemas.xml
+!/.idea/runConfigurations/
+
+# Android Studio関連
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Mason関連
+**/.mason
+**/mason-lock.json
+
+# Firebase関連
+**/.firebase
+**/firebase-debug.log
+
+# FVM関連
+**/.fvm
+
+# Node.js関連
+**/node_modules
+
+# その他
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
