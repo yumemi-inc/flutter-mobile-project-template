@@ -25,6 +25,7 @@ permissions:
 jobs:
   changes:
     runs-on: ubuntu-22.04
+    timeout-minutes: 5
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
       actions: ${{ steps.filter.outputs.actions }}
