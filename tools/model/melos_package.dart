@@ -44,6 +44,6 @@ final class MelosPackage {
 
   @override
   String toString() {
-    return 'MelosPackage(name: $name, version: $version, private: $private, location: $location, type: $type)';
+    return '''MelosPackage(name: $name, version: $version, private: $private, location: $location, type: $type)''';
   }
 }
