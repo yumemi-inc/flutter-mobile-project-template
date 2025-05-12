@@ -4,23 +4,23 @@ description: "Setup application runtime for Flutter"
 runs:
   using: "composite"
   steps:
-    # https://github.com/kuhnroyal/flutter-fvm-config-action
-    - name: Fetch flutter config
-      uses: kuhnroyal/flutter-fvm-config-action@34c3905bc939a4ff9d9cb07d5a977493fa73b2aa # v2.0
-      id: fvm-config-action
 
-    # https://github.com/subosito/flutter-action
+    # https://github.com/jdx/mise-action
     - name: Setup flutter
-      uses: subosito/flutter-action@1c5eb12d812966ca84680edc38353a0851c8fd56 # v2.14.0
+      uses: jdx/mise-action@7a111ead46986ccad89a74ad013ba2a7c08c9e67 # v2.2.1
       with:
-        flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
-        channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
         cache: true
+
+    # NOTE: 後述の melosコマンドが実行できないためPATHを通します。
+    # PUB_CACHE: $HOME/.pub-cache に設定
+    - name: Export PUB_CACHE
+      run: |
+        echo "PUB_CACHE=$HOME/.pub-cache" >> "$GITHUB_ENV"
+        echo "$HOME/.pub-cache/bin"  >> "$GITHUB_PATH"
+      shell: bash
 
     - name: Setup melos
       run: |
-        mkdir -p .fvm
-        ln -s $FLUTTER_ROOT .fvm/flutter_sdk
         MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r)
         dart pub global activate melos $MELOS_VERSION
         melos bootstrap
