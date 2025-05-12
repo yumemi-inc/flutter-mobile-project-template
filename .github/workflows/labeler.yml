@@ -7,9 +7,6 @@ jobs:
   triage:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       # https://github.com/srvaroa/labeler
       - name: Label manager for PRs and Issues based on configurable conditions
