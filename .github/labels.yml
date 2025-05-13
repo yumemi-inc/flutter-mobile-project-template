@@ -81,11 +81,6 @@
   description: packages features setting package
   from_name: "@cores/setting"
 
-- name: "@packages/features/webview"
-  color: 6fe0ba
-  description: packages features webview package
-  from_name: "@cores/webview"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development

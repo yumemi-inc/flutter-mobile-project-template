@@ -18,7 +18,7 @@ workspace:
   - packages/features/force_update
   - packages/features/maintain
   - packages/features/setting
-  - packages/features/webview
+
   # samples
   - packages/samples/github_repository
   - samples/github_app
