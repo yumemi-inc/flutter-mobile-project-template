@@ -17,13 +17,13 @@
 
 ## 3. ワークフローの内容を変更する
 
-`.github/workflows/firebase-hosting-pull-request.yaml` を修正する。
+`.github/workflows/github-pages-pull-request.yml` を修正する。
 
 ### 3-1. リポジトリ名条件の削除
 
 このテンプレートプロジェクトを元に新規プロジェクトを作成した際に、誤ってワークフローが実行されないように、リポジトリ名による有効化条件を記述しています。この記述はセットアップ後は不要になりますので、削除してください。
 
-![firebase-hosting-preview-02.png](https://github.com/user-attachments/assets/04475d96-986d-44de-b945-25c4308b5d26)
+![github-pages-pull-request.png](https://github.com/user-attachments/assets/04475d96-986d-44de-b945-25c4308b5d26)
 
 <!-- Links -->
 
