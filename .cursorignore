@@ -14,7 +14,6 @@ android/
 .pub/
 **/build/
 **/doc/api/
-**/ios/Flutter/.last_build_id
 
 # Symbolication関連
 app.*.symbols
@@ -22,18 +21,11 @@ app.*.map.json
 
 # IDEとエディタ関連
 *.iml
-**/*.iml
 *.ipr
 *.iws
 .idea/
-**/.idea/*
 !/.idea/jsonSchemas.xml
 !/.idea/runConfigurations/
-
-# Android Studio関連
-/android/app/debug
-/android/app/profile
-/android/app/release
 
 # Mason関連
 **/.mason
@@ -42,9 +34,6 @@ app.*.map.json
 # Firebase関連
 **/.firebase
 **/firebase-debug.log
-
-# FVM関連
-**/.fvm
 
 # Node.js関連
 **/node_modules
