@@ -16,14 +16,16 @@
 - IDE をインストールしてください。
   - [IntelliJ IDEA], [Android Studio] または [Visual Studio Code]
   - [Xcode]
-- [fvm] コマンドを有効にしてください。
-  - また、以下のコマンドを実行して`.fvmrc`で指定されたバージョンを有効化してください。
-    (mason、melosはいずれもfvm経由でのアクセスを行うと問題が起こり得るため、fvmで現在のバージョンをglobalに設定するようにしている)
 
-    ```shell
-    fvm use --force
-    FLUTTER_VERSION=$(cat .fvmrc | yq ".flutter" -r) && fvm global $FLUTTER_VERSION
-    ```
+- [mise] コマンドを有効にしてください。
+
+  - また、以下のコマンドを実行して`mise.toml`で指定されたバージョンを有効化してください
+     (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
+
+  ```shell
+  mise use
+  FLUTTER_VERSION=$(grep '^flutter =' mise.toml | awk -F'"' '{print $2}') && mise use -g flutter@$FLUTTER_VERSION
+  ```
 
 - [melos] コマンドを有効にしてください。
   - pubspec.lock ファイルを解析して melos コマンドのバージョンを取得するため、[yq] コマンドをインストールしてください。
@@ -46,15 +48,21 @@
     mason get
     ```
 
-### FVM を使用するように IDE を設定
+### Mise を使用するように IDE を設定
 
 [Visual Studio Code] を使用している場合は、ウィンドウをリロードして SDK を再読み込みしてください。
 
-[IntelliJ IDEA] または [Android Studio] を使っている場合以下の手順で設定してください。
+[IntelliJ IDEA] または [Android Studio] を使っている場合以下の手順で設定してください
 
-1. 「Languages & Frameworks」 > 「Flutter」に移動するか、「Flutter」を検索して、Flutter SDK のパスを変更します。
-2. プロジェクトのルートディレクトリにある fvm シンボリックリンクの絶対パスをコピーします。
-例: `/absolute-project-path/.fvm/flutter_sdk`
+```shell
+# Flutter SDK の絶対パスを表示
+mise where flutter
+
+# <USER_PATH>/.local/share/mise/installs/flutter/<FLUTTER_VERSION>
+```
+
+1. 上記のコマンドを実行しSDKの絶対パスをコピーします。
+2. 「Languages & Frameworks」 > 「Flutter」に移動するか、「Flutter」を検索して、Flutter SDK のパスを変更します。
 3. 変更を適用します。
 4. 新しい設定が反映されるようにエディタを再起動します。
 
@@ -83,7 +91,7 @@ Please check:
 
 [Xcode]: https://developer.apple.com/xcode/
 
-[fvm]: https://fvm.app/
+[mise]: https://mise.jdx.dev/
 
 [melos]: https://melos.invertase.dev/
 
