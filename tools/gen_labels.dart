@@ -1,4 +1,3 @@
-// ignore_for_file: unreachable_from_main
 import 'dart:io';
 import 'dart:math';
 
@@ -13,9 +12,7 @@ import 'utils/logger.dart';
 import 'utils/melos.dart';
 import 'utils/path.dart';
 
-/**
- * `.github/labels.yml` のパッケージ部分を生成する
- */
+/// `.github/labels.yml` のパッケージ部分を生成する
 void main(List<String> args) {
   final rootDir = fetchGitRootDirPath();
   log('rootDir: $rootDir');
@@ -68,9 +65,7 @@ void main(List<String> args) {
   log('Labels updated successfully.');
 }
 
-/**
- * パッケージ部分のラベルを生成する
- */
+/// パッケージ部分のラベルを生成する
 String _generateLabelsContent({
   required String rootDir,
   required List<String> labelsContentLines,
@@ -100,9 +95,7 @@ String _generateLabelsContent({
   return formattedGenerateContentLines.join('\n');
 }
 
-/**
- * ランダムなカラーコードを生成
- */
+/// ランダムなカラーコードを生成
 String _generateRandomColor() {
   // ランダムなRGB値を生成
   final random = Random();
@@ -119,9 +112,7 @@ String _generateRandomColor() {
 }
 
 extension on List<MelosPackage> {
-  /**
-   * labels 要素の一覧を生成する
-   */
+  /// labels 要素の一覧を生成する
   List<String> generatePackageLabels({
     required String rootDir,
     required YamlList? existingGeneratedLabelsYaml,
@@ -135,7 +126,7 @@ extension on List<MelosPackage> {
       final existingLabel = existingGeneratedLabelsYaml?.firstWhere(
         (label) => (label as YamlMap)['name'] == labelName,
         orElse: () => null,
-      );
+      ) as YamlMap?;
       final existingColor = existingLabel?['color']?.toString();
       final existingDescription = existingLabel?['description']?.toString();
       final existingFromName = existingLabel?['from_name']?.toString();
