@@ -23,9 +23,9 @@ app.*.map.json
 *.iml
 *.ipr
 *.iws
-.idea/
-!/.idea/jsonSchemas.xml
-!/.idea/runConfigurations/
+.idea/*
+!.idea/jsonSchemas.xml
+!.idea/runConfigurations/
 
 # Mason関連
 .mason
