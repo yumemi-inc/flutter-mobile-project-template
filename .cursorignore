@@ -1,12 +1,20 @@
-# 注意: Cursorはデフォルトで.gitignoreに記載されたファイルも自動的に除外します
-# 以下の設定は.gitignoreの内容と重複しますが、.gitignore が .cursorignore 扱いにならないため明示的に記載しています
-
-# プラットフォーム 関連の除外
+# プラットフォーム関連
 ios/
 android/
 
-# 共通の除外パターン
-# Flutter/Dart関連
+# 以下の設定は .gitignore に記載されているもの
+#
+# 注意:
+#   Cursor はデフォルトでルートの .gitignore に記載されたファイルも自動的に除外します。
+#   しかし、 Cursor 0.49.6 では .cursorignore ではなく .cursorindexingignore 
+#   として扱われてしまっています。
+#   したがって、以下の設定は .gitignore の内容と重複しますが明示的に記載しています。
+#
+# 参考:
+# - https://docs.cursor.com/context/ignore-files#default-ignore-list
+
+
+# Flutter/Dart 関連
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
@@ -15,11 +23,13 @@ android/
 build/
 doc/api/
 
-# Symbolication関連
+# Symbolication 関連
 app.*.symbols
+
+# Obfuscation 関連
 app.*.map.json
 
-# IDEとエディタ関連
+# IDE とエディタ関連
 *.iml
 *.ipr
 *.iws
@@ -27,16 +37,16 @@ app.*.map.json
 !.idea/jsonSchemas.xml
 !.idea/runConfigurations/
 
-# Mason関連
+# Mason 関連
 .mason
 mason-lock.json
 
-# Firebase関連
+# Firebase 関連
 .firebase
 firebase-debug.log
 
-# Node.js関連
-node_modules
+# Node.js 関連
+node_modules/
 
 # その他
 *.class
