@@ -1,7 +1,5 @@
 ## はじめに
 
-言語: 日本語 | [English](/docs/en/GET_STARTED.md)
-
 ### IDE バージョン
 
 | IDE | バージョン |
