@@ -59,10 +59,6 @@ labels:
     files:
       - packages/utils/pagination/.+
 
-  - label: "@apps/website"
-    files:
-      - apps/website/.+
-
   - label: "@samples/webview"
     files:
       - samples/webview/.+

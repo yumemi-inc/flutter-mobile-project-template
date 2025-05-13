@@ -3,8 +3,6 @@ removal_list_on_use_template.txt
 
 LICENSE.md
 
-apps/website
-
 .github/actions/cleanup-copilot-settings
 .github/actions/cleanup-samples
 .github/actions/remove-unnecessary-files
