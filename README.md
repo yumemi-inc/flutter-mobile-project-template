@@ -50,3 +50,30 @@ GitHub Actions を用いた CI/CD パイプラインの基本的なワークフ�
 - 小規模なプロジェクト
 - 短期的なプロトタイピング
 - 継続的な機能追加やメンテナンスを予定していないアプリケーション
+
+## 本テンプレートの利用方法
+
+以下の手順でプロジェクトを開始し、セットアップを進めてください。
+
+### 1. GitHub テンプレート機能を利用してプロジェクトを新規作成
+
+このリポジトリの GitHub ページ上部にある緑色の「Use this template」ボタンをクリックし、「Create a new repository」を選択して、必要な情報を入力し、リポジトリを作成します。
+
+[テンプレートからリポジトリを作成する - GitHub Docs]
+
+### 2. 初期セットアップワークフローの自動実行を待機
+
+本テンプレートから新しいプロジェクトを作成すると、GitHub Actions による初期セットアップ支援ワークフロー ([`.github/workflows/initialization.yaml`]) が自動的に実行されます。このワークフローは、プロジェクト初期セットアップのためのタスクを記載した Issue を自動作成し、不要なファイルを削除するなどのクリーンアップ処理を実行します。
+
+ワークフローの進行状況は新しく作成されたリポジトリの「Actions」タブから確認できます。
+
+[ワークフローの結果を表示する - GitHub Docs]
+
+### 3. 自動作成された Issue を確認して、初期セットアップ作業を実施
+
+`initialization` というラベルの Issue を確認して、それぞれ対応を進めていきます。
+
+<!-- Links -->
+[テンプレートからリポジトリを作成する - GitHub Docs]: https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+[ワークフローの結果を表示する - GitHub Docs]: https://docs.github.com/ja/actions/writing-workflows/quickstart#viewing-your-workflow-results
+[`.github/workflows/initialization.yaml`]: https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/.github/workflows/initialization.yaml
