@@ -1,4 +1,4 @@
-# Flutter Mobile Project Template
+# Flutter モバイルプロジェクトテンプレート
 
 ## 概要
 
