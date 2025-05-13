@@ -1,8 +1,6 @@
 <!-- markdownlint-disable MD029 -->
 ### 手順
 
-言語: 日本語 | [English](/docs/en/UPGRADE_FLUTTER.md)
-
 1. `mise use flutter@<upgrade version>` を実行
     - 例: `mise use flutter@3.29.3`
 2. `mise use -g flutter@<upgrade version>` を実行
