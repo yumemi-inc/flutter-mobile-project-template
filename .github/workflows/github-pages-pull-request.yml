@@ -20,6 +20,7 @@ env:
 
 jobs:
   build:
+    timeout-minutes: 5
     runs-on: ubuntu-22.04
     # NOTE: See https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/GITHUB_PAGES_PREVIEW.md
     if: github.event.repository.name == 'flutter-mobile-project-template'
@@ -35,22 +36,26 @@ jobs:
         run: flutter build web --release --wasm --base-href /${{ github.event.repository.name }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
-    #   # https://github.com/actions/upload-pages-artifact
-    #   - name: Upload static files as artifact
-    #     id: deployment
-    #     uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-    #     with:
-    #       path: ${{ env.PROJECT_DIR }}/build/web
+      # # https://github.com/actions/upload-pages-artifact
+      # - name: Upload static files as artifact
+      #   id: deployment
+      #   uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+      #   with:
+      #     path: ${{ env.PROJECT_DIR }}/build/web
    
           
-#   deploy:
-#     environment:
-#       name: github-pages
-#       url: ${{ steps.deployment.outputs.page_url }}
-#     runs-on: ubuntu-22.04
-#     needs: build
-#     steps:
-#       # https://github.com/actions/deploy-pages
-#       - name: Deploy to GitHub Pages
-#         id: deployment
-#         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+  # deploy:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   permissions:
+  #     pages: write
+  #     id-token: write
+  #   timeout-minutes: 5
+  #   runs-on: ubuntu-22.04
+  #   needs: build
+  #   steps:
+  #     # https://github.com/actions/deploy-pages
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
