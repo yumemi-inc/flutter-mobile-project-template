@@ -8,12 +8,12 @@ android/
 # 共通の除外パターン
 # Flutter/Dart関連
 .dart_tool/
-**/.flutter-plugins
-**/.flutter-plugins-dependencies
+.flutter-plugins
+.flutter-plugins-dependencies
 .pub-cache/
 .pub/
-**/build/
-**/doc/api/
+build/
+doc/api/
 
 # Symbolication関連
 app.*.symbols
@@ -28,15 +28,15 @@ app.*.map.json
 !/.idea/runConfigurations/
 
 # Mason関連
-**/.mason
-**/mason-lock.json
+.mason
+mason-lock.json
 
 # Firebase関連
-**/.firebase
-**/firebase-debug.log
+.firebase
+firebase-debug.log
 
 # Node.js関連
-**/node_modules
+node_modules
 
 # その他
 *.class
