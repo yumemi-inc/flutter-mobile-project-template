@@ -1,19 +1,19 @@
 name: Deploy to GitHub Pages on PR
 
-on:
-  workflow_dispatch:
-  pull_request:
-    paths-ignore:
-      - ".idea/**"
-      - ".vscode/**"
-      - "apps/app/**"
-      - "docs/**"
-      - "scripts/**"
-      - "tools/**"
-      - "mason.yaml"
-      - "**/docs/**"
-      - "**/test/**"
-      - "**.md"
+# on:
+#   workflow_dispatch:
+#   pull_request:
+#     paths-ignore:
+#       - ".idea/**"
+#       - ".vscode/**"
+#       - "apps/app/**"
+#       - "docs/**"
+#       - "scripts/**"
+#       - "tools/**"
+#       - "mason.yaml"
+#       - "**/docs/**"
+#       - "**/test/**"
+#       - "**.md"
 
 env:
   PROJECT_DIR: apps/catalog
