@@ -6,7 +6,6 @@ workspace:
   # apps
   - apps/app
   - apps/catalog
-  - apps/website
   # cores
   - packages/cores/core
   - packages/cores/data
