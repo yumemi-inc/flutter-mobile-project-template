@@ -39,7 +39,6 @@ dependency_overrides:
   path: ^1.9.1
 
 melos:
-  sdkPath: .fvm/flutter_sdk
 
   ide:
     intellij:
