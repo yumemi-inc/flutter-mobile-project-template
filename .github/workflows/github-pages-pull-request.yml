@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Setup Application Runtime
-        uses: ./.github/actions/setup-application-runtimet 
+        uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
         run: flutter build web --release --wasm --base-href /${{ github.event.repository.name }}/
