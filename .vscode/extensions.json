@@ -7,6 +7,7 @@
     "esbenp.prettier-vscode",
     "DavidAnson.vscode-markdownlint",
     "google.arb-editor",
-    "hverlin.mise-vscode"
+    "hverlin.mise-vscode",
+    "oven.bun-vscode"
   ]
 }
