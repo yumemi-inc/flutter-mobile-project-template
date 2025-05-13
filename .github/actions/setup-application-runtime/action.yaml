@@ -9,7 +9,7 @@ runs:
     - name: Setup flutter
       uses: jdx/mise-action@7a111ead46986ccad89a74ad013ba2a7c08c9e67 # v2.2.1
       with:
-        cache: true
+        install_args: "flutter"
 
     # NOTE: 後述の melosコマンドが実行できないためPATHを通します。
     # PUB_CACHE: $HOME/.pub-cache に設定
