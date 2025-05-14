@@ -4,11 +4,12 @@
     "language": "en,ja",
     "useGitignore": true,
     "enableGlobDot": true,
+    "files": [
+        "**/*.{md,yaml,yml,dart}"
+    ],
     "ignorePaths": [
-        "cspell.jsonc",
-        // IDE関連
-        ".idea",
-        ".vscode",
+        // 自動生成ファイル
+        "*.*.dart"
     ],
     "import": [
         "@cspell/dict-dart/cspell-ext.json",
