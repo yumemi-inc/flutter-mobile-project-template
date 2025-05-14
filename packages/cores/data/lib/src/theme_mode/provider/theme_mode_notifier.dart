@@ -29,7 +29,10 @@ class ThemeModeNotifier extends _$ThemeModeNotifier {
   }
 
   Future<void> _saveThemeMode(int themeIndex) async {
-    final prefs = ref.read(sharedPreferencesProvider);
-    await prefs.setInt(SharedPreferencesKeys.themeMode.name, themeIndex);
+    final sharedPreferences = ref.read(sharedPreferencesProvider);
+    await sharedPreferences.setInt(
+      SharedPreferencesKeys.themeMode.name,
+      themeIndex,
+    );
   }
 }
