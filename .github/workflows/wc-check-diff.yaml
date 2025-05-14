@@ -3,10 +3,6 @@ name: Check generated code is latest
 on:
   workflow_call:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-  
 jobs:
   check:
     runs-on: ubuntu-22.04
