@@ -186,7 +186,7 @@ Iterable<Map<String, String>> diffPkgVersion(
   );
 }
 
-/// Compares Maps and returns a [Map<String, dynami>] of the elements
+/// Compares Maps and returns a [Map<String, dynamic>] of the elements
 /// that differ between [previous] and [current].
 
 Map<String, dynamic> compareMap(
