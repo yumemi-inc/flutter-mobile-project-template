@@ -13,14 +13,21 @@
     ],
     "dictionaryDefinitions": [
       {
+        "name": "flutter-term",
+        "description": "Flutter related terms",
+        "path": "./.cspell/flutter-term.txt",
+        "addWords": true,
+      },
+      {
         "name": "project-term",
         "description": "Project related terms",
         "path": "./.cspell/project-term.txt",
         "addWords": true,
-      },
+      }
     ],
     "dictionaries": [
-      "project-term",
+      "flutter-term",
+      "project-term"
     ],
     "import": [
         "@cspell/dict-dart/cspell-ext.json",
