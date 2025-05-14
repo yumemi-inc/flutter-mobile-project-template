@@ -31,14 +31,13 @@ extension ExtString on String {
 
 class PackageInfo {
   const PackageInfo({required this.packages});
-
-  final List<Package> packages;
-
   factory PackageInfo.fromJson(Map<String, dynamic> data) => PackageInfo(
         packages: (data['packages'] as List<dynamic>)
             .map((e) => Package.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
+
+  final List<Package> packages;
 
   Map<String, dynamic> toJson() => {
         'packages': packages.map((e) => e.toJson()).toList(),
