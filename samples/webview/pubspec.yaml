@@ -1,0 +1,26 @@
+name: webview
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  flutter: ^3.27.1
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_inappwebview: ^6.1.5
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  yumemi_lints: ^3.1.0
+
+flutter:
+  uses-material-design: true
