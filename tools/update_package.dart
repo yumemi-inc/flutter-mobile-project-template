@@ -50,5 +50,5 @@ Future<void> main() async {
     rows.add(row);
   }
 
-  stdout.writeln(rows.join('').trim());
+  stdout.writeln(rows.join().trim());
 }
