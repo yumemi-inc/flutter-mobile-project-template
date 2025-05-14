@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+
 import 'model/package_info.dart';
 
 /// dart pub outdated を時加工し、パッケージの更新有無を取得する
@@ -45,10 +46,10 @@ Future<void> main() async {
 
   for (final pkg in shouldUpdatePkg) {
     final row =
-        '| ${pkg.package} | ${pkg.current?.version ?? 'null'} | ${pkg.resolvable.version} | \n';
+        '''| ${pkg.package} | ${pkg.current?.version ?? 'null'} | ${pkg.resolvable.version} | \n''';
 
     rows.add(row);
   }
 
-  stdout.writeln(rows.join('').trim());
+  stdout.writeln(rows.join().trim());
 }

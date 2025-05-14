@@ -32,13 +32,13 @@ extension ExtString on String {
 class PackageInfo {
   const PackageInfo({required this.packages});
 
-  final List<Package> packages;
-
   factory PackageInfo.fromJson(Map<String, dynamic> data) => PackageInfo(
         packages: (data['packages'] as List<dynamic>)
             .map((e) => Package.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
+
+  final List<Package> packages;
 
   Map<String, dynamic> toJson() => {
         'packages': packages.map((e) => e.toJson()).toList(),
@@ -58,19 +58,9 @@ class Package {
     required this.latest,
   });
 
-  final String package;
-  final Kind kind;
-  final bool isDiscontinued;
-  final bool isCurrentRetracted;
-  final bool isCurrentAffectedByAdvisory;
-  final Version? current;
-  final Version upgradable;
-  final Version resolvable;
-  final Version latest;
-
   factory Package.fromJson(Map<String, dynamic> data) => Package(
         package: data['package'] as String,
-        kind: Kind.fromString(data['kind']),
+        kind: Kind.fromString(data['kind'] as String),
         isDiscontinued: data['isDiscontinued'] as bool,
         isCurrentRetracted: data['isCurrentRetracted'] as bool,
         isCurrentAffectedByAdvisory:
@@ -84,6 +74,16 @@ class Package {
             Version.fromJson(data['resolvable'] as Map<String, dynamic>),
         latest: Version.fromJson(data['latest'] as Map<String, dynamic>),
       );
+
+  final String package;
+  final Kind kind;
+  final bool isDiscontinued;
+  final bool isCurrentRetracted;
+  final bool isCurrentAffectedByAdvisory;
+  final Version? current;
+  final Version upgradable;
+  final Version resolvable;
+  final Version latest;
 
   Map<String, dynamic> toJson() => {
         'package': package,
@@ -101,11 +101,11 @@ class Package {
 class Version implements Comparable<Version> {
   const Version({required this.version});
 
-  final String version;
-
   factory Version.fromJson(Map<String, dynamic> data) => Version(
         version: data['version'] as String,
       );
+
+  final String version;
 
   Map<String, dynamic> toJson() => {
         'version': version,
