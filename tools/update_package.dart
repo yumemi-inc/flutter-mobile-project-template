@@ -45,7 +45,7 @@ Future<void> main() async {
 
   for (final pkg in shouldUpdatePkg) {
     final row =
-        '| ${pkg.package} | ${pkg.current?.version ?? 'null'} | ${pkg.resolvable.version} | \n';
+        '''| ${pkg.package} | ${pkg.current?.version ?? 'null'} | ${pkg.resolvable.version} | \n''';
 
     rows.add(row);
   }
