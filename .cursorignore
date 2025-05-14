@@ -2,6 +2,7 @@
 ios/
 android/
 web/
+macos/
 
 # 以下の設定は .gitignore に記載されているもの
 #
