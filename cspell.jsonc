@@ -22,6 +22,12 @@
         "addWords": true,
       },
       {
+        "name": "git-term",
+        "description": "Git related terms",
+        "path": "./.cspell/git-term.txt",
+        "addWords": true,
+      },
+      {
         "name": "github-action-term",
         "description": "GitHub Actions related terms",
         "path": "./.cspell/github-action-term.txt",
@@ -42,6 +48,7 @@
     ],
     "dictionaries": [
       "flutter-term",
+      "git-term",
       "github-action-term",
       "ios-term",
       "project-term"
