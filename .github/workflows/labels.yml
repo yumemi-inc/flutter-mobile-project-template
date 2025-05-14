@@ -12,6 +12,10 @@ on:
       - '.github/labels.yml'
       - '.github/workflows/labels.yml'
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   labeler:
     runs-on: ubuntu-22.04

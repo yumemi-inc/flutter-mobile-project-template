@@ -18,6 +18,10 @@ on:
       dependencies:
         value: ${{ jobs.changes.outputs.dependencies }}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   changes:
     runs-on: ubuntu-22.04
