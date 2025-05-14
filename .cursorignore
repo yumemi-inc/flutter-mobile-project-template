@@ -14,7 +14,7 @@ android/
 # - https://docs.cursor.com/context/ignore-files#default-ignore-list
 
 
-# Flutter/Dart 関連
+# Flutter/Dart/Pub 関連
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
