@@ -1,6 +1,7 @@
 # プラットフォーム関連
 ios/
 android/
+web/
 
 # 以下の設定は .gitignore に記載されているもの
 #
