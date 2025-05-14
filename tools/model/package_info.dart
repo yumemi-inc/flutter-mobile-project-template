@@ -60,7 +60,7 @@ class Package {
 
   factory Package.fromJson(Map<String, dynamic> data) => Package(
         package: data['package'] as String,
-        kind: Kind.fromString(data['kind']),
+        kind: Kind.fromString(data['kind'] as String),
         isDiscontinued: data['isDiscontinued'] as bool,
         isCurrentRetracted: data['isCurrentRetracted'] as bool,
         isCurrentAffectedByAdvisory:
