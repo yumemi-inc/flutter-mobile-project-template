@@ -22,8 +22,5 @@
 /.firebase
 /firebase-debug.log
 
-# FVM Version Cache
-/.fvm
-
 # dependencies (bun install)
 node_modules

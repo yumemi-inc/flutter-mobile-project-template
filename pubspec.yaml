@@ -6,7 +6,6 @@ workspace:
   # apps
   - apps/app
   - apps/catalog
-  - apps/website
   # cores
   - packages/cores/core
   - packages/cores/data
@@ -18,7 +17,7 @@ workspace:
   - packages/features/force_update
   - packages/features/maintain
   - packages/features/setting
-  - packages/features/webview
+
   # samples
   - packages/samples/github_repository
   - samples/github_app
@@ -39,7 +38,6 @@ dependency_overrides:
   path: ^1.9.1
 
 melos:
-  sdkPath: .fvm/flutter_sdk
 
   ide:
     intellij:
