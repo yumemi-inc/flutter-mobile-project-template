@@ -2,7 +2,7 @@ name: Issue-Dependbot
 
 on:
   schedule:
-    - cron: "0 0 * * 1" # 日本標準時感 毎週月曜日の朝9:00
+    - cron: "0 0 * * 1" # 日本標準時間 毎週月曜日の朝9:00
 
 env:
   ISSUE_LABEL: package_update
