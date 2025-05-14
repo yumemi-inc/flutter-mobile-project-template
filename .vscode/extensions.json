@@ -4,10 +4,10 @@
     "dart-code.flutter",
     "blaugold.melos-code",
     "djbkwon.flutter-dependency-docs",
-    "esbenp.prettier-vscode",
     "DavidAnson.vscode-markdownlint",
     "google.arb-editor",
     "hverlin.mise-vscode",
-    "oven.bun-vscode"
+    "oven.bun-vscode",
+    "dprint.dprint"
   ]
 }

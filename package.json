@@ -3,6 +3,7 @@
   "devDependencies": {
     "@cspell/dict-dart": "^2.3.0",
     "@cspell/dict-flutter": "^1.1.0",
-    "cspell": "^8.19.2"
+    "cspell": "^8.19.2",
+    "dprint": "^0.49.1"
   }
 }
