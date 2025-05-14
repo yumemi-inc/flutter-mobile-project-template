@@ -31,6 +31,7 @@ extension ExtString on String {
 
 class PackageInfo {
   const PackageInfo({required this.packages});
+
   factory PackageInfo.fromJson(Map<String, dynamic> data) => PackageInfo(
         packages: (data['packages'] as List<dynamic>)
             .map((e) => Package.fromJson(e as Map<String, dynamic>))
@@ -57,16 +58,6 @@ class Package {
     required this.latest,
   });
 
-  final String package;
-  final Kind kind;
-  final bool isDiscontinued;
-  final bool isCurrentRetracted;
-  final bool isCurrentAffectedByAdvisory;
-  final Version? current;
-  final Version upgradable;
-  final Version resolvable;
-  final Version latest;
-
   factory Package.fromJson(Map<String, dynamic> data) => Package(
         package: data['package'] as String,
         kind: Kind.fromString(data['kind']),
@@ -83,6 +74,16 @@ class Package {
             Version.fromJson(data['resolvable'] as Map<String, dynamic>),
         latest: Version.fromJson(data['latest'] as Map<String, dynamic>),
       );
+
+  final String package;
+  final Kind kind;
+  final bool isDiscontinued;
+  final bool isCurrentRetracted;
+  final bool isCurrentAffectedByAdvisory;
+  final Version? current;
+  final Version upgradable;
+  final Version resolvable;
+  final Version latest;
 
   Map<String, dynamic> toJson() => {
         'package': package,
