@@ -1,11 +1,6 @@
 name: "Create issues at initialization"
 description: "Create GitHub Issues based on initialization of Yumemi Inc. flutter mobile project template"
 
-inputs:
-  language:
-    description: "The language of the issue to create. ja / en are supported, and ja is set by default."
-    default: "ja"
-
 runs:
   using: "composite"
   steps:
