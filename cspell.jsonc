@@ -9,7 +9,10 @@
     ],
     "ignorePaths": [
         // 自動生成ファイル
-        "*.*.dart"
+        "*.*.dart",
+        // ラベル定義（カラーコードで警告が出るため）
+        ".github/labels.yml"
+        
     ],
     "dictionaryDefinitions": [
       {
