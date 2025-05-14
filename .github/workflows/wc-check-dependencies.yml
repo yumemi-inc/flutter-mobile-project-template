@@ -3,7 +3,6 @@ name: Check dependencies
 on:
   workflow_call:
 
-
 jobs:
   check-dependencies:
     runs-on: ubuntu-24.04
