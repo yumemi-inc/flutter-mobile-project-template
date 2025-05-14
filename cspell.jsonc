@@ -3,6 +3,7 @@
     "version": "0.2",
     "language": "en,ja",
     "useGitignore": true,
+    "enableGlobDot": true,
     "ignorePaths": [
         "cspell.jsonc",
         // IDE関連
