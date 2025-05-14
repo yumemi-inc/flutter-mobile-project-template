@@ -101,11 +101,11 @@ class Package {
 class Version implements Comparable<Version> {
   const Version({required this.version});
 
-  final String version;
-
   factory Version.fromJson(Map<String, dynamic> data) => Version(
         version: data['version'] as String,
       );
+
+  final String version;
 
   Map<String, dynamic> toJson() => {
         'version': version,
