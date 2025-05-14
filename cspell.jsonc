@@ -19,6 +19,12 @@
         "addWords": true,
       },
       {
+        "name": "ios-term",
+        "description": "iOS related terms",
+        "path": "./.cspell/ios-term.txt",
+        "addWords": true,
+      },
+      {
         "name": "project-term",
         "description": "Project related terms",
         "path": "./.cspell/project-term.txt",
@@ -27,6 +33,7 @@
     ],
     "dictionaries": [
       "flutter-term",
+      "ios-term",
       "project-term"
     ],
     "import": [
