@@ -13,12 +13,6 @@ void run(HookContext context) {
     useFreezed: useFreezed,
   );
 
-  _replaceAnalysisOptions(
-    featureName: featureName,
-    useRiverpod: useRiverpod,
-    useFreezed: useFreezed,
-  );
-
   _replaceBuildYaml(
     featureName: featureName,
     useRiverpod: useRiverpod,
@@ -73,47 +67,11 @@ void _addDependency({
   }
 }
 
-void _replaceAnalysisOptions({
-  required String featureName,
-  required bool useRiverpod,
-  required bool useFreezed,
-}) {
-  final filePath = 'packages/features/$featureName/analysis_options.yaml';
-
-  final sb = StringBuffer();
-  sb.write('''
-include: package:yumemi_lints/flutter/3.22/recommended.yaml
-
-analyzer:
-''');
-
-  if (useRiverpod) {
-    sb.write('''
-  plugins:
-    # https://riverpod.dev/docs/introduction/getting_started#enabling-riverpod_lintcustom_lint
-    - custom_lint
-  exclude:
-    - "**/*.g.dart"
-    - "**/*.freezed.dart"
-''');
-  }
-  if (useFreezed) {
-    sb.write('''
-  errors:
-    # https://pub.dev/packages/freezed#install
-    invalid_annotation_target: ignore
-''');
-  }
-
-  // 変更をファイルに書き込む
-  File(filePath).writeAsStringSync(sb.toString());
-}
-
 void _replaceBuildYaml({
   required String featureName,
   required bool useRiverpod,
   required bool useFreezed,
-  }) {
+}) {
   final filePath = 'packages/features/$featureName/build.yaml';
 
   final sb = StringBuffer();
