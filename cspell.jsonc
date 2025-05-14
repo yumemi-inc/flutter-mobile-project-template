@@ -11,6 +11,17 @@
         // 自動生成ファイル
         "*.*.dart"
     ],
+    "dictionaryDefinitions": [
+      {
+        "name": "project-term",
+        "description": "Project related terms",
+        "path": "./.cspell/project-term.txt",
+        "addWords": true,
+      },
+    ],
+    "dictionaries": [
+      "project-term",
+    ],
     "import": [
         "@cspell/dict-dart/cspell-ext.json",
         "@cspell/dict-flutter/cspell-ext.json",
