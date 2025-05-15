@@ -43,10 +43,6 @@ labels:
     files:
       - packages/features/setting/.+
 
-  - label: "@packages/features/webview"
-    files:
-      - packages/features/webview/.+
-
   - label: "@apps/app"
     files:
       - apps/app/.+
@@ -62,10 +58,6 @@ labels:
   - label: "@packages/utils/pagination"
     files:
       - packages/utils/pagination/.+
-
-  - label: "@apps/website"
-    files:
-      - apps/website/.+
 
   - label: "@samples/webview"
     files:

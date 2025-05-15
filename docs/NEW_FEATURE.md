@@ -1,8 +1,5 @@
 # featureパッケージ追加からに画面遷移するまでの手順
 
-<!-- とりあえず英語版はないので一旦コメントアウト -->
-<!-- 言語: 日本語 | [English](/docs/en/NEW_FEATURE.md) -->
-
 ## 1. features_package(masonのbrick) で新しいパッケージを作成
 
 ```shell
@@ -22,8 +19,8 @@ What is feature name? (example: foo_bar): sample
 features_packageでriverpodやfreezedを依存関係に含めるかを聞かれるので答える。
 
 ```shell
-? Are you need riverpod? (Y/n) 
-? Are you need freezed? (Y/n) 
+? Are you need riverpod? (Y/n)
+? Are you need freezed? (Y/n)
 ```
 
 その後`./packages/features/`に`sample`ができていることを確認する。
@@ -43,9 +40,9 @@ sampleをsettingページから遷移させる場合をここでは示す。
 // packages/features/setting/lib/src/ui/setting_page.dart
 abstract interface class SettingPageNavigator {
   void goLicensePage(BuildContext context);
-  
+
   /// 以下を追加
-  void goSamplePage(BuildContext context); 
+  void goSamplePage(BuildContext context);
 }
 ```
 

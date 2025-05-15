@@ -71,13 +71,6 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
             GoRouteData.$route(
               path: '/',
               factory: $HomePageRouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: 'web',
-                  parentNavigatorKey: WebPageRoute.$parentNavigatorKey,
-                  factory: $WebPageRouteExtension._fromState,
-                ),
-              ],
             ),
           ],
         ),
@@ -108,23 +101,6 @@ extension $HomePageRouteExtension on HomePageRoute {
 
   String get location => GoRouteData.$location(
         '/',
-      );
-
-  void go(BuildContext context) => context.go(location);
-
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  void replace(BuildContext context) => context.replace(location);
-}
-
-extension $WebPageRouteExtension on WebPageRoute {
-  static WebPageRoute _fromState(GoRouterState state) => const WebPageRoute();
-
-  String get location => GoRouteData.$location(
-        '/web',
       );
 
   void go(BuildContext context) => context.go(location);

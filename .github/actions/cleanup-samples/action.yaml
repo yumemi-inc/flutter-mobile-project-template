@@ -2,9 +2,9 @@ name: "Cleanup Samples"
 description: "Deletes statements related to samples."
 
 inputs:
-  melos-yaml-path:
-    description: "Path to the melos.yaml file"
-    default: "melos.yaml"
+  pubspec-yaml-path:
+    description: "Path to the pubspec.yaml file"
+    default: "pubspec.yaml"
   vscode-launch-json-path:
     description: "Path to the launch.yaml file"
     default: ".vscode/launch.json"
@@ -12,14 +12,23 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Remove samples from melos.yaml
+    - name: Remove samples from pubspec.yaml
       run: |
-        yq eval 'del(.packages[] | select(. == "packages/samples/*" or . == "samples/*"))' ${{ inputs.melos-yaml-path }} > ${{ inputs.melos-yaml-path }}.new
-        
-        # Keep empty lines
-        diff -U0 -w -b --ignore-blank-lines ${{ inputs.melos-yaml-path }} ${{ inputs.melos-yaml-path }}.new > ${{ inputs.melos-yaml-path }}.diff || true
-        patch ${{ inputs.melos-yaml-path }} < ${{ inputs.melos-yaml-path }}.diff
-        rm ${{ inputs.melos-yaml-path }}.{new,diff}
+        PUBSPEC_PATH="${{ inputs.pubspec-yaml-path || 'pubspec.yaml' }}" # 入力でパスを指定可能にする (デフォルトは pubspec.yaml)
+
+        # yq を使ってサンプルパッケージのパスを削除し、一時ファイルに出力
+        # test 関数で正規表現に一致するものを選択
+        yq eval 'del(.workspace[] | select(test("^(packages/samples/|samples/).*")))' "$PUBSPEC_PATH" > "$PUBSPEC_PATH.new"
+
+        # 元のファイルと変更後の一時ファイルの差分を取得 (空行や空白の差を無視)
+        # 差分がなくてもエラーにしないように || true をつける
+        diff -U0 -w -b --ignore-blank-lines "$PUBSPEC_PATH" "$PUBSPEC_PATH.new" > "$PUBSPEC_PATH.diff" || true
+
+        # 差分を元のファイルに適用
+        patch "$PUBSPEC_PATH" < "$PUBSPEC_PATH.diff"
+
+        # 一時ファイルを削除
+        rm "$PUBSPEC_PATH.new" "$PUBSPEC_PATH.diff"
       shell: bash
 
     - name: Strip comments from launch.json

@@ -1,13 +1,12 @@
 // GitHubのテンプレート機能使用してリポジトリを作った際に、このファイルのコメントは削除されます
 {
-  "dart.flutterSdkPath": ".fvm/flutter_sdk",
-  "dart.sdkPath": ".fvm/flutter_sdk/bin/cache/dart-sdk",
-  "search.exclude": {
-    "**/.fvm": true
-  },
-  "files.watcherExclude": {
-    "**/.fvm": true
-  },
+  // NOTE: miseの自動構成で`.vscode/mise-tools`配下にシンボリックリンクを作成し、それをツールのパスとして利用する機能を有効にします
+  "mise.configureExtensionsUseSymLinks": true,
+  // NOTE: miseの自動構成では、以下の拡張に関するパスを絶対パスで設定するため無効化
+  "mise.configureExtensionsAutomaticallyIgnoreList": ["dart-code.flutter"],
+  "bun.runtime": "${workspaceFolder}/.vscode/mise-tools/bun",
+  "dart.flutterSdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable",
+  "dart.sdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable/bin/dart",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
@@ -40,6 +39,6 @@
   },
   "arb-editor.suppressedWarnings": [
     // "@example": {} のようなメタデータがない場合の警告を無効化
-    "missing_metadata_for_key",
+    "missing_metadata_for_key"
   ]
 }

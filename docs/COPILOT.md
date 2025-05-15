@@ -1,7 +1,5 @@
 # GitHub Copilot
 
-言語: 日本語 | [English](/docs/en/COPILOT.md)
-
 > [!NOTE]
 > このドキュメントはゆめみ社内専用ドキュメント「[ChatGPTをはじめとするAIサービスの利用方針・ルール・ガイドライン](https://www.notion.so/yumemi/ChatGPT-AI-f951c2e2542e4db5af72386329e23155)」をもとに作成されました。
 > ゆめみ社内の方ははじめにそちらのガイドラインをご確認ください。

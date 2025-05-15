@@ -35,6 +35,10 @@
   color: "ffffff"
   description: "This will not be worked on"
 
+- name: "package_updated"
+  color: "0e8a16"
+  description: "Packages that need to be updated"
+
 # <!-- This is an auto-generated label -->
 - name: "@apps/catalog"
   color: d4f227
@@ -81,11 +85,6 @@
   description: packages features setting package
   from_name: "@cores/setting"
 
-- name: "@packages/features/webview"
-  color: 6fe0ba
-  description: packages features webview package
-  from_name: "@cores/webview"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development
@@ -102,10 +101,6 @@
 - name: "@packages/utils/pagination"
   color: 5d7dbc
   description: packages utils pagination package
-
-- name: "@apps/website"
-  color: 3b4ff2
-  description: apps website package
 
 - name: "@samples/webview"
   color: c4de78
