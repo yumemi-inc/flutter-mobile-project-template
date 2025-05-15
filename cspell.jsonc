@@ -22,9 +22,14 @@
         "*.*.dart",
         // ラベル定義（カラーコードで警告が出るため）
         ".github/labels.yml"
-        
     ],
     "dictionaryDefinitions": [
+      {
+        "name": "docs-term",
+        "description": "Docs related terms",
+        "path": "./.cspell/docs-term.txt",
+        "addWords": true,
+      },
       {
         "name": "flutter-term",
         "description": "Flutter related terms",
@@ -57,6 +62,7 @@
       }
     ],
     "dictionaries": [
+      "docs-term",
       "flutter-term",
       "git-term",
       "github-action-term",

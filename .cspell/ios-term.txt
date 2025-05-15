@@ -1,3 +1,2 @@
-Podfile
 xcassets
 xcworkspace 
