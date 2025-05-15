@@ -155,11 +155,6 @@ jobs:
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
-  markdown:
-    uses: ./.github/workflows/wc-check-markdown.yaml
-    needs: changes
-    if: ${{ needs.changes.outputs.markdown == 'true' }}
-
   status-check:
     runs-on: ubuntu-22.04
     needs:
@@ -167,7 +162,6 @@ jobs:
       - check
       - custom-lint
       - diff-gen
-      - markdown
     permissions: { }
     if: failure()
     steps:

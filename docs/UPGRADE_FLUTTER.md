@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD029 -->
 ### 手順
 
 1. `mise use flutter@<upgrade version>` を実行

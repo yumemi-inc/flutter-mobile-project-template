@@ -26,11 +26,8 @@
   "github.copilot.editor.enableAutoCompletions": true,
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "[json][jsonc][yaml][toml]": {
+  "[json][jsonc][yaml][toml][markdown]": {
     "editor.defaultFormatter": "dprint.dprint"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "yaml.schemas": {
     "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"
