@@ -22,6 +22,7 @@ jobs:
   create-issues:
     runs-on: ubuntu-22.04
     permissions:
+      contents: read
       issues: write
     needs: condition
     if: needs.condition.outputs.execute == 'true'
