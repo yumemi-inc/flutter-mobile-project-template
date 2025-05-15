@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       issues: write
+    timeout-minutes: 5
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
