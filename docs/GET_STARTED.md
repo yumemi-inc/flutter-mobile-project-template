@@ -21,7 +21,7 @@
      (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
 
   ```shell
-  mise use
+  mise i
   FLUTTER_VERSION=$(grep '^flutter =' mise.toml | awk -F'"' '{print $2}') && mise use -g flutter@$FLUTTER_VERSION
   ```
 
