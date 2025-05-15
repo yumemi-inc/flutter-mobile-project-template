@@ -1,9 +1,6 @@
 name: Issue-Dependbot
 
 on:
-  push:
-    branches:
-      - feature/35-update-package
   schedule:
     - cron: "0 0 * * 1" # 日本標準時間 毎週月曜日の朝9:00
 
