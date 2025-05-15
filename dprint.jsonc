@@ -4,7 +4,10 @@
   },
   "toml": {},
   "yaml": {},
-  "excludes": ["**/node_modules", "**/*-lock.json"],
+  "excludes": [
+    "**/ios/Runner/",
+    "**/macos/Runner/"
+  ],
   "plugins": [
     "https://plugins.dprint.dev/json-0.20.0.wasm",
     "https://plugins.dprint.dev/toml-0.7.0.wasm",
