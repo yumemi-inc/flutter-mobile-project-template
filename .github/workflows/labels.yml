@@ -3,14 +3,14 @@ name: "Labels"
 on:
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/labels.yml'
+      - ".github/labels.yml"
+      - ".github/workflows/labels.yml"
   pull_request:
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/labels.yml'
+      - ".github/labels.yml"
+      - ".github/workflows/labels.yml"
 
 jobs:
   labeler:

@@ -72,7 +72,7 @@ jobs:
         with:
           script: |
             const changes = ${{ steps.filter.outputs.changes }};
-            
+
             // 依存関係の解決が必要な変更箇所
             const dependencies = [
               'gen',

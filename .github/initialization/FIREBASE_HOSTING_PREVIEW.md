@@ -108,5 +108,4 @@ Firebaseプロジェクトを置き換える。
 <!-- Links -->
 
 [1]: https://firebase.google.com/docs/web/setup
-
 [2]: https://firebase.google.com/docs/hosting/quickstart

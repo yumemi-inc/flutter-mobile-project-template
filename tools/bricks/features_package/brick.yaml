@@ -10,7 +10,7 @@ vars:
   feature_name:
     type: string
     description: Feature name
-    prompt: 'What is feature name? (example: foo_bar)'
+    prompt: "What is feature name? (example: foo_bar)"
   use_riverpod:
     type: boolean
     description: Whether to use riverpod

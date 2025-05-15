@@ -38,7 +38,6 @@ dependency_overrides:
   path: ^1.9.1
 
 melos:
-
   ide:
     intellij:
       # Disabling IntelliJ's automatic configuration.
@@ -113,10 +112,10 @@ melos:
       packageFilters:
         dependsOn: flutter_localizations
     gen:labeler:
-      description: '`.github/labeler.yml` のパッケージ部分を生成します。'
+      description: "`.github/labeler.yml` のパッケージ部分を生成します。"
       run: dart run ./tools/gen_labeler.dart
     gen:labels:
-      description: '`.github/labels.yml` のパッケージ部分を生成します。'
+      description: "`.github/labels.yml` のパッケージ部分を生成します。"
       run: dart run ./tools/gen_labels.dart
 
     upgrade:

@@ -147,7 +147,6 @@ jobs:
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
-
   check-dependencies:
     uses: ./.github/workflows/wc-check-dependencies.yml
     needs:
@@ -162,7 +161,7 @@ jobs:
       - check
       - custom-lint
       - diff-gen
-    permissions: { }
+    permissions: {}
     if: failure()
     steps:
       - run: exit 1
