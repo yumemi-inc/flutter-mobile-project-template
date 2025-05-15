@@ -66,7 +66,7 @@ jobs:
       - name: Get the latest issue comment
         id: latest
         run: |
-          comment=(gh issue view "${{ steps.issue.outputs.number  }}" --json comments -q '.comments | last.body')
+          comment=$(gh issue view "${{ steps.issue.outputs.number  }}" --json comments -q '.comments | last.body')
           echo "comment=$comment" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
