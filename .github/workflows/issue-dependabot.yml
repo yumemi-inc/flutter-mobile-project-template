@@ -1,6 +1,9 @@
 name: Issue-Dependbot
 
 on:
+  push:
+    branches:
+      - feature/35-update-package
   schedule:
     - cron: "0 0 * * 1" # 日本標準時間 毎週月曜日の朝9:00
 
@@ -59,9 +62,31 @@ jobs:
           echo "number=$issue_number" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get the latest issue comment
+        id: latest
+        run: |
+          comment=(gh issue view "${{ steps.issue.outputs.number  }}" --json comments -q '.comments | last.body')
+          echo "comment=$comment" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check if the latest comment is the same as the current comment
+        id: comment_check
+        run: |
+          package_comment=$(cat "${{ steps.package.outputs.path }}")
+          latest_comment=$(echo "${{ steps.latest.outputs.comment }}")
+
+          if [ "$package_comment" = "$latest_comment" ]; then
+            echo "The latest comment is the same as the current comment"
+            exit 0
+          fi
+
+          echo "The latest comment is different from the current comment"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
         
       - name: Comment
-        if: ${{ steps.issue.outputs.number != '' }}
+        if: ${{ steps.comment_check.outputs.changed == 'true' }}
         run: gh issue comment "${{ steps.issue.outputs.number  }}" --body-file "${{ steps.package.outputs.path }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
