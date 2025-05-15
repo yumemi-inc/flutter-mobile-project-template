@@ -168,6 +168,7 @@ jobs:
       - custom-lint
       - diff-gen
       - markdown
+    permissions: { }
     if: failure()
     steps:
       - run: exit 1
