@@ -35,6 +35,10 @@
   color: "ffffff"
   description: "This will not be worked on"
 
+- name: "package_update"
+  color: "0e8a16"
+  description: "Packages that need to be updated"
+
 # <!-- This is an auto-generated label -->
 - name: "@apps/catalog"
   color: d4f227
