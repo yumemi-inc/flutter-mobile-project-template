@@ -8,6 +8,7 @@
     "DavidAnson.vscode-markdownlint",
     "google.arb-editor",
     "hverlin.mise-vscode",
-    "oven.bun-vscode"
+    "oven.bun-vscode",
+    "streetsidesoftware.code-spell-checker"
   ]
 }
