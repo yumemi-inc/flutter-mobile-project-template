@@ -33,7 +33,7 @@ jobs:
             exit 0;
           fi
 
-          path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
+          path="$GITHUB_WORKSPACE/package_$(date +%Y%m%d%H%M%S)"
           echo "$update" > "$path"
           echo "path=$path" >> "$GITHUB_OUTPUT"
 
@@ -66,8 +66,11 @@ jobs:
       - name: Get the latest issue comment
         id: latest
         run: |
-          comment=$(gh issue view "${{ steps.issue.outputs.number  }}" --json comments -q '.comments | last.body')
-          echo "comment=$comment" >> "$GITHUB_OUTPUT"
+          comment=$(gh issue view "${{ steps.issue.outputs.number }}" --json comments -q '.comments | last.body')
+
+          path="$GITHUB_WORKSPACE/comment_$(date +%Y%m%d%H%M%S)"
+          echo "$comment" > "$path"
+          echo "path=$path" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -75,9 +78,9 @@ jobs:
         id: comment_check
         run: |
           package_comment=$(cat "${{ steps.package.outputs.path }}")
-          latest_comment=$(echo "${{ steps.latest.outputs.comment }}")
+          latest_comment=$(cat "${{ steps.latest.outputs.path }}")
 
-          if [ "$package_comment" = "$latest_comment" ]; then
+          if [[ "$package_comment" == "$latest_comment" ]]; then
             echo "The latest comment is the same as the current comment"
             exit 0
           fi
