@@ -18,6 +18,10 @@ on:
       - "**/test/**"
       - "**.md"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   build-and-preview:
     runs-on: ubuntu-22.04
