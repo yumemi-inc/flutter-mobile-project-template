@@ -7,6 +7,16 @@
     "files": [
         "**/*.{md,yaml,yml,dart}"
     ],
+    "overrides": [
+      {
+        "filename": "**/*.{md,yaml,yml,dart}",
+        "dictionaries": ["dart", "flutter"]
+      }
+    ],
+    "ignoreRegExpList": [
+      // https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/src/dart/error/todo_codes.dart
+      "(TODO|FIXME|HACK|UNDONE)\\([^)]*\\)"
+    ],
     "ignorePaths": [
         // 自動生成ファイル
         "*.*.dart",
