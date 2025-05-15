@@ -46,6 +46,7 @@ jobs:
             
             issue_numbers_length=$(echo "$issue_numbers" | grep -c .)
             if [ "$issue_numbers_length" -gt 1 ]; then
+              echo "Multiple issues exist. Please check the issue."
               exit 1
             elif [ "$issue_numbers_length" -eq 0 ]; then
               issue_url=$(gh issue create --title "Update package" --label "$ISSUE_LABEL" --body-file ./tools/templates/issue_improve.md)
