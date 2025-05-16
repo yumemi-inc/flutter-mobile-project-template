@@ -12,7 +12,7 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 Widget circularProgressIndicator(BuildContext context) =>
     const CircularProgressIndicator();
 
-/// TargetPlartformで表示が変わるサンプル
+/// TargetPlatform で表示が変わるサンプル
 @UseCase(
   name: 'CircularProgressIndicatorAdaptive',
   type: CircularProgressIndicator,
