@@ -21,12 +21,11 @@
 - 以下の表には、特定のアイコンが含まれています。画像には枠線がありますが、視認性のためにつけているだけで、アイコンを追加する際には枠線は必要ありません。
 - 詳しい説明は[adaptive icon guide]を確認してください。
 
-|`adaptive_icon_foreground` | `adaptive_icon_background`|
-|:--------------------------:|:--------------------------:|
+|                                                          `adaptive_icon_foreground`                                                          |                                                          `adaptive_icon_background`                                                          |
+| :------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------: |
 | <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/0d1e1559-1600-4c12-aea6-2b4b234c7f41" width="300" /> | <img src="https://github.com/yumemi-inc/flutter-mobile-project-template/assets/67954894/521be3f1-945c-4c08-9c81-6f612679801c" width="300" /> |
 
 <!-- Links -->
 
 [flutter_launcher_icons]: https://pub.dev/packages/flutter_launcher_icons
-
 [adaptive icon guide]: https://developer.android.com/guide/practices/ui_guidelines/icon_design_adaptive?hl=ja

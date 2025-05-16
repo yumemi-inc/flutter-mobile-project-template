@@ -1,0 +1,19 @@
+{
+  "json": {
+    "trailingCommas": "never"
+  },
+  "markdown": {
+  },
+  "toml": {},
+  "yaml": {},
+  "excludes": [
+    "**/ios/Runner/",
+    "**/macos/Runner/"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/json-0.20.0.wasm",
+    "https://plugins.dprint.dev/toml-0.7.0.wasm",
+    "https://plugins.dprint.dev/markdown-0.18.0.wasm",
+    "https://plugins.dprint.dev/g-plane/pretty_yaml-v0.5.1.wasm"
+  ]
+}

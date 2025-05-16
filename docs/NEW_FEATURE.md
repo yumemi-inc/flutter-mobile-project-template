@@ -8,7 +8,7 @@ mason make features_package
 
 > [!Note]
 > `mason make`で失敗する場合はbrickのセットアップが終了していないかもしれません。
-`mason list` でfeatures_packageが出ない場合は、`mason get`を実行してください。
+> `mason list` でfeatures_packageが出ない場合は、`mason get`を実行してください。
 
 featureの名前が聞かれるので以下のようにスネークケースで入力する。(以下新たに作成したfeature名はsampleとする)
 
@@ -186,7 +186,6 @@ class SamplePageRoute extends GoRouteData {
     return const SampleListPage();
   }
 }
-
 ```
 
 **3. `./apps/app/lib/router/provider/router.dart`に以下を追加**

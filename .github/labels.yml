@@ -35,7 +35,7 @@
   color: "ffffff"
   description: "This will not be worked on"
 
-- name: "package_updated"
+- name: "package_update"
   color: "0e8a16"
   description: "Packages that need to be updated"
 
