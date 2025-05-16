@@ -1,7 +1,7 @@
 name: Improve Request
 description: 改善リクエストを提出する
 title: "[Improve]: "
-labels: [ "improve", "triage" ]
+labels: ["improve", "triage"]
 
 body:
   - type: checkboxes

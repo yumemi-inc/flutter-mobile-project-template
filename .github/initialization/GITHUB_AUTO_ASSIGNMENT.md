@@ -42,8 +42,7 @@ GitHubリポジトリ環境変数に`REVIEWERS`と`TEAM_REVIEWERS`を設定し�
 - `TEAM_REVIEWERS`: `team1,team2,team3`
 
 <!-- Links -->
+
 [hkusu/review-assign-action]: https://github.com/hkusu/review-assign-action
-
 [.github/workflows/auto-assign.yaml]: /.github/workflows/auto-assign.yaml
-
 [GitHub Variables]: https://docs.github.com/en/actions/learn-github-actions/variables

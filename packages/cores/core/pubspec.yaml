@@ -1,6 +1,6 @@
 name: cores_core
 description: "This package provides core features of app."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:

@@ -1,6 +1,6 @@
 name: cores_data
 description: "This package provides ways to access application data."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:

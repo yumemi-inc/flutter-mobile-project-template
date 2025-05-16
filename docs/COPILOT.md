@@ -43,27 +43,27 @@ VSCodeとXcodeではプロジェクト単位で有効にすることが可能で
 3. 任意のワークスペースを開き、そのワークスペースのみでCopilot拡張機能を有効にする
 4. ワークスペースの設定（`.vscode/settings.json`）に以下のGitHub Copilot設定を追加する
 
-    ```jsonc
-    {
-      "github.copilot.enable": {
-        // Copilotを有効にする言語を指定する
-        "*": false,
-        "dart": true
-      },
-      "github.copilot.editor.enableCodeActions": true,
-      "github.copilot.editor.enableAutoCompletions": true,
-    }
-    ```
+   ```jsonc
+   {
+     "github.copilot.enable": {
+       // Copilotを有効にする言語を指定する
+       "*": false,
+       "dart": true
+     },
+     "github.copilot.editor.enableCodeActions": true,
+     "github.copilot.editor.enableAutoCompletions": true
+   }
+   ```
 
 5. (オプション) VSCode全体の設定(`settings.json`)で、Copilotを無効にする
 
 ```json
 {
   "github.copilot.enable": {
-    "*" : false,
+    "*": false
   },
   "github.copilot.editor.enableCodeActions": false,
-  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.editor.enableAutoCompletions": false
 }
 ```
 
@@ -77,7 +77,7 @@ VSCodeがサポートしている言語一覧
 > すでにこの設定はプロジェクトに適応されてますが、
 > GitHubのテンプレート機能使用してリポジトリを作った際に、
 > 設定は無効化されるように上書きするワークフローが実行されます
->
+
 ### Xcode
 
 1. [Copilot for Xcode](https://github.com/intitni/CopilotForXcode)をインストールする
