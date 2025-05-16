@@ -1,39 +1,57 @@
 #!/usr/bin/env bash
 
-# スクリプトが存在するディレクトリの common.sh を読み込む
-source "$(dirname "${BASH_SOURCE[0]}")/common.sh"
-
 # 現在のブランチを取得
 current_branch=$(git branch --show-current)
-echo "現在のブランチ: $current_branch"
 
 # Issue番号の特定（ブランチ名から抽出）
 issue=$(echo "$current_branch" | grep -oE 'GH-[0-9]+' | grep -oE '[0-9]+')
-if [ -n "$issue" ]; then
-  echo "Issue番号: $issue"
+
+# 基準ブランチ（デフォルトはmain）
+base_branch=${1:-"main"}
+
+# main ブランチを最新化
+if [ "$base_branch" = "main" ]; then
+  git fetch origin main:main 2>/dev/null || true
 fi
 
-# 派生元ブランチの特定（ローカル全ブランチから自動判定）
-candidates=($(git branch --format='%(refname:short)' | grep -v "^$current_branch$"))
-latest_base=""
-latest_commit=""
-for b in "${candidates[@]}"; do
-  commit=$(git merge-base $b $current_branch 2>/dev/null)
-  if [ -n "$commit" ]; then
-    if [ -z "$latest_commit" ] || [ "$(git log -1 --format=%ct $commit)" -gt "$(git log -1 --format=%ct $latest_commit)" ]; then
-      latest_commit=$commit
-      latest_base=$b
+# 現在のブランチと基準ブランチの共通のマージベースを確認
+merge_base=$(git merge-base $base_branch $current_branch 2>/dev/null)
+
+if [ -n "$merge_base" ]; then
+  # 基準ブランチと現在のブランチに共通のマージベースが存在する場合
+  latest_base=$base_branch
+  latest_commit=$merge_base
+else
+  
+  # 派生元ブランチの特定（ローカル全ブランチから自動判定）
+  candidates=($(git branch --format='%(refname:short)' | grep -v "^$current_branch$"))
+  latest_base=""
+  latest_commit=""
+  for b in "${candidates[@]}"; do
+    commit=$(git merge-base $b $current_branch 2>/dev/null)
+    if [ -n "$commit" ]; then
+      if [ -z "$latest_commit" ] || [ "$(git log -1 --format=%ct $commit)" -gt "$(git log -1 --format=%ct $latest_commit)" ]; then
+        latest_commit=$commit
+        latest_base=$b
+      fi
+    fi
+  done
+  
+  if [ -n "$latest_base" ]; then
+    if [ "$latest_base" != "main" ] && git show-ref --verify --quiet refs/heads/main; then
+      # 派生元ブランチの最新の共通コミットが main に取り込まれているか確認
+      if git branch --contains $latest_commit | grep -q "main"; then
+        latest_base="main"
+      fi
     fi
   fi
-done
+fi
 
 # 派生元ブランチが見つからない場合
 if [ -z "$latest_base" ]; then
   echo "派生元ブランチが見つかりませんでした。"
   exit 1
 fi
-
-echo "派生元ブランチ: $latest_base"
 
 # 変更されたファイル一覧を表示
 echo -e "\n変更されたファイル一覧:"
