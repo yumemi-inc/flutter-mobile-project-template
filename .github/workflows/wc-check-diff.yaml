@@ -36,7 +36,7 @@ jobs:
 
       - name: Regenerate code
         run: |
-          if [ "${{ inputs.diff }}" = "true" ]; then
+          if [ "${{ inputs.diff-packages }}" = "true" ]; then
             melos run gen:diff:main
           else
             melos run gen
