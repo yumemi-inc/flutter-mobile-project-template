@@ -2,6 +2,12 @@ name: Check generated code is latest
 
 on:
   workflow_call:
+    inputs:
+      diff-packages:
+        description: "差分パッケージのみを処理するかどうか"
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   check:
@@ -29,7 +35,12 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('**/pubspec.lock') }}
 
       - name: Regenerate code
-        run: melos run gen --no-select
+        run: |
+          if [ "${{ inputs.diff }}" = "true" ]; then
+            melos run gen:diff:main
+          else
+            melos run gen
+          fi
 
       - name: Check difference
         run: |
