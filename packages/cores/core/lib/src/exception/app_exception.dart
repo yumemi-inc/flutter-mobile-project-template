@@ -8,6 +8,7 @@ sealed class NetworkException extends AppException {
   const NetworkException(super.message);
 
   factory NetworkException.fromStatusCode(int? statusCode) {
+    print('statusCode: $statusCode');
     if (statusCode == null) {
       return const UnknownNetworkException();
     }

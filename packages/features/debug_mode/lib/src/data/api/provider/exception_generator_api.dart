@@ -13,6 +13,7 @@ class ExceptionGeneratorApi extends _$ExceptionGeneratorApi {
   }
 
   Future<void> request() async {
+    print('request');
     state = const AsyncValue.loading();
     try {
       final dio = ref.read(dioProvider);
