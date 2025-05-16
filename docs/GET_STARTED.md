@@ -2,10 +2,10 @@
 
 ### IDE バージョン
 
-| IDE | バージョン |
-| - | - |
+| IDE            | バージョン               |
+| -------------- | ------------------------ |
 | Android Studio | Ladybug 2024.2.1 Patch 3 |
-| Xcode | 16.2 |
+| Xcode          | 16.2                     |
 
 **注意**: 記載されているバージョンでの動作を確認しています。これより古いバージョン、または新しいバージョンでは正常に動作しない可能性があります。
 
@@ -18,7 +18,7 @@
 - [mise] コマンドを有効にしてください。
 
   - また、以下のコマンドを実行して`mise.toml`で指定されたバージョンを有効化してください
-     (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
+    (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
 
   ```shell
   mise i
@@ -82,17 +82,10 @@ Please check:
 <!-- Links -->
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
-
 [Android Studio]: https://developer.android.com/studio
-
 [Visual Studio Code]: https://code.visualstudio.com/
-
 [Xcode]: https://developer.apple.com/xcode/
-
 [mise]: https://mise.jdx.dev/
-
 [melos]: https://melos.invertase.dev/
-
 [mason_cli]: https://pub.dev/packages/mason_cli
-
 [yq]: https://github.com/mikefarah/yq

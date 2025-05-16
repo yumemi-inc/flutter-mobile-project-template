@@ -2,7 +2,7 @@ name: Auto Assign
 
 on:
   pull_request:
-    types: [ opened, ready_for_review ]
+    types: [opened, ready_for_review]
 
 permissions:
   pull-requests: write
@@ -67,4 +67,4 @@ jobs:
         uses: hkusu/review-assign-action@5bee595fdb9765d4a0bd35724b6302fa15569158 # v1.4.0
         with:
           assignees: ${{ github.actor }}
-          ready-comment: 'Ready for review :rocket:'
+          ready-comment: "Ready for review :rocket:"

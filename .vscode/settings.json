@@ -7,10 +7,12 @@
   "bun.runtime": "${workspaceFolder}/.vscode/mise-tools/bun",
   "dart.flutterSdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable",
   "dart.sdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable/bin/dart",
+  "dprint.path": "~/.local/share/mise/shims/dprint",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
-    "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml"
+    "pubspec.yaml": "pubspec.lock, pubspec_overrides.yaml",
+    "package.json": "bun.lock"
   },
   // GitHubのテンプレート機能使用してリポジトリを作った際に、
   // copilotの設定は無効化されるように上書きするワークフローが実行されます
@@ -23,16 +25,11 @@
   },
   "github.copilot.editor.enableCodeActions": true,
   "github.copilot.editor.enableAutoCompletions": true,
+  "npm.packageManager": "bun",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "files.associations": {
-    "*.json": "json"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  "[json][jsonc][yaml][toml][markdown]": {
+    "editor.defaultFormatter": "dprint.dprint"
   },
   "yaml.schemas": {
     "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"

@@ -1,7 +1,7 @@
 name: Feature Request
 description: 機能リクエストを提出する
 title: "[Feature]: "
-labels: [ "feature", "triage" ]
+labels: ["feature", "triage"]
 body:
   - type: checkboxes
     attributes:

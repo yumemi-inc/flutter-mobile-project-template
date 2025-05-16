@@ -1,6 +1,6 @@
 name: flutter_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:
@@ -43,13 +43,12 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.4.14
-  build_verify: ^3.1.0
   custom_lint: ^0.7.0
   flutter_launcher_icons: ^0.14.2
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
-  go_router_builder: ^2.7.2
+  go_router_builder: ^2.7.3
   json_serializable: ^6.9.0
   riverpod_generator: ^2.6.3
   riverpod_lint: ^2.6.3

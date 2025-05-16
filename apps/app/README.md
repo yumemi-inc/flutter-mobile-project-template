@@ -24,7 +24,7 @@ This is a template project for Android and iOS apps.
 
 ### List of Environment Variables
 
-|  | Dev | Stg | Prd |
-|:-:|:-:|:-:|:-:|
-| APP_NAME | dev-Template | stg-Template | Template |
-| APP_ID | jp.co.yumemi.template.dev | jp.co.yumemi.template.stg | jp.co.yumemi.template |
+|          |            Dev            |            Stg            |          Prd          |
+| :------: | :-----------------------: | :-----------------------: | :-------------------: |
+| APP_NAME |       dev-Template        |       stg-Template        |       Template        |
+|  APP_ID  | jp.co.yumemi.template.dev | jp.co.yumemi.template.stg | jp.co.yumemi.template |
