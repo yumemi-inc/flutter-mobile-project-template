@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 sealed class AppException implements Exception {
   const AppException(this.message);
 
@@ -10,9 +8,6 @@ sealed class NetworkException extends AppException {
   const NetworkException(super.message);
 
   factory NetworkException.fromStatusCode(int? statusCode) {
-    if (kDebugMode) {
-      print('statusCode: $statusCode');
-    }
     if (statusCode == null) {
       return const UnknownNetworkException();
     }

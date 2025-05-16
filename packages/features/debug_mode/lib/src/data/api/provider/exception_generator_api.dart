@@ -1,7 +1,6 @@
 import 'package:cores_core/exception.dart';
 import 'package:cores_data/network.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'exception_generator_api.g.dart';
@@ -14,9 +13,6 @@ class ExceptionGeneratorApi extends _$ExceptionGeneratorApi {
   }
 
   Future<void> request() async {
-    if (kDebugMode) {
-      print('request');
-    }
     state = const AsyncValue.loading();
     try {
       final dio = ref.read(dioProvider);
