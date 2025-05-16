@@ -1,7 +1,7 @@
-# GitHub Mission Control Plugin (MCP)
+# GitHub Model Context Protocol (MCP)
 
 > [!NOTE]
-> このドキュメントはGitHub Mission Control Plugin (MCP)の使用方法について説明します。
+> このドキュメントはGitHub MCPの使用方法について説明します。
 > MCPはGitHubの操作をAIアシスタント経由で行うためのプラグインです。
 
 ## 概要
