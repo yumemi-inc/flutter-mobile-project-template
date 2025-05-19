@@ -12,17 +12,17 @@
 ├── apps
 │   ├── app
 │   │   ├── presentation
-│   │   └── composition-root
+│   │   └── composition_root
 │   └── catalog
 │
 └── packages
-    ├── design-domain-ui # (optional)
-    ├── design-ui
-    ├── design-theme
+    ├── design_domain_ui # (optional)
+    ├── design_ui
+    ├── design_theme
     ├── application
     ├── infrastructure
-    ├── domain-model
-    └── domain-logic
+    ├── domain_model
+    └── domain_logic
 ```
 
 ## レイヤー・パッケージ構造
@@ -42,20 +42,20 @@ flowchart TD
       class presentation directory
     end
     subgraph "CompositionRoot Layer"
-      composition_root[composition-root]
+      composition_root[composition_root]
       class composition_root directory
     end
   end
 
   %% Design Layer
   subgraph "Design Layer"
-    design_domain_ui["design-domain-ui (optional)"]
+    design_domain_ui["design_domain_ui (optional)"]
     class design_domain_ui optional
 
-    design_ui[design-ui]
+    design_ui[design_ui]
     class design_ui package
 
-    design_theme[design-theme]
+    design_theme[design_theme]
     class design_theme package
   end
 
@@ -73,10 +73,10 @@ flowchart TD
 
   %% Domain Layer
   subgraph "Domain Layer"
-    domain_model[domain-model]
+    domain_model[domain_model]
     class domain_model package
 
-    domain_logic[domain-logic]
+    domain_logic[domain_logic]
     class domain_logic package
   end
 
