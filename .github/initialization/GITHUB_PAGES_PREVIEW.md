@@ -9,11 +9,18 @@
 
 ## 1. カスタム GitHub Actions ワークフローによる公開設定
 
-[ドキュメント][1] に従ってGitHub Actions ワークフローでGitHub Pageにデプロイ可能にする。
+[カスタム GitHub Actions ワークフローによる公開][1] に従ってGitHub Actions ワークフローでGitHub Pageにデプロイ可能にする。
 
 ## 2. Visibilityの有効化
 
-[ドキュメント][2] に従って`Visibility`を有効化することにより、アクセス制限を設定する。
+[GitHub Pages サイトの可視性を変更する][2] に従って`Visibility`を有効化することにより、アクセス制限を設定する。
+ただし、この機能は`GitHub Enterprise Cloud`を契約している`Organization`でしか利用できません。
+`GitHub Enterprise Cloud`以外で非公開のデプロイを行いたい場合、
+
+- `AWS CloudFront`
+- `Cloudflare Pages` + `Zero Trust`
+
+等を検討してください。
 
 ## 3. ワークフローの内容を変更する
 
