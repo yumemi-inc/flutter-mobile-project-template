@@ -23,7 +23,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     # NOTE: See https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/GITHUB_PAGES_PREVIEW.md
-    if: github.event.repository.name == 'flutter-mobile-project-template'
+    if: ${{ github.repository_owner == 'yumemi-inc' && github.event.repository.name == 'flutter-mobile-project-template' }}
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
