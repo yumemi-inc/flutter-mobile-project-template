@@ -30,7 +30,8 @@
 
 このテンプレートプロジェクトを元に新規プロジェクトを作成した際に、誤ってワークフローが実行されないように、リポジトリ名による有効化条件を記述しています。この記述はセットアップ後は不要になりますので、削除してください。
 
-![github-pages-pull-request.png](https://github.com/user-attachments/assets/04475d96-986d-44de-b945-25c4308b5d26)
+![github-pages-pull-request.png](https://github.com/user-attachments/assets/324da9ca-078d-4b8f-a7bc-b6441c2c8564)
+
 
 <!-- Links -->
 
