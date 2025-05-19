@@ -9,10 +9,8 @@ issue=$(echo "$current_branch" | grep -oE 'GH-[0-9]+' | grep -oE '[0-9]+')
 # 基準ブランチ（デフォルトはmain）
 base_branch=${1:-"main"}
 
-# main ブランチを最新化
-if [ "$base_branch" = "main" ]; then
-  git fetch origin main:main 2>/dev/null || true
-fi
+# 基準ブランチを最新化
+git fetch origin $base_branch:$base_branch 2>/dev/null || true
 
 # 現在のブランチと基準ブランチの共通のマージベースを確認
 merge_base=$(git merge-base $base_branch $current_branch 2>/dev/null)
@@ -38,10 +36,10 @@ else
   done
   
   if [ -n "$latest_base" ]; then
-    if [ "$latest_base" != "main" ] && git show-ref --verify --quiet refs/heads/main; then
-      # 派生元ブランチの最新の共通コミットが main に取り込まれているか確認
-      if git branch --contains $latest_commit | grep -q "main"; then
-        latest_base="main"
+    if [ "$latest_base" != "$base_branch" ] && git show-ref --verify --quiet refs/heads/$base_branch; then
+      # 派生元ブランチの最新の共通コミットが 基準ブランチ に取り込まれているか確認
+      if git branch --contains $latest_commit | grep -q "$base_branch"; then
+        latest_base="$base_branch"
       fi
     fi
   fi
