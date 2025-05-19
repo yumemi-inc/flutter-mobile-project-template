@@ -11,16 +11,18 @@
 .
 ├── apps
 │   ├── app
+│   │   ├── presentation
+│   │   └── composition-root
 │   └── catalog
 │
 └── packages
-    ├── cores
-    │   ├── ...
-    │   └── ...
-    │
-    └── features
-        ├── ...
-        └── ...
+    ├── design-domain-ui # (optional)
+    ├── design-ui
+    ├── design-theme
+    ├── application
+    ├── infrastructure
+    ├── domain-model
+    └── domain-logic
 ```
 
 ## レイヤー・パッケージ構造
