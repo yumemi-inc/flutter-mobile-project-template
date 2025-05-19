@@ -25,6 +25,8 @@ GitHub MCPはAIアシスタントからGitHubリポジトリを操作するた�
 
 1. [mcp.sample.json](../.cursor/mcp.sample.json) を `mcp.json` にファイル名を変更する
 2. Personal Access Token （PAT）を取得する （[個人用アクセス トークンを管理する](https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)）
+   - プライベートリポジトリを操作する場合: `repo` スコープ（「プライベートリポジトリの完全な制御」）を選択
+   - パブリックリポジトリのみを操作する場合: `public_repo` スコープのみを選択
 3. `"<YOUR_TOKEN>"` を取得した PAT に書き換える
 4. Cursor の設定から MCP を有効化する
 
