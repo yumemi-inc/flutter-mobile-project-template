@@ -18,13 +18,12 @@ on:
       dependencies:
         value: ${{ jobs.changes.outputs.dependencies }}
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   changes:
     runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
       actions: ${{ steps.filter.outputs.actions }}
@@ -72,7 +71,7 @@ jobs:
         with:
           script: |
             const changes = ${{ steps.filter.outputs.changes }};
-            
+
             // 依存関係の解決が必要な変更箇所
             const dependencies = [
               'gen',

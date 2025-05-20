@@ -80,6 +80,7 @@ GitHub Actions を用いた CI/CD パイプラインの基本的なワークフ�
 [開発環境の構築手順 (GET_STARTED.md)]
 
 <!-- Links -->
+
 [テンプレートからリポジトリを作成する - GitHub Docs]: https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 [ワークフローの結果を表示する - GitHub Docs]: https://docs.github.com/ja/actions/writing-workflows/quickstart#viewing-your-workflow-results
 [`.github/workflows/initialization.yaml`]: https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/.github/workflows/initialization.yaml

@@ -147,18 +147,12 @@ jobs:
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
-
   check-dependencies:
     uses: ./.github/workflows/wc-check-dependencies.yml
     needs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
-
-  markdown:
-    uses: ./.github/workflows/wc-check-markdown.yaml
-    needs: changes
-    if: ${{ needs.changes.outputs.markdown == 'true' }}
 
   status-check:
     runs-on: ubuntu-22.04
@@ -167,8 +161,7 @@ jobs:
       - check
       - custom-lint
       - diff-gen
-      - markdown
-    permissions: { }
+    permissions: {}
     if: failure()
     steps:
       - run: exit 1
