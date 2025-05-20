@@ -83,6 +83,7 @@ flowchart TD
   %% Dependencies
   presentation --> composition_root
   presentation --> domain_model
+  presentation --> design_theme
   presentation --> design_ui
   presentation --> design_domain_ui
 
