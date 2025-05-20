@@ -102,6 +102,8 @@ flowchart TD
 
   design_ui --> design_theme
 
+  domain_logic --> domain_model
+
   %% Legend
   subgraph "Legend"
     dir_legend[Directory]
