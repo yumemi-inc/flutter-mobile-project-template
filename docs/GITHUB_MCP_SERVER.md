@@ -1,4 +1,3 @@
-
 # GitHub Model Context Protocol (MCP) Server
 
 ## 概要
