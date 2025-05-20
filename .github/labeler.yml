@@ -3,10 +3,6 @@ version: 1
 
 labels:
   # <!-- This is an auto-generated label -->
-  - label: "@packages/application"
-    files:
-      - packages/application/.+
-
   - label: "@apps/catalog"
     files:
       - apps/catalog/.+
@@ -31,22 +27,6 @@ labels:
     files:
       - packages/cores/ui/.+
 
-  - label: "@packages/design_theme"
-    files:
-      - packages/design_theme/.+
-
-  - label: "@packages/design_ui"
-    files:
-      - packages/design_ui/.+
-
-  - label: "@packages/domain_logic"
-    files:
-      - packages/domain_logic/.+
-
-  - label: "@packages/domain_model"
-    files:
-      - packages/domain_model/.+
-
   - label: "@packages/features/debug_mode"
     files:
       - packages/features/debug_mode/.+
@@ -70,6 +50,26 @@ labels:
   - label: "@samples/github_app"
     files:
       - samples/github_app/.+
+
+  - label: "@packages/application"
+    files:
+      - packages/application/.+
+
+  - label: "@packages/design_theme"
+    files:
+      - packages/design_theme/.+
+
+  - label: "@packages/design_ui"
+    files:
+      - packages/design_ui/.+
+
+  - label: "@packages/domain_logic"
+    files:
+      - packages/domain_logic/.+
+
+  - label: "@packages/domain_model"
+    files:
+      - packages/domain_model/.+
 
   - label: "@packages/infrastructure"
     files:
