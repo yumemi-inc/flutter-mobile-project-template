@@ -145,6 +145,7 @@ docs: READMEのインストール手順を更新
 > 特別な事情がある場合は、チーム内で相談の上、必要に応じてルールの適用を緩和することができます。
 
 <!-- Links -->
+
 [Conventional Commits]: https://www.conventionalcommits.org/ja/v1.0.0/
 [@commitlint/config-conventional]: https://github.com/conventional-changelog/commitlint/tree/master/%40commitlint/config-conventional
 [husky]: https://pub.dev/packages/husky
