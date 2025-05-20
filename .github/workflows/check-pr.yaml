@@ -142,6 +142,8 @@ jobs:
 
   diff-gen:
     uses: ./.github/workflows/wc-check-diff.yaml
+    with:
+      diff-packages: true
     needs:
       - changes
       - cache-dependencies
