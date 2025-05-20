@@ -24,8 +24,8 @@
 
 1. リポジトリの **`Settings` > `Rules` > `Rulesets`** タブに移動
 2. **`New ruleset` > `New branch ruleset`** セクションを選択
-    - 既存のルールセットがある場合は、既存のルールを編集してください
-    - 新しいルールセットを作成する場合は、適切な名前を付けてください
+   - 既存のルールセットがある場合は、既存のルールを編集してください
+   - 新しいルールセットを作成する場合は、適切な名前を付けてください
 3. **`Require merge queue`** を有効化
 
 ![merge-queue-check.png](../images/merge-queue-check.png)
