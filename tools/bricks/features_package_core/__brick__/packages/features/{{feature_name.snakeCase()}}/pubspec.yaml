@@ -1,6 +1,6 @@
 name: features_{{feature_name.snakeCase()}}
 description: "This package provides {{feature_name.snakeCase()}} features."
-publish_to: 'none'
+publish_to: "none"
 version: 0.0.1
 
 environment:

@@ -6,9 +6,9 @@ on:
 jobs:
   check-dependencies:
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     permissions:
       pull-requests: write
-      contents: read
     steps:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
@@ -27,9 +27,9 @@ jobs:
           diff=$(dart run ./tools/diff_yaml.dart $baseRefName pubspec.yaml pubspec.lock)
 
           if [ -z "$diff" ]; then
-            echo "No change in pubspeck.lock"
+            echo "No change in pubspec.lock"
           else
-            echo "There is a change in pubspeck.lock."
+            echo "There is a change in pubspec.lock."
 
             path="$GITHUB_WORKSPACE/$(date +%Y%m%d%H%M%S)"
             echo "$diff" > "$path"

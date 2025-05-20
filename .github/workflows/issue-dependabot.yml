@@ -17,7 +17,7 @@ jobs:
       # https://github.com/marketplace/actions/checkout
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        
+
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           getIssueNumber() {
             issue_numbers=$(gh issue list --label "$ISSUE_LABEL" --json number | jq '.[].number')
-            
+
             issue_numbers_length=$(echo "$issue_numbers" | grep -c .)
             if [ "$issue_numbers_length" -gt 1 ]; then
               echo "Multiple issues exist. Please check the issue."
@@ -54,7 +54,7 @@ jobs:
               echo "$issue_numbers"
             fi
           }
-          
+
           issue_number=$(getIssueNumber)
 
           echo "Issue Number: $issue_number"
@@ -86,16 +86,9 @@ jobs:
 
           echo "The latest comment is different from the current comment"
           echo "changed=true" >> "$GITHUB_OUTPUT"
-        
+
       - name: Comment
         if: ${{ steps.comment_check.outputs.changed == 'true' }}
         run: gh issue comment "${{ steps.issue.outputs.number  }}" --body-file "${{ steps.package.outputs.path }}"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-
-              
-
-
-    
