@@ -11,6 +11,8 @@ on:
         value: ${{ jobs.changes.outputs.any }}
       actions:
         value: ${{ jobs.changes.outputs.actions }}
+      dprint:
+        value: ${{ jobs.changes.outputs.dprint }}
       markdown:
         value: ${{ jobs.changes.outputs.markdown }}
       src:
@@ -27,6 +29,7 @@ jobs:
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
       actions: ${{ steps.filter.outputs.actions }}
+      dprint: ${{ steps.filter.outputs.dprint }}
       gen: ${{ steps.filter.outputs.gen }}
       lint: ${{ steps.filter.outputs.lint }}
       markdown: ${{ steps.filter.outputs.markdown }}
@@ -48,6 +51,13 @@ jobs:
               - '.github/actions/**/action.yaml'
               - '.github/workflows/*.yml'
               - '.github/workflows/*.yaml'
+            dprint:
+              - "**.json"
+              - "**.jsonc"
+              - "**.md"
+              - "**.toml"
+              - "**.yml"
+              - "**.yaml"
             gen:
               - "**.dart"
               - "**.yaml"

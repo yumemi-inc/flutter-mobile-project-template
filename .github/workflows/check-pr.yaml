@@ -154,6 +154,11 @@ jobs:
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
+  check-style-dprint:
+    uses: ./.github/workflows/wc-check-style-dprint.yaml
+    needs: changes
+    if: ${{ needs.changes.outputs.dprint == 'true' }}
+
   status-check:
     runs-on: ubuntu-22.04
     needs:
@@ -161,6 +166,7 @@ jobs:
       - check
       - custom-lint
       - diff-gen
+      - check-style-dprint
     permissions: {}
     if: failure()
     steps:
