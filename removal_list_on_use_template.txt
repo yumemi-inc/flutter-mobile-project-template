@@ -10,8 +10,6 @@ LICENSE.md
 
 .github/workflows/initialization.yaml
 
-.firebaserc
-
 .github/initialization
 
 # samples

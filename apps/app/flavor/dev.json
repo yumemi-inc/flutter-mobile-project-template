@@ -1,7 +1,7 @@
 {
-    "flavor": "dev",
-    "appName": "dev-Template",
-    "appIdAndroid": "jp.co.yumemi.template",
-    "appIdIos": "jp.co.yumemi.template",
-    "appIdSuffix": ".dev"
+  "flavor": "dev",
+  "appName": "dev-Template",
+  "appIdAndroid": "jp.co.yumemi.template",
+  "appIdIos": "jp.co.yumemi.template",
+  "appIdSuffix": ".dev"
 }

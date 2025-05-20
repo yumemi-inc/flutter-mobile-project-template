@@ -1,77 +1,77 @@
 {
-    "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
-    "version": "0.2",
-    "language": "en,ja",
-    "useGitignore": true,
-    "enableGlobDot": true,
-    "files": [
-        "**/*.{md,yaml,yml,dart}"
-    ],
-    "overrides": [
-      {
-        "filename": "**/*.{md,yaml,yml,dart}",
-        "dictionaries": ["dart", "flutter"]
-      }
-    ],
-    "ignoreRegExpList": [
-      // https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/src/dart/error/todo_codes.dart
-      "(TODO|FIXME|HACK|UNDONE)\\([^)]*\\)"
-    ],
-    "ignorePaths": [
-        // 自動生成ファイル
-        "*.*.dart",
-        // ラベル定義（カラーコードで警告が出るため）
-        ".github/labels.yml"
-    ],
-    "dictionaryDefinitions": [
-      {
-        "name": "docs-term",
-        "description": "Docs related terms",
-        "path": "./.cspell/docs-term.txt",
-        "addWords": true,
-      },
-      {
-        "name": "flutter-term",
-        "description": "Flutter related terms",
-        "path": "./.cspell/flutter-term.txt",
-        "addWords": true,
-      },
-      {
-        "name": "git-term",
-        "description": "Git related terms",
-        "path": "./.cspell/git-term.txt",
-        "addWords": true,
-      },
-      {
-        "name": "github-action-term",
-        "description": "GitHub Actions related terms",
-        "path": "./.cspell/github-action-term.txt",
-        "addWords": true,
-      },
-      {
-        "name": "ios-term",
-        "description": "iOS related terms",
-        "path": "./.cspell/ios-term.txt",
-        "addWords": true,
-      },
-      {
-        "name": "project-term",
-        "description": "Project related terms",
-        "path": "./.cspell/project-term.txt",
-        "addWords": true,
-      }
-    ],
-    "dictionaries": [
-      "docs-term",
-      "flutter-term",
-      "git-term",
-      "github-action-term",
-      "ios-term",
-      "project-term"
-    ],
-    "import": [
-        "@cspell/dict-dart/cspell-ext.json",
-        "@cspell/dict-flutter/cspell-ext.json",
-        "@cspell/dict-software-terms/cspell-ext.json"
-    ]
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en,ja",
+  "useGitignore": true,
+  "enableGlobDot": true,
+  "files": [
+    "**/*.{md,yaml,yml,dart}"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.{md,yaml,yml,dart}",
+      "dictionaries": ["dart", "flutter"]
+    }
+  ],
+  "ignoreRegExpList": [
+    // https://github.com/dart-lang/sdk/blob/main/pkg/analyzer/lib/src/dart/error/todo_codes.dart
+    "(TODO|FIXME|HACK|UNDONE)\\([^)]*\\)"
+  ],
+  "ignorePaths": [
+    // 自動生成ファイル
+    "*.*.dart",
+    // ラベル定義（カラーコードで警告が出るため）
+    ".github/labels.yml"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "docs-term",
+      "description": "Docs related terms",
+      "path": "./.cspell/docs-term.txt",
+      "addWords": true
+    },
+    {
+      "name": "flutter-term",
+      "description": "Flutter related terms",
+      "path": "./.cspell/flutter-term.txt",
+      "addWords": true
+    },
+    {
+      "name": "git-term",
+      "description": "Git related terms",
+      "path": "./.cspell/git-term.txt",
+      "addWords": true
+    },
+    {
+      "name": "github-action-term",
+      "description": "GitHub Actions related terms",
+      "path": "./.cspell/github-action-term.txt",
+      "addWords": true
+    },
+    {
+      "name": "ios-term",
+      "description": "iOS related terms",
+      "path": "./.cspell/ios-term.txt",
+      "addWords": true
+    },
+    {
+      "name": "project-term",
+      "description": "Project related terms",
+      "path": "./.cspell/project-term.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": [
+    "docs-term",
+    "flutter-term",
+    "git-term",
+    "github-action-term",
+    "ios-term",
+    "project-term"
+  ],
+  "import": [
+    "@cspell/dict-dart/cspell-ext.json",
+    "@cspell/dict-flutter/cspell-ext.json",
+    "@cspell/dict-software-terms/cspell-ext.json"
+  ]
 }

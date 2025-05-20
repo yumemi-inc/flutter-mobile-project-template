@@ -3,14 +3,18 @@ name: "Labels"
 on:
   push:
     branches:
-      - 'main'
+      - "main"
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/labels.yml'
+      - ".github/labels.yml"
+      - ".github/workflows/labels.yml"
   pull_request:
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/labels.yml'
+      - ".github/labels.yml"
+      - ".github/workflows/labels.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   labeler:
@@ -18,6 +22,7 @@ jobs:
     permissions:
       contents: read
       issues: write
+    timeout-minutes: 5
     steps:
       # https://github.com/actions/checkout
       - name: Checkout

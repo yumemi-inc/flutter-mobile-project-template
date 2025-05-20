@@ -11,22 +11,21 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^x.x.x
-```  
+```
 
 ### 2. スプラッシュ画面の設定
 
-  `splash.png` のようなスプラッシュ画面用の画像を追加してください。画像はプロジェクトの `プロジェクトのルート/apps/app/assets/splash_image` ディレクトリに配置します。
+`splash.png` のようなスプラッシュ画面用の画像を追加してください。画像はプロジェクトの `プロジェクトのルート/apps/app/assets/splash_image` ディレクトリに配置します。
 
 ```md
 assets
 └── splash_image
-    ├── splash.png
+├── splash.png
 ```
 
-  その後、以下の設定を `プロジェクトのルート/apps/app/pubspec.yaml` ファイルに追加するか、`プロジェクトのルート/apps/app/`に `flutter_native_splash.yaml` という新しいファイルを作成し、そこに設定を追加します。
+その後、以下の設定を `プロジェクトのルート/apps/app/pubspec.yaml` ファイルに追加するか、`プロジェクトのルート/apps/app/`に `flutter_native_splash.yaml` という新しいファイルを作成し、そこに設定を追加します。
 
 ```yaml
-
 flutter_native_splash:
   color: "#42a5f5" #スプラッシュスクリーンの背景色を指定します。
   image: assets/splash_image/splash.png #スプラッシュスクリーンに使用する画像のパス
@@ -36,7 +35,7 @@ flutter_native_splash:
   # ダークモード設定（オプション）
   color_dark: "#1a73e8"
   image_dark: assets/splash_image/splash_dark.png
-  ```
+```
 
 ### 3. パッケージの実行
 

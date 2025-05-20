@@ -33,12 +33,3 @@ runs:
         labels: |
           initialization
           optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ（任意）] Pull Request内でデプロイのワークフローを設定する"
-        content-filepath: .github/initialization/FIREBASE_HOSTING_PREVIEW.md
-        labels: |
-          initialization
-          optional

@@ -38,14 +38,6 @@ app.*.map.json
 !.idea/jsonSchemas.xml
 !.idea/runConfigurations/
 
-# Mason 関連
-.mason
-mason-lock.json
-
-# Firebase 関連
-.firebase
-firebase-debug.log
-
 # Node.js 関連
 node_modules/
 
@@ -62,3 +54,4 @@ node_modules/
 .svn/
 .swiftpm/
 migrate_working_dir/
+.cursor/mcp.json

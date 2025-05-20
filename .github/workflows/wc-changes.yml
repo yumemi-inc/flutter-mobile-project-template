@@ -11,6 +11,8 @@ on:
         value: ${{ jobs.changes.outputs.any }}
       actions:
         value: ${{ jobs.changes.outputs.actions }}
+      dprint:
+        value: ${{ jobs.changes.outputs.dprint }}
       markdown:
         value: ${{ jobs.changes.outputs.markdown }}
       src:
@@ -18,16 +20,16 @@ on:
       dependencies:
         value: ${{ jobs.changes.outputs.dependencies }}
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   changes:
     runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read
     outputs:
       any: ${{ steps.filter.outputs.changes != '[]' }}
       actions: ${{ steps.filter.outputs.actions }}
+      dprint: ${{ steps.filter.outputs.dprint }}
       gen: ${{ steps.filter.outputs.gen }}
       lint: ${{ steps.filter.outputs.lint }}
       markdown: ${{ steps.filter.outputs.markdown }}
@@ -49,6 +51,13 @@ jobs:
               - '.github/actions/**/action.yaml'
               - '.github/workflows/*.yml'
               - '.github/workflows/*.yaml'
+            dprint:
+              - "**.json"
+              - "**.jsonc"
+              - "**.md"
+              - "**.toml"
+              - "**.yml"
+              - "**.yaml"
             gen:
               - "**.dart"
               - "**.yaml"
@@ -72,7 +81,7 @@ jobs:
         with:
           script: |
             const changes = ${{ steps.filter.outputs.changes }};
-            
+
             // 依存関係の解決が必要な変更箇所
             const dependencies = [
               'gen',

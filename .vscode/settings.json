@@ -7,6 +7,7 @@
   "bun.runtime": "${workspaceFolder}/.vscode/mise-tools/bun",
   "dart.flutterSdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable",
   "dart.sdkPath": "~/.local/share/mise/installs/flutter/3.27.1-stable/bin/dart",
+  "dprint.path": "~/.local/share/mise/shims/dprint",
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
@@ -27,14 +28,8 @@
   "npm.packageManager": "bun",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "files.associations": {
-    "*.json": "json"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  "[json][jsonc][yaml][toml][markdown]": {
+    "editor.defaultFormatter": "dprint.dprint"
   },
   "yaml.schemas": {
     "https://raw.githubusercontent.com/invertase/melos/main/melos.yaml.schema.json": "melos.yaml"
