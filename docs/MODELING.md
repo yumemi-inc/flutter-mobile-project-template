@@ -10,7 +10,7 @@
 ### イミュータブル設計
 
 ドメインモデルは原則としてイミュータブル（不変）で設計します。
-Dartの `freezed` パッケージや `extension type` を活用し、状態の変更は新しいインスタンスの生成で表現します。
+Dartの [`freezed` パッケージ](https://pub.dev/packages/freezed) や [Extension types](https://dart.dev/language/extension-types) を活用し、状態の変更は新しいインスタンスの生成で表現します。
 
 ### 値オブジェクトとエンティティの区別
 
