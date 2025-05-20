@@ -8,5 +8,11 @@ environment:
 
 resolution: workspace
 
+dependencies:
+  domain_logic:
+    path: ../domain_logic
+  domain_model:
+    path: ../domain_model
+
 dev_dependencies:
   test: ^1.25.8

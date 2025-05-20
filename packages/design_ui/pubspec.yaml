@@ -8,5 +8,9 @@ environment:
 
 resolution: workspace
 
+dependencies:
+  design_theme:
+    path: ../design_theme
+
 dev_dependencies:
   test: ^1.25.8
