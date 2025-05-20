@@ -1,4 +1,4 @@
-name: domain_logic
+name: internal_domain_logic
 description: A starting point for Dart libraries or applications.
 publish_to: "none"
 version: 1.0.0
@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  domain_model:
+  internal_domain_model:
     path: ../domain_model
 
 dev_dependencies:

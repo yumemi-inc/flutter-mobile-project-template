@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/design_theme_base.dart';
+export 'src/internal_domain_logic_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.

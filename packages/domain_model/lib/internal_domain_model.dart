@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/application_base.dart';
+export 'src/internal_domain_model_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.

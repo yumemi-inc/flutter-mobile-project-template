@@ -1,4 +1,4 @@
-name: design_ui
+name: internal_design_ui
 description: A starting point for Dart libraries or applications.
 publish_to: "none"
 version: 1.0.0
@@ -9,7 +9,7 @@ environment:
 resolution: workspace
 
 dependencies:
-  design_theme:
+  internal_design_theme:
     path: ../design_theme
 
 dev_dependencies:

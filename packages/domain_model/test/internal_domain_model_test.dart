@@ -1,4 +1,4 @@
-import 'package:domain_logic/domain_logic.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:test/test.dart';
 
 void main() {

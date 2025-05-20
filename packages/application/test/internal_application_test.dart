@@ -1,4 +1,4 @@
-import 'package:infrastructure/infrastructure.dart';
+import 'package:internal_application/internal_application.dart';
 import 'package:test/test.dart';
 
 void main() {

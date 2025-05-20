@@ -3,6 +3,6 @@
 /// More dartdocs go here.
 library;
 
-export 'src/design_ui_base.dart';
+export 'src/internal_design_ui_base.dart';
 
 // TODO: Export any libraries intended for clients of this package.
