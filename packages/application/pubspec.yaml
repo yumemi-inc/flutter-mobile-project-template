@@ -1,5 +1,5 @@
 name: internal_application
-description: A starting point for Dart libraries or applications.
+description: アプリケーション層のロジックを提供し、ユースケースやサービスの調整を担うパッケージです。
 publish_to: "none"
 version: 1.0.0
 

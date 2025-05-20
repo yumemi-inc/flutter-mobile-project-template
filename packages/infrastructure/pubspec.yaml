@@ -1,5 +1,5 @@
 name: internal_infrastructure
-description: A starting point for Dart libraries or applications.
+description: データアクセスや外部サービス連携など、インフラストラクチャ層の実装を担うパッケージです。
 publish_to: "none"
 version: 1.0.0
 

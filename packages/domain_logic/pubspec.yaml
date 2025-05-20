@@ -1,5 +1,5 @@
 name: internal_domain_logic
-description: A starting point for Dart libraries or applications.
+description: ドメイン層のビジネスロジックを実装するパッケージです。
 publish_to: "none"
 version: 1.0.0
 
