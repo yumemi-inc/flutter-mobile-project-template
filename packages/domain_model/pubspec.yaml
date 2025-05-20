@@ -1,4 +1,4 @@
-name: domain_model
+name: internal_domain_model
 description: A starting point for Dart libraries or applications.
 publish_to: "none"
 version: 1.0.0

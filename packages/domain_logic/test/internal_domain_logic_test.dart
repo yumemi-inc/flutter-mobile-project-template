@@ -1,4 +1,4 @@
-import 'package:design_ui/design_ui.dart';
+import 'package:internal_domain_logic/internal_domain_logic.dart';
 import 'package:test/test.dart';
 
 void main() {

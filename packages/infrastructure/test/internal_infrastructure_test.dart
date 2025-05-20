@@ -1,4 +1,4 @@
-import 'package:domain_model/domain_model.dart';
+import 'package:internal_infrastructure/internal_infrastructure.dart';
 import 'package:test/test.dart';
 
 void main() {

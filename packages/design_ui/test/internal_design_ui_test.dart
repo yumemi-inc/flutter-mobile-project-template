@@ -1,4 +1,4 @@
-import 'package:design_theme/design_theme.dart';
+import 'package:internal_design_ui/internal_design_ui.dart';
 import 'package:test/test.dart';
 
 void main() {
