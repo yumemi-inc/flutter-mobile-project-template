@@ -1,5 +1,6 @@
 name: design_ui
 description: A starting point for Dart libraries or applications.
+publish_to: "none"
 version: 1.0.0
 
 environment:
