@@ -28,7 +28,7 @@
    - 新しいルールセットを作成する場合は、適切な名前を付けてください
 3. **`Require merge queue`** を有効化
 
-![merge-queue-check.png](../images/merge-queue-check.png)
+![merge-queue-check.png](./images/merge-queue-check.png)
 
 ## ワークフロー処理
 
