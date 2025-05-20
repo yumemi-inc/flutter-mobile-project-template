@@ -53,6 +53,7 @@ jobs:
               - '.github/workflows/*.yaml'
             dprint:
               - "**.json"
+              - "**.jsonc"
               - "**.md"
               - "**.toml"
               - "**.yml"
