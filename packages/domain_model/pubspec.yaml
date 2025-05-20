@@ -1,5 +1,5 @@
 name: internal_domain_model
-description: A starting point for Dart libraries or applications.
+description: エンティティや値オブジェクトなど、ドメインモデルを定義するパッケージです。
 publish_to: "none"
 version: 1.0.0
 

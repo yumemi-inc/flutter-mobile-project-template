@@ -1,5 +1,5 @@
 name: internal_design_ui
-description: A starting point for Dart libraries or applications.
+description: 共通UIコンポーネントおよび文言リソースを一元管理するデザインUIパッケージです。
 publish_to: "none"
 version: 1.0.0
 
