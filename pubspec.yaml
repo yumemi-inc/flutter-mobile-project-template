@@ -108,6 +108,11 @@ melos:
       steps:
         - gen:l10n
         - gen:build
+    gen:diff:main:
+      description: main ブランチと差分のあるパッケージのみ build_runner と l10n の生成コマンドを実行します。
+      steps:
+        - gen:l10n:diff:main
+        - gen:build:diff:main
     gen:build:
       description: build_runner を使用してコードを生成します。
       run: dart run build_runner build -d
@@ -122,6 +127,45 @@ melos:
         orderDependents: true
       packageFilters:
         dependsOn: flutter_localizations
+    gen:build:diff:main:
+      description: main ブランチと差分のあるパッケージのみ build_runner を使用してコードを生成します。
+      run: dart run build_runner build -d
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
+        diff: origin/main...HEAD
+    gen:l10n:diff:main:
+      description: main ブランチと差分のあるパッケージのみ 多言語対応のためのローカライゼーションファイルを生成します。
+      run: flutter gen-l10n
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: flutter_localizations
+        diff: origin/main...HEAD
+    # ローカル確認用
+    # - 未コミットの差分パッケージのみ[build_runner][l10n]を処理するスクリプト
+    gen:diff:head:
+      description: 未コミットの差分パッケージのみ build_runner と l10n の生成コマンドを実行します。
+      steps:
+        - gen:build:diff:head
+        - gen:l10n:diff:head
+    gen:build:diff:head:
+      description: 未コミットの差分パッケージのみ build_runner を使用してコードを生成します。
+      run: dart run build_runner build -d
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
+        diff: ""
+    gen:l10n:diff:head:
+      description: 未コミットの差分パッケージのみ ローカライゼーションファイル を生成します。
+      run: flutter gen-l10n
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: flutter_localizations
+        diff: ""
     gen:labeler:
       description: "`.github/labeler.yml` のパッケージ部分を生成します。"
       run: dart run ./tools/gen_labeler.dart
