@@ -14,6 +14,13 @@ GitHubのマージキュー機能を設定して、 PR のマージプロセス�
 
 ## 設定手順
 
+### 前提条件
+
+- ブランチ保護ルールは、プロジェクトの方針に従って設定してください。
+- その他、ステータスチェックなどに関する内容は [`docs/BRANCH.md`](../../docs/BRANCH.md) を参照してください。
+
+### 設定
+
 1. **ブランチ保護ルール**：
    - リポジトリの **Settings > Rules > Rulesets** に移動
    - **New rulesets > New branch rules** をクリック
@@ -21,12 +28,8 @@ GitHubのマージキュー機能を設定して、 PR のマージプロセス�
    - 「Require merge queue」を有効化
      - ※ 必要に応じて、他のオプションも設定
 
-2. **Status Checks**：
-   - マージキューで必要なステータスチェックを指定する
-   - `.github/workflows/merge-queue.yaml`の設定を確認
-
-3. **ドキュメント**：
-   - `docs/MERGE_QUEUE.md`を参照
+2. **ドキュメント**：
+   - 概要は [`docs/MERGE_QUEUE.md`](../../docs/MERGE_QUEUE.md)を参照してください。
 
 ## 参考リンク
 
