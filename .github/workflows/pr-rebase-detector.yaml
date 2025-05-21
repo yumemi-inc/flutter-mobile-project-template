@@ -17,23 +17,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get PR base and head
-        id: vars
-        run: |
-          echo "BASE_SHA=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
-          echo "HEAD_SHA=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
-
       - name: Check for suspicious rebase (non-linear history)
         id: check
         run: |
           echo "Checking for suspicious history changes..."
-          MERGE_BASE=$(git merge-base origin/${{ github.event.pull_request.base.ref }} HEAD)
-          echo "Merge base: $MERGE_BASE"
-          if [ "$MERGE_BASE" != "${{ github.event.pull_request.base.sha }}" ]; then
-            echo "Rebase or force push detected"
-            echo "rebased=true" >> $GITHUB_OUTPUT
-          else
+
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          PR_HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          # --is-ancestor: 第1引数が第2引数の祖先かをチェック
+          # 正常なPR: ベースコミットはヘッドコミットの履歴に含まれる
+          # リベース済みPR: ベースコミットはヘッドコミットの履歴に含まれない
+          git merge-base --is-ancestor "$BASE_SHA" "$PR_HEAD_SHA"
+          if [ $? -eq 0 ]; then
+            echo "Linear history - base commit is ancestor of PR HEAD"
             echo "rebased=false" >> $GITHUB_OUTPUT
+          else
+            echo "Rebase or force push detected - base is not an ancestor of PR HEAD"
+            echo "rebased=true" >> $GITHUB_OUTPUT
           fi
 
       # https://github.com/peter-evans/create-or-update-comment
