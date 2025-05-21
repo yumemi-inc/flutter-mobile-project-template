@@ -38,10 +38,6 @@ app.*.map.json
 !.idea/jsonSchemas.xml
 !.idea/runConfigurations/
 
-# Mason 関連
-.mason
-mason-lock.json
-
 # Node.js 関連
 node_modules/
 

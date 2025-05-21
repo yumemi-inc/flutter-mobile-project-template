@@ -18,7 +18,7 @@
 - [mise] コマンドを有効にしてください。
 
   - また、以下のコマンドを実行して`mise.toml`で指定されたバージョンを有効化してください
-    (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
+    (melosはmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
 
   ```shell
   mise i
@@ -31,19 +31,6 @@
 
     ```shell
     MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
-    ```
-
-- [mason_cli] コマンドを有効にしてください。
-  - 以下のコマンドを実行して mason コマンドをグローバルに有効にしてください。
-
-    ```shell
-    MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
-    ```
-
-  - また、ローカルのbricksを有効にするため、以下のコマンドを実行してください。
-
-    ```shell
-    mason get
     ```
 
 ### Mise を使用するように IDE を設定
@@ -87,5 +74,4 @@ Please check:
 [Xcode]: https://developer.apple.com/xcode/
 [mise]: https://mise.jdx.dev/
 [melos]: https://melos.invertase.dev/
-[mason_cli]: https://pub.dev/packages/mason_cli
 [yq]: https://github.com/mikefarah/yq
