@@ -28,6 +28,13 @@ runs:
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
+        title: "[初期セットアップ] Merge Queue を導入"
+        content-filepath: .github/initialization/MERGE_QUEUE_SETUP.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
         title: "[初期セットアップ（任意）] スプラッシュ画面の設定"
         content-filepath: .github/initialization/SPLASH_SCREEN.md
         labels: |

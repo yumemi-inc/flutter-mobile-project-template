@@ -1,0 +1,12 @@
+name: internal_design_theme
+description: アプリ全体で利用されるカラーパレットやタイポグラフィなど、デザインテーマを定義するパッケージです。
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dev_dependencies:
+  test: ^1.25.8
