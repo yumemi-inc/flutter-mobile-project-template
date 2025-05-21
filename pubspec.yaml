@@ -34,8 +34,6 @@ workspace:
   - packages/utils/pagination
 
 dev_dependencies:
-  commitlint_cli: ^0.8.1
-  husky: ^0.1.7
   melos: ^7.0.0-dev.7
   path: ^1.9.1
   yaml: ^3.1.3
