@@ -1,0 +1,49 @@
+name: Pull Request Check Rebase or Force Push
+
+on:
+  pull_request:
+    types: [synchronize]
+
+concurrency:
+  group: pr-rebase-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR HEAD
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get PR base and head
+        id: vars
+        run: |
+          echo "BASE_SHA=${{ github.event.pull_request.base.sha }}" >> $GITHUB_ENV
+          echo "HEAD_SHA=${{ github.event.pull_request.head.sha }}" >> $GITHUB_ENV
+
+      - name: Check for suspicious rebase (non-linear history)
+        id: check
+        run: |
+          echo "Checking for suspicious history changes..."
+          MERGE_BASE=$(git merge-base origin/${{ github.event.pull_request.base.ref }} HEAD)
+          echo "Merge base: $MERGE_BASE"
+          if [ "$MERGE_BASE" != "${{ github.event.pull_request.base.sha }}" ]; then
+            echo "Rebase or force push detected"
+            echo "rebased=true" >> $GITHUB_OUTPUT
+          else
+            echo "rebased=false" >> $GITHUB_OUTPUT
+          fi
+
+      # https://github.com/peter-evans/create-or-update-comment
+      - name: Comment
+        if: steps.check.outputs.rebased == 'true'
+        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ⚠️ **Warning: Rebase or force-push detected**
+
+            このプルリクエストには非線形な履歴が含まれており、rebase や強制 push の可能性があります。
+            レビュアーの負荷を軽減するため、今後はマージコミットまたは修正コミットでの対応を推奨します。
