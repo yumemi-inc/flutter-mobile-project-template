@@ -1,0 +1,16 @@
+name: internal_design_ui
+description: 共通UIコンポーネントおよび文言リソースを一元管理するデザインUIパッケージです。
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  internal_design_theme:
+    path: ../design_theme
+
+dev_dependencies:
+  test: ^1.25.8
