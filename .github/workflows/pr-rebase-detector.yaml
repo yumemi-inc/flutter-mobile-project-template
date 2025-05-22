@@ -50,11 +50,13 @@ jobs:
           done < <(git rev-list $BEFORE_SHA..$AFTER_SHA)
 
           if [ -n "$REBASED_COMMITS" ]; then
-            echo "rebase=true" >> "$GITHUB_OUTPUT"
-            # Store the list of rebased commits as a multi-line output
-            echo "rebased_commits<<EOF" >> "$GITHUB_OUTPUT"
-            echo -e "$REBASED_COMMITS" >> "$GITHUB_OUTPUT"
-            echo "EOF" >> "$GITHUB_OUTPUT"
+            # If rebased commits were found, set output to true and store the list
+            {
+              echo "rebase=true"
+              echo "rebased_commits<<EOF"
+              echo -e "$REBASED_COMMITS"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
           else
             echo "rebase=false" >> "$GITHUB_OUTPUT"
           fi
