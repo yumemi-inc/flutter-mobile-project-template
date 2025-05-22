@@ -1,0 +1,73 @@
+name: Pull Request Check Rebase or Force Push
+
+on:
+  pull_request:
+    types: [synchronize]
+
+concurrency:
+  group: pr-rebase-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  check-rebase:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          fetch-depth: 0
+
+      - name: Detect rebase between pushes
+        id: check
+        run: |
+          # Get the SHA of the commit before and after the push
+          BEFORE_SHA="${{ github.event.before }}"
+          AFTER_SHA="${{ github.event.after }}"
+
+          echo "Before: $BEFORE_SHA"
+          echo "After: $AFTER_SHA"
+
+          REBASED_COMMITS=""
+
+          # Iterate through each commit between the before and after SHAs
+          while read -r commit; do
+            # Get the parent commit(s) of the current commit
+            PARENTS=$(git show --no-patch --format="%P" "$commit")
+            # Count the number of parent commits
+            PARENT_COUNT=$(echo "$PARENTS" | wc -w)
+
+            # Check if this is a non-merge commit (has exactly one parent)
+            if [ "$PARENT_COUNT" -le 1 ] && [ -n "$PARENTS" ]; then
+              # Check if the parent is not in the ancestry of the before SHA
+              # This indicates the commit has been rebased or force-pushed
+              if ! git merge-base --is-ancestor "$BEFORE_SHA" "$PARENTS"; then
+                COMMIT_MSG=$(git log -1 --pretty=format:"%s" "$commit")
+                # Add to the list of rebased commits
+                REBASED_COMMITS="$REBASED_COMMITS\n- $commit ($COMMIT_MSG)"
+              fi
+            fi
+          done < <(git rev-list $BEFORE_SHA..$AFTER_SHA)
+
+          if [ -n "$REBASED_COMMITS" ]; then
+            # If rebased commits were found, set output to true and store the list
+            {
+              echo "rebase=true"
+              echo "rebased_commits<<EOF"
+              echo -e "$REBASED_COMMITS"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            echo "rebase=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Post comment if rebased
+        if: steps.check.outputs.rebase == 'true'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            :warning: **Rebase or force-push detected in this push**
+            以下のコミットが非線形な履歴となっており、rebase または強制 push の可能性があります：
+
+            ${{ steps.check.outputs.rebased_commits }}
