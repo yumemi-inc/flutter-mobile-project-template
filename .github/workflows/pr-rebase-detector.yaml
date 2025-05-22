@@ -9,43 +9,63 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check-commits:
+  check-rebase:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR HEAD
-        uses: actions/checkout@v3
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           fetch-depth: 0
 
-      - name: Check for suspicious rebase (non-linear history)
+      - name: Detect rebase between pushes
         id: check
         run: |
-          echo "Checking for suspicious history changes..."
+          # Get the SHA of the commit before and after the push
+          BEFORE_SHA="${{ github.event.before }}"
+          AFTER_SHA="${{ github.event.after }}"
 
-          git fetch origin ${{ github.event.pull_request.base.ref }}
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          PR_HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          echo "Before: $BEFORE_SHA"
+          echo "After: $AFTER_SHA"
 
-          # --is-ancestor: 第1引数が第2引数の祖先かをチェック
-          # 正常なPR: ベースコミットはヘッドコミットの履歴に含まれる
-          # リベース済みPR: ベースコミットはヘッドコミットの履歴に含まれない
-          git merge-base --is-ancestor "$BASE_SHA" "$PR_HEAD_SHA"
-          if [ $? -eq 0 ]; then
-            echo "Linear history - base commit is ancestor of PR HEAD"
-            echo "rebased=false" >> $GITHUB_OUTPUT
+          REBASED_COMMITS=""
+
+          # Iterate through each commit between the before and after SHAs
+          while read -r commit; do
+            # Get the parent commit(s) of the current commit
+            PARENTS=$(git show --no-patch --format="%P" "$commit")
+            # Count the number of parent commits
+            PARENT_COUNT=$(echo "$PARENTS" | wc -w)
+
+            # Check if this is a non-merge commit (has exactly one parent)
+            if [ "$PARENT_COUNT" -le 1 ] && [ -n "$PARENTS" ]; then
+              # Check if the parent is not in the ancestry of the before SHA
+              # This indicates the commit has been rebased or force-pushed
+              if ! git merge-base --is-ancestor "$BEFORE_SHA" "$PARENTS"; then
+                COMMIT_MSG=$(git log -1 --pretty=format:"%s" "$commit")
+                # Add to the list of rebased commits
+                REBASED_COMMITS="$REBASED_COMMITS\n- $commit ($COMMIT_MSG)"
+              fi
+            fi
+          done < <(git rev-list $BEFORE_SHA..$AFTER_SHA)
+
+          if [ -n "$REBASED_COMMITS" ]; then
+            echo "rebase=true" >> "$GITHUB_OUTPUT"
+            # Store the list of rebased commits as a multi-line output
+            echo "rebased_commits<<EOF" >> "$GITHUB_OUTPUT"
+            echo -e "$REBASED_COMMITS" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
           else
-            echo "Rebase or force push detected - base is not an ancestor of PR HEAD"
-            echo "rebased=true" >> $GITHUB_OUTPUT
+            echo "rebase=false" >> "$GITHUB_OUTPUT"
           fi
 
-      # https://github.com/peter-evans/create-or-update-comment
-      - name: Comment
-        if: steps.check.outputs.rebased == 'true'
-        uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
+      - name: Post comment if rebased
+        if: steps.check.outputs.rebase == 'true'
+        uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            ⚠️ **Warning: Rebase or force-push detected**
+            :warning: **Rebase or force-push detected in this push**
+            以下のコミットが非線形な履歴となっており、rebase または強制 push の可能性があります：
 
-            このプルリクエストには非線形な履歴が含まれており、rebase や強制 push の可能性があります。
-            レビュアーの負荷を軽減するため、今後はマージコミットまたは修正コミットでの対応を推奨します。
+            ${{ steps.check.outputs.rebased_commits }}
