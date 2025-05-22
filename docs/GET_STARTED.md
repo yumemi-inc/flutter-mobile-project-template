@@ -53,23 +53,13 @@ mise where flutter
 
 ### エディターの設定
 
-このプロジェクトでは、コードの品質と一貫性を保つために、以下のエディター設定を推奨しています。
+このプロジェクトでは、コミットメッセージの一貫性を保つために、[Conventional Commits](https://www.conventionalcommits.org/) を使用しています。
+各エディターにおいて、コミットメッセージの形式をチェックするための拡張機能を導入することをお勧めします。
 
-#### Visual Studio Code
-
-VSCodeを使用する場合は、プロジェクトを開くと自動的に推奨拡張機能がインストールされます。
-これには以下の拡張機能が含まれます：
-
-- Dart/Flutter開発用の拡張機能
-- [Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits)（コミットメッセージの形式チェック）
-- その他の開発支援ツール
-
-#### Android Studio
-
-Android Studioを使用する場合は、以下の拡張機能の導入が推奨されます。
-
-- [Conventional Commit](https://plugins.jetbrains.com/plugin/13389-conventional-commit)
-- [Commitlint Conventional Commit](https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit)
+- Visual Studio Codeを使用する場合は、[Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits)の導入が推奨されます。
+- Android Studioを使用する場合は、以下の拡張機能の導入が推奨されます。
+  - [Conventional Commit](https://plugins.jetbrains.com/plugin/13389-conventional-commit)
+  - [Commitlint Conventional Commit](https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit)
 
 ### 開発環境のセットアップ
 
