@@ -94,9 +94,16 @@ melos:
     bootstrap:post:
       description: bootstrap post hooks
       steps:
+        - bootstrap:bun
         - update:yumemi_lints
         - gen:labeler
         - gen:labels
+    # Actionsにおいてbunがインストールされないことがあるため、チェックを行う
+    bootstrap:bun:
+      description: |
+        bunのinstallを実行します。
+        この時にpackage.jsonのprepareのスクリプトによって、huskyとcommitlintのセットアップを行います。
+      run: command -v bun > /dev/null 2>&1 && bun install || true
 
     fix:
       description: |
