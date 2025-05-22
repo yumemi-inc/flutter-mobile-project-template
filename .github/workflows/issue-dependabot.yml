@@ -1,4 +1,4 @@
-name: Issue-Dependbot
+name: Issue-Dependabot
 
 on:
   schedule:
@@ -8,7 +8,7 @@ env:
   ISSUE_LABEL: package_update
 
 jobs:
-  dependbot:
+  dependabot:
     runs-on: ubuntu-22.04
     permissions:
       issues: write
