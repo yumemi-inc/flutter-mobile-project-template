@@ -51,6 +51,26 @@ mise where flutter
 3. 変更を適用します。
 4. 新しい設定が反映されるようにエディタを再起動します。
 
+### エディターの設定
+
+このプロジェクトでは、コードの品質と一貫性を保つために、以下のエディター設定を推奨しています。
+
+#### Visual Studio Code
+
+VSCodeを使用する場合は、プロジェクトを開くと自動的に推奨拡張機能がインストールされます。
+これには以下の拡張機能が含まれます：
+
+- Dart/Flutter開発用の拡張機能
+- [Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits)（コミットメッセージの形式チェック）
+- その他の開発支援ツール
+
+#### Android Studio
+
+Android Studioを使用する場合は、以下の拡張機能の導入が推奨されます。
+
+- [Conventional Commit](https://plugins.jetbrains.com/plugin/13389-conventional-commit)
+- [Commitlint Conventional Commit](https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit)
+
 ### 開発環境のセットアップ
 
 `melos bootstrap`を実行すると、以下の処理が行われます：
@@ -59,6 +79,7 @@ mise where flutter
 - [husky]と[commitlint]のセットアップ
   - これにより、コミット時にコミットメッセージ規約のチェックが行われます。
   - 詳細は [COMMIT_CONVENTION.md] を参照してください。
+  - エディターの拡張機能（VSCode: Conventional Commits、Android Studio: Conventional Commit）を利用することで、コミット前にメッセージの形式をチェックできます。
 - GitHub関連の設定ファイルの生成
 
 ```shell
@@ -83,4 +104,4 @@ Please check:
 [mise]: https://mise.jdx.dev/
 [melos]: https://melos.invertase.dev/
 [yq]: https://github.com/mikefarah/yq
-[COMMIT_CONVENTION.md]: /COMMIT_CONVENTION.md
+[COMMIT_CONVENTION.md]: /docs/COMMIT_CONVENTION.md
