@@ -5,8 +5,20 @@ version: 1.0.0
 
 environment:
   sdk: ^3.6.0
+  flutter: ^3.27.1
 
 resolution: workspace
 
+dependencies:
+  flutter:
+    sdk: flutter
+  theme_extensions_builder_annotation: ^3.1.0
+
 dev_dependencies:
-  test: ^1.25.8
+  build_runner: ^2.4.14
+  flutter_test:
+    sdk: flutter
+  theme_extensions_builder: ^3.1.0
+
+flutter:
+  uses-material-design: true
