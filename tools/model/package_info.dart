@@ -12,7 +12,7 @@ enum Kind {
       }
     }
 
-    throw ArgumentError('Kind donse not have $value');
+    throw ArgumentError('Kind does not have $value');
   }
 }
 
