@@ -51,7 +51,7 @@
 
 ### 検出の仕組み
 
-[**`.guthub/workflows/pr-rebaes-detector.yaml`**](../.github/workflows/pr-rebase-detector.yaml) を利用して以下を自動的にチェックしています：
+[**`.github/workflows/pr-rebase-detector.yaml`**](../.github/workflows/pr-rebase-detector.yaml) を利用して以下を自動的にチェックしています：
 
 1. PR が更新（synchronize イベント）されたとき
 2. Git の履歴が非線形（rebase や force-push の可能性）かどうか

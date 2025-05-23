@@ -29,4 +29,4 @@
 ## 関連資料
 
 - [workflows/pr-rebase-detector.yaml](../workflows/pr-rebase-detector.yaml)
-- [PR_GUIDLINES.md](../../docs/PR_GUIDLINES.md)
+- [PR_GUIDELINES.md](../../docs/PR_GUIDELINES.md)
