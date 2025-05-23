@@ -43,7 +43,7 @@
     // ...他のチェック対象外ファイル
   ],
   "ignoreRegExpList": [
-    "(TODO|FIXME|HACK|UNDONE)\\([^)]*\\)",
+    "(TODO|FIXME|HACK|UNDONE)\\([^)]*\\)"
     // ...他のチェック対象外パターン
   ],
   "import": [
