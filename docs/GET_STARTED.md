@@ -63,18 +63,11 @@ mise where flutter
 
 ### 開発環境のセットアップ
 
-`melos bootstrap`を実行すると、以下の処理が行われます：
-
-- プロジェクトの依存関係（Flutter/Dartパッケージ）のインストール
-- [husky]と[commitlint]のセットアップ
-  - これにより、コミット時にコミットメッセージ規約のチェックが行われます。
-  - 詳細は [COMMIT_CONVENTION.md] を参照してください。
-  - エディターの拡張機能（VSCode: Conventional Commits、Android Studio: Conventional Commit）を利用することで、コミット前にメッセージの形式をチェックできます。
-- GitHub関連の設定ファイルの生成
-
 ```shell
-melos bootstrap
+mise bs
 ```
+
+上記のコマンドを実行すると、mise, bun, melos の依存関係がインストールされ、プロジェクトの初期セットアップが行われます。
 
 ### アプリの実行
 
@@ -94,4 +87,3 @@ Please check:
 [mise]: https://mise.jdx.dev/
 [melos]: https://melos.invertase.dev/
 [yq]: https://github.com/mikefarah/yq
-[COMMIT_CONVENTION.md]: /docs/COMMIT_CONVENTION.md
