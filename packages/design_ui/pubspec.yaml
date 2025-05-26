@@ -5,12 +5,29 @@ version: 1.0.0
 
 environment:
   sdk: ^3.6.0
+  flutter: ^3.27.1
 
 resolution: workspace
 
 dependencies:
+  flutter:
+    sdk: flutter
+  flutter_gen_runner: ^5.8.0
   internal_design_theme:
     path: ../design_theme
 
 dev_dependencies:
-  test: ^1.25.8
+  build_runner: ^2.4.14
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+flutter_gen:
+  output: lib/src/gen/assets
+  assets:
+    outputs:
+      package_parameter_enabled: true
