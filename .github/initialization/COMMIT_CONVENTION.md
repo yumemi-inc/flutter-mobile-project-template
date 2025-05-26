@@ -1,5 +1,3 @@
-<!-- markdownlint-disable MD029 -->
-
 # コミットメッセージ規約の設定
 
 このプロジェクトでは、[Conventional Commits]の仕様に従ったコミットメッセージ規約を採用しています。
