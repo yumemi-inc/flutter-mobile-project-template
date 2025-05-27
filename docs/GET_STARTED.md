@@ -51,11 +51,23 @@ mise where flutter
 3. 変更を適用します。
 4. 新しい設定が反映されるようにエディタを再起動します。
 
-### 依存関係のインストール
+### エディターの設定
+
+このプロジェクトでは、コミットメッセージの一貫性を保つために、[Conventional Commits](https://www.conventionalcommits.org/) を使用しています。
+各エディターにおいて、コミットメッセージの形式をチェックするための拡張機能を導入することをお勧めします。
+
+- Visual Studio Codeを使用する場合は、[Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits)の導入が推奨されます。
+- Android Studioを使用する場合は、以下の拡張機能の導入が推奨されます。
+  - [Conventional Commit](https://plugins.jetbrains.com/plugin/13389-conventional-commit)
+  - [Commitlint Conventional Commit](https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit)
+
+### 開発環境のセットアップ
 
 ```shell
-melos bootstrap
+mise bs
 ```
+
+上記のコマンドを実行すると、mise, bun, melos の依存関係がインストールされ、プロジェクトの初期セットアップが行われます。
 
 ### アプリの実行
 
