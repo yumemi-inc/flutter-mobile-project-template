@@ -57,26 +57,3 @@ classDiagram
     ForceUpdateSettingsState --> ForceUpdateTargetVersion
     ForceUpdateTargetVersion --> VersionString
 ```
-
-### ビルド構成集約
-
-```mermaid
-classDiagram
-    class BuildConfig {
-        <<interface>>
-        +String appName
-        +String packageName
-        +String version
-        +String buildNumber
-        +String buildSignature
-        +Flavor flavor
-        +String? installerStore
-    }
-    class Flavor {
-        <<enum>>
-        dev
-        stg
-        prd
-    }
-    BuildConfig --> Flavor
-```
