@@ -14,3 +14,9 @@ run = [
   'bun run clean',
   'melos clean',
 ]
+
+[tasks.cspell]
+description = "Run cspell to check spelling."
+run = [
+  'bun run cspell lint',
+]
