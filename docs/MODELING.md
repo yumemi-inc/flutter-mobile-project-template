@@ -99,15 +99,15 @@ classDiagram
     class RequiredVersions {
         +Version ios
         +Version android
-        +Version getMinimumFor(Platform platform)
+        +getMinimumFor(Platform platform) Version
     }
 
     %% --- Value Objects & Enums ---
     class Version {
         +String value
-        +Boolean lessThan(Version other)
-        +Boolean greaterThan(Version other)
-        +Boolean equals(Version other)
+        +lessThan(Version other) bool
+        +greaterThan(Version other) bool
+        +equals(Version other) bool
     }
     class Platform {
         <<enumeration>>
