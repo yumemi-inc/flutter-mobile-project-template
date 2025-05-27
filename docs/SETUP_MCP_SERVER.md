@@ -79,7 +79,7 @@ Git MCP Server はAIアシスタントからGitコマンドを操作するため
 
 ### git MCP Server 有効化
 
-1. `modelcontextprotocol organization`の`servers`リポジトリをcloneする
+1. `servers`リポジトリをcloneする
 
    ```bash
    git clone -b 2025.4.24 https://github.com/modelcontextprotocol/servers.git
