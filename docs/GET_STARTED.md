@@ -1,6 +1,6 @@
-## はじめに
+# はじめに
 
-### IDE バージョン
+## IDE バージョン
 
 | IDE            | バージョン               |
 | -------------- | ------------------------ |
@@ -9,7 +9,7 @@
 
 **注意**: 記載されているバージョンでの動作を確認しています。これより古いバージョン、または新しいバージョンでは正常に動作しない可能性があります。
 
-### 事前準備
+## 事前準備
 
 - IDE をインストールしてください。
   - [IntelliJ IDEA], [Android Studio] または [Visual Studio Code]
@@ -33,7 +33,7 @@
     MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
     ```
 
-### Mise を使用するように IDE を設定
+## Mise を使用するように IDE を設定
 
 [Visual Studio Code] を使用している場合は、ウィンドウをリロードして SDK を再読み込みしてください。
 
