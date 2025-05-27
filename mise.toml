@@ -2,3 +2,8 @@
 bun = "1.2.10"
 flutter = "3.27.1"
 dprint = "0.49.1"
+
+[tasks.bootstrap]
+description = "Initialize the workspace."
+run = './tools/bootstrap.sh'
+alias = "bs"
