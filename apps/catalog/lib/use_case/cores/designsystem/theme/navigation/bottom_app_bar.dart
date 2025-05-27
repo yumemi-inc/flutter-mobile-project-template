@@ -125,8 +125,10 @@ class _BottomAppBarDemoState extends State<_BottomAppBarDemo> {
             )
           : null,
       floatingActionButtonLocation: _fabLocation,
-      bottomNavigationBar:
-          _DemoBottomAppBar(isElevated: _isElevated, isVisible: _isVisible),
+      bottomNavigationBar: _DemoBottomAppBar(
+        isElevated: _isElevated,
+        isVisible: _isVisible,
+      ),
     );
   }
 }

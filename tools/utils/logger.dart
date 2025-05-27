@@ -1,7 +1,8 @@
 import 'dart:developer' as dev;
 import 'dart:io' as io;
 
-final _useAnsi = io.stdout.supportsAnsiEscapes &&
+final _useAnsi =
+    io.stdout.supportsAnsiEscapes &&
     io.stdioType(io.stdout) == io.StdioType.terminal;
 final _red = _code('\u001b[31m');
 final _bold = _code('\u001b[1m');

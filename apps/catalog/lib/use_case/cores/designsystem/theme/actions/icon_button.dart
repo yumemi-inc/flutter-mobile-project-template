@@ -10,21 +10,21 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Actions',
 )
 Widget iconButton(BuildContext context) => Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-          const SizedBox(height: 16),
-          const IconButton(
-            onPressed: null,
-            icon: Icon(Icons.settings),
-          ),
-        ],
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.settings),
       ),
-    );
+      const SizedBox(height: 16),
+      const IconButton(
+        onPressed: null,
+        icon: Icon(Icons.settings),
+      ),
+    ],
+  ),
+);
 
 @UseCase(
   name: 'Filled',
@@ -32,21 +32,21 @@ Widget iconButton(BuildContext context) => Center(
   path: '[Theme Preview]/Actions',
 )
 Widget filledIconButton(BuildContext context) => Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton.filled(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-          const SizedBox(height: 16),
-          const IconButton.filled(
-            onPressed: null,
-            icon: Icon(Icons.settings),
-          ),
-        ],
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      IconButton.filled(
+        onPressed: () {},
+        icon: const Icon(Icons.settings),
       ),
-    );
+      const SizedBox(height: 16),
+      const IconButton.filled(
+        onPressed: null,
+        icon: Icon(Icons.settings),
+      ),
+    ],
+  ),
+);
 
 @UseCase(
   name: 'Tonal',
@@ -54,21 +54,21 @@ Widget filledIconButton(BuildContext context) => Center(
   path: '[Theme Preview]/Actions',
 )
 Widget filledTonalIconButton(BuildContext context) => Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton.filledTonal(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-          const SizedBox(height: 16),
-          const IconButton.filledTonal(
-            onPressed: null,
-            icon: Icon(Icons.settings),
-          ),
-        ],
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      IconButton.filledTonal(
+        onPressed: () {},
+        icon: const Icon(Icons.settings),
       ),
-    );
+      const SizedBox(height: 16),
+      const IconButton.filledTonal(
+        onPressed: null,
+        icon: Icon(Icons.settings),
+      ),
+    ],
+  ),
+);
 
 @UseCase(
   name: 'Outlined',
@@ -76,18 +76,18 @@ Widget filledTonalIconButton(BuildContext context) => Center(
   path: '[Theme Preview]/Actions',
 )
 Widget outlinedIconButton(BuildContext context) => Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton.outlined(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-          const SizedBox(height: 16),
-          const IconButton.outlined(
-            onPressed: null,
-            icon: Icon(Icons.settings),
-          ),
-        ],
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      IconButton.outlined(
+        onPressed: () {},
+        icon: const Icon(Icons.settings),
       ),
-    );
+      const SizedBox(height: 16),
+      const IconButton.outlined(
+        onPressed: null,
+        icon: Icon(Icons.settings),
+      ),
+    ],
+  ),
+);

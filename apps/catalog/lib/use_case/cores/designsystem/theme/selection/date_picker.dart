@@ -23,8 +23,9 @@ Widget datePicker(BuildContext context) {
             useRootNavigator: false,
           );
           if (context.mounted) {
-            ScaffoldMessenger.maybeOf(context)
-                ?.showSnackBar(SnackBar(content: Text('Result: $result')));
+            ScaffoldMessenger.maybeOf(
+              context,
+            )?.showSnackBar(SnackBar(content: Text('Result: $result')));
           }
         },
         child: const Text('Show DatePicker'),

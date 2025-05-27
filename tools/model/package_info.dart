@@ -33,16 +33,16 @@ class PackageInfo {
   const PackageInfo({required this.packages});
 
   factory PackageInfo.fromJson(Map<String, dynamic> data) => PackageInfo(
-        packages: (data['packages'] as List<dynamic>)
-            .map((e) => Package.fromJson(e as Map<String, dynamic>))
-            .toList(),
-      );
+    packages: (data['packages'] as List<dynamic>)
+        .map((e) => Package.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 
   final List<Package> packages;
 
   Map<String, dynamic> toJson() => {
-        'packages': packages.map((e) => e.toJson()).toList(),
-      };
+    'packages': packages.map((e) => e.toJson()).toList(),
+  };
 }
 
 class Package {
@@ -59,21 +59,18 @@ class Package {
   });
 
   factory Package.fromJson(Map<String, dynamic> data) => Package(
-        package: data['package'] as String,
-        kind: Kind.fromString(data['kind'] as String),
-        isDiscontinued: data['isDiscontinued'] as bool,
-        isCurrentRetracted: data['isCurrentRetracted'] as bool,
-        isCurrentAffectedByAdvisory:
-            data['isCurrentAffectedByAdvisory'] as bool,
-        current: data['current'] == null
-            ? null
-            : Version.fromJson(data['current'] as Map<String, dynamic>),
-        upgradable:
-            Version.fromJson(data['upgradable'] as Map<String, dynamic>),
-        resolvable:
-            Version.fromJson(data['resolvable'] as Map<String, dynamic>),
-        latest: Version.fromJson(data['latest'] as Map<String, dynamic>),
-      );
+    package: data['package'] as String,
+    kind: Kind.fromString(data['kind'] as String),
+    isDiscontinued: data['isDiscontinued'] as bool,
+    isCurrentRetracted: data['isCurrentRetracted'] as bool,
+    isCurrentAffectedByAdvisory: data['isCurrentAffectedByAdvisory'] as bool,
+    current: data['current'] == null
+        ? null
+        : Version.fromJson(data['current'] as Map<String, dynamic>),
+    upgradable: Version.fromJson(data['upgradable'] as Map<String, dynamic>),
+    resolvable: Version.fromJson(data['resolvable'] as Map<String, dynamic>),
+    latest: Version.fromJson(data['latest'] as Map<String, dynamic>),
+  );
 
   final String package;
   final Kind kind;
@@ -86,30 +83,30 @@ class Package {
   final Version latest;
 
   Map<String, dynamic> toJson() => {
-        'package': package,
-        'kind': kind,
-        'isDiscontinued': isDiscontinued,
-        'isCurrentRetracted': isCurrentRetracted,
-        'isCurrentAffectedByAdvisory': isCurrentAffectedByAdvisory,
-        'current': current?.toJson(),
-        'upgradable': upgradable.toJson(),
-        'resolvable': resolvable.toJson(),
-        'latest': latest.toJson(),
-      };
+    'package': package,
+    'kind': kind,
+    'isDiscontinued': isDiscontinued,
+    'isCurrentRetracted': isCurrentRetracted,
+    'isCurrentAffectedByAdvisory': isCurrentAffectedByAdvisory,
+    'current': current?.toJson(),
+    'upgradable': upgradable.toJson(),
+    'resolvable': resolvable.toJson(),
+    'latest': latest.toJson(),
+  };
 }
 
 class Version implements Comparable<Version> {
   const Version({required this.version});
 
   factory Version.fromJson(Map<String, dynamic> data) => Version(
-        version: data['version'] as String,
-      );
+    version: data['version'] as String,
+  );
 
   final String version;
 
   Map<String, dynamic> toJson() => {
-        'version': version,
-      };
+    'version': version,
+  };
 
   @override
   int compareTo(Version other) {

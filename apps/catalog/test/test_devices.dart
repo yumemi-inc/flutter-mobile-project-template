@@ -8,11 +8,11 @@ abstract class TestDevices {
   int get pixelRatio;
 
   BoxConstraints get constraints => BoxConstraints(
-        minWidth: width / pixelRatio,
-        maxWidth: width / pixelRatio,
-        minHeight: height / pixelRatio,
-        maxHeight: height / pixelRatio,
-      );
+    minWidth: width / pixelRatio,
+    maxWidth: width / pixelRatio,
+    minHeight: height / pixelRatio,
+    maxHeight: height / pixelRatio,
+  );
 }
 
 class IPhone16ProMax extends TestDevices {

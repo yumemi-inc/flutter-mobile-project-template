@@ -9,31 +9,31 @@ part of 'router.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
-      $debugPageRoute,
-      $mainPageShellRoute,
-      $maintenancePageRoute,
-    ];
+  $debugPageRoute,
+  $mainPageShellRoute,
+  $maintenancePageRoute,
+];
 
 RouteBase get $debugPageRoute => GoRouteData.$route(
-      path: '/debug',
-      parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
-      factory: $DebugPageRouteExtension._fromState,
-      routes: [
-        GoRouteData.$route(
-          path: 'navigation_debug',
-          parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
-          factory: $NavigationDebugPageRouteExtension._fromState,
-        ),
-      ],
-    );
+  path: '/debug',
+  parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
+  factory: $DebugPageRouteExtension._fromState,
+  routes: [
+    GoRouteData.$route(
+      path: 'navigation_debug',
+      parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
+      factory: $NavigationDebugPageRouteExtension._fromState,
+    ),
+  ],
+);
 
 extension $DebugPageRouteExtension on DebugPageRoute {
   static DebugPageRoute _fromState(GoRouterState state) =>
       const DebugPageRoute();
 
   String get location => GoRouteData.$location(
-        '/debug',
-      );
+    '/debug',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -50,8 +50,8 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
       const NavigationDebugPageRoute();
 
   String get location => GoRouteData.$location(
-        '/debug/navigation_debug',
-      );
+    '/debug/navigation_debug',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -64,32 +64,32 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
 }
 
 RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
-      factory: $MainPageShellRouteExtension._fromState,
-      branches: [
-        StatefulShellBranchData.$branch(
-          routes: [
-            GoRouteData.$route(
-              path: '/',
-              factory: $HomePageRouteExtension._fromState,
-            ),
-          ],
+  factory: $MainPageShellRouteExtension._fromState,
+  branches: [
+    StatefulShellBranchData.$branch(
+      routes: [
+        GoRouteData.$route(
+          path: '/',
+          factory: $HomePageRouteExtension._fromState,
         ),
-        StatefulShellBranchData.$branch(
+      ],
+    ),
+    StatefulShellBranchData.$branch(
+      routes: [
+        GoRouteData.$route(
+          path: '/setting',
+          factory: $SettingPageRouteExtension._fromState,
           routes: [
             GoRouteData.$route(
-              path: '/setting',
-              factory: $SettingPageRouteExtension._fromState,
-              routes: [
-                GoRouteData.$route(
-                  path: 'license',
-                  factory: $LicensePageRouteExtension._fromState,
-                ),
-              ],
+              path: 'license',
+              factory: $LicensePageRouteExtension._fromState,
             ),
           ],
         ),
       ],
-    );
+    ),
+  ],
+);
 
 extension $MainPageShellRouteExtension on MainPageShellRoute {
   static MainPageShellRoute _fromState(GoRouterState state) =>
@@ -100,8 +100,8 @@ extension $HomePageRouteExtension on HomePageRoute {
   static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
   String get location => GoRouteData.$location(
-        '/',
-      );
+    '/',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -118,8 +118,8 @@ extension $SettingPageRouteExtension on SettingPageRoute {
       const SettingPageRoute();
 
   String get location => GoRouteData.$location(
-        '/setting',
-      );
+    '/setting',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -136,8 +136,8 @@ extension $LicensePageRouteExtension on LicensePageRoute {
       const LicensePageRoute();
 
   String get location => GoRouteData.$location(
-        '/setting/license',
-      );
+    '/setting/license',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -150,17 +150,17 @@ extension $LicensePageRouteExtension on LicensePageRoute {
 }
 
 RouteBase get $maintenancePageRoute => GoRouteData.$route(
-      path: '/maintenance',
-      factory: $MaintenancePageRouteExtension._fromState,
-    );
+  path: '/maintenance',
+  factory: $MaintenancePageRouteExtension._fromState,
+);
 
 extension $MaintenancePageRouteExtension on MaintenancePageRoute {
   static MaintenancePageRoute _fromState(GoRouterState state) =>
       const MaintenancePageRoute();
 
   String get location => GoRouteData.$location(
-        '/maintenance',
-      );
+    '/maintenance',
+  );
 
   void go(BuildContext context) => context.go(location);
 
@@ -183,8 +183,9 @@ String _$routerHash() => r'6fd1bed2331289341159bcf24207bc657a112207';
 final routerProvider = Provider<GoRouter>.internal(
   router,
   name: r'routerProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$routerHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$routerHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

@@ -15,14 +15,14 @@ String _$appExceptionNotifierHash() =>
 @ProviderFor(AppExceptionNotifier)
 final appExceptionNotifierProvider =
     NotifierProvider<AppExceptionNotifier, AppException?>.internal(
-  AppExceptionNotifier.new,
-  name: r'appExceptionNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$appExceptionNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      AppExceptionNotifier.new,
+      name: r'appExceptionNotifierProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$appExceptionNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$AppExceptionNotifier = Notifier<AppException?>;
 // ignore_for_file: type=lint

@@ -14,13 +14,14 @@ String _$forceUpdateHash() => r'263cf88bba96f8e102a808604cc66bedec72d82c';
 @ProviderFor(ForceUpdate)
 final forceUpdateProvider =
     NotifierProvider<ForceUpdate, ForceUpdateSettingsState>.internal(
-  ForceUpdate.new,
-  name: r'forceUpdateProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$forceUpdateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ForceUpdate.new,
+      name: r'forceUpdateProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$forceUpdateHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ForceUpdate = Notifier<ForceUpdateSettingsState>;
 // ignore_for_file: type=lint

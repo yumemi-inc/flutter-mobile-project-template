@@ -6,10 +6,13 @@ import 'package:utils_pagination/exception.dart';
 import 'package:utils_pagination/model.dart';
 import 'package:utils_pagination/provider.dart';
 
-final pageBasedGitHubRepositoryNotifierProvider = AsyncNotifierProvider
-    .autoDispose<PageBasedGitHubRepositoryNotifier, GitHubRepositoryPageState>(
-  PageBasedGitHubRepositoryNotifier.new,
-);
+final pageBasedGitHubRepositoryNotifierProvider =
+    AsyncNotifierProvider.autoDispose<
+      PageBasedGitHubRepositoryNotifier,
+      GitHubRepositoryPageState
+    >(
+      PageBasedGitHubRepositoryNotifier.new,
+    );
 
 typedef GitHubRepositoryPageState = PageBasedPagingData<GitHubRepository>;
 
@@ -20,8 +23,9 @@ class PageBasedGitHubRepositoryNotifier
     required int page,
   }) async {
     try {
-      final res = await ref
-          .read(listOrganizationRepositoriesProvider(page: page).future);
+      final res = await ref.read(
+        listOrganizationRepositoriesProvider(page: page).future,
+      );
       ref.keepAlive();
       return PageBasedFetchResult(
         items: res.items,

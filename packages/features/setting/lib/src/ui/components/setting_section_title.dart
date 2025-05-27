@@ -13,12 +13,12 @@ final class SettingSectionTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SliverPadding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: 24,
-        ),
-        sliver: SliverToBoxAdapter(
-          child: Text(_text),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(
+      vertical: 16,
+      horizontal: 24,
+    ),
+    sliver: SliverToBoxAdapter(
+      child: Text(_text),
+    ),
+  );
 }

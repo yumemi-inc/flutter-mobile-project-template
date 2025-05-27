@@ -24,7 +24,8 @@ extension AsyncValueExtension<T> on AsyncValue<T> {
       T data, {
       required bool hasError,
       required bool isLoading,
-    }) data,
+    })
+    data,
     required R Function(Object error, StackTrace stackTrace) error,
     required R Function() loading,
     bool skipLoadingOnReload = false,

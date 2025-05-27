@@ -30,14 +30,14 @@ class _SampleCard extends StatelessWidget {
   path: '[Theme Preview]/Containment',
 )
 Widget elevatedCard(BuildContext context) => const Center(
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Card(
-          clipBehavior: Clip.hardEdge,
-          child: _SampleCard(name: 'Elevated Card'),
-        ),
-      ),
-    );
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Card(
+      clipBehavior: Clip.hardEdge,
+      child: _SampleCard(name: 'Elevated Card'),
+    ),
+  ),
+);
 
 @UseCase(
   name: 'Outlined',
@@ -45,14 +45,14 @@ Widget elevatedCard(BuildContext context) => const Center(
   path: '[Theme Preview]/Containment',
 )
 Widget outlinedCard(BuildContext context) => const Center(
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Card.outlined(
-          clipBehavior: Clip.hardEdge,
-          child: _SampleCard(name: 'Outlined Card'),
-        ),
-      ),
-    );
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Card.outlined(
+      clipBehavior: Clip.hardEdge,
+      child: _SampleCard(name: 'Outlined Card'),
+    ),
+  ),
+);
 
 @UseCase(
   name: 'Filled',
@@ -60,11 +60,11 @@ Widget outlinedCard(BuildContext context) => const Center(
   path: '[Theme Preview]/Containment',
 )
 Widget filledCard(BuildContext context) => const Center(
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Card.filled(
-          clipBehavior: Clip.hardEdge,
-          child: _SampleCard(name: 'Filled Card'),
-        ),
-      ),
-    );
+  child: Padding(
+    padding: EdgeInsets.all(16),
+    child: Card.filled(
+      clipBehavior: Clip.hardEdge,
+      child: _SampleCard(name: 'Filled Card'),
+    ),
+  ),
+);

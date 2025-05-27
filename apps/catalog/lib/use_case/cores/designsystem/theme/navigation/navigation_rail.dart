@@ -162,8 +162,9 @@ class _NavigationRailExampleState extends State<_NavigationRailExample> {
                             showLeading = !showLeading;
                           });
                         },
-                        child:
-                            Text(showLeading ? 'Hide Leading' : 'Show Leading'),
+                        child: Text(
+                          showLeading ? 'Hide Leading' : 'Show Leading',
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () {

@@ -7,8 +7,12 @@ import 'package:utils_pagination/src/extension/async_value.dart';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
-class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
-    D extends PagingData<T>, T> extends ConsumerWidget {
+class CommonPagingView<
+  N extends PagingAsyncNotifier<D, T>,
+  D extends PagingData<T>,
+  T
+>
+    extends ConsumerWidget {
   /// A widget for displaying paginated data with asynchronous fetching
   /// capabilities, including pull-to-refresh support.
   ///
@@ -47,9 +51,9 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
     required Widget Function(D data, Widget? endItem) contentBuilder,
     required void Function(PagingException e) onError,
     super.key,
-  })  : _contentBuilder = contentBuilder,
-        _provider = provider,
-        _onError = onError;
+  }) : _contentBuilder = contentBuilder,
+       _provider = provider,
+       _onError = onError;
 
   /// Specifies the provider for a [PagingAsyncNotifier] implemented class.
   final AutoDisposeAsyncNotifierProvider<N, D> _provider;
@@ -103,27 +107,30 @@ class CommonPagingView<N extends PagingAsyncNotifier<D, T>,
       },
     );
 
-    return ref.watch(_provider).whenIgnorableError(
-          data: (
-            data, {
-            required hasError,
-            required isLoading,
-          }) {
-            return RefreshIndicator(
-              onRefresh: () async => ref.refresh(_provider.future),
-              child: _contentBuilder(
-                // Displays EndItem to detect scroll end
-                // if more data is available and no errors.
-                data,
-                _endItem(
-                  data,
-                  ref,
-                  hasError: hasError,
-                  isLoading: isLoading,
-                ),
-              ),
-            );
-          },
+    return ref
+        .watch(_provider)
+        .whenIgnorableError(
+          data:
+              (
+                data, {
+                required hasError,
+                required isLoading,
+              }) {
+                return RefreshIndicator(
+                  onRefresh: () async => ref.refresh(_provider.future),
+                  child: _contentBuilder(
+                    // Displays EndItem to detect scroll end
+                    // if more data is available and no errors.
+                    data,
+                    _endItem(
+                      data,
+                      ref,
+                      hasError: hasError,
+                      isLoading: isLoading,
+                    ),
+                  ),
+                );
+              },
           loading: () {
             // Shows loading indicator during initial page load.
             return const _LoadingItem();
@@ -184,8 +191,8 @@ class _ErrorItem extends StatelessWidget {
   const _ErrorItem({
     required String errorMessage,
     required VoidCallback onError,
-  })  : _errorMessage = errorMessage,
-        _onError = onError;
+  }) : _errorMessage = errorMessage,
+       _onError = onError;
 
   final String _errorMessage;
   final VoidCallback _onError;
@@ -217,7 +224,7 @@ class _LoadingItem extends StatelessWidget {
 
 class _EndItemWhenError extends StatelessWidget {
   const _EndItemWhenError({required void Function() onPressed})
-      : _onPressed = onPressed;
+    : _onPressed = onPressed;
   final void Function() _onPressed;
 
   @override
