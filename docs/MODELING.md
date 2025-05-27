@@ -124,3 +124,9 @@ classDiagram
     RequiredVersions o--> Version : android
     RequiredVersions ..> Platform : uses
 ```
+
+**設計ポイント**:
+
+- `MaintenancePolicy` と `ForceUpdatePolicy` は `sealed class` (または Dart の `freezed` を使った Union Type) で実装することで、状態を型レベルで安全に表現し、`when` などで網羅的なチェックを可能にします。
+- `Version` は比較ロジックを持つ値オブジェクトとして設計します。
+- この集約は、主に設定の読み取りと解釈に焦点を当てています。設定の変更ロジックが必要な場合は、`OperationalSettings` に適切なメソッドを追加します。
