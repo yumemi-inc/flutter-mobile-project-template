@@ -91,7 +91,7 @@ Git MCP Server はAIアシスタントからGitコマンドを操作するため
 ## 参考
 
 - [GitHub's official MCP Server]
-- [git READEME]
+- [git README]
 
 <!-- URLs -->
 
@@ -100,4 +100,4 @@ Git MCP Server はAIアシスタントからGitコマンドを操作するため
 [個人用アクセス トークンを管理する]: https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
 [pr-creation.rule.mdc]: ../.cursor/rules/pr-creation-rule.mdc
 [2025.4.24]: https://github.com/modelcontextprotocol/servers/releases/tag/2025.4.24
-[git READEME]: https://github.com/modelcontextprotocol/servers/tree/2025.4.24/src/git
+[git README]: https://github.com/modelcontextprotocol/servers/tree/2025.4.24/src/git
