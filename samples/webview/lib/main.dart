@@ -38,9 +38,9 @@ class _WebViewState extends State<WebPage> {
   final GlobalKey _webViewKey = GlobalKey();
   PullToRefreshController? _pullToRefreshController;
   InAppWebViewController? _webViewController;
-  bool _isLoading = false;
-  bool _canPop = false;
-  bool _hasError = false;
+  var _isLoading = false;
+  var _canPop = false;
+  var _hasError = false;
 
   @override
   void initState() {
@@ -100,7 +100,7 @@ class _WebViewState extends State<WebPage> {
                 ),
                 key: _webViewKey,
                 pullToRefreshController: _pullToRefreshController,
-                onLoadStart: (_, __) async {
+                onLoadStart: (_, _) {
                   setState(() {
                     _isLoading = true;
                   });
@@ -120,7 +120,7 @@ class _WebViewState extends State<WebPage> {
                     _canPop = canGoBack;
                   });
                 },
-                onLoadStop: (_, __) async {
+                onLoadStop: (_, _) async {
                   await _pullToRefreshController?.endRefreshing();
 
                   setState(() {

@@ -175,7 +175,9 @@ Iterable<Map<String, String>> diffPkgVersion(
         final name = lockPkg.key;
 
         if (pkgYaml.containsKey(name)) {
-          // NOTE: dev_dependenciesにflutter_testを追加した場合,例外的に型がMap<String,dynamic>になる
+          // NOTE: dev_dependenciesにflutter_testを追加した場合,
+          // 例外的に型がMap<String,dynamic>になる
+          //
           // String型へのキャスト不可
           // flutter_testを比較から除外する
           if (pkgYaml[name] is! String) {
