@@ -7,3 +7,16 @@ dprint = "0.49.1"
 description = "Initialize the workspace."
 run = './tools/bootstrap.sh'
 alias = "bs"
+
+[tasks.clean]
+description = "Clean this workspace."
+run = [
+  'bun run clean',
+  'melos clean',
+]
+
+[tasks.cspell]
+description = "Run cspell to check spelling."
+run = [
+  'bun run cspell lint',
+]
