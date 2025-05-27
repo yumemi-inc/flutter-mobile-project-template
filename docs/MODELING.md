@@ -116,9 +116,9 @@ classDiagram
     }
 
     %% --- Relationships ---
-    OperationalSettings o--> MaintenancePolicy
-    OperationalSettings o--> ForceUpdatePolicy
-    ForceUpdateEnabled o--> RequiredVersions
+    OperationalSettings *--> MaintenancePolicy
+    OperationalSettings *--> ForceUpdatePolicy
+    ForceUpdateEnabled *--> RequiredVersions
     RequiredVersions o--> Version : ios
     RequiredVersions o--> Version : android
     RequiredVersions ..> Platform : uses
@@ -188,9 +188,9 @@ classDiagram
         DELETED
     }
 
-    User o--> UserId
-    User o--> UserName
-    User o--> EmailAddress
-    User o--> UserProfile
-    User o--> UserStatus
+    User *--> UserId
+    User *--> UserName
+    User *--> EmailAddress
+    User *--> UserProfile
+    User *--> UserStatus
 ```
