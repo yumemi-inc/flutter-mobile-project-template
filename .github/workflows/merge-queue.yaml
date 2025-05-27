@@ -1,10 +1,10 @@
-name: check-pr
+name: Merge Queue
 
 on:
-  pull_request:
+  merge_group:
 
 concurrency:
-  group: check-pr-${{ github.ref }}
+  group: merge-queue-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -27,7 +27,6 @@ jobs:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
-
   check-actions:
     runs-on: ubuntu-22.04
     needs: changes
@@ -135,36 +134,15 @@ jobs:
           echo "::add-matcher::.github/problem_matchers/custom_lint.json"
           melos run ci:report:custom_lint --no-select || result=$?
           echo "::remove-matcher owner=custom_lint::"
-
           if [ -n "$result" ]; then
             exit 1
           fi
-
   diff-gen:
     uses: ./.github/workflows/wc-check-diff.yaml
-    with:
-      diff-packages: true
     needs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.gen == 'true' }}
-
-  check-dependencies:
-    uses: ./.github/workflows/wc-check-dependencies.yml
-    needs:
-      - changes
-      - cache-dependencies
-    if: ${{ needs.changes.outputs.gen == 'true' }}
-
-  check-style-dprint:
-    uses: ./.github/workflows/wc-check-style-dprint.yaml
-    needs: changes
-    if: ${{ needs.changes.outputs.dprint == 'true' }}
-
-  check-code-spell:
-    uses: ./.github/workflows/wc-check-code-spell.yaml
-    needs: changes
-    if: ${{ needs.changes.outputs.spell == 'true' }}
 
   status-check:
     runs-on: ubuntu-22.04
@@ -173,8 +151,6 @@ jobs:
       - check
       - custom-lint
       - diff-gen
-      - check-style-dprint
-      - check-code-spell
     permissions: {}
     if: failure()
     steps:

@@ -1,14 +1,77 @@
-# ブランチ
+# ブランチ運用ルール
+
+このドキュメントでは、本リポジトリにおけるブランチ運用ルールについて説明します。
+
+本リポジトリは複数のアプリケーションでコードを管理しており、GitHub Flow を基本としつつ、Issue との紐付けを柔軟にし、リリース管理を明確にするための規約を追加します。ブランチの生存期間を短く保ち、迅速なインテグレーションを目指します。
+
+## 基本原則
+
+1. **`main` ブランチは常に最新の開発版であり、近い将来リリースされる可能性のある状態であること。** リリース済みの特定のバージョンはタグまたはリリースブランチで管理します。
+1. **新しい機能開発、バグ修正、改修は、`main` ブランチから派生させた短期的なブランチで行うこと。** これらのブランチは、原則として１週間以内に `main` ブランチへマージすることを目標とします。
+1. **１つの Issue で複数のブランチを作成しないようにし、必要に応じて Issue を分割して管理すること。**
+1. **作業が完了したら、コードレビューを受けるためにプルリクエストを作成すること。**
+1. **レビューが完了し、承認されたら、作成したブランチを `main` ブランチにマージすること。**
+1. **`main` ブランチへのマージは、継続的インテグレーション (CI) によって品質が担保されている状態を目指します。**
+
+## ブランチ命名規則
+
+ブランチ名は、種別・Issue 番号・目的や関連キーワードなどで検索できるようにするため、以下のような命名を推奨します。あくまでも推奨であり、必ずしもこの命名に従う必要はありません。
+
+`<種別>/GH-<Issue 番号>/<目的や関連キーワード>`
+
+例:
+
+- `feat/GH-123/add-new-feature`
+- `feat/add-new-feature`
+- `feat/GH-123`
+- `GH-123/add-new-feature`
+- `GH-123`
+
+### 種別
+
+以下の種別を使用することを推奨します。あくまでも推奨であり、必ずしもこの命名に従う必要はありません。
+
+- `build`: ビルド関連
+- `chore`: 雑務、依存関係の更新など
+- `ci`: CI/CD 関連
+- `docs`: ドキュメント更新
+- `feat`: 新機能開発
+- `fix`: バグ修正
+- `perf`: パフォーマンス改善
+- `refactor`: リファクタリング
+- `style`: コードのスタイルやフォーマットの変更
+- `test`: テスト関連
+
+## リリース戦略
+
+本リポジトリでは、`main` ブランチは常に最新の開発版とし、リリース済みの特定のバージョンは以下のいずれかの方法で管理します。
+
+- **タグによる管理:** `main` ブランチの特定のコミットに対して、リリースバージョンを示すタグを付与します。タグの形式は `<アプリ名>-<バージョン番号>` とします。これにより、どのアプリのどのバージョンであるかを明確にすることができます。(例: `app-1.2.3`)
+- **タグ + リリースブランチによる管理:** タグだけでは管理が難しい場合（例：複数のアプリバージョンを管理する場合など）、`main` ブランチから `release/<アプリ名>-<バージョン番号>` の形式でリリースブランチを作成して、最新のコミットに対してタグを付与します。(例: `release/app-1.0.0`)
+
+## 例外事項
+
+緊急性の高いバグ修正など、上記フローを厳密に守ることが適切でないと判断される場合は、チーム内で協議の上、柔軟に対応することがあります。ただし、その際もコードの品質を維持し、`main` ブランチを可能な限り安定した状態に保つことを最優先とします。
 
 ## ブランチ保護ルール
 
-[ブランチ保護ルール](https://docs.github.com/ja/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) について記載します。
+[ブランチ保護ルール] について記載します。
 
 ### ステータスチェック
 
-[check-pr.yaml](../../.github/workflows/check-pr.yaml) に `status-check` ジョブがあります。
+[check-pr.yaml] に `status-check` ジョブがあります。
 他のチェックジョブの結果を集約しているため、ステータスチェック対象のジョブを `status-check` ジョブのみ設定するだけでよくなる設計です。
 
 `Require status checks to pass` の `Status checks that are required` に `status-check` を追加します。
 
-![branch-rules-status-check.png](../images/branch-rules-status-check.png)
+![branch-rules-status-check.png](./images/branch-rules-status-check.png)
+
+### マージキュー
+
+マージキューについては、[MERGE_QUEUE.md] を参照してください。
+
+<!-- Links -->
+
+[ブランチ保護ルール]: https://docs.github.com/ja/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule
+[check-pr.yaml]: ../../.github/workflows/check-pr.yaml
+[MERGE_QUEUE.md]: ./MERGE_QUEUE.md
