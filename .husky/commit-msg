@@ -1,0 +1,1 @@
+mise exec -- bunx commitlint --edit $1
