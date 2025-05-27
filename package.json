@@ -10,6 +10,7 @@
     "husky": "^9.1.7"
   },
   "scripts": {
+    "clean": "git clean -xdf node_modules",
     "prepare": "husky"
   }
 }
