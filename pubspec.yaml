@@ -1,6 +1,6 @@
 name: template_workspace
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.8.0
 
 workspace:
   # apps
@@ -54,8 +54,8 @@ melos:
   command:
     bootstrap:
       environment:
-        sdk: ^3.6.0
-        flutter: ^3.27.1
+        sdk: ^3.8.0
+        flutter: ^3.32.0
       dependencies:
         flutter_hooks: ^0.20.5
         flutter_riverpod: ^2.6.1
