@@ -130,3 +130,68 @@ classDiagram
 - `MaintenancePolicy` と `ForceUpdatePolicy` は `sealed class` (または Dart の `freezed` を使った Union Type) で実装することで、状態を型レベルで安全に表現し、`when` などで網羅的なチェックを可能にします。
 - `Version` は比較ロジックを持つ値オブジェクトとして設計します。
 - この集約は、主に設定の読み取りと解釈に焦点を当てています。設定の変更ロジックが必要な場合は、`OperationalSettings` に適切なメソッドを追加します。
+
+### 参考例：ユーザー (User)
+
+アプリケーションを利用するユーザーを表す、多くのシステムにおける中核的な集約です。
+ユーザー登録、ログイン、プロフィール変更、退会といったライフサイクルを持ちます。
+
+**集約ルート**: `User`
+
+**構成要素**:
+
+- `User`: 集約ルート (エンティティ)。ユーザーの核となる情報と振る舞いを管理する。
+- `UserId`: ユーザーの一意な識別子を表す値オブジェクト。
+- `UserName`: ユーザー名を表す値オブジェクト (文字数制限などのルールを含む)。
+- `EmailAddress`: メールアドレスを表す値オブジェクト (フォーマット検証などを含む)。
+- `UserProfile`: プロフィール情報 (自己紹介、アバターURLなど) を保持する値オブジェクト。
+- `UserStatus`: ユーザーの状態 (アクティブ、一時停止中、退会済みなど) を表す値オブジェクト (Enum)。
+
+**クラス図**:
+
+```mermaid
+classDiagram
+    direction TB
+
+    class User {
+        +UserId userId
+        +UserName name
+        +EmailAddress email
+        +UserProfile profile
+        +UserStatus status
+        +changeName(UserName newName)
+        +changeEmail(EmailAddress newEmail)
+        +suspend()
+        +activate()
+    }
+
+    class UserId {
+        +String value
+    }
+
+    class UserName {
+        +String value
+    }
+
+    class EmailAddress {
+        +String value
+    }
+
+    class UserProfile {
+        +String bio
+        +String avatarUrl
+    }
+
+    class UserStatus {
+        <<enumeration>>
+        ACTIVE
+        SUSPENDED
+        DELETED
+    }
+
+    User o--> UserId
+    User o--> UserName
+    User o--> EmailAddress
+    User o--> UserProfile
+    User o--> UserStatus
+```
