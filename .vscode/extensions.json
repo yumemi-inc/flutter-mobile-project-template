@@ -8,6 +8,7 @@
     "hverlin.mise-vscode",
     "oven.bun-vscode",
     "streetsidesoftware.code-spell-checker",
-    "dprint.dprint"
+    "dprint.dprint",
+    "vivaxy.vscode-conventional-commits"
   ]
 }
