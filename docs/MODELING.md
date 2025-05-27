@@ -105,7 +105,6 @@ classDiagram
     %% --- Value Objects & Enums ---
     class Version {
         +String value
-        +Version(String value)
         +Boolean lessThan(Version other)
         +Boolean greaterThan(Version other)
         +Boolean equals(Version other)
