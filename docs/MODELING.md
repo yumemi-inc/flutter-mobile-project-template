@@ -27,33 +27,84 @@ Dartの [`freezed` パッケージ](https://pub.dev/packages/freezed) や [Exten
 > [!NOTE]
 > 各領域（集約）のクラス設計が大規模・複雑になる場合は、ドキュメントを別ファイルに切り出して管理することを推奨します。
 
-### メンテナンスモード集約
+### 運用設定 (OperationalSettings)
+
+アプリケーション全体の運用に関わる設定（メンテナンスモード、強制アップデート）を管理する集約です。
+通常、Firebase Remote Config や設定 API などから一括で取得され、アプリケーションの動作を制御するために利用されます。
+
+**集約ルート**: `OperationalSettings`
+
+**構成要素**:
+
+- `OperationalSettings`: 集約ルート。`MaintenancePolicy` と `ForceUpdatePolicy` を保持する。
+- `MaintenancePolicy` (`sealed`): メンテナンスの状態 (`Enabled` / `Disabled`) を表現する。
+- `ForceUpdatePolicy` (`sealed`): 強制アップデートのポリシー (`Enabled` / `Disabled`) を表現する。
+- `RequiredVersions`: `ForceUpdateEnabled` が保持する、プラットフォームごとの最低要求バージョン。
+- `Version`: バージョンを表す値オブジェクト。
+- `Platform`: プラットフォーム (`ios` / `android`) を表す値オブジェクト (Enum)。
+
+**クラス図**:
 
 ```mermaid
 classDiagram
-    class MaintenanceModeSettingsState {
-        +bool enabled
-    }
-```
+    direction TB
 
-### 強制アップデート集約
+    %% --- Core Settings Container ---
+    class OperationalSettings {
+        +MaintenancePolicy maintenancePolicy
+        +ForceUpdatePolicy forceUpdatePolicy
+    }
 
-```mermaid
-classDiagram
-    class ForceUpdateSettingsState {
-        +bool enabled
-        +isForceUpdateEnabled(currentVersion: VersionString, forceUpdateTargetVersion: ForceUpdateTargetVersion): bool
+    %% --- Maintenance Policy/State ---
+    class MaintenancePolicy {
+        <<sealed>>
     }
-    class ForceUpdateTargetVersion {
-        +VersionString ios
-        +VersionString android
-        +defaultTargetPlatformVersion: VersionString?
+    class MaintenanceEnabled {
+        +String message
     }
-    class VersionString {
+    class MaintenanceDisabled {
+    }
+    MaintenanceEnabled --|> MaintenancePolicy
+    MaintenanceDisabled --|> MaintenancePolicy
+
+    %% --- Force Update Policy ---
+    class ForceUpdatePolicy {
+        <<sealed>>
+    }
+    class ForceUpdateEnabled {
+        +RequiredVersions minimumVersions
+    }
+    class ForceUpdateDisabled {
+    }
+    ForceUpdateEnabled --|> ForceUpdatePolicy
+    ForceUpdateDisabled --|> ForceUpdatePolicy
+
+    %% --- Force Update Details ---
+    class RequiredVersions {
+        +Version ios
+        +Version android
+        +Version getMinimumFor(Platform platform)
+    }
+
+    %% --- Value Objects & Enums ---
+    class Version {
         +String value
-        +List<int> versionList
-        +operator <, >, ==
+        +Version(String value)
+        +Boolean lessThan(Version other)
+        +Boolean greaterThan(Version other)
+        +Boolean equals(Version other)
     }
-    ForceUpdateSettingsState --> ForceUpdateTargetVersion
-    ForceUpdateTargetVersion --> VersionString
+    class Platform {
+        <<enumeration>>
+        ios
+        android
+    }
+
+    %% --- Relationships ---
+    OperationalSettings o--> MaintenancePolicy
+    OperationalSettings o--> ForceUpdatePolicy
+    ForceUpdateEnabled o--> RequiredVersions
+    RequiredVersions o--> Version : ios
+    RequiredVersions o--> Version : android
+    RequiredVersions ..> Platform : uses
 ```
