@@ -10,7 +10,7 @@ class _BottomAppBarDemo extends StatefulWidget {
 }
 
 class _BottomAppBarDemoState extends State<_BottomAppBarDemo> {
-  static const List<Color> colors = <Color>[
+  static const colors = <Color>[
     Colors.yellow,
     Colors.orange,
     Colors.pink,
@@ -24,9 +24,9 @@ class _BottomAppBarDemoState extends State<_BottomAppBarDemo> {
   ).reversed.toList();
 
   late ScrollController _controller;
-  bool _showFab = true;
-  bool _isElevated = true;
-  bool _isVisible = true;
+  var _showFab = true;
+  var _isElevated = true;
+  var _isVisible = true;
 
   FloatingActionButtonLocation get _fabLocation => _isVisible
       ? FloatingActionButtonLocation.endContained

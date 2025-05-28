@@ -39,7 +39,7 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
     final navigator = ref.watch(gitHubRepositoryListPageNavigatorProvider);
-    ref.listen(scrollNotifierProvider, (_, __) async {
+    ref.listen(scrollNotifierProvider, (_, _) async {
       if (!context.mounted) {
         return;
       }

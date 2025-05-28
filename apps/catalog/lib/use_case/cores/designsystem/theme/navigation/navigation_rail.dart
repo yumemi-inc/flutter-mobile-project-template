@@ -19,10 +19,10 @@ class _NavigationRailExample extends StatefulWidget {
 }
 
 class _NavigationRailExampleState extends State<_NavigationRailExample> {
-  int _selectedIndex = 0;
+  var _selectedIndex = 0;
   NavigationRailLabelType labelType = NavigationRailLabelType.all;
-  bool showLeading = false;
-  bool showTrailing = false;
+  var _showLeading = false;
+  var _showTrailing = false;
   double groupAlignment = -1;
 
   @override
@@ -40,7 +40,7 @@ class _NavigationRailExampleState extends State<_NavigationRailExample> {
                 });
               },
               labelType: labelType,
-              leading: showLeading
+              leading: _showLeading
                   ? FloatingActionButton(
                       elevation: 0,
                       onPressed: () {
@@ -49,7 +49,7 @@ class _NavigationRailExampleState extends State<_NavigationRailExample> {
                       child: const Icon(Icons.add),
                     )
                   : const SizedBox(),
-              trailing: showTrailing
+              trailing: _showTrailing
                   ? IconButton(
                       onPressed: () {
                         // Add your onPressed code here!
@@ -159,21 +159,21 @@ class _NavigationRailExampleState extends State<_NavigationRailExample> {
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            showLeading = !showLeading;
+                            _showLeading = !_showLeading;
                           });
                         },
                         child: Text(
-                          showLeading ? 'Hide Leading' : 'Show Leading',
+                          _showLeading ? 'Hide Leading' : 'Show Leading',
                         ),
                       ),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            showTrailing = !showTrailing;
+                            _showTrailing = !_showTrailing;
                           });
                         },
                         child: Text(
-                          showTrailing ? 'Hide Trailing' : 'Show Trailing',
+                          _showTrailing ? 'Hide Trailing' : 'Show Trailing',
                         ),
                       ),
                     ],

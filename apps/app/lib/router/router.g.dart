@@ -176,7 +176,7 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'6fd1bed2331289341159bcf24207bc657a112207';
+String _$routerHash() => r'd03584bd16bbc3f4534e64eee2b711d5abea4bd7';
 
 /// See also [router].
 @ProviderFor(router)

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class SnackBarManager {
   SnackBarManager._();
 
-  static final GlobalKey<ScaffoldMessengerState> rootScaffoldMessengerKey =
-      GlobalKey<ScaffoldMessengerState>();
+  static final rootScaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   static void showSnackBar(String message) {
     if (rootScaffoldMessengerKey.currentState == null) {

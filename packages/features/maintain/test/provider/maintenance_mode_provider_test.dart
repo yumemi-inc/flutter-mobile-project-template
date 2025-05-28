@@ -37,7 +37,7 @@ void main() {
         );
         final subscription = container.listen(
           maintenanceModeProvider,
-          (_, __) {},
+          (_, _) {},
         );
 
         // act
@@ -63,7 +63,7 @@ void main() {
         );
         final subscription = container.listen(
           maintenanceModeProvider,
-          (_, __) {},
+          (_, _) {},
         );
 
         // act
@@ -90,7 +90,7 @@ void main() {
       container.read(maintenanceModeProvider.notifier).update(enabled: true);
       final subscription = container.listen(
         maintenanceModeProvider,
-        (_, __) {},
+        (_, _) {},
       );
 
       // act

@@ -63,6 +63,7 @@ class CommonPagingView<
   /// marker for the end of the list. If provided and non-null, `endItem` should
   /// be included as the final item. This helps in detecting the list's end or
   /// adding a special widget at that position.
+  // ignore: unsafe_variance
   final Widget Function(D data, Widget? endItem) _contentBuilder;
 
   final void Function(PagingException e) _onError;
@@ -83,12 +84,12 @@ class CommonPagingView<
 
     if (hasError && !isLoading) {
       return _EndItemWhenError(
-        onPressed: () async => ref.read(_provider.notifier).loadNext(),
+        onPressed: () => ref.read(_provider.notifier).loadNext(),
       );
     }
 
     return _EndItem(
-      onScrollEnd: () async => ref.read(_provider.notifier).loadNext(),
+      onScrollEnd: () => ref.read(_provider.notifier).loadNext(),
     );
   }
 

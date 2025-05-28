@@ -6,7 +6,11 @@ import 'package:utils_pagination/exception.dart';
 import 'package:utils_pagination/model.dart';
 import 'package:utils_pagination/provider.dart';
 
-final pageBasedGitHubRepositoryNotifierProvider =
+final AutoDisposeAsyncNotifierProvider<
+  PageBasedGitHubRepositoryNotifier,
+  GitHubRepositoryPageState
+>
+pageBasedGitHubRepositoryNotifierProvider =
     AsyncNotifierProvider.autoDispose<
       PageBasedGitHubRepositoryNotifier,
       GitHubRepositoryPageState

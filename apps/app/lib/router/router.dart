@@ -40,7 +40,7 @@ GoRouter router(Ref ref) {
     ],
     debugLogDiagnostics: kDebugMode,
     initialLocation: HomePageRoute.path,
-    redirect: (_, __) {
+    redirect: (_, _) {
       final maintenanceModeEnabled = maintenanceModeSettingsState.enabled;
 
       if (maintenanceModeEnabled) {
