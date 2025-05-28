@@ -1,6 +1,6 @@
-## はじめに
+# はじめに
 
-### IDE バージョン
+## IDE バージョン
 
 | IDE            | バージョン               |
 | -------------- | ------------------------ |
@@ -9,7 +9,7 @@
 
 **注意**: 記載されているバージョンでの動作を確認しています。これより古いバージョン、または新しいバージョンでは正常に動作しない可能性があります。
 
-### 事前準備
+## 事前準備
 
 - IDE をインストールしてください。
   - [IntelliJ IDEA], [Android Studio] または [Visual Studio Code]
@@ -33,7 +33,7 @@
     MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
     ```
 
-### Mise を使用するように IDE を設定
+## Mise を使用するように IDE を設定
 
 [Visual Studio Code] を使用している場合は、ウィンドウをリロードして SDK を再読み込みしてください。
 
@@ -78,6 +78,39 @@ Please check:
 - [Visual Studio Code] の場合、`.vscode/launch.json` を確認してください。
 - [IntelliJ IDEA] または [Android Studio] の場合、`.idea/runConfigurations/~.xml` を確認してください。
 
+## ワークスペースの設定
+
+### `<workspace-name>.code-workspace` ファイルの作成
+
+```json
+{
+  "folders": [
+    {
+      "path": "<flutter-mobile-project-templateのpath>"
+    },
+    {
+      "path": "<flutter-mobile-project-docs-templateのpath>"
+    }
+  ]
+}
+```
+
+上記のフォーマットに従って`<workspace-name>.code-workspace`ファイルを作成し、以下の項目を適切に設定してください：
+
+- `<workspace-name>`: プロジェクトのワークスペース名
+- `<flutter-mobile-project-templateのpath>`: [flutter-mobile-project-template]から作成したプロジェクトの絶対パスまたは相対パス
+- `<flutter-mobile-project-docs-templateのpath>`: [flutter-mobile-project-docs-template]から作成したドキュメントの絶対パスまたは相対パス
+
+### ワークスペースの読み込み
+
+1. メニューから`File` > `Open`を選択
+2. 作成した`<workspace-name>.code-workspace`ファイルを開く
+
+ワークスペースが正しく読み込まれると
+
+- `folders`で指定したフォルダ内のファイルが一覧表示される
+- ウィンドウタイトルが`<workspace-name> (Workspace)`と表示される
+
 <!-- Links -->
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
@@ -87,3 +120,5 @@ Please check:
 [mise]: https://mise.jdx.dev/
 [melos]: https://melos.invertase.dev/
 [yq]: https://github.com/mikefarah/yq
+[flutter-mobile-project-template]: https://github.com/yumemi-inc/flutter-mobile-project-template/tree/main
+[flutter-mobile-project-docs-template]: https://github.com/yumemi-inc/flutter-mobile-project-docs-template

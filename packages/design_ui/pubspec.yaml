@@ -17,7 +17,7 @@ dependencies:
     path: ../design_theme
 
 dev_dependencies:
-  build_runner: ^2.4.14
+  build_runner: ^2.4.15
   flutter_test:
     sdk: flutter
 

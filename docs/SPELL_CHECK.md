@@ -89,7 +89,7 @@ bun install
 インストールが終わったら、以下のコマンドを実行してプロジェクト全体のスペルチェックを行います。
 
 ```sh
-bun run cspell lint
+mise run cspell
 ```
 
 ## VS Code 拡張機能
