@@ -51,6 +51,30 @@ labels:
     files:
       - samples/github_app/.+
 
+  - label: "@packages/application"
+    files:
+      - packages/application/.+
+
+  - label: "@packages/design_theme"
+    files:
+      - packages/design_theme/.+
+
+  - label: "@packages/design_ui"
+    files:
+      - packages/design_ui/.+
+
+  - label: "@packages/domain_logic"
+    files:
+      - packages/domain_logic/.+
+
+  - label: "@packages/domain_model"
+    files:
+      - packages/domain_model/.+
+
+  - label: "@packages/infrastructure"
+    files:
+      - packages/infrastructure/.+
+
   - label: "@packages/samples/github_repository"
     files:
       - packages/samples/github_repository/.+

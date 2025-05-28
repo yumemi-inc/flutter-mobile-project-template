@@ -1,1 +1,3 @@
 toplevel
+commitlint
+commitlintrc

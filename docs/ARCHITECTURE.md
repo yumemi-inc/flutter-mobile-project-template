@@ -83,6 +83,7 @@ flowchart TD
   %% Dependencies
   presentation --> composition_root
   presentation --> domain_model
+  presentation --> design_theme
   presentation --> design_ui
   presentation --> design_domain_ui
 
@@ -101,6 +102,8 @@ flowchart TD
   design_domain_ui --> domain_model
 
   design_ui --> design_theme
+
+  domain_logic --> domain_model
 
   %% Legend
   subgraph "Legend"

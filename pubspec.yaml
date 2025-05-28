@@ -6,6 +6,14 @@ workspace:
   # apps
   - apps/app
   - apps/catalog
+  # packages
+  - packages/application
+  - packages/design_theme
+  - packages/design_ui
+  - packages/domain_logic
+  - packages/domain_model
+  - packages/infrastructure
+  # TODO: cores, features は廃止予定
   # cores
   - packages/cores/core
   - packages/cores/data
@@ -26,7 +34,6 @@ workspace:
   - packages/utils/pagination
 
 dev_dependencies:
-  mason_cli: ^0.1.2
   melos: ^7.0.0-dev.7
   path: ^1.9.1
   yaml: ^3.1.3
@@ -108,6 +115,11 @@ melos:
       steps:
         - gen:l10n
         - gen:build
+    gen:diff:main:
+      description: main ブランチと差分のあるパッケージのみ build_runner と l10n の生成コマンドを実行します。
+      steps:
+        - gen:l10n:diff:main
+        - gen:build:diff:main
     gen:build:
       description: build_runner を使用してコードを生成します。
       run: dart run build_runner build -d
@@ -122,6 +134,45 @@ melos:
         orderDependents: true
       packageFilters:
         dependsOn: flutter_localizations
+    gen:build:diff:main:
+      description: main ブランチと差分のあるパッケージのみ build_runner を使用してコードを生成します。
+      run: dart run build_runner build -d
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
+        diff: origin/main...HEAD
+    gen:l10n:diff:main:
+      description: main ブランチと差分のあるパッケージのみ 多言語対応のためのローカライゼーションファイルを生成します。
+      run: flutter gen-l10n
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: flutter_localizations
+        diff: origin/main...HEAD
+    # ローカル確認用
+    # - 未コミットの差分パッケージのみ[build_runner][l10n]を処理するスクリプト
+    gen:diff:head:
+      description: 未コミットの差分パッケージのみ build_runner と l10n の生成コマンドを実行します。
+      steps:
+        - gen:build:diff:head
+        - gen:l10n:diff:head
+    gen:build:diff:head:
+      description: 未コミットの差分パッケージのみ build_runner を使用してコードを生成します。
+      run: dart run build_runner build -d
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: build_runner
+        diff: ""
+    gen:l10n:diff:head:
+      description: 未コミットの差分パッケージのみ ローカライゼーションファイル を生成します。
+      run: flutter gen-l10n
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: flutter_localizations
+        diff: ""
     gen:labeler:
       description: "`.github/labeler.yml` のパッケージ部分を生成します。"
       run: dart run ./tools/gen_labeler.dart

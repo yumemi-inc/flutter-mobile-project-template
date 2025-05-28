@@ -1,6 +1,6 @@
-## はじめに
+# はじめに
 
-### IDE バージョン
+## IDE バージョン
 
 | IDE            | バージョン               |
 | -------------- | ------------------------ |
@@ -9,7 +9,7 @@
 
 **注意**: 記載されているバージョンでの動作を確認しています。これより古いバージョン、または新しいバージョンでは正常に動作しない可能性があります。
 
-### 事前準備
+## 事前準備
 
 - IDE をインストールしてください。
   - [IntelliJ IDEA], [Android Studio] または [Visual Studio Code]
@@ -18,7 +18,7 @@
 - [mise] コマンドを有効にしてください。
 
   - また、以下のコマンドを実行して`mise.toml`で指定されたバージョンを有効化してください
-    (mason、melosはいずれもmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
+    (melosはmise経由でのアクセスを行うと問題が起こり得るため、miseで現在のバージョンをglobalに設定するようにしている)
 
   ```shell
   mise i
@@ -33,20 +33,7 @@
     MELOS_VERSION=$(cat pubspec.lock | yq ".packages.melos.version" -r) && dart pub global activate melos $MELOS_VERSION
     ```
 
-- [mason_cli] コマンドを有効にしてください。
-  - 以下のコマンドを実行して mason コマンドをグローバルに有効にしてください。
-
-    ```shell
-    MASON_VERSION=$(cat pubspec.lock | yq ".packages.mason_cli.version" -r) && dart pub global activate mason_cli $MASON_VERSION
-    ```
-
-  - また、ローカルのbricksを有効にするため、以下のコマンドを実行してください。
-
-    ```shell
-    mason get
-    ```
-
-### Mise を使用するように IDE を設定
+## Mise を使用するように IDE を設定
 
 [Visual Studio Code] を使用している場合は、ウィンドウをリロードして SDK を再読み込みしてください。
 
@@ -64,11 +51,23 @@ mise where flutter
 3. 変更を適用します。
 4. 新しい設定が反映されるようにエディタを再起動します。
 
-### 依存関係のインストール
+### エディターの設定
+
+このプロジェクトでは、コミットメッセージの一貫性を保つために、[Conventional Commits](https://www.conventionalcommits.org/) を使用しています。
+各エディターにおいて、コミットメッセージの形式をチェックするための拡張機能を導入することをお勧めします。
+
+- Visual Studio Codeを使用する場合は、[Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits)の導入が推奨されます。
+- Android Studioを使用する場合は、以下の拡張機能の導入が推奨されます。
+  - [Conventional Commit](https://plugins.jetbrains.com/plugin/13389-conventional-commit)
+  - [Commitlint Conventional Commit](https://plugins.jetbrains.com/plugin/14046-commitlint-conventional-commit)
+
+### 開発環境のセットアップ
 
 ```shell
-melos bootstrap
+mise bs
 ```
+
+上記のコマンドを実行すると、mise, bun, melos の依存関係がインストールされ、プロジェクトの初期セットアップが行われます。
 
 ### アプリの実行
 
@@ -79,6 +78,39 @@ Please check:
 - [Visual Studio Code] の場合、`.vscode/launch.json` を確認してください。
 - [IntelliJ IDEA] または [Android Studio] の場合、`.idea/runConfigurations/~.xml` を確認してください。
 
+## ワークスペースの設定
+
+### `<workspace-name>.code-workspace` ファイルの作成
+
+```json
+{
+  "folders": [
+    {
+      "path": "<flutter-mobile-project-templateのpath>"
+    },
+    {
+      "path": "<flutter-mobile-project-docs-templateのpath>"
+    }
+  ]
+}
+```
+
+上記のフォーマットに従って`<workspace-name>.code-workspace`ファイルを作成し、以下の項目を適切に設定してください：
+
+- `<workspace-name>`: プロジェクトのワークスペース名
+- `<flutter-mobile-project-templateのpath>`: [flutter-mobile-project-template]から作成したプロジェクトの絶対パスまたは相対パス
+- `<flutter-mobile-project-docs-templateのpath>`: [flutter-mobile-project-docs-template]から作成したドキュメントの絶対パスまたは相対パス
+
+### ワークスペースの読み込み
+
+1. メニューから`File` > `Open`を選択
+2. 作成した`<workspace-name>.code-workspace`ファイルを開く
+
+ワークスペースが正しく読み込まれると
+
+- `folders`で指定したフォルダ内のファイルが一覧表示される
+- ウィンドウタイトルが`<workspace-name> (Workspace)`と表示される
+
 <!-- Links -->
 
 [IntelliJ IDEA]: https://www.jetbrains.com/idea/
@@ -87,5 +119,6 @@ Please check:
 [Xcode]: https://developer.apple.com/xcode/
 [mise]: https://mise.jdx.dev/
 [melos]: https://melos.invertase.dev/
-[mason_cli]: https://pub.dev/packages/mason_cli
 [yq]: https://github.com/mikefarah/yq
+[flutter-mobile-project-template]: https://github.com/yumemi-inc/flutter-mobile-project-template/tree/main
+[flutter-mobile-project-docs-template]: https://github.com/yumemi-inc/flutter-mobile-project-docs-template

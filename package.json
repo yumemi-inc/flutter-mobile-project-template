@@ -1,9 +1,16 @@
 {
   "dependencies": {},
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@cspell/dict-dart": "^2.3.0",
     "@cspell/dict-flutter": "^1.1.0",
     "@cspell/dict-software-terms": "^5.0.8",
-    "cspell": "^8.19.2"
+    "cspell": "^8.19.2",
+    "husky": "^9.1.7"
+  },
+  "scripts": {
+    "clean": "git clean -xdf node_modules",
+    "prepare": "husky"
   }
 }

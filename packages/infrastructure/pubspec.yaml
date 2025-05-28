@@ -1,0 +1,21 @@
+name: internal_infrastructure
+description: データアクセスや外部サービス連携など、インフラストラクチャ層の実装を担うパッケージです。
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  internal_domain_logic:
+    path: ../domain_logic
+  internal_domain_model:
+    path: ../domain_model
+  shared_preferences: ^2.3.5
+
+dev_dependencies:
+  test: ^1.25.8

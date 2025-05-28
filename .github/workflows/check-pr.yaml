@@ -142,6 +142,8 @@ jobs:
 
   diff-gen:
     uses: ./.github/workflows/wc-check-diff.yaml
+    with:
+      diff-packages: true
     needs:
       - changes
       - cache-dependencies
@@ -159,6 +161,11 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.dprint == 'true' }}
 
+  check-code-spell:
+    uses: ./.github/workflows/wc-check-code-spell.yaml
+    needs: changes
+    if: ${{ needs.changes.outputs.spell == 'true' }}
+
   status-check:
     runs-on: ubuntu-22.04
     needs:
@@ -167,6 +174,7 @@ jobs:
       - custom-lint
       - diff-gen
       - check-style-dprint
+      - check-code-spell
     permissions: {}
     if: failure()
     steps:

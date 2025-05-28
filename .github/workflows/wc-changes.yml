@@ -17,6 +17,8 @@ on:
         value: ${{ jobs.changes.outputs.markdown }}
       src:
         value: ${{ jobs.changes.outputs.src }}
+      spell:
+        value: ${{ jobs.changes.outputs.spell }}
       dependencies:
         value: ${{ jobs.changes.outputs.dependencies }}
 
@@ -34,6 +36,7 @@ jobs:
       lint: ${{ steps.filter.outputs.lint }}
       markdown: ${{ steps.filter.outputs.markdown }}
       src: ${{ steps.filter.outputs.src }}
+      spell: ${{ steps.filter.outputs.spell }}
       dependencies: ${{ steps.needs.outputs.dependencies }}
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -74,6 +77,11 @@ jobs:
               - "**.yaml"
               - "**/pubspec.lock"
               - "scripts/**"
+            spell:
+              - "**.md"
+              - "**.yaml"
+              - "**.yml"
+              - "**.dart"
 
       - name: Check for dependencies changes
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1

@@ -1,0 +1,12 @@
+name: internal_domain_model
+description: エンティティや値オブジェクトなど、ドメインモデルを定義するパッケージです。
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.6.0
+
+resolution: workspace
+
+dev_dependencies:
+  test: ^1.25.8

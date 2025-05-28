@@ -29,7 +29,7 @@ assets
 flutter_native_splash:
   color: "#42a5f5" #スプラッシュスクリーンの背景色を指定します。
   image: assets/splash_image/splash.png #スプラッシュスクリーンに使用する画像のパス
-  full_screen: true #スプラッシュスクリーンを画面全体にしたい時はtrueを指定します。
+  fullscreen: true #スプラッシュスクリーンを画面全体にしたい時はtrueを指定します。
   android: true #Android向けのスプラッシュスクリーンを有効にするかどうか
   ios: true #iOS向けのスプラッシュスクリーンを有効にするかどうか
   # ダークモード設定（オプション）
@@ -60,8 +60,8 @@ flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  FlutterNativeSplash.preserve(widgetsBinding: WidgetsFlutterBinding.ensureInitialized());
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   runApp(MyApp());
 

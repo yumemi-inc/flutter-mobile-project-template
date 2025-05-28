@@ -13,6 +13,17 @@
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "<YOUR_TOKEN>"
       }
+    },
+    "git": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--mount",
+        "type=bind,src=<GIT_DOCKER_PATH>,dst=/workspace",
+        "mcp/git"
+      ]
     }
   }
 }
