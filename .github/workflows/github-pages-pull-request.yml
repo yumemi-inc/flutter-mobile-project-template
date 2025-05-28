@@ -21,6 +21,8 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
+  DEPLOY_BRANCH: github-pages
+  DEPLOY_DIR: ${{ github.event.number }}/${{ github.sha }}
 
 jobs:
   build:
@@ -40,20 +42,31 @@ jobs:
         run: flutter build web --release --wasm --base-href /${{ github.event.repository.name }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          ref: ${{ env.DEPLOY_BRANCH }}
+
+      - name: Move build/web to ${{ env.DEPLOY_DIR }}
+        run: |
+          mkdir -p ${{ env.DEPLOY_DIR }}
+          mv ${{ env.PROJECT_DIR }}/build/web/* ${{ env.DEPLOY_DIR }}/
+
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.PROJECT_DIR }}/build/web
+          path: ${{ env.DEPLOY_DIR }}/
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}/${{ env.DEPLOY_DIR }}/
     permissions:
       pages: write
       id-token: write
+      pull-requests: write
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     needs: build
@@ -62,3 +75,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+      - name: Comment
+        if: ${{ steps.deployment.outputs.page_url != '' }}
+        run: |
+          gh pr comment "${{ github.event.pull_request.number }}" --body "Deployed to GitHub Pages: ${{ steps.deployment.outputs.page_url }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
