@@ -41,6 +41,10 @@ jobs:
         run: flutter build web --release --wasm --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
+      - name: Copy index.html to 404.html for client-side routing
+        run: cp index.html 404.html
+        working-directory: ${{ env.PROJECT_DIR }}/build/web
+
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
