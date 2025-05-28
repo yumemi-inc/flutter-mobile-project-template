@@ -21,7 +21,6 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
-  DEPLOY_BRANCH: github-pages
   DEPLOY_DIR: ${{ github.event.number }}/${{ github.sha }}
 
 jobs:
@@ -42,22 +41,12 @@ jobs:
         run: flutter build web --release --wasm --base-href /${{ github.event.repository.name }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-        with:
-          ref: ${{ env.DEPLOY_BRANCH }}
-
-      - name: Move build/web to ${{ env.DEPLOY_DIR }}
-        run: |
-          mkdir -p ${{ env.DEPLOY_DIR }}
-          mv ${{ env.PROJECT_DIR }}/build/web/* ${{ env.DEPLOY_DIR }}/
-
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.DEPLOY_DIR }}/
+          path: ${{ env.PROJECT_DIR }}/build/web
 
   deploy:
     environment:
