@@ -59,28 +59,17 @@ jobs:
           echo '<!DOCTYPE html><html><head><title>My Apps</title></head><body><h1>Welcome!</h1><p>Visit <a href="./${{ env.DEPLOY_DIR }}/">Fuga App</a> or <a href="./hoge/saga/">Saga App</a></p></body></html>' > deployment-output/index.html
           cp deployment-output/index.html deployment-output/404.html
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # This is the directory that will be the root of your GitHub Pages site.
-          # Its internal structure will define your URL paths.
-          path: ./deployment-output
-
-      # https://github.com/actions/configure-pages
-      - name: Setup Pages
-        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b
-
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
+          path: ./deployment-output
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
+      url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write
       id-token: write
