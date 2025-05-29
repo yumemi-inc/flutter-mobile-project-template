@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Create deploy directory
-        run: mkdir -p ${{ env.PROJECT_DIR }}/deploy
+        run: mkdir -p ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
 
       - name: Build web
         run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.PROJECT_DIR }}/deploy
@@ -49,7 +49,7 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.PROJECT_DIR }}/deploy
+          path: ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
 
   deploy:
     environment:
