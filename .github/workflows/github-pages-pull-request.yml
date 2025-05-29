@@ -21,7 +21,7 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
-  DEPLOY_DIR: ${{ github.event.number }}
+  DEPLOY_DIR: deploy
 
 jobs:
   build:
@@ -38,33 +38,21 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.number }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
 
-      - name: Create combined deployment directory
-        run: mkdir -p deployment-output/${{ env.DEPLOY_DIR }}
-
-      - name: Copy build to deployment directory
-        run: cp -R ${{ env.PROJECT_DIR }}/build/web/. deployment-output/${{ env.DEPLOY_DIR }}
-
-      # --- Handle SPA Routing with 404.html (Crucial for direct access to sub-paths) ---
-      # This creates a 'root' 404.html to catch any direct access that isn't a valid path.
-      # It should point to a central index.html or a custom 404 page if you have one.
-      # For multiple apps, you might need a custom 404.html that directs users to your main landing page.
-      # If 'fuga' and 'saga' are truly independent, you might also need 404.html inside their respective deployment folders
-      # for internal routing (e.g., deployment-output/hoge/fuga/404.html).
-      - name: Create a basic root index and 404 for navigation (Optional but recommended)
+      - name: Create & Copy combined deployment directory
         run: |
-          echo '<!DOCTYPE html><html><head><title>My Apps</title></head><body><h1>Welcome!</h1><p>Visit <a href="./${{ env.DEPLOY_DIR }}/">Fuga App</a> or <a href="./hoge/saga/">Saga App</a></p></body></html>' > deployment-output/index.html
-          cp deployment-output/index.html deployment-output/404.html
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
 
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ./deployment-output
+          path: ./${{ env.DEPLOY_DIR }}
 
   deploy:
     environment:
