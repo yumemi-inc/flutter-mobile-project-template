@@ -143,7 +143,7 @@ extension on List<MelosPackage> {
         'description':
             existingDescription ??
             '${packageName.replaceAll('/', ' ')} package',
-        if (existingFromName != null) 'from_name': existingFromName,
+        'from_name': ?existingFromName,
       };
 
       generatedLabels.add(newLabel);

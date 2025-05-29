@@ -19,8 +19,6 @@ class _NavigationExample extends StatefulWidget {
 }
 
 class _NavigationExampleState extends State<_NavigationExample> {
-  //
-  // ignore: diagnostic_describe_all_properties
   var _currentPageIndex = 0;
 
   @override
