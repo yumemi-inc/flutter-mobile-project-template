@@ -41,7 +41,7 @@ jobs:
         run: mkdir -p ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.PROJECT_DIR }}/deploy
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.DEPLOY_DIR }}
         working-directory: ${{ env.PROJECT_DIR }}
 
       # https://github.com/actions/upload-pages-artifact
