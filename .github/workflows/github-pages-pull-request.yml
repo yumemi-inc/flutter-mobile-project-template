@@ -41,7 +41,7 @@ jobs:
         run: mkdir -p ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.DEPLOY_DIR }}
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.DEPLOY_DIR }}
         working-directory: ${{ env.PROJECT_DIR }}
 
       # https://github.com/actions/upload-pages-artifact
@@ -54,7 +54,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ env.DEPLOY_DIR }}
+      url: ${{ steps.deployment.outputs.page_url }}${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
     permissions:
       pages: write
       id-token: write
