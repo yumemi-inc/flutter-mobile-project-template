@@ -21,7 +21,7 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
-  DEPLOY_DIR: ${{ github.event.number }}/${{ github.sha }}
+  DEPLOY_DIR: ${{ github.event.number }}
 
 jobs:
   build:
