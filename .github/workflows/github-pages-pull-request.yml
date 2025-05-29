@@ -37,12 +37,34 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Create deploy directory
-        run: mkdir -p ${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}
-
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.PROJECT_DIR }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.DEPLOY_DIR }}
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/
         working-directory: ${{ env.PROJECT_DIR }}
+
+
+      - name: Create combined deployment directory
+        run: mkdir -p deployment-output/${{ env.DEPLOY_DIR }}
+
+      - name: Copy build to deployment directory
+        run: cp -R ${{ env.PROJECT_DIR }}/build/web/. deployment-output/${{ env.DEPLOY_DIR }}
+
+      # --- Handle SPA Routing with 404.html (Crucial for direct access to sub-paths) ---
+      # This creates a 'root' 404.html to catch any direct access that isn't a valid path.
+      # It should point to a central index.html or a custom 404 page if you have one.
+      # For multiple apps, you might need a custom 404.html that directs users to your main landing page.
+      # If 'fuga' and 'saga' are truly independent, you might also need 404.html inside their respective deployment folders
+      # for internal routing (e.g., deployment-output/hoge/fuga/404.html).
+      - name: Create a basic root index and 404 for navigation (Optional but recommended)
+        run: |
+          echo '<!DOCTYPE html><html><head><title>My Apps</title></head><body><h1>Welcome!</h1><p>Visit <a href="./${{ env.DEPLOY_DIR }}/">Fuga App</a> or <a href="./hoge/saga/">Saga App</a></p></body></html>' > deployment-output/index.html
+          cp deployment-output/index.html deployment-output/404.html
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # This is the directory that will be the root of your GitHub Pages site.
+          # Its internal structure will define your URL paths.
+          path: ./deployment-output
 
       # https://github.com/actions/configure-pages
       - name: Setup Pages
