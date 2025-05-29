@@ -15,7 +15,7 @@ dependencies:
     path: ../domain_logic
   internal_domain_model:
     path: ../domain_model
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   test: ^1.25.8
