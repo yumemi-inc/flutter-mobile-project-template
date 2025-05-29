@@ -37,20 +37,19 @@ jobs:
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
-      - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/
-        working-directory: ${{ env.PROJECT_DIR }}
+      - name: Create deploy directory
+        run: mkdir -p ${{ env.PROJECT_DIR }}/deploy
 
-      - name: Copy index.html to 404.html for client-side routing
-        run: cp index.html 404.html
-        working-directory: ${{ env.PROJECT_DIR }}/build/web
+      - name: Build web
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.DEPLOY_DIR }}/ --output ${{ env.PROJECT_DIR }}/deploy
+        working-directory: ${{ env.PROJECT_DIR }}
 
       # https://github.com/actions/upload-pages-artifact
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ${{ env.PROJECT_DIR }}/build/web
+          path: ${{ env.PROJECT_DIR }}/deploy
 
   deploy:
     environment:
