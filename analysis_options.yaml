@@ -7,6 +7,3 @@ analyzer:
   errors:
     # https://pub.dev/packages/freezed#install
     invalid_annotation_target: ignore
-
-formatter:
-  trailing_commas: preserve
