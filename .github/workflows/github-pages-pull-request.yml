@@ -98,10 +98,11 @@ jobs:
             echo "No successful runs found in the last 3 days for workflow: '${{ github.workflow }}'."
             exit 0 # 実行IDが見つからなければ、ジョブを成功として終了
           fi
-
           echo "Found run IDs and their branches:"
           echo "$RUN_IDS"
-          echo "run_data=$RUN_IDS" >> "$GITHUB_OUTPUT" # 'run_id branch_name' の形式で出力
+          echo "run_data<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$RUN_IDS" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
