@@ -65,6 +65,10 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build
     steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
         run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
@@ -131,7 +135,6 @@ jobs:
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
-
 
        # https://github.com/actions/upload-pages-artifact
       - name: Upload GitHub Pages artifact
