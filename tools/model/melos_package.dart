@@ -19,12 +19,12 @@ final class MelosPackage {
   });
 
   factory MelosPackage.fromJson(Map<String, dynamic> json) => MelosPackage(
-        name: json['name'] as String,
-        version: json['version'] as String,
-        private: json['private'] as bool,
-        location: json['location'] as String,
-        type: json['type'] as int,
-      );
+    name: json['name'] as String,
+    version: json['version'] as String,
+    private: json['private'] as bool,
+    location: json['location'] as String,
+    type: json['type'] as int,
+  );
 
   final String name;
   final String version;

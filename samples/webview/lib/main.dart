@@ -19,18 +19,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: WebPage(
-        initialUrl: Uri.parse('https://flutter.dev'),
-      ),
+      home: WebPage(initialUrl: Uri.parse('https://flutter.dev')),
     );
   }
 }
 
 class WebPage extends StatefulWidget {
-  const WebPage({
-    required Uri initialUrl,
-    super.key,
-  }) : _initialUrl = initialUrl;
+  const WebPage({required Uri initialUrl, super.key})
+    : _initialUrl = initialUrl;
 
   final Uri _initialUrl;
 
@@ -42,9 +38,9 @@ class _WebViewState extends State<WebPage> {
   final GlobalKey _webViewKey = GlobalKey();
   PullToRefreshController? _pullToRefreshController;
   InAppWebViewController? _webViewController;
-  bool _isLoading = false;
-  bool _canPop = false;
-  bool _hasError = false;
+  var _isLoading = false;
+  var _canPop = false;
+  var _hasError = false;
 
   @override
   void initState() {
@@ -60,9 +56,7 @@ class _WebViewState extends State<WebPage> {
       await _webViewController?.reload();
     } else if (Platform.isIOS) {
       await _webViewController?.loadUrl(
-        urlRequest: URLRequest(
-          url: await _webViewController?.getUrl(),
-        ),
+        urlRequest: URLRequest(url: await _webViewController?.getUrl()),
       );
     }
   }
@@ -92,9 +86,7 @@ class _WebViewState extends State<WebPage> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('WebView'),
-        ),
+        appBar: AppBar(title: const Text('WebView')),
         body: Stack(
           children: [
             Visibility.maintain(
@@ -108,7 +100,7 @@ class _WebViewState extends State<WebPage> {
                 ),
                 key: _webViewKey,
                 pullToRefreshController: _pullToRefreshController,
-                onLoadStart: (_, __) async {
+                onLoadStart: (_, _) {
                   setState(() {
                     _isLoading = true;
                   });
@@ -128,7 +120,7 @@ class _WebViewState extends State<WebPage> {
                     _canPop = canGoBack;
                   });
                 },
-                onLoadStop: (_, __) async {
+                onLoadStop: (_, _) async {
                   await _pullToRefreshController?.endRefreshing();
 
                   setState(() {
@@ -170,9 +162,7 @@ class _WebViewState extends State<WebPage> {
                 ),
               ),
             if (_isLoading)
-              const Center(
-                child: CircularProgressIndicator.adaptive(),
-              ),
+              const Center(child: CircularProgressIndicator.adaptive()),
           ],
         ),
       ),

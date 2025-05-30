@@ -10,18 +10,18 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Containment',
 )
 Widget divider(BuildContext context) => const Center(
-      child: SizedBox(
-        width: 300,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Above'),
-            Divider(),
-            Text('Below'),
-          ],
-        ),
-      ),
-    );
+  child: SizedBox(
+    width: 300,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Above'),
+        Divider(),
+        Text('Below'),
+      ],
+    ),
+  ),
+);
 
 @UseCase(
   name: 'Vertical',
@@ -29,15 +29,15 @@ Widget divider(BuildContext context) => const Center(
   path: '[Theme Preview]/Containment',
 )
 Widget verticalDivider(BuildContext context) => const Center(
-      child: SizedBox(
-        height: 100,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('Left'),
-            VerticalDivider(),
-            Text('Right'),
-          ],
-        ),
-      ),
-    );
+  child: SizedBox(
+    height: 100,
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text('Left'),
+        VerticalDivider(),
+        Text('Right'),
+      ],
+    ),
+  ),
+);

@@ -33,7 +33,8 @@ final class AppBuildConfig implements BuildConfig {
   String? installerStore;
 
   @override
-  String toString() => 'AppBuildConfig('
+  String toString() =>
+      'AppBuildConfig('
       'appName: $appName, '
       'buildNumber: $buildNumber, '
       'packageName: $packageName, '

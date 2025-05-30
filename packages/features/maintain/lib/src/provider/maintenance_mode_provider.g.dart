@@ -14,14 +14,14 @@ String _$maintenanceModeHash() => r'6e2e62a0bd27cbe51e6627ed1f6509f22a51c6f2';
 @ProviderFor(MaintenanceMode)
 final maintenanceModeProvider =
     NotifierProvider<MaintenanceMode, MaintenanceModeSettingsState>.internal(
-  MaintenanceMode.new,
-  name: r'maintenanceModeProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$maintenanceModeHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      MaintenanceMode.new,
+      name: r'maintenanceModeProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$maintenanceModeHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$MaintenanceMode = Notifier<MaintenanceModeSettingsState>;
 // ignore_for_file: type=lint

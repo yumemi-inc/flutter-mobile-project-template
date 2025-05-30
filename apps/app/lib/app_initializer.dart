@@ -8,9 +8,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-typedef InitializedValues = ({
-  List<Override> overrideProviders,
-});
+typedef InitializedValues = ({List<Override> overrideProviders});
 
 final class AppInitializer {
   AppInitializer._();
