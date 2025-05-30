@@ -65,12 +65,78 @@ jobs:
     runs-on: ubuntu-22.04
     needs: build
     steps:
-      - uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
+      - name: Calculate 3 days ago date (UTC)
+        id: date_calc
+        run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
 
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Get run IDs from the last 3 days for the triggering workflow
+        id: get_run_ids
+        run: |
+          WORKFLOW_NAME="Build and Upload Deployable Artifact" # 対象のビルドワークフロー名
+          START_DATE="${{ steps.date_calc.outputs.start_date }}"
+          
+          echo "Fetching runs for workflow: '$WORKFLOW_NAME' created since $START_DATE"
+
+          # gh run list で対象ワークフローの過去3日間の成功した実行IDを取得
+          # 現在のデプロイワークフロー自身のrun_idは除外
+          # jqでdatabaseId（run_id）を抽出し、改行区切りで出力
+          RUN_IDS=$(gh run list \
+            --workflow "$WORKFLOW_NAME" \
+            --status success \
+            --created ">=$THREE_DAYS_AGO_UTC" \
+            --json databaseId,headBranch,createdAt \
+            | jq -r --argjson current_run_id "$CURRENT_RUN_ID" '
+                group_by(.headBranch) | 
+                map(max_by(.createdAt)) | 
+                .[] | 
+                select(.databaseId != $current_run_id) | 
+                "\(.databaseId) \(.headBranch)"
+          ')
+
+          if [ -z "$RUN_IDS" ]; then
+            echo "No successful runs found in the last 3 days for workflow: '$WORKFLOW_NAME'."
+            exit 0 # 実行IDが見つからなければ、ジョブを成功として終了
+          fi
+
+          echo "Found run IDs and their branches:"
+          echo "$RUN_IDS"
+          echo "run_data=$RUN_IDS" >> "$GITHUB_OUTPUT" # 'run_id branch_name' の形式で出力
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
+
+      - name: Download artifacts for each run ID
+        run: |
+          mkdir -p _site # GitHub Pagesのルートディレクトリ
+
+          # 出力された各行 (run_id branch_name) をループ処理
+          echo "${{ steps.get_run_ids.outputs.run_data }}" | while read -r run_id branch_name; do
+            if [ -n "$run_id" ] && [ -n "$branch_name" ]; then
+              echo "Downloading artifact for run ID: $run_id from branch: $branch_name"
+              
+              # ダウンロード先のパスは "_site/branch_name/" とする
+              DOWNLOAD_PATH="_site/$branch_name"
+              mkdir -p "$DOWNLOAD_PATH"
+
+              # gh run download でartifactをダウンロード
+              # --name オプションで特定のartifact名を指定することも可能
+              # この例では、特定のartifact名 ${{ github.ref_name }}-web-content をダウンロード
+              gh run download "$run_id" \
+                --dir "$DOWNLOAD_PATH" \
+                --name "${branch_name}-web-content" \
+                --repo "$GITHUB_REPOSITORY" \
+                || { echo "Warning: Could not download artifact for run $run_id. Skipping."; continue; }
+              echo "Downloaded artifact to $DOWNLOAD_PATH"
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
+
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./_site 
 
       # https://github.com/actions/deploy-pages
       - name: Deploy to GitHub Pages
