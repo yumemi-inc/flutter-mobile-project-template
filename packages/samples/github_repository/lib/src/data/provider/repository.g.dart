@@ -91,24 +91,25 @@ class ListOrganizationRepositoriesProvider
     int perPage = 30,
     String org = 'yumemi-inc',
   }) : this._internal(
-         (ref) => listOrganizationRepositories(
-           ref as ListOrganizationRepositoriesRef,
-           page: page,
-           perPage: perPage,
-           org: org,
-         ),
-         from: listOrganizationRepositoriesProvider,
-         name: r'listOrganizationRepositoriesProvider',
-         debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-             ? null
-             : _$listOrganizationRepositoriesHash,
-         dependencies: ListOrganizationRepositoriesFamily._dependencies,
-         allTransitiveDependencies:
-             ListOrganizationRepositoriesFamily._allTransitiveDependencies,
-         page: page,
-         perPage: perPage,
-         org: org,
-       );
+          (ref) => listOrganizationRepositories(
+            ref as ListOrganizationRepositoriesRef,
+            page: page,
+            perPage: perPage,
+            org: org,
+          ),
+          from: listOrganizationRepositoriesProvider,
+          name: r'listOrganizationRepositoriesProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$listOrganizationRepositoriesHash,
+          dependencies: ListOrganizationRepositoriesFamily._dependencies,
+          allTransitiveDependencies:
+              ListOrganizationRepositoriesFamily._allTransitiveDependencies,
+          page: page,
+          perPage: perPage,
+          org: org,
+        );
 
   ListOrganizationRepositoriesProvider._internal(
     super._createNotifier, {
@@ -129,9 +130,8 @@ class ListOrganizationRepositoriesProvider
   @override
   Override overrideWith(
     FutureOr<GitHubRepositoryResult> Function(
-      ListOrganizationRepositoriesRef provider,
-    )
-    create,
+            ListOrganizationRepositoriesRef provider)
+        create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -199,6 +199,5 @@ class _ListOrganizationRepositoriesProviderElement
   @override
   String get org => (origin as ListOrganizationRepositoriesProvider).org;
 }
-
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

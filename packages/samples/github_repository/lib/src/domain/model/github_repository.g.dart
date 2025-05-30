@@ -9,22 +9,22 @@ part of 'github_repository.dart';
 // **************************************************************************
 
 _$GitHubRepositoryImpl _$$GitHubRepositoryImplFromJson(
-  Map<String, dynamic> json,
-) => $checkedCreate(
-  r'_$GitHubRepositoryImpl',
-  json,
-  ($checkedConvert) {
-    final val = _$GitHubRepositoryImpl(
-      name: $checkedConvert('name', (v) => v as String),
-      description: $checkedConvert('description', (v) => v as String?),
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$GitHubRepositoryImpl',
+      json,
+      ($checkedConvert) {
+        final val = _$GitHubRepositoryImpl(
+          name: $checkedConvert('name', (v) => v as String),
+          description: $checkedConvert('description', (v) => v as String?),
+        );
+        return val;
+      },
     );
-    return val;
-  },
-);
 
 Map<String, dynamic> _$$GitHubRepositoryImplToJson(
-  _$GitHubRepositoryImpl instance,
-) => <String, dynamic>{
-  'name': instance.name,
-  'description': instance.description,
-};
+        _$GitHubRepositoryImpl instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'description': instance.description,
+    };

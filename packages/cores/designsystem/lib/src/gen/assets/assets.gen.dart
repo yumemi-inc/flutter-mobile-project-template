@@ -14,9 +14,8 @@ class Assets {
 
   static const String package = 'cores_designsystem';
 
-  static const AssetGenImage yumemiLogo = AssetGenImage(
-    'assets/yumemi_logo.png',
-  );
+  static const AssetGenImage yumemiLogo =
+      AssetGenImage('assets/yumemi_logo.png');
 
   /// List of all assets
   static List<AssetGenImage> get values => [yumemiLogo];

@@ -14,14 +14,14 @@ String _$scrollNotifierHash() => r'4e43fc3145511dce39d9721397f56efad2885530';
 @ProviderFor(ScrollNotifier)
 final scrollNotifierProvider =
     AutoDisposeNotifierProvider<ScrollNotifier, void>.internal(
-      ScrollNotifier.new,
-      name: r'scrollNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$scrollNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  ScrollNotifier.new,
+  name: r'scrollNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$scrollNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$ScrollNotifier = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint

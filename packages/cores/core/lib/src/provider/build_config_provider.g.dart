@@ -15,9 +15,8 @@ String _$buildConfigHash() => r'2d81398cb4435e6baf6efb522105d54ca71179f7';
 final buildConfigProvider = Provider<BuildConfig>.internal(
   buildConfig,
   name: r'buildConfigProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$buildConfigHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$buildConfigHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

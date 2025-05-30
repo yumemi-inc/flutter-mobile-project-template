@@ -15,14 +15,14 @@ String _$forceUpdateVersionHash() =>
 @ProviderFor(ForceUpdateVersion)
 final forceUpdateVersionProvider =
     NotifierProvider<ForceUpdateVersion, ForceUpdateTargetVersion>.internal(
-      ForceUpdateVersion.new,
-      name: r'forceUpdateVersionProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$forceUpdateVersionHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  ForceUpdateVersion.new,
+  name: r'forceUpdateVersionProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$forceUpdateVersionHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$ForceUpdateVersion = Notifier<ForceUpdateTargetVersion>;
 // ignore_for_file: type=lint

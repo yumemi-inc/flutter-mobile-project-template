@@ -14,14 +14,14 @@ String _$themeModeNotifierHash() => r'4842db65ae760373516371e887257134d2894908';
 @ProviderFor(ThemeModeNotifier)
 final themeModeNotifierProvider =
     NotifierProvider<ThemeModeNotifier, ThemeMode>.internal(
-      ThemeModeNotifier.new,
-      name: r'themeModeNotifierProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$themeModeNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+  ThemeModeNotifier.new,
+  name: r'themeModeNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$themeModeNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$ThemeModeNotifier = Notifier<ThemeMode>;
 // ignore_for_file: type=lint

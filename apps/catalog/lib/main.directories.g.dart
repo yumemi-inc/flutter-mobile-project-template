@@ -425,7 +425,7 @@ final directories = <_i1.WidgetbookNode>[
                 builder: _i31.outlinedTextField,
               ),
             ],
-          ),
+          )
         ],
       ),
     ],
@@ -442,9 +442,9 @@ final directories = <_i1.WidgetbookNode>[
               name: 'TextListTile',
               builder: _i32.textListTile,
             ),
-          ),
+          )
         ],
-      ),
+      )
     ],
   ),
 ];

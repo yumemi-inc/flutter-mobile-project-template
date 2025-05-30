@@ -12,8 +12,7 @@ part of 'maintenance_mode_settings_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MaintenanceModeSettingsState {
@@ -23,28 +22,23 @@ mixin _$MaintenanceModeSettingsState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   $MaintenanceModeSettingsStateCopyWith<MaintenanceModeSettingsState>
-  get copyWith => throw _privateConstructorUsedError;
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MaintenanceModeSettingsStateCopyWith<$Res> {
   factory $MaintenanceModeSettingsStateCopyWith(
-    MaintenanceModeSettingsState value,
-    $Res Function(MaintenanceModeSettingsState) then,
-  ) =
-      _$MaintenanceModeSettingsStateCopyWithImpl<
-        $Res,
-        MaintenanceModeSettingsState
-      >;
+          MaintenanceModeSettingsState value,
+          $Res Function(MaintenanceModeSettingsState) then) =
+      _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+          MaintenanceModeSettingsState>;
   @useResult
   $Res call({bool enabled});
 }
 
 /// @nodoc
-class _$MaintenanceModeSettingsStateCopyWithImpl<
-  $Res,
-  $Val extends MaintenanceModeSettingsState
->
+class _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+        $Val extends MaintenanceModeSettingsState>
     implements $MaintenanceModeSettingsStateCopyWith<$Res> {
   _$MaintenanceModeSettingsStateCopyWithImpl(this._value, this._then);
 
@@ -60,15 +54,12 @@ class _$MaintenanceModeSettingsStateCopyWithImpl<
   $Res call({
     Object? enabled = null,
   }) {
-    return _then(
-      _value.copyWith(
-            enabled: null == enabled
-                ? _value.enabled
-                : enabled // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      enabled: null == enabled
+          ? _value.enabled
+          : enabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 }
 
@@ -76,9 +67,9 @@ class _$MaintenanceModeSettingsStateCopyWithImpl<
 abstract class _$$MaintenanceModeSettingsStateImplCopyWith<$Res>
     implements $MaintenanceModeSettingsStateCopyWith<$Res> {
   factory _$$MaintenanceModeSettingsStateImplCopyWith(
-    _$MaintenanceModeSettingsStateImpl value,
-    $Res Function(_$MaintenanceModeSettingsStateImpl) then,
-  ) = __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>;
+          _$MaintenanceModeSettingsStateImpl value,
+          $Res Function(_$MaintenanceModeSettingsStateImpl) then) =
+      __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool enabled});
@@ -86,16 +77,13 @@ abstract class _$$MaintenanceModeSettingsStateImplCopyWith<$Res>
 
 /// @nodoc
 class __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>
-    extends
-        _$MaintenanceModeSettingsStateCopyWithImpl<
-          $Res,
-          _$MaintenanceModeSettingsStateImpl
-        >
+    extends _$MaintenanceModeSettingsStateCopyWithImpl<$Res,
+        _$MaintenanceModeSettingsStateImpl>
     implements _$$MaintenanceModeSettingsStateImplCopyWith<$Res> {
   __$$MaintenanceModeSettingsStateImplCopyWithImpl(
-    _$MaintenanceModeSettingsStateImpl _value,
-    $Res Function(_$MaintenanceModeSettingsStateImpl) _then,
-  ) : super(_value, _then);
+      _$MaintenanceModeSettingsStateImpl _value,
+      $Res Function(_$MaintenanceModeSettingsStateImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of MaintenanceModeSettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -104,14 +92,12 @@ class __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? enabled = null,
   }) {
-    return _then(
-      _$MaintenanceModeSettingsStateImpl(
-        enabled: null == enabled
-            ? _value.enabled
-            : enabled // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
+    return _then(_$MaintenanceModeSettingsStateImpl(
+      enabled: null == enabled
+          ? _value.enabled
+          : enabled // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
   }
 }
 
@@ -147,12 +133,9 @@ class _$MaintenanceModeSettingsStateImpl
   @override
   @pragma('vm:prefer-inline')
   _$$MaintenanceModeSettingsStateImplCopyWith<
-    _$MaintenanceModeSettingsStateImpl
-  >
-  get copyWith =>
-      __$$MaintenanceModeSettingsStateImplCopyWithImpl<
-        _$MaintenanceModeSettingsStateImpl
-      >(this, _$identity);
+          _$MaintenanceModeSettingsStateImpl>
+      get copyWith => __$$MaintenanceModeSettingsStateImplCopyWithImpl<
+          _$MaintenanceModeSettingsStateImpl>(this, _$identity);
 }
 
 abstract class _MaintenanceModeSettingsState
@@ -168,7 +151,6 @@ abstract class _MaintenanceModeSettingsState
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaintenanceModeSettingsStateImplCopyWith<
-    _$MaintenanceModeSettingsStateImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+          _$MaintenanceModeSettingsStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

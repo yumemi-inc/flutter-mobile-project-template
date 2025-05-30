@@ -12,8 +12,7 @@ part of 'github_repository.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 GitHubRepository _$GitHubRepositoryFromJson(Map<String, dynamic> json) {
   return _GitHubRepository.fromJson(json);
@@ -37,9 +36,8 @@ mixin _$GitHubRepository {
 /// @nodoc
 abstract class $GitHubRepositoryCopyWith<$Res> {
   factory $GitHubRepositoryCopyWith(
-    GitHubRepository value,
-    $Res Function(GitHubRepository) then,
-  ) = _$GitHubRepositoryCopyWithImpl<$Res, GitHubRepository>;
+          GitHubRepository value, $Res Function(GitHubRepository) then) =
+      _$GitHubRepositoryCopyWithImpl<$Res, GitHubRepository>;
   @useResult
   $Res call({String name, String? description});
 }
@@ -62,29 +60,25 @@ class _$GitHubRepositoryCopyWithImpl<$Res, $Val extends GitHubRepository>
     Object? name = null,
     Object? description = freezed,
   }) {
-    return _then(
-      _value.copyWith(
-            name: null == name
-                ? _value.name
-                : name // ignore: cast_nullable_to_non_nullable
-                      as String,
-            description: freezed == description
-                ? _value.description
-                : description // ignore: cast_nullable_to_non_nullable
-                      as String?,
-          )
-          as $Val,
-    );
+    return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$GitHubRepositoryImplCopyWith<$Res>
     implements $GitHubRepositoryCopyWith<$Res> {
-  factory _$$GitHubRepositoryImplCopyWith(
-    _$GitHubRepositoryImpl value,
-    $Res Function(_$GitHubRepositoryImpl) then,
-  ) = __$$GitHubRepositoryImplCopyWithImpl<$Res>;
+  factory _$$GitHubRepositoryImplCopyWith(_$GitHubRepositoryImpl value,
+          $Res Function(_$GitHubRepositoryImpl) then) =
+      __$$GitHubRepositoryImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String? description});
@@ -94,10 +88,9 @@ abstract class _$$GitHubRepositoryImplCopyWith<$Res>
 class __$$GitHubRepositoryImplCopyWithImpl<$Res>
     extends _$GitHubRepositoryCopyWithImpl<$Res, _$GitHubRepositoryImpl>
     implements _$$GitHubRepositoryImplCopyWith<$Res> {
-  __$$GitHubRepositoryImplCopyWithImpl(
-    _$GitHubRepositoryImpl _value,
-    $Res Function(_$GitHubRepositoryImpl) _then,
-  ) : super(_value, _then);
+  __$$GitHubRepositoryImplCopyWithImpl(_$GitHubRepositoryImpl _value,
+      $Res Function(_$GitHubRepositoryImpl) _then)
+      : super(_value, _then);
 
   /// Create a copy of GitHubRepository
   /// with the given fields replaced by the non-null parameter values.
@@ -107,18 +100,16 @@ class __$$GitHubRepositoryImplCopyWithImpl<$Res>
     Object? name = null,
     Object? description = freezed,
   }) {
-    return _then(
-      _$GitHubRepositoryImpl(
-        name: null == name
-            ? _value.name
-            : name // ignore: cast_nullable_to_non_nullable
-                  as String,
-        description: freezed == description
-            ? _value.description
-            : description // ignore: cast_nullable_to_non_nullable
-                  as String?,
-      ),
-    );
+    return _then(_$GitHubRepositoryImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
   }
 }
 
@@ -161,9 +152,7 @@ class _$GitHubRepositoryImpl implements _GitHubRepository {
   @pragma('vm:prefer-inline')
   _$$GitHubRepositoryImplCopyWith<_$GitHubRepositoryImpl> get copyWith =>
       __$$GitHubRepositoryImplCopyWithImpl<_$GitHubRepositoryImpl>(
-        this,
-        _$identity,
-      );
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -174,10 +163,9 @@ class _$GitHubRepositoryImpl implements _GitHubRepository {
 }
 
 abstract class _GitHubRepository implements GitHubRepository {
-  const factory _GitHubRepository({
-    required final String name,
-    required final String? description,
-  }) = _$GitHubRepositoryImpl;
+  const factory _GitHubRepository(
+      {required final String name,
+      required final String? description}) = _$GitHubRepositoryImpl;
 
   factory _GitHubRepository.fromJson(Map<String, dynamic> json) =
       _$GitHubRepositoryImpl.fromJson;

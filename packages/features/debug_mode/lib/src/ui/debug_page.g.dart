@@ -15,14 +15,14 @@ String _$debugPageNavigatorHash() =>
 @ProviderFor(debugPageNavigator)
 final debugPageNavigatorProvider =
     AutoDisposeProvider<DebugPageNavigator>.internal(
-      debugPageNavigator,
-      name: r'debugPageNavigatorProvider',
-      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$debugPageNavigatorHash,
-      dependencies: const <ProviderOrFamily>[],
-      allTransitiveDependencies: const <ProviderOrFamily>{},
-    );
+  debugPageNavigator,
+  name: r'debugPageNavigatorProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$debugPageNavigatorHash,
+  dependencies: const <ProviderOrFamily>[],
+  allTransitiveDependencies: const <ProviderOrFamily>{},
+);
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
