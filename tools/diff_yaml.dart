@@ -69,8 +69,9 @@ Future<void> main(List<String> args) async {
   final rows = <String>[];
 
   if (compareValue.isNotEmpty) {
-    rows.add(
-        '<details><summary>pubspec.lock has been changed</summary><p>\n\n');
+    rows.add('''
+<details><summary>pubspec.lock has been changed</summary><p>\n\n
+    ''');
     rows.add('''
 | Change | Diff |
 | :---   | :--- |
@@ -88,8 +89,9 @@ Future<void> main(List<String> args) async {
   final diffVersions = diffPkgVersion(currentYaml, currentLock);
 
   if (diffVersions.isNotEmpty) {
-    rows.add(
-        '<details><summary>Compare pubspec.yaml and pubspec.lock. Packages with different version notations</summary><p>\n\n');
+    rows.add('''
+<details><summary>Compare pubspec.yaml and pubspec.lock. Packages with different version notations</summary><p>\n\n
+    ''');
     rows.add('''
 | package | pubspec.yaml | pubspec.lock |
 | :---    | :---         | :---         |
