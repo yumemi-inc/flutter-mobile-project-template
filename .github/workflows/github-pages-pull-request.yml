@@ -51,7 +51,7 @@ jobs:
         id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          name: ${{ github.ref_name }}-web-content
+          name: ${{ github.event.pull_request.head.ref }}-web-content
           path: ./${{ env.DEPLOY_DIR }}
           retention-days: 3
 
@@ -101,9 +101,11 @@ jobs:
           fi
           echo "Found run IDs and their branches:"
           echo "$RUN_IDS"
-          echo "run_data<<EOF" >> "$GITHUB_OUTPUT"
-          echo "$RUN_IDS" >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
+          {
+            echo "run_data<<EOF"
+            echo "$RUN_IDS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
@@ -122,10 +124,10 @@ jobs:
 
               # gh run download でartifactをダウンロード
               # --name オプションで特定のartifact名を指定することも可能
-              # この例では、特定のartifact名 ${{ github.ref_name }}-web-content をダウンロード
+              # この例では、特定のartifact名 ${{ github.event.pull_request.head.ref }}-web-content をダウンロード
               gh run download "$run_id" \
                 --dir "$DOWNLOAD_PATH" \
-                --name "${{ github.ref_name }}-web-content" \
+                --name "${{ github.event.pull_request.head.ref }}-web-content" \
                 --repo "$GITHUB_REPOSITORY" \
                 || { echo "Warning: Could not download artifact for run $run_id. Skipping."; continue; }
               echo "Downloaded artifact to $DOWNLOAD_PATH"
