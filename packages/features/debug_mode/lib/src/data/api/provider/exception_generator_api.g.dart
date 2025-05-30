@@ -15,14 +15,14 @@ String _$exceptionGeneratorApiHash() =>
 @ProviderFor(ExceptionGeneratorApi)
 final exceptionGeneratorApiProvider =
     AutoDisposeAsyncNotifierProvider<ExceptionGeneratorApi, String>.internal(
-  ExceptionGeneratorApi.new,
-  name: r'exceptionGeneratorApiProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$exceptionGeneratorApiHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ExceptionGeneratorApi.new,
+      name: r'exceptionGeneratorApiProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$exceptionGeneratorApiHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ExceptionGeneratorApi = AutoDisposeAsyncNotifier<String>;
 // ignore_for_file: type=lint
