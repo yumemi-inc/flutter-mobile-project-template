@@ -113,10 +113,10 @@ jobs:
 
           # 出力された各行 (run_id branch_name) をループ処理
           echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
-            if [ -n "$run_id" ] && [ -n "$branch_name" ]; then
-              echo "Downloading artifact for run ID: $run_id from branch: $branch_name"
-              # ダウンロード先のパスは "_site/branch_name/" とする
-              DOWNLOAD_PATH="_site/$branch_name"
+            if [ -n "$run_id" ] && [ -n "$branch" ]; then
+              echo "Downloading artifact for run ID: $run_id from branch: $branch"
+              # ダウンロード先のパスは "_site/branch/" とする
+              DOWNLOAD_PATH="_site/$branch"
               mkdir -p "$DOWNLOAD_PATH"
 
               # gh run download でartifactをダウンロード
@@ -124,7 +124,7 @@ jobs:
               # この例では、特定のartifact名 ${{ github.ref_name }}-web-content をダウンロード
               gh run download "$run_id" \
                 --dir "$DOWNLOAD_PATH" \
-                --name "${branch_name}-web-content" \
+                --name "${branch}-web-content" \
                 --repo "$GITHUB_REPOSITORY" \
                 || { echo "Warning: Could not download artifact for run $run_id. Skipping."; continue; }
               echo "Downloaded artifact to $DOWNLOAD_PATH"
