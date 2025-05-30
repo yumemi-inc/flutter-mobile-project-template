@@ -76,16 +76,14 @@ jobs:
       - name: Get run IDs from the last 3 days for the triggering workflow
         id: get_run_ids
         run: |
-          WORKFLOW_NAME="Build and Upload Deployable Artifact" # 対象のビルドワークフロー名
           START_DATE="${{ steps.date_calc.outputs.start_date }}"
-          
-          echo "Fetching runs for workflow: '$WORKFLOW_NAME' created since $START_DATE"
+          echo "Fetching runs for workflow: '${{ github.workflow }}' created since $START_DATE"
 
           # gh run list で対象ワークフローの過去3日間の成功した実行IDを取得
           # 現在のデプロイワークフロー自身のrun_idは除外
           # jqでdatabaseId（run_id）を抽出し、改行区切りで出力
           RUN_IDS=$(gh run list \
-            --workflow "$WORKFLOW_NAME" \
+            --workflow "${{ github.workflow }}" \
             --status success \
             --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
@@ -98,7 +96,7 @@ jobs:
           ')
 
           if [ -z "$RUN_IDS" ]; then
-            echo "No successful runs found in the last 3 days for workflow: '$WORKFLOW_NAME'."
+            echo "No successful runs found in the last 3 days for workflow: '${{ github.workflow }}'."
             exit 0 # 実行IDが見つからなければ、ジョブを成功として終了
           fi
 
@@ -117,7 +115,6 @@ jobs:
           echo "${{ steps.get_run_ids.outputs.run_data }}" | while read -r run_id branch_name; do
             if [ -n "$run_id" ] && [ -n "$branch_name" ]; then
               echo "Downloading artifact for run ID: $run_id from branch: $branch_name"
-              
               # ダウンロード先のパスは "_site/branch_name/" とする
               DOWNLOAD_PATH="_site/$branch_name"
               mkdir -p "$DOWNLOAD_PATH"
@@ -136,7 +133,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
-       # https://github.com/actions/upload-pages-artifact
+      # https://github.com/actions/upload-pages-artifact
       - name: Upload GitHub Pages artifact
         id: upload_pages_artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
