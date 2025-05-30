@@ -7,6 +7,13 @@ runs:
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
+        title: "[初期セットアップ] ブランチ運用方針の決定"
+        content-filepath: .github/initialization/BRANCH_RULE.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
         title: "[初期セットアップ] Pull Requestのレビュワーを自動アサインする設定"
         content-filepath: .github/initialization/GITHUB_AUTO_ASSIGNMENT.md
         labels: initialization
@@ -28,6 +35,20 @@ runs:
     # https://github.com/marketplace/actions/create-issue-from-file
     - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
       with:
+        title: "[初期セットアップ] 開発ツールのバージョン指定"
+        content-filepath: .github/initialization/TOOL_VERSION.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
+        title: "[初期セットアップ] Target SDK の設定"
+        content-filepath: .github/initialization/TARGET_SDK.md
+        labels: initialization
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
         title: "[初期セットアップ] Merge Queue を導入"
         content-filepath: .github/initialization/MERGE_QUEUE_SETUP.md
         labels: initialization
@@ -37,6 +58,15 @@ runs:
       with:
         title: "[初期セットアップ（任意）] スプラッシュ画面の設定"
         content-filepath: .github/initialization/SPLASH_SCREEN.md
+        labels: |
+          initialization
+          optional
+
+    # https://github.com/marketplace/actions/create-issue-from-file
+    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+      with:
+        title: "[初期セットアップ(任意)] 画面の向きの設定"
+        content-filepath: .github/initialization/ORIENTATION.md
         labels: |
           initialization
           optional
