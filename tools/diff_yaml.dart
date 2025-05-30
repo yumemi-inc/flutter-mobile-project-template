@@ -70,8 +70,9 @@ Future<void> main(List<String> args) async {
 
   if (compareValue.isNotEmpty) {
     rows.add('''
-## pubspec.lock has been changed
-
+<details><summary>pubspec.lock has been changed</summary><p>\n\n
+    ''');
+    rows.add('''
 | Change | Diff |
 | :---   | :--- |
 ''');
@@ -81,6 +82,7 @@ Future<void> main(List<String> args) async {
       rows.add(row);
     }
 
+    rows.add('</p></details>\n\n');
     rows.add('---');
   }
 
@@ -88,9 +90,9 @@ Future<void> main(List<String> args) async {
 
   if (diffVersions.isNotEmpty) {
     rows.add('''
-
-## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
-
+<details><summary>Compare pubspec.yaml and pubspec.lock. Packages with different version notations</summary><p>\n\n
+    ''');
+    rows.add('''
 | package | pubspec.yaml | pubspec.lock |
 | :---    | :---         | :---         |
 ''');
@@ -100,6 +102,8 @@ Future<void> main(List<String> args) async {
           '''| ${diff['package']} | ${diff['pubspec.yaml']} | ${diff['pubspec.lock']} | \n''';
       rows.add(row);
     }
+
+    rows.add('</p></details>');
   }
 
   stdout.writeln(rows.join().trim());
