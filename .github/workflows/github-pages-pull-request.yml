@@ -83,14 +83,14 @@ jobs:
           RUN_IDS=$(gh run list \
             --workflow "$WORKFLOW_NAME" \
             --status success \
-            --created ">=$THREE_DAYS_AGO_UTC" \
+            --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
-            | jq -r --argjson current_run_id "$CURRENT_RUN_ID" '
+            | jq  -r --arg current_run_id "1" '
                 group_by(.headBranch) |
                 map(max_by(.createdAt)) |
+                map(select(.databaseId != ($current_run_id | tonumber))) |
                 .[] |
-                select(.databaseId != $current_run_id) |
-                "\(.databaseId) \(.headBranch)"
+                "\(.headBranch) <\(.databaseId)>"
           ')
 
           if [ -z "$RUN_IDS" ]; then
