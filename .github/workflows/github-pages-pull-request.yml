@@ -86,10 +86,10 @@ jobs:
             --created ">=$THREE_DAYS_AGO_UTC" \
             --json databaseId,headBranch,createdAt \
             | jq -r --argjson current_run_id "$CURRENT_RUN_ID" '
-                group_by(.headBranch) | 
-                map(max_by(.createdAt)) | 
-                .[] | 
-                select(.databaseId != $current_run_id) | 
+                group_by(.headBranch) |
+                map(max_by(.createdAt)) |
+                .[] |
+                select(.databaseId != $current_run_id) |
                 "\(.databaseId) \(.headBranch)"
           ')
 
@@ -133,10 +133,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
 
+       # https://github.com/actions/upload-pages-artifact
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        id: upload_pages_artifact
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ./_site 
+          path: ./_site
 
       # https://github.com/actions/deploy-pages
       - name: Deploy to GitHub Pages
