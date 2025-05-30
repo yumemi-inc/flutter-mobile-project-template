@@ -78,12 +78,12 @@
 プロジェクトの安定運用のために、以下のツールのバージョンを決定・確認し、チームメンバーが参照できるようにドキュメント化してください。
 
 - 確認リスト
-  - `mise` 自体のバージョン確認・推奨
-    - `.mise.toml` の確認・更新
-  - `package.json` の `devDependencies` 確認・更新:
-  - Xcode バージョンの指定:
-    - CocoaPods バージョンの指定
-  - Android Studio バージョンの指定
+  - [ ] `mise` 自体のバージョン確認・推奨
+    - [ ] `.mise.toml` の確認・更新
+  - [ ] `package.json` の `devDependencies` 確認・更新:
+  - [ ] Xcode バージョンの指定:
+    - [ ] CocoaPods バージョンの指定
+  - [ ] Android Studio バージョンの指定
 
 - [ ] プロジェクトの `README.md` や開発環境構築ガイドなどに、上記のツールバージョン情報および設定方法を集約して記載。
 
