@@ -11,7 +11,7 @@
 
 ## 参考ドキュメント
 
-- [アーキテクチャ (`docs/ARCHITECTURE.md`)]
+- アーキテクチャ (`docs/ARCHITECTURE.md`)
 
 ## Todo
 
@@ -36,7 +36,3 @@
   - フィードバックを元に、ドキュメントを最終調整する。
 
 **全てのタスクが完了したら、このIssueを閉じてください。**
-
-<!-- Links -->
-
-[アーキテクチャ (`docs/ARCHITECTURE.md`)]: ../../../../docs/ARCHITECTURE.md
