@@ -10,7 +10,7 @@
 
 ## 参考ドキュメント
 
-- [モデリング (`docs/MODELING.md`)]
+- モデリング (`docs/MODELING.md`)
 
 ## Todo
 
@@ -32,7 +32,3 @@
   - フィードバックを元に、ドキュメントを最終調整する。
 
 **全てのタスクが完了したら、このIssueを閉じてください。**
-
-<!-- Links -->
-
-[モデリング (`docs/MODELING.md`)]: docs/MODELING.md
