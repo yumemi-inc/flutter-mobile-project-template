@@ -1,3 +1,8 @@
+---
+title: "[初期セットアップ] Merge Queue を導入"
+labels: initialization
+---
+
 # マージキューの設定
 
 GitHubのマージキュー機能を設定して、 PR のマージプロセスを効率化します。
