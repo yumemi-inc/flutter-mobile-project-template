@@ -19,21 +19,45 @@ jobs:
             echo "execute=false" >> "$GITHUB_OUTPUT"
           fi
 
-  create-issues:
+  generate-matrix:
     runs-on: ubuntu-22.04
-    permissions:
-      contents: read
-      issues: write
     needs: condition
     if: needs.condition.outputs.execute == 'true'
-    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       # https://github.com/actions/checkout
       - name: Fetch sources
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Create Issues at Initialization
+      - name: Generate Matrix Data
+        id: matrix
         uses: ./.github/actions/create-issue-at-initialization
+
+  create-issues:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      issues: write
+    needs:
+      - condition
+      - generate-matrix
+    if: needs.condition.outputs.execute == 'true'
+    timeout-minutes: 10
+    strategy:
+      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      fail-fast: false # 一つのIssue作成が失敗しても他の処理を続行
+    steps:
+      # https://github.com/actions/checkout
+      - name: Fetch sources
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      - name: Create Issue from File
+        uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94
+        with:
+          title: ${{ matrix.title }}
+          content-filepath: ${{ matrix.content-filepath }}
+          labels: ${{ matrix.labels }}
 
   cleanup:
     runs-on: ubuntu-22.04

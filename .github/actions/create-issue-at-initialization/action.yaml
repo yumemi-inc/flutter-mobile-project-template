@@ -1,117 +1,26 @@
-name: "Create issues at initialization"
+name: "Create issues Matrix at initialization"
 description: "Create GitHub Issues based on initialization of Yumemi Inc. flutter mobile project template"
+
+outputs:
+  matrix:
+    description: "Generated matrix data for creating issues"
+    value: ${{ steps.generate.outputs.matrix }}
 
 runs:
   using: "composite"
   steps:
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
+    # https://github.com/jdx/mise-action
+    - name: Setup flutter
+      uses: jdx/mise-action@7a111ead46986ccad89a74ad013ba2a7c08c9e67 # v2.2.1
       with:
-        title: "[初期セットアップ] ブランチ運用方針の決定"
-        content-filepath: .github/initialization/BRANCH_RULE.md
-        labels: initialization
+        install_args: "flutter"
 
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] Pull Requestのレビュワーを自動アサインする設定"
-        content-filepath: .github/initialization/GITHUB_AUTO_ASSIGNMENT.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] アイコンの設定"
-        content-filepath: .github/initialization/ABOUT_ICON.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] アプリIDのリネーム"
-        content-filepath: .github/initialization/RENAME_APPLICATION_ID.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] 開発ツールのバージョン指定"
-        content-filepath: .github/initialization/TOOL_VERSION.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] Target SDK の設定"
-        content-filepath: .github/initialization/TARGET_SDK.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ] Merge Queue を導入"
-        content-filepath: .github/initialization/MERGE_QUEUE_SETUP.md
-        labels: initialization
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ（任意）] スプラッシュ画面の設定"
-        content-filepath: .github/initialization/SPLASH_SCREEN.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ(任意)] 画面の向きの設定"
-        content-filepath: .github/initialization/ORIENTATION.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ（任意）] プルリクエスト方針策定"
-        content-filepath: .github/initialization/PR_POLICY.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ（任意）] コミットメッセージ規約の設定"
-        content-filepath: .github/initialization/COMMIT_CONVENTION.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ(任意)] Flutter アプリの多言語化設定"
-        content-filepath: .github/initialization/LOCALIZATION.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ(任意)] モデリング方針の定義"
-        content-filepath: .github/initialization/MODELING.md
-        labels: |
-          initialization
-          optional
-
-    # https://github.com/marketplace/actions/create-issue-from-file
-    - uses: peter-evans/create-issue-from-file@24452a72d85239eacf1468b0f1982a9f3fec4c94 # v5.0.0
-      with:
-        title: "[初期セットアップ(任意)] アーキテクチャ設計"
-        content-filepath: .github/initialization/ARCHITECTURE.md
-        labels: |
-          initialization
-          optional
+    - name: Generate matrix data
+      id: generate
+      shell: bash
+      run: |
+        # Dartスクリプトでmatrix JSONを生成
+        matrix=$(dart run scripts/generate_issue_matrix.dart)
+        echo "matrix=$matrix" >> $GITHUB_OUTPUT
+        echo "Generated matrix:"
+        echo "$matrix" | jq .
