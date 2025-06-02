@@ -18,7 +18,7 @@ final class PagingServerNetworkException extends PagingNetworkException {
 
 final class PagingUnknownNetworkException extends PagingNetworkException {
   const PagingUnknownNetworkException()
-      : super('Unknown network error occurred');
+    : super('Unknown network error occurred');
 }
 
 final class PagingUnknownException extends PagingException {

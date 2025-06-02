@@ -5,8 +5,8 @@ class GitHubRepositoryDetailPage extends StatelessWidget {
     required String repositoryName,
     required String? description,
     super.key,
-  })  : _repositoryName = repositoryName,
-        _description = description;
+  }) : _repositoryName = repositoryName,
+       _description = description;
 
   final String _repositoryName;
   final String? _description;

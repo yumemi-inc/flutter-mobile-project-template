@@ -4,8 +4,8 @@ publish_to: "none"
 version: 0.0.1
 
 environment:
-  sdk: ^3.6.0
-  flutter: ^3.27.1
+  sdk: ^3.8.0
+  flutter: ^3.32.0
 
 resolution: workspace
 
@@ -22,16 +22,16 @@ dependencies:
     path: ../../cores/ui
   flutter:
     sdk: flutter
-  flutter_hooks: ^0.20.5
+  flutter_hooks: ^0.21.2
   flutter_localizations:
     sdk: flutter
   freezed_annotation: ^2.4.4
   hooks_riverpod: ^2.6.1
-  intl: ^0.19.0
+  intl: ^0.20.2
   riverpod_annotation: ^2.6.1
 
 dev_dependencies:
-  build_runner: ^2.4.14
+  build_runner: ^2.4.15
   custom_lint: ^0.7.0
   flutter_test:
     sdk: flutter
@@ -40,4 +40,5 @@ dev_dependencies:
   riverpod_lint: ^2.6.3
 
 flutter:
+  generate: true
   uses-material-design: true

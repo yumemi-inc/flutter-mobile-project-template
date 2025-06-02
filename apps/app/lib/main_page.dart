@@ -28,7 +28,7 @@ class MainPage extends ConsumerWidget {
             icon: const Icon(Icons.settings),
           ),
         ],
-        onDestinationSelected: (index) async {
+        onDestinationSelected: (index) {
           navigationShell.goBranch(
             index,
             initialLocation: index == navigationShell.currentIndex,

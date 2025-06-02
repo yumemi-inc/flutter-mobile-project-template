@@ -12,7 +12,7 @@ class _ExampleDestination {
   final Widget selectedIcon;
 }
 
-const List<_ExampleDestination> _destinations = <_ExampleDestination>[
+const _destinations = <_ExampleDestination>[
   _ExampleDestination(
     'Messages',
     Icon(Icons.widgets_outlined),
@@ -39,14 +39,14 @@ class _NavigationDrawerExample extends StatefulWidget {
 }
 
 class _NavigationDrawerExampleState extends State<_NavigationDrawerExample> {
-  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  int screenIndex = 0;
+  var _screenIndex = 0;
   late bool showNavigationDrawer;
 
   void handleScreenChanged(int selectedScreen) {
     setState(() {
-      screenIndex = selectedScreen;
+      _screenIndex = selectedScreen;
     });
   }
 
@@ -66,7 +66,7 @@ class _NavigationDrawerExampleState extends State<_NavigationDrawerExample> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text('Page Index = $screenIndex'),
+              Text('Page Index = $_screenIndex'),
               ElevatedButton(
                 onPressed: openDrawer,
                 child: const Text('Open Drawer'),
@@ -77,7 +77,7 @@ class _NavigationDrawerExampleState extends State<_NavigationDrawerExample> {
       ),
       endDrawer: NavigationDrawer(
         onDestinationSelected: handleScreenChanged,
-        selectedIndex: screenIndex,
+        selectedIndex: _screenIndex,
         children: <Widget>[
           const Padding(
             padding: EdgeInsets.fromLTRB(28, 16, 16, 10),

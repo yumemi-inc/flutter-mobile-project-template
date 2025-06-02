@@ -45,8 +45,7 @@ extension DioExtension on Dio {
   /// ```
   Future<T> safeRequest<T>({
     required Future<T> Function() request,
-  }) =>
-      _wrapDioException<T>(request);
+  }) => _wrapDioException<T>(request);
 
   /// Handle [DioException] and convert it to [AppException]
   Future<T> _wrapDioException<T>(

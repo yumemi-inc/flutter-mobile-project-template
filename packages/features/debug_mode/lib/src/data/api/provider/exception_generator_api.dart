@@ -8,7 +8,7 @@ part 'exception_generator_api.g.dart';
 @riverpod
 class ExceptionGeneratorApi extends _$ExceptionGeneratorApi {
   @override
-  Future<String> build() async {
+  Future<String> build() {
     return Future.value('Test');
   }
 

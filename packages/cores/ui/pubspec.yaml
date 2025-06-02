@@ -4,8 +4,8 @@ version: 0.1.0
 publish_to: "none"
 
 environment:
-  sdk: ^3.6.0
-  flutter: ^3.27.1
+  sdk: ^3.8.0
+  flutter: ^3.32.0
 
 resolution: workspace
 
@@ -18,11 +18,12 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.19.0
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 flutter:
+  generate: true
   uses-material-design: true

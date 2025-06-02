@@ -10,26 +10,26 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Navigation',
 )
 Widget appBar(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: const Text('AppBar Sample'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.add_alert),
-            tooltip: 'Show Snackbar',
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('This is a snackbar')),
-              );
-            },
-          ),
-        ],
+  appBar: AppBar(
+    title: const Text('AppBar Sample'),
+    actions: <Widget>[
+      IconButton(
+        icon: const Icon(Icons.add_alert),
+        tooltip: 'Show Snackbar',
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('This is a snackbar')),
+          );
+        },
       ),
-      body: ListView.builder(
-        itemCount: 100,
-        itemBuilder: (context, index) => ListTile(
-          title: const Text('Title'),
-          subtitle: const Text('Subtitle'),
-          onTap: () {},
-        ),
-      ),
-    );
+    ],
+  ),
+  body: ListView.builder(
+    itemCount: 100,
+    itemBuilder: (context, index) => ListTile(
+      title: const Text('Title'),
+      subtitle: const Text('Subtitle'),
+      onTap: () {},
+    ),
+  ),
+);

@@ -11,10 +11,11 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Selection',
 )
 Widget timePicker(BuildContext context) {
-  final orientation = context.knobs.boolean(
-    label: 'Orientation',
-    initialValue: true,
-  )
+  final orientation =
+      context.knobs.boolean(
+        label: 'Orientation',
+        initialValue: true,
+      )
       ? Orientation.portrait
       : Orientation.landscape;
 

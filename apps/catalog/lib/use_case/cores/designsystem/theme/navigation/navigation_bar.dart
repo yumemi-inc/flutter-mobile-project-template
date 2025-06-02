@@ -19,9 +19,7 @@ class _NavigationExample extends StatefulWidget {
 }
 
 class _NavigationExampleState extends State<_NavigationExample> {
-  //
-  // ignore: diagnostic_describe_all_properties
-  int currentPageIndex = 0;
+  var _currentPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +27,10 @@ class _NavigationExampleState extends State<_NavigationExample> {
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (index) {
           setState(() {
-            currentPageIndex = index;
+            _currentPageIndex = index;
           });
         },
-        selectedIndex: currentPageIndex,
+        selectedIndex: _currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
             selectedIcon: Icon(Icons.home),
@@ -124,7 +122,7 @@ class _NavigationExampleState extends State<_NavigationExample> {
             );
           },
         ),
-      ][currentPageIndex],
+      ][_currentPageIndex],
     );
   }
 }
