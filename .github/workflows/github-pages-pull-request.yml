@@ -44,7 +44,7 @@ jobs:
       - name: Create & Copy combined deployment directory
         run: |
           mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
-          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.pull_request.head.ref }}/
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
@@ -103,6 +103,17 @@ jobs:
                 --dir "$DOWNLOAD_PATH" \
                 --repo "$GITHUB_REPOSITORY"
               echo "Downloaded artifact to $DOWNLOAD_PATH"
+
+              # アーティファクトを解凍して展開
+              if [ -f "$DOWNLOAD_PATH/github-pages/artifact.tar" ]; then
+                echo "Extracting artifact.tar to $DOWNLOAD_PATH"
+                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "$DOWNLOAD_PATH"
+                rm -rf "$DOWNLOAD_PATH/github-pages" # 解凍後のtarファイルとディレクトリを削除
+              else
+                echo "Warning: artifact.tar not found in $DOWNLOAD_PATH/github-pages/"
+              fi
+            else
+              echo "Warning: run_id or branch is empty"
             fi
           done
         env:
