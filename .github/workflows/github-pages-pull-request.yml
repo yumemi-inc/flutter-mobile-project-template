@@ -125,9 +125,7 @@ jobs:
               # gh run download でartifactをダウンロード
               gh run download "$run_id" \
                 --dir "$DOWNLOAD_PATH" \
-                --name "web-content-*" \
-                --repo "$GITHUB_REPOSITORY" \
-                || { echo "Warning: Could not download artifact for run $run_id. Skipping."; continue; }
+                --repo "$GITHUB_REPOSITORY"
               echo "Downloaded artifact to $DOWNLOAD_PATH"
             fi
           done
