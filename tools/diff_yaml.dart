@@ -83,7 +83,7 @@ Future<void> main(List<String> args) async {
     }
 
     rows.add('</p></details>\n\n');
-    rows.add('---');
+    rows.add('---\n');
   }
 
   final diffVersions = diffPkgVersion(currentYaml, currentLock);
