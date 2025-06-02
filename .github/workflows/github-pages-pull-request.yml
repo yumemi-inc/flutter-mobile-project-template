@@ -21,7 +21,7 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
-  DEPLOY_DIR: _site
+  DEPLOY_DIR: deploy
 
 jobs:
   build:
@@ -46,29 +46,6 @@ jobs:
         run: |
           mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
           cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
-
-      # https://github.com/actions/upload-pages-artifact
-      - name: Upload static files as artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        with:
-          path: ./${{ env.DEPLOY_DIR }}
-          retention-days: 3
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ github.event.number }}
-    permissions:
-      pages: write
-      id-token: write
-    timeout-minutes: 5
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      # https://github.com/actions/checkout
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
@@ -110,35 +87,46 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
-      # - name: Download artifacts for each run ID
-      #   run: |
-      #     mkdir -p _site # GitHub Pagesのルートディレクトリ
+      - name: Download artifacts for each run ID
+        run: |
+          mkdir -p _site # GitHub Pagesのルートディレクトリ
 
-      #     # 出力された各行 (run_id branch_name) をループ処理
-      #     echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
-      #       if [ -n "$run_id" ] && [ -n "$branch" ]; then
-      #         echo "Downloading artifact for run ID: $run_id from branch: $branch"
-      #         # ダウンロード先のパスは "_site/branch/" とする
-      #         DOWNLOAD_PATH="_site/$branch"
-      #         mkdir -p "$DOWNLOAD_PATH"
+          # 出力された各行 (run_id branch_name) をループ処理
+          echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
+            if [ -n "$run_id" ] && [ -n "$branch" ]; then
+              echo "Downloading artifact for run ID: $run_id from branch: $branch"
+              # ダウンロード先のパスは "_site/branch/" とする
+              DOWNLOAD_PATH="${{ env.DEPLOY_DIR }}/$branch"
+              mkdir -p "$DOWNLOAD_PATH"
 
-      #         # gh run download でartifactをダウンロード
-      #         gh run download "$run_id" \
-      #           --dir "$DOWNLOAD_PATH" \
-      #           --repo "$GITHUB_REPOSITORY"
-      #         echo "Downloaded artifact to $DOWNLOAD_PATH"
-      #       fi
-      #     done
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
+              # gh run download でartifactをダウンロード
+              gh run download "$run_id" \
+                --dir "$DOWNLOAD_PATH" \
+                --repo "$GITHUB_REPOSITORY"
+              echo "Downloaded artifact to $DOWNLOAD_PATH"
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
       # https://github.com/actions/upload-pages-artifact
-      - name: Upload GitHub Pages artifact
-        id: upload_pages_artifact
+      - name: Upload static files as artifact
+        id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        # with:
-        #   path: ./_site
+        with:
+          path: ./${{ env.DEPLOY_DIR }}
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}${{ github.event.number }}
+    permissions:
+      pages: write
+      id-token: write
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
       # https://github.com/actions/deploy-pages
       - name: Deploy to GitHub Pages
         id: deployment
