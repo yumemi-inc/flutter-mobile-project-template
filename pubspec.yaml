@@ -285,3 +285,5 @@ melos:
       run: pod repo update
       packageFilters:
         fileExists: macos/Podfile
+dependencies:
+  http: ^1.4.0
