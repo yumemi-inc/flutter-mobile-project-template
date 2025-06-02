@@ -32,7 +32,7 @@ tasks.named("preBuild") {
 
 android {
     namespace = "jp.co.yumemi.flutter_app"
-    compileSdk = 34
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
