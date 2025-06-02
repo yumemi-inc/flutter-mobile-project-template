@@ -70,8 +70,9 @@ Future<void> main(List<String> args) async {
 
   if (compareValue.isNotEmpty) {
     rows.add('''
-## pubspec.lock has been changed
-
+<details><summary>pubspec.lock has been changed</summary><p>\n\n
+''');
+    rows.add('''
 | Change | Diff |
 | :---   | :--- |
 ''');
@@ -81,16 +82,17 @@ Future<void> main(List<String> args) async {
       rows.add(row);
     }
 
-    rows.add('---');
+    rows.add('</p></details>\n\n');
+    rows.add('---\n');
   }
 
   final diffVersions = diffPkgVersion(currentYaml, currentLock);
 
   if (diffVersions.isNotEmpty) {
     rows.add('''
-
-## Compare pubspec.yaml and pubspec.lock. Packages with different version notations
-
+<details><summary>Compare pubspec.yaml and pubspec.lock. Packages with different version notations</summary><p>\n\n
+''');
+    rows.add('''
 | package | pubspec.yaml | pubspec.lock |
 | :---    | :---         | :---         |
 ''');
@@ -100,6 +102,8 @@ Future<void> main(List<String> args) async {
           '''| ${diff['package']} | ${diff['pubspec.yaml']} | ${diff['pubspec.lock']} | \n''';
       rows.add(row);
     }
+
+    rows.add('</p></details>');
   }
 
   stdout.writeln(rows.join().trim());
@@ -170,35 +174,33 @@ Iterable<Map<String, String>> diffPkgVersion(
 
   final lockPackages = Map<String, dynamic>.from(lock['packages'] as Map);
 
-  return lockPackages.entries
-      .where((lockPkg) {
-        final name = lockPkg.key;
+  return lockPackages.entries.where((lockPkg) {
+    final name = lockPkg.key;
 
-        if (pkgYaml.containsKey(name)) {
-          // NOTE: dev_dependenciesにflutter_testを追加した場合,
-          // 例外的に型がMap<String,dynamic>になる
-          //
-          // String型へのキャスト不可
-          // flutter_testを比較から除外する
-          if (pkgYaml[name] is! String) {
-            return false;
-          }
-
-          final yamlVersion = (pkgYaml[name] as String).replaceFirst('^', '');
-          final lockVersion = (lockPkg.value as Map)['version'].toString();
-
-          return yamlVersion != lockVersion;
-        }
-
+    if (pkgYaml.containsKey(name)) {
+      // NOTE: dev_dependenciesにflutter_testを追加した場合,
+      // 例外的に型がMap<String,dynamic>になる
+      //
+      // String型へのキャスト不可
+      // flutter_testを比較から除外する
+      if (pkgYaml[name] is! String) {
         return false;
-      })
-      .map(
-        (e) => {
-          'package': e.key,
-          'pubspec.yaml': pkgYaml[e.key] as String,
-          'pubspec.lock': (e.value as Map)['version'] as String,
-        },
-      );
+      }
+
+      final yamlVersion = (pkgYaml[name] as String).replaceFirst('^', '');
+      final lockVersion = (lockPkg.value as Map)['version'].toString();
+
+      return yamlVersion != lockVersion;
+    }
+
+    return false;
+  }).map(
+    (e) => {
+      'package': e.key,
+      'pubspec.yaml': pkgYaml[e.key] as String,
+      'pubspec.lock': (e.value as Map)['version'] as String,
+    },
+  );
 }
 
 /// Compares Maps and returns a [Map<String, dynamic>] of the elements
