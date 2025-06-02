@@ -22,6 +22,7 @@ concurrency:
 env:
   PROJECT_DIR: apps/catalog
   DEPLOY_DIR: deploy
+  CURRENT_BRANCH: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   build:
@@ -38,18 +39,17 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.pull_request.head.ref }}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.CURRENT_BRANCH }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Create & Copy combined deployment directory
         run: |
-          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.pull_request.head.ref }}/
-          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.pull_request.head.ref }}/
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ env.CURRENT_BRANCH }}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ env.CURRENT_BRANCH }}/
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
-        # run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
-        run: echo "start_date=$(date -u -d '1 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
+        run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
 
       - name: Get run IDs from the last 3 days for the triggering workflow
         id: get_run_ids
@@ -65,10 +65,11 @@ jobs:
             --status success \
             --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
-            | jq  -r --arg current_run_id "1" '
+            | jq  -r --arg current_run_id "1" --arg current_branch "${{ env.CURRENT_BRANCH }}" '
                 group_by(.headBranch) |
                 map(max_by(.createdAt)) |
                 map(select(.databaseId != ($current_run_id | tonumber))) |
+                map(select(.headBranch != $current_branch)) |
                 map({branch: .headBranch, run_id: .databaseId})
           ')
 
@@ -108,8 +109,7 @@ jobs:
               # アーティファクトを解凍して展開
               if [ -f "$DOWNLOAD_PATH/github-pages/artifact.tar" ]; then
                 echo "Extracting artifact.tar to $DOWNLOAD_PATH"
-                mkdir -p "${{ env.DEPLOY_DIR }}/$branch"
-                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "${{ env.DEPLOY_DIR }}/$branch"
+                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "${{ env.DEPLOY_DIR }}"
                 rm -rf "$DOWNLOAD_PATH/github-pages" # 解凍後のtarファイルとディレクトリを削除
               else
                 echo "Warning: artifact.tar not found in $DOWNLOAD_PATH/github-pages/"
@@ -131,7 +131,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ github.event.number }}
+      url: ${{ steps.deployment.outputs.page_url }}${{ env.CURRENT_BRANCH }}
     permissions:
       pages: write
       id-token: write
