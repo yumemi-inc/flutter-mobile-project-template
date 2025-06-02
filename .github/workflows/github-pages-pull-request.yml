@@ -95,7 +95,7 @@ jobs:
             if [ -n "$run_id" ] && [ -n "$branch" ]; then
               echo "Downloading artifact for run ID: $run_id from branch: $branch"
               # ダウンロード先のパスは "_site/branch/" とする
-              DOWNLOAD_PATH="${{ env.DEPLOY_DIR }}/$branch"
+              DOWNLOAD_PATH="dl_artifact/$branch"
               mkdir -p "$DOWNLOAD_PATH"
 
               # gh run download でartifactをダウンロード
@@ -107,7 +107,8 @@ jobs:
               # アーティファクトを解凍して展開
               if [ -f "$DOWNLOAD_PATH/github-pages/artifact.tar" ]; then
                 echo "Extracting artifact.tar to $DOWNLOAD_PATH"
-                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "$DOWNLOAD_PATH"
+                mkdir -p "${{ env.DEPLOY_DIR }}/$branch"
+                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "${{ env.DEPLOY_DIR }}/$branch"
                 rm -rf "$DOWNLOAD_PATH/github-pages" # 解凍後のtarファイルとディレクトリを削除
               else
                 echo "Warning: artifact.tar not found in $DOWNLOAD_PATH/github-pages/"
