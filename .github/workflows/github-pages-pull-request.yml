@@ -38,7 +38,8 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.pull_request.head.ref }}/
+        # run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.pull_request.head.ref }}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.number }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Create & Copy combined deployment directory
@@ -135,8 +136,8 @@ jobs:
       - name: Upload GitHub Pages artifact
         id: upload_pages_artifact
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        with:
-          path: ./_site
+        # with:
+        #   path: ./_site
 
       # https://github.com/actions/deploy-pages
       - name: Deploy to GitHub Pages
