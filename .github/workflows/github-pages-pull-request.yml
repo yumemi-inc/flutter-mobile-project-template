@@ -34,21 +34,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
-      - name: Current branch
-        id: current_branch
-        run: echo "current_branch=$(git branch --show-current)" >> "$GITHUB_OUTPUT"
-
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ steps.current_branch.outputs.current_branch }}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.ref_name}}/
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Create & Copy combined deployment directory
         run: |
-          mkdir -p ${{ env.DEPLOY_DIR }}/${{ steps.current_branch.outputs.current_branch }}/
-          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ steps.current_branch.outputs.current_branch }}/
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.ref_name}}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.ref_name}}/
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
@@ -69,7 +65,7 @@ jobs:
             --status success \
             --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
-            | jq  -r --arg current_run_id "1" --arg current_branch "${{ steps.current_branch.outputs.current_branch }}" '
+            | jq  -r --arg current_run_id "1" --arg current_branch "${{ github.ref_name}}" '
                 group_by(.headBranch) |
                 map(max_by(.createdAt)) |
                 map(select(.databaseId != ($current_run_id | tonumber))) |
