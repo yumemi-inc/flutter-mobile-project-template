@@ -107,6 +107,7 @@ jobs:
               # アーティファクトを解凍して展開
               if [ -f "$DOWNLOAD_PATH/github-pages/artifact.tar" ]; then
                 echo "Extracting artifact.tar to $DOWNLOAD_PATH"
+                mkdir -p "${{ env.DEPLOY_DIR }}/$branch"
                 tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "${{ env.DEPLOY_DIR }}/$branch"
                 rm -rf "$DOWNLOAD_PATH/github-pages" # 解凍後のtarファイルとディレクトリを削除
               else
