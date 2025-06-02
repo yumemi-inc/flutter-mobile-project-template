@@ -38,7 +38,7 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.number }}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.pull_request.head.ref }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Create & Copy combined deployment directory
