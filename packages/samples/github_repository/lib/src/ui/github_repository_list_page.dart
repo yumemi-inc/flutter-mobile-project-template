@@ -23,13 +23,14 @@ abstract interface class GitHubRepositoryListPageNavigator {
 @Riverpod(dependencies: [])
 GitHubRepositoryListPageNavigator gitHubRepositoryListPageNavigator(
   Ref ref,
-) =>
-    throw UnimplementedError();
+) => throw UnimplementedError();
 
-typedef GitHubRepositoryPagingView = CommonPagingView<
-    PageBasedGitHubRepositoryNotifier,
-    GitHubRepositoryPageState,
-    GitHubRepository>;
+typedef GitHubRepositoryPagingView =
+    CommonPagingView<
+      PageBasedGitHubRepositoryNotifier,
+      GitHubRepositoryPageState,
+      GitHubRepository
+    >;
 
 class GitHubRepositoryListPage extends HookConsumerWidget {
   const GitHubRepositoryListPage({super.key});
@@ -38,7 +39,7 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
     final navigator = ref.watch(gitHubRepositoryListPageNavigatorProvider);
-    ref.listen(scrollNotifierProvider, (_, __) async {
+    ref.listen(scrollNotifierProvider, (_, _) async {
       if (!context.mounted) {
         return;
       }

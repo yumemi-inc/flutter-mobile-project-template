@@ -148,8 +148,8 @@ class _ColorPreviewTile extends StatelessWidget {
   const _ColorPreviewTile({
     required Widget title,
     required Color color,
-  })  : _title = title,
-        _color = color;
+  }) : _title = title,
+       _color = color;
 
   final Widget _title;
   final Color _color;
@@ -163,7 +163,8 @@ class _ColorPreviewTile extends StatelessWidget {
           .toUpperCase();
     }
 
-    final hex = '${toHex(_color.r)}'
+    final hex =
+        '${toHex(_color.r)}'
         '${toHex(_color.g)}'
         '${toHex(_color.b)}'
         '${toHex(_color.a)}';

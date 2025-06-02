@@ -18,9 +18,8 @@ AppBarTheme get darkAppBarTheme => _createAppBarTheme();
 /// ```
 AppBarTheme _createAppBarTheme({
   Color? backgroundColor,
-}) =>
-    AppBarTheme(
-      backgroundColor: backgroundColor,
-      // example:
-      // centerTitle: true,
-    );
+}) => AppBarTheme(
+  backgroundColor: backgroundColor,
+  // example:
+  // centerTitle: true,
+);

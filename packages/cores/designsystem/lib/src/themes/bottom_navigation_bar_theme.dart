@@ -21,9 +21,8 @@ BottomNavigationBarThemeData get darkBottomNavigationBarTheme =>
 /// ```
 BottomNavigationBarThemeData _createBottomNavigationBarTheme({
   Color? backgroundColor,
-}) =>
-    BottomNavigationBarThemeData(
-      backgroundColor: backgroundColor,
-      // example:
-      // enableFeedback: true,
-    );
+}) => BottomNavigationBarThemeData(
+  backgroundColor: backgroundColor,
+  // example:
+  // enableFeedback: true,
+);

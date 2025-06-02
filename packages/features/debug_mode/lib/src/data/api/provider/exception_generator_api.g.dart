@@ -9,20 +9,20 @@ part of 'exception_generator_api.dart';
 // **************************************************************************
 
 String _$exceptionGeneratorApiHash() =>
-    r'299f59a41ab1566304a09900f1f076a3f0af76d0';
+    r'3f607fee9a2d29eb801524385ea72cdd9f0c5fc3';
 
 /// See also [ExceptionGeneratorApi].
 @ProviderFor(ExceptionGeneratorApi)
 final exceptionGeneratorApiProvider =
     AutoDisposeAsyncNotifierProvider<ExceptionGeneratorApi, String>.internal(
-  ExceptionGeneratorApi.new,
-  name: r'exceptionGeneratorApiProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$exceptionGeneratorApiHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      ExceptionGeneratorApi.new,
+      name: r'exceptionGeneratorApiProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$exceptionGeneratorApiHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$ExceptionGeneratorApi = AutoDisposeAsyncNotifier<String>;
 // ignore_for_file: type=lint

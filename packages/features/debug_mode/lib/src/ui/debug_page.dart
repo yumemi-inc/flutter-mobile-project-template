@@ -30,7 +30,7 @@ class DebugPage extends ConsumerWidget {
           children: [
             _FixSizedElevatedButton(
               title: 'Show error SnackBar',
-              onPressed: () async {
+              onPressed: () {
                 unawaited(
                   ref.read(exceptionGeneratorApiProvider.notifier).request(),
                 );
@@ -38,7 +38,7 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable maintenance mode',
-              onPressed: () async {
+              onPressed: () {
                 ref
                     .read(maintenanceModeProvider.notifier)
                     .update(enabled: true);
@@ -46,8 +46,10 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable force update',
-              onPressed: () async {
-                ref.read(forceUpdateVersionProvider.notifier).update(
+              onPressed: () {
+                ref
+                    .read(forceUpdateVersionProvider.notifier)
+                    .update(
                       iosTargetVersion: VersionString('9.9.9'),
                       androidTargetVersion: VersionString('9.9.9'),
                     );
@@ -70,8 +72,8 @@ class _FixSizedElevatedButton extends StatelessWidget {
   const _FixSizedElevatedButton({
     required String title,
     required VoidCallback onPressed,
-  })  : _title = title,
-        _onPressed = onPressed;
+  }) : _title = title,
+       _onPressed = onPressed;
 
   final String _title;
   final VoidCallback _onPressed;

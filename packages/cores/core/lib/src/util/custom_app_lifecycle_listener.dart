@@ -17,16 +17,16 @@ class CustomAppLifecycleListener extends StatefulWidget {
     Future<AppExitResponse> Function()? onExitRequested,
     void Function(AppLifecycleState state)? onStateChange,
     super.key,
-  })  : _child = child,
-        _onResume = onResume,
-        _onInactive = onInactive,
-        _onHide = onHide,
-        _onShow = onShow,
-        _onPause = onPause,
-        _onRestart = onRestart,
-        _onDetach = onDetach,
-        _onExitRequested = onExitRequested,
-        _onStateChange = onStateChange;
+  }) : _child = child,
+       _onResume = onResume,
+       _onInactive = onInactive,
+       _onHide = onHide,
+       _onShow = onShow,
+       _onPause = onPause,
+       _onRestart = onRestart,
+       _onDetach = onDetach,
+       _onExitRequested = onExitRequested,
+       _onStateChange = onStateChange;
 
   final Widget _child;
   final VoidCallback? _onResume;

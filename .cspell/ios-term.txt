@@ -1,2 +1,4 @@
 xcassets
-xcworkspace 
+xcworkspace
+xcodes
+lproj

@@ -4,13 +4,13 @@ import '../test_app.dart';
 
 void main() {
   Widget cardContainer(String name) => InkWell(
-        onTap: () {},
-        child: SizedBox(
-          width: 300,
-          height: 100,
-          child: Center(child: Text(name)),
-        ),
-      );
+    onTap: () {},
+    child: SizedBox(
+      width: 300,
+      height: 100,
+      child: Center(child: Text(name)),
+    ),
+  );
   goldenTestsGroup(
     componentName: 'Card',
     testScenarios: [

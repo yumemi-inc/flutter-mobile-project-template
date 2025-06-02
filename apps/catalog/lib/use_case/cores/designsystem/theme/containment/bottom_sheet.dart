@@ -12,34 +12,34 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Containment',
 )
 Widget bottomSheet(BuildContext context) => Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            unawaited(
-              showModalBottomSheet<void>(
-                context: context,
-                builder: (context) {
-                  return SizedBox(
-                    height: 200,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          const Text('Modal BottomSheet'),
-                          ElevatedButton(
-                            child: const Text('Close BottomSheet'),
-                            onPressed: () => Navigator.pop(context),
-                          ),
-                        ],
+  body: Center(
+    child: ElevatedButton(
+      onPressed: () {
+        unawaited(
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (context) {
+              return SizedBox(
+                height: 200,
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      const Text('Modal BottomSheet'),
+                      ElevatedButton(
+                        child: const Text('Close BottomSheet'),
+                        onPressed: () => Navigator.pop(context),
                       ),
-                    ),
-                  );
-                },
-              ),
-            );
-          },
-          child: const Text('Show BottomSheet'),
-        ),
-      ),
-    );
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
+      child: const Text('Show BottomSheet'),
+    ),
+  ),
+);

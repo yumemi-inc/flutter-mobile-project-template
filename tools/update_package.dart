@@ -19,8 +19,9 @@ Future<void> main() async {
     );
   }
 
-  final packageInfo =
-      PackageInfo.fromJson(jsonDecode(json) as Map<String, dynamic>);
+  final packageInfo = PackageInfo.fromJson(
+    jsonDecode(json) as Map<String, dynamic>,
+  );
 
   final shouldUpdatePkg = packageInfo.packages.where((pkg) {
     if (pkg.current != null && pkg.kind != Kind.transitive) {
@@ -40,7 +41,7 @@ Future<void> main() async {
 ## Update package
 | package | current | resolvable |
 | :---    | :---    | :---       |
-  '''
+  ''',
   ];
 
   for (final pkg in shouldUpdatePkg) {
