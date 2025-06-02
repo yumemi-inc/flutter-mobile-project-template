@@ -64,10 +64,9 @@ jobs:
             --status success \
             --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
-            | jq  -r --arg current_run_id "1" --arg current_branch "${{ env.CURRENT_BRANCH }}" '
+            | jq  -r --arg current_branch "${{ env.CURRENT_BRANCH }}" '
                 group_by(.headBranch) |
                 map(max_by(.createdAt)) |
-                map(select(.databaseId != ($current_run_id | tonumber))) |
                 map(select(.headBranch != $current_branch)) |
                 map({branch: .headBranch, run_id: .databaseId})
           ')
