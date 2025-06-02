@@ -43,7 +43,7 @@ jobs:
 
       - name: Create & Copy combined deployment directory
         run: |
-          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.pull_request.head.ref }}/
           cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.pull_request.head.ref }}/
 
       - name: Calculate 3 days ago date (UTC)
