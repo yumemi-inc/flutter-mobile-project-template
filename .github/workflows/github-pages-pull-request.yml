@@ -38,6 +38,7 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
+        # run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.pull_request.head.ref }}/
         run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.event.number }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
@@ -45,29 +46,6 @@ jobs:
         run: |
           mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
           cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.event.number }}/
-      # https://github.com/actions/upload-pages-artifact
-      - name: Upload static files as artifact
-        id: deployment
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
-        with:
-          name: web-content-${{ github.event.number }}
-          path: ./${{ env.DEPLOY_DIR }}
-          retention-days: 3
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ github.event.number }}
-    permissions:
-      pages: write
-      id-token: write
-    timeout-minutes: 5
-    runs-on: ubuntu-22.04
-    needs: build
-    steps:
-      # https://github.com/actions/checkout
-      - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
@@ -78,6 +56,7 @@ jobs:
         run: |
           START_DATE="${{ steps.date_calc.outputs.start_date }}"
           echo "Fetching runs for workflow: '${{ github.workflow }}' created since $START_DATE"
+
           # gh run list で対象ワークフローの過去3日間の成功した実行IDを取得
           # 現在のデプロイワークフロー自身のrun_idは除外
           # jqでdatabaseId（run_id）を抽出し、改行区切りで出力
@@ -92,6 +71,7 @@ jobs:
                 map(select(.databaseId != ($current_run_id | tonumber))) |
                 map({branch: .headBranch, run_id: .databaseId})
           ')
+
           if [ -z "$RUN_IDS" ]; then
             echo "No successful runs found in the last 3 days for workflow: '${{ github.workflow }}'."
             exit 0 # 実行IDが見つからなければ、ジョブを成功として終了
@@ -103,25 +83,26 @@ jobs:
             echo "$RUN_IDS"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
       - name: Download artifacts for each run ID
         run: |
           mkdir -p _site # GitHub Pagesのルートディレクトリ
+
           # 出力された各行 (run_id branch_name) をループ処理
           echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
             if [ -n "$run_id" ] && [ -n "$branch" ]; then
               echo "Downloading artifact for run ID: $run_id from branch: $branch"
               # ダウンロード先のパスは "_site/branch/" とする
-              DOWNLOAD_PATH="_site/$branch"
+              DOWNLOAD_PATH="${{ env.DEPLOY_DIR }}/$branch"
               mkdir -p "$DOWNLOAD_PATH"
+
               # gh run download でartifactをダウンロード
               gh run download "$run_id" \
                 --dir "$DOWNLOAD_PATH" \
-                --name "web-content-*" \
-                --repo "$GITHUB_REPOSITORY" \
-                || { echo "Warning: Could not download artifact for run $run_id. Skipping."; continue; }
+                --repo "$GITHUB_REPOSITORY"
               echo "Downloaded artifact to $DOWNLOAD_PATH"
             fi
           done
@@ -129,12 +110,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
 
       # https://github.com/actions/upload-pages-artifact
-      - name: Upload GitHub Pages artifact
-        id: upload_pages_artifact
+      - name: Upload static files as artifact
+        id: deployment
         uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
         with:
-          path: ./_site
+          path: ./${{ env.DEPLOY_DIR }}
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}${{ github.event.number }}
+    permissions:
+      pages: write
+      id-token: write
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
       # https://github.com/actions/deploy-pages
       - name: Deploy to GitHub Pages
         id: deployment
