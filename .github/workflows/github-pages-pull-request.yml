@@ -21,7 +21,7 @@ concurrency:
 
 env:
   PROJECT_DIR: apps/catalog
-  DEPLOY_DIR: deploy
+  DEPLOY_DIR: _site
 
 jobs:
   build:
