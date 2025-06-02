@@ -7,6 +7,6 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Selection',
 )
 Widget chip(BuildContext context) => const Chip(
-      avatar: CircleAvatar(),
-      label: Text('Aaron Burr'),
-    );
+  avatar: CircleAvatar(),
+  label: Text('Aaron Burr'),
+);

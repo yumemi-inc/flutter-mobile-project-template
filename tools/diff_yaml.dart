@@ -119,8 +119,10 @@ Future<Map<String, dynamic>> diffLockContent(
   const executable = 'git';
 
   final fetchArguments = ['fetch', remoteRepoName, branch];
-  final exitCode =
-      await Process.run(executable, fetchArguments).then((e) => e.exitCode);
+  final exitCode = await Process.run(
+    executable,
+    fetchArguments,
+  ).then((e) => e.exitCode);
   if (exitCode != 0) {
     throw ProcessException(
       executable,
@@ -130,8 +132,10 @@ Future<Map<String, dynamic>> diffLockContent(
   }
 
   final showArguments = ['show', '$remoteRepoName/$branch:$path'];
-  final (success, error) = await Process.run(executable, showArguments)
-      .then((value) => (value.stdout as String, value.stderr as String));
+  final (success, error) = await Process.run(
+    executable,
+    showArguments,
+  ).then((value) => (value.stdout as String, value.stderr as String));
 
   if (error.isNotEmpty) {
     throw ProcessException(
@@ -170,31 +174,35 @@ Iterable<Map<String, String>> diffPkgVersion(
 
   final lockPackages = Map<String, dynamic>.from(lock['packages'] as Map);
 
-  return lockPackages.entries.where((lockPkg) {
-    final name = lockPkg.key;
+  return lockPackages.entries
+      .where((lockPkg) {
+        final name = lockPkg.key;
 
-    if (pkgYaml.containsKey(name)) {
-      // NOTE: dev_dependenciesにflutter_testを追加した場合,例外的に型がMap<String,dynamic>になる
-      // String型へのキャスト不可
-      // flutter_testを比較から除外する
-      if (pkgYaml[name] is! String) {
+        if (pkgYaml.containsKey(name)) {
+          // NOTE: dev_dependenciesにflutter_testを追加した場合,
+          // 例外的に型がMap<String,dynamic>になる
+          //
+          // String型へのキャスト不可
+          // flutter_testを比較から除外する
+          if (pkgYaml[name] is! String) {
+            return false;
+          }
+
+          final yamlVersion = (pkgYaml[name] as String).replaceFirst('^', '');
+          final lockVersion = (lockPkg.value as Map)['version'].toString();
+
+          return yamlVersion != lockVersion;
+        }
+
         return false;
-      }
-
-      final yamlVersion = (pkgYaml[name] as String).replaceFirst('^', '');
-      final lockVersion = (lockPkg.value as Map)['version'].toString();
-
-      return yamlVersion != lockVersion;
-    }
-
-    return false;
-  }).map(
-    (e) => {
-      'package': e.key,
-      'pubspec.yaml': pkgYaml[e.key] as String,
-      'pubspec.lock': (e.value as Map)['version'] as String,
-    },
-  );
+      })
+      .map(
+        (e) => {
+          'package': e.key,
+          'pubspec.yaml': pkgYaml[e.key] as String,
+          'pubspec.lock': (e.value as Map)['version'] as String,
+        },
+      );
 }
 
 /// Compares Maps and returns a [Map<String, dynamic>] of the elements

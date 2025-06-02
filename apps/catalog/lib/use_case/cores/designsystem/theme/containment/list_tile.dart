@@ -43,16 +43,16 @@ final List<Widget> _listTiles = [
   path: '[Theme Preview]/Containment',
 )
 Widget defaultListTile(BuildContext context) => Scaffold(
-      appBar: AppBar(title: const Text('ListTile Sample')),
-      body: ListView(
-        children: [
-          ..._listTiles,
-          ..._listTiles,
-          ..._listTiles,
-          ..._listTiles,
-        ],
-      ),
-    );
+  appBar: AppBar(title: const Text('ListTile Sample')),
+  body: ListView(
+    children: [
+      ..._listTiles,
+      ..._listTiles,
+      ..._listTiles,
+      ..._listTiles,
+    ],
+  ),
+);
 
 @UseCase(
   name: 'Divider',
@@ -60,12 +60,12 @@ Widget defaultListTile(BuildContext context) => Scaffold(
   path: '[Theme Preview]/Containment',
 )
 Widget separatedListTile(BuildContext context) => Scaffold(
-      appBar: AppBar(title: const Text('Separated ListTile Sample')),
-      body: ListView.separated(
-        itemCount: _listTiles.length * 4,
-        itemBuilder: (context, index) => _listTiles[index % _listTiles.length],
-        separatorBuilder: (context, index) => const Divider(
-          height: 1,
-        ),
-      ),
-    );
+  appBar: AppBar(title: const Text('Separated ListTile Sample')),
+  body: ListView.separated(
+    itemCount: _listTiles.length * 4,
+    itemBuilder: (context, index) => _listTiles[index % _listTiles.length],
+    separatorBuilder: (context, index) => const Divider(
+      height: 1,
+    ),
+  ),
+);

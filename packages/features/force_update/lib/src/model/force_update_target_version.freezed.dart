@@ -12,7 +12,8 @@ part of 'force_update_target_version.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ForceUpdateTargetVersion {
@@ -28,16 +29,19 @@ mixin _$ForceUpdateTargetVersion {
 
 /// @nodoc
 abstract class $ForceUpdateTargetVersionCopyWith<$Res> {
-  factory $ForceUpdateTargetVersionCopyWith(ForceUpdateTargetVersion value,
-          $Res Function(ForceUpdateTargetVersion) then) =
-      _$ForceUpdateTargetVersionCopyWithImpl<$Res, ForceUpdateTargetVersion>;
+  factory $ForceUpdateTargetVersionCopyWith(
+    ForceUpdateTargetVersion value,
+    $Res Function(ForceUpdateTargetVersion) then,
+  ) = _$ForceUpdateTargetVersionCopyWithImpl<$Res, ForceUpdateTargetVersion>;
   @useResult
   $Res call({VersionString ios, VersionString android});
 }
 
 /// @nodoc
-class _$ForceUpdateTargetVersionCopyWithImpl<$Res,
-        $Val extends ForceUpdateTargetVersion>
+class _$ForceUpdateTargetVersionCopyWithImpl<
+  $Res,
+  $Val extends ForceUpdateTargetVersion
+>
     implements $ForceUpdateTargetVersionCopyWith<$Res> {
   _$ForceUpdateTargetVersionCopyWithImpl(this._value, this._then);
 
@@ -54,16 +58,19 @@ class _$ForceUpdateTargetVersionCopyWithImpl<$Res,
     Object? ios = null,
     Object? android = null,
   }) {
-    return _then(_value.copyWith(
-      ios: null == ios
-          ? _value.ios
-          : ios // ignore: cast_nullable_to_non_nullable
-              as VersionString,
-      android: null == android
-          ? _value.android
-          : android // ignore: cast_nullable_to_non_nullable
-              as VersionString,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            ios: null == ios
+                ? _value.ios
+                : ios // ignore: cast_nullable_to_non_nullable
+                      as VersionString,
+            android: null == android
+                ? _value.android
+                : android // ignore: cast_nullable_to_non_nullable
+                      as VersionString,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -71,9 +78,9 @@ class _$ForceUpdateTargetVersionCopyWithImpl<$Res,
 abstract class _$$ForceUpdateTargetVersionImplCopyWith<$Res>
     implements $ForceUpdateTargetVersionCopyWith<$Res> {
   factory _$$ForceUpdateTargetVersionImplCopyWith(
-          _$ForceUpdateTargetVersionImpl value,
-          $Res Function(_$ForceUpdateTargetVersionImpl) then) =
-      __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>;
+    _$ForceUpdateTargetVersionImpl value,
+    $Res Function(_$ForceUpdateTargetVersionImpl) then,
+  ) = __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({VersionString ios, VersionString android});
@@ -81,13 +88,16 @@ abstract class _$$ForceUpdateTargetVersionImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
-    extends _$ForceUpdateTargetVersionCopyWithImpl<$Res,
-        _$ForceUpdateTargetVersionImpl>
+    extends
+        _$ForceUpdateTargetVersionCopyWithImpl<
+          $Res,
+          _$ForceUpdateTargetVersionImpl
+        >
     implements _$$ForceUpdateTargetVersionImplCopyWith<$Res> {
   __$$ForceUpdateTargetVersionImplCopyWithImpl(
-      _$ForceUpdateTargetVersionImpl _value,
-      $Res Function(_$ForceUpdateTargetVersionImpl) _then)
-      : super(_value, _then);
+    _$ForceUpdateTargetVersionImpl _value,
+    $Res Function(_$ForceUpdateTargetVersionImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ForceUpdateTargetVersion
   /// with the given fields replaced by the non-null parameter values.
@@ -97,16 +107,18 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
     Object? ios = null,
     Object? android = null,
   }) {
-    return _then(_$ForceUpdateTargetVersionImpl(
-      ios: null == ios
-          ? _value.ios
-          : ios // ignore: cast_nullable_to_non_nullable
-              as VersionString,
-      android: null == android
-          ? _value.android
-          : android // ignore: cast_nullable_to_non_nullable
-              as VersionString,
-    ));
+    return _then(
+      _$ForceUpdateTargetVersionImpl(
+        ios: null == ios
+            ? _value.ios
+            : ios // ignore: cast_nullable_to_non_nullable
+                  as VersionString,
+        android: null == android
+            ? _value.android
+            : android // ignore: cast_nullable_to_non_nullable
+                  as VersionString,
+      ),
+    );
   }
 }
 
@@ -114,9 +126,10 @@ class __$$ForceUpdateTargetVersionImplCopyWithImpl<$Res>
 
 class _$ForceUpdateTargetVersionImpl extends _ForceUpdateTargetVersion
     with DiagnosticableTreeMixin {
-  const _$ForceUpdateTargetVersionImpl(
-      {required this.ios, required this.android})
-      : super._();
+  const _$ForceUpdateTargetVersionImpl({
+    required this.ios,
+    required this.android,
+  }) : super._();
 
   @override
   final VersionString ios;
@@ -155,14 +168,17 @@ class _$ForceUpdateTargetVersionImpl extends _ForceUpdateTargetVersion
   @override
   @pragma('vm:prefer-inline')
   _$$ForceUpdateTargetVersionImplCopyWith<_$ForceUpdateTargetVersionImpl>
-      get copyWith => __$$ForceUpdateTargetVersionImplCopyWithImpl<
-          _$ForceUpdateTargetVersionImpl>(this, _$identity);
+  get copyWith =>
+      __$$ForceUpdateTargetVersionImplCopyWithImpl<
+        _$ForceUpdateTargetVersionImpl
+      >(this, _$identity);
 }
 
 abstract class _ForceUpdateTargetVersion extends ForceUpdateTargetVersion {
-  const factory _ForceUpdateTargetVersion(
-      {required final VersionString ios,
-      required final VersionString android}) = _$ForceUpdateTargetVersionImpl;
+  const factory _ForceUpdateTargetVersion({
+    required final VersionString ios,
+    required final VersionString android,
+  }) = _$ForceUpdateTargetVersionImpl;
   const _ForceUpdateTargetVersion._() : super._();
 
   @override
@@ -175,5 +191,5 @@ abstract class _ForceUpdateTargetVersion extends ForceUpdateTargetVersion {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForceUpdateTargetVersionImplCopyWith<_$ForceUpdateTargetVersionImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

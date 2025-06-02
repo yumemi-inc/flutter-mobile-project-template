@@ -1,3 +1,4 @@
 xcassets
 xcworkspace
 xcodes
+lproj

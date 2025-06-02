@@ -35,8 +35,10 @@ void main() {
             maintenanceModeProvider.overrideWith(MaintenanceMode.new),
           ],
         );
-        final subscription =
-            container.listen(maintenanceModeProvider, (_, __) {});
+        final subscription = container.listen(
+          maintenanceModeProvider,
+          (_, _) {},
+        );
 
         // act
         final actual = subscription.read();
@@ -61,7 +63,7 @@ void main() {
         );
         final subscription = container.listen(
           maintenanceModeProvider,
-          (_, __) {},
+          (_, _) {},
         );
 
         // act
@@ -86,8 +88,10 @@ void main() {
       );
       // メンテナンスモードを有効に設定する
       container.read(maintenanceModeProvider.notifier).update(enabled: true);
-      final subscription =
-          container.listen(maintenanceModeProvider, (_, __) {});
+      final subscription = container.listen(
+        maintenanceModeProvider,
+        (_, _) {},
+      );
 
       // act
       container.read(maintenanceModeProvider.notifier).update(enabled: false);

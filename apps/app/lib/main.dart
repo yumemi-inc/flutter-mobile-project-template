@@ -23,8 +23,9 @@ void main() async {
     yield _yumemiMobileProjectTemplateLicense();
   });
 
-  final (overrideProviders: overrideProviders,) =
-      await AppInitializer.initialize();
+  final (
+    overrideProviders: overrideProviders,
+  ) = await AppInitializer.initialize();
 
   runApp(
     ProviderScope(

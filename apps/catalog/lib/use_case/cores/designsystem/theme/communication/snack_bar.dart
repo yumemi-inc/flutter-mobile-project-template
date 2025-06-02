@@ -10,20 +10,20 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
   path: '[Theme Preview]/Communication',
 )
 Widget snackBar(BuildContext context) => Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: const Text('This is a snackbar'),
-                action: SnackBarAction(
-                  label: 'Action',
-                  onPressed: () {},
-                ),
-              ),
-            );
-          },
-          child: const Text('Show SnackBar'),
-        ),
-      ),
-    );
+  body: Center(
+    child: ElevatedButton(
+      onPressed: () {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('This is a snackbar'),
+            action: SnackBarAction(
+              label: 'Action',
+              onPressed: () {},
+            ),
+          ),
+        );
+      },
+      child: const Text('Show SnackBar'),
+    ),
+  ),
+);

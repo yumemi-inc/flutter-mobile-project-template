@@ -6,11 +6,10 @@ void main() {
   Widget textStylePreviewTile({
     required Widget title,
     required TextStyle? textStyle,
-  }) =>
-      ListTile(
-        title: title,
-        titleTextStyle: textStyle,
-      );
+  }) => ListTile(
+    title: title,
+    titleTextStyle: textStyle,
+  );
 
   goldenTestsGroup(
     componentName: 'Typography',
