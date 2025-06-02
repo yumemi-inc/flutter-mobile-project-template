@@ -48,7 +48,8 @@ jobs:
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
-        run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
+        # run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
+        run: echo "start_date=$(date -u -d '1 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
 
       - name: Get run IDs from the last 3 days for the triggering workflow
         id: get_run_ids
