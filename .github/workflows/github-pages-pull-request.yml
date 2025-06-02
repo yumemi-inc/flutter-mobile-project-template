@@ -59,7 +59,6 @@ jobs:
 
           # gh run list で対象ワークフローの過去3日間の成功した実行IDを取得
           # 現在のデプロイワークフロー自身のrun_idは除外
-          # jqでdatabaseId（run_id）を抽出し、改行区切りで出力
           RUN_IDS=$(gh run list \
             --workflow "${{ github.workflow }}" \
             --status success \
@@ -96,7 +95,6 @@ jobs:
           echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
             if [ -n "$run_id" ] && [ -n "$branch" ]; then
               echo "Downloading artifact for run ID: $run_id from branch: $branch"
-              # ダウンロード先のパスは "_site/branch/" とする
               DOWNLOAD_PATH="dl_artifact/$branch"
               mkdir -p "$DOWNLOAD_PATH"
 
