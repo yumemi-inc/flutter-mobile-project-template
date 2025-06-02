@@ -38,13 +38,13 @@ jobs:
         uses: ./.github/actions/setup-application-runtime
 
       - name: Build web
-        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.ref_name}}/
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ github.head_ref || github.ref_name }}/
         working-directory: ${{ env.PROJECT_DIR }}
 
       - name: Create & Copy combined deployment directory
         run: |
-          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.ref_name}}/
-          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.ref_name}}/
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ github.head_ref || github.ref_name }}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ github.head_ref || github.ref_name }}/
 
       - name: Calculate 3 days ago date (UTC)
         id: date_calc
@@ -65,7 +65,7 @@ jobs:
             --status success \
             --created ">=$START_DATE" \
             --json databaseId,headBranch,createdAt \
-            | jq  -r --arg current_run_id "1" --arg current_branch "${{ github.ref_name}}" '
+            | jq  -r --arg current_run_id "1" --arg current_branch "${{ github.head_ref || github.ref_name }}" '
                 group_by(.headBranch) |
                 map(max_by(.createdAt)) |
                 map(select(.databaseId != ($current_run_id | tonumber))) |
