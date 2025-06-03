@@ -1,3 +1,10 @@
+---
+title: "[初期セットアップ（任意）] スプラッシュ画面の設定"
+labels:
+  - initialization
+  - optional
+---
+
 # スプラッシュ画面の設定
 
 ## 手順

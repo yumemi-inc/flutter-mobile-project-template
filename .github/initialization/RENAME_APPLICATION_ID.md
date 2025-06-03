@@ -1,3 +1,8 @@
+---
+title: "[初期セットアップ] アプリIDのリネーム"
+labels: initialization
+---
+
 ## 概要
 
 `/tools/rename-application-id.sh` を実行して、Flutter プロジェクトのアプリケーション ID の名前を変更してください。
