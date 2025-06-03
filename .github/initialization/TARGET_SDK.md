@@ -7,8 +7,6 @@ OSのバージョン指定は、アプリが利用できる機能や、ストア
 
 ### iOS
 
-<!-- markdownlint-disable MD033 MD045-->
-
 - **iOS Deployment Target**: Xcodeプロジェクト設定で指定する、アプリが動作する最も古いiOSバージョンです。Flutterフレームワーク自体がサポートする最小iOSバージョン（例: iOS 12.0）より低いバージョンを指定すると、ビルドエラーや実行時エラーが発生する可能性があります。
 
 <img src="https://github.com/user-attachments/assets/3e315659-e74e-4de7-ba9c-1bbb6761ce61" width="500" />
@@ -17,52 +15,49 @@ OSのバージョン指定は、アプリが利用できる機能や、ストア
 
 <img src="https://github.com/user-attachments/assets/532c25bf-4a74-410f-a62c-33437e5c37ad" width="500" />
 
-<!-- markdownlint-enable MD033 MD045-->
-
 ### Android
 
 - **targetSdkVersion**: アプリがテストされ、最適化されているAndroid APIレベルを指定します。Google Playストアでは、最新に近い `targetSdkVersion` の設定が推奨されており、古いバージョンだと警告が表示されたり、将来的に公開できなくなる可能性があります。
 
 - **minSdkVersion**: アプリが動作する最も古いAndroid APIレベルを指定します。Flutter自体も最小要件があり、また、利用するプラグインによってはより新しいAPIレベルが必要になることがあります。
 
-```gradle
-// android/app/bundle.gradle
+```kotlin
+// android/app/build.gradle.kts
 
 android {
         ...
     defaultConfig {
         ...
-        minSdk flutter.minSdkVersion
-        targetSdk flutter.targetSdkVersion
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
         ...
     }
 ```
 
 - **compileSdkVersion**: アプリのコンパイルに使用するAndroid SDKのバージョンです。通常、`targetSdkVersion` と同じかそれ以上の最新バージョンを指定します。
 
-```gradle
-// android/app/bundle.gradle
+```kotlin
+// android/app/build.gradle.kts
 
 android {
     ...
-    compileSdk = 34
+    compileSdk = flutter.compileSdkVersion
 ```
 
 ### 補足
 
-- `flutter.minSdkVersion` や `flutter.targetSdkVersion`等の設定値は**packages/flutter_tools/gradle/src/main/groovy/flutter.groovy**に記載されています。
+- `flutter.minSdkVersion` や `flutter.targetSdkVersion`等の設定値は**packages/flutter_tools/gradle/src/main/kotlin/FlutterExtension.kt**に記載されています。
 
-```dart
+```kotlin
 // Mise を使用している場合
-// <USER_PATH>/.local/share/mise/installs/flutter/<FLUTTER_VERSION>/packages/flutter_tools/gradle/src/main/groovy/flutter.groovy
+// <USER_PATH>/.local/share/mise/installs/flutter/<FLUTTER_VERSION>/packages/flutter_tools/gradle/src/main/kotlin/FlutterExtension.kt
 
-class FlutterExtension {
-
+open class FlutterExtension {
     /** Sets the compileSdkVersion used by default in Flutter app projects. */
-    public final int compileSdkVersion = 35
+    val compileSdkVersion: Int = 35
 
     /** Sets the minSdkVersion used by default in Flutter app projects. */
-    public  final int minSdkVersion = 21
+    val minSdkVersion: Int = 21
 
     /**
      * Sets the targetSdkVersion used by default in Flutter app projects.
@@ -70,7 +65,7 @@ class FlutterExtension {
      *
      * See https://developer.android.com/guide/topics/manifest/uses-sdk-element.
      */
-    public final int targetSdkVersion = 35
+    val targetSdkVersion: Int = 35
 
     /**
 ```
@@ -78,8 +73,6 @@ class FlutterExtension {
 ## Todo
 
 以下の設定値を確認し、プロジェクトの要件に合わせて更新してください。
-
-<!-- markdownlint-disable MD024-->
 
 ### iOS
 
@@ -94,8 +87,6 @@ class FlutterExtension {
   - **考慮事項:** Google Playの最新要件、新機能の利用、セキュリティパッチの適用。通常は最新の安定版APIレベルに設定します。
 - [ ] **minSdkVersionの更新:**
 - [ ] **compileSdkVersionの更新:**
-
-<!-- markdownlint-enable MD024-->
 
 ## 推奨事項
 
