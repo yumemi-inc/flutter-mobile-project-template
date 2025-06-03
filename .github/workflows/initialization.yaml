@@ -32,7 +32,7 @@ jobs:
 
       - name: Generate Matrix Data
         id: matrix
-        uses: ./.github/actions/create-issue-at-initialization
+        uses: ./.github/actions/generate-issue-matrix-at-initialization
 
   create-issues:
     runs-on: ubuntu-22.04

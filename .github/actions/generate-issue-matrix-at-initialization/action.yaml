@@ -1,5 +1,5 @@
-name: "Create issues Matrix at initialization"
-description: "Create GitHub Issues based on initialization of Yumemi Inc. flutter mobile project template"
+name: "Generate issues Matrix at initialization"
+description: "Generate matrix data for creating issues based on initialization of Yumemi Inc. flutter mobile project template"
 
 outputs:
   matrix:
