@@ -12,14 +12,14 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  theme_extensions_builder_annotation: ^3.1.0
+  theme_extensions_builder_annotation: ^4.0.1
 
 dev_dependencies:
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
   flutter_test:
     sdk: flutter
-  theme_extensions_builder: ^3.1.0
+  theme_extensions_builder: ^4.0.1
 
 flutter:
   uses-material-design: true
