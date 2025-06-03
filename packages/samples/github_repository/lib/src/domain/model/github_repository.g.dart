@@ -8,23 +8,17 @@ part of 'github_repository.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GitHubRepositoryImpl _$$GitHubRepositoryImplFromJson(
-  Map<String, dynamic> json,
-) => $checkedCreate(
-  r'_$GitHubRepositoryImpl',
-  json,
-  ($checkedConvert) {
-    final val = _$GitHubRepositoryImpl(
-      name: $checkedConvert('name', (v) => v as String),
-      description: $checkedConvert('description', (v) => v as String?),
-    );
-    return val;
-  },
-);
+_GitHubRepository _$GitHubRepositoryFromJson(Map<String, dynamic> json) =>
+    $checkedCreate('_GitHubRepository', json, ($checkedConvert) {
+      final val = _GitHubRepository(
+        name: $checkedConvert('name', (v) => v as String),
+        description: $checkedConvert('description', (v) => v as String?),
+      );
+      return val;
+    });
 
-Map<String, dynamic> _$$GitHubRepositoryImplToJson(
-  _$GitHubRepositoryImpl instance,
-) => <String, dynamic>{
-  'name': instance.name,
-  'description': instance.description,
-};
+Map<String, dynamic> _$GitHubRepositoryToJson(_GitHubRepository instance) =>
+    <String, dynamic>{
+      'name': instance.name,
+      'description': instance.description,
+    };

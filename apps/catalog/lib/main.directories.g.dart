@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_import, prefer_relative_imports, directives_ordering
@@ -129,10 +130,7 @@ final directories = <_i1.WidgetbookNode>[
           _i1.WidgetbookComponent(
             name: 'IconButton',
             useCases: [
-              _i1.WidgetbookUseCase(
-                name: 'Default',
-                builder: _i4.iconButton,
-              ),
+              _i1.WidgetbookUseCase(name: 'Default', builder: _i4.iconButton),
               _i1.WidgetbookUseCase(
                 name: 'Filled',
                 builder: _i4.filledIconButton,
@@ -161,10 +159,7 @@ final directories = <_i1.WidgetbookNode>[
         children: [
           _i1.WidgetbookLeafComponent(
             name: 'Badge',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Badge',
-              builder: _i6.badge,
-            ),
+            useCase: _i1.WidgetbookUseCase(name: 'Badge', builder: _i6.badge),
           ),
           _i1.WidgetbookFolder(
             name: 'ProgressIndicator',
@@ -210,10 +205,7 @@ final directories = <_i1.WidgetbookNode>[
                 name: 'Adaptive',
                 builder: _i9.adaptiveAlertDialog,
               ),
-              _i1.WidgetbookUseCase(
-                name: 'Default',
-                builder: _i9.alertDialog,
-              ),
+              _i1.WidgetbookUseCase(name: 'Default', builder: _i9.alertDialog),
             ],
           ),
           _i1.WidgetbookLeafComponent(
@@ -230,10 +222,7 @@ final directories = <_i1.WidgetbookNode>[
                 name: 'Elevated',
                 builder: _i11.elevatedCard,
               ),
-              _i1.WidgetbookUseCase(
-                name: 'Filled',
-                builder: _i11.filledCard,
-              ),
+              _i1.WidgetbookUseCase(name: 'Filled', builder: _i11.filledCard),
               _i1.WidgetbookUseCase(
                 name: 'Outlined',
                 builder: _i11.outlinedCard,
@@ -243,10 +232,7 @@ final directories = <_i1.WidgetbookNode>[
           _i1.WidgetbookComponent(
             name: 'Divider',
             useCases: [
-              _i1.WidgetbookUseCase(
-                name: 'Default',
-                builder: _i12.divider,
-              ),
+              _i1.WidgetbookUseCase(name: 'Default', builder: _i12.divider),
               _i1.WidgetbookUseCase(
                 name: 'Vertical',
                 builder: _i12.verticalDivider,
@@ -327,10 +313,7 @@ final directories = <_i1.WidgetbookNode>[
           ),
           _i1.WidgetbookLeafComponent(
             name: 'Chip',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Chip',
-              builder: _i21.chip,
-            ),
+            useCase: _i1.WidgetbookUseCase(name: 'Chip', builder: _i21.chip),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'DatePickerDialog',
@@ -348,17 +331,11 @@ final directories = <_i1.WidgetbookNode>[
           ),
           _i1.WidgetbookLeafComponent(
             name: 'MenuAnchor',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Menu',
-              builder: _i24.menu,
-            ),
+            useCase: _i1.WidgetbookUseCase(name: 'Menu', builder: _i24.menu),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'Radio',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'Radio',
-              builder: _i25.radio,
-            ),
+            useCase: _i1.WidgetbookUseCase(name: 'Radio', builder: _i25.radio),
           ),
           _i1.WidgetbookLeafComponent(
             name: 'Slider',
@@ -416,10 +393,7 @@ final directories = <_i1.WidgetbookNode>[
           _i1.WidgetbookComponent(
             name: 'TextField',
             useCases: [
-              _i1.WidgetbookUseCase(
-                name: 'Default',
-                builder: _i31.textField,
-              ),
+              _i1.WidgetbookUseCase(name: 'Default', builder: _i31.textField),
               _i1.WidgetbookUseCase(
                 name: 'Outline',
                 builder: _i31.outlinedTextField,

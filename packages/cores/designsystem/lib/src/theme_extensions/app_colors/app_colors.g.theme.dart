@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, unused_element
@@ -10,21 +11,14 @@ part of 'app_colors.dart';
 
 mixin _$ThemeExtensionMixin on ThemeExtension<AppColors> {
   @override
-  ThemeExtension<AppColors> copyWith({
-    Color? icon,
-  }) {
+  ThemeExtension<AppColors> copyWith({Color? icon}) {
     final object = this as AppColors;
 
-    return AppColors(
-      icon: icon ?? object.icon,
-    );
+    return AppColors(icon: icon ?? object.icon);
   }
 
   @override
-  ThemeExtension<AppColors> lerp(
-    ThemeExtension<AppColors>? other,
-    double t,
-  ) {
+  ThemeExtension<AppColors> lerp(ThemeExtension<AppColors>? other, double t) {
     final otherValue = other;
 
     if (otherValue is! AppColors) {
@@ -33,13 +27,7 @@ mixin _$ThemeExtensionMixin on ThemeExtension<AppColors> {
 
     final value = this as AppColors;
 
-    return AppColors(
-      icon: Color.lerp(
-        value.icon,
-        otherValue.icon,
-        t,
-      )!,
-    );
+    return AppColors(icon: Color.lerp(value.icon, otherValue.icon, t)!);
   }
 
   @override
@@ -56,10 +44,7 @@ mixin _$ThemeExtensionMixin on ThemeExtension<AppColors> {
   int get hashCode {
     final value = this as AppColors;
 
-    return Object.hash(
-      runtimeType,
-      value.icon,
-    );
+    return Object.hash(runtimeType, value.icon);
   }
 }
 

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,166 +10,133 @@ part of 'maintenance_mode_settings_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$MaintenanceModeSettingsState {
-  bool get enabled => throw _privateConstructorUsedError;
 
-  /// Create a copy of MaintenanceModeSettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $MaintenanceModeSettingsStateCopyWith<MaintenanceModeSettingsState>
-  get copyWith => throw _privateConstructorUsedError;
+ bool get enabled;
+/// Create a copy of MaintenanceModeSettingsState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MaintenanceModeSettingsStateCopyWith<MaintenanceModeSettingsState> get copyWith => _$MaintenanceModeSettingsStateCopyWithImpl<MaintenanceModeSettingsState>(this as MaintenanceModeSettingsState, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MaintenanceModeSettingsState&&(identical(other.enabled, enabled) || other.enabled == enabled));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,enabled);
+
+@override
+String toString() {
+  return 'MaintenanceModeSettingsState(enabled: $enabled)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $MaintenanceModeSettingsStateCopyWith<$Res> {
-  factory $MaintenanceModeSettingsStateCopyWith(
-    MaintenanceModeSettingsState value,
-    $Res Function(MaintenanceModeSettingsState) then,
-  ) =
-      _$MaintenanceModeSettingsStateCopyWithImpl<
-        $Res,
-        MaintenanceModeSettingsState
-      >;
-  @useResult
-  $Res call({bool enabled});
-}
+abstract mixin class $MaintenanceModeSettingsStateCopyWith<$Res>  {
+  factory $MaintenanceModeSettingsStateCopyWith(MaintenanceModeSettingsState value, $Res Function(MaintenanceModeSettingsState) _then) = _$MaintenanceModeSettingsStateCopyWithImpl;
+@useResult
+$Res call({
+ bool enabled
+});
 
+
+
+
+}
 /// @nodoc
-class _$MaintenanceModeSettingsStateCopyWithImpl<
-  $Res,
-  $Val extends MaintenanceModeSettingsState
->
+class _$MaintenanceModeSettingsStateCopyWithImpl<$Res>
     implements $MaintenanceModeSettingsStateCopyWith<$Res> {
-  _$MaintenanceModeSettingsStateCopyWithImpl(this._value, this._then);
+  _$MaintenanceModeSettingsStateCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final MaintenanceModeSettingsState _self;
+  final $Res Function(MaintenanceModeSettingsState) _then;
 
-  /// Create a copy of MaintenanceModeSettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? enabled = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            enabled: null == enabled
-                ? _value.enabled
-                : enabled // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of MaintenanceModeSettingsState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? enabled = null,}) {
+  return _then(_self.copyWith(
+enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MaintenanceModeSettingsStateImplCopyWith<$Res>
-    implements $MaintenanceModeSettingsStateCopyWith<$Res> {
-  factory _$$MaintenanceModeSettingsStateImplCopyWith(
-    _$MaintenanceModeSettingsStateImpl value,
-    $Res Function(_$MaintenanceModeSettingsStateImpl) then,
-  ) = __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool enabled});
 }
 
-/// @nodoc
-class __$$MaintenanceModeSettingsStateImplCopyWithImpl<$Res>
-    extends
-        _$MaintenanceModeSettingsStateCopyWithImpl<
-          $Res,
-          _$MaintenanceModeSettingsStateImpl
-        >
-    implements _$$MaintenanceModeSettingsStateImplCopyWith<$Res> {
-  __$$MaintenanceModeSettingsStateImplCopyWithImpl(
-    _$MaintenanceModeSettingsStateImpl _value,
-    $Res Function(_$MaintenanceModeSettingsStateImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of MaintenanceModeSettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? enabled = null,
-  }) {
-    return _then(
-      _$MaintenanceModeSettingsStateImpl(
-        enabled: null == enabled
-            ? _value.enabled
-            : enabled // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$MaintenanceModeSettingsStateImpl
-    implements _MaintenanceModeSettingsState {
-  const _$MaintenanceModeSettingsStateImpl({this.enabled = false});
 
-  @override
-  @JsonKey()
-  final bool enabled;
+class _MaintenanceModeSettingsState implements MaintenanceModeSettingsState {
+  const _MaintenanceModeSettingsState({this.enabled = false});
+  
 
-  @override
-  String toString() {
-    return 'MaintenanceModeSettingsState(enabled: $enabled)';
-  }
+@override@JsonKey() final  bool enabled;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MaintenanceModeSettingsStateImpl &&
-            (identical(other.enabled, enabled) || other.enabled == enabled));
-  }
+/// Create a copy of MaintenanceModeSettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MaintenanceModeSettingsStateCopyWith<_MaintenanceModeSettingsState> get copyWith => __$MaintenanceModeSettingsStateCopyWithImpl<_MaintenanceModeSettingsState>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, enabled);
 
-  /// Create a copy of MaintenanceModeSettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MaintenanceModeSettingsStateImplCopyWith<
-    _$MaintenanceModeSettingsStateImpl
-  >
-  get copyWith =>
-      __$$MaintenanceModeSettingsStateImplCopyWithImpl<
-        _$MaintenanceModeSettingsStateImpl
-      >(this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MaintenanceModeSettingsState&&(identical(other.enabled, enabled) || other.enabled == enabled));
 }
 
-abstract class _MaintenanceModeSettingsState
-    implements MaintenanceModeSettingsState {
-  const factory _MaintenanceModeSettingsState({final bool enabled}) =
-      _$MaintenanceModeSettingsStateImpl;
 
-  @override
-  bool get enabled;
+@override
+int get hashCode => Object.hash(runtimeType,enabled);
 
-  /// Create a copy of MaintenanceModeSettingsState
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MaintenanceModeSettingsStateImplCopyWith<
-    _$MaintenanceModeSettingsStateImpl
-  >
-  get copyWith => throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'MaintenanceModeSettingsState(enabled: $enabled)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MaintenanceModeSettingsStateCopyWith<$Res> implements $MaintenanceModeSettingsStateCopyWith<$Res> {
+  factory _$MaintenanceModeSettingsStateCopyWith(_MaintenanceModeSettingsState value, $Res Function(_MaintenanceModeSettingsState) _then) = __$MaintenanceModeSettingsStateCopyWithImpl;
+@override @useResult
+$Res call({
+ bool enabled
+});
+
+
+
+
+}
+/// @nodoc
+class __$MaintenanceModeSettingsStateCopyWithImpl<$Res>
+    implements _$MaintenanceModeSettingsStateCopyWith<$Res> {
+  __$MaintenanceModeSettingsStateCopyWithImpl(this._self, this._then);
+
+  final _MaintenanceModeSettingsState _self;
+  final $Res Function(_MaintenanceModeSettingsState) _then;
+
+/// Create a copy of MaintenanceModeSettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? enabled = null,}) {
+  return _then(_MaintenanceModeSettingsState(
+enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on
