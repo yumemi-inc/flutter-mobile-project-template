@@ -4,7 +4,7 @@
 
 ## 自動Issue作成システム
 
-各マークダウンファイルには YAML Front Matter でメタデータが設定されており、GitHub Actions によって自動的にIssueが作成されます。
+各マークダウンファイルには YAML frontmatter でメタデータが設定されており、GitHub Actions によって自動的にIssueが作成されます。
 
 ### マークダウンファイルの構造
 
