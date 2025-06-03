@@ -29,4 +29,4 @@ labels: |
 ### 新しいタスクの追加方法
 
 1. `.github/initialization/` ディレクトリに新しいマークダウンファイルを作成
-2. YAML Front Matter でメタデータを設定
+2. YAML frontmatter でメタデータを設定

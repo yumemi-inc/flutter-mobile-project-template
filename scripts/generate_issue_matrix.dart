@@ -54,9 +54,9 @@ final class MatrixItem {
   }
 }
 
-/// YAML Front Matterを解析してメタデータを抽出
+/// YAML frontmatterを解析してメタデータを抽出
 FileMetadata? _parseYamlFrontMatter(String content) {
-  // YAML Front Matterの境界を検索
+  // YAML frontmatterの境界を検索
   final lines = content.split('\n');
   if (lines.isEmpty || lines[0] != '---') {
     return null;
@@ -111,8 +111,8 @@ List<MatrixItem> _readInitializationFiles(String initDir) {
       final metadata = _parseYamlFrontMatter(content);
 
       if (metadata == null) {
-        stderr.writeln('Error: ${file.path} has no valid YAML front matter');
-        stderr.writeln('''All markdown files must have YAML front matter with title and labels''');
+        stderr.writeln('Error: ${file.path} has no valid YAML frontmatter');
+        stderr.writeln('''All markdown files must have YAML frontmatter with title and labels''');
         exit(1);
       }
 
