@@ -128,6 +128,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
+      # <domain>/<repository>/<branch> のフォーマットでURLを生成
       url: ${{ steps.deployment.outputs.page_url }}${{ env.CURRENT_BRANCH }}
     permissions:
       pages: write
