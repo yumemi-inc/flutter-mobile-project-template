@@ -161,7 +161,5 @@ void main() {
   // Matrix JSONを生成
   final matrix = _generateMatrix(items);
 
-  // DOC: 確認用
-  // ignore: avoid_print
-  print(jsonEncode(matrix));
+  stdout.write(jsonEncode(matrix));
 }
