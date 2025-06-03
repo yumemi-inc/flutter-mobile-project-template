@@ -25,6 +25,8 @@ env:
 
 jobs:
   build:
+    permissions:
+      actions: read
     timeout-minutes: 5
     runs-on: ubuntu-22.04
     # NOTE: See https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/GITHUB_PAGES_PREVIEW.md
