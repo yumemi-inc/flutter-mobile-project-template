@@ -4,7 +4,7 @@ part 'github_repository.freezed.dart';
 part 'github_repository.g.dart';
 
 @freezed
-class GitHubRepository with _$GitHubRepository {
+abstract class GitHubRepository with _$GitHubRepository {
   const factory GitHubRepository({
     required String name,
     required String? description,
