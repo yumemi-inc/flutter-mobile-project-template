@@ -29,7 +29,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^3.0.0
   riverpod_generator: ^ 2.6.5
-  riverpod_lint: ^2.6.3
+  riverpod_lint: ^2.6.5
 
 flutter:
   uses-material-design: true

@@ -27,4 +27,4 @@ dev_dependencies:
   freezed: ^3.0.0
   json_serializable: ^6.9.5
   riverpod_generator: ^ 2.6.5
-  riverpod_lint: ^2.6.3
+  riverpod_lint: ^2.6.5
