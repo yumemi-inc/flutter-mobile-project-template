@@ -10,7 +10,6 @@ on:
       - "docs/**"
       - "scripts/**"
       - "tools/**"
-      - "mason.yaml"
       - "**/docs/**"
       - "**/test/**"
       - "**.md"
