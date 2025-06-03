@@ -78,7 +78,7 @@ melos:
         flutter_launcher_icons: ^0.14.3
         flutter_test:
           sdk: flutter
-        freezed: ^3.0.0
+        freezed: ^3.0.6
         go_router_builder: ^2.9.0
         json_serializable: ^6.9.5
         riverpod_generator: ^ 2.6.5
