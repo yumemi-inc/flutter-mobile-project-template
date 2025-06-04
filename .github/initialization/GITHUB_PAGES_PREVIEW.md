@@ -1,8 +1,8 @@
 ---
 title: "[初期セットアップ（任意）] Pull Request内でデプロイのワークフローを設定する"
 labels:
-    - initialization
-	- optional
+  - initialization
+  - optional
 ---
 
 # GitHub Pages プレビュー
