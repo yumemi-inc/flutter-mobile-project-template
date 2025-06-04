@@ -7,7 +7,7 @@
 
 以下にディレクトリ構造を示します。
 
-```text
+```bash
 .
 ├── apps
 │   ├── app
@@ -16,6 +16,11 @@
 │   └── catalog
 │
 └── packages
+    ├── cores
+    │   ├── core
+    │   └── data
+    ├── features
+    │   └── debug_mode
     ├── design_domain_ui # (optional)
     ├── design_ui
     ├── design_theme
