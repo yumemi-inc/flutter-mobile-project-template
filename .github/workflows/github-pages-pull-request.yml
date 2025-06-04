@@ -1,0 +1,145 @@
+name: Deploy to GitHub Pages on PR
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      - ".idea/**"
+      - ".vscode/**"
+      - "apps/app/**"
+      - "docs/**"
+      - "scripts/**"
+      - "tools/**"
+      - "**/docs/**"
+      - "**/test/**"
+      - "**.md"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PROJECT_DIR: apps/catalog
+  DEPLOY_DIR: deploy
+  CURRENT_BRANCH: ${{ github.head_ref || github.ref_name }}
+
+jobs:
+  build:
+    permissions:
+      actions: read
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    # NOTE: See https://github.com/yumemi-inc/flutter-mobile-project-template/blob/main/docs/GITHUB_PAGES_PREVIEW.md
+    if: ${{ github.repository_owner == 'yumemi-inc' && github.event.repository.name == 'flutter-mobile-project-template' }}
+    steps:
+      # https://github.com/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Setup Application Runtime
+        uses: ./.github/actions/setup-application-runtime
+
+      - name: Build web
+        run: flutter build web --release --base-href /${{ github.event.repository.name }}/${{ env.CURRENT_BRANCH }}/
+        working-directory: ${{ env.PROJECT_DIR }}
+
+      - name: Create & Copy combined deployment directory
+        run: |
+          mkdir -p ${{ env.DEPLOY_DIR }}/${{ env.CURRENT_BRANCH }}/
+          cp -R ${{ env.PROJECT_DIR }}/build/web/. ${{ env.DEPLOY_DIR }}/${{ env.CURRENT_BRANCH }}/
+
+      - name: Calculate 3 days ago date (UTC)
+        id: date_calc
+        run: echo "start_date=$(date -u -d '3 days ago' '+%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_OUTPUT"
+
+      - name: Get run IDs from the last 3 days for the triggering workflow
+        id: get_run_ids
+        run: |
+          START_DATE="${{ steps.date_calc.outputs.start_date }}"
+          echo "Fetching runs for workflow: '${{ github.workflow }}' created since $START_DATE"
+
+          # gh run list で対象ワークフローの過去3日間の成功した実行IDを取得
+          # 現在のデプロイワークフロー自身のrun_idは除外
+          RUN_IDS=$(gh run list \
+            --workflow "${{ github.workflow }}" \
+            --status success \
+            --created ">=$START_DATE" \
+            --json databaseId,headBranch,createdAt \
+            | jq  -r --arg current_branch "${{ env.CURRENT_BRANCH }}" '
+                group_by(.headBranch) |
+                map(max_by(.createdAt)) |
+                map(select(.headBranch != $current_branch)) |
+                map({branch: .headBranch, run_id: .databaseId})
+          ')
+
+          if [ -z "$RUN_IDS" ]; then
+            echo "No successful runs found in the last 3 days for workflow: '${{ github.workflow }}'."
+            exit 0 # 実行IDが見つからなければ、ジョブを成功として終了
+          fi
+          echo "Found run IDs and their branches:"
+          echo "$RUN_IDS"
+          {
+            echo "run_data<<EOF"
+            echo "$RUN_IDS"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
+
+      - name: Download artifacts for each run ID
+        run: |
+          mkdir -p _site # GitHub Pagesのルートディレクトリ
+
+          # 出力された各行 (run_id branch_name) をループ処理
+          echo '${{ steps.get_run_ids.outputs.run_data }}' | jq -r '.[] | "\(.run_id) \(.branch)"' | while read -r run_id branch; do
+            if [ -n "$run_id" ] && [ -n "$branch" ]; then
+              echo "Downloading artifact for run ID: $run_id from branch: $branch"
+              DOWNLOAD_PATH="dl_artifact/$branch"
+              mkdir -p "$DOWNLOAD_PATH"
+
+              # gh run download でartifactをダウンロード
+              gh run download "$run_id" \
+                --dir "$DOWNLOAD_PATH" \
+                --repo "$GITHUB_REPOSITORY"
+              echo "Downloaded artifact to $DOWNLOAD_PATH"
+
+              # アーティファクトを解凍して展開
+              if [ -f "$DOWNLOAD_PATH/github-pages/artifact.tar" ]; then
+                echo "Extracting artifact.tar to $DOWNLOAD_PATH"
+                tar -xf "$DOWNLOAD_PATH/github-pages/artifact.tar" -C "${{ env.DEPLOY_DIR }}"
+                rm -rf "$DOWNLOAD_PATH/github-pages" # 解凍後のtarファイルとディレクトリを削除
+              else
+                echo "Warning: artifact.tar not found in $DOWNLOAD_PATH/github-pages/"
+              fi
+            else
+              echo "Warning: run_id or branch is empty"
+            fi
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # gh CLI認証用
+
+      # https://github.com/actions/upload-pages-artifact
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3.0.1
+        with:
+          path: ./${{ env.DEPLOY_DIR }}
+          retention-days: 3
+
+  deploy:
+    environment:
+      name: github-pages
+      # <domain>/<repository>/<branch> のフォーマットでURLを生成
+      url: ${{ steps.deployment.outputs.page_url }}${{ env.CURRENT_BRANCH }}
+    permissions:
+      pages: write
+      id-token: write
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      # https://github.com/actions/deploy-pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5

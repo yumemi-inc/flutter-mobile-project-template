@@ -1,3 +1,8 @@
+---
+title: "[初期セットアップ] Target SDK の設定"
+labels: initialization
+---
+
 # Target SDK バージョンの設定
 
 このIssueは、FlutterプロジェクトでサポートするOSバージョン（Target SDK）を適切に設定するためのものです。
