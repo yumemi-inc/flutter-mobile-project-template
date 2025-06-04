@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,207 +10,145 @@ part of 'paging_data.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$PageBasedPagingData<T> {
-  List<T> get items => throw _privateConstructorUsedError;
-  int get currentPage => throw _privateConstructorUsedError;
-  bool get hasMore => throw _privateConstructorUsedError;
 
-  /// Create a copy of PageBasedPagingData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PageBasedPagingDataCopyWith<T, PageBasedPagingData<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+ List<T> get items; int get currentPage; bool get hasMore;
+/// Create a copy of PageBasedPagingData
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PageBasedPagingDataCopyWith<T, PageBasedPagingData<T>> get copyWith => _$PageBasedPagingDataCopyWithImpl<T, PageBasedPagingData<T>>(this as PageBasedPagingData<T>, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PageBasedPagingData<T>&&const DeepCollectionEquality().equals(other.items, items)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(items),currentPage,hasMore);
+
+@override
+String toString() {
+  return 'PageBasedPagingData<$T>(items: $items, currentPage: $currentPage, hasMore: $hasMore)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PageBasedPagingDataCopyWith<T, $Res> {
-  factory $PageBasedPagingDataCopyWith(
-    PageBasedPagingData<T> value,
-    $Res Function(PageBasedPagingData<T>) then,
-  ) = _$PageBasedPagingDataCopyWithImpl<T, $Res, PageBasedPagingData<T>>;
-  @useResult
-  $Res call({List<T> items, int currentPage, bool hasMore});
-}
+abstract mixin class $PageBasedPagingDataCopyWith<T,$Res>  {
+  factory $PageBasedPagingDataCopyWith(PageBasedPagingData<T> value, $Res Function(PageBasedPagingData<T>) _then) = _$PageBasedPagingDataCopyWithImpl;
+@useResult
+$Res call({
+ List<T> items, int currentPage, bool hasMore
+});
 
+
+
+
+}
 /// @nodoc
-class _$PageBasedPagingDataCopyWithImpl<
-  T,
-  $Res,
-  $Val extends PageBasedPagingData<T>
->
+class _$PageBasedPagingDataCopyWithImpl<T,$Res>
     implements $PageBasedPagingDataCopyWith<T, $Res> {
-  _$PageBasedPagingDataCopyWithImpl(this._value, this._then);
+  _$PageBasedPagingDataCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PageBasedPagingData<T> _self;
+  final $Res Function(PageBasedPagingData<T>) _then;
 
-  /// Create a copy of PageBasedPagingData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-    Object? currentPage = null,
-    Object? hasMore = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            items: null == items
-                ? _value.items
-                : items // ignore: cast_nullable_to_non_nullable
-                      as List<T>,
-            currentPage: null == currentPage
-                ? _value.currentPage
-                : currentPage // ignore: cast_nullable_to_non_nullable
-                      as int,
-            hasMore: null == hasMore
-                ? _value.hasMore
-                : hasMore // ignore: cast_nullable_to_non_nullable
-                      as bool,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of PageBasedPagingData
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? items = null,Object? currentPage = null,Object? hasMore = null,}) {
+  return _then(_self.copyWith(
+items: null == items ? _self.items : items // ignore: cast_nullable_to_non_nullable
+as List<T>,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PageBasedPagingDataImplCopyWith<T, $Res>
-    implements $PageBasedPagingDataCopyWith<T, $Res> {
-  factory _$$PageBasedPagingDataImplCopyWith(
-    _$PageBasedPagingDataImpl<T> value,
-    $Res Function(_$PageBasedPagingDataImpl<T>) then,
-  ) = __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>;
-  @override
-  @useResult
-  $Res call({List<T> items, int currentPage, bool hasMore});
 }
 
-/// @nodoc
-class __$$PageBasedPagingDataImplCopyWithImpl<T, $Res>
-    extends
-        _$PageBasedPagingDataCopyWithImpl<T, $Res, _$PageBasedPagingDataImpl<T>>
-    implements _$$PageBasedPagingDataImplCopyWith<T, $Res> {
-  __$$PageBasedPagingDataImplCopyWithImpl(
-    _$PageBasedPagingDataImpl<T> _value,
-    $Res Function(_$PageBasedPagingDataImpl<T>) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of PageBasedPagingData
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? items = null,
-    Object? currentPage = null,
-    Object? hasMore = null,
-  }) {
-    return _then(
-      _$PageBasedPagingDataImpl<T>(
-        items: null == items
-            ? _value._items
-            : items // ignore: cast_nullable_to_non_nullable
-                  as List<T>,
-        currentPage: null == currentPage
-            ? _value.currentPage
-            : currentPage // ignore: cast_nullable_to_non_nullable
-                  as int,
-        hasMore: null == hasMore
-            ? _value.hasMore
-            : hasMore // ignore: cast_nullable_to_non_nullable
-                  as bool,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$PageBasedPagingDataImpl<T> extends _PageBasedPagingData<T> {
-  const _$PageBasedPagingDataImpl({
-    required final List<T> items,
-    required this.currentPage,
-    required this.hasMore,
-  }) : _items = items,
-       super._();
 
-  final List<T> _items;
-  @override
-  List<T> get items {
-    if (_items is EqualUnmodifiableListView) return _items;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_items);
-  }
+class _PageBasedPagingData<T> extends PageBasedPagingData<T> {
+  const _PageBasedPagingData({required final  List<T> items, required this.currentPage, required this.hasMore}): _items = items,super._();
+  
 
-  @override
-  final int currentPage;
-  @override
-  final bool hasMore;
-
-  @override
-  String toString() {
-    return 'PageBasedPagingData<$T>(items: $items, currentPage: $currentPage, hasMore: $hasMore)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PageBasedPagingDataImpl<T> &&
-            const DeepCollectionEquality().equals(other._items, _items) &&
-            (identical(other.currentPage, currentPage) ||
-                other.currentPage == currentPage) &&
-            (identical(other.hasMore, hasMore) || other.hasMore == hasMore));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    const DeepCollectionEquality().hash(_items),
-    currentPage,
-    hasMore,
-  );
-
-  /// Create a copy of PageBasedPagingData
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
-  get copyWith =>
-      __$$PageBasedPagingDataImplCopyWithImpl<T, _$PageBasedPagingDataImpl<T>>(
-        this,
-        _$identity,
-      );
+ final  List<T> _items;
+@override List<T> get items {
+  if (_items is EqualUnmodifiableListView) return _items;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_items);
 }
 
-abstract class _PageBasedPagingData<T> extends PageBasedPagingData<T> {
-  const factory _PageBasedPagingData({
-    required final List<T> items,
-    required final int currentPage,
-    required final bool hasMore,
-  }) = _$PageBasedPagingDataImpl<T>;
-  const _PageBasedPagingData._() : super._();
+@override final  int currentPage;
+@override final  bool hasMore;
 
-  @override
-  List<T> get items;
-  @override
-  int get currentPage;
-  @override
-  bool get hasMore;
+/// Create a copy of PageBasedPagingData
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PageBasedPagingDataCopyWith<T, _PageBasedPagingData<T>> get copyWith => __$PageBasedPagingDataCopyWithImpl<T, _PageBasedPagingData<T>>(this, _$identity);
 
-  /// Create a copy of PageBasedPagingData
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PageBasedPagingDataImplCopyWith<T, _$PageBasedPagingDataImpl<T>>
-  get copyWith => throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PageBasedPagingData<T>&&const DeepCollectionEquality().equals(other._items, _items)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.hasMore, hasMore) || other.hasMore == hasMore));
 }
+
+
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_items),currentPage,hasMore);
+
+@override
+String toString() {
+  return 'PageBasedPagingData<$T>(items: $items, currentPage: $currentPage, hasMore: $hasMore)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PageBasedPagingDataCopyWith<T,$Res> implements $PageBasedPagingDataCopyWith<T, $Res> {
+  factory _$PageBasedPagingDataCopyWith(_PageBasedPagingData<T> value, $Res Function(_PageBasedPagingData<T>) _then) = __$PageBasedPagingDataCopyWithImpl;
+@override @useResult
+$Res call({
+ List<T> items, int currentPage, bool hasMore
+});
+
+
+
+
+}
+/// @nodoc
+class __$PageBasedPagingDataCopyWithImpl<T,$Res>
+    implements _$PageBasedPagingDataCopyWith<T, $Res> {
+  __$PageBasedPagingDataCopyWithImpl(this._self, this._then);
+
+  final _PageBasedPagingData<T> _self;
+  final $Res Function(_PageBasedPagingData<T>) _then;
+
+/// Create a copy of PageBasedPagingData
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? items = null,Object? currentPage = null,Object? hasMore = null,}) {
+  return _then(_PageBasedPagingData<T>(
+items: null == items ? _self._items : items // ignore: cast_nullable_to_non_nullable
+as List<T>,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,hasMore: null == hasMore ? _self.hasMore : hasMore // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

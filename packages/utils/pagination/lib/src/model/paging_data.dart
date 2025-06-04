@@ -16,7 +16,7 @@ abstract interface class PagingData<T> {
 /// along with metadata about the paging status such as the current page number
 /// and whether more pages are available.
 @freezed
-class PageBasedPagingData<T>
+abstract class PageBasedPagingData<T>
     with _$PageBasedPagingData<T>
     implements PagingData<T> {
   const factory PageBasedPagingData({
