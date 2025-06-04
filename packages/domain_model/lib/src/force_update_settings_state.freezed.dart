@@ -12,7 +12,8 @@ part of 'force_update_settings_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ForceUpdateSettingsState {
@@ -27,16 +28,19 @@ mixin _$ForceUpdateSettingsState {
 
 /// @nodoc
 abstract class $ForceUpdateSettingsStateCopyWith<$Res> {
-  factory $ForceUpdateSettingsStateCopyWith(ForceUpdateSettingsState value,
-          $Res Function(ForceUpdateSettingsState) then) =
-      _$ForceUpdateSettingsStateCopyWithImpl<$Res, ForceUpdateSettingsState>;
+  factory $ForceUpdateSettingsStateCopyWith(
+    ForceUpdateSettingsState value,
+    $Res Function(ForceUpdateSettingsState) then,
+  ) = _$ForceUpdateSettingsStateCopyWithImpl<$Res, ForceUpdateSettingsState>;
   @useResult
   $Res call({bool enabled});
 }
 
 /// @nodoc
-class _$ForceUpdateSettingsStateCopyWithImpl<$Res,
-        $Val extends ForceUpdateSettingsState>
+class _$ForceUpdateSettingsStateCopyWithImpl<
+  $Res,
+  $Val extends ForceUpdateSettingsState
+>
     implements $ForceUpdateSettingsStateCopyWith<$Res> {
   _$ForceUpdateSettingsStateCopyWithImpl(this._value, this._then);
 
@@ -52,12 +56,15 @@ class _$ForceUpdateSettingsStateCopyWithImpl<$Res,
   $Res call({
     Object? enabled = null,
   }) {
-    return _then(_value.copyWith(
-      enabled: null == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            enabled: null == enabled
+                ? _value.enabled
+                : enabled // ignore: cast_nullable_to_non_nullable
+                      as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -65,9 +72,9 @@ class _$ForceUpdateSettingsStateCopyWithImpl<$Res,
 abstract class _$$ForceUpdateSettingsStateImplCopyWith<$Res>
     implements $ForceUpdateSettingsStateCopyWith<$Res> {
   factory _$$ForceUpdateSettingsStateImplCopyWith(
-          _$ForceUpdateSettingsStateImpl value,
-          $Res Function(_$ForceUpdateSettingsStateImpl) then) =
-      __$$ForceUpdateSettingsStateImplCopyWithImpl<$Res>;
+    _$ForceUpdateSettingsStateImpl value,
+    $Res Function(_$ForceUpdateSettingsStateImpl) then,
+  ) = __$$ForceUpdateSettingsStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool enabled});
@@ -75,13 +82,16 @@ abstract class _$$ForceUpdateSettingsStateImplCopyWith<$Res>
 
 /// @nodoc
 class __$$ForceUpdateSettingsStateImplCopyWithImpl<$Res>
-    extends _$ForceUpdateSettingsStateCopyWithImpl<$Res,
-        _$ForceUpdateSettingsStateImpl>
+    extends
+        _$ForceUpdateSettingsStateCopyWithImpl<
+          $Res,
+          _$ForceUpdateSettingsStateImpl
+        >
     implements _$$ForceUpdateSettingsStateImplCopyWith<$Res> {
   __$$ForceUpdateSettingsStateImplCopyWithImpl(
-      _$ForceUpdateSettingsStateImpl _value,
-      $Res Function(_$ForceUpdateSettingsStateImpl) _then)
-      : super(_value, _then);
+    _$ForceUpdateSettingsStateImpl _value,
+    $Res Function(_$ForceUpdateSettingsStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ForceUpdateSettingsState
   /// with the given fields replaced by the non-null parameter values.
@@ -90,12 +100,14 @@ class __$$ForceUpdateSettingsStateImplCopyWithImpl<$Res>
   $Res call({
     Object? enabled = null,
   }) {
-    return _then(_$ForceUpdateSettingsStateImpl(
-      enabled: null == enabled
-          ? _value.enabled
-          : enabled // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ForceUpdateSettingsStateImpl(
+        enabled: null == enabled
+            ? _value.enabled
+            : enabled // ignore: cast_nullable_to_non_nullable
+                  as bool,
+      ),
+    );
   }
 }
 
@@ -139,8 +151,10 @@ class _$ForceUpdateSettingsStateImpl extends _ForceUpdateSettingsState
   @override
   @pragma('vm:prefer-inline')
   _$$ForceUpdateSettingsStateImplCopyWith<_$ForceUpdateSettingsStateImpl>
-      get copyWith => __$$ForceUpdateSettingsStateImplCopyWithImpl<
-          _$ForceUpdateSettingsStateImpl>(this, _$identity);
+  get copyWith =>
+      __$$ForceUpdateSettingsStateImplCopyWithImpl<
+        _$ForceUpdateSettingsStateImpl
+      >(this, _$identity);
 }
 
 abstract class _ForceUpdateSettingsState extends ForceUpdateSettingsState {
@@ -156,5 +170,5 @@ abstract class _ForceUpdateSettingsState extends ForceUpdateSettingsState {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ForceUpdateSettingsStateImplCopyWith<_$ForceUpdateSettingsStateImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
