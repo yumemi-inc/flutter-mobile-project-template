@@ -6,7 +6,7 @@ LICENSE.md
 .github/actions/cleanup-copilot-settings
 .github/actions/cleanup-samples
 .github/actions/remove-unnecessary-files
-.github/actions/create-issue-at-initialization
+.github/actions/generate-issue-matrix-at-initialization
 
 .github/workflows/initialization.yaml
 
