@@ -1,3 +1,10 @@
+---
+title: "[初期セットアップ（任意）] コミットメッセージ規約の設定"
+labels:
+  - initialization
+  - optional
+---
+
 # コミットメッセージ規約の設定
 
 このプロジェクトでは、[Conventional Commits]の仕様に従ったコミットメッセージ規約を採用しています。

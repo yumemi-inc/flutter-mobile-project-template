@@ -1,3 +1,8 @@
+---
+title: "[初期セットアップ] Pull Requestのレビュワーを自動アサインする設定"
+labels: initialization
+---
+
 ## 概要
 
 このプロジェクトでは、Pull Request 作成時に自動でレビュアーをアサインするGitHubワークフローが用意されています。

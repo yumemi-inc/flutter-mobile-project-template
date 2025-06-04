@@ -1,3 +1,8 @@
+---
+title: "[初期セットアップ] アイコンの設定"
+labels: initialization
+---
+
 ## アイコンについて
 
 ### iOS

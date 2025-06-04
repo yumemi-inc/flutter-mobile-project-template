@@ -1,3 +1,10 @@
+---
+title: "[初期セットアップ(任意)] 画面の向きの設定"
+labels:
+  - initialization
+  - optional
+---
+
 # 画面の向き (Orientation) の設定
 
 このIssueは、Flutterアプリケーションの画面の向き（縦向き・横向き）に関する設定方法を決定し、適用するためのものです。
