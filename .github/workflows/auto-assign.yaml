@@ -7,7 +7,7 @@ on:
 jobs:
   count-reviewers:
     if: github.event.pull_request.draft == false
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     outputs:
       count: ${{ steps.extract.outputs.count }}
@@ -24,7 +24,7 @@ jobs:
     needs:
       - count-reviewers
     if: needs.count-reviewers.outputs.count == '0'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
       pull-requests: write
@@ -58,7 +58,7 @@ jobs:
       - count-reviewers
       - request-reviewers
     if: always()
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
       pull-requests: write
