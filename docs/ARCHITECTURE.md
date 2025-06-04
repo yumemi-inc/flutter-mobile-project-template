@@ -80,6 +80,12 @@ flowchart TD
     class domain_logic package
   end
 
+  %% Debug Layer
+  subgraph "Debug Layer"
+    debug_mode[debug_mode]
+    class debug_mode package
+  end
+
   %% Dependencies
   presentation --> composition_root
   presentation --> domain_model
@@ -104,6 +110,11 @@ flowchart TD
   design_ui --> design_theme
 
   domain_logic --> domain_model
+
+  %% Debug Layer Dependencies
+  debug_mode --> infrastructure_pkg
+  debug_mode --> application_pkg
+  presentation --> debug_mode
 
   %% Legend
   subgraph "Legend"
