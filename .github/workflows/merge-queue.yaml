@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/wc-changes.yml
 
   skip-comment:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.any == 'false' }}
     permissions:
@@ -28,7 +28,7 @@ jobs:
           body: |
             チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
   check-actions:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.actions == 'true' }}
     timeout-minutes: 10
@@ -48,7 +48,7 @@ jobs:
           reporter: github-pr-review
 
   cache-dependencies:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.dependencies == 'true' }}
     timeout-minutes: 10
@@ -66,7 +66,7 @@ jobs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.src == 'true' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
@@ -118,7 +118,7 @@ jobs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.lint == 'true' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
@@ -145,7 +145,7 @@ jobs:
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
   status-check:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs:
       - check-actions
       - check

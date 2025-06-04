@@ -7,7 +7,7 @@ on:
 
 jobs:
   condition:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     outputs:
       execute: ${{ steps.condition.outputs.execute }}
     steps:
@@ -20,7 +20,7 @@ jobs:
           fi
 
   generate-matrix:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: condition
     if: needs.condition.outputs.execute == 'true'
     outputs:
@@ -35,7 +35,7 @@ jobs:
         uses: ./.github/actions/generate-issue-matrix-at-initialization
 
   create-issues:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       issues: write
@@ -60,7 +60,7 @@ jobs:
           labels: ${{ matrix.labels }}
 
   cleanup:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
     needs:
