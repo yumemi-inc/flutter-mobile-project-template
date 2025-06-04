@@ -40,9 +40,3 @@ flutter:
 
   assets:
     - assets/
-
-flutter_gen:
-  output: lib/src/gen/assets
-  assets:
-    outputs:
-      package_parameter_enabled: true
