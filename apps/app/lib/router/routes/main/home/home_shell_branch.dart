@@ -29,15 +29,21 @@ class HomePageRoute extends GoRouteData {
       child: kDebugMode
           ? ShakeDetectionWidget(
               onShake: () {
-                unawaited(const DebugPageRoute().push(context));
+                if (!context.mounted) {
+                  return;
+                }
+
+                final isDebugRoute = GoRouter.of(
+                  context,
+                ).state.uri.path.contains(DebugPageRoute.path);
+
+                if (!isDebugRoute) {
+                  unawaited(const DebugPageRoute().push(context));
+                }
               },
-              child: const ProviderScope(
-                child: HomePage(),
-              ),
+              child: const ProviderScope(child: HomePage()),
             )
-          : const ProviderScope(
-              child: HomePage(),
-            ),
+          : const ProviderScope(child: HomePage()),
     );
   }
 }
