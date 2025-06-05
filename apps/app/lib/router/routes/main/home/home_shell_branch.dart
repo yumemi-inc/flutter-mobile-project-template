@@ -27,7 +27,7 @@ class HomePageRoute extends GoRouteData {
       // switch the implementation of Navigator based on the source of
       // navigation or the state.
       child: kDebugMode
-          ? ShakeDetectionWidget(
+          ? ShakeDetection(
               onShake: () {
                 if (!context.mounted) {
                   return;

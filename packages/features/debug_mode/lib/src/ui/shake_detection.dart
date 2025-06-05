@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shake/shake.dart';
 
-class ShakeDetectionWidget extends StatefulWidget {
-  const ShakeDetectionWidget({
+class ShakeDetection extends StatefulWidget {
+  const ShakeDetection({
     required this.onShake,
     required this.child,
     super.key,
@@ -20,10 +20,10 @@ class ShakeDetectionWidget extends StatefulWidget {
   }
 
   @override
-  State<ShakeDetectionWidget> createState() => _ShakeDetectionWidgetState();
+  State<ShakeDetection> createState() => _ShakeDetectionState();
 }
 
-class _ShakeDetectionWidgetState extends State<ShakeDetectionWidget> {
+class _ShakeDetectionState extends State<ShakeDetection> {
   ShakeDetector? _detector;
 
   @override
