@@ -15,6 +15,8 @@ import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:talker_flutter/talker_flutter.dart';
+import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,10 +29,18 @@ void main() async {
     overrideProviders: overrideProviders,
   ) = await AppInitializer.initialize();
 
+  final talker = TalkerFlutter.init(
+    // ignore: avoid_redundant_argument_values
+    settings: TalkerSettings(enabled: kDebugMode),
+  );
+
   runApp(
     ProviderScope(
       overrides: [
         ...overrideProviders,
+      ],
+      observers: [
+        TalkerRiverpodObserver(talker: talker),
       ],
       child: const MainApp(),
     ),
