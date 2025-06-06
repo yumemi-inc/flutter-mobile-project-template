@@ -28,6 +28,13 @@ RouteBase get $debugPageRoute => GoRouteData.$route(
 
       factory: $NavigationDebugPageRouteExtension._fromState,
     ),
+    GoRouteData.$route(
+      path: 'logger',
+
+      parentNavigatorKey: LoggerPageRoute.$parentNavigatorKey,
+
+      factory: $LoggerPageRouteExtension._fromState,
+    ),
   ],
 );
 
@@ -52,6 +59,22 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
       const NavigationDebugPageRoute();
 
   String get location => GoRouteData.$location('/debug/navigation_debug');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $LoggerPageRouteExtension on LoggerPageRoute {
+  static LoggerPageRoute _fromState(GoRouterState state) =>
+      const LoggerPageRoute();
+
+  String get location => GoRouteData.$location('/debug/logger');
 
   void go(BuildContext context) => context.go(location);
 
