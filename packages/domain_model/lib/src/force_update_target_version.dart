@@ -5,7 +5,7 @@ import 'package:internal_domain_model/src/version_string.dart';
 part 'force_update_target_version.freezed.dart';
 
 @freezed
-class ForceUpdateTargetVersion with _$ForceUpdateTargetVersion {
+abstract class ForceUpdateTargetVersion with _$ForceUpdateTargetVersion {
   const factory ForceUpdateTargetVersion({
     required VersionString ios,
     required VersionString android,
@@ -19,5 +19,16 @@ class ForceUpdateTargetVersion with _$ForceUpdateTargetVersion {
       TargetPlatform.iOS => ios,
       _ => null,
     };
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+      DiagnosticsProperty<VersionString?>(
+        'defaultTargetPlatformVersion',
+        defaultTargetPlatformVersion,
+      ),
+    );
   }
 }
