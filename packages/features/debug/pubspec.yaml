@@ -1,4 +1,4 @@
-name: features_debug_mode
+name: features_debug
 description: "This package provides features for Debug Mode"
 publish_to: "none"
 version: 0.0.1
@@ -14,12 +14,6 @@ dependencies:
     path: ../../cores/core
   cores_data:
     path: ../../cores/data
-  cores_designsystem:
-    path: ../../cores/designsystem
-  cores_model:
-    path: ../../cores/model
-  cores_ui:
-    path: ../../cores/ui
   dio: ^5.8.0+1
   features_force_update:
     path: ../force_update
