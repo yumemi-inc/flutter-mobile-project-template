@@ -26,9 +26,21 @@ class HomePageRoute extends GoRouteData {
       // By overriding the Provider in the Route build method, it is possible to
       // switch the implementation of Navigator based on the source of
       // navigation or the state.
-      child: const ProviderScope(
-        child: HomePage(),
-      ),
+      child: kDebugMode
+          ? ShakeDetection(
+              onShake: () {
+                final isDebugRoute = GoRouter.of(
+                  context,
+                ).state.uri.path.contains(DebugPageRoute.path);
+                if (isDebugRoute) {
+                  return;
+                }
+
+                unawaited(const DebugPageRoute().push(context));
+              },
+              child: const ProviderScope(child: HomePage()),
+            )
+          : const ProviderScope(child: HomePage()),
     );
   }
 }

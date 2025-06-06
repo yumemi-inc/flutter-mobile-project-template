@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/wc-changes.yml
 
   skip-comment:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.any == 'false' }}
     permissions:
@@ -28,7 +28,7 @@ jobs:
           body: |
             チェック対象ファイルの変更がなかったため、checkジョブをスキップしました
   check-actions:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.actions == 'true' }}
     timeout-minutes: 10
@@ -48,7 +48,7 @@ jobs:
           reporter: github-pr-review
 
   cache-dependencies:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: changes
     if: ${{ needs.changes.outputs.dependencies == 'true' }}
     timeout-minutes: 10
@@ -66,13 +66,13 @@ jobs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.src == 'true' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
@@ -118,13 +118,13 @@ jobs:
       - changes
       - cache-dependencies
     if: ${{ needs.changes.outputs.lint == 'true' }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
       # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
 
       - name: Setup Application Runtime
         uses: ./.github/actions/setup-application-runtime
@@ -145,7 +145,7 @@ jobs:
     if: ${{ needs.changes.outputs.gen == 'true' }}
 
   status-check:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs:
       - check-actions
       - check

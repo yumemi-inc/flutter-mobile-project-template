@@ -16,12 +16,16 @@ List<RouteBase> get $appRoutes => [
 
 RouteBase get $debugPageRoute => GoRouteData.$route(
   path: '/debug',
+
   parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
+
   factory: $DebugPageRouteExtension._fromState,
   routes: [
     GoRouteData.$route(
       path: 'navigation_debug',
+
       parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
+
       factory: $NavigationDebugPageRouteExtension._fromState,
     ),
   ],
@@ -31,9 +35,7 @@ extension $DebugPageRouteExtension on DebugPageRoute {
   static DebugPageRoute _fromState(GoRouterState state) =>
       const DebugPageRoute();
 
-  String get location => GoRouteData.$location(
-    '/debug',
-  );
+  String get location => GoRouteData.$location('/debug');
 
   void go(BuildContext context) => context.go(location);
 
@@ -49,9 +51,7 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
   static NavigationDebugPageRoute _fromState(GoRouterState state) =>
       const NavigationDebugPageRoute();
 
-  String get location => GoRouteData.$location(
-    '/debug/navigation_debug',
-  );
+  String get location => GoRouteData.$location('/debug/navigation_debug');
 
   void go(BuildContext context) => context.go(location);
 
@@ -70,6 +70,7 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/',
+
           factory: $HomePageRouteExtension._fromState,
         ),
       ],
@@ -78,10 +79,12 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
       routes: [
         GoRouteData.$route(
           path: '/setting',
+
           factory: $SettingPageRouteExtension._fromState,
           routes: [
             GoRouteData.$route(
               path: 'license',
+
               factory: $LicensePageRouteExtension._fromState,
             ),
           ],
@@ -99,9 +102,7 @@ extension $MainPageShellRouteExtension on MainPageShellRoute {
 extension $HomePageRouteExtension on HomePageRoute {
   static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
-  String get location => GoRouteData.$location(
-    '/',
-  );
+  String get location => GoRouteData.$location('/');
 
   void go(BuildContext context) => context.go(location);
 
@@ -117,9 +118,7 @@ extension $SettingPageRouteExtension on SettingPageRoute {
   static SettingPageRoute _fromState(GoRouterState state) =>
       const SettingPageRoute();
 
-  String get location => GoRouteData.$location(
-    '/setting',
-  );
+  String get location => GoRouteData.$location('/setting');
 
   void go(BuildContext context) => context.go(location);
 
@@ -135,9 +134,7 @@ extension $LicensePageRouteExtension on LicensePageRoute {
   static LicensePageRoute _fromState(GoRouterState state) =>
       const LicensePageRoute();
 
-  String get location => GoRouteData.$location(
-    '/setting/license',
-  );
+  String get location => GoRouteData.$location('/setting/license');
 
   void go(BuildContext context) => context.go(location);
 
@@ -151,6 +148,7 @@ extension $LicensePageRouteExtension on LicensePageRoute {
 
 RouteBase get $maintenancePageRoute => GoRouteData.$route(
   path: '/maintenance',
+
   factory: $MaintenancePageRouteExtension._fromState,
 );
 
@@ -158,9 +156,7 @@ extension $MaintenancePageRouteExtension on MaintenancePageRoute {
   static MaintenancePageRoute _fromState(GoRouterState state) =>
       const MaintenancePageRoute();
 
-  String get location => GoRouteData.$location(
-    '/maintenance',
-  );
+  String get location => GoRouteData.$location('/maintenance');
 
   void go(BuildContext context) => context.go(location);
 
