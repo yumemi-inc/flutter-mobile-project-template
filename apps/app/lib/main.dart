@@ -31,7 +31,7 @@ void main() async {
   ) = await AppInitializer.initialize();
 
   final talker = TalkerFlutter.init(
-    // ignore: avoid_redundant_argument_values
+    // ignore: avoid_redundant_argument_values sort_pub_dependencies
     settings: TalkerSettings(enabled: kDebugMode),
   );
 
