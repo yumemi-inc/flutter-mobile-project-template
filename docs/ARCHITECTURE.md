@@ -20,7 +20,7 @@
     │   ├── core
     │   └── data
     ├── features
-    │   └── debug_mode
+    │   └── debug
     ├── design_domain_ui # (optional)
     ├── design_ui
     ├── design_theme
@@ -87,8 +87,8 @@ flowchart TD
 
   %% Debug Layer
   subgraph "Debug Layer"
-    debug_mode[debug_mode]
-    class debug_mode package
+    debug[debug]
+    class debug package
   end
 
   %% Dependencies
@@ -117,9 +117,9 @@ flowchart TD
   domain_logic --> domain_model
 
   %% Debug Layer Dependencies
-  debug_mode --> infrastructure_pkg
-  debug_mode --> application_pkg
-  presentation --> debug_mode
+  debug --> infrastructure_pkg
+  debug --> application_pkg
+  presentation --> debug
 
   %% Legend
   subgraph "Legend"

@@ -1,4 +1,4 @@
-name: features_debug_mode
+name: features_debug
 description: "This package provides features for Debug Mode"
 publish_to: "none"
 version: 0.0.1
