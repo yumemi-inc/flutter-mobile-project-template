@@ -13,11 +13,9 @@ import 'package:flutter_app/ui/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:talker_flutter/talker_flutter.dart';
 
 part 'package:flutter_app/router/routes/main/home/debug_page_route.dart';
 part 'package:flutter_app/router/routes/main/home/home_shell_branch.dart';
-part 'package:flutter_app/router/routes/main/home/logger_shell_route.dart';
 part 'package:flutter_app/router/routes/main/main_page_shell_route.dart';
 part 'package:flutter_app/router/routes/main/setting/setting_shell_branch.dart';
 part 'package:flutter_app/router/routes/maintenance_page_route.dart';

@@ -5,10 +5,6 @@ import 'package:talker_flutter/talker_flutter.dart';
 
 part 'logger_page.g.dart';
 
-abstract interface class LoggerPageNavigator {
-  void goLoggerPage(BuildContext context);
-}
-
 @riverpod
 Talker logger(Ref ref) => throw UnimplementedError();
 

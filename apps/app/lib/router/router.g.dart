@@ -10,7 +10,6 @@ part of 'router.dart';
 
 List<RouteBase> get $appRoutes => [
   $debugPageRoute,
-  $loggerPageRoute,
   $mainPageShellRoute,
   $maintenancePageRoute,
 ];
@@ -28,6 +27,13 @@ RouteBase get $debugPageRoute => GoRouteData.$route(
       parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
 
       factory: $NavigationDebugPageRouteExtension._fromState,
+    ),
+    GoRouteData.$route(
+      path: 'logger',
+
+      parentNavigatorKey: LoggerPageRoute.$parentNavigatorKey,
+
+      factory: $LoggerPageRouteExtension._fromState,
     ),
   ],
 );
@@ -64,19 +70,11 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-RouteBase get $loggerPageRoute => GoRouteData.$route(
-  path: '/logger',
-
-  parentNavigatorKey: LoggerPageRoute.$parentNavigatorKey,
-
-  factory: $LoggerPageRouteExtension._fromState,
-);
-
 extension $LoggerPageRouteExtension on LoggerPageRoute {
   static LoggerPageRoute _fromState(GoRouterState state) =>
       const LoggerPageRoute();
 
-  String get location => GoRouteData.$location('/logger');
+  String get location => GoRouteData.$location('/debug/logger');
 
   void go(BuildContext context) => context.go(location);
 
