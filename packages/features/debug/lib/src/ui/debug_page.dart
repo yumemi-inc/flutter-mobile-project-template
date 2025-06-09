@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cores_core/exception.dart';
 import 'package:features_debug/src/data/api/provider/exception_generator_api.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
@@ -21,6 +22,17 @@ class DebugPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<String>>(
+      exceptionGeneratorApiProvider,
+      (_, value) {
+        if (value.hasError) {
+          ref
+              .read(appExceptionNotifierProvider.notifier)
+              .notify(const UnknownException());
+        }
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Mode'),
