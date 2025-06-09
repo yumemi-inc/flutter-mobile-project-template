@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cores_core/exception.dart';
+import 'package:cores_core/ui.dart';
 import 'package:features_debug/src/data/api/provider/exception_generator_api.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
@@ -26,9 +26,9 @@ class DebugPage extends ConsumerWidget {
       exceptionGeneratorApiProvider,
       (_, value) {
         if (value.hasError) {
-          ref
-              .read(appExceptionNotifierProvider.notifier)
-              .notify(const UnknownException());
+          SnackBarManager.showSnackBar(
+            'An error occurred: ${value.error}',
+          );
         }
       },
     );
