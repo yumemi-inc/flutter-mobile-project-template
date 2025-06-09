@@ -16,11 +16,6 @@
 │   └── catalog
 │
 └── packages
-    ├── cores
-    │   ├── core
-    │   └── data
-    ├── features
-    │   └── debug
     ├── design_domain_ui # (optional)
     ├── design_ui
     ├── design_theme
@@ -85,6 +80,15 @@ flowchart TD
     class domain_logic package
   end
 
+  %% Feature Layer
+  subgraph "Feature Layer"
+    features_force_update[features_force_update] 
+    class features_force_update package
+    
+    features_maintain[features_maintain]
+    class features_maintain package
+  end
+
   %% Debug Layer
   subgraph "Debug Layer"
     debug[debug]
@@ -117,8 +121,8 @@ flowchart TD
   domain_logic --> domain_model
 
   %% Debug Layer Dependencies
-  debug --> infrastructure_pkg
-  debug --> application_pkg
+  debug --> features_force_update
+  debug --> features_maintain
   presentation --> debug
 
   %% Legend
