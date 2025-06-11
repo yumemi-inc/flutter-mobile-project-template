@@ -5,6 +5,7 @@ import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_ui/l10n.dart';
+import 'package:features_debug_mode/ui.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/l10n.dart';
 import 'package:features_setting/l10n.dart';
@@ -44,6 +45,9 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
+    final enableAccessibilityTools = ref.watch(
+      enableAccessibilityToolsProvider,
+    );
 
     ref.listen<AppException?>(
       appExceptionNotifierProvider,
@@ -81,6 +85,9 @@ class MainApp extends ConsumerWidget {
         ...SettingL10n.supportedLocales,
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
+      builder: enableAccessibilityTools
+          ? (context, child) => AccessibilityTools(child: child)
+          : null,
       routerConfig: ref.watch(routerProvider),
       theme: lightTheme(),
       darkTheme: darkTheme(),
