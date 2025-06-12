@@ -21,7 +21,7 @@ dependencies:
   cores_ui:
     path: ../../packages/cores/ui
   internal_debug:
-    path: ../../packages/features/debug
+    path: ../../packages/debug
   features_force_update:
     path: ../../packages/features/force_update
   features_maintain:
