@@ -1,7 +1,7 @@
 import 'package:features_force_update/src/model/force_update_target_version.dart';
-import 'package:features_force_update/src/model/version_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 part 'force_update_settings_state.freezed.dart';
 
@@ -14,7 +14,7 @@ abstract class ForceUpdateSettingsState with _$ForceUpdateSettingsState {
   const ForceUpdateSettingsState._();
 
   static bool isForceUpdateEnabled({
-    required VersionString currentVersion,
+    required Version currentVersion,
     required ForceUpdateTargetVersion forceUpdateTargetVersion,
   }) {
     final targetVersion = forceUpdateTargetVersion.defaultTargetPlatformVersion;

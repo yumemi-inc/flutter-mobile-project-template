@@ -1,6 +1,7 @@
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pub_semver/pub_semver.dart';
 
 void main() {
   group(
@@ -11,10 +12,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.0'),
-            ios: VersionString('1.0.1'),
+            android: Version.parse('1.0.0'),
+            ios: Version.parse('1.0.1'),
           );
 
           // act
@@ -33,10 +34,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.9');
+          final currentVersion = Version.parse('1.0.9');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.9'),
-            ios: VersionString('1.1.0'),
+            android: Version.parse('1.0.9'),
+            ios: Version.parse('1.1.0'),
           );
 
           // act
@@ -55,10 +56,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.9.9');
+          final currentVersion = Version.parse('1.9.9');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.9.9'),
-            ios: VersionString('2.0.0'),
+            android: Version.parse('1.9.9'),
+            ios: Version.parse('2.0.0'),
           );
 
           // act
@@ -77,10 +78,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.0'),
-            ios: VersionString('1.0.0'),
+            android: Version.parse('1.0.0'),
+            ios: Version.parse('1.0.0'),
           );
 
           // act
@@ -99,10 +100,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.1');
+          final currentVersion = Version.parse('1.0.1');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.1'),
-            ios: VersionString('1.0.0'),
+            android: Version.parse('1.0.1'),
+            ios: Version.parse('1.0.0'),
           );
 
           // act
@@ -121,10 +122,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.1.0');
+          final currentVersion = Version.parse('1.1.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.1.0'),
-            ios: VersionString('1.0.9'),
+            android: Version.parse('1.1.0'),
+            ios: Version.parse('1.0.9'),
           );
 
           // act
@@ -143,10 +144,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('2.0.0');
+          final currentVersion = Version.parse('2.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('2.0.0'),
-            ios: VersionString('1.9.9'),
+            android: Version.parse('2.0.0'),
+            ios: Version.parse('1.9.9'),
           );
 
           // act
@@ -163,10 +164,10 @@ void main() {
       test('''プラットフォームがiOS_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        final currentVersion = VersionString('1.0.0');
+        final currentVersion = Version.parse('1.0.0');
         final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: VersionString('1.0.1'),
-          ios: VersionString(''),
+          android: Version.parse('1.0.1'),
+          ios: Version.parse(''),
         );
 
         // act
@@ -184,10 +185,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('100000'),
-            ios: VersionString('100001'),
+            android: Version.parse('100000'),
+            ios: Version.parse('100001'),
           );
 
           // act
@@ -206,10 +207,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.1'),
-            ios: VersionString('1.0.1a'),
+            android: Version.parse('1.0.1'),
+            ios: Version.parse('1.0.1a'),
           );
 
           // act
@@ -228,10 +229,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.1'),
-            ios: VersionString('1.0.0'),
+            android: Version.parse('1.0.1'),
+            ios: Version.parse('1.0.0'),
           );
 
           // act
@@ -250,10 +251,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.9');
+          final currentVersion = Version.parse('1.0.9');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.1.0'),
-            ios: VersionString('1.0.9'),
+            android: Version.parse('1.1.0'),
+            ios: Version.parse('1.0.9'),
           );
 
           // act
@@ -272,10 +273,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.9.9');
+          final currentVersion = Version.parse('1.9.9');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('2.0.0'),
-            ios: VersionString('1.9.9'),
+            android: Version.parse('2.0.0'),
+            ios: Version.parse('1.9.9'),
           );
 
           // act
@@ -294,10 +295,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.0'),
-            ios: VersionString('1.0.0'),
+            android: Version.parse('1.0.0'),
+            ios: Version.parse('1.0.0'),
           );
 
           // act
@@ -316,10 +317,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.1');
+          final currentVersion = Version.parse('1.0.1');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.0'),
-            ios: VersionString('1.0.1'),
+            android: Version.parse('1.0.0'),
+            ios: Version.parse('1.0.1'),
           );
 
           // act
@@ -338,10 +339,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.1.0');
+          final currentVersion = Version.parse('1.1.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.9'),
-            ios: VersionString('1.1.0'),
+            android: Version.parse('1.0.9'),
+            ios: Version.parse('1.1.0'),
           );
 
           // act
@@ -360,10 +361,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('2.0.0');
+          final currentVersion = Version.parse('2.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.9.9'),
-            ios: VersionString('2.0.0'),
+            android: Version.parse('1.9.9'),
+            ios: Version.parse('2.0.0'),
           );
 
           // act
@@ -380,10 +381,10 @@ void main() {
       test('''プラットフォームがAndroid_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
         // arrange
         debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        final currentVersion = VersionString('1.0.0');
+        final currentVersion = Version.parse('1.0.0');
         final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: VersionString(''),
-          ios: VersionString('1.0.1'),
+          android: Version.parse(''),
+          ios: Version.parse('1.0.1'),
         );
 
         // act
@@ -401,10 +402,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('100001'),
-            ios: VersionString('100000'),
+            android: Version.parse('100001'),
+            ios: Version.parse('100000'),
           );
 
           // act
@@ -423,10 +424,10 @@ void main() {
         () {
           // arrange
           debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = VersionString('1.0.0');
+          final currentVersion = Version.parse('1.0.0');
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: VersionString('1.0.1a'),
-            ios: VersionString('1.0.1'),
+            android: Version.parse('1.0.1a'),
+            ios: Version.parse('1.0.1'),
           );
 
           // act

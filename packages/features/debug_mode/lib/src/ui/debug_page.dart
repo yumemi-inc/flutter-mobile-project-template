@@ -50,8 +50,8 @@ class DebugPage extends ConsumerWidget {
                 ref
                     .read(forceUpdateVersionProvider.notifier)
                     .update(
-                      iosTargetVersion: VersionString('9.9.9'),
-                      androidTargetVersion: VersionString('9.9.9'),
+                      iosTargetVersion: Version.parse('9.9.9'),
+                      androidTargetVersion: Version.parse('9.9.9'),
                     );
               },
             ),

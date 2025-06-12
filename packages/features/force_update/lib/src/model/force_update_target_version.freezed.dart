@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ForceUpdateTargetVersion implements DiagnosticableTreeMixin {
 
- VersionString get ios; VersionString get android;
+ Version get ios; Version get android;
 /// Create a copy of ForceUpdateTargetVersion
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -52,7 +52,7 @@ abstract mixin class $ForceUpdateTargetVersionCopyWith<$Res>  {
   factory $ForceUpdateTargetVersionCopyWith(ForceUpdateTargetVersion value, $Res Function(ForceUpdateTargetVersion) _then) = _$ForceUpdateTargetVersionCopyWithImpl;
 @useResult
 $Res call({
- VersionString ios, VersionString android
+ Version ios, Version android
 });
 
 
@@ -72,8 +72,8 @@ class _$ForceUpdateTargetVersionCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') @override $Res call({Object? ios = null,Object? android = null,}) {
   return _then(_self.copyWith(
 ios: null == ios ? _self.ios : ios // ignore: cast_nullable_to_non_nullable
-as VersionString,android: null == android ? _self.android : android // ignore: cast_nullable_to_non_nullable
-as VersionString,
+as Version,android: null == android ? _self.android : android // ignore: cast_nullable_to_non_nullable
+as Version,
   ));
 }
 
@@ -87,8 +87,8 @@ class _ForceUpdateTargetVersion extends ForceUpdateTargetVersion with Diagnostic
   const _ForceUpdateTargetVersion({required this.ios, required this.android}): super._();
   
 
-@override final  VersionString ios;
-@override final  VersionString android;
+@override final  Version ios;
+@override final  Version android;
 
 /// Create a copy of ForceUpdateTargetVersion
 /// with the given fields replaced by the non-null parameter values.
@@ -126,7 +126,7 @@ abstract mixin class _$ForceUpdateTargetVersionCopyWith<$Res> implements $ForceU
   factory _$ForceUpdateTargetVersionCopyWith(_ForceUpdateTargetVersion value, $Res Function(_ForceUpdateTargetVersion) _then) = __$ForceUpdateTargetVersionCopyWithImpl;
 @override @useResult
 $Res call({
- VersionString ios, VersionString android
+ Version ios, Version android
 });
 
 
@@ -146,8 +146,8 @@ class __$ForceUpdateTargetVersionCopyWithImpl<$Res>
 @override @pragma('vm:prefer-inline') $Res call({Object? ios = null,Object? android = null,}) {
   return _then(_ForceUpdateTargetVersion(
 ios: null == ios ? _self.ios : ios // ignore: cast_nullable_to_non_nullable
-as VersionString,android: null == android ? _self.android : android // ignore: cast_nullable_to_non_nullable
-as VersionString,
+as Version,android: null == android ? _self.android : android // ignore: cast_nullable_to_non_nullable
+as Version,
   ));
 }
 

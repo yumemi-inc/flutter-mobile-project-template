@@ -1,5 +1,5 @@
 import 'package:features_force_update/src/model/force_update_target_version.dart';
-import 'package:features_force_update/src/model/version_string.dart';
+import 'package:pub_semver/pub_semver.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'force_update_version_provider.g.dart';
@@ -9,14 +9,14 @@ class ForceUpdateVersion extends _$ForceUpdateVersion {
   @override
   ForceUpdateTargetVersion build() {
     return ForceUpdateTargetVersion(
-      ios: VersionString.empty,
-      android: VersionString.empty,
+      ios: Version.none,
+      android: Version.none,
     );
   }
 
   void update({
-    required VersionString iosTargetVersion,
-    required VersionString androidTargetVersion,
+    required Version iosTargetVersion,
+    required Version androidTargetVersion,
   }) {
     state = state.copyWith(
       ios: iosTargetVersion,
