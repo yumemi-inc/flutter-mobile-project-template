@@ -20,6 +20,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.6.1
   freezed_annotation: ^3.0.0
+  pub_semver: ^2.2.0
   riverpod_annotation: ^2.6.1
 
 dev_dependencies:
