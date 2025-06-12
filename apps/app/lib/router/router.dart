@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/common_assets.dart';
-import 'package:features_debug/ui.dart';
+import 'package:internal_debug/ui.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:features_maintain/ui.dart';
 import 'package:features_setting/ui.dart';

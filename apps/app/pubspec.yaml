@@ -20,7 +20,7 @@ dependencies:
     path: ../../packages/cores/model
   cores_ui:
     path: ../../packages/cores/ui
-  features_debug:
+  internal_debug:
     path: ../../packages/features/debug
   features_force_update:
     path: ../../packages/features/force_update
