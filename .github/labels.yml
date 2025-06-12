@@ -67,9 +67,9 @@
   color: a8dbe7
   description: packages cores ui package
 
-- name: "@packages/debug"
+- name: "@packages/features/debug_mode"
   color: 48360E
-  description: packages features debug package
+  description: packages features debug_mode package
   from_name: "@cores/debug"
 
 - name: "@packages/features/force_update"
