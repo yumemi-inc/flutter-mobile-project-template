@@ -20,8 +20,6 @@ dependencies:
     path: ../../packages/cores/model
   cores_ui:
     path: ../../packages/cores/ui
-  internal_debug:
-    path: ../../packages/debug
   features_force_update:
     path: ../../packages/features/force_update
   features_maintain:
@@ -37,6 +35,8 @@ dependencies:
   go_router: ^15.1.2
   internal_application:
     path: ../../packages/application
+  internal_debug:
+    path: ../../packages/debug
   internal_design_theme:
     path: ../../packages/design_theme
   internal_design_ui:

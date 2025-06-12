@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:cores_core/ui.dart';
-import 'package:internal_debug/src/data/api/provider/exception_generator_api.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_debug/src/data/api/provider/exception_generator_api.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'debug_page.g.dart';

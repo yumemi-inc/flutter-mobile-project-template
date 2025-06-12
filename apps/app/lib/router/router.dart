@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cores_core/util.dart';
 import 'package:cores_designsystem/common_assets.dart';
-import 'package:internal_debug/ui.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:features_maintain/ui.dart';
 import 'package:features_setting/ui.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_app/main_page.dart';
 import 'package:flutter_app/ui/home_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:internal_debug/ui.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'package:flutter_app/router/routes/main/home/debug_page_route.dart';
