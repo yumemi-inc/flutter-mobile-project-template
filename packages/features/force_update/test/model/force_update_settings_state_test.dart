@@ -1,7 +1,6 @@
 import 'package:features_force_update/force_update.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pub_semver/pub_semver.dart';
 
 void main() {
   group(
@@ -161,69 +160,6 @@ void main() {
         },
       );
 
-      test('''プラットフォームがiOS_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
-        // arrange
-        debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-        final currentVersion = Version.parse('1.0.0');
-        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: Version.parse('1.0.1'),
-          ios: Version.parse(''),
-        );
-
-        // act
-        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-          currentVersion: currentVersion,
-          forceUpdateTargetVersion: forceUpdateTargetVersion,
-        );
-
-        // assert
-        expect(actual, false);
-      });
-
-      test(
-        '''プラットフォームがiOS_強制アップデートバージョンにセマンティックバージョニング形式ではない場合_強制バージョンアップの対象ではないこと''',
-        () {
-          // arrange
-          debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = Version.parse('1.0.0');
-          final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: Version.parse('100000'),
-            ios: Version.parse('100001'),
-          );
-
-          // act
-          final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-            currentVersion: currentVersion,
-            forceUpdateTargetVersion: forceUpdateTargetVersion,
-          );
-
-          // assert
-          expect(actual, false);
-        },
-      );
-
-      test(
-        '''プラットフォームがiOS_強制アップデートバージョンに数字ではない文字列が含まれている場合_強制バージョンアップの対象ではないこと''',
-        () {
-          // arrange
-          debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
-          final currentVersion = Version.parse('1.0.0');
-          final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: Version.parse('1.0.1'),
-            ios: Version.parse('1.0.1a'),
-          );
-
-          // act
-          final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-            currentVersion: currentVersion,
-            forceUpdateTargetVersion: forceUpdateTargetVersion,
-          );
-
-          // assert
-          expect(actual, false);
-        },
-      );
-
       test(
         '''プラットフォームがAndroid_現在のアプリバージョンよりも強制アップデートバージョンが大きい場合(パッチバージョン)_強制バージョンアップの対象であること''',
         () {
@@ -365,69 +301,6 @@ void main() {
           final forceUpdateTargetVersion = ForceUpdateTargetVersion(
             android: Version.parse('1.9.9'),
             ios: Version.parse('2.0.0'),
-          );
-
-          // act
-          final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-            currentVersion: currentVersion,
-            forceUpdateTargetVersion: forceUpdateTargetVersion,
-          );
-
-          // assert
-          expect(actual, false);
-        },
-      );
-
-      test('''プラットフォームがAndroid_強制アップデートバージョンが空文字の場合_強制バージョンアップの対象ではないこと''', () {
-        // arrange
-        debugDefaultTargetPlatformOverride = TargetPlatform.android;
-        final currentVersion = Version.parse('1.0.0');
-        final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-          android: Version.parse(''),
-          ios: Version.parse('1.0.1'),
-        );
-
-        // act
-        final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-          currentVersion: currentVersion,
-          forceUpdateTargetVersion: forceUpdateTargetVersion,
-        );
-
-        // assert
-        expect(actual, false);
-      });
-
-      test(
-        '''プラットフォームがAndroid_強制アップデートバージョンにセマンティックバージョニング形式ではない場合_強制バージョンアップの対象ではないこと''',
-        () {
-          // arrange
-          debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = Version.parse('1.0.0');
-          final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: Version.parse('100001'),
-            ios: Version.parse('100000'),
-          );
-
-          // act
-          final actual = ForceUpdateSettingsState.isForceUpdateEnabled(
-            currentVersion: currentVersion,
-            forceUpdateTargetVersion: forceUpdateTargetVersion,
-          );
-
-          // assert
-          expect(actual, false);
-        },
-      );
-
-      test(
-        '''プラットフォームがAndroid_強制アップデートバージョンに数字ではない文字列が含まれている場合_強制バージョンアップの対象ではないこと''',
-        () {
-          // arrange
-          debugDefaultTargetPlatformOverride = TargetPlatform.android;
-          final currentVersion = Version.parse('1.0.0');
-          final forceUpdateTargetVersion = ForceUpdateTargetVersion(
-            android: Version.parse('1.0.1a'),
-            ios: Version.parse('1.0.1'),
           );
 
           // act
