@@ -82,8 +82,8 @@ as bool,
 /// @nodoc
 
 
-class _ForceUpdateSettingsState extends ForceUpdateSettingsState with DiagnosticableTreeMixin {
-  const _ForceUpdateSettingsState({this.enabled = false}): super._();
+class _ForceUpdateSettingsState with DiagnosticableTreeMixin implements ForceUpdateSettingsState {
+  const _ForceUpdateSettingsState({this.enabled = false});
   
 
 @override@JsonKey() final  bool enabled;
