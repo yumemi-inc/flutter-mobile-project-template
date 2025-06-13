@@ -27,9 +27,9 @@ labels:
     files:
       - packages/cores/ui/.+
 
-  - label: "@packages/features/debug_mode"
+  - label: "@packages/features/debug"
     files:
-      - packages/features/debug_mode/.+
+      - packages/features/debug/.+
 
   - label: "@packages/features/force_update"
     files:
