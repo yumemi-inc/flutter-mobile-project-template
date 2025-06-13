@@ -5,7 +5,7 @@ import 'package:pub_semver/pub_semver.dart';
 part 'operational_settings.freezed.dart';
 
 @freezed
-abstract class OperationalSettings with _$OperationalSettings {
+sealed class OperationalSettings with _$OperationalSettings {
   const factory OperationalSettings({
     required MaintenancePolicy maintenancePolicy,
     required ForceUpdatePolicy forceUpdatePolicy,
