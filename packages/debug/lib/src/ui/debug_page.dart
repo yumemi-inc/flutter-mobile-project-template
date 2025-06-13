@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:features_debug_mode/src/data/api/provider/exception_generator_api.dart';
+import 'package:cores_core/ui.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_debug/src/data/api/provider/exception_generator_api.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'debug_page.g.dart';
@@ -21,6 +22,17 @@ class DebugPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.listen<AsyncValue<String>>(
+      exceptionGeneratorApiProvider,
+      (_, value) {
+        if (value.hasError) {
+          SnackBarManager.showSnackBar(
+            'An error occurred: ${value.error}',
+          );
+        }
+      },
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Debug Mode'),

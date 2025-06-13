@@ -1,4 +1,4 @@
-name: features_debug_mode
+name: internal_debug
 description: "This package provides features for Debug Mode"
 publish_to: "none"
 version: 0.0.1
@@ -11,20 +11,12 @@ resolution: workspace
 
 dependencies:
   cores_core:
-    path: ../../cores/core
-  cores_data:
-    path: ../../cores/data
-  cores_designsystem:
-    path: ../../cores/designsystem
-  cores_model:
-    path: ../../cores/model
-  cores_ui:
-    path: ../../cores/ui
+    path: ../cores/core
   dio: ^5.8.0+1
   features_force_update:
-    path: ../force_update
+    path: ../features/force_update
   features_maintain:
-    path: ../maintain
+    path: ../features/maintain
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2
