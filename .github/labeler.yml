@@ -27,10 +27,6 @@ labels:
     files:
       - packages/cores/ui/.+
 
-  - label: "@packages/features/debug"
-    files:
-      - packages/features/debug/.+
-
   - label: "@packages/features/force_update"
     files:
       - packages/features/force_update/.+
@@ -54,6 +50,10 @@ labels:
   - label: "@packages/application"
     files:
       - packages/application/.+
+
+  - label: "@packages/debug"
+    files:
+      - packages/debug/.+
 
   - label: "@packages/design_theme"
     files:
