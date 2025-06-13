@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:features_force_update/src/domain/models/operating_system.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -39,11 +39,10 @@ sealed class RequiredVersions with _$RequiredVersions {
 
   const RequiredVersions._();
 
-  Version getMinimumFor(TargetPlatform platform) {
-    return switch (platform) {
-      TargetPlatform.iOS => ios,
-      TargetPlatform.android => android,
-      _ => throw UnimplementedError('Platform $platform is not supported'),
+  Version getMinimumFor(OperatingSystem os) {
+    return switch (os) {
+      OperatingSystem.ios => ios,
+      OperatingSystem.android => android,
     };
   }
 }

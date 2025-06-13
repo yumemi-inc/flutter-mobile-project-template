@@ -1,4 +1,5 @@
 import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
+import 'package:features_force_update/src/domain/models/operating_system.dart';
 import 'package:features_force_update/src/domain/models/operational_settings.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -16,11 +17,13 @@ class CheckForceUpdateUseCase {
   Future<bool> shouldForceUpdate(Version currentVersion) async {
     final operationalSettings = await operationalSettingRepository
         .getOperationalSettings();
+    final os = OperatingSystem.platform();
 
     return switch (operationalSettings.forceUpdatePolicy) {
-      ForceUpdateEnabled(:final minimumVersions) =>
-        currentVersion < minimumVersions.ios ||
-            currentVersion < minimumVersions.android,
+      ForceUpdateEnabled(:final minimumVersions) => switch (os) {
+        OperatingSystem.ios => currentVersion < minimumVersions.ios,
+        OperatingSystem.android => currentVersion < minimumVersions.android,
+      },
       ForceUpdateDisabled() => false,
     };
   }
