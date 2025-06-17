@@ -2,3 +2,4 @@
 export 'src/ui/debug_page.dart';
 export 'src/ui/navigation_debug_page.dart';
 export 'src/ui/shake_detection.dart';
+export 'src/ui/talker_page.dart';
