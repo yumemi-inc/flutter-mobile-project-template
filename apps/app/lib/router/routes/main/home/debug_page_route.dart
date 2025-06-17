@@ -11,9 +11,9 @@ final class _DebugPageNavigatorImpl implements DebugPageNavigator {
   }
 
   @override
-  void goLoggerPage(BuildContext context) {
+  void goTalkerPage(BuildContext context) {
     unawaited(
-      const LoggerPageRoute().push(context),
+      const TalkerPageRoute().push(context),
     );
   }
 }
@@ -24,8 +24,8 @@ final class _DebugPageNavigatorImpl implements DebugPageNavigator {
     TypedGoRoute<NavigationDebugPageRoute>(
       path: NavigationDebugPageRoute.path,
     ),
-    TypedGoRoute<LoggerPageRoute>(
-      path: LoggerPageRoute.path,
+    TypedGoRoute<TalkerPageRoute>(
+      path: TalkerPageRoute.path,
     ),
   ],
 )
@@ -64,16 +64,16 @@ class NavigationDebugPageRoute extends GoRouteData {
   }
 }
 
-class LoggerPageRoute extends GoRouteData {
-  const LoggerPageRoute();
+class TalkerPageRoute extends GoRouteData {
+  const TalkerPageRoute();
 
-  static const path = 'logger';
+  static const path = 'talker';
 
   static final GlobalKey<NavigatorState> $parentNavigatorKey =
       _rootNavigatorKey;
 
   @override
   Widget build(BuildContext context, GoRouterState state) {
-    return const LoggerPage();
+    return const TalkerPage();
   }
 }

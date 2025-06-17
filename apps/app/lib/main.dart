@@ -38,7 +38,7 @@ void main() async {
     ProviderScope(
       overrides: [
         ...overrideProviders,
-        loggerProvider.overrideWithValue(talker),
+        talkerProvider.overrideWithValue(talker),
       ],
       observers: [
         TalkerRiverpodObserver(talker: talker),

@@ -29,11 +29,11 @@ RouteBase get $debugPageRoute => GoRouteData.$route(
       factory: $NavigationDebugPageRouteExtension._fromState,
     ),
     GoRouteData.$route(
-      path: 'logger',
+      path: 'talker',
 
-      parentNavigatorKey: LoggerPageRoute.$parentNavigatorKey,
+      parentNavigatorKey: TalkerPageRoute.$parentNavigatorKey,
 
-      factory: $LoggerPageRouteExtension._fromState,
+      factory: $TalkerPageRouteExtension._fromState,
     ),
   ],
 );
@@ -70,11 +70,11 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $LoggerPageRouteExtension on LoggerPageRoute {
-  static LoggerPageRoute _fromState(GoRouterState state) =>
-      const LoggerPageRoute();
+extension $TalkerPageRouteExtension on TalkerPageRoute {
+  static TalkerPageRoute _fromState(GoRouterState state) =>
+      const TalkerPageRoute();
 
-  String get location => GoRouteData.$location('/debug/logger');
+  String get location => GoRouteData.$location('/debug/talker');
 
   void go(BuildContext context) => context.go(location);
 
