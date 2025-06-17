@@ -1,5 +1,5 @@
-import 'package:features_force_update/src/domain/models/operational_settings.dart';
 import 'package:features_force_update/src/domain/models/operating_system.dart';
+import 'package:features_force_update/src/domain/models/operational_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pub_semver/pub_semver.dart';
 
