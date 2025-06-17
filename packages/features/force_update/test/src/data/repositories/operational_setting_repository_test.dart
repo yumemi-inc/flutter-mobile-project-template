@@ -1,6 +1,6 @@
 import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
-import 'package:internal_domain_model/src/operational_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 void main() {
