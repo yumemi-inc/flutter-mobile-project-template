@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cores_core/exception.dart';
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
@@ -47,18 +46,6 @@ class MainApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeNotifierProvider);
     final enableAccessibilityTools = ref.watch(
       enableAccessibilityToolsProvider,
-    );
-
-    ref.listen<AppException?>(
-      appExceptionNotifierProvider,
-      (_, appException) {
-        if (appException != null) {
-          SnackBarManager.showSnackBar(
-            'An error occurred: ${appException.message}',
-          );
-          ref.read(appExceptionNotifierProvider.notifier).consume();
-        }
-      },
     );
 
     ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
