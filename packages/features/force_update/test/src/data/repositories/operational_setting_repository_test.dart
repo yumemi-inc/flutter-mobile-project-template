@@ -1,5 +1,5 @@
 import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
-import 'package:features_force_update/src/domain/models/operational_settings.dart';
+import 'package:internal_domain_model/src/operational_settings.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pub_semver/pub_semver.dart';
 

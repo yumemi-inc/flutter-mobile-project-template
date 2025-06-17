@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:cores_core/provider.dart';
 import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
-import 'package:features_force_update/src/domain/models/force_update_settings_state.dart';
-import 'package:features_force_update/src/domain/use_cases/check_force_update_use_case.dart';
+import 'package:features_force_update/src/use_cases/check_force_update_use_case.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

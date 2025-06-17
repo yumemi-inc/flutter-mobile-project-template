@@ -1,8 +1,8 @@
 import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
-import 'package:features_force_update/src/domain/models/operating_system.dart';
-import 'package:features_force_update/src/domain/models/operational_settings.dart';
-import 'package:features_force_update/src/domain/use_cases/check_force_update_use_case.dart';
+import 'package:features_force_update/src/use_cases/check_force_update_use_case.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
+
 import 'package:mocktail/mocktail.dart';
 import 'package:pub_semver/pub_semver.dart';
 
