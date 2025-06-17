@@ -28,6 +28,13 @@ RouteBase get $debugPageRoute => GoRouteData.$route(
 
       factory: $NavigationDebugPageRouteExtension._fromState,
     ),
+    GoRouteData.$route(
+      path: 'talker',
+
+      parentNavigatorKey: TalkerPageRoute.$parentNavigatorKey,
+
+      factory: $TalkerPageRouteExtension._fromState,
+    ),
   ],
 );
 
@@ -52,6 +59,22 @@ extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
       const NavigationDebugPageRoute();
 
   String get location => GoRouteData.$location('/debug/navigation_debug');
+
+  void go(BuildContext context) => context.go(location);
+
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  void replace(BuildContext context) => context.replace(location);
+}
+
+extension $TalkerPageRouteExtension on TalkerPageRoute {
+  static TalkerPageRoute _fromState(GoRouterState state) =>
+      const TalkerPageRoute();
+
+  String get location => GoRouteData.$location('/debug/talker');
 
   void go(BuildContext context) => context.go(location);
 
