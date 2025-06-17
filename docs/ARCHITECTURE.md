@@ -7,7 +7,7 @@
 
 以下にディレクトリ構造を示します。
 
-```text
+```bash
 .
 ├── apps
 │   ├── app
@@ -18,6 +18,7 @@
 └── packages
     ├── design_domain_ui # (optional)
     ├── design_ui
+    ├── debug
     ├── design_theme
     ├── application
     ├── infrastructure
@@ -80,6 +81,12 @@ flowchart TD
     class domain_logic package
   end
 
+  %% Debug Layer
+  subgraph "Debug Layer"
+    debug[debug]
+    class debug package
+  end
+
   %% Dependencies
   presentation --> composition_root
   presentation --> domain_model
@@ -104,6 +111,9 @@ flowchart TD
   design_ui --> design_theme
 
   domain_logic --> domain_model
+
+  %% Debug Layer Dependencies
+  presentation --> debug
 
   %% Legend
   subgraph "Legend"
