@@ -28,21 +28,18 @@ void main() async {
   final (
     overrideProviders: overrideProviders,
   ) = await AppInitializer.initialize();
+  final overrideObservers = <ProviderObserver>[];
 
-  final talker = TalkerFlutter.init(
-    // ignore: avoid_redundant_argument_values sort_pub_dependencies
-    settings: TalkerSettings(enabled: kDebugMode),
-  );
+  if (kDebugMode) {
+    final talker = TalkerFlutter.init(settings: TalkerSettings());
+    overrideProviders.add(talkerProvider.overrideWithValue(talker));
+    overrideObservers.add(TalkerRiverpodObserver(talker: talker));
+  }
 
   runApp(
     ProviderScope(
-      overrides: [
-        ...overrideProviders,
-        talkerProvider.overrideWithValue(talker),
-      ],
-      observers: [
-        TalkerRiverpodObserver(talker: talker),
-      ],
+      overrides: overrideProviders,
+      observers: overrideObservers,
       child: const MainApp(),
     ),
   );
