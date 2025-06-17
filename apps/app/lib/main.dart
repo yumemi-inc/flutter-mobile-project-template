@@ -4,7 +4,6 @@ import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
 import 'package:cores_designsystem/themes.dart';
 import 'package:cores_ui/l10n.dart';
-import 'package:features_debug_mode/ui.dart';
 import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/l10n.dart';
 import 'package:features_setting/l10n.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_debug/ui.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
