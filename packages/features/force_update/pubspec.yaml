@@ -29,6 +29,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^3.0.6
+  mocktail: ^1.0.0
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5
 
