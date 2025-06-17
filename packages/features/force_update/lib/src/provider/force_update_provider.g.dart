@@ -48,7 +48,7 @@ final checkForceUpdateUseCaseProvider =
 // ignore: unused_element
 typedef CheckForceUpdateUseCaseRef =
     AutoDisposeProviderRef<CheckForceUpdateUseCase>;
-String _$forceUpdateHash() => r'f5e39b0851ad1eddae9a8ec72602be530cb2744d';
+String _$forceUpdateHash() => r'ff7b5cb0f6229859bb6d6734eeb7fa43cfa48c08';
 
 /// See also [ForceUpdate].
 @ProviderFor(ForceUpdate)

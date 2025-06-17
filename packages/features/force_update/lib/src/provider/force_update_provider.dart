@@ -31,7 +31,7 @@ class ForceUpdate extends _$ForceUpdate {
     );
 
     final enabled = await ref
-        .read(checkForceUpdateUseCaseProvider)
+        .watch(checkForceUpdateUseCaseProvider)
         .shouldForceUpdate(
           Version.parse(currentVersion),
         );
