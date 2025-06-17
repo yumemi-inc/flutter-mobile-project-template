@@ -53,6 +53,9 @@ class MainApp extends ConsumerWidget {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
 
+    final enableAccessibilityTools =
+        kDebugMode && ref.watch(enableAccessibilityToolsProvider);
+
     ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
       final message = switch (forceUpdateSettingsState) {
         AsyncError(:final error) => 'Failed to check for updates: $error',
@@ -83,6 +86,9 @@ class MainApp extends ConsumerWidget {
         ...SettingL10n.supportedLocales,
       ],
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
+      builder: enableAccessibilityTools
+          ? (context, child) => AccessibilityTools(child: child)
+          : null,
       routerConfig: ref.watch(routerProvider),
       theme: lightTheme(),
       darkTheme: darkTheme(),

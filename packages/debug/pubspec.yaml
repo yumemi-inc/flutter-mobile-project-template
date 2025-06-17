@@ -10,6 +10,7 @@ environment:
 resolution: workspace
 
 dependencies:
+  accessibility_tools: ^2.6.0
   cores_core:
     path: ../cores/core
   dio: ^5.8.0+1
