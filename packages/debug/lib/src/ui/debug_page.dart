@@ -18,6 +18,14 @@ abstract interface class DebugPageNavigator {
 @Riverpod(dependencies: [])
 DebugPageNavigator debugPageNavigator(Ref ref) => throw UnimplementedError();
 
+@Riverpod(dependencies: [])
+class EnableAccessibilityTools extends _$EnableAccessibilityTools {
+  @override
+  bool build() => false;
+
+  void toggle() => state = !state;
+}
+
 class DebugPage extends ConsumerWidget {
   const DebugPage({super.key});
 
@@ -66,6 +74,12 @@ class DebugPage extends ConsumerWidget {
                       iosTargetVersion: VersionString('9.9.9'),
                       androidTargetVersion: VersionString('9.9.9'),
                     );
+              },
+            ),
+            _FixSizedElevatedButton(
+              title: 'Toggle accessibility tools',
+              onPressed: () {
+                ref.read(enableAccessibilityToolsProvider.notifier).toggle();
               },
             ),
             _FixSizedElevatedButton(
