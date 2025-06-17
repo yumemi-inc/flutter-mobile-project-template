@@ -9,7 +9,7 @@ part of 'exception_generator_api.dart';
 // **************************************************************************
 
 String _$exceptionGeneratorApiHash() =>
-    r'3f607fee9a2d29eb801524385ea72cdd9f0c5fc3';
+    r'09f70b6f480042b414a4a6969429d48f071ac670';
 
 /// See also [ExceptionGeneratorApi].
 @ProviderFor(ExceptionGeneratorApi)
