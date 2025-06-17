@@ -21,7 +21,7 @@ workspace:
   - packages/cores/model
   - packages/cores/ui
   # features
-  - packages/features/debug_mode
+  - packages/debug
   - packages/features/force_update
   - packages/features/maintain
   - packages/features/setting
