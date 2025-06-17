@@ -44,9 +44,10 @@ class MainApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeNotifierProvider);
-    final enableAccessibilityTools = ref.watch(
-      enableAccessibilityToolsProvider,
-    );
+    // ignore: avoid_bool_literals_in_conditional_expressions
+    final enableAccessibilityTools = kDebugMode
+        ? ref.watch(enableAccessibilityToolsProvider)
+        : false;
 
     ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
       final forceUpdateEnabled = forceUpdateSettingsState.enabled;
