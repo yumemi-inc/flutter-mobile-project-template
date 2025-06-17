@@ -12,6 +12,7 @@ part 'debug_page.g.dart';
 
 abstract interface class DebugPageNavigator {
   void goNavigationDebugPage(BuildContext context);
+  void goTalkerPage(BuildContext context);
 }
 
 @Riverpod(dependencies: [])
@@ -86,6 +87,11 @@ class DebugPage extends ConsumerWidget {
               onPressed: () => ref
                   .read(debugPageNavigatorProvider)
                   .goNavigationDebugPage(context),
+            ),
+            _FixSizedElevatedButton(
+              title: 'Go navigation talker page',
+              onPressed: () =>
+                  ref.read(debugPageNavigatorProvider).goTalkerPage(context),
             ),
           ],
         ),
