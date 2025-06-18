@@ -16,14 +16,11 @@ migrate_working_dir/
 *.iws
 .idea/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
-#.vscode/
+# https://dart.dev/guides/libraries/private-files
+# Created by `dart pub`
+/**/doc/api/
+/.dart_tool/
+/build/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-build/
+# custom_lint
+/custom_lint.log
