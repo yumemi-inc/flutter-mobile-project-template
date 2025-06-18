@@ -1,3 +1,26 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.buildlog/
+.history
+.svn/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
 # https://dart.dev/guides/libraries/private-files
 # Created by `dart pub`
-.dart_tool/
+/**/doc/api/
+/.dart_tool/
+/build/
+
+# custom_lint
+/custom_lint.log

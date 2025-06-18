@@ -27,7 +27,7 @@ Dart の [`freezed` パッケージ](https://pub.dev/packages/freezed) や [Exte
 
 - **値オブジェクト (Value Object)**:
   - **特徴**: 属性によって定義され、識別子を持ちません。同じ属性値を持つオブジェクトは同一とみなされます。イミュータブルであることが強く推奨されます。
-  - **例**: `Version`, `Platform`, `RequiredVersions`
+  - **例**: `Version`, `OperatingSystem`, `RequiredVersions`
 - **集約ルート (Aggregate Root) / エンティティ (Entity)**:
   - **特徴**: ライフサイクルを通じて一意な識別子を持ちます。状態が変化しても、その同一性は保持されます。集約ルートは、関連するオブジェクト群（集約）の一貫性を保つ責任を持ちます。
   - **例**: `OperationalSettings`
@@ -57,7 +57,7 @@ Dart の [`freezed` パッケージ](https://pub.dev/packages/freezed) や [Exte
 - `ForceUpdatePolicy` (`sealed`): 強制アップデートのポリシー (`Enabled` / `Disabled`) を表現する。
 - `RequiredVersions`: `ForceUpdateEnabled` が保持する、プラットフォームごとの最低要求バージョン。
 - `Version`: バージョンを表す値オブジェクト。
-- `Platform`: プラットフォーム (`ios` / `android`) を表す値オブジェクト (Enum)。
+- `OperatingSystem`: 動作環境のOS (`ios` / `android`) を表す値オブジェクト (Enum)。
 
 **クラス図**:
 
@@ -99,7 +99,7 @@ classDiagram
     class RequiredVersions {
         +Version ios
         +Version android
-        +getMinimumFor(Platform platform) Version
+        +getMinimumFor(OperatingSystem platform) Version
     }
 
     %% --- Value Objects & Enums ---
@@ -109,7 +109,7 @@ classDiagram
         +greaterThan(Version other) bool
         +equals(Version other) bool
     }
-    class Platform {
+    class OperatingSystem {
         <<enumeration>>
         ios
         android
@@ -121,7 +121,7 @@ classDiagram
     ForceUpdateEnabled *--> RequiredVersions
     RequiredVersions o--> Version : ios
     RequiredVersions o--> Version : android
-    RequiredVersions ..> Platform : uses
+    RequiredVersions ..> OperatingSystem : uses
 ```
 
 **設計ポイント**:

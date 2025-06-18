@@ -57,13 +57,19 @@ class MainApp extends ConsumerWidget {
         kDebugMode && ref.watch(enableAccessibilityToolsProvider);
 
     ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
-      final forceUpdateEnabled = forceUpdateSettingsState.enabled;
-      if (forceUpdateEnabled) {
-        SnackBarManager.showSnackBar(
-          'Force Update is required.',
-        );
-        ref.read(forceUpdateProvider.notifier).disable();
+      final message = switch (forceUpdateSettingsState) {
+        AsyncError(:final error) => 'Failed to check for updates: $error',
+        AsyncData(:final value) =>
+          value.enabled ? 'Force Update is required.' : null,
+        _ => null,
+      };
+
+      if (message == null) {
+        return;
       }
+
+      SnackBarManager.showSnackBar(message);
+      ref.read(forceUpdateProvider.notifier).disable();
     });
 
     return MaterialApp.router(

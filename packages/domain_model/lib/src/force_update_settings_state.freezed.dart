@@ -13,7 +13,7 @@ part of 'force_update_settings_state.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$ForceUpdateSettingsState implements DiagnosticableTreeMixin {
+mixin _$ForceUpdateSettingsState {
 
  bool get enabled;
 /// Create a copy of ForceUpdateSettingsState
@@ -23,12 +23,6 @@ mixin _$ForceUpdateSettingsState implements DiagnosticableTreeMixin {
 $ForceUpdateSettingsStateCopyWith<ForceUpdateSettingsState> get copyWith => _$ForceUpdateSettingsStateCopyWithImpl<ForceUpdateSettingsState>(this as ForceUpdateSettingsState, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'ForceUpdateSettingsState'))
-    ..add(DiagnosticsProperty('enabled', enabled));
-}
 
 @override
 bool operator ==(Object other) {
@@ -40,7 +34,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,enabled);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'ForceUpdateSettingsState(enabled: $enabled)';
 }
 
@@ -82,8 +76,8 @@ as bool,
 /// @nodoc
 
 
-class _ForceUpdateSettingsState extends ForceUpdateSettingsState with DiagnosticableTreeMixin {
-  const _ForceUpdateSettingsState({this.enabled = false}): super._();
+class _ForceUpdateSettingsState implements ForceUpdateSettingsState {
+  const _ForceUpdateSettingsState({this.enabled = false});
   
 
 @override@JsonKey() final  bool enabled;
@@ -95,12 +89,6 @@ class _ForceUpdateSettingsState extends ForceUpdateSettingsState with Diagnostic
 _$ForceUpdateSettingsStateCopyWith<_ForceUpdateSettingsState> get copyWith => __$ForceUpdateSettingsStateCopyWithImpl<_ForceUpdateSettingsState>(this, _$identity);
 
 
-@override
-void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-  properties
-    ..add(DiagnosticsProperty('type', 'ForceUpdateSettingsState'))
-    ..add(DiagnosticsProperty('enabled', enabled));
-}
 
 @override
 bool operator ==(Object other) {
@@ -112,7 +100,7 @@ bool operator ==(Object other) {
 int get hashCode => Object.hash(runtimeType,enabled);
 
 @override
-String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
+String toString() {
   return 'ForceUpdateSettingsState(enabled: $enabled)';
 }
 

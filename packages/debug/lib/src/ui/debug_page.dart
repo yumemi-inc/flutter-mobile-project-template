@@ -68,12 +68,7 @@ class DebugPage extends ConsumerWidget {
             _FixSizedElevatedButton(
               title: 'Enable force update',
               onPressed: () {
-                ref
-                    .read(forceUpdateVersionProvider.notifier)
-                    .update(
-                      iosTargetVersion: VersionString('9.9.9'),
-                      androidTargetVersion: VersionString('9.9.9'),
-                    );
+                ref.read(forceUpdateProvider.notifier).debugEnableForceUpdate();
               },
             ),
             _FixSizedElevatedButton(

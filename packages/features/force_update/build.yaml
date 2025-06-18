@@ -1,11 +1,6 @@
 targets:
   $default:
     builders:
-      freezed:
-        # https://github.com/dart-lang/build/blob/master/docs/faq.md#how-do-i-avoid-running-builders-on-unnecessary-inputs
-        generate_for:
-          include:
-            - lib/src/{model,**/model}/**.dart
       riverpod_generator:
         generate_for:
           include:

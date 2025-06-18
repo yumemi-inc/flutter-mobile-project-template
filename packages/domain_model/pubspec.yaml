@@ -9,9 +9,8 @@ environment:
 resolution: workspace
 
 dependencies:
-  flutter:
-    sdk: flutter
   freezed_annotation: ^3.0.0
+  pub_semver: ^2.2.0
 
 dev_dependencies:
   build_runner: ^2.4.15
