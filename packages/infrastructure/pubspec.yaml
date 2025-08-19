@@ -15,6 +15,7 @@ dependencies:
     path: ../domain_logic
   internal_domain_model:
     path: ../domain_model
+  pub_semver: ^2.2.0
   shared_preferences: ^2.5.3
 
 dev_dependencies:
