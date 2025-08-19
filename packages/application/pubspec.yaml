@@ -18,10 +18,10 @@ dependencies:
   pub_semver: ^2.2.0
 
 dev_dependencies:
-  test: ^1.25.15
-  mocktail: ^1.0.0
   flutter_test:
     sdk: flutter
+  mocktail: ^1.0.0
+  test: ^1.25.15
 
 flutter:
   uses-material-design: true
