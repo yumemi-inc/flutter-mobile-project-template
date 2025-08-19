@@ -95,8 +95,8 @@ $ForceUpdatePolicyCopyWith<$Res> get forceUpdatePolicy {
 /// @nodoc
 
 
-class _OperationalSettings implements OperationalSettings {
-  const _OperationalSettings({required this.maintenancePolicy, required this.forceUpdatePolicy});
+class _OperationalSettings extends OperationalSettings {
+  const _OperationalSettings({required this.maintenancePolicy, required this.forceUpdatePolicy}): super._();
   
 
 @override final  MaintenancePolicy maintenancePolicy;
