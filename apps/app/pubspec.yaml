@@ -50,6 +50,7 @@ dependencies:
   intl: ^0.20.2
   json_annotation: ^4.9.0
   package_info_plus: ^8.3.0
+  pub_semver: ^2.2.0
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.3
   talker_flutter: ^4.8.2
