@@ -9,10 +9,19 @@ environment:
 resolution: workspace
 
 dependencies:
+  flutter:
+    sdk: flutter
   internal_domain_logic:
     path: ../domain_logic
   internal_domain_model:
     path: ../domain_model
+  pub_semver: ^2.2.0
 
 dev_dependencies:
   test: ^1.25.15
+  mocktail: ^1.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
