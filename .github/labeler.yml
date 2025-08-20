@@ -23,10 +23,6 @@ labels:
     files:
       - packages/cores/model/.+
 
-  - label: "@packages/cores/ui"
-    files:
-      - packages/cores/ui/.+
-
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+

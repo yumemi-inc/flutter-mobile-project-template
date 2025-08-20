@@ -63,10 +63,6 @@
   color: 9ebfb6
   description: packages cores model package
 
-- name: "@packages/cores/ui"
-  color: a8dbe7
-  description: packages cores ui package
-
 - name: "@packages/features/setting"
   color: 1e266d
   description: packages features setting package
