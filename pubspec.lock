@@ -1021,30 +1021,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.28.0"
-  sensors_plus:
+  shake_gesture:
     dependency: transitive
     description:
-      name: sensors_plus
-      sha256: "905282c917c6bb731c242f928665c2ea15445aa491249dea9d98d7c79dc8fd39"
+      name: shake_gesture
+      sha256: "17c360aeaddee2367752a30d5165e6a787625414358c695482176010e11842c3"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.1"
-  sensors_plus_platform_interface:
+    version: "1.2.0"
+  shake_gesture_android:
     dependency: transitive
     description:
-      name: sensors_plus_platform_interface
-      sha256: "58815d2f5e46c0c41c40fb39375d3f127306f7742efe3b891c0b1c87e2b5cd5d"
+      name: shake_gesture_android
+      sha256: "8b6751bbeea8b357cab22d599308d087975297d0694599d83acc3f7e508f63ab"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
-  shake:
+    version: "1.1.5"
+  shake_gesture_ios:
     dependency: transitive
     description:
-      name: shake
-      sha256: "7bb2bd14e9cd23a0d569f8a286b2b63ba1552ac348914d2d41ec757117ddda4e"
+      name: shake_gesture_ios
+      sha256: dd7d5a89587f3696d2abe45d35c350e9986ebaa723538892e6da91d4c7e092d5
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "1.0.2"
+  shake_gesture_platform_interface:
+    dependency: transitive
+    description:
+      name: shake_gesture_platform_interface
+      sha256: c5e9adef94892c16e030aabd2c480620cac4dfc002f397309e796248a2a397cc
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   share_plus:
     dependency: transitive
     description:
