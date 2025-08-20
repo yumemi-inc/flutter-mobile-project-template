@@ -14,13 +14,13 @@ dependencies:
     path: ../../cores/core
   cores_data:
     path: ../../cores/data
-  cores_designsystem:
-    path: ../../cores/designsystem
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2
   freezed_annotation: ^3.0.0
   hooks_riverpod: ^2.6.1
+  internal_design_ui:
+    path: ../../design_ui
   json_annotation: ^4.9.0
   riverpod_annotation: ^2.6.1
   utils_pagination:
