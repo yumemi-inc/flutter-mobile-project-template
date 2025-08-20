@@ -27,10 +27,6 @@ labels:
     files:
       - packages/cores/ui/.+
 
-  - label: "@packages/features/maintain"
-    files:
-      - packages/features/maintain/.+
-
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+

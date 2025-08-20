@@ -22,7 +22,6 @@ workspace:
   - packages/cores/ui
   # features
   - packages/debug
-  - packages/features/maintain
   - packages/features/setting
 
   # samples
