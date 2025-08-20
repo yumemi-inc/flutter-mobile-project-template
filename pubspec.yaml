@@ -18,7 +18,6 @@ workspace:
   - packages/cores/core
   - packages/cores/data
   - packages/cores/designsystem
-  - packages/cores/model
   # features
   - packages/debug
   - packages/features/setting

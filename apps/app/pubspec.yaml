@@ -16,8 +16,6 @@ dependencies:
     path: ../../packages/cores/data
   cores_designsystem:
     path: ../../packages/cores/designsystem
-  cores_model:
-    path: ../../packages/cores/model
   features_setting:
     path: ../../packages/features/setting
   flutter:
