@@ -54,11 +54,6 @@
   description: packages cores data package
   from_name: "@cores/data"
 
-- name: "@packages/features/setting"
-  color: 1e266d
-  description: packages features setting package
-  from_name: "@cores/setting"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development
