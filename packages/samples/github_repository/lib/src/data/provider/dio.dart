@@ -1,8 +1,8 @@
 import 'package:cores_core/exception.dart';
-import 'package:cores_data/src/network/provider/github_access_token.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:samples_github_repository/src/data/provider/github_access_token.dart';
 
 part 'dio.g.dart';
 
