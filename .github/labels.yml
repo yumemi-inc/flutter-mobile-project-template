@@ -67,10 +67,6 @@
   color: a8dbe7
   description: packages cores ui package
 
-- name: "@packages/features/force_update"
-  color: 64fa8a
-  description: packages features force_update package
-
 - name: "@packages/features/maintain"
   color: 6004a3
   description: packages features maintain package

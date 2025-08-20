@@ -20,8 +20,6 @@ dependencies:
     path: ../../packages/cores/model
   cores_ui:
     path: ../../packages/cores/ui
-  features_force_update:
-    path: ../../packages/features/force_update
   features_maintain:
     path: ../../packages/features/maintain
   features_setting:

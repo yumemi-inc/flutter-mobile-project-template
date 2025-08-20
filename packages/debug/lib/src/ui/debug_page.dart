@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cores_core/ui.dart';
-import 'package:features_force_update/force_update.dart';
 import 'package:features_maintain/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -17,6 +16,13 @@ abstract interface class DebugPageNavigator {
 
 @Riverpod(dependencies: [])
 DebugPageNavigator debugPageNavigator(Ref ref) => throw UnimplementedError();
+
+abstract interface class DebugPagePresenter {
+  void enableForceUpdate();
+}
+
+@Riverpod(dependencies: [])
+DebugPagePresenter debugPagePresenter(Ref ref) => throw UnimplementedError();
 
 @Riverpod(dependencies: [])
 class EnableAccessibilityTools extends _$EnableAccessibilityTools {
@@ -67,9 +73,8 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable force update',
-              onPressed: () {
-                ref.read(forceUpdateProvider.notifier).debugEnableForceUpdate();
-              },
+              onPressed: () =>
+                  ref.read(debugPagePresenterProvider).enableForceUpdate(),
             ),
             _FixSizedElevatedButton(
               title: 'Toggle accessibility tools',
