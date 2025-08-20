@@ -27,6 +27,11 @@ final class _DebugPagePresenterImpl implements DebugPagePresenter {
   void enableForceUpdate() {
     ref.read(forceUpdateProvider.notifier).debugEnableForceUpdate();
   }
+
+  @override
+  void enableMaintenanceMode() {
+    ref.read(maintenanceModeProvider.notifier).debugEnableMaintenanceMode();
+  }
 }
 
 @TypedGoRoute<DebugPageRoute>(
