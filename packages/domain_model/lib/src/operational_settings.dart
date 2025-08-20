@@ -23,8 +23,6 @@ abstract class OperationalSettings with _$OperationalSettings {
       ForceUpdateDisabled() => false,
     };
   }
-
-
 }
 
 @freezed
