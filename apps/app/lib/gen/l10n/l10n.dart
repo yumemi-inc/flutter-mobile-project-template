@@ -120,6 +120,24 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'ホーム'**
   String get home;
+
+  /// No description provided for @maintainAppBar.
+  ///
+  /// In ja, this message translates to:
+  /// **'メンテナンスモード'**
+  String get maintainAppBar;
+
+  /// No description provided for @maintainDescription.
+  ///
+  /// In ja, this message translates to:
+  /// **'メンテナンス中です.'**
+  String get maintainDescription;
+
+  /// No description provided for @maintainDisableButtonTitle.
+  ///
+  /// In ja, this message translates to:
+  /// **'メンテナンスモードを無効にする'**
+  String get maintainDisableButtonTitle;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {

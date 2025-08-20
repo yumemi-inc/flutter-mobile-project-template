@@ -3,5 +3,8 @@
   "appBar": "Flutter Template",
   "bottomTabHome": "Home",
   "bottomTabSettings": "Settings",
-  "home": "Home"
+  "home": "Home",
+  "maintainAppBar": "Maintenance mode",
+  "maintainDescription": "Maintenance in progress.",
+  "maintainDisableButtonTitle": "Disable maintenance mode"
 }

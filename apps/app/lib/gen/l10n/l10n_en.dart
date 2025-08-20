@@ -19,4 +19,13 @@ class L10nEn extends L10n {
 
   @override
   String get home => 'Home';
+
+  @override
+  String get maintainAppBar => 'Maintenance mode';
+
+  @override
+  String get maintainDescription => 'Maintenance in progress.';
+
+  @override
+  String get maintainDisableButtonTitle => 'Disable maintenance mode';
 }

@@ -3,5 +3,8 @@
   "appBar": "Flutter テンプレート",
   "bottomTabHome": "ホーム",
   "bottomTabSettings": "設定",
-  "home": "ホーム"
+  "home": "ホーム",
+  "maintainAppBar": "メンテナンスモード",
+  "maintainDescription": "メンテナンス中です.",
+  "maintainDisableButtonTitle": "メンテナンスモードを無効にする"
 }
