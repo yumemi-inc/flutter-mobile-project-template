@@ -49,11 +49,6 @@
   description: packages cores core package
   from_name: "@cores/core"
 
-- name: "@packages/cores/data"
-  color: 50D413
-  description: packages cores data package
-  from_name: "@cores/data"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development
