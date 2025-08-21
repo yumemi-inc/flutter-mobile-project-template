@@ -11,10 +11,6 @@ labels:
     files:
       - packages/cores/core/.+
 
-  - label: "@packages/cores/data"
-    files:
-      - packages/cores/data/.+
-
   - label: "@apps/app"
     files:
       - apps/app/.+

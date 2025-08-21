@@ -16,7 +16,6 @@ workspace:
   # TODO: cores, features は廃止予定
   # cores
   - packages/cores/core
-  - packages/cores/data
   # features
   - packages/debug
   # samples
