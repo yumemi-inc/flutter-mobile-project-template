@@ -20,8 +20,6 @@ dependencies:
     path: ../../packages/cores/model
   cores_ui:
     path: ../../packages/cores/ui
-  features_force_update:
-    path: ../../packages/features/force_update
   features_maintain:
     path: ../../packages/features/maintain
   features_setting:
@@ -50,6 +48,7 @@ dependencies:
   intl: ^0.20.2
   json_annotation: ^4.9.0
   package_info_plus: ^8.3.0
+  pub_semver: ^2.2.0
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.3
   talker_flutter: ^4.8.2

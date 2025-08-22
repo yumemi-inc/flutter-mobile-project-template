@@ -1,13 +1,13 @@
-import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_infrastructure/internal_infrastructure.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 void main() {
-  late OperationalSettingRepository repository;
+  late OperationalSettingsRepositoryImpl repository;
 
   setUp(() {
-    repository = OperationalSettingRepository();
+    repository = OperationalSettingsRepositoryImpl();
   });
 
   group('getOperationalSettings', () {

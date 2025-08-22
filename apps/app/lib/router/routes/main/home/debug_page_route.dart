@@ -18,6 +18,17 @@ final class _DebugPageNavigatorImpl implements DebugPageNavigator {
   }
 }
 
+final class _DebugPagePresenterImpl implements DebugPagePresenter {
+  _DebugPagePresenterImpl(this.ref);
+
+  final Ref ref;
+
+  @override
+  void enableForceUpdate() {
+    ref.read(forceUpdateProvider.notifier).debugEnableForceUpdate();
+  }
+}
+
 @TypedGoRoute<DebugPageRoute>(
   path: DebugPageRoute.path,
   routes: [
@@ -43,6 +54,9 @@ class DebugPageRoute extends GoRouteData {
       overrides: [
         debugPageNavigatorProvider.overrideWithValue(
           const _DebugPageNavigatorImpl(),
+        ),
+        debugPagePresenterProvider.overrideWith(
+          _DebugPagePresenterImpl.new,
         ),
       ],
       child: const DebugPage(),

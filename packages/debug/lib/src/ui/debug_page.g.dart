@@ -27,6 +27,25 @@ final debugPageNavigatorProvider =
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef DebugPageNavigatorRef = AutoDisposeProviderRef<DebugPageNavigator>;
+String _$debugPagePresenterHash() =>
+    r'679d386296e3bc30d22f5d9e4a64b245637a3203';
+
+/// See also [debugPagePresenter].
+@ProviderFor(debugPagePresenter)
+final debugPagePresenterProvider =
+    AutoDisposeProvider<DebugPagePresenter>.internal(
+      debugPagePresenter,
+      name: r'debugPagePresenterProvider',
+      debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$debugPagePresenterHash,
+      dependencies: const <ProviderOrFamily>[],
+      allTransitiveDependencies: const <ProviderOrFamily>{},
+    );
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef DebugPagePresenterRef = AutoDisposeProviderRef<DebugPagePresenter>;
 String _$enableAccessibilityToolsHash() =>
     r'2336e03c013a02fce71fd97ca7c1c55210ae89e6';
 

@@ -18,7 +18,8 @@ targets:
       riverpod_generator:
         generate_for:
           include:
-            - lib/{provider,**/provider}/**.dart
+            - lib/{providers,**/providers}/**.dart
+            - lib/{composition_root,**/composition_root}/**.dart
             - lib/router/router.dart
             # ページファイル内で navigatorProvider を定義できるようにする
             - lib/**/*_page.dart

@@ -1,8 +1,11 @@
+import 'package:internal_domain_logic/internal_domain_logic.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:pub_semver/pub_semver.dart';
 
-class OperationalSettingRepository {
-  /// [OperationalSettings]を取得する
+/// 運用設定集約ルートのリポジトリ実装
+class OperationalSettingsRepositoryImpl
+    implements OperationalSettingsRepository {
+  @override
   Future<OperationalSettings> getOperationalSettings() async {
     final (maintenancePolicy, forceUpdatePolicy) = await (
       getMaintenancePolicy(),

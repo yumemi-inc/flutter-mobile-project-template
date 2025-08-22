@@ -1,22 +1,21 @@
-import 'package:features_force_update/src/data/repositories/operational_setting_repository.dart';
-import 'package:features_force_update/src/use_cases/check_force_update_use_case.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:internal_application/internal_application.dart';
+import 'package:internal_domain_logic/internal_domain_logic.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
-
 import 'package:mocktail/mocktail.dart';
 import 'package:pub_semver/pub_semver.dart';
+import 'package:test/test.dart';
 
-class MockOperationalSettingRepository extends Mock
-    implements OperationalSettingRepository {}
+class MockOperationalSettingsRepository extends Mock
+    implements OperationalSettingsRepository {}
 
 void main() {
   late CheckForceUpdateUseCase useCase;
-  late MockOperationalSettingRepository mockRepository;
+  late MockOperationalSettingsRepository mockRepository;
 
   setUp(() {
-    mockRepository = MockOperationalSettingRepository();
+    mockRepository = MockOperationalSettingsRepository();
     useCase = CheckForceUpdateUseCase(
-      operationalSettingRepository: mockRepository,
+      operationalSettingsRepository: mockRepository,
     );
   });
 

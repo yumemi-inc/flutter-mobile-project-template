@@ -10,6 +10,19 @@ abstract class OperationalSettings with _$OperationalSettings {
     required MaintenancePolicy maintenancePolicy,
     required ForceUpdatePolicy forceUpdatePolicy,
   }) = _OperationalSettings;
+
+  const OperationalSettings._();
+
+  /// 強制アップデートが必要かどうかを判定する
+  bool isForceUpdateRequired(Version currentVersion, OperatingSystem os) {
+    return switch (forceUpdatePolicy) {
+      ForceUpdateEnabled(:final minimumVersions) => switch (os) {
+        OperatingSystem.ios => currentVersion < minimumVersions.ios,
+        OperatingSystem.android => currentVersion < minimumVersions.android,
+      },
+      ForceUpdateDisabled() => false,
+    };
+  }
 }
 
 @freezed
