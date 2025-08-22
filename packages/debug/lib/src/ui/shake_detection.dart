@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:shake/shake.dart';
+import 'package:shake_gesture/shake_gesture.dart';
 
-class ShakeDetection extends StatefulWidget {
+class ShakeDetection extends StatelessWidget {
   const ShakeDetection({
     required this.onShake,
     required this.child,
@@ -20,30 +20,10 @@ class ShakeDetection extends StatefulWidget {
   }
 
   @override
-  State<ShakeDetection> createState() => _ShakeDetectionState();
-}
-
-class _ShakeDetectionState extends State<ShakeDetection> {
-  ShakeDetector? _detector;
-
-  @override
-  void initState() {
-    super.initState();
-    _detector = ShakeDetector.autoStart(
-      onPhoneShake: (_) {
-        widget.onShake();
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    _detector?.stopListening();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return widget.child;
+    return ShakeGesture(
+      onShake: onShake,
+      child: child,
+    );
   }
 }
