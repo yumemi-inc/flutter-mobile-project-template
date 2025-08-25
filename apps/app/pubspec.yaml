@@ -14,8 +14,6 @@ dependencies:
     path: ../../packages/cores/core
   cores_data:
     path: ../../packages/cores/data
-  features_setting:
-    path: ../../packages/features/setting
   flutter:
     sdk: flutter
   flutter_localizations:

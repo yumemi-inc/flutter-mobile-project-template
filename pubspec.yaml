@@ -19,8 +19,6 @@ workspace:
   - packages/cores/data
   # features
   - packages/debug
-  - packages/features/setting
-
   # samples
   - packages/samples/github_repository
   - samples/github_app

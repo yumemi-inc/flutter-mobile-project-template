@@ -15,10 +15,6 @@ labels:
     files:
       - packages/cores/data/.+
 
-  - label: "@packages/features/setting"
-    files:
-      - packages/features/setting/.+
-
   - label: "@apps/app"
     files:
       - apps/app/.+

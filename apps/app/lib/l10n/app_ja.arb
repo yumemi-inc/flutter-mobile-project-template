@@ -6,5 +6,11 @@
   "home": "ホーム",
   "maintainAppBar": "メンテナンスモード",
   "maintainDescription": "メンテナンス中です.",
-  "maintainDisableButtonTitle": "メンテナンスモードを無効にする"
+  "maintainDisableButtonTitle": "メンテナンスモードを無効にする",
+  "settingAppBar": "設定",
+  "settingThemeSetting": "テーマ設定",
+  "settingAbout": "FlutterMobileTemplate について",
+  "settingOpenSourceLicenses": "オープンソースライセンス",
+  "settingLibrariesWeUse": "使用しているライブラリ",
+  "settingVersion": "バージョン"
 }

@@ -28,4 +28,22 @@ class L10nEn extends L10n {
 
   @override
   String get maintainDisableButtonTitle => 'Disable maintenance mode';
+
+  @override
+  String get settingAppBar => 'Setting';
+
+  @override
+  String get settingThemeSetting => 'Theme Setting';
+
+  @override
+  String get settingAbout => 'About FlutterMobileTemplate';
+
+  @override
+  String get settingOpenSourceLicenses => 'Open source licenses';
+
+  @override
+  String get settingLibrariesWeUse => 'Libraries we use';
+
+  @override
+  String get settingVersion => 'Version';
 }
