@@ -12,8 +12,6 @@ resolution: workspace
 dependencies:
   cores_core:
     path: ../core
-  cores_model:
-    path: ../model
   dio: ^5.8.0+1
   flutter:
     sdk: flutter

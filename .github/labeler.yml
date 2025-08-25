@@ -19,10 +19,6 @@ labels:
     files:
       - packages/cores/designsystem/.+
 
-  - label: "@packages/cores/model"
-    files:
-      - packages/cores/model/.+
-
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+

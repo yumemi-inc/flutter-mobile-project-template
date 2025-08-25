@@ -59,10 +59,6 @@
   description: packages cores designsystem package
   from_name: "@cores/designsystem"
 
-- name: "@packages/cores/model"
-  color: 9ebfb6
-  description: packages cores model package
-
 - name: "@packages/features/setting"
   color: 1e266d
   description: packages features setting package
