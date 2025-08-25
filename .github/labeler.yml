@@ -15,10 +15,6 @@ labels:
     files:
       - packages/cores/data/.+
 
-  - label: "@packages/cores/designsystem"
-    files:
-      - packages/cores/designsystem/.+
-
   - label: "@packages/features/setting"
     files:
       - packages/features/setting/.+

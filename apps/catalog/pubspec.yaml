@@ -11,8 +11,6 @@ resolution: workspace
 
 dependencies:
   alchemist: ^0.12.1
-  cores_designsystem:
-    path: ../../packages/cores/designsystem
   flutter:
     sdk: flutter
   flutter_test:

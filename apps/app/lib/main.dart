@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cores_core/ui.dart';
 import 'package:cores_data/theme_mode.dart';
-import 'package:cores_designsystem/themes.dart';
 import 'package:features_setting/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_app/presentation/providers/force_update_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
+import 'package:internal_design_theme/themes.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
 

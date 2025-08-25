@@ -1,4 +1,4 @@
-import 'package:catalog/use_case/cores/designsystem/theme/communication/snack_bar.dart';
+import 'package:catalog/use_case/material_components/communication/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

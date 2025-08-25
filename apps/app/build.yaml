@@ -30,3 +30,6 @@ targets:
             - type=lint
             - duplicate_ignore
             - deprecated_member_use
+      flutter_gen_runner:
+        options:
+          output: lib/gen/assets/

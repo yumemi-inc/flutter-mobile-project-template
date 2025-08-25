@@ -54,11 +54,6 @@
   description: packages cores data package
   from_name: "@cores/data"
 
-- name: "@packages/cores/designsystem"
-  color: b4cef5
-  description: packages cores designsystem package
-  from_name: "@cores/designsystem"
-
 - name: "@packages/features/setting"
   color: 1e266d
   description: packages features setting package

@@ -1,7 +1,7 @@
-import 'package:cores_designsystem/theme_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_design_theme/theme_extensions.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({
