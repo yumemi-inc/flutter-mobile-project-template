@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:cores_core/ui.dart';
-import 'package:features_maintain/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/src/data/api/provider/exception_generator_api.dart';
@@ -19,6 +18,7 @@ DebugPageNavigator debugPageNavigator(Ref ref) => throw UnimplementedError();
 
 abstract interface class DebugPagePresenter {
   void enableForceUpdate();
+  void enableMaintenanceMode();
 }
 
 @Riverpod(dependencies: [])
@@ -65,11 +65,8 @@ class DebugPage extends ConsumerWidget {
             ),
             _FixSizedElevatedButton(
               title: 'Enable maintenance mode',
-              onPressed: () {
-                ref
-                    .read(maintenanceModeProvider.notifier)
-                    .update(enabled: true);
-              },
+              onPressed: () =>
+                  ref.read(debugPagePresenterProvider).enableMaintenanceMode(),
             ),
             _FixSizedElevatedButton(
               title: 'Enable force update',

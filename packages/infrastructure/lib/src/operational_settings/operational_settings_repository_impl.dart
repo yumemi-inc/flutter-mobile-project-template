@@ -20,7 +20,7 @@ class OperationalSettingsRepositoryImpl
 
   // TODO: テストデータのため、案件に合わせて修正する
   Future<MaintenancePolicy> getMaintenancePolicy() {
-    return Future.value(const MaintenancePolicy.enabled(message: 'Test'));
+    return Future.value(const MaintenancePolicy.disabled());
   }
 
   // TODO: テストデータのため、案件に合わせて修正する

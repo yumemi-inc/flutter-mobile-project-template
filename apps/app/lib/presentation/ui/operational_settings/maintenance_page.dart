@@ -1,7 +1,7 @@
-import 'package:features_maintain/src/gen/l10n/l10n.dart';
-import 'package:features_maintain/src/provider/maintenance_mode_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_app/gen/l10n/l10n.dart';
+import 'package:flutter_app/presentation/providers/maintenance_mode_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MaintenancePage extends ConsumerWidget {
   const MaintenancePage({super.key});
@@ -24,9 +24,7 @@ class MaintenancePage extends ConsumerWidget {
             const SizedBox(height: 64),
             ElevatedButton(
               onPressed: () {
-                ref
-                    .read(maintenanceModeProvider.notifier)
-                    .update(enabled: false);
+                ref.read(maintenanceModeProvider.notifier).disable();
               },
               child: Text(l10n.maintainDisableButtonTitle),
             ),

@@ -1,6 +1,0 @@
-{
-  "@@locale": "en",
-  "maintainAppBar": "Maintenance mode",
-  "maintainDescription": "Maintenance in progress.",
-  "maintainDisableButtonTitle": "Disable maintenance mode"
-}
