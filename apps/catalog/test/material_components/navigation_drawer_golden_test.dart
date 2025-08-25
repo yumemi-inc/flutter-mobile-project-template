@@ -1,4 +1,4 @@
-import 'package:catalog/use_case/cores/designsystem/theme/navigation/navigation_drawer.dart';
+import 'package:catalog/use_case/material_components/navigation/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
