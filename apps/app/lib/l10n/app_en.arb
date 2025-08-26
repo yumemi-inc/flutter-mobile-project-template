@@ -6,5 +6,11 @@
   "home": "Home",
   "maintainAppBar": "Maintenance mode",
   "maintainDescription": "Maintenance in progress.",
-  "maintainDisableButtonTitle": "Disable maintenance mode"
+  "maintainDisableButtonTitle": "Disable maintenance mode",
+  "settingAppBar": "Setting",
+  "settingThemeSetting": "Theme Setting",
+  "settingAbout": "About FlutterMobileTemplate",
+  "settingOpenSourceLicenses": "Open source licenses",
+  "settingLibrariesWeUse": "Libraries we use",
+  "settingVersion": "Version"
 }

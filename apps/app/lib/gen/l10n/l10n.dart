@@ -138,6 +138,42 @@ abstract class L10n {
   /// In ja, this message translates to:
   /// **'メンテナンスモードを無効にする'**
   String get maintainDisableButtonTitle;
+
+  /// No description provided for @settingAppBar.
+  ///
+  /// In ja, this message translates to:
+  /// **'設定'**
+  String get settingAppBar;
+
+  /// No description provided for @settingThemeSetting.
+  ///
+  /// In ja, this message translates to:
+  /// **'テーマ設定'**
+  String get settingThemeSetting;
+
+  /// No description provided for @settingAbout.
+  ///
+  /// In ja, this message translates to:
+  /// **'FlutterMobileTemplate について'**
+  String get settingAbout;
+
+  /// No description provided for @settingOpenSourceLicenses.
+  ///
+  /// In ja, this message translates to:
+  /// **'オープンソースライセンス'**
+  String get settingOpenSourceLicenses;
+
+  /// No description provided for @settingLibrariesWeUse.
+  ///
+  /// In ja, this message translates to:
+  /// **'使用しているライブラリ'**
+  String get settingLibrariesWeUse;
+
+  /// No description provided for @settingVersion.
+  ///
+  /// In ja, this message translates to:
+  /// **'バージョン'**
+  String get settingVersion;
 }
 
 class _L10nDelegate extends LocalizationsDelegate<L10n> {
