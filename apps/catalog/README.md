@@ -22,7 +22,7 @@ lib
     |       └── ...
     └── material_components
         ├── actions
-        |   ├── common_actions.dart
+        |   ├── common_buttons.dart
         │   └── ...
         ├── communication
         │   │── badge.dart
