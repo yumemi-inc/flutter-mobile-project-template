@@ -62,7 +62,7 @@ class SettingPage extends ConsumerWidget {
             delegate: SliverChildListDelegate(
               [
                 // 同一パッケージのassetsはこのように使います
-                // 汎用的なassetsはcores_designsystemのCommonAssetsを使います
+                // 汎用的なassetsはinternal_design_uiのCommonAssetsを使います
                 Assets.yumemiLogo.image(
                   width: 100,
                   height: 100,
