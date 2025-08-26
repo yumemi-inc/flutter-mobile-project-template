@@ -10,7 +10,8 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:catalog/use_case/components/list_tiles.dart' as _i32;
+import 'package:catalog/use_case/internal_design_ui/components/list_tiles.dart'
+    as _i32;
 import 'package:catalog/use_case/material_components/actions/common_buttons.dart'
     as _i2;
 import 'package:catalog/use_case/material_components/actions/floating_action_button.dart'
