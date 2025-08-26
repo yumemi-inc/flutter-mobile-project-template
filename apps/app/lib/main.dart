@@ -1,13 +1,13 @@
 import 'dart:async';
 
 import 'package:cores_core/ui.dart';
-import 'package:cores_data/theme_mode.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/presentation/providers/force_update_provider.dart';
+import 'package:flutter_app/presentation/providers/theme_mode_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';

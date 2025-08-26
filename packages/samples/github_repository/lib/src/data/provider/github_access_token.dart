@@ -1,7 +1,7 @@
-// FIXME(tatsuatkein): BuildConfig で一箇所にまとめたい
+// 環境変数を使用するファイルのため警告を無視
 // ignore_for_file: do_not_use_environment
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'github_access_token.g.dart';

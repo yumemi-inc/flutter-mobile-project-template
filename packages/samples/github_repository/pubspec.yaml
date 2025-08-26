@@ -12,8 +12,7 @@ resolution: workspace
 dependencies:
   cores_core:
     path: ../../cores/core
-  cores_data:
-    path: ../../cores/data
+  dio: ^5.8.0+1
   flutter:
     sdk: flutter
   flutter_hooks: ^0.21.2
