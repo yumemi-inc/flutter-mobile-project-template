@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cores_core/ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +11,7 @@ import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
+import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
 

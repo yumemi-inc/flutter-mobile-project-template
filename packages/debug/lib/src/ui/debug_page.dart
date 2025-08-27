@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:cores_core/ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/src/data/api/provider/exception_generator_api.dart';
+import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'debug_page.g.dart';
