@@ -85,6 +85,14 @@
   color: 92ba54
   description: packages infrastructure package
 
+- name: "@packages/util_logic"
+  color: 0db1e6
+  description: packages util_logic package
+
+- name: "@packages/util_ui"
+  color: 092d90
+  description: packages util_ui package
+
 - name: "@packages/samples/github_repository"
   color: e909bc
   description: packages samples github_repository package

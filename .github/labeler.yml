@@ -47,6 +47,14 @@ labels:
     files:
       - packages/infrastructure/.+
 
+  - label: "@packages/util_logic"
+    files:
+      - packages/util_logic/.+
+
+  - label: "@packages/util_ui"
+    files:
+      - packages/util_ui/.+
+
   - label: "@packages/samples/github_repository"
     files:
       - packages/samples/github_repository/.+

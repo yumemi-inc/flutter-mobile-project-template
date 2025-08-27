@@ -23,6 +23,8 @@ workspace:
   - samples/github_app
   - samples/webview
   # utils
+  - packages/util_logic
+  - packages/util_ui
   - packages/utils/pagination
 
 dev_dependencies:
