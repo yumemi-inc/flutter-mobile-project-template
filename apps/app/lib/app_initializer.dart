@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:cores_core/util.dart';
-import 'package:flutter_app/app_build_config.dart';
 import 'package:flutter_app/composition_root/data_sources/shared_preference_data_source.dart';
+import 'package:flutter_app/configuration/build_config.dart';
 import 'package:flutter_app/presentation/providers/build_config_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -26,18 +26,7 @@ final class AppInitializer {
     final packageInfo = await PackageInfo.fromPlatform();
     final preferences = await SharedPreferences.getInstance();
 
-    final buildConfig = AppBuildConfig(
-      // NOTE: この buildConfig で集約するため限定的に許可
-      // ignore: do_not_use_environment
-      appFlavor: const String.fromEnvironment('flavor'),
-      appName: packageInfo.appName,
-      packageName: packageInfo.packageName,
-      version: packageInfo.version,
-      buildNumber: packageInfo.buildNumber,
-      buildSignature: packageInfo.buildSignature,
-      installerStore: packageInfo.installerStore,
-    );
-
+    final buildConfig = BuildConfig.fromPackageInfo(packageInfo);
     logger.info(buildConfig);
 
     overrides.addAll(
