@@ -8,5 +8,8 @@ environment:
 
 resolution: workspace
 
+dependencies:
+  simple_logger: ^1.10.0
+
 dev_dependencies:
   test: ^1.25.15
