@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:cores_core/util.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_app/composition_root/data_sources/shared_preference_data_source.dart';
 import 'package:flutter_app/configuration/build_config.dart';
 import 'package:flutter_app/presentation/providers/build_config_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_shared/logger.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -14,6 +15,8 @@ final class AppInitializer {
   AppInitializer._();
 
   static Future<InitializedValues> initialize() async {
+    LoggerManager.instance.initialize(isDebugMode: kDebugMode);
+
     final overrideProviders = await _initializeProviders();
 
     return (overrideProviders: overrideProviders);

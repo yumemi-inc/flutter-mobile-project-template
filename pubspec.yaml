@@ -13,10 +13,6 @@ workspace:
   - packages/domain_logic
   - packages/domain_model
   - packages/infrastructure
-  # TODO: cores, features は廃止予定
-  # cores
-  - packages/cores/core
-  # features
   - packages/debug
   # samples
   - packages/samples/github_repository

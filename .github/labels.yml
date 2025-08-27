@@ -44,11 +44,6 @@
   color: d4f227
   description: Catalog development
 
-- name: "@packages/cores/core"
-  color: 0b2ebd
-  description: packages cores core package
-  from_name: "@cores/core"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development

@@ -7,10 +7,6 @@ labels:
     files:
       - apps/catalog/.+
 
-  - label: "@packages/cores/core"
-    files:
-      - packages/cores/core/.+
-
   - label: "@apps/app"
     files:
       - apps/app/.+

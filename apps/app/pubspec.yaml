@@ -10,8 +10,6 @@ environment:
 resolution: workspace
 
 dependencies:
-  cores_core:
-    path: ../../packages/cores/core
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -33,6 +31,8 @@ dependencies:
     path: ../../packages/domain_model
   internal_infrastructure:
     path: ../../packages/infrastructure
+  internal_shared:
+    path: ../../packages/shared
   internal_util_ui:
     path: ../../packages/util_ui
   intl: ^0.20.2
