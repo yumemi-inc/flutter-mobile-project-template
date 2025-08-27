@@ -24,6 +24,7 @@
     ├── infrastructure
     ├── domain_model
     ├── domain_logic
+    ├── shared
     ├── util_logic
     └── util_ui
 ```
@@ -31,8 +32,8 @@
 ## レイヤー・パッケージ構造
 
 > [!NOTE]
-> Util, Debug レイヤーは依存の向きを記載しようとすると複雑になってしまうため、記載していません。
-> - Util レイヤーはどのレイヤーにも依存しておらず、全てのレイヤーから参照可能
+> Shared, Util, Debug レイヤーは依存の向きを記載しようとすると複雑になってしまうため、記載していません。
+> - Shared, Util レイヤーはどのレイヤーにも依存しておらず、Shared, Util 以外の全てのレイヤーから参照可能
 > - Debug レイヤーは全てのレイヤーに依存可能で、Presentation レイヤーからのみ参照される
 
 ```mermaid
@@ -92,6 +93,12 @@ flowchart TD
   subgraph "Debug Layer"
     debug[debug]
     class debug package
+  end
+
+  %% Shared Layer
+  subgraph "Shared Layer"
+    shared[shared]
+    class shared package
   end
 
   %% Util Layer
