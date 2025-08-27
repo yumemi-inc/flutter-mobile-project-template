@@ -5,8 +5,14 @@ version: 1.0.0
 
 environment:
   sdk: ^3.8.0
+  flutter: ^3.32.0
 
 resolution: workspace
 
+dependencies:
+  flutter:
+    sdk: flutter
+
 dev_dependencies:
-  test: ^1.25.15
+  flutter_test:
+    sdk: flutter
