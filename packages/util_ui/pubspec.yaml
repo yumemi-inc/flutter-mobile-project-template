@@ -8,9 +8,5 @@ environment:
 
 resolution: workspace
 
-# Add regular dependencies here.
-dependencies:
-  # path: ^1.8.0
-
 dev_dependencies:
   test: ^1.25.15
