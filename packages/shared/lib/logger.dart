@@ -1,9 +1,9 @@
 import 'package:simple_logger/simple_logger.dart';
 
-class AppLogger {
-  AppLogger._();
+class LoggerManager {
+  LoggerManager._();
 
-  static final _instance = AppLogger._();
+  static final instance = LoggerManager._();
 
   late final SimpleLogger _logger;
   var _isInitialized = false;
@@ -23,10 +23,12 @@ class AppLogger {
 
   SimpleLogger get logger {
     if (!_isInitialized) {
-      throw StateError('Logger not initialized. Call initialize() first.');
+      throw StateError(
+        '''Logger not initialized. Call LoggerManager.instance.initialize() first.''',
+      );
     }
     return _logger;
   }
 }
 
-final AppLogger appLogger = AppLogger._instance;
+SimpleLogger get logger => LoggerManager.instance.logger;
