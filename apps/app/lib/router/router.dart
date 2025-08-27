@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:cores_core/util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/main_page.dart';
@@ -13,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_ui/common_assets.dart';
+import 'package:internal_util_ui/custom_app_lifecycle_listener.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'package:flutter_app/router/routes/main/home/debug_page_route.dart';
