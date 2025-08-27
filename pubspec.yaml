@@ -8,21 +8,20 @@ workspace:
   - apps/catalog
   # packages
   - packages/application
+  - packages/debug
   - packages/design_theme
   - packages/design_ui
   - packages/domain_logic
   - packages/domain_model
   - packages/infrastructure
-  - packages/debug
+  - packages/shared
+  - packages/util_logic
+  - packages/util_ui
   # samples
   - packages/samples/github_repository
   - samples/github_app
   - samples/webview
-  # shared
-  - packages/shared
   # utils
-  - packages/util_logic
-  - packages/util_ui
   - packages/utils/pagination
 
 dev_dependencies:
