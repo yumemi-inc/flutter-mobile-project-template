@@ -1,4 +1,4 @@
-import 'package:cores_core/src/model/build_config.dart';
+import 'package:flutter_app/configuration/build_config.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

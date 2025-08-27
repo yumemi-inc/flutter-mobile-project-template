@@ -1,4 +1,4 @@
-import 'package:cores_core/src/model/flavor.dart';
+import 'package:flutter_app/configuration/flavor.dart';
 
 abstract interface class BuildConfig {
   abstract final String appName;

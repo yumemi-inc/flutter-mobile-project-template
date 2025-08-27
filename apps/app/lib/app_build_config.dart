@@ -1,4 +1,5 @@
-import 'package:cores_core/model.dart';
+import 'package:flutter_app/configuration/build_config.dart';
+import 'package:flutter_app/configuration/flavor.dart';
 
 final class AppBuildConfig implements BuildConfig {
   AppBuildConfig({

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:cores_core/provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/composition_root/use_cases/check_force_update_use_case.dart';
+import 'package:flutter_app/presentation/providers/build_config_provider.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
