@@ -47,6 +47,10 @@ labels:
     files:
       - packages/infrastructure/.+
 
+  - label: "@packages/shared"
+    files:
+      - packages/shared/.+
+
   - label: "@packages/util_logic"
     files:
       - packages/util_logic/.+

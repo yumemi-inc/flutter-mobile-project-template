@@ -22,6 +22,8 @@ workspace:
   - packages/samples/github_repository
   - samples/github_app
   - samples/webview
+  # shared
+  - packages/shared
   # utils
   - packages/util_logic
   - packages/util_ui
