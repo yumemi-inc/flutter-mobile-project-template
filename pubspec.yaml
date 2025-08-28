@@ -141,21 +141,21 @@ melos:
         - gen:build:diff:main
     gen:build:
       description: build_runner を使用してコードを生成します。
-      run: dart run build_runner build -d && dart format .
+      run: dart run build_runner build -d
       exec:
         orderDependents: true
       packageFilters:
         dependsOn: build_runner
     gen:l10n:
       description: 多言語対応のためのローカライゼーションファイルを生成します。
-      run: flutter gen-l10n && dart format .
+      run: flutter gen-l10n
       exec:
         orderDependents: true
       packageFilters:
         dependsOn: flutter_localizations
     gen:build:diff:main:
       description: main ブランチと差分のあるパッケージのみ build_runner を使用してコードを生成します。
-      run: dart run build_runner build -d && dart format .
+      run: dart run build_runner build -d
       exec:
         orderDependents: true
       packageFilters:
@@ -163,7 +163,7 @@ melos:
         diff: origin/main...HEAD
     gen:l10n:diff:main:
       description: main ブランチと差分のあるパッケージのみ 多言語対応のためのローカライゼーションファイルを生成します。
-      run: flutter gen-l10n && dart format .
+      run: flutter gen-l10n
       exec:
         orderDependents: true
       packageFilters:
@@ -178,7 +178,7 @@ melos:
         - gen:l10n:diff:head
     gen:build:diff:head:
       description: 未コミットの差分パッケージのみ build_runner を使用してコードを生成します。
-      run: dart run build_runner build -d && dart format .
+      run: dart run build_runner build -d
       exec:
         orderDependents: true
       packageFilters:
@@ -186,7 +186,7 @@ melos:
         diff: ""
     gen:l10n:diff:head:
       description: 未コミットの差分パッケージのみ ローカライゼーションファイル を生成します。
-      run: flutter gen-l10n && dart format .
+      run: flutter gen-l10n
       exec:
         orderDependents: true
       packageFilters:
