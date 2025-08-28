@@ -141,7 +141,7 @@ final directories = <_i1.WidgetbookNode>[
               ),
               _i1.WidgetbookUseCase(
                 name: 'Tonal',
-                builder: _i4.filledTonalIconButton
+                builder: _i4.filledTonalIconButton,
               ),
             ],
           ),
