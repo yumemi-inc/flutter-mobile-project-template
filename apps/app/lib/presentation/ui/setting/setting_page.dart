@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/assets/assets.gen.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/presentation/providers/build_config_provider.dart';
-import 'package:flutter_app/presentation/providers/theme_mode_provider.dart';
+import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_spacer.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_title.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'setting_page.g.dart';
@@ -24,7 +25,7 @@ class SettingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final navigator = ref.watch(settingPageNavigatorProvider);
-    final currentThemeMode = ref.watch(themeModeNotifierProvider);
+    final currentThemeSetting = ref.watch(themeSettingNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
     final l10n = L10n.of(context);
 
@@ -36,23 +37,23 @@ class SettingPage extends ConsumerWidget {
         slivers: [
           SettingSectionTitle(text: l10n.settingThemeSetting),
           SliverList.builder(
-            itemCount: ThemeMode.values.length,
+            itemCount: ThemeSetting.values.length,
             itemBuilder: (context, index) {
-              final themeMode = ThemeMode.values[index];
+              final themeSetting = ThemeSetting.values[index];
 
               return RadioListTile(
-                value: themeMode,
-                groupValue: currentThemeMode,
+                value: themeSetting,
+                groupValue: currentThemeSetting,
                 onChanged: (newThemeMode) async {
                   if (newThemeMode == null) {
                     return;
                   }
 
                   await ref
-                      .read(themeModeNotifierProvider.notifier)
+                      .read(themeSettingNotifierProvider.notifier)
                       .changeThemeMode(newThemeMode);
                 },
-                title: Text(themeMode.name),
+                title: Text(themeSetting.name),
               );
             },
           ),

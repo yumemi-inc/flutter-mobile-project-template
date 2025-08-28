@@ -6,11 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/presentation/providers/force_update_provider.dart';
-import 'package:flutter_app/presentation/providers/theme_mode_provider.dart';
+import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
@@ -48,7 +49,7 @@ class MainApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
-    final themeMode = ref.watch(themeModeNotifierProvider);
+    final themeSetting = ref.watch(themeSettingNotifierProvider);
 
     final enableAccessibilityTools =
         kDebugMode && ref.watch(enableAccessibilityToolsProvider);
@@ -83,7 +84,7 @@ class MainApp extends ConsumerWidget {
       routerConfig: ref.watch(routerProvider),
       theme: lightTheme(),
       darkTheme: darkTheme(),
-      themeMode: themeMode,
+      themeMode: themeSetting.toThemeMode(),
       shortcuts: kDebugMode
           ? {
               LogicalKeySet(
@@ -136,4 +137,14 @@ SOFTWARE.
 
 class _DebugIntent extends Intent {
   const _DebugIntent();
+}
+
+extension on ThemeSetting {
+  ThemeMode toThemeMode() {
+    return switch (this) {
+      ThemeSetting.light => ThemeMode.light,
+      ThemeSetting.dark => ThemeMode.dark,
+      ThemeSetting.system => ThemeMode.system,
+    };
+  }
 }

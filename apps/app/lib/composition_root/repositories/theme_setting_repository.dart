@@ -4,10 +4,10 @@ import 'package:internal_domain_logic/internal_domain_logic.dart';
 import 'package:internal_infrastructure/internal_infrastructure.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'theme_mode_repository.g.dart';
+part 'theme_setting_repository.g.dart';
 
 @riverpod
-ThemeModeRepository themeModeRepository(Ref ref) {
+ThemeSettingRepository themeSettingRepository(Ref ref) {
   final dataSource = ref.watch(sharedPreferenceDataSourceProvider);
-  return ThemeModeRepositoryImpl(dataSource);
+  return ThemeSettingRepositoryImpl(dataSource);
 }
