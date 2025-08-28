@@ -102,6 +102,33 @@ melos:
         dirExists: lib
         dependsOn: custom_lint
 
+    format:
+      description: |
+        すべてのパッケージに `dart format` を実行します。
+        自動生成されたコードは対象外になるように設定しています。
+      exec: >-
+        find lib -name "*.dart"
+        -not -path "*/gen/*"
+        -not -name "*.g.dart"
+        -not -name "*.freezed.dart"
+        -not -name "*.gen.dart"
+        -not -name "*.g.theme.dart" | xargs dart format
+      packageFilters:
+        dirExists: lib
+    format:check:
+      description: |
+        すべてのパッケージに `dart format --output=none --set-exit-if-changed` を実行します。
+        自動生成されたコードは対象外になるように設定しています。
+      exec: >-
+        find lib -name "*.dart"
+        -not -path "*/gen/*"
+        -not -name "*.g.dart"
+        -not -name "*.freezed.dart"
+        -not -name "*.gen.dart"
+        -not -name "*.g.theme.dart" | xargs dart format --output=none --set-exit-if-changed
+      packageFilters:
+        dirExists: lib
+
     gen:
       description: build_runner と l10n の生成コマンドを実行します。
       steps:
