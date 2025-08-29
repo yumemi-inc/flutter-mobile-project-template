@@ -8,16 +8,15 @@ workspace:
   - apps/catalog
   # packages
   - packages/application
+  - packages/debug
   - packages/design_theme
   - packages/design_ui
   - packages/domain_logic
   - packages/domain_model
   - packages/infrastructure
-  # TODO: cores, features は廃止予定
-  # cores
-  - packages/cores/core
-  # features
-  - packages/debug
+  - packages/shared
+  - packages/util_logic
+  - packages/util_ui
   # samples
   - packages/samples/github_repository
   - samples/github_app

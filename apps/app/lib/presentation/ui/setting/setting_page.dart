@@ -1,7 +1,7 @@
-import 'package:cores_core/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/assets/assets.gen.dart';
 import 'package:flutter_app/gen/l10n/l10n.dart';
+import 'package:flutter_app/presentation/providers/build_config_provider.dart';
 import 'package:flutter_app/presentation/providers/theme_mode_provider.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_spacer.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_title.dart';

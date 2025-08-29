@@ -44,11 +44,6 @@
   color: d4f227
   description: Catalog development
 
-- name: "@packages/cores/core"
-  color: 0b2ebd
-  description: packages cores core package
-  from_name: "@cores/core"
-
 - name: "@apps/app"
   color: e261d6
   description: Application development
@@ -84,6 +79,18 @@
 - name: "@packages/infrastructure"
   color: 92ba54
   description: packages infrastructure package
+
+- name: "@packages/shared"
+  color: c22c75
+  description: packages shared package
+
+- name: "@packages/util_logic"
+  color: 0db1e6
+  description: packages util_logic package
+
+- name: "@packages/util_ui"
+  color: 092d90
+  description: packages util_ui package
 
 - name: "@packages/samples/github_repository"
   color: e909bc

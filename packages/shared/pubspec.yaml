@@ -1,0 +1,15 @@
+name: internal_shared
+description: ビジネスロジックとは関係のない共通ロジックを定義するパッケージです。
+publish_to: "none"
+version: 1.0.0
+
+environment:
+  sdk: ^3.8.0
+
+resolution: workspace
+
+dependencies:
+  simple_logger: ^1.10.0
+
+dev_dependencies:
+  test: ^1.25.15
