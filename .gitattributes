@@ -1,6 +1,5 @@
 *.g.dart linguist-generated=true
 *.g.theme.dart linguist-generated=true
 *.freezed.dart linguist-generated=true
-l10n.dart linguist-generated=true
-l10n_en.dart linguist-generated=true
-l10n_ja.dart linguist-generated=true
+strings_en.g.dart linguist-generated=true
+strings_ja.g.dart linguist-generated=true
