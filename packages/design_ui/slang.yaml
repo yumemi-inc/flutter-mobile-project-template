@@ -1,0 +1,3 @@
+base_locale: ja
+input_directory: res/i18n
+output_directory: lib/src/gen/i18n
