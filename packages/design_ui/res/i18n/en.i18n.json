@@ -1,0 +1,24 @@
+{
+    "bottomTab": {
+      "home": "Home",
+      "settings": "Settings"
+    },
+    "home": {
+      "title": "Home",
+      "appBarTitle": "Flutter Template"
+    },
+    "maintenance": {
+      "appBarTitle": "Maintenance mode",
+      "description": "Maintenance in progress.",
+      "disableButtonLabel": "Disable maintenance mode"
+    },
+    "setting": {
+      "appBarTitle": "Setting",
+      "themeSettingLabel": "Theme Setting",
+      "aboutLabel": "About FlutterMobileTemplate",
+      "openSourceLicensesLabel": "Open source licenses",
+      "librariesWeUseLabel": "Libraries we use",
+      "versionLabel": "Version"
+    }
+  }
+  

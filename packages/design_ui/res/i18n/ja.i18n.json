@@ -1,0 +1,23 @@
+{
+  "bottomTab": {
+    "home": "ホーム",
+    "settings": "設定"
+  },
+  "home": {
+    "title": "ホーム",
+    "appBarTitle": "Flutter テンプレート"
+  },
+  "maintenance": {
+    "appBarTitle": "メンテナンスモード",
+    "description": "メンテナンス中です.",
+    "disableButtonLabel": "メンテナンスモードを無効にする"
+  },
+  "setting": {
+    "appBarTitle": "設定",
+    "themeSettingLabel": "テーマ設定",
+    "aboutLabel": "FlutterMobileTemplate について",
+    "openSourceLicensesLabel": "オープンソースライセンス",
+    "librariesWeUseLabel": "使用しているライブラリ",
+    "versionLabel": "バージョン"
+  }
+}
