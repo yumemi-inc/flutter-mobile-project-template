@@ -153,6 +153,13 @@ melos:
         orderDependents: true
       packageFilters:
         dependsOn: flutter_localizations
+    gen:slang:
+      description: slang を使用してコードを生成します。
+      run: dart run slang build
+      exec:
+        orderDependents: true
+      packageFilters:
+        dependsOn: slang
     gen:build:diff:main:
       description: main ブランチと差分のあるパッケージのみ build_runner を使用してコードを生成します。
       run: dart run build_runner build -d
