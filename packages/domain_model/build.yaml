@@ -4,7 +4,7 @@ targets:
       freezed:
         generate_for:
           include:
-            - lib/src/**.dart
+            - lib/**.dart
       source_gen:combining_builder:
         options:
           ignore_for_file:
