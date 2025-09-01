@@ -69,7 +69,8 @@ class DebugPageRoute extends GoRouteData with _$DebugPageRoute {
   }
 }
 
-class NavigationDebugPageRoute extends GoRouteData with _$NavigationDebugPageRoute {
+class NavigationDebugPageRoute extends GoRouteData
+    with _$NavigationDebugPageRoute {
   const NavigationDebugPageRoute();
 
   static const path = 'navigation_debug';
