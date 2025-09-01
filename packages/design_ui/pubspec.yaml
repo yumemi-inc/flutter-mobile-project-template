@@ -12,7 +12,7 @@ resolution: workspace
 dependencies:
   flutter:
     sdk: flutter
-  flutter_gen_runner: ^5.8.0
+  flutter_gen_runner: ^5.11.0
   internal_design_theme:
     path: ../design_theme
 
