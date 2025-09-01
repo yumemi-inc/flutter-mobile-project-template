@@ -26,7 +26,7 @@ final class _SettingPageNavigatorImpl implements SettingPageNavigator {
   }
 }
 
-class SettingPageRoute extends GoRouteData {
+class SettingPageRoute extends GoRouteData with _$SettingPageRoute {
   const SettingPageRoute();
 
   static const path = '/setting';
@@ -44,7 +44,7 @@ class SettingPageRoute extends GoRouteData {
   }
 }
 
-class LicensePageRoute extends GoRouteData {
+class LicensePageRoute extends GoRouteData with _$LicensePageRoute {
   const LicensePageRoute();
 
   static const path = 'license';

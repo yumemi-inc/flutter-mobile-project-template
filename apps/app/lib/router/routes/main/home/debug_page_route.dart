@@ -45,7 +45,7 @@ final class _DebugPagePresenterImpl implements DebugPagePresenter {
     ),
   ],
 )
-class DebugPageRoute extends GoRouteData {
+class DebugPageRoute extends GoRouteData with _$DebugPageRoute {
   const DebugPageRoute();
 
   static const path = '/debug';
@@ -69,7 +69,7 @@ class DebugPageRoute extends GoRouteData {
   }
 }
 
-class NavigationDebugPageRoute extends GoRouteData {
+class NavigationDebugPageRoute extends GoRouteData with _$NavigationDebugPageRoute {
   const NavigationDebugPageRoute();
 
   static const path = 'navigation_debug';
@@ -83,7 +83,7 @@ class NavigationDebugPageRoute extends GoRouteData {
   }
 }
 
-class TalkerPageRoute extends GoRouteData {
+class TalkerPageRoute extends GoRouteData with _$TalkerPageRoute {
   const TalkerPageRoute();
 
   static const path = 'talker';
