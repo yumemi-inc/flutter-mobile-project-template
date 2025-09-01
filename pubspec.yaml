@@ -51,7 +51,7 @@ melos:
         dio: ^5.9.0
         flutter_hooks: ^0.21.3+1
         flutter_riverpod: ^2.6.1
-        freezed_annotation: ^3.0.0
+        freezed_annotation: ^3.1.0
         hooks_riverpod: ^2.6.1
         intl: ^0.20.2
         json_annotation: ^4.9.0
@@ -69,7 +69,7 @@ melos:
         flutter_launcher_icons: ^0.14.4
         flutter_test:
           sdk: flutter
-        freezed: ^3.0.6
+        freezed: ^3.1.0
         go_router_builder: ^2.9.0
         json_serializable: ^6.9.5
         riverpod_generator: ^2.6.5
