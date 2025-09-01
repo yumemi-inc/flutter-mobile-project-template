@@ -7,15 +7,6 @@ targets:
           include:
             - lib/{model,**/model}/**.dart
             - lib/configuration/**.dart
-      # https://github.com/google/json_serializable.dart/tree/master/json_serializable#build-configuration
-      json_serializable:
-        generate_for:
-          include:
-            - lib/{model,**/model}/**.dart
-        options:
-          field_rename: snake
-          # json のデシリアライズ時に発生する Exception を CheckedFromJsonException にまとめる
-          checked: true
       riverpod_generator:
         generate_for:
           include:
