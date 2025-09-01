@@ -9,8 +9,6 @@ environment:
 resolution: workspace
 
 dependencies:
-  flutter:
-    sdk: flutter
   internal_domain_model:
     path: ../domain_model
 

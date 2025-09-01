@@ -2,30 +2,28 @@
 
 // ignore_for_file: type=lint, duplicate_ignore, deprecated_member_use
 
-part of 'theme_mode_repository.dart';
+part of 'theme_setting_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeModeRepositoryHash() =>
-    r'a14e9d872e5691460b760131fe45038243c3d0b4';
+String _$themeSettingNotifierHash() =>
+    r'1df6e97b60e20d7dc7bd507f2730253f4290852b';
 
-/// See also [themeModeRepository].
-@ProviderFor(themeModeRepository)
-final themeModeRepositoryProvider =
-    AutoDisposeProvider<ThemeModeRepository>.internal(
-      themeModeRepository,
-      name: r'themeModeRepositoryProvider',
+/// See also [ThemeSettingNotifier].
+@ProviderFor(ThemeSettingNotifier)
+final themeSettingNotifierProvider =
+    AutoDisposeNotifierProvider<ThemeSettingNotifier, ThemeSetting>.internal(
+      ThemeSettingNotifier.new,
+      name: r'themeSettingNotifierProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$themeModeRepositoryHash,
+          : _$themeSettingNotifierHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
-@Deprecated('Will be removed in 3.0. Use Ref instead')
-// ignore: unused_element
-typedef ThemeModeRepositoryRef = AutoDisposeProviderRef<ThemeModeRepository>;
+typedef _$ThemeSettingNotifier = AutoDisposeNotifier<ThemeSetting>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

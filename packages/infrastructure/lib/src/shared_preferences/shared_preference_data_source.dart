@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:internal_infrastructure/internal_infrastructure.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -7,19 +7,19 @@ class SharedPreferenceDataSource {
 
   final SharedPreferences _sharedPreferences;
 
-  ThemeMode getThemeMode() {
+  ThemeSetting getThemeSetting() {
     final themeIndex = _sharedPreferences.getInt(
-      SharedPreferencesKeys.themeMode.name,
+      SharedPreferencesKeys.themeSetting.name,
     );
-    return ThemeMode.values.singleWhere(
-      (themeMode) => themeMode.index == themeIndex,
-      orElse: () => ThemeMode.system,
+    return ThemeSetting.values.singleWhere(
+      (themeSetting) => themeSetting.index == themeIndex,
+      orElse: () => ThemeSetting.system,
     );
   }
 
-  Future<void> saveThemeMode(int themeIndex) async {
+  Future<void> saveThemeSetting(int themeIndex) async {
     await _sharedPreferences.setInt(
-      SharedPreferencesKeys.themeMode.name,
+      SharedPreferencesKeys.themeSetting.name,
       themeIndex,
     );
   }
