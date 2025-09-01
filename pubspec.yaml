@@ -48,7 +48,7 @@ melos:
         sdk: ^3.8.0
         flutter: ^3.32.0
       dependencies:
-        dio: ^5.8.0+1
+        dio: ^5.9.0
         flutter_hooks: ^0.21.2
         flutter_riverpod: ^2.6.1
         freezed_annotation: ^3.0.0
