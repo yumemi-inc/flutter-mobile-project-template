@@ -1,4 +1,4 @@
-import 'package:internal_application/internal_application.dart';
+import 'package:internal_application/operational_settings/check_force_update_use_case.dart';
 import 'package:internal_domain_logic/internal_domain_logic.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:mocktail/mocktail.dart';
