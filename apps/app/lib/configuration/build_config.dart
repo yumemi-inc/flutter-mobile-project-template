@@ -7,7 +7,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 part 'build_config.freezed.dart';
 
-@freezed
+@Freezed(map: FreezedMapOptions.none, when: FreezedWhenOptions.none)
 abstract class BuildConfig with _$BuildConfig {
   const BuildConfig._();
 
