@@ -85,7 +85,7 @@ jobs:
           fatal-infos: true
 
       - name: Check format
-        run: melos format --output none --set-exit-if-changed
+        run: melos run format:check
 
       - name: Check for circular dependencies
         run: melos list --cycles
