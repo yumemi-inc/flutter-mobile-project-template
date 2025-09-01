@@ -1,4 +1,4 @@
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/operational_settings.dart';
 
 /// 運用設定集約ルートのリポジトリインターフェース
 abstract interface class OperationalSettingsRepository {

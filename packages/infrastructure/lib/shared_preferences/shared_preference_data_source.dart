@@ -1,4 +1,4 @@
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/theme_setting.dart';
 import 'package:internal_infrastructure/shared_preferences/shared_preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

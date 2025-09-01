@@ -1,5 +1,5 @@
 import 'package:internal_domain_logic/operational_settings/operational_settings_repository.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/operating_system.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 class CheckForceUpdateUseCase {

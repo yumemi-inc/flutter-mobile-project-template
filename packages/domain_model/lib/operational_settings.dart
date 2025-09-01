@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:internal_domain_model/src/operating_system.dart';
+import 'package:internal_domain_model/operating_system.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 part 'operational_settings.freezed.dart';
