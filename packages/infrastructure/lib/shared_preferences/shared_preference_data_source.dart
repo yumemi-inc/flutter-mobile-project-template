@@ -1,5 +1,5 @@
 import 'package:internal_domain_model/internal_domain_model.dart';
-import 'package:internal_infrastructure/internal_infrastructure.dart';
+import 'package:internal_infrastructure/shared_preferences/shared_preferences_keys.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPreferenceDataSource {
