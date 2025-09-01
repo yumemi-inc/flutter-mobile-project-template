@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/gen/assets/assets.gen.dart';
-import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/presentation/providers/build_config_provider.dart';
 import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_spacer.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_title.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:internal_design_ui/i18n.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -27,15 +27,15 @@ class SettingPage extends ConsumerWidget {
     final navigator = ref.watch(settingPageNavigatorProvider);
     final currentThemeSetting = ref.watch(themeSettingNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
-    final l10n = L10n.of(context);
+    final t = Translations.of(context).setting;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.settingAppBar),
+        title: Text(t.appBarTitle),
       ),
       body: CustomScrollView(
         slivers: [
-          SettingSectionTitle(text: l10n.settingThemeSetting),
+          SettingSectionTitle(text: t.themeSettingLabel),
           SliverList.builder(
             itemCount: ThemeSetting.values.length,
             itemBuilder: (context, index) {
@@ -58,7 +58,7 @@ class SettingPage extends ConsumerWidget {
             },
           ),
           const SettingSectionSpacer(),
-          SettingSectionTitle(text: l10n.settingAbout),
+          SettingSectionTitle(text: t.aboutLabel),
           SliverList(
             delegate: SliverChildListDelegate(
               [
@@ -73,8 +73,8 @@ class SettingPage extends ConsumerWidget {
                     horizontal: 24,
                   ),
                   leading: const Icon(Icons.description),
-                  title: Text(l10n.settingOpenSourceLicenses),
-                  subtitle: Text(l10n.settingLibrariesWeUse),
+                  title: Text(t.openSourceLicensesLabel),
+                  subtitle: Text(t.librariesWeUseLabel),
                   onTap: () => navigator.goLicensePage(context),
                 ),
                 ListTile(
@@ -82,7 +82,7 @@ class SettingPage extends ConsumerWidget {
                     horizontal: 24,
                   ),
                   leading: const Icon(Icons.info_outline),
-                  title: Text(l10n.settingVersion),
+                  title: Text(t.versionLabel),
                   subtitle: Text(buildConfig.version),
                 ),
               ],

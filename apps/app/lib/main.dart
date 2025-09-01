@@ -4,13 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
-import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_app/presentation/providers/force_update_provider.dart';
 import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/router/router.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
+import 'package:internal_design_ui/i18n.dart';
 import 'package:internal_domain_model/internal_domain_model.dart';
 import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -18,6 +19,7 @@ import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await LocaleSettings.useDeviceLocale();
 
   LicenseRegistry.addLicense(() async* {
     yield _yumemiMobileProjectTemplateLicense();
@@ -38,7 +40,7 @@ void main() async {
     ProviderScope(
       overrides: overrideProviders,
       observers: overrideObservers,
-      child: const MainApp(),
+      child: TranslationProvider(child: const MainApp()),
     ),
   );
 }
@@ -71,12 +73,9 @@ class MainApp extends ConsumerWidget {
     });
 
     return MaterialApp.router(
-      localizationsDelegates: const [
-        ...L10n.localizationsDelegates,
-      ],
-      supportedLocales: const [
-        ...L10n.supportedLocales,
-      ],
+      locale: TranslationProvider.of(context).flutterLocale,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
+      supportedLocales: AppLocaleUtils.supportedLocales,
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       builder: enableAccessibilityTools
           ? (context, child) => AccessibilityTools(child: child)

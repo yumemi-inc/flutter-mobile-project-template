@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_design_theme/theme_extensions.dart';
+import 'package:internal_design_ui/i18n.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({
@@ -10,17 +10,17 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = L10n.of(context);
+    final t = Translations.of(context).home;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l.appBar),
+        title: Text(t.appBarTitle),
         iconTheme: IconTheme.of(context).copyWith(
           color: context.appColors.icon,
         ),
       ),
       body: Center(
-        child: Text(l.home),
+        child: Text(t.title),
       ),
     );
   }

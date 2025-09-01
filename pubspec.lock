@@ -281,6 +281,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+  csv:
+    dependency: transitive
+    description:
+      name: csv
+      sha256: c6aa2679b2a18cb57652920f674488d89712efaf4d3fdf2e537215b35fc19d6c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   custom_lint:
     dependency: transitive
     description:
@@ -1170,6 +1178,30 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  slang:
+    dependency: transitive
+    description:
+      name: slang
+      sha256: b02c531f453c328a1343818c64d730357ac140860147c9a29030fdfc82039266
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.1"
+  slang_build_runner:
+    dependency: transitive
+    description:
+      name: slang_build_runner
+      sha256: "3679d6ab1373a9e5c0894d29d612abd2f75f969b0ef2f19cafaed2d1b9e49d39"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.0"
+  slang_flutter:
+    dependency: transitive
+    description:
+      name: slang_flutter
+      sha256: "7a5e55f2b1ec99e06354a5213b992d34017efacccba8ffc6066cfc5517cc0282"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.0"
   source_gen:
     dependency: transitive
     description:

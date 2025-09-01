@@ -130,14 +130,14 @@ melos:
         dirExists: lib
 
     gen:
-      description: build_runner と l10n の生成コマンドを実行します。
+      description: build_runner と i18n の生成コマンドを実行します。
       steps:
-        - gen:l10n
+        - gen:i18n
         - gen:build
     gen:diff:main:
-      description: main ブランチと差分のあるパッケージのみ build_runner と l10n の生成コマンドを実行します。
+      description: main ブランチと差分のあるパッケージのみ build_runner と i18n の生成コマンドを実行します。
       steps:
-        - gen:l10n:diff:main
+        - gen:i18n:diff:main
         - gen:build:diff:main
     gen:build:
       description: build_runner を使用してコードを生成します。
@@ -146,13 +146,13 @@ melos:
         orderDependents: true
       packageFilters:
         dependsOn: build_runner
-    gen:l10n:
+    gen:i18n:
       description: 多言語対応のためのローカライゼーションファイルを生成します。
-      run: flutter gen-l10n
+      run: dart run slang build
       exec:
         orderDependents: true
       packageFilters:
-        dependsOn: flutter_localizations
+        dependsOn: slang
     gen:build:diff:main:
       description: main ブランチと差分のあるパッケージのみ build_runner を使用してコードを生成します。
       run: dart run build_runner build -d
@@ -161,21 +161,21 @@ melos:
       packageFilters:
         dependsOn: build_runner
         diff: origin/main...HEAD
-    gen:l10n:diff:main:
+    gen:i18n:diff:main:
       description: main ブランチと差分のあるパッケージのみ 多言語対応のためのローカライゼーションファイルを生成します。
-      run: flutter gen-l10n
+      run: dart run slang build
       exec:
         orderDependents: true
       packageFilters:
-        dependsOn: flutter_localizations
+        dependsOn: slang
         diff: origin/main...HEAD
     # ローカル確認用
-    # - 未コミットの差分パッケージのみ[build_runner][l10n]を処理するスクリプト
+    # - 未コミットの差分パッケージのみ[build_runner][i18n]を処理するスクリプト
     gen:diff:head:
-      description: 未コミットの差分パッケージのみ build_runner と l10n の生成コマンドを実行します。
+      description: 未コミットの差分パッケージのみ build_runner と i18n の生成コマンドを実行します。
       steps:
         - gen:build:diff:head
-        - gen:l10n:diff:head
+        - gen:i18n:diff:head
     gen:build:diff:head:
       description: 未コミットの差分パッケージのみ build_runner を使用してコードを生成します。
       run: dart run build_runner build -d
@@ -184,13 +184,13 @@ melos:
       packageFilters:
         dependsOn: build_runner
         diff: ""
-    gen:l10n:diff:head:
+    gen:i18n:diff:head:
       description: 未コミットの差分パッケージのみ ローカライゼーションファイル を生成します。
-      run: flutter gen-l10n
+      run: dart run slang build
       exec:
         orderDependents: true
       packageFilters:
-        dependsOn: flutter_localizations
+        dependsOn: slang
         diff: ""
     gen:labeler:
       description: "`.github/labeler.yml` のパッケージ部分を生成します。"
