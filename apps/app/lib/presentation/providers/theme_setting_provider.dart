@@ -12,7 +12,7 @@ class ThemeSettingNotifier extends _$ThemeSettingNotifier {
     return repository.getThemeSetting();
   }
 
-  Future<void> changeThemeMode(ThemeSetting theme) async {
+  Future<void> changeThemeSetting(ThemeSetting theme) async {
     final repository = ref.read(themeSettingRepositoryProvider);
     await repository.saveThemeSetting(theme);
     state = theme;

@@ -9,7 +9,7 @@ part of 'theme_setting_provider.dart';
 // **************************************************************************
 
 String _$themeSettingNotifierHash() =>
-    r'ab6ebdcfee63a83e5e4582116943e711bf62dc80';
+    r'1df6e97b60e20d7dc7bd507f2730253f4290852b';
 
 /// See also [ThemeSettingNotifier].
 @ProviderFor(ThemeSettingNotifier)
