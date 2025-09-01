@@ -11,7 +11,7 @@ targets:
         generate_for:
           include:
             - lib/{providers,**/providers}/**.dart
-            - lib/{composition_root,**/composition_root}/**.dart
+            - lib/composition_root/**/*.dart
             - lib/router/router.dart
             # ページファイル内で navigatorProvider を定義できるようにする
             - lib/**/*_page.dart
