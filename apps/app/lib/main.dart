@@ -74,11 +74,7 @@ class MainApp extends ConsumerWidget {
 
     return MaterialApp.router(
       locale: TranslationProvider.of(context).flutterLocale,
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       supportedLocales: AppLocaleUtils.supportedLocales,
       scaffoldMessengerKey: SnackBarManager.rootScaffoldMessengerKey,
       builder: enableAccessibilityTools
