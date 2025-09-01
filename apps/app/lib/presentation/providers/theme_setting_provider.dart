@@ -1,5 +1,5 @@
 import 'package:flutter_app/composition_root/repositories/theme_setting_repository.dart';
-import 'package:internal_domain_model/theme_setting.dart';
+import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_setting_provider.g.dart';

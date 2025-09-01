@@ -1,5 +1,5 @@
 import 'package:internal_domain_logic/operational_settings/operational_settings_repository.dart';
-import 'package:internal_domain_model/operational_settings.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 /// 運用設定集約ルートのリポジトリ実装

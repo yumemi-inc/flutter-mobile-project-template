@@ -6,7 +6,7 @@ import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_spacer.dart';
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_title.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:internal_domain_model/theme_setting.dart';
+import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'setting_page.g.dart';

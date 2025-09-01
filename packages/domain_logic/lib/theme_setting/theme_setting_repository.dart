@@ -1,4 +1,4 @@
-import 'package:internal_domain_model/theme_setting.dart';
+import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 
 abstract class ThemeSettingRepository {
   ThemeSetting getThemeSetting();
