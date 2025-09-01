@@ -23,7 +23,7 @@ dependencies:
   widgetbook_annotation: ^3.5.0
 
 dev_dependencies:
-  build_runner: ^2.4.15
+  build_runner: ^2.5.4
   widgetbook_generator: ^3.13.0
 
 flutter:
