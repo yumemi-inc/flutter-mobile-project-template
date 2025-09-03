@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/gen/l10n/l10n.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:internal_design_ui/i18n.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({
@@ -13,18 +13,18 @@ class MainPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l = L10n.of(context);
+    final t = Translations.of(context).bottomTab;
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
         selectedIndex: navigationShell.currentIndex,
         destinations: [
           NavigationDestination(
-            label: l.bottomTabHome,
+            label: t.home,
             icon: const Icon(Icons.home),
           ),
           NavigationDestination(
-            label: l.bottomTabSettings,
+            label: t.settings,
             icon: const Icon(Icons.settings),
           ),
         ],
