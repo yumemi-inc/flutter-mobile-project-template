@@ -156,7 +156,7 @@ flowchart TD
 
 本プロジェクトでは、**Clean Architecture** と **Composition Root パターン** を組み合わせたアーキテクチャを採用しています。
 
-### Clean Architecture の原則
+#### Clean Architecture の原則
 
 このアーキテクチャは以下の原則に基づいて設計されています：
 
@@ -165,11 +165,11 @@ flowchart TD
 3. **テスタビリティ**: 各レイヤーは独立してテスト可能
 4. **保守性**: 変更の影響範囲を局所化し、拡張性を確保
 
-### Composition Root パターン
+#### Composition Root パターン
 
 **Composition Root** は、アプリケーションの依存関係を構成する場所です。このパターンにより、依存関係の注入を一箇所で管理し、アプリケーションの構造を明確にします。
 
-#### 実装場所
+##### 実装場所
 
 ```shell
 apps/app/lib/composition_root/
@@ -178,7 +178,7 @@ apps/app/lib/composition_root/
 └── use_cases/                 # ユースケースの依存関係を定義
 ```
 
-#### 実装例
+##### 実装例
 
 ```dart
 // composition_root/repositories/theme_setting_repository.dart
