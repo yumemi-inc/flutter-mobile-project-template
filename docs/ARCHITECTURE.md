@@ -415,3 +415,12 @@ abstract class ThemeSettingRepository {
   Future<void> saveThemeSetting(ThemeSetting themeSetting);
 }
 ```
+
+#### Design Layer
+
+**責務**: デザインシステムの提供と UI コンポーネントの管理
+
+**実装パターン**:
+- `design_theme`: カラーパレット、タイポグラフィ、スペーシングなどのテーマ定義
+- `design_ui`: 再利用可能な UI コンポーネントの提供
+- `design_domain_ui`: ドメイン固有の UI コンポーネント（オプション）
