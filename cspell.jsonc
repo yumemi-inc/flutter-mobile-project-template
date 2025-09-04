@@ -59,6 +59,12 @@
       "description": "Project related terms",
       "path": "./.cspell/project-term.txt",
       "addWords": true
+    },
+    {
+      "name": "widgetbook-term",
+      "description": "Widgetbook related terms",
+      "path": "./.cspell/widgetbook-term.txt",
+      "addWords": true
     }
   ],
   "dictionaries": [
@@ -67,7 +73,8 @@
     "git-term",
     "github-action-term",
     "ios-term",
-    "project-term"
+    "project-term",
+    "widgetbook-term"
   ],
   "import": [
     "@cspell/dict-dart/cspell-ext.json",
