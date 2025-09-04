@@ -16,7 +16,7 @@ dependencies:
     sdk: flutter
   flutter_riverpod: ^2.6.1
   freezed_annotation: ^3.1.0
-  go_router: ^15.1.2
+  go_router: ^16.2.1
   internal_application:
     path: ../../packages/application
   internal_debug:
@@ -52,7 +52,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^3.1.0
-  go_router_builder: ^2.9.0
+  go_router_builder: ^3.0.0
   json_serializable: ^6.9.5
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5

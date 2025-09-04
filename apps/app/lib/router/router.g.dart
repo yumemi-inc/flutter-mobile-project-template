@@ -19,70 +19,85 @@ RouteBase get $debugPageRoute => GoRouteData.$route(
 
   parentNavigatorKey: DebugPageRoute.$parentNavigatorKey,
 
-  factory: $DebugPageRouteExtension._fromState,
+  factory: _$DebugPageRoute._fromState,
   routes: [
     GoRouteData.$route(
       path: 'navigation_debug',
 
       parentNavigatorKey: NavigationDebugPageRoute.$parentNavigatorKey,
 
-      factory: $NavigationDebugPageRouteExtension._fromState,
+      factory: _$NavigationDebugPageRoute._fromState,
     ),
     GoRouteData.$route(
       path: 'talker',
 
       parentNavigatorKey: TalkerPageRoute.$parentNavigatorKey,
 
-      factory: $TalkerPageRouteExtension._fromState,
+      factory: _$TalkerPageRoute._fromState,
     ),
   ],
 );
 
-extension $DebugPageRouteExtension on DebugPageRoute {
+mixin _$DebugPageRoute on GoRouteData {
   static DebugPageRoute _fromState(GoRouterState state) =>
       const DebugPageRoute();
 
+  @override
   String get location => GoRouteData.$location('/debug');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $NavigationDebugPageRouteExtension on NavigationDebugPageRoute {
+mixin _$NavigationDebugPageRoute on GoRouteData {
   static NavigationDebugPageRoute _fromState(GoRouterState state) =>
       const NavigationDebugPageRoute();
 
+  @override
   String get location => GoRouteData.$location('/debug/navigation_debug');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $TalkerPageRouteExtension on TalkerPageRoute {
+mixin _$TalkerPageRoute on GoRouteData {
   static TalkerPageRoute _fromState(GoRouterState state) =>
       const TalkerPageRoute();
 
+  @override
   String get location => GoRouteData.$location('/debug/talker');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
@@ -91,11 +106,7 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
   branches: [
     StatefulShellBranchData.$branch(
       routes: [
-        GoRouteData.$route(
-          path: '/',
-
-          factory: $HomePageRouteExtension._fromState,
-        ),
+        GoRouteData.$route(path: '/', factory: _$HomePageRoute._fromState),
       ],
     ),
     StatefulShellBranchData.$branch(
@@ -103,12 +114,12 @@ RouteBase get $mainPageShellRoute => StatefulShellRouteData.$route(
         GoRouteData.$route(
           path: '/setting',
 
-          factory: $SettingPageRouteExtension._fromState,
+          factory: _$SettingPageRoute._fromState,
           routes: [
             GoRouteData.$route(
               path: 'license',
 
-              factory: $LicensePageRouteExtension._fromState,
+              factory: _$LicensePageRoute._fromState,
             ),
           ],
         ),
@@ -122,72 +133,92 @@ extension $MainPageShellRouteExtension on MainPageShellRoute {
       const MainPageShellRoute();
 }
 
-extension $HomePageRouteExtension on HomePageRoute {
+mixin _$HomePageRoute on GoRouteData {
   static HomePageRoute _fromState(GoRouterState state) => const HomePageRoute();
 
+  @override
   String get location => GoRouteData.$location('/');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SettingPageRouteExtension on SettingPageRoute {
+mixin _$SettingPageRoute on GoRouteData {
   static SettingPageRoute _fromState(GoRouterState state) =>
       const SettingPageRoute();
 
+  @override
   String get location => GoRouteData.$location('/setting');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $LicensePageRouteExtension on LicensePageRoute {
+mixin _$LicensePageRoute on GoRouteData {
   static LicensePageRoute _fromState(GoRouterState state) =>
       const LicensePageRoute();
 
+  @override
   String get location => GoRouteData.$location('/setting/license');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
 RouteBase get $maintenancePageRoute => GoRouteData.$route(
   path: '/maintenance',
 
-  factory: $MaintenancePageRouteExtension._fromState,
+  factory: _$MaintenancePageRoute._fromState,
 );
 
-extension $MaintenancePageRouteExtension on MaintenancePageRoute {
+mixin _$MaintenancePageRoute on GoRouteData {
   static MaintenancePageRoute _fromState(GoRouterState state) =>
       const MaintenancePageRoute();
 
+  @override
   String get location => GoRouteData.$location('/maintenance');
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
