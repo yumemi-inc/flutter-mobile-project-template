@@ -11,17 +11,30 @@
 
 import 'package:flutter/widgets.dart';
 
+class $ResGen {
+  const $ResGen();
+
+  /// Directory path: res/assets
+  $ResAssetsGen get assets => const $ResAssetsGen();
+}
+
+class $ResAssetsGen {
+  const $ResAssetsGen();
+
+  /// File path: res/assets/yumemi_logo.png
+  AssetGenImage get yumemiLogo =>
+      const AssetGenImage('res/assets/yumemi_logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [yumemiLogo];
+}
+
 class Assets {
   const Assets._();
 
   static const String package = 'internal_design_ui';
 
-  static const AssetGenImage yumemiLogo = AssetGenImage(
-    'assets/yumemi_logo.png',
-  );
-
-  /// List of all assets
-  static List<AssetGenImage> get values => [yumemiLogo];
+  static const $ResGen res = $ResGen();
 }
 
 class AssetGenImage {
