@@ -359,7 +359,7 @@ class ChangeThemeSettingUseCase {
   final ThemeSettingRepository themeSettingRepository;
 
   Future<void> call(ThemeSetting themeSetting) async {
-    await themeSettingRepository.save(themeSetting);
+    await themeSettingRepository.saveThemeSetting(themeSetting);
   }
 }
 ```
