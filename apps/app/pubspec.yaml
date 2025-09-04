@@ -36,7 +36,6 @@ dependencies:
   internal_util_ui:
     path: ../../packages/util_ui
   intl: ^0.20.2
-  json_annotation: ^4.9.0
   package_info_plus: ^8.3.1
   pub_semver: ^2.2.0
   riverpod_annotation: ^2.6.1
@@ -53,7 +52,6 @@ dev_dependencies:
     sdk: flutter
   freezed: ^3.1.0
   go_router_builder: ^3.0.0
-  json_serializable: ^6.9.5
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5
 
