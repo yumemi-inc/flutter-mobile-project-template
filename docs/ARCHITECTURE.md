@@ -279,6 +279,16 @@ flowchart TD
   DesignUI --> DesignTheme
 ```
 
+### エラーハンドリングの方針
+
+> [!NOTE]
+> 必ずプロジェクトごとに方針について検討して、別途ドキュメントにまとめてください。
+
+基本的には以下の方針に従ってください：
+
+- **Infrastructure Layer**: `Exception` をキャッチして `DomainException` に変換して投げる
+- **Application Layer**: `DomainException` をキャッチして適切なデータに変換して返却する
+
 ### レイヤー間の責務と実装パターン
 
 #### Presentation Layer
