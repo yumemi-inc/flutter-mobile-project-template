@@ -296,11 +296,13 @@ flowchart TD
 **責務**: ユーザーインターフェースの表示とユーザー操作の処理
 
 **実装パターン**:
+
 - `ConsumerWidget` を使用して `Provider` の状態を監視
 - ビジネスロジックは直接実装せず `Provider` を通じてユースケースを呼び出し
 - UI 状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
 
 **実装時の注意点**:
+
 - すべての操作に UseCase を用意するのは過剰な場合がある
 - 単純な CRUD 操作などは Presentation Layer から直接 Repository を呼び出しても良い
 - 複雑なビジネスロジックや複数の Repository を組み合わせる場合は UseCase を活用
@@ -345,6 +347,7 @@ class SettingPage extends ConsumerWidget {
 **責務**: ユースケースの実装とアプリケーション固有のビジネスロジック
 
 **実装パターン**:
+
 - 各ユースケースは単一の責務を持つ
 - ドメインロジックを呼び出してアプリケーション固有の処理を実装
 - リポジトリインターフェースに依存し、実装詳細は知らない
@@ -369,6 +372,7 @@ class ChangeThemeSettingUseCase {
 **責務**: 外部システムとの連携とデータの永続化
 
 **実装パターン**:
+
 - リポジトリインターフェースの実装を提供
 - 外部 API、データベース、ファイルシステムとの連携
 - ドメインモデルと外部データ形式の変換
@@ -397,6 +401,7 @@ class ThemeSettingRepositoryImpl implements ThemeSettingRepository {
 **責務**: ビジネスルールとドメインロジックの実装
 
 **実装パターン**:
+
 - `domain_model`: エンティティ、値オブジェクト、集約の定義
 - `domain_logic`: ドメインサービス、リポジトリインターフェースの定義
 - 他のレイヤーに依存しない純粋なビジネスロジック
@@ -421,6 +426,7 @@ abstract class ThemeSettingRepository {
 **責務**: デザインシステムの提供と UI コンポーネントの管理
 
 **実装パターン**:
+
 - `design_theme`: カラーパレット、タイポグラフィ、スペーシングなどのテーマ定義
 - `design_ui`: 再利用可能な UI コンポーネントの提供
 - `design_domain_ui`: ドメイン固有の UI コンポーネント（オプション）
