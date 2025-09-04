@@ -290,6 +290,12 @@ flowchart TD
 - ビジネスロジックは直接実装せず `Provider` を通じてユースケースを呼び出し
 - UI 状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
 
+**実装時の注意点**:
+- すべての操作に UseCase を用意するのは過剰な場合がある
+- 単純な CRUD 操作などは Presentation Layer から直接 Repository を呼び出しても良い
+- 複雑なビジネスロジックや複数の Repository を組み合わせる場合は UseCase を活用
+- 実際のプロジェクトでは、アーキテクチャの純粋性と実装コストのバランスを考慮して判断する
+
 ```dart
 // presentation/providers/theme_setting_provider.dart
 @riverpod
