@@ -1,5 +1,5 @@
-import 'package:internal_domain_logic/internal_domain_logic.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_logic/operational_settings/operational_settings_repository.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 
 class CheckMaintenanceModeUseCase {
   const CheckMaintenanceModeUseCase({

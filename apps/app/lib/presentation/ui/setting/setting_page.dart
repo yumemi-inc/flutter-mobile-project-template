@@ -6,7 +6,7 @@ import 'package:flutter_app/presentation/ui/setting/components/setting_section_s
 import 'package:flutter_app/presentation/ui/setting/components/setting_section_title.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_design_ui/i18n.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'setting_page.g.dart';

@@ -1,6 +1,7 @@
-import 'package:internal_application/internal_application.dart';
-import 'package:internal_domain_logic/internal_domain_logic.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_application/operational_settings/check_force_update_use_case.dart';
+import 'package:internal_domain_logic/operational_settings/operational_settings_repository.dart';
+import 'package:internal_domain_model/operational_settings/operating_system.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:pub_semver/pub_semver.dart';
 import 'package:test/test.dart';

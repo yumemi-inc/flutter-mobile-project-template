@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app/composition_root/use_cases/check_maintenance_mode_use_case.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/operational_settings/maintenance_mode_settings_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'maintenance_mode_provider.g.dart';

@@ -12,7 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
 import 'package:internal_design_ui/i18n.dart';
-import 'package:internal_domain_model/internal_domain_model.dart';
+import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import 'package:talker_riverpod_logger/talker_riverpod_logger_observer.dart';
