@@ -288,7 +288,7 @@ flowchart TD
 **実装パターン**:
 - `ConsumerWidget` を使用して `Provider` の状態を監視
 - ビジネスロジックは直接実装せず `Provider` を通じてユースケースを呼び出し
-- UI状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
+- UI 状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
 
 ```dart
 class SettingPage extends ConsumerWidget {
@@ -297,7 +297,7 @@ class SettingPage extends ConsumerWidget {
     final themeSetting = ref.watch(themeSettingNotifierProvider);
     
     return Scaffold(
-      // UI実装
+      // ...
     );
   }
 }
