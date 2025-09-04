@@ -286,8 +286,8 @@ flowchart TD
 **責務**: ユーザーインターフェースの表示とユーザー操作の処理
 
 **実装パターン**:
-- `ConsumerWidget` を使用してProviderの状態を監視
-- ビジネスロジックは直接実装せず、Providerを通じてユースケースを呼び出し
+- `ConsumerWidget` を使用して `Provider` の状態を監視
+- ビジネスロジックは直接実装せず `Provider` を通じてユースケースを呼び出し
 - UI状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
 
 ```dart
@@ -318,7 +318,7 @@ class SettingPage extends ConsumerWidget {
 
 **実装パターン**:
 - リポジトリインターフェースの実装を提供
-- 外部API、データベース、ファイルシステムとの連携
+- 外部 API、データベース、ファイルシステムとの連携
 - ドメインモデルと外部データ形式の変換
 
 #### Domain Layer
