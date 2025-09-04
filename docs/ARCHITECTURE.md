@@ -291,13 +291,18 @@ flowchart TD
 - UI 状態の管理は `Provider` や `Notifier`, `AsyncNotifier` を使用
 
 ```dart
+// presentation/ui/setting/setting_page.dart
 class SettingPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeSetting = ref.watch(themeSettingNotifierProvider);
-    
-    return Scaffold(
-      // ...
+
+    return ElevatedButton(
+      onPressed: () {
+        ref.read(themeSettingNotifierProvider.notifier)
+            .changeThemeSetting(ThemeSetting.light);
+      },
+      child: Text('テーマ変更: ${themeSetting.name}'),
     );
   }
 }
