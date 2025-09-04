@@ -312,6 +312,21 @@ class SettingPage extends ConsumerWidget {
 - ドメインロジックを呼び出してアプリケーション固有の処理を実装
 - リポジトリインターフェースに依存し、実装詳細は知らない
 
+```dart
+// application/theme_setting/change_theme_setting_use_case.dart
+class ChangeThemeSettingUseCase {
+  const ChangeThemeSettingUseCase({
+    required this.themeSettingRepository,
+  });
+
+  final ThemeSettingRepository themeSettingRepository;
+
+  Future<void> call(ThemeSetting themeSetting) async {
+    await themeSettingRepository.save(themeSetting);
+  }
+}
+```
+
 #### Infrastructure Layer
 
 **責務**: 外部システムとの連携とデータの永続化
@@ -321,6 +336,25 @@ class SettingPage extends ConsumerWidget {
 - 外部 API、データベース、ファイルシステムとの連携
 - ドメインモデルと外部データ形式の変換
 
+```dart
+// infrastructure/theme_setting/theme_setting_repository_impl.dart
+class ThemeSettingRepositoryImpl implements ThemeSettingRepository {
+  const ThemeSettingRepositoryImpl(this._sharedPreference);
+
+  final SharedPreferenceDataSource _sharedPreference;
+
+  @override
+  ThemeSetting getThemeSetting() {
+    return _sharedPreference.getThemeSetting();
+  }
+
+  @override
+  Future<void> saveThemeSetting(ThemeSetting themeSetting) async {
+    await _sharedPreference.saveThemeSetting(themeSetting.index);
+  }
+}
+```
+
 #### Domain Layer
 
 **責務**: ビジネスルールとドメインロジックの実装
@@ -329,3 +363,18 @@ class SettingPage extends ConsumerWidget {
 - `domain_model`: エンティティ、値オブジェクト、集約の定義
 - `domain_logic`: ドメインサービス、リポジトリインターフェースの定義
 - 他のレイヤーに依存しない純粋なビジネスロジック
+
+```dart
+// domain_model/theme_setting/theme_setting.dart
+enum ThemeSetting {
+  system,
+  light,
+  dark,
+}
+
+// domain_logic/theme_setting/theme_setting_repository.dart
+abstract class ThemeSettingRepository {
+  ThemeSetting getThemeSetting();
+  Future<void> saveThemeSetting(ThemeSetting themeSetting);
+}
+```
