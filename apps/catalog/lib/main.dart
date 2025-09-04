@@ -25,21 +25,13 @@ class WidgetbookApp extends StatelessWidget {
             WidgetbookTheme(name: 'Dark', data: darkTheme()),
           ],
         ),
-        DeviceFrameAddon(
-          initialDevice: Devices.ios.iPhone13,
-          devices: [
-            Devices.ios.iPhoneSE,
-            Devices.ios.iPhone13,
-            Devices.ios.iPad,
-            Devices.android.smallPhone.copyWith(
-              name: 'small Android phone',
-            ),
-            Devices.android.mediumPhone.copyWith(
-              name: 'medium Android phone',
-            ),
-            Devices.android.largeTablet.copyWith(
-              name: 'large Android tablet',
-            ),
+        ViewportAddon(
+          [
+            IosViewports.iPhoneSE,
+            IosViewports.iPhone13,
+            IosViewports.iPad,
+            AndroidViewports.samsungGalaxyA50,
+            AndroidViewports.largeTablet,
           ],
         ),
         InspectorAddon(enabled: true),
