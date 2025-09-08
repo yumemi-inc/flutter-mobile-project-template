@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
 import 'package:internal_design_ui/i18n.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -59,8 +60,10 @@ class MainApp extends ConsumerWidget {
     ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
       final message = switch (forceUpdateSettingsState) {
         AsyncError(:final error) => 'Failed to check for updates: $error',
-        AsyncData(:final value) =>
-          value.enabled ? 'Force Update is required.' : null,
+        AsyncData(:final value) => switch (value) {
+            ForceUpdateEnabled() => 'Force Update is required.',
+            ForceUpdateDisabled() => null,
+          },
         _ => null,
       };
 

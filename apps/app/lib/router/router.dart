@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_ui/common_assets.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:internal_util_ui/custom_app_lifecycle_listener.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -28,7 +29,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 GoRouter router(Ref ref) {
   final isMaintenanceModeEnabled = ref.watch(
     maintenanceModeProvider.select(
-      (state) => state.valueOrNull?.enabled ?? false,
+      (state) => state.valueOrNull is MaintenanceEnabled,
     ),
   );
   return GoRouter(
