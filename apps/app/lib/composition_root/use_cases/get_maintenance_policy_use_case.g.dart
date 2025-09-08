@@ -2,31 +2,31 @@
 
 // ignore_for_file: type=lint, duplicate_ignore, deprecated_member_use
 
-part of 'check_force_update_use_case.dart';
+part of 'get_maintenance_policy_use_case.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkForceUpdateUseCaseHash() =>
-    r'cdd023873e365bdd7ebc85dbc2ab1ac93bd91d1d';
+String _$getMaintenancePolicyUseCaseHash() =>
+    r'99b2faefd31781a2759b238b67b7fe851e749a97';
 
-/// See also [checkForceUpdateUseCase].
-@ProviderFor(checkForceUpdateUseCase)
-final checkForceUpdateUseCaseProvider =
-    AutoDisposeProvider<CheckForceUpdateUseCase>.internal(
-      checkForceUpdateUseCase,
-      name: r'checkForceUpdateUseCaseProvider',
+/// See also [getMaintenancePolicyUseCase].
+@ProviderFor(getMaintenancePolicyUseCase)
+final getMaintenancePolicyUseCaseProvider =
+    AutoDisposeProvider<GetMaintenancePolicyUseCase>.internal(
+      getMaintenancePolicyUseCase,
+      name: r'getMaintenancePolicyUseCaseProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
           ? null
-          : _$checkForceUpdateUseCaseHash,
+          : _$getMaintenancePolicyUseCaseHash,
       dependencies: null,
       allTransitiveDependencies: null,
     );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-typedef CheckForceUpdateUseCaseRef =
-    AutoDisposeProviderRef<CheckForceUpdateUseCase>;
+typedef GetMaintenancePolicyUseCaseRef =
+    AutoDisposeProviderRef<GetMaintenancePolicyUseCase>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

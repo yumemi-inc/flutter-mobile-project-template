@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_app/composition_root/use_cases/check_maintenance_mode_use_case.dart';
+import 'package:flutter_app/composition_root/use_cases/get_maintenance_policy_use_case.dart';
 import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -10,14 +10,8 @@ part 'maintenance_mode_provider.g.dart';
 @Riverpod(keepAlive: true)
 class MaintenanceMode extends _$MaintenanceMode {
   @override
-  Future<MaintenancePolicy> build() async {
-    final enabled = await ref
-        .watch(checkMaintenanceModeUseCaseProvider)
-        .shouldMaintenanceMode();
-
-    return enabled
-        ? const MaintenancePolicy.enabled(message: 'メンテナンス中です')
-        : const MaintenancePolicy.disabled();
+  Future<MaintenancePolicy> build() {
+    return ref.watch(getMaintenancePolicyUseCaseProvider).call();
   }
 
   /// メンテナンスモードを無効にする

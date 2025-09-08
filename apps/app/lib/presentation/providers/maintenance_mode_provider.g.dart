@@ -8,7 +8,7 @@ part of 'maintenance_mode_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$maintenanceModeHash() => r'cbed93cb93b3463e3c2f19494ee70724b3408b73';
+String _$maintenanceModeHash() => r'9dc9fbfd918bfc19300bc7d2f9fb492bdaeb206b';
 
 /// See also [MaintenanceMode].
 @ProviderFor(MaintenanceMode)
