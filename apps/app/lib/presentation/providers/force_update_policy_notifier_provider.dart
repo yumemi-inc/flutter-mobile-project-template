@@ -6,10 +6,10 @@ import 'package:internal_domain_model/operational_settings/operational_settings.
 import 'package:pub_semver/pub_semver.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'force_update_provider.g.dart';
+part 'force_update_policy_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class ForceUpdate extends _$ForceUpdate {
+class ForceUpdatePolicyNotifier extends _$ForceUpdatePolicyNotifier {
   @override
   Future<ForceUpdatePolicy> build() {
     return ref.watch(getForceUpdatePolicyUseCaseProvider).call();

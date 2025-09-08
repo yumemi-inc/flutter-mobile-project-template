@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/main_page.dart';
-import 'package:flutter_app/presentation/providers/force_update_provider.dart';
-import 'package:flutter_app/presentation/providers/maintenance_mode_provider.dart';
+import 'package:flutter_app/presentation/providers/force_update_policy_notifier_provider.dart';
+import 'package:flutter_app/presentation/providers/maintenance_policy_notifier_provider.dart';
 import 'package:flutter_app/presentation/ui/operational_settings/maintenance_page.dart';
 import 'package:flutter_app/presentation/ui/setting/setting_page.dart';
 import 'package:flutter_app/ui/home_page.dart';
@@ -28,7 +28,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 @Riverpod(keepAlive: true)
 GoRouter router(Ref ref) {
   final isMaintenanceModeEnabled = ref.watch(
-    maintenanceModeProvider.select(
+    maintenancePolicyNotifierProvider.select(
       (state) => state.valueOrNull is MaintenanceEnabled,
     ),
   );

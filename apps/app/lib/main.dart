@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
-import 'package:flutter_app/presentation/providers/force_update_provider.dart';
+import 'package:flutter_app/presentation/providers/force_update_policy_notifier_provider.dart';
 import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -57,7 +57,9 @@ class MainApp extends ConsumerWidget {
     final enableAccessibilityTools =
         kDebugMode && ref.watch(enableAccessibilityToolsProvider);
 
-    ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
+    ref.listen(
+      forceUpdatePolicyNotifierProvider,
+      (_, forceUpdateSettingsState) {
       final message = switch (forceUpdateSettingsState) {
         AsyncError(:final error) => 'Failed to check for updates: $error',
         AsyncData(:final value) => switch (value) {
@@ -72,7 +74,9 @@ class MainApp extends ConsumerWidget {
       }
 
       SnackBarManager.showSnackBar(message);
-      ref.read(forceUpdateProvider.notifier).disable();
+      ref
+          .read(forceUpdatePolicyNotifierProvider.notifier)
+          .disable();
     });
 
     return MaterialApp.router(

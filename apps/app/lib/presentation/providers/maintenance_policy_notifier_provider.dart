@@ -5,10 +5,10 @@ import 'package:flutter_app/composition_root/use_cases/get_maintenance_policy_us
 import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'maintenance_mode_provider.g.dart';
+part 'maintenance_policy_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class MaintenanceMode extends _$MaintenanceMode {
+class MaintenancePolicyNotifier extends _$MaintenancePolicyNotifier {
   @override
   Future<MaintenancePolicy> build() {
     return ref.watch(getMaintenancePolicyUseCaseProvider).call();

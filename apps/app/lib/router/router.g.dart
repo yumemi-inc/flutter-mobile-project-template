@@ -226,7 +226,7 @@ mixin _$MaintenancePageRoute on GoRouteData {
 // RiverpodGenerator
 // **************************************************************************
 
-String _$routerHash() => r'101f4125da654c837ff9e43d94df3a25b7a5b2fe';
+String _$routerHash() => r'7f2c119c1ed13737bc4e35a5527ceed85f06309a';
 
 /// See also [router].
 @ProviderFor(router)
