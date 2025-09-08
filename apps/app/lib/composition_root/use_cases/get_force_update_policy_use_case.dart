@@ -6,9 +6,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'get_force_update_policy_use_case.g.dart';
 
 @riverpod
-GetForceUpdatePolicyUseCase getForceUpdatePolicyUseCase(Ref ref) =>
-    GetForceUpdatePolicyUseCase(
-      operationalSettingsRepository: ref.watch(
-        operationalSettingsRepositoryProvider,
-      ),
-    );
+GetForceUpdatePolicyUseCase getForceUpdatePolicyUseCase(Ref ref) {
+  final repository = ref.watch(operationalSettingsRepositoryProvider);
+  return GetForceUpdatePolicyUseCase(
+    operationalSettingsRepository: repository,
+  );
+}

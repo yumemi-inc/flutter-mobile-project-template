@@ -9,7 +9,7 @@ part of 'get_force_update_policy_use_case.dart';
 // **************************************************************************
 
 String _$getForceUpdatePolicyUseCaseHash() =>
-    r'fc7e0d1ff749141eb2f3a29b7f80d2601a5159c7';
+    r'09f16f9534db71567dcdda740ebc731a8379baea';
 
 /// See also [getForceUpdatePolicyUseCase].
 @ProviderFor(getForceUpdatePolicyUseCase)

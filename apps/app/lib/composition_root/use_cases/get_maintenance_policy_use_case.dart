@@ -6,9 +6,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'get_maintenance_policy_use_case.g.dart';
 
 @riverpod
-GetMaintenancePolicyUseCase getMaintenancePolicyUseCase(Ref ref) =>
-    GetMaintenancePolicyUseCase(
-      operationalSettingsRepository: ref.watch(
-        operationalSettingsRepositoryProvider,
-      ),
-    );
+GetMaintenancePolicyUseCase getMaintenancePolicyUseCase(Ref ref) {
+  final repository = ref.watch(operationalSettingsRepositoryProvider);
+  return GetMaintenancePolicyUseCase(
+    operationalSettingsRepository: repository,
+  );
+}

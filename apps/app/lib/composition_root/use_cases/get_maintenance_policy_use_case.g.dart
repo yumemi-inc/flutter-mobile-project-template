@@ -9,7 +9,7 @@ part of 'get_maintenance_policy_use_case.dart';
 // **************************************************************************
 
 String _$getMaintenancePolicyUseCaseHash() =>
-    r'99b2faefd31781a2759b238b67b7fe851e749a97';
+    r'7a1fbe03ed4df19641e9ceffd25c92ca6dd77fdc';
 
 /// See also [getMaintenancePolicyUseCase].
 @ProviderFor(getMaintenancePolicyUseCase)

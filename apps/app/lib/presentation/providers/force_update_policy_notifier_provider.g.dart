@@ -9,7 +9,7 @@ part of 'force_update_policy_notifier_provider.dart';
 // **************************************************************************
 
 String _$forceUpdatePolicyNotifierHash() =>
-    r'2abea6c1f3f7a6a8ec353edad1974814b5063ca0';
+    r'9d4b260c2b343863a1337ab5c5d49f75405dfa8b';
 
 /// See also [ForceUpdatePolicyNotifier].
 @ProviderFor(ForceUpdatePolicyNotifier)

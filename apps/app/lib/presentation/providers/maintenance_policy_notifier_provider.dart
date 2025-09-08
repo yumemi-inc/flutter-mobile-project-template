@@ -11,7 +11,8 @@ part 'maintenance_policy_notifier_provider.g.dart';
 class MaintenancePolicyNotifier extends _$MaintenancePolicyNotifier {
   @override
   Future<MaintenancePolicy> build() {
-    return ref.watch(getMaintenancePolicyUseCaseProvider).call();
+    final useCase = ref.watch(getMaintenancePolicyUseCaseProvider);
+    return useCase.call();
   }
 
   /// メンテナンスモードを無効にする

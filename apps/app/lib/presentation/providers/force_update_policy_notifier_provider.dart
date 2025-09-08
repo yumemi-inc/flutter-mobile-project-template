@@ -12,7 +12,8 @@ part 'force_update_policy_notifier_provider.g.dart';
 class ForceUpdatePolicyNotifier extends _$ForceUpdatePolicyNotifier {
   @override
   Future<ForceUpdatePolicy> build() {
-    return ref.watch(getForceUpdatePolicyUseCaseProvider).call();
+    final useCase = ref.watch(getForceUpdatePolicyUseCaseProvider);
+    return useCase.call();
   }
 
   /// Usage case: When the user can select whether to update or not

@@ -9,7 +9,7 @@ part of 'maintenance_policy_notifier_provider.dart';
 // **************************************************************************
 
 String _$maintenancePolicyNotifierHash() =>
-    r'b97476a716ca28e5a0798a3a73673d2c6a27f8d1';
+    r'355423c1e8fe7ae6a3c4fa2dc0afa7f51a9a70cc';
 
 /// See also [MaintenancePolicyNotifier].
 @ProviderFor(MaintenancePolicyNotifier)
