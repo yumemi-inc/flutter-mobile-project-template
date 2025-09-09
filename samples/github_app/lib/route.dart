@@ -1,7 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:samples_github_repository/ui.dart';
+import 'package:github_app/ui/pages/github_repository_detail_page.dart';
+
+abstract interface class GitHubRepositoryListPageNavigator {
+  void goGitHubRepositoryDetailPage(
+    BuildContext context,
+    String repositoryName,
+    String? description,
+  );
+}
 
 final class GithubRepositoryListPageNavigatorImpl
     implements GitHubRepositoryListPageNavigator {
