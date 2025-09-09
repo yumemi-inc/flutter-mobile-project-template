@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app/app_initializer.dart';
-import 'package:flutter_app/presentation/providers/force_update_provider.dart';
+import 'package:flutter_app/presentation/providers/force_update_policy_notifier_provider.dart';
 import 'package:flutter_app/presentation/providers/theme_setting_provider.dart';
 import 'package:flutter_app/router/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -12,6 +12,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_debug/ui.dart';
 import 'package:internal_design_theme/themes.dart';
 import 'package:internal_design_ui/i18n.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 import 'package:internal_util_ui/snack_bar_manager.dart';
 import 'package:talker_flutter/talker_flutter.dart';
@@ -56,11 +57,16 @@ class MainApp extends ConsumerWidget {
     final enableAccessibilityTools =
         kDebugMode && ref.watch(enableAccessibilityToolsProvider);
 
-    ref.listen(forceUpdateProvider, (_, forceUpdateSettingsState) {
-      final message = switch (forceUpdateSettingsState) {
+    ref.listen(forceUpdatePolicyNotifierProvider, (
+      _,
+      forceUpdatePolicy,
+    ) {
+      final message = switch (forceUpdatePolicy) {
         AsyncError(:final error) => 'Failed to check for updates: $error',
-        AsyncData(:final value) =>
-          value.enabled ? 'Force Update is required.' : null,
+        AsyncData(:final value) => switch (value) {
+          ForceUpdateEnabled() => 'Force Update is required.',
+          ForceUpdateDisabled() => null,
+        },
         _ => null,
       };
 
@@ -69,7 +75,7 @@ class MainApp extends ConsumerWidget {
       }
 
       SnackBarManager.showSnackBar(message);
-      ref.read(forceUpdateProvider.notifier).disable();
+      ref.read(forceUpdatePolicyNotifierProvider.notifier).disable();
     });
 
     return MaterialApp.router(

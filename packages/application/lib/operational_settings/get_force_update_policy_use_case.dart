@@ -1,21 +1,20 @@
 import 'package:internal_domain_logic/operational_settings/operational_settings_repository.dart';
 import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 
-class CheckMaintenanceModeUseCase {
-  const CheckMaintenanceModeUseCase({
+class GetForceUpdatePolicyUseCase {
+  const GetForceUpdatePolicyUseCase({
     required this.operationalSettingsRepository,
   });
 
   final OperationalSettingsRepository operationalSettingsRepository;
 
-  /// メンテナンスモードが有効かどうかをチェックする
+  /// 強制更新ポリシーを取得する
   ///
-  /// メンテナンスモードが有効な場合は `true` を返す
-  /// メンテナンスモードが無効な場合は `false` を返す
-  Future<bool> shouldMaintenanceMode() async {
+  /// 現在の設定に基づいて強制更新ポリシーを返す
+  Future<ForceUpdatePolicy> call() async {
     final operationalSettings = await operationalSettingsRepository
         .getOperationalSettings();
 
-    return operationalSettings.maintenancePolicy is MaintenanceEnabled;
+    return operationalSettings.forceUpdatePolicy;
   }
 }

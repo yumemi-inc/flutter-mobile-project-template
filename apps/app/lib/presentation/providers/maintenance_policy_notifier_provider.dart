@@ -1,32 +1,25 @@
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_app/composition_root/use_cases/check_maintenance_mode_use_case.dart';
-import 'package:internal_domain_model/operational_settings/maintenance_mode_settings_state.dart';
+import 'package:flutter_app/composition_root/use_cases/get_maintenance_policy_use_case.dart';
+import 'package:internal_domain_model/operational_settings/operational_settings.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'maintenance_mode_provider.g.dart';
+part 'maintenance_policy_notifier_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class MaintenanceMode extends _$MaintenanceMode {
+class MaintenancePolicyNotifier extends _$MaintenancePolicyNotifier {
   @override
-  Future<MaintenanceModeSettingsState> build() async {
-    final enabled = await ref
-        .watch(checkMaintenanceModeUseCaseProvider)
-        .shouldMaintenanceMode();
-
-    return MaintenanceModeSettingsState(
-      enabled: enabled,
-    );
+  Future<MaintenancePolicy> build() {
+    final useCase = ref.watch(getMaintenancePolicyUseCaseProvider);
+    return useCase.call();
   }
 
   /// メンテナンスモードを無効にする
   void disable() {
     unawaited(
       update(
-        (state) => state.copyWith(
-          enabled: false,
-        ),
+        (state) => const MaintenancePolicy.disabled(),
       ),
     );
   }
@@ -44,9 +37,7 @@ class MaintenanceMode extends _$MaintenanceMode {
 
     unawaited(
       update(
-        (state) => state.copyWith(
-          enabled: true,
-        ),
+        (state) => const MaintenancePolicy.enabled(message: 'メンテナンス中です'),
       ),
     );
   }

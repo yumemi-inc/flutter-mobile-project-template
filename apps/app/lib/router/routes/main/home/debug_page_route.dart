@@ -25,12 +25,16 @@ final class _DebugPagePresenterImpl implements DebugPagePresenter {
 
   @override
   void enableForceUpdate() {
-    ref.read(forceUpdateProvider.notifier).debugEnableForceUpdate();
+    ref
+        .read(forceUpdatePolicyNotifierProvider.notifier)
+        .debugEnableForceUpdate();
   }
 
   @override
   void enableMaintenanceMode() {
-    ref.read(maintenanceModeProvider.notifier).debugEnableMaintenanceMode();
+    ref
+        .read(maintenancePolicyNotifierProvider.notifier)
+        .debugEnableMaintenanceMode();
   }
 }
 
