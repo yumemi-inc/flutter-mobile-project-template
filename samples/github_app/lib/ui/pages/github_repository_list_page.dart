@@ -4,19 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:github_app/domain/models/github_repository.dart';
 import 'package:github_app/domain/providers/scroll_notifier.dart';
-import 'package:github_app/route.dart';
+import 'package:github_app/ui/pages/github_repository_detail_page.dart';
 import 'package:github_app/ui/providers/github_repository_list_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:internal_design_ui/components/list_tiles/text_list_tile.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:utils_pagination/ui.dart';
-
-part 'github_repository_list_page.g.dart';
-
-@Riverpod(dependencies: [])
-GitHubRepositoryListPageNavigator gitHubRepositoryListPageNavigator(
-  Ref ref,
-) => throw UnimplementedError();
 
 typedef GitHubRepositoryPagingView =
     CommonPagingView<
@@ -31,7 +23,6 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final scrollController = useScrollController();
-    final navigator = ref.watch(gitHubRepositoryListPageNavigatorProvider);
     ref.listen(scrollNotifierProvider, (_, _) async {
       if (!context.mounted) {
         return;
@@ -55,7 +46,7 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
           }
 
           return TextListTile(
-            onTap: () => navigator.goGitHubRepositoryDetailPage(
+            onTap: () => _goGitHubRepositoryDetailPage(
               context,
               data.items[index].name,
               data.items[index].description,
@@ -76,6 +67,25 @@ class GitHubRepositoryListPage extends HookConsumerWidget {
                   child: const Text('Close'),
                 ),
               ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void _goGitHubRepositoryDetailPage(
+    BuildContext context,
+    String repositoryName,
+    String? description,
+  ) {
+    unawaited(
+      Navigator.of(context).push(
+        MaterialPageRoute<void>(
+          builder: (context) {
+            return GitHubRepositoryDetailPage(
+              repositoryName: repositoryName,
+              description: description,
             );
           },
         ),
