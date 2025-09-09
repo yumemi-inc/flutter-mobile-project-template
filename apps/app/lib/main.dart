@@ -59,9 +59,9 @@ class MainApp extends ConsumerWidget {
 
     ref.listen(forceUpdatePolicyNotifierProvider, (
       _,
-      forceUpdateSettingsState,
+      forceUpdatePolicy,
     ) {
-      final message = switch (forceUpdateSettingsState) {
+      final message = switch (forceUpdatePolicy) {
         AsyncError(:final error) => 'Failed to check for updates: $error',
         AsyncData(:final value) => switch (value) {
           ForceUpdateEnabled() => 'Force Update is required.',
