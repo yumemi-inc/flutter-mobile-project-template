@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:github_app/data/providers/scroll_notifier.dart';
 import 'package:github_app/domain/models/github_repository.dart';
-import 'package:github_app/domain/providers/scroll_notifier.dart';
 import 'package:github_app/ui/pages/github_repository_detail_page.dart';
 import 'package:github_app/ui/providers/github_repository_list_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
