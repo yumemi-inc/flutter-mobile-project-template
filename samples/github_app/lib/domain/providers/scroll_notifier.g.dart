@@ -6,12 +6,12 @@ part of 'scroll_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$scrollNotifierHash() => r'24b46fccd0f2979cb8e061c1f7542a145fa4be01';
+String _$scrollNotifierHash() => r'4e43fc3145511dce39d9721397f56efad2885530';
 
 /// See also [ScrollNotifier].
 @ProviderFor(ScrollNotifier)
 final scrollNotifierProvider =
-    AutoDisposeNotifierProvider<ScrollNotifier, bool>.internal(
+    AutoDisposeNotifierProvider<ScrollNotifier, void>.internal(
       ScrollNotifier.new,
       name: r'scrollNotifierProvider',
       debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final scrollNotifierProvider =
       allTransitiveDependencies: null,
     );
 
-typedef _$ScrollNotifier = AutoDisposeNotifier<bool>;
+typedef _$ScrollNotifier = AutoDisposeNotifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

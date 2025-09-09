@@ -5,9 +5,7 @@ part 'scroll_notifier.g.dart';
 @riverpod
 class ScrollNotifier extends _$ScrollNotifier {
   @override
-  bool build() => false;
+  void build() {}
 
-  void notify() {
-    state = !state;
-  }
+  void notifyScrollToTop() => ref.notifyListeners();
 }
