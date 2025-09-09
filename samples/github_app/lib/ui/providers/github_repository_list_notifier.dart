@@ -2,7 +2,6 @@ import 'package:github_app/data/providers/repository.dart';
 import 'package:github_app/domain/models/exception.dart';
 import 'package:github_app/domain/models/github_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:utils_pagination/exception.dart';
 import 'package:utils_pagination/model.dart';
 import 'package:utils_pagination/provider.dart';
