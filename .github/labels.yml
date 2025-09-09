@@ -92,11 +92,6 @@
   color: 092d90
   description: packages util_ui package
 
-- name: "@packages/samples/github_repository"
-  color: e909bc
-  description: packages samples github_repository package
-  from_name: "@packages/features/github_repository"
-
 - name: "@packages/utils/pagination"
   color: 5d7dbc
   description: packages utils pagination package

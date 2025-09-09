@@ -18,7 +18,6 @@ workspace:
   - packages/util_logic
   - packages/util_ui
   # samples
-  - packages/samples/github_repository
   - samples/github_app
   - samples/webview
   # utils

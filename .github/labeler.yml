@@ -55,10 +55,6 @@ labels:
     files:
       - packages/util_ui/.+
 
-  - label: "@packages/samples/github_repository"
-    files:
-      - packages/samples/github_repository/.+
-
   - label: "@packages/utils/pagination"
     files:
       - packages/utils/pagination/.+
