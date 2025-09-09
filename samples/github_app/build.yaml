@@ -2,11 +2,11 @@ targets:
   $default:
     builders:
       freezed:
+        # デフォルトのfreezedオプション
         options:
-          # デフォルトのfreezedオプション
       json_serializable:
+        # デフォルトのjson_serializableオプション
         options:
-          # デフォルトのjson_serializableオプション
       riverpod_generator:
+        # デフォルトのriverpod_generatorオプション
         options:
-          # デフォルトのriverpod_generatorオプション
