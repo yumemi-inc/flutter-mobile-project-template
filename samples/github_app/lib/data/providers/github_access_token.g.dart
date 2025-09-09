@@ -6,7 +6,7 @@ part of 'github_access_token.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gitHubAccessTokenHash() => r'1134c2369ad1cdfe83a16338564397ab2c17139c';
+String _$gitHubAccessTokenHash() => r'258a0c31671267224adf5dad5099337af8bdcb51';
 
 /// See also [gitHubAccessToken].
 @ProviderFor(gitHubAccessToken)
