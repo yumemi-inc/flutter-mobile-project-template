@@ -10,15 +10,28 @@ environment:
 resolution: workspace
 
 dependencies:
+  dio: ^5.9.0
   flutter:
     sdk: flutter
-  flutter_riverpod: ^2.6.1
-  samples_github_repository:
-    path: ../../packages/samples/github_repository
+  flutter_hooks: ^0.21.3+1
+  freezed_annotation: ^3.1.0
+  hooks_riverpod: ^2.6.1
+  internal_design_ui:
+    path: ../../packages/design_ui
+  json_annotation: ^4.9.0
+  riverpod_annotation: ^2.6.1
+  utils_pagination:
+    path: ../../packages/utils/pagination
 
 dev_dependencies:
+  build_runner: ^2.5.4
+  custom_lint: ^0.7.6
   flutter_test:
     sdk: flutter
+  freezed: ^3.1.0
+  json_serializable: ^6.9.5
+  riverpod_generator: ^2.6.5
+  riverpod_lint: ^2.6.5
 
 flutter:
   uses-material-design: true

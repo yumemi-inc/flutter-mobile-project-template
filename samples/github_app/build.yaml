@@ -1,0 +1,12 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        # デフォルトのfreezedオプション
+        options:
+      json_serializable:
+        # デフォルトのjson_serializableオプション
+        options:
+      riverpod_generator:
+        # デフォルトのriverpod_generatorオプション
+        options:

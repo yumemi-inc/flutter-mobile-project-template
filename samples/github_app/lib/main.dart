@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:github_app/route.dart';
-import 'package:samples_github_repository/ui.dart';
+import 'package:github_app/ui/pages/github_repository_list_page.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
   runApp(
-    ProviderScope(
-      overrides: [
-        gitHubRepositoryListPageNavigatorProvider.overrideWithValue(
-          const GithubRepositoryListPageNavigatorImpl(),
-        ),
-      ],
-      child: const MainApp(),
+    const ProviderScope(
+      child: MainApp(),
     ),
   );
 }
