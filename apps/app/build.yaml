@@ -11,9 +11,8 @@ targets:
           include:
             # 依存注入用の Provider
             - lib/composition_root/**/*.dart
-            # 状態管理用の Provider やページごとの navigatorProvider
+            # 状態管理用の Provider
             - lib/presentation/providers/**.dart
-            - lib/presentation/ui/**_page.dart
             # ルーティング用の Provider
             - lib/router/router.dart
       # https://github.com/dart-lang/source_gen#ignore_for_file
