@@ -7,24 +7,21 @@ import 'package:flutter_app/presentation/ui/setting/components/setting_section_t
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_design_ui/i18n.dart';
 import 'package:internal_domain_model/theme_setting/theme_setting.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-
-part 'setting_page.g.dart';
 
 abstract interface class SettingPageNavigator {
   void goLicensePage(BuildContext context);
 }
 
-@Riverpod(dependencies: [])
-SettingPageNavigator settingPageNavigator(Ref ref) =>
-    throw UnimplementedError();
-
 class SettingPage extends ConsumerWidget {
-  const SettingPage({super.key});
+  const SettingPage({
+    super.key,
+    required this.navigator,
+  });
+
+  final SettingPageNavigator navigator;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navigator = ref.watch(settingPageNavigatorProvider);
     final currentThemeSetting = ref.watch(themeSettingNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
     final t = Translations.of(context).setting;
