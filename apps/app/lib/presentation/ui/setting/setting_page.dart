@@ -14,11 +14,11 @@ abstract interface class SettingPageNavigator {
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({
+    required SettingPageNavigator navigator,
     super.key,
-    required this.navigator,
-  });
+  }) : _navigator = navigator;
 
-  final SettingPageNavigator navigator;
+  final SettingPageNavigator _navigator;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -72,7 +72,7 @@ class SettingPage extends ConsumerWidget {
                   leading: const Icon(Icons.description),
                   title: Text(t.openSourceLicensesLabel),
                   subtitle: Text(t.librariesWeUseLabel),
-                  onTap: () => navigator.goLicensePage(context),
+                  onTap: () => _navigator.goLicensePage(context),
                 ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(
