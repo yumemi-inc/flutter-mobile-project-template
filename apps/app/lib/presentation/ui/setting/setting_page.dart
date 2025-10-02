@@ -8,9 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_design_ui/i18n.dart';
 import 'package:internal_domain_model/theme_setting/theme_setting.dart';
 
-abstract interface class SettingPageNavigator {
-  void goLicensePage(BuildContext context);
-}
+typedef SettingPageNavigator = ({
+  void Function(BuildContext context) goLicensePage,
+});
 
 class SettingPage extends ConsumerWidget {
   const SettingPage({
