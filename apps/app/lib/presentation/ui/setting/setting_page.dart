@@ -7,24 +7,21 @@ import 'package:flutter_app/presentation/ui/setting/components/setting_section_t
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internal_design_ui/i18n.dart';
 import 'package:internal_domain_model/theme_setting/theme_setting.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'setting_page.g.dart';
-
-abstract interface class SettingPageNavigator {
-  void goLicensePage(BuildContext context);
-}
-
-@Riverpod(dependencies: [])
-SettingPageNavigator settingPageNavigator(Ref ref) =>
-    throw UnimplementedError();
+typedef SettingPageNavigator = ({
+  void Function(BuildContext context) goLicensePage,
+});
 
 class SettingPage extends ConsumerWidget {
-  const SettingPage({super.key});
+  const SettingPage({
+    required SettingPageNavigator navigator,
+    super.key,
+  }) : _navigator = navigator;
+
+  final SettingPageNavigator _navigator;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final navigator = ref.watch(settingPageNavigatorProvider);
     final currentThemeSetting = ref.watch(themeSettingNotifierProvider);
     final buildConfig = ref.watch(buildConfigProvider);
     final t = Translations.of(context).setting;
@@ -75,7 +72,7 @@ class SettingPage extends ConsumerWidget {
                   leading: const Icon(Icons.description),
                   title: Text(t.openSourceLicensesLabel),
                   subtitle: Text(t.librariesWeUseLabel),
-                  onTap: () => navigator.goLicensePage(context),
+                  onTap: () => _navigator.goLicensePage(context),
                 ),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(
