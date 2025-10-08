@@ -83,7 +83,7 @@ Pull Request 作成時などに GitHub Actions によって自動的にスペル
 mise install
 
 # パッケージのインストール
-bun install
+bun install --ignore-scripts
 ```
 
 インストールが終わったら、以下のコマンドを実行してプロジェクト全体のスペルチェックを行います。
