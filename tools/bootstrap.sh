@@ -67,7 +67,7 @@ if type bun >/dev/null 2>&1; then
     print_result $? "bun install --ignore-scripts"
   fi
 else
-  echo -e "${YELLOW}[!] bun install: Skip because it could not be found.${NC}"
+  echo -e "${YELLOW}[!] bun install --ignore-scripts: Skip because it could not be found.${NC}"
   echo -e "${YELLOW}[!] This may be due to mise installation not completed.${NC}"
 fi
 
