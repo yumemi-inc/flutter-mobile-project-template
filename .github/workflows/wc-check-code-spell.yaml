@@ -27,7 +27,7 @@ jobs:
           install_args: "bun"
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install --frozen-lockfile --ignore-scripts
 
       - name: Run spell check
         run: bun run cspell lint

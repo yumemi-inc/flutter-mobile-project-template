@@ -59,12 +59,12 @@ fi
 ##
 ##############################################################################
 echo ""
-print_step "bun install"
+print_step "bun install --ignore-scripts"
 if type bun >/dev/null 2>&1; then
-  if bun install; then
-    print_result 0 "bun install"
+  if bun install --ignore-scripts; then
+    print_result 0 "bun install --ignore-scripts"
   else
-    print_result $? "bun install"
+    print_result $? "bun install --ignore-scripts"
   fi
 else
   echo -e "${YELLOW}[!] bun install: Skip because it could not be found.${NC}"
