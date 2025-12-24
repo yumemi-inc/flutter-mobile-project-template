@@ -45,9 +45,9 @@ done
 # [Step2] Replace the namespace definition in build.gradle in the app module with the new application ID.
 echo "[Step2] Replacing the namespace definition in build.gradle in app module with new application ID..."
 
-readonly APP_BUILD_GRADLE_PATH="$PROJECT_ROOT/apps/app/android/app/build.gradle"
+readonly APP_BUILD_GRADLE_PATH="$PROJECT_ROOT/apps/app/android/app/build.gradle.kts"
 
-sed -i '' "s/namespace \"$OLD_NAMESPACE\"/namespace \"$NEW_ANDROID_APPLICATION_ID\"/" "$APP_BUILD_GRADLE_PATH"
+sed -i '' "s/namespace = \"$OLD_NAMESPACE\"/namespace = \"$NEW_ANDROID_APPLICATION_ID\"/" "$APP_BUILD_GRADLE_PATH"
 
 # [Step3] Delete old MainActivity.kt
 echo "[Step3] Deleting old MainActivity.kt..."
